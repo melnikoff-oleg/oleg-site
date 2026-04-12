@@ -31,9 +31,9 @@ export function HeroSection() {
           <TextEffect
             as="h1"
             delay={0.2}
-            className="mx-auto mt-8 max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+            className="mx-auto mt-8 max-w-3xl text-balance text-2xl font-medium tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
           >
-            i quit a $650k trading career at 24 to build with AI.
+            over the last 5 years i've built AI systems in big tech and as an entrepreneur.
           </TextEffect>
 
           {/* Subheading */}
@@ -43,7 +43,7 @@ export function HeroSection() {
             per="line"
             className="mx-auto mt-6 max-w-2xl text-balance text-lg text-zinc-400 md:text-xl"
           >
-            i build AI systems for marketing and teach thousands how to do the same on youtube.
+            currently, i build AI systems for marketing and teach thousands how to do the same on youtube.
           </TextEffect>
 
           {/* CTAs */}
