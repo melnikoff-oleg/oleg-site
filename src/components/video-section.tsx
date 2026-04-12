@@ -37,7 +37,7 @@ export function VideoSection() {
         >
           i share my journey building with ai on{" "}
           <Link
-            href="https://youtube.com/@oleeeg"
+            href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"

@@ -48,14 +48,14 @@ export function AboutSection() {
         >
           i also teach ai automation and{" "}
           <Link
-            href="https://youtube.com/@oleeeg"
+            href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
             claude code
           </Link>{" "}
-          to 15,000+ subscribers on youtube.
+          to 16,600+ subscribers on youtube.
         </motion.p>
 
         <motion.p

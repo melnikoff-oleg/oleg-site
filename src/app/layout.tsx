@@ -8,11 +8,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Oleg Melnikov — AI Engineer & Entrepreneur",
+  title: "Oleg Melnikov — AI Software Entrepreneur",
   description:
     "I quit a $650k trading career at 24 to build with AI. Now I help B2B founders become authorities and teach thousands how to build with AI on YouTube.",
   openGraph: {
-    title: "Oleg Melnikov — AI Engineer & Entrepreneur",
+    title: "Oleg Melnikov — AI Software Entrepreneur",
     description:
       "I quit a $650k trading career at 24 to build with AI. Now I help B2B founders become authorities and teach thousands how to build with AI on YouTube.",
     type: "website",

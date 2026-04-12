@@ -23,7 +23,7 @@ export function HeroSection() {
           {/* Top label */}
           <AnimatedGroup>
             <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400">
-              ai engineer & entrepreneur
+              ai software entrepreneur
             </span>
           </AnimatedGroup>
 
@@ -67,7 +67,7 @@ export function HeroSection() {
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <Link
-              href="https://youtube.com/@oleeeg"
+              href="https://www.youtube.com/@Oleg-Melnikov"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"

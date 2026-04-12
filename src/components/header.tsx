@@ -25,9 +25,10 @@ export function Header() {
     <header className="fixed z-50 w-full px-2">
       <div
         className={cn(
-          "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
-          scrolled &&
-            "max-w-4xl rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl lg:px-5"
+          "mx-auto mt-2 max-w-6xl rounded-2xl border px-6 transition-all duration-300 lg:px-12",
+          scrolled
+            ? "max-w-4xl border-white/10 bg-black/60 backdrop-blur-xl lg:px-5"
+            : "border-transparent"
         )}
       >
         <div className="relative flex items-center justify-between py-3 lg:py-4">
@@ -53,7 +54,7 @@ export function Header() {
 
           {/* Desktop CTA */}
           <Link
-            href="https://youtube.com/@oleeeg"
+            href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
@@ -107,7 +108,7 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="https://youtube.com/@oleeeg"
+              href="https://www.youtube.com/@Oleg-Melnikov"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white/10 px-6 py-3 text-lg transition-colors hover:bg-white/20"
