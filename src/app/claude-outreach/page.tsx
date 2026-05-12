@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 
-const VIDEO_ID = "JQQhT0edXXw";
+const VIDEO_ID = "aUO7kUc8aJU";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -246,12 +246,12 @@ export default function ClaudeOutreachPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <motion.p
+            <motion.h2
               variants={fadeUp}
               className="text-sm uppercase tracking-widest text-zinc-500"
             >
               setup guide
-            </motion.p>
+            </motion.h2>
 
             <motion.div variants={fadeUp} className="mt-8">
               <Accordion items={steps} />
