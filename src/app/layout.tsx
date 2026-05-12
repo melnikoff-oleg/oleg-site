@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Unbounded } from "next/font/google";
+import { Plausible } from "@/components/plausible";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,7 +34,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} ${unbounded.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Plausible />
+        {children}
+      </body>
     </html>
   );
 }
