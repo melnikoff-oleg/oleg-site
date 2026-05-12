@@ -148,7 +148,7 @@ npm run start  # Start production server
 
 ### Site Structure
 
-Single page with 6 sections:
+**Main page** (`/`) — single page with 6 sections:
 1. **Hero** — Tagline, photo, CTAs (`src/components/hero-section.tsx`)
 2. **About** — What Oleg does now (`src/components/about-section.tsx`)
 3. **Results** — Stats, client proof, credentials (`src/components/results-section.tsx`)
@@ -156,7 +156,14 @@ Single page with 6 sections:
 5. **Connect** — Social links + footer (`src/components/connect-section.tsx`)
 6. **Header** — Floating nav, blurs on scroll (`src/components/header.tsx`)
 
-Animation primitives in `src/components/motion/` (TextEffect, AnimatedGroup).
+**Resource pages** — YouTube video companion pages with setup guides:
+- `/claude-outreach` — Claude Code for cold outreach (`src/app/claude-outreach/page.tsx`)
+
+Resource pages follow a shared pattern: minimal header, embedded YouTube video, accordion setup steps, footer. Each lives in `src/app/{slug}/page.tsx` with its own `layout.tsx` for metadata.
+
+**Shared components:**
+- Animation primitives in `src/components/motion/` (TextEffect, AnimatedGroup)
+- `src/components/accordion.tsx` — Reusable accordion for setup steps (used by resource pages)
 
 ---
 
