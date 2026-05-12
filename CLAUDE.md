@@ -136,6 +136,26 @@ Key references in the main repo (`/Users/olegmelnikov/Desktop/Software Projects/
 
 ---
 
+## SEO
+
+Ongoing goal: optimize the site for search around keywords like **"AI systems for marketing"**, **"Claude Code"**, **"Claude Code for marketing"**.
+
+**Done:**
+- Sitemap (`src/app/sitemap.ts`) + robots.txt (`src/app/robots.ts`)
+- Keyword-rich meta tags (title, description, keywords, OG, Twitter cards) on all pages
+- Proper heading hierarchy (`h1` → `h2`) across all sections
+- Plausible analytics (`src/components/plausible.tsx`, domain: oleg.ae)
+
+**Still to do:**
+- Open Graph images (branded preview for social shares)
+- Structured data / JSON-LD (Person schema)
+- Internal linking (homepage → resource pages)
+- Performance audit (Lighthouse, image optimization)
+- More content pages (each YouTube video = a potential resource page targeting keywords)
+- Google Search Console verification (blocked for now, revisit later)
+
+---
+
 ## Session Workflow
 
 1. **Start**: Run `/prime` to load context
@@ -173,6 +193,7 @@ npm run start  # Start production server
 
 **Resource pages** — YouTube video companion pages with setup guides:
 - `/claude-outreach` — Claude Code for cold outreach (`src/app/claude-outreach/page.tsx`)
+- `/claude-twitter` — Claude Code X/Twitter content machine (`src/app/claude-twitter/page.tsx`)
 
 Resource pages follow a shared pattern: minimal header, embedded YouTube video, accordion setup steps, footer. Each lives in `src/app/{slug}/page.tsx` with its own `layout.tsx` for metadata.
 
