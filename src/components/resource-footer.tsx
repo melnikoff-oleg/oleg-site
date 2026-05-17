@@ -12,6 +12,7 @@ import {
   Megaphone,
   Globe,
   Code,
+  Mic,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -88,6 +89,12 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
     title: "Build Personal Website",
     description: "Build a personal website from scratch with Claude Code in minutes",
     icon: Code,
+  },
+  {
+    slug: "claude-interviewer",
+    title: "AI Interviewer for Content",
+    description: "Build a voice AI agent that interviews you and turns conversations into LinkedIn posts",
+    icon: Mic,
   },
 ];
 

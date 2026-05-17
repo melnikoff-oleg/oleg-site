@@ -204,6 +204,7 @@ npm run start  # Start production server
 - `/claude-marketing` — Marketing (SMM, ads, outreach)
 - `/claude-reels` — Viral Instagram Reels
 - `/claude-content` — Content creation in 10 minutes
+- `/claude-interviewer` — AI voice interviewer for content creation
 
 Resource pages follow a shared pattern: minimal header, embedded YouTube video, accordion setup steps, cross-linked resource footer. Each lives in `src/app/{slug}/page.tsx` with its own `layout.tsx` for metadata.
 
