@@ -65,23 +65,55 @@ const steps = [
     ),
   },
   {
-    title: "build the voice AI interviewer",
+    title: "create your voice agent on ElevenLabs",
     content: (
       <div className="space-y-3">
         <p>
-          ask claude code to create a voice AI agent that interviews you about
-          your expertise. the agent should:
+          go to{" "}
+          <a
+            href="https://elevenlabs.io/app/agents"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+          >
+            elevenlabs.io/app/agents
+          </a>{" "}
+          and create a new agent using the blank template. this is the
+          AI interviewer that will talk to you naturally via voice.
         </p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>ask follow-up questions based on your answers</li>
-          <li>dig into your stories, experiences, and unique insights</li>
-          <li>guide the conversation toward content-worthy topics</li>
-          <li>record and transcribe the full conversation</li>
-        </ul>
+        <p>configure two things in the Agent tab:</p>
+        <div className="space-y-3">
+          <div>
+            <p className="text-white font-medium">
+              first message{" "}
+              <span className="font-normal text-zinc-500">
+                — what the agent says when the conversation starts
+              </span>
+            </p>
+            <p className="mt-1">
+              something like: &quot;hey, let&apos;s talk about what&apos;s been
+              going on in your business lately. what&apos;s top of mind for you
+              right now?&quot;
+            </p>
+          </div>
+          <div>
+            <p className="text-white font-medium">
+              system prompt{" "}
+              <span className="font-normal text-zinc-500">
+                — tells the agent how to behave
+              </span>
+            </p>
+            <p className="mt-1">
+              instruct it to interview you about your expertise, ask follow-up
+              questions, dig into stories and unique insights, and keep the
+              conversation natural — like talking to a friend.
+            </p>
+          </div>
+        </div>
         <p>
-          you can use the Anthropic API with voice mode, or build a simple web
-          app with a microphone input that sends audio to a speech-to-text
-          service.
+          pick a voice you like from the Voice tab, then hit{" "}
+          <span className="text-white">&quot;Test AI agent&quot;</span> to try it
+          out.
         </p>
       </div>
     ),
@@ -149,14 +181,17 @@ const steps = [
     content: (
       <div className="space-y-3">
         <p>
-          start a conversation with your voice AI interviewer. spend 10-15
-          minutes just talking naturally — while cooking, walking, or during your
-          morning routine.
+          start a conversation with your ElevenLabs agent. spend 10-15 minutes
+          just talking naturally — while cooking, walking, or during your morning
+          routine.
         </p>
         <p>
-          the system transcribes the interview, extracts the best content angles,
-          applies your copywriting techniques, pairs it with a personal image,
-          and produces a ready-to-post piece.
+          when you&apos;re done, go to the{" "}
+          <span className="text-white">Call history</span> tab in the ElevenLabs
+          dashboard to grab the full transcript. feed it to claude code along
+          with your copywriting system — claude extracts the best content angles,
+          applies your techniques, pairs it with a personal image, and produces a
+          ready-to-post piece.
         </p>
       </div>
     ),
