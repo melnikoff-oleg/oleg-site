@@ -36,7 +36,7 @@ export function ResultsSection() {
   return (
     <section id="results" className="py-24 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
-        <motion.p
+        <motion.h2
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -44,7 +44,7 @@ export function ResultsSection() {
           className="text-sm uppercase tracking-widest text-zinc-500"
         >
           results
-        </motion.p>
+        </motion.h2>
 
         {/* Stats grid */}
         <motion.div

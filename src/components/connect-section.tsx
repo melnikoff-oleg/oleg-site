@@ -66,12 +66,12 @@ export function ConnectSection() {
         variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
         className="mx-auto max-w-3xl px-6 text-center"
       >
-        <motion.p
+        <motion.h2
           variants={fadeUp}
           className="text-sm uppercase tracking-widest text-zinc-500"
         >
           connect
-        </motion.p>
+        </motion.h2>
 
         <motion.p
           variants={fadeUp}

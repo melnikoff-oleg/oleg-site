@@ -16,14 +16,38 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  title: "Oleg Melnikov — AI Software Entrepreneur",
+  metadataBase: new URL("https://oleg.ae"),
+  title: {
+    default: "Oleg Melnikov — AI Systems for Marketing & Claude Code Tutorials",
+    template: "%s — Oleg Melnikov",
+  },
   description:
-    "I quit a $650k trading career at 24 to build with AI. Now I help B2B founders become authorities and teach thousands how to build with AI on YouTube.",
+    "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 17K+ YouTube community. Former big tech & hedge fund.",
+  keywords: [
+    "AI systems for marketing",
+    "Claude Code",
+    "Claude Code for marketing",
+    "AI automation",
+    "AI for B2B founders",
+    "personal branding AI",
+    "Oleg Melnikov",
+  ],
   openGraph: {
-    title: "Oleg Melnikov — AI Software Entrepreneur",
+    title: "Oleg Melnikov — AI Systems for Marketing & Claude Code Tutorials",
     description:
-      "I quit a $650k trading career at 24 to build with AI. Now I help B2B founders become authorities and teach thousands how to build with AI on YouTube.",
+      "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 17K+ YouTube community.",
     type: "website",
+    url: "https://oleg.ae",
+    siteName: "Oleg Melnikov",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Oleg Melnikov — AI Systems for Marketing & Claude Code Tutorials",
+    description:
+      "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 17K+ YouTube community.",
+  },
+  alternates: {
+    canonical: "https://oleg.ae",
   },
 };
 

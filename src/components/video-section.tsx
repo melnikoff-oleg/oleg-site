@@ -20,12 +20,12 @@ export function VideoSection() {
         variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
         className="mx-auto max-w-4xl px-6"
       >
-        <motion.p
+        <motion.h2
           variants={fadeUp}
           className="text-sm uppercase tracking-widest text-zinc-500"
         >
           watch
-        </motion.p>
+        </motion.h2>
 
         <motion.p
           variants={fadeUp}

@@ -13,6 +13,7 @@ import {
   Globe,
   Code,
   Mic,
+  Sparkles,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -95,6 +96,12 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
     title: "AI Interviewer for Content",
     description: "Build a voice AI agent that interviews you and turns conversations into LinkedIn posts",
     icon: Mic,
+  },
+  {
+    slug: "ads-ai",
+    title: "AI Ads Creator",
+    description: "Study competitors' Meta ads with AI and generate ad concepts — copy, visuals, and video scripts",
+    icon: Sparkles,
   },
 ];
 

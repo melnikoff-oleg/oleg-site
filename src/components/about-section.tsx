@@ -20,9 +20,9 @@ export function AboutSection() {
         }}
         className="mx-auto max-w-3xl px-6"
       >
-        <motion.p variants={fadeUp} className="text-sm uppercase tracking-widest text-zinc-500">
+        <motion.h2 variants={fadeUp} className="text-sm uppercase tracking-widest text-zinc-500">
           what i do
-        </motion.p>
+        </motion.h2>
 
         <motion.p
           variants={fadeUp}

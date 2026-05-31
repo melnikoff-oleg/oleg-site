@@ -206,7 +206,10 @@ npm run start  # Start production server
 - `/claude-content` — Content creation in 10 minutes
 - `/claude-interviewer` — AI voice interviewer for content creation
 
-Resource pages follow a shared pattern: minimal header, embedded YouTube video, accordion setup steps, cross-linked resource footer. Each lives in `src/app/{slug}/page.tsx` with its own `layout.tsx` for metadata.
+**Tool pages** — free open-source tool lead magnets (GitHub download + setup guide, no YouTube video):
+- `/ads-ai` — AI ads creator (study competitors' Meta ads, generate ad concepts)
+
+Resource pages follow a shared pattern: minimal header, embedded YouTube video, accordion setup steps, cross-linked resource footer. Tool pages follow the same pattern but replace the video embed with a GitHub download CTA and "how it works" overview. Each lives in `src/app/{slug}/page.tsx` with its own `layout.tsx` for metadata.
 
 **Shared components:**
 - Animation primitives in `src/components/motion/` (TextEffect, AnimatedGroup)

@@ -36,6 +36,7 @@ April - September 2026 (6-month sprint)
 
 - Shifted from "scale Authority AI to $1M ARR" to "YouTube + Skool first" -- Authority AI's ICP (busy B2B founders) doesn't match YouTube audience (developers), so Skool captures the actual audience
 - Building in public as competitive advantage over polished-but-hollow competitors
+- SEO optimization for oleg.ae -- target keywords: "AI systems for marketing", "Claude Code", "Claude Code for marketing". Each YouTube video can become a resource page that ranks for related searches. Basics (sitemap, meta, headings) done; OG images, JSON-LD, internal linking, and more content pages still pending.
 
 ---
 
