@@ -31,49 +31,42 @@ const steps = [
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
             code.visualstudio.com
-          </a>
-          .
+          </a>{" "}
+          — it auto-detects your OS.
         </p>
-        <p>
-          this is the code editor where you&apos;ll run the content creation
-          app.
-        </p>
+        <p>run the installer and verify VS Code launches properly.</p>
       </div>
     ),
   },
   {
-    title: "install claude code extension",
+    title: "install claude code",
     content: (
       <div className="space-y-3">
         <p>
-          open VS Code, go to the Extensions tab, and search for{" "}
-          <span className="text-white">Claude Code</span>. install the
-          extension and log in.
+          open the terminal in VS Code (Terminal → New Terminal) and run:
         </p>
+        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
+          npm install -g @anthropic-ai/claude-code
+        </div>
         <p>
-          you&apos;ll need a Claude Code subscription at $19/mo — this gives
-          you access to claude code directly inside VS Code.
-        </p>
-      </div>
-    ),
-  },
-  {
-    title: "download the source code",
-    content: (
-      <div className="space-y-3">
-        <p>
-          grab the source code from the free skool community. join at{" "}
+          requires Node.js (LTS). if you don&apos;t have it, download from{" "}
           <a
-            href="https://www.skool.com/ai-automation-7100/about"
+            href="https://nodejs.org"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
-            skool.com/ai-automation-7100
-          </a>{" "}
-          and download the project files.
+            nodejs.org
+          </a>
+          .
         </p>
-        <p>open the downloaded folder in VS Code.</p>
+        <p>
+          once installed, type{" "}
+          <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            claude
+          </code>{" "}
+          in the terminal and complete Anthropic account authentication.
+        </p>
       </div>
     ),
   },
@@ -81,7 +74,7 @@ const steps = [
     title: "get your api keys",
     content: (
       <div className="space-y-4">
-        <p>you need three services:</p>
+        <p>you need two API keys:</p>
         <div className="space-y-3">
           <div>
             <p className="text-white font-medium">
@@ -91,7 +84,7 @@ const steps = [
               </span>
             </p>
             <p className="mt-1">
-              sign up at{" "}
+              create an account at{" "}
               <a
                 href="https://apify.com"
                 target="_blank"
@@ -100,7 +93,8 @@ const steps = [
               >
                 apify.com
               </a>
-              . free tier available.
+              , then go to Settings → Integrations and copy your Personal API
+              Token.
             </p>
           </div>
           <div>
@@ -120,106 +114,53 @@ const steps = [
               >
                 kie.ai
               </a>{" "}
-              and generate your API key.
-            </p>
-          </div>
-          <div>
-            <p className="text-white font-medium">
-              Anthropic API{" "}
-              <span className="font-normal text-zinc-500">
-                — generating post text
-              </span>
-            </p>
-            <p className="mt-1">
-              sign up at{" "}
-              <a
-                href="https://console.anthropic.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
-              >
-                console.anthropic.com
-              </a>
-              . $5 minimum to get started.
+              and generate your API key from account settings.
             </p>
           </div>
         </div>
-        <p>add your keys to a .env file:</p>
-        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
-          APIFY_API_KEY=your_apify_key_here
-          <br />
-          KIE_API_KEY=your_kie_ai_key_here
-          <br />
-          ANTHROPIC_API_KEY=your_anthropic_key_here
-        </div>
+        <p>store both keys somewhere safe — you&apos;ll need them in step 5.</p>
       </div>
     ),
   },
   {
-    title: "run the app",
+    title: "get the project files",
     content: (
       <div className="space-y-3">
-        <p>open the terminal in VS Code and run:</p>
-        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
-          npm run dev
-        </div>
         <p>
-          then open{" "}
+          download or copy the project folder from Google Drive:
+        </p>
+        <p>
+          <a
+            href="https://drive.google.com/drive/folders/15E8VAaO7ULLYOINJOxYedvXeokegjP0D?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+          >
+            open Google Drive folder
+          </a>
+        </p>
+        <p>
+          once downloaded, open the folder in VS Code via File → Open Folder.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "add your api keys and run the project",
+    content: (
+      <div className="space-y-3">
+        <p>
+          open the terminal in VS Code and type{" "}
           <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
-            localhost:3000
+            claude
           </code>{" "}
-          in your browser.
+          to start Claude Code.
         </p>
-      </div>
-    ),
-  },
-  {
-    title: "generate content in one prompt",
-    content: (
-      <div className="space-y-3">
         <p>
-          tell claude code to generate 10 posts for social media. it scrapes
-          trending topics from your niche, generates text for each post, creates
-          matching visuals — infographics, carousels, personal image posts — and
-          delivers 20+ days of content in under 5 minutes.
+          insert both API keys into the project configuration — follow the
+          README instructions in the project folder. claude code can help you
+          set everything up if you ask it.
         </p>
-      </div>
-    ),
-  },
-  {
-    title: "customize for each platform",
-    content: (
-      <div className="space-y-3">
-        <p>
-          content adapts to different platforms. LinkedIn posts are longer and
-          professional, Instagram gets carousel and reel scripts, X/Twitter gets
-          concise hooks.
-        </p>
-        <p>tell claude code which platforms you want and it handles the rest.</p>
-      </div>
-    ),
-  },
-  {
-    title: "level up: extra tips",
-    content: (
-      <div className="space-y-3">
-        <ul className="list-disc pl-5 space-y-2">
-          <li>
-            provide your personal images so posts include your face for
-            authenticity
-          </li>
-          <li>
-            scrape competitor content to base posts on proven viral formats
-          </li>
-          <li>
-            set up weekly generation — one prompt each week keeps your content
-            pipeline full
-          </li>
-          <li>
-            claude code is way better than ChatGPT for this because it can
-            scrape real data and generate actual visuals, not just text
-          </li>
-        </ul>
       </div>
     ),
   },
