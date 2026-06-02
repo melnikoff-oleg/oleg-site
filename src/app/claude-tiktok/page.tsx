@@ -31,49 +31,69 @@ const steps = [
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
             code.visualstudio.com
-          </a>
-          .
+          </a>{" "}
+          — it auto-detects your OS.
         </p>
-        <p>this is where you&apos;ll run claude code.</p>
+        <p>run the installer and verify VS Code launches properly.</p>
       </div>
     ),
   },
   {
-    title: "install claude code extension",
+    title: "install claude code",
     content: (
       <div className="space-y-3">
         <p>
-          open VS Code, go to the extensions panel on the left side, and search
-          for &quot;Claude Code&quot;. install the extension and log in.
+          open the terminal in VS Code (Terminal → New Terminal) and run:
         </p>
+        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
+          npm install -g @anthropic-ai/claude-code
+        </div>
         <p>
-          you need a paid subscription (at least $19/month). once installed, you
-          can interact with claude code through the chat interface in plain
-          english.
-        </p>
-      </div>
-    ),
-  },
-  {
-    title: "download the source code",
-    content: (
-      <div className="space-y-3">
-        <p>
-          grab the project folder from the link in the{" "}
+          requires Node.js (LTS). if you don&apos;t have it, download from{" "}
           <a
-            href="https://www.skool.com/ai-automation-7100/about"
+            href="https://nodejs.org"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
-            free skool community
+            nodejs.org
           </a>
           .
         </p>
         <p>
-          open the folder in VS Code — you&apos;ll see the full project
-          structure on the left side with everything ready to configure.
+          once installed, type{" "}
+          <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            claude
+          </code>{" "}
+          in the terminal and complete Anthropic account authentication.
         </p>
+      </div>
+    ),
+  },
+  {
+    title: "download the project from github",
+    content: (
+      <div className="space-y-3">
+        <p>go to the GitHub repository:</p>
+        <p>
+          <a
+            href="https://github.com/melnikoff-oleg/tiktok-ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+          >
+            github.com/melnikoff-oleg/tiktok-ai
+          </a>
+        </p>
+        <p>
+          click the green <span className="text-white">&lt;&gt; Code</span>{" "}
+          button, then <span className="text-white">Download ZIP</span>. unzip
+          the file and open the folder in VS Code via File → Open Folder.
+        </p>
+        <p>alternatively, clone it from the terminal:</p>
+        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
+          git clone https://github.com/melnikoff-oleg/tiktok-ai.git
+        </div>
       </div>
     ),
   },
@@ -81,7 +101,7 @@ const steps = [
     title: "get your api keys",
     content: (
       <div className="space-y-4">
-        <p>you need three services:</p>
+        <p>you need three API keys:</p>
         <div className="space-y-3">
           <div>
             <p className="text-white font-medium">
@@ -91,7 +111,8 @@ const steps = [
               </span>
             </p>
             <p className="mt-1">
-              scrapes videos from competitor TikTok creators. sign up at{" "}
+              scrapes videos from competitor TikTok creators. create an account
+              at{" "}
               <a
                 href="https://apify.com"
                 target="_blank"
@@ -100,33 +121,33 @@ const steps = [
               >
                 apify.com
               </a>{" "}
-              (free tier available) → Settings → Personal API Token.
+              → Settings → Integrations and copy your Personal API Token.
             </p>
           </div>
           <div>
             <p className="text-white font-medium">
-              Gemini API{" "}
+              Google Gemini{" "}
               <span className="font-normal text-zinc-500">
                 — analyzing competitor visuals
               </span>
             </p>
             <p className="mt-1">
               analyzes video thumbnails and visual patterns from competitor
-              TikToks. sign up at{" "}
+              TikToks. get your key at{" "}
               <a
-                href="https://aistudio.google.com"
+                href="https://aistudio.google.com/apikey"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
               >
-                aistudio.google.com
-              </a>{" "}
-              (free) → Get API Key.
+                aistudio.google.com/apikey
+              </a>
+              .
             </p>
           </div>
           <div>
             <p className="text-white font-medium">
-              Anthropic API{" "}
+              Anthropic{" "}
               <span className="font-normal text-zinc-500">
                 — generating concepts
               </span>
@@ -141,11 +162,33 @@ const steps = [
               >
                 console.anthropic.com
               </a>{" "}
-              → add at least $5 credit → copy your API key.
+              → Settings → API Keys.
             </p>
           </div>
         </div>
-        <p>paste all three keys in the .env file:</p>
+      </div>
+    ),
+  },
+  {
+    title: "configure your .env file",
+    content: (
+      <div className="space-y-3">
+        <p>
+          in the project folder, find{" "}
+          <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            .env.example
+          </code>{" "}
+          (or{" "}
+          <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            .env
+          </code>
+          ). duplicate it and rename to{" "}
+          <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            .env
+          </code>{" "}
+          if needed.
+        </p>
+        <p>paste your API keys:</p>
         <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
           APIFY_API_KEY=your_apify_key
           <br />
@@ -153,122 +196,28 @@ const steps = [
           <br />
           ANTHROPIC_API_KEY=your_anthropic_key
         </div>
+        <p>
+          save the file. check the project README if variable names differ.
+        </p>
       </div>
     ),
   },
   {
-    title: "run the app",
+    title: "run the project",
     content: (
       <div className="space-y-3">
-        <p>open terminal in VS Code and run:</p>
-        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
-          npm run dev
-        </div>
         <p>
-          open{" "}
+          open the terminal in VS Code, type{" "}
           <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
-            localhost:3000
+            claude
           </code>{" "}
-          in your browser. you&apos;ll see the full dashboard where you can add
-          creators, configure your brand, and run the TikTok content pipeline.
-        </p>
-      </div>
-    ),
-  },
-  {
-    title: "add tiktok creators",
-    content: (
-      <div className="space-y-3">
-        <p>
-          go to the creators tab in the dashboard. find TikTok accounts in your
-          niche — creators who are posting content related to your offer.
+          to start Claude Code, and ask it to help you run the project.
         </p>
         <p>
-          paste their TikTok username and the system will scrape and analyze
-          their profile automatically. add at least 5-9+ creators for best
-          results.
+          claude code will install dependencies, start the app, and walk you
+          through the workflow — adding TikTok creators, configuring your brand,
+          and running the content pipeline.
         </p>
-      </div>
-    ),
-  },
-  {
-    title: "configure your brand",
-    content: (
-      <div className="space-y-4">
-        <p>go to the configs tab and create a new configuration. define:</p>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>your brand context and ICP (ideal customer profile)</li>
-          <li>content pillars and topics</li>
-          <li>
-            analysis instructions — how to break down competitor videos (hooks,
-            retention mechanisms, engagement drivers)
-          </li>
-          <li>
-            generation instructions — how to turn competitor ideas into your own
-            voice and niche
-          </li>
-        </ul>
-        <p>
-          the more specific you are here, the better your generated video
-          concepts will be.
-        </p>
-      </div>
-    ),
-  },
-  {
-    title: "run the pipeline",
-    content: (
-      <div className="space-y-3">
-        <p>
-          select your config and hit run. in advanced settings, you can control:
-        </p>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>how many posts to scrape per creator (default: 20)</li>
-          <li>how many top posts to select (default: top 3)</li>
-          <li>time window (default: past 30 days)</li>
-        </ul>
-        <p>
-          takes about 15 minutes. you&apos;ll get video concepts complete with
-          hooks, scripts, and visual direction tailored to your niche.
-        </p>
-      </div>
-    ),
-  },
-  {
-    title: "level up: extra tips",
-    content: (
-      <div className="space-y-4">
-        <div>
-          <p className="text-white font-medium">provide more brand context</p>
-          <p className="mt-1">
-            tell claude code to scrape your website, LinkedIn, and socials to
-            build a richer brand DNA for the generator.
-          </p>
-        </div>
-        <div>
-          <p className="text-white font-medium">add specific CTAs</p>
-          <p className="mt-1">
-            configure calls to action to convert viewers (e.g. &quot;link in
-            bio&quot;, &quot;book a free call&quot;) and turn content into lead
-            generation.
-          </p>
-        </div>
-        <div>
-          <p className="text-white font-medium">analyze competitor comments</p>
-          <p className="mt-1">
-            find gaps in what competitors cover by analyzing their comment
-            sections — then fill those gaps in your content.
-          </p>
-        </div>
-        <div>
-          <p className="text-white font-medium">
-            feed your own performance data
-          </p>
-          <p className="mt-1">
-            once you have 30+ videos, tell claude code to analyze your
-            performance and optimize future content toward what&apos;s working.
-          </p>
-        </div>
       </div>
     ),
   },
