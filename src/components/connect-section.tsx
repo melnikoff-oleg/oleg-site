@@ -109,10 +109,6 @@ export function ConnectSection() {
         </motion.p>
       </motion.div>
 
-      {/* Footer */}
-      <div className="mt-16 border-t border-white/5 pt-8 text-center text-sm text-zinc-600">
-        &copy; 2026 oleg melnikov
-      </div>
     </section>
   );
 }

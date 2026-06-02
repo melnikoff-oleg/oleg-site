@@ -5,6 +5,7 @@ import { ResultsSection } from "@/components/results-section";
 import { VideoSection } from "@/components/video-section";
 import { ConsultCta } from "@/components/consult-cta";
 import { ConnectSection } from "@/components/connect-section";
+import { ResourceFooter } from "@/components/resource-footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <ConsultCta />
         <ConnectSection />
       </main>
+      <ResourceFooter currentSlug="" />
     </>
   );
 }
