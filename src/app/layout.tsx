@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s — Oleg Melnikov",
   },
   description:
-    "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 17K+ YouTube community. Former big tech & hedge fund.",
+    "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 18K+ YouTube community. Former big tech & hedge fund.",
   keywords: [
     "AI systems for marketing",
     "Claude Code",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Oleg Melnikov — AI Systems for Marketing & Claude Code Tutorials",
     description:
-      "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 17K+ YouTube community.",
+      "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 18K+ YouTube community.",
     type: "website",
     url: "https://oleg.ae",
     siteName: "Oleg Melnikov",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Oleg Melnikov — AI Systems for Marketing & Claude Code Tutorials",
     description:
-      "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 17K+ YouTube community.",
+      "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 18K+ YouTube community.",
   },
   alternates: {
     canonical: "https://oleg.ae",

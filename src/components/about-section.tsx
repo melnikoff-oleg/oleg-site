@@ -54,7 +54,7 @@ export function AboutSection() {
           >
             claude code
           </Link>{" "}
-          to 17,000+ people on youtube.
+          to 18,000+ people on youtube.
         </motion.p>
 
         <motion.p

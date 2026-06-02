@@ -43,7 +43,7 @@ export function HeroSection() {
             per="line"
             className="mx-auto mt-6 max-w-2xl text-balance text-lg text-zinc-400 md:text-xl"
           >
-            now i'm running a service business that's 90% AI inside — and sharing AI systems for marketing with 17K+ on youtube.
+            now i'm running a service business that's 90% AI inside — and sharing AI systems for marketing with 18K+ on youtube.
           </TextEffect>
 
           {/* CTAs */}
