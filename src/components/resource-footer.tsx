@@ -14,6 +14,7 @@ import {
   Code,
   Mic,
   Sparkles,
+  DollarSign,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -102,6 +103,12 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
     title: "AI Ads Creator",
     description: "Study competitors' Meta ads with AI and generate ad concepts — copy, visuals, and video scripts",
     icon: Sparkles,
+  },
+  {
+    slug: "60k-linkedin-post",
+    title: "$60K LinkedIn Post",
+    description: "3 AI prompts that generated $60,000 from a single LinkedIn post — copy and use them",
+    icon: DollarSign,
   },
 ];
 
