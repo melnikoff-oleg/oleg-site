@@ -216,6 +216,8 @@ npm run start  # Start production server
 - `/marketing-brain-knowledge` — static gallery of the whole corpus (8 books + 75 talks, grouped by expert). Data is generated from `marketing-brain/manifest.json` into `src/app/marketing-brain-knowledge/data.ts`. Book covers are served from `public/marketing-brain/book-covers/`.
 - `/marketing-brain` — **AI chat** (RAG): ask a marketing question, get a streamed, cited answer with visual source cards (book cover + page, or video thumbnail/embed + timecode). This is the visual twin of `marketing-brain/scripts/query.py`.
 
+The two pages are cross-linked (chat header → "browse the sources"; knowledge header + footer → "ask the brain"). The chat (`/marketing-brain`) is also listed in `ResourceFooter`, so it appears in the "more free resources" grid on the homepage and every resource/tool/lead-magnet page; the knowledge gallery renders the `ResourceFooter` too, linking it to the rest of the site.
+
 Resource pages follow a shared pattern: minimal header, embedded YouTube video, accordion setup steps, cross-linked resource footer. Tool pages follow the same pattern but replace the video embed with a GitHub download CTA and "how it works" overview. Lead magnet pages have their own structure: prompts with copy buttons, how-it-works overview, and client proof. Each lives in `src/app/{slug}/page.tsx` with its own `layout.tsx` for metadata.
 
 **Backend (the site is no longer fully static).** The `/marketing-brain` chat is powered by a serverless Route Handler at `src/app/api/marketing-brain/chat/route.ts`:
@@ -227,7 +229,7 @@ Resource pages follow a shared pattern: minimal header, embedded YouTube video, 
 **Shared components:**
 - Animation primitives in `src/components/motion/` (TextEffect, AnimatedGroup)
 - `src/components/accordion.tsx` — Reusable accordion for setup steps (used by resource pages)
-- `src/components/resource-footer.tsx` — Cross-linked footer showing all other resource pages with icons (uses `lucide-react`). When adding a new resource page, update the `resources` array in this file.
+- `src/components/resource-footer.tsx` — Cross-linked footer showing all other resource pages with icons (uses `lucide-react`). Rendered on the homepage (`currentSlug=""`), every resource/tool/lead-magnet page, and the Marketing Brain knowledge gallery. The Marketing Brain chat is the first entry. When adding a new resource page, update the `resources` array in this file.
 
 ---
 

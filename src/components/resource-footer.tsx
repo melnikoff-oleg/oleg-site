@@ -15,11 +15,18 @@ import {
   Mic,
   Sparkles,
   DollarSign,
+  Brain,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
 
 const resources: { slug: string; title: string; description: string; icon: LucideIcon }[] = [
+  {
+    slug: "marketing-brain",
+    title: "The Marketing Brain",
+    description: "Ask the greatest marketing minds — an AI chat grounded in 8 books & 75 talks, every answer cited to the page or timecode",
+    icon: Brain,
+  },
   {
     slug: "claude-outreach",
     title: "Cold Outreach",
