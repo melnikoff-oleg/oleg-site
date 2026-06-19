@@ -16,19 +16,24 @@ const STARTERS = [
 export default function MarketingBrainPage() {
   const { messages, isStreaming, send } = useBrainChat();
   const [input, setInput] = useState("");
-  const bottomRef = useRef<HTMLDivElement>(null);
   const autoFollow = useRef(true);
+  const lastY = useRef(0);
   const started = messages.length > 0;
 
-  // Only follow the stream to the bottom if the user is already near it —
-  // if they scroll up to read, leave them where they are.
+  // Follow the stream to the bottom — but the moment the user scrolls UP,
+  // disengage and leave them be. Re-engage only when they return to the bottom.
   useEffect(() => {
+    lastY.current = window.scrollY;
     const onScroll = () => {
+      const y = window.scrollY;
       const distance =
-        document.documentElement.scrollHeight -
-        window.scrollY -
-        window.innerHeight;
-      autoFollow.current = distance < 140;
+        document.documentElement.scrollHeight - y - window.innerHeight;
+      if (y < lastY.current - 2) {
+        autoFollow.current = false; // user scrolled up
+      } else if (distance < 80) {
+        autoFollow.current = true; // back at the bottom
+      }
+      lastY.current = y;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -36,7 +41,7 @@ export default function MarketingBrainPage() {
 
   useEffect(() => {
     if (autoFollow.current) {
-      bottomRef.current?.scrollIntoView({ block: "end" });
+      window.scrollTo({ top: document.documentElement.scrollHeight });
     }
   }, [messages]);
 
@@ -108,13 +113,12 @@ export default function MarketingBrainPage() {
           </motion.div>
         ) : (
           // Conversation
-          <div className="mx-auto w-full max-w-3xl flex-1 px-6 py-8">
+          <div className="mx-auto w-full max-w-3xl flex-1 px-6 pt-8 pb-40">
             <div className="space-y-8">
               {messages.map((m, i) => (
                 <ChatMessage key={i} message={m} />
               ))}
             </div>
-            <div ref={bottomRef} className="h-4" />
           </div>
         )}
 
