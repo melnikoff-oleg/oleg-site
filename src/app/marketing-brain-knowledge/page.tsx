@@ -303,24 +303,25 @@ export default function MarketingBrainKnowledgePage() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-zinc-400">
               i built an AI system that turns these minds into answers i can
-              query — every claim cited to the exact page or timecode. follow
-              along as i build AI systems for marketing in public.
+              query — every claim cited to the exact page or timecode. ask it
+              anything, or follow along as i build AI systems for marketing in
+              public.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/marketing-brain"
+                className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
+              >
+                ask the brain
+              </Link>
               <a
                 href="https://www.youtube.com/@Oleg-Melnikov"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-5 py-2.5 text-sm font-medium text-zinc-200 transition-colors hover:bg-white/5"
               >
                 watch on youtube
               </a>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-5 py-2.5 text-sm font-medium text-zinc-200 transition-colors hover:bg-white/5"
-              >
-                back to oleg.ae
-              </Link>
             </div>
           </div>
         </section>

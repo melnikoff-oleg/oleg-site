@@ -29,6 +29,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files
+.env
 .env*.local
 
 # vercel
@@ -37,3 +38,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# marketing-brain raw source PDFs (large, not required for querying)
+marketing-brain/source-pdfs/
+marketing-brain/.staging/
