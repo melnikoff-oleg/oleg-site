@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { search, toSources } from "@/lib/marketing-brain/retriever";
 import { buildSystemPrompt } from "@/lib/marketing-brain/prompt";
+import { getMemory } from "@/lib/marketing-brain/memory";
 import {
   checkRateLimit,
   getClientIp,
@@ -52,7 +53,7 @@ export async function POST(req: Request) {
   // Retrieve grounding chunks (context-aware query, snippets keyed to the latest turn).
   const chunks = search(retrievalQuery, 8);
   const sources = toSources(chunks, lastUser.content);
-  const system = buildSystemPrompt(chunks);
+  const system = buildSystemPrompt(chunks, getMemory());
 
   const apiMessages = messages
     .filter((m) => m.content.trim())

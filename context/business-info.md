@@ -4,30 +4,31 @@
 
 ## Organization Overview
 
-**Authority AI** -- helps B2B founders build authentic personal brands. You talk, AI writes your content. One hour per week, five posts done for you. Founded October 2025 by Oleg Melnikov. Legal entity: Evolva AI FZE LLC (Sharjah, UAE).
+**Authority AI -- now operating as Boldane** (boldane.com) -- helps B2B founders build authentic personal brands on LinkedIn. You talk, AI writes your content. One hour per week, five posts done for you. Founded October 2025 by Oleg Melnikov. Legal entity: Evolva AI FZE LLC (Sharjah, UAE). (Rebrand verified from boldane.com on 2026-06-19; demo still booked via calendly.com/authority-ai/demo.)
 
 ## Products / Services
 
-- **Authority AI** ($900 setup + $900/month) -- Weekly 45-min AI interview -> 5 LinkedIn posts/week, done-for-you. Reverse-engineered 350+ posts from $1M+/month creators. 90% automated, 10% human touch.
+- **Boldane** (boldane.com, formerly Authority AI) -- Weekly 45-min voice chat -> 5 LinkedIn posts/week (text + visual), published every weekday; ~1 hr/week from the client; week 1 includes a full profile rebuild. Pricing not public (discovery call; historically ~$900/mo). Capacity capped at 5 new founders/month. ICP: founders with 5+ years of real expertise selling high-ticket B2B who want inbound leads, not vanity metrics -- strong in cybersecurity, recruiting, B2B services, agencies. Positioning: "Stop hiding. Get known." -- expertise-first, anti-ghostwriting (it sounds like you because it starts with you talking).
 - **YouTube Channel** (youtube.com/@Oleg-Melnikov) -- AI for marketing tutorials, building in public. 16.6K subs, 500K+ views.
 - **Paid Skool Community** (launching Apr 2026) -- $99/month, capped at 300 members, for devs/founders learning AI automation.
 - **Free LinkedIn Profile Breakdown Tool** -- Lead magnet, 350+ profiles analyzed.
-- **The Marketing Brain** (oleg.ae/marketing-brain) -- Free lead magnet on the personal site: an AI chat grounded in the best marketing books + talks (8 books, 75 videos, ~10K cited chunks). Paired with a knowledge-base gallery (oleg.ae/marketing-brain-knowledge). Demonstrates "AI systems for marketing" and drives top-of-funnel.
+- **The Marketing Brain** (oleg.ae/marketing-brain) -- Free lead magnet on the personal site: an AI chat grounded in the best marketing books + talks (8 books, 75 videos, ~10K cited chunks). Can be taught about a business (paste/files/website-scrape) to give personalized advice. Paired with a knowledge-base gallery (oleg.ae/marketing-brain-knowledge). Demonstrates "AI systems for marketing" and drives top-of-funnel.
 - **Free Claude Code resource pages** -- ~15 YouTube-companion lead-magnet pages on oleg.ae (cold outreach, content, SEO, ads, etc.), cross-linked via a shared resource footer.
 
 ## Proven Results
 
+- Jon Chintanaroad (founder, Recruiting Launch): 1 post -> 10 sales calls -> $12K deal closed in first 3 weeks
 - Mike Kamo (co-founder NP Digital, $100M+ agency): 80K views in 2 months, time reduced from 3+ hrs/week to 45 min/week
-- Rhys McKay: $6,600 first inbound B2B deal from LinkedIn in 14 days
-- Aggregate: 1M+ views generated across clients
+- Rhys McKay (founder, Lumina): $6,600 first inbound B2B deal from LinkedIn in 14 days
+- Other clients incl. cybersecurity (Blue Goat Cyber, Maltek Solutions); aggregate 1M+ views generated across clients
 
 ## Key Context
 
 - Solo founder + 1 part-time video editor (Andrew)
 - Revenue to date: ~$10K (growing fast -- $5.8K in March 2026 alone)
-- Website (buildauthority.ai): 2,300+ visitors/month, 75% from YouTube
-- Pivoting focus from scaling Authority AI to YouTube + Skool as primary revenue engines (Apr-Sep 2026)
-- Target audience split: YouTube serves developers/learners, Authority AI serves B2B founders
+- Service site now boldane.com (was buildauthority.ai); personal site oleg.ae. ~2,300+ visitors/month historically, 75% from YouTube
+- Pivoting focus from scaling the done-for-you service (Boldane) to YouTube + Skool as primary revenue engines (Apr-Sep 2026)
+- Target audience split: YouTube serves developers/learners, Boldane serves B2B founders
 
 ---
 

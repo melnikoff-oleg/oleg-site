@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useBrainChat } from "./use-brain-chat";
+import { useMemory } from "./use-memory";
 import { ChatMessage } from "./components/chat-message";
+import { ContextDrawer } from "./components/context-drawer";
 
 const STARTERS = [
   "how do I make an irresistible offer?",
@@ -15,10 +17,31 @@ const STARTERS = [
 
 export default function MarketingBrainPage() {
   const { messages, isStreaming, send } = useBrainChat();
+  const memory = useMemory();
   const [input, setInput] = useState("");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [autoCapture, setAutoCapture] = useState(true);
+  const [toast, setToast] = useState<{ added: string; previous: string } | null>(null);
   const autoFollow = useRef(true);
   const lastY = useRef(0);
   const started = messages.length > 0;
+
+  // Persisted auto-capture preference.
+  useEffect(() => {
+    const v = localStorage.getItem("mb-auto-capture");
+    if (v !== null) setAutoCapture(v === "1");
+  }, []);
+  const toggleAutoCapture = (v: boolean) => {
+    setAutoCapture(v);
+    localStorage.setItem("mb-auto-capture", v ? "1" : "0");
+  };
+
+  // Auto-dismiss the "added to your context" toast.
+  useEffect(() => {
+    if (!toast) return;
+    const t = window.setTimeout(() => setToast(null), 7000);
+    return () => window.clearTimeout(t);
+  }, [toast]);
 
   // Follow the stream to the bottom — but the moment the user scrolls UP,
   // disengage and leave them be. Re-engage only when they return to the bottom.
@@ -29,9 +52,9 @@ export default function MarketingBrainPage() {
       const distance =
         document.documentElement.scrollHeight - y - window.innerHeight;
       if (y < lastY.current - 2) {
-        autoFollow.current = false; // user scrolled up
+        autoFollow.current = false;
       } else if (distance < 80) {
-        autoFollow.current = true; // back at the bottom
+        autoFollow.current = true;
       }
       lastY.current = y;
     };
@@ -45,11 +68,22 @@ export default function MarketingBrainPage() {
     }
   }, [messages]);
 
-  const submit = (text: string) => {
+  const submit = async (text: string) => {
     if (!text.trim() || isStreaming) return;
-    autoFollow.current = true; // a new question always scrolls into view
-    send(text);
+    autoFollow.current = true;
     setInput("");
+    await send(text);
+    // After the answer, optionally capture any durable business fact.
+    if (autoCapture) {
+      const res = await memory.maybeExtract(text);
+      if (res) setToast(res);
+    }
+  };
+
+  const undoCapture = async () => {
+    if (!toast) return;
+    await memory.save(toast.previous);
+    setToast(null);
   };
 
   return (
@@ -63,12 +97,24 @@ export default function MarketingBrainPage() {
           >
             oleg melnikov
           </Link>
-          <Link
-            href="/marketing-brain-knowledge"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
-          >
-            browse the sources
-          </Link>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              className="relative inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+            >
+              your context
+              {memory.hasContext && (
+                <span className="size-1.5 rounded-full bg-emerald-400" title="personalized: on" />
+              )}
+            </button>
+            <Link
+              href="/marketing-brain-knowledge"
+              className="hidden items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 text-sm font-medium transition-colors hover:bg-white/20 sm:inline-flex"
+            >
+              browse the sources
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -110,6 +156,15 @@ export default function MarketingBrainPage() {
                 </button>
               ))}
             </div>
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              className="mt-8 text-sm text-zinc-500 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-200"
+            >
+              {memory.hasContext
+                ? "✦ personalized to your business — edit your context"
+                : "✦ add your business context for personalized answers"}
+            </button>
           </motion.div>
         ) : (
           // Conversation
@@ -125,6 +180,39 @@ export default function MarketingBrainPage() {
         {/* Composer */}
         <div className="sticky bottom-0 border-t border-white/[0.06] bg-black/70 backdrop-blur-md">
           <div className="mx-auto w-full max-w-3xl px-6 py-4">
+            {/* "added to your context" toast */}
+            <AnimatePresence>
+              {toast && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm"
+                >
+                  <span className="min-w-0 truncate text-zinc-300">
+                    ✦ added to your context
+                  </span>
+                  <div className="flex shrink-0 items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={undoCapture}
+                      className="text-zinc-400 underline decoration-zinc-600 underline-offset-2 hover:text-white"
+                    >
+                      undo
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setToast(null)}
+                      className="text-zinc-500 hover:text-zinc-200"
+                      aria-label="Dismiss"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -162,6 +250,14 @@ export default function MarketingBrainPage() {
           </div>
         </div>
       </main>
+
+      <ContextDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        memory={memory}
+        autoCapture={autoCapture}
+        setAutoCapture={toggleAutoCapture}
+      />
     </div>
   );
 }
