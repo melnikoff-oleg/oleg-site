@@ -134,7 +134,7 @@ export default function MarketingBrainPage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 py-12 text-center"
           >
-            <h1 className="font-[family-name:var(--font-unbounded)] text-4xl tracking-tight sm:text-6xl">
+            <h1 className="w-full min-w-0 font-[family-name:var(--font-unbounded)] text-[1.9rem] leading-[1.1] tracking-tight sm:text-6xl">
               $1B Marketing Brain
             </h1>
 
@@ -158,7 +158,7 @@ export default function MarketingBrainPage() {
               className="mt-8 text-sm text-zinc-500 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-200"
             >
               {memory.hasContext
-                ? "✦ personalized — edit your context"
+                ? "✦ edit your context"
                 : "✦ add your business context"}
             </button>
           </motion.div>

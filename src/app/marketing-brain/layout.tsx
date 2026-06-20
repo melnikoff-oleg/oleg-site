@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Marketing Brain: Ask the Greatest Marketing Minds (AI Chat)",
+  title: "$1B Marketing Brain: Ask the Greatest Marketing Minds (AI Chat)",
   description:
     "Ask anything about offers, content, persuasion, and growth. An AI chat grounded in the best marketing books and talks (Hormozi, Brunson, Cialdini, Gary Vee, Ogilvy, Godin, Patel, MrBeast), with every answer cited to the exact page or video timecode.",
   keywords: [
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Claude Code for marketing",
   ],
   openGraph: {
-    title: "The Marketing Brain: Ask the Greatest Marketing Minds (AI Chat)",
+    title: "$1B Marketing Brain: Ask the Greatest Marketing Minds (AI Chat)",
     description:
       "An AI chat grounded in the best marketing books and talks, with every answer cited to the exact page or video timecode.",
     type: "website",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Marketing Brain: Ask the Greatest Marketing Minds (AI Chat)",
+    title: "$1B Marketing Brain: Ask the Greatest Marketing Minds (AI Chat)",
     description:
       "An AI chat grounded in the best marketing books and talks, every answer cited to the exact page or timecode.",
   },
