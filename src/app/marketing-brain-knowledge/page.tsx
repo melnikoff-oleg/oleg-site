@@ -145,9 +145,9 @@ export default function MarketingBrainKnowledgePage() {
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 font-[family-name:var(--font-unbounded)] text-4xl tracking-tight sm:text-5xl md:text-6xl"
+              className="mt-8 w-full min-w-0 font-[family-name:var(--font-unbounded)] text-[1.9rem] leading-[1.1] tracking-tight sm:text-5xl md:text-6xl"
             >
-              the marketing brain
+              $1B Marketing Brain
             </motion.h1>
 
             <motion.p
