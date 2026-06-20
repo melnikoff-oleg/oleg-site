@@ -16,7 +16,7 @@ export function useBrainChat() {
   const [isStreaming, setIsStreaming] = useState(false);
   const busy = useRef(false);
 
-  const send = useCallback(async (text: string) => {
+  const send = useCallback(async (text: string, businessContext?: string) => {
     const question = text.trim();
     if (!question || busy.current) return;
     busy.current = true;
@@ -45,6 +45,9 @@ export function useBrainChat() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: history.map((m) => ({ role: m.role, content: m.content })),
+          // Send the user's loaded context so answers are personalized even when
+          // the server-side memory file isn't available (e.g. Vercel's ephemeral fs).
+          businessContext: businessContext?.trim() || undefined,
         }),
       });
 

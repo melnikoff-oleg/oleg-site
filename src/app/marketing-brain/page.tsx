@@ -72,7 +72,7 @@ export default function MarketingBrainPage() {
     if (!text.trim() || isStreaming) return;
     autoFollow.current = true;
     setInput("");
-    await send(text);
+    await send(text, memory.text);
     // After the answer, optionally capture any durable business fact.
     if (autoCapture) {
       const res = await memory.maybeExtract(text);

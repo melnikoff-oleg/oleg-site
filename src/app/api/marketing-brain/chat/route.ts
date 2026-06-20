@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { search, toSources } from "@/lib/marketing-brain/retriever";
 import { buildSystemPrompt } from "@/lib/marketing-brain/prompt";
-import { getMemory } from "@/lib/marketing-brain/memory";
+import { getMemory, MAX_CONTEXT_CHARS } from "@/lib/marketing-brain/memory";
 import {
   checkRateLimit,
   getClientIp,
@@ -19,9 +19,15 @@ const LIMIT_MESSAGE =
 
 export async function POST(req: Request) {
   let messages: ChatMessage[];
+  let clientContext = "";
   try {
     const body = await req.json();
     messages = Array.isArray(body?.messages) ? body.messages : [];
+    // The client sends its loaded "your context" so personalization works even
+    // on Vercel, where the server-side memory file (in /tmp) is ephemeral and
+    // not shared across function instances. Server memory is the local fallback.
+    clientContext =
+      typeof body?.businessContext === "string" ? body.businessContext : "";
   } catch {
     return Response.json({ error: "bad_request" }, { status: 400 });
   }
@@ -53,7 +59,12 @@ export async function POST(req: Request) {
   // Retrieve grounding chunks (context-aware query, snippets keyed to the latest turn).
   const chunks = search(retrievalQuery, 8);
   const sources = toSources(chunks, lastUser.content);
-  const system = buildSystemPrompt(chunks, getMemory());
+  // Prefer the context the client sent; fall back to the server file (local dev).
+  const businessContext = (clientContext.trim() || getMemory()).slice(
+    0,
+    MAX_CONTEXT_CHARS,
+  );
+  const system = buildSystemPrompt(chunks, businessContext);
 
   const apiMessages = messages
     .filter((m) => m.content.trim())
