@@ -7,6 +7,7 @@ import { useBrainChat } from "./use-brain-chat";
 import { useMemory } from "./use-memory";
 import { ChatMessage } from "./components/chat-message";
 import { ContextDrawer } from "./components/context-drawer";
+import { ExpertStrip } from "./components/expert-strip";
 
 const STARTERS = [
   "how do I make an irresistible offer?",
@@ -144,7 +145,10 @@ export default function MarketingBrainPage() {
               answer is grounded in the best marketing books and talks — with the
               exact page or timecode it came from.
             </p>
-            <div className="mt-10 flex w-full flex-wrap justify-center gap-2">
+
+            <ExpertStrip />
+
+            <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
               {STARTERS.map((s) => (
                 <button
                   key={s}
