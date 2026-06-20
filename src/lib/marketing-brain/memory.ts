@@ -7,9 +7,16 @@
 // (SQLite / Vercel KV / Blob) is the later upgrade.
 
 import fs from "fs";
+import os from "os";
 import path from "path";
 
-const DIR = path.join(process.cwd(), "marketing-brain-memory");
+// Where the memory file lives. Locally it sits in the repo root so it's easy to
+// read/edit. On Vercel, process.cwd() (`/var/task`) is a read-only filesystem —
+// only the OS temp dir (`/tmp`) is writable — so we base the path there instead.
+// Storage on Vercel is per-instance and ephemeral (intentional for this MVP; a
+// durable store is the later upgrade), but at minimum writes no longer crash.
+const BASE = process.env.VERCEL ? os.tmpdir() : process.cwd();
+const DIR = path.join(BASE, "marketing-brain-memory");
 const FILE = path.join(DIR, "business-context.md");
 
 // Soft cap so the injected context can't blow up the prompt. ~12k chars ≈ ~3k tokens.
