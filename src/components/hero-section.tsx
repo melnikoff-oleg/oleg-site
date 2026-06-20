@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { TextEffect } from "@/components/motion/text-effect";
 import { AnimatedGroup } from "@/components/motion/animated-group";
 
@@ -127,6 +128,36 @@ export function HeroSection() {
               className="rounded-xl"
               priority
             />
+
+            {/* Legibility scrim — darkens the lower portion so the quote reads cleanly */}
+            <div className="pointer-events-none absolute inset-x-2 bottom-2 h-2/3 rounded-b-xl bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+
+            {/* Quote overlay */}
+            <motion.figure
+              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ delay: 2, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+              className="pointer-events-none absolute inset-x-0 bottom-0 px-5 pb-5 sm:px-8 sm:pb-8"
+            >
+              <div className="mx-auto max-w-2xl">
+                <span
+                  aria-hidden
+                  className="block text-2xl leading-none text-white/25 sm:text-3xl"
+                >
+                  &ldquo;
+                </span>
+                <blockquote className="-mt-1 text-balance text-sm font-light leading-relaxed tracking-tight text-white/85 sm:text-base md:text-lg">
+                  made{" "}
+                  <span className="font-medium text-white">$700k</span> by the
+                  age of 24 applying AI to trading — then went all-in on{" "}
+                  <span className="font-medium text-white">
+                    AI for marketing
+                  </span>
+                  .
+                </blockquote>
+              </div>
+            </motion.figure>
+
             <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
           </div>
         </AnimatedGroup>
