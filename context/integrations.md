@@ -28,8 +28,8 @@ Runs typically complete in 15-30 seconds. Dataset ID is returned in the initial 
 
 **What:** Powers the `/marketing-brain` AI chat (RAG synthesis over the marketing-brain corpus).
 **API Key:** `ANTHROPIC_API_KEY` in `.env` (local) and Vercel env vars (Production + Preview).
-**Model:** `claude-sonnet-4-6` (streaming, thinking disabled, `max_tokens` 1024).
-**Where:** `src/app/api/marketing-brain/chat/route.ts` via `@anthropic-ai/sdk`. Retrieval is local BM25 (no API cost); only synthesis calls the API. A per-IP daily cap of 30 limits spend.
+**Model:** `claude-sonnet-4-6` (streaming, adaptive thinking, `max_tokens` 3000).
+**Where:** `src/app/api/marketing-brain/chat/route.ts` via `@anthropic-ai/sdk`. Retrieval is local BM25 (no API cost); only synthesis calls the API. A per-IP daily cap of 30 limits spend. The chat also accepts the user's business context from the client (`businessContext` in the request body) and injects it into the system prompt for personalized answers. Also used by the memory routes: `distill` (website scrape → profile) and `extract` (auto-capture business facts).
 
 ---
 

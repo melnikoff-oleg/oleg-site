@@ -12,7 +12,7 @@
 - **YouTube Channel** (youtube.com/@Oleg-Melnikov) -- AI for marketing tutorials, building in public. 16.6K subs, 500K+ views.
 - **Paid Skool Community** (launching Apr 2026) -- $99/month, capped at 300 members, for devs/founders learning AI automation.
 - **Free LinkedIn Profile Breakdown Tool** -- Lead magnet, 350+ profiles analyzed.
-- **The Marketing Brain** (oleg.ae/marketing-brain) -- Free lead magnet on the personal site: an AI chat grounded in the best marketing books + talks (8 books, 75 videos, ~10K cited chunks). Can be taught about a business (paste/files/website-scrape) to give personalized advice. Paired with a knowledge-base gallery (oleg.ae/marketing-brain-knowledge). Demonstrates "AI systems for marketing" and drives top-of-funnel.
+- **$1B Marketing Brain** (oleg.ae/marketing-brain) -- Free lead magnet on the personal site: an AI chat grounded in the best marketing books + talks (8 books, 75 videos, ~10K cited chunks). Can be taught about a business (paste/files/website-scrape) to give personalized advice. Hero shows the faces behind it (Hormozi, Brunson, Cialdini, Godin). Paired with a knowledge-base gallery (oleg.ae/marketing-brain-knowledge). Demonstrates "AI systems for marketing" and drives top-of-funnel.
 - **Free Claude Code resource pages** -- ~15 YouTube-companion lead-magnet pages on oleg.ae (cold outreach, content, SEO, ads, etc.), cross-linked via a shared resource footer.
 
 ## Proven Results

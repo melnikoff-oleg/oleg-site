@@ -20,7 +20,7 @@
 - YouTube: youtube.com/@Oleg-Melnikov -- primary channel
 - LinkedIn: linkedin.com/in/olegai (premium, verified)
 - Instagram personal: @melnikoff_oleg (1,038 followers)
-- Website: buildauthority.ai (2,300+ visitors/mo)
+- Personal site: oleg.ae (2,300+ visitors/mo); service site: boldane.com (formerly buildauthority.ai)
 
 ## Top Performing Content
 
