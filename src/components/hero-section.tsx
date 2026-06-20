@@ -129,27 +129,30 @@ export function HeroSection() {
               priority
             />
 
-            {/* Legibility scrim: darkens the lower portion so the quote reads cleanly */}
-            <div className="pointer-events-none absolute inset-x-2 bottom-2 h-3/4 rounded-b-xl bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
+            {/* Soft scrim: a short, gentle band at the very bottom only, so the
+                glass panel blends in without darkening Oleg's face above it */}
+            <div className="pointer-events-none absolute inset-x-2 bottom-2 h-1/3 rounded-b-xl bg-gradient-to-t from-black/55 to-transparent" />
 
-            {/* Quote overlay */}
+            {/* Quote overlay: self-contained glass panel for crisp readability */}
             <motion.figure
               initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 1.8, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute inset-x-0 bottom-0 px-6 pb-6 sm:px-10 sm:pb-9"
+              className="absolute inset-x-2 bottom-2 px-3 pb-3 sm:px-4 sm:pb-4"
             >
-              <blockquote className="mx-auto max-w-3xl text-balance text-lg font-semibold leading-snug tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-2xl md:text-3xl">
-                <span className="text-white/70">&ldquo;</span>made{" "}
-                <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
-                  $700k by the age 24
-                </span>{" "}
-                by applying AI for trading, then went all-in on{" "}
-                <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
-                  AI for marketing
-                </span>
-                .<span className="text-white/70">&rdquo;</span>
-              </blockquote>
+              <div className="mx-auto max-w-3xl rounded-xl border border-white/10 bg-black/55 px-5 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
+                <blockquote className="text-balance text-base font-semibold leading-snug tracking-tight text-white sm:text-xl md:text-2xl">
+                  <span className="text-white/60">&ldquo;</span>made{" "}
+                  <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
+                    $700k by the age 24
+                  </span>{" "}
+                  by applying AI for trading, then went all-in on{" "}
+                  <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
+                    AI for marketing
+                  </span>
+                  .<span className="text-white/60">&rdquo;</span>
+                </blockquote>
+              </div>
             </motion.figure>
 
             <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
