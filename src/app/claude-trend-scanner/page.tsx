@@ -48,7 +48,7 @@ const steps = [
           the extension and log in with your Anthropic account.
         </p>
         <p>
-          the Claude Code subscription is $19/mo — it gives you access to the
+          the Claude Code subscription is $19/mo. it gives you access to the
           agent that builds the entire app for you.
         </p>
       </div>
@@ -84,7 +84,7 @@ const steps = [
             <p className="text-white font-medium">
               Apify{" "}
               <span className="font-normal text-zinc-500">
-                — scraping social platforms
+                for scraping social platforms
               </span>
             </p>
             <p className="mt-1">
@@ -98,14 +98,14 @@ const steps = [
               >
                 apify.com
               </a>{" "}
-              — free tier available.
+              (free tier available).
             </p>
           </div>
           <div>
             <p className="text-white font-medium">
               Anthropic API{" "}
               <span className="font-normal text-zinc-500">
-                — analyzing trends
+                for analyzing trends
               </span>
             </p>
             <p className="mt-1">
@@ -118,7 +118,7 @@ const steps = [
               >
                 console.anthropic.com
               </a>{" "}
-              — $5 minimum to start.
+              ($5 minimum to start).
             </p>
           </div>
         </div>
@@ -175,7 +175,7 @@ const steps = [
           visual cards explaining what&apos;s happening.
         </p>
         <p>
-          no more manually scrolling through feeds — everything is distilled
+          no more manually scrolling through feeds. everything is distilled
           and ready to act on.
         </p>
       </div>
@@ -220,7 +220,7 @@ const steps = [
               let AI drive conclusions and suggest actions
             </p>
             <p className="mt-1">
-              don&apos;t just read the trends — let the AI analyze patterns and
+              don&apos;t just read the trends. let the AI analyze patterns and
               recommend specific actions based on what it finds.
             </p>
           </div>
@@ -234,7 +234,7 @@ export default function ClaudeTrendScannerPage() {
   return (
     <>
       <ArticleJsonLd
-        title="AI Trend Scanner with Claude Code — Get 10x More Views"
+        title="AI Trend Scanner with Claude Code: Get 10x More Views"
         description="Build an AI trend scanner that monitors Twitter, Reddit, YouTube, TikTok, and websites for trending topics in your niche. Get a daily briefing automatically."
         url="https://oleg.ae/claude-trend-scanner"
         datePublished="2026-05-12"
@@ -294,7 +294,7 @@ export default function ClaudeTrendScannerPage() {
             >
               scan twitter, reddit, instagram, tiktok, youtube, and any website
               for trending topics in your niche. get a structured briefing every
-              morning — automatically.
+              morning, automatically.
             </motion.p>
           </motion.div>
         </section>

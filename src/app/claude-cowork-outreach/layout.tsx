@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Claude Cowork for Cold Outreach — AI LinkedIn Automation Guide",
+  title: "Claude Cowork for Cold Outreach: AI LinkedIn Automation Guide",
   description:
     "Use Claude Cowork to automate LinkedIn cold outreach. It browses LinkedIn, researches prospects, writes personalized messages, and sends connection requests on autopilot. Free step-by-step setup guide.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Claude Code for marketing",
   ],
   openGraph: {
-    title: "Claude Cowork for Cold Outreach — AI LinkedIn Automation Guide",
+    title: "Claude Cowork for Cold Outreach: AI LinkedIn Automation Guide",
     description:
       "Automate LinkedIn cold outreach with Claude Cowork. Research prospects, write personalized messages, and send connections on autopilot.",
     type: "article",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Claude Cowork for Cold Outreach — AI LinkedIn Automation",
+    title: "Claude Cowork for Cold Outreach: AI LinkedIn Automation",
     description:
       "Automate LinkedIn cold outreach with Claude Cowork. Research prospects, write personalized messages, and send connections on autopilot.",
   },

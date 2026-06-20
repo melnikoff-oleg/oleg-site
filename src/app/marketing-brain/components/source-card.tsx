@@ -50,7 +50,7 @@ export const SourceCard = forwardRef<
     );
   }
 
-  // video — one full-width player/thumbnail, multiple timecodes as jump chips
+  // video: one full-width player/thumbnail, multiple timecodes as jump chips
   const active = activeItem !== null ? source.items[activeItem] : null;
 
   return (

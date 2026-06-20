@@ -31,8 +31,8 @@ const steps = [
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
             code.visualstudio.com
-          </a>{" "}
-          — it auto-detects your OS.
+          </a>
+          . it auto-detects your OS.
         </p>
         <p>run the installer and verify VS Code launches properly.</p>
       </div>
@@ -107,7 +107,7 @@ const steps = [
             <p className="text-white font-medium">
               Apify{" "}
               <span className="font-normal text-zinc-500">
-                — scraping TikTok
+                (scraping TikTok)
               </span>
             </p>
             <p className="mt-1">
@@ -128,7 +128,7 @@ const steps = [
             <p className="text-white font-medium">
               Google Gemini{" "}
               <span className="font-normal text-zinc-500">
-                — analyzing competitor visuals
+                (analyzing competitor visuals)
               </span>
             </p>
             <p className="mt-1">
@@ -149,7 +149,7 @@ const steps = [
             <p className="text-white font-medium">
               Anthropic{" "}
               <span className="font-normal text-zinc-500">
-                — generating concepts
+                (generating concepts)
               </span>
             </p>
             <p className="mt-1">
@@ -215,7 +215,7 @@ const steps = [
         </p>
         <p>
           claude code will install dependencies, start the app, and walk you
-          through the workflow — adding TikTok creators, configuring your brand,
+          through the workflow: adding TikTok creators, configuring your brand,
           and running the content pipeline.
         </p>
       </div>

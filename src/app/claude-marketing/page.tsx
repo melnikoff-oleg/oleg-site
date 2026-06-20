@@ -51,7 +51,7 @@ const steps = [
           the extension and sign in.
         </p>
         <p>
-          claude code costs $19/mo and gives you access to the full agent — it
+          claude code costs $19/mo and gives you access to the full agent. it
           writes code, runs commands, and builds entire projects from a prompt.
         </p>
       </div>
@@ -67,7 +67,7 @@ const steps = [
             <p className="text-white font-medium">
               Apify{" "}
               <span className="font-normal text-zinc-500">
-                — scraping social media
+                for scraping social media
               </span>
             </p>
             <p className="mt-1">
@@ -81,14 +81,14 @@ const steps = [
               >
                 apify.com
               </a>{" "}
-              — free tier available.
+              (free tier available).
             </p>
           </div>
           <div>
             <p className="text-white font-medium">
               Kie.ai{" "}
               <span className="font-normal text-zinc-500">
-                — generating visuals
+                for generating visuals
               </span>
             </p>
             <p className="mt-1">
@@ -172,8 +172,8 @@ const steps = [
           <li>
             <span className="text-white font-medium">
               combine use cases
-            </span>{" "}
-            — scrape trends then generate content in one session
+            </span>
+            : scrape trends then generate content in one session
           </li>
           <li>
             <span className="text-white font-medium">
@@ -203,8 +203,8 @@ export default function ClaudeMarketingPage() {
   return (
     <>
       <ArticleJsonLd
-        title="Claude Code for Marketing — AI Marketing Automation Guide"
-        description="Five real marketing use cases with Claude Code — Instagram Reels, competitor analysis, ad campaigns, cold outreach, and content automation."
+        title="Claude Code for Marketing: AI Marketing Automation Guide"
+        description="Five real marketing use cases with Claude Code: Instagram Reels, competitor analysis, ad campaigns, cold outreach, and content automation."
         url="https://oleg.ae/claude-marketing"
         datePublished="2026-05-12"
         dateModified="2026-05-13"
@@ -261,7 +261,7 @@ export default function ClaudeMarketingPage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              five real marketing use cases with claude code — instagram reels,
+              five real marketing use cases with claude code: instagram reels,
               competitor analysis, ad campaigns, cold outreach, and content
               generation. all in one walkthrough.
             </motion.p>

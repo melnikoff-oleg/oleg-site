@@ -31,8 +31,9 @@ export function ConsultCta() {
               className="text-zinc-400 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-300 hover:decoration-zinc-500"
             >
               book a 1:1 consult
-            </a>{" "}
-            — bring a specific problem, leave with a clear next step.
+            </a>
+            {". "}
+            bring a specific problem, leave with a clear next step.
           </p>
         </div>
       </div>

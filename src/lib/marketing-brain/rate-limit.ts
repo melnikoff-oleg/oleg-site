@@ -4,7 +4,7 @@
 // NOTE: serverless instances each hold their own memory and recycle on cold
 // start, so this is an approximate cap, not a hard guarantee. If abuse appears,
 // swap this module for a durable store (Vercel KV / Upstash Redis) keyed the
-// same way — the public API (check) stays identical.
+// same way: the public API (check) stays identical.
 
 export const DAILY_LIMIT = 30;
 
@@ -12,7 +12,7 @@ type Entry = { day: string; count: number };
 const counts = new Map<string, Entry>();
 
 function today(): string {
-  // UTC day boundary — good enough for a daily cap.
+  // UTC day boundary, good enough for a daily cap.
   return new Date().toISOString().slice(0, 10);
 }
 

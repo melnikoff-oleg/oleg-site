@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI SEO Optimization with Claude Code — Free Setup Guide (2026)",
+  title: "AI SEO Optimization with Claude Code: Free Setup Guide (2026)",
   description:
-    "Let Claude Code handle your entire SEO strategy — meta tags, structured data, sitemaps, keyword research, and content optimization. Watch a real 2-hour AI SEO sprint and replicate it for your site.",
+    "Let Claude Code handle your entire SEO strategy: meta tags, structured data, sitemaps, keyword research, and content optimization. Watch a real 2-hour AI SEO sprint and replicate it for your site.",
   keywords: [
     "Claude Code",
     "Claude AI",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     "Claude Code for marketing",
   ],
   openGraph: {
-    title: "AI SEO Optimization with Claude Code — Free Setup Guide",
+    title: "AI SEO Optimization with Claude Code: Free Setup Guide",
     description:
-      "Let Claude Code handle your entire SEO strategy — meta tags, structured data, sitemaps, keyword research, and content optimization in one session.",
+      "Let Claude Code handle your entire SEO strategy: meta tags, structured data, sitemaps, keyword research, and content optimization in one session.",
     type: "article",
     url: "https://oleg.ae/claude-seo",
     publishedTime: "2026-05-12T00:00:00Z",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI SEO Optimization with Claude Code — Free Guide",
+    title: "AI SEO Optimization with Claude Code: Free Guide",
     description:
       "Let Claude Code handle your entire SEO strategy in one session. Meta tags, structured data, sitemaps, and keyword research.",
   },

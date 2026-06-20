@@ -115,7 +115,7 @@ const prompts = [
     title: "build your content foundation",
     time: "~5 min",
     description:
-      "paste this into a new Claude or ChatGPT chat. answer the questions one by one. save the output — you’ll reuse it.",
+      "paste this into a new Claude or ChatGPT chat. answer the questions one by one. save the output, you’ll reuse it.",
     prompt: PROMPT_1,
   },
   {
@@ -123,7 +123,7 @@ const prompts = [
     title: "the content interview",
     time: "~15-20 min",
     description:
-      "open a NEW chat. paste this prompt, then paste your Content Foundation below it. talk for 15-20 minutes — the more specific stories and numbers you give, the better. when done, copy the ENTIRE conversation.",
+      "open a NEW chat. paste this prompt, then paste your Content Foundation below it. talk for 15-20 minutes. the more specific stories and numbers you give, the better. when done, copy the ENTIRE conversation.",
     prompt: PROMPT_2,
   },
   {
@@ -191,7 +191,7 @@ export default function LinkedInPostPage() {
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
               the exact system that generated $60,000 in sales from a single
-              LinkedIn post. 3 prompts, 3 separate chats, your real voice — not
+              LinkedIn post. 3 prompts, 3 separate chats, your real voice, not
               AI slop.
             </motion.p>
 

@@ -2,7 +2,7 @@
 //
 // Single-user, local-only MVP: one markdown file on disk, read/written via fs
 // from Node-runtime routes. No database. Gitignored (personal business data).
-// NOTE: this lives on the local filesystem — it will NOT persist on Vercel's
+// NOTE: this lives on the local filesystem, so it will NOT persist on Vercel's
 // ephemeral fs. That's intentional for the prototype; a durable store
 // (SQLite / Vercel KV / Blob) is the later upgrade.
 
@@ -11,8 +11,8 @@ import os from "os";
 import path from "path";
 
 // Where the memory file lives. Locally it sits in the repo root so it's easy to
-// read/edit. On Vercel, process.cwd() (`/var/task`) is a read-only filesystem —
-// only the OS temp dir (`/tmp`) is writable — so we base the path there instead.
+// read/edit. On Vercel, process.cwd() (`/var/task`) is a read-only filesystem,
+// only the OS temp dir (`/tmp`) is writable, so we base the path there instead.
 // Storage on Vercel is per-instance and ephemeral (intentional for this MVP; a
 // durable store is the later upgrade), but at minimum writes no longer crash.
 const BASE = process.env.VERCEL ? os.tmpdir() : process.cwd();
@@ -42,7 +42,7 @@ export function appendMemory(
 ): { previous: string; text: string; added: string } {
   const previous = getMemory();
   const date = new Date().toISOString().slice(0, 10);
-  const section = `## ${heading} — ${date}\n\n${body.trim()}\n`;
+  const section = `## ${heading} (${date})\n\n${body.trim()}\n`;
   const text = previous.trim() ? `${previous.trim()}\n\n${section}` : section;
   setMemory(text);
   return { previous, text, added: section };

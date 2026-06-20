@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Instagram Reels with Claude Code — Free Setup Guide (2026)",
+  title: "AI Instagram Reels with Claude Code: Free Setup Guide (2026)",
   description:
     "Use Claude Code to reverse-engineer viral Instagram Reels from competitors. Scrape top-performing videos, analyze hooks and retention patterns, and generate ready-to-film AI Reels scripts automatically.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Claude Code for marketing",
   ],
   openGraph: {
-    title: "AI Instagram Reels with Claude Code — Free Setup Guide",
+    title: "AI Instagram Reels with Claude Code: Free Setup Guide",
     description:
       "Reverse-engineer viral Reels from competitors and generate ready-to-film scripts with hooks, retention analysis, and AI visuals.",
     type: "article",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Instagram Reels with Claude Code — Free Setup Guide",
+    title: "AI Instagram Reels with Claude Code: Free Setup Guide",
     description:
       "Reverse-engineer viral Reels and generate ready-to-film scripts with Claude Code.",
   },

@@ -51,7 +51,7 @@ const steps = [
         </p>
         <p>install it and log in with your Anthropic account.</p>
         <p>
-          the subscription is $19/mo — it gives you access to claude code
+          the subscription is $19/mo. it gives you access to claude code
           directly inside VS Code.
         </p>
       </div>
@@ -158,8 +158,8 @@ const steps = [
             trends and shifts in what&apos;s working
           </li>
           <li>
-            <span className="text-zinc-300">analyze transcript patterns</span>{" "}
-            — what story structures do top videos use?
+            <span className="text-zinc-300">analyze transcript patterns</span>:{" "}
+            what story structures do top videos use?
           </li>
           <li>
             <span className="text-zinc-300">study comment sections</span> for

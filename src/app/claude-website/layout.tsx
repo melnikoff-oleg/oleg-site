@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Build a Website with AI Using Claude Code — Free Setup Guide (2026)",
+    "Build a Website with AI Using Claude Code: Free Setup Guide (2026)",
   description:
-    "Build a professional personal website from scratch with Claude Code in under 30 minutes. No design skills needed — step-by-step guide to design, build, and deploy your site with a custom domain.",
+    "Build a professional personal website from scratch with Claude Code in under 30 minutes. No design skills needed. A step-by-step guide to design, build, and deploy your site with a custom domain.",
   keywords: [
     "Claude Code",
     "Claude AI",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "build personal website",
   ],
   openGraph: {
-    title: "Build a Website with AI Using Claude Code — Free Setup Guide",
+    title: "Build a Website with AI Using Claude Code: Free Setup Guide",
     description:
       "Build a professional personal website from scratch with Claude Code in under 30 minutes. No design skills needed.",
     type: "article",

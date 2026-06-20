@@ -154,7 +154,7 @@ export default function MarketingBrainKnowledgePage() {
               variants={fadeUp}
               className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400 md:text-xl"
             >
-              the greatest marketing minds, distilled into one searchable brain —
+              the greatest marketing minds, distilled into one searchable brain:
               every book and every talk that shapes how i think about growth,
               offers, and building an audience.
             </motion.p>
@@ -269,7 +269,7 @@ export default function MarketingBrainKnowledgePage() {
                       {e.books.length > 0 && (
                         <span className="text-zinc-400">
                           {e.books.join(" · ")}
-                          {"  —  "}
+                          {"  ·  "}
                         </span>
                       )}
                       {e.videos.length} talks · {formatViews(totalViews)} views
@@ -299,7 +299,7 @@ export default function MarketingBrainKnowledgePage() {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-zinc-400">
               i built an AI system that turns these minds into answers i can
-              query — every claim cited to the exact page or timecode. ask it
+              query, every claim cited to the exact page or timecode. ask it
               anything, or follow along as i build AI systems for marketing in
               public.
             </p>

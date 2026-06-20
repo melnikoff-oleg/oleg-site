@@ -50,7 +50,7 @@ const steps = [
           for &quot;Claude Code&quot;. install the extension by Anthropic.
         </p>
         <p>
-          claude code costs $19/mo — it gives you access to Claude directly
+          claude code costs $19/mo. it gives you access to Claude directly
           inside your editor to build and modify code with natural language.
         </p>
       </div>
@@ -73,8 +73,8 @@ const steps = [
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
             skool.com/ai-automation-7100
-          </a>{" "}
-          — it&apos;s free. download the source code from the resources section
+          </a>
+          . it&apos;s free. download the source code from the resources section
           and open it in VS Code.
         </p>
       </div>
@@ -90,7 +90,7 @@ const steps = [
             <p className="text-white font-medium">
               Apify{" "}
               <span className="font-normal text-zinc-500">
-                — scraping LinkedIn leads
+                for scraping LinkedIn leads
               </span>
             </p>
             <p className="mt-1">
@@ -104,14 +104,14 @@ const steps = [
               >
                 apify.com
               </a>{" "}
-              — free tier available.
+              (free tier available).
             </p>
           </div>
           <div>
             <p className="text-white font-medium">
               Kie.ai{" "}
               <span className="font-normal text-zinc-500">
-                — generating custom visuals/banners
+                for generating custom visuals/banners
               </span>
             </p>
             <p className="mt-1">
@@ -132,7 +132,7 @@ const steps = [
             <p className="text-white font-medium">
               Anthropic API{" "}
               <span className="font-normal text-zinc-500">
-                — crafting messages
+                for crafting messages
               </span>
             </p>
             <p className="mt-1">
@@ -145,7 +145,7 @@ const steps = [
               >
                 console.anthropic.com
               </a>{" "}
-              — $5 minimum to get started.
+              ($5 minimum to get started).
             </p>
           </div>
         </div>
@@ -200,7 +200,7 @@ const steps = [
       <div className="space-y-3">
         <p>
           the system scores each lead from 1 to 10 based on custom criteria you
-          define — engagement level, relevance to your offer, company size, and
+          define: engagement level, relevance to your offer, company size, and
           more.
         </p>
         <p>
@@ -220,7 +220,7 @@ const steps = [
           crafts a personalized message.
         </p>
         <p>
-          not generic templates — each message references specific details about
+          not generic templates. each message references specific details about
           the prospect. that&apos;s why reply rates hit 35%.
         </p>
       </div>
@@ -233,19 +233,19 @@ const steps = [
         <p>four tips to maximize your results:</p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <span className="text-white">always lead with value</span> — send an
+            <span className="text-white">always lead with value</span>: send an
             improved banner or content sample, not just text
           </li>
           <li>
-            <span className="text-white">personalize the visual</span> — use
+            <span className="text-white">personalize the visual</span>: use
             their branding, colors, and style so it feels made for them
           </li>
           <li>
-            <span className="text-white">follow up with a second value piece</span>{" "}
-            — if no reply, don&apos;t just bump the thread. send something new
+            <span className="text-white">follow up with a second value piece</span>
+            : if no reply, don&apos;t just bump the thread. send something new
           </li>
           <li>
-            <span className="text-white">track reply rates and iterate</span> —
+            <span className="text-white">track reply rates and iterate</span>:
             measure what&apos;s working and refine your messaging over time
           </li>
         </ul>

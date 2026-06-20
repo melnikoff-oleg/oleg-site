@@ -77,7 +77,7 @@ export function ConnectSection() {
           variants={fadeUp}
           className="mt-8 text-xl text-zinc-300 md:text-2xl"
         >
-          let&apos;s connect — i&apos;m always open to interesting conversations
+          let&apos;s connect. i&apos;m always open to interesting conversations
           and collaborations.
         </motion.p>
 

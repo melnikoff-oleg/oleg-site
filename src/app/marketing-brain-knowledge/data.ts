@@ -1,4 +1,4 @@
-// AUTO-GENERATED from marketing-brain/manifest.json — do not edit by hand.
+// AUTO-GENERATED from marketing-brain/manifest.json. Do not edit by hand.
 // Regenerate after updating the knowledge base.
 
 export type Book = {
@@ -415,7 +415,7 @@ export const experts: Expert[] = [
       },
       {
         id: "Ehp0Rjl5wf4",
-        title: "Social Media Is Over — This Is the Future of Content | GaryVee w/ Mick Unplugged",
+        title: "Social Media Is Over: This Is the Future of Content | GaryVee w/ Mick Unplugged",
         channel: "GaryVee",
         views: 147063,
         duration: "00:36:00",
@@ -425,7 +425,7 @@ export const experts: Expert[] = [
       },
       {
         id: "QYh-Yt_lY14",
-        title: "20 Minutes Of Tactical Social Media Marketing Tips — Dominate In 2025! | Tea With GaryVee #63",
+        title: "20 Minutes Of Tactical Social Media Marketing Tips: Dominate In 2025! | Tea With GaryVee #63",
         channel: "GaryVee",
         views: 116031,
         duration: "00:23:24",
@@ -519,7 +519,7 @@ export const experts: Expert[] = [
       },
       {
         id: "qzoIAJYPQwo",
-        title: "Seth Godin – Leadership vs. Management - What it means to make a difference",
+        title: "Seth Godin: Leadership vs. Management, What it means to make a difference",
         channel: "Nordic Business Forum",
         views: 2115764,
         duration: "00:42:55",

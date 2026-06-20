@@ -13,7 +13,7 @@ const highlights = [
   {
     title: "mike kamo",
     description:
-      "co-founder of NP Digital ($100M+ agency) — 80,000 views in 2 months using authority ai. time reduced from 3+ hrs/week to 45 min.",
+      "co-founder of NP Digital ($100M+ agency). 80,000 views in 2 months using authority ai. time reduced from 3+ hrs/week to 45 min.",
   },
   {
     title: "math & cs background",
@@ -23,7 +23,7 @@ const highlights = [
   {
     title: "building in public",
     description:
-      "sharing the real journey — failures, wins, and everything in between. no polished highlight reel, just honest progress.",
+      "sharing the real journey: failures, wins, and everything in between. no polished highlight reel, just honest progress.",
   },
 ];
 

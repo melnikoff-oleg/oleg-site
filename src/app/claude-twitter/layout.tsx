@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Twitter Content Machine with Claude Code — Free Setup Guide",
+  title: "AI Twitter Content Machine with Claude Code: Free Setup Guide",
   description:
     "Build an AI-powered X/Twitter content system with Claude Code. Scrape competitor tweets, analyze what goes viral in your niche, and generate ready-to-publish posts automatically.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "AI content creation",
   ],
   openGraph: {
-    title: "AI Twitter Content Machine with Claude Code — Free Setup Guide",
+    title: "AI Twitter Content Machine with Claude Code: Free Setup Guide",
     description:
       "Build an AI-powered X/Twitter content system with Claude Code. Scrape competitors, analyze viral tweets, and generate posts in your voice.",
     type: "article",

@@ -53,7 +53,7 @@ const steps = [
             CLAUDE.md
           </code>{" "}
           in your project folder. this is where you tell claude everything about
-          you — your expertise, your business, your audience, and your content
+          you: your expertise, your business, your audience, and your content
           goals.
         </p>
         <p>
@@ -87,7 +87,7 @@ const steps = [
             <p className="text-white font-medium">
               first message{" "}
               <span className="font-normal text-zinc-500">
-                — what the agent says when the conversation starts
+                (what the agent says when the conversation starts)
               </span>
             </p>
             <p className="mt-1">
@@ -100,13 +100,13 @@ const steps = [
             <p className="text-white font-medium">
               system prompt{" "}
               <span className="font-normal text-zinc-500">
-                — tells the agent how to behave
+                (tells the agent how to behave)
               </span>
             </p>
             <p className="mt-1">
               instruct it to interview you about your expertise, ask follow-up
               questions, dig into stories and unique insights, and keep the
-              conversation natural — like talking to a friend.
+              conversation natural, like talking to a friend.
             </p>
           </div>
         </div>
@@ -132,7 +132,7 @@ const steps = [
             <p className="text-white font-medium">
               viral hooks{" "}
               <span className="font-normal text-zinc-500">
-                — opening lines that stop the scroll
+                (opening lines that stop the scroll)
               </span>
             </p>
           </div>
@@ -140,7 +140,7 @@ const steps = [
             <p className="text-white font-medium">
               storytelling frameworks{" "}
               <span className="font-normal text-zinc-500">
-                — structures that keep people reading
+                (structures that keep people reading)
               </span>
             </p>
           </div>
@@ -148,13 +148,13 @@ const steps = [
             <p className="text-white font-medium">
               platform-specific formatting{" "}
               <span className="font-normal text-zinc-500">
-                — line breaks, emojis, CTAs optimized for LinkedIn
+                (line breaks, emojis, CTAs optimized for LinkedIn)
               </span>
             </p>
           </div>
         </div>
         <p>
-          the key: the interview gives you raw authentic material, and the
+          here&apos;s the key: the interview gives you raw authentic material, and the
           copywriting system shapes it into a post that performs.
         </p>
       </div>
@@ -165,7 +165,7 @@ const steps = [
     content: (
       <div className="space-y-3">
         <p>
-          upload a library of your personal photos — headshots, behind-the-scenes
+          upload a library of your personal photos: headshots, behind-the-scenes
           shots, event photos, workspace pics. the system picks the most relevant
           image for each post.
         </p>
@@ -182,14 +182,14 @@ const steps = [
       <div className="space-y-3">
         <p>
           start a conversation with your ElevenLabs agent. spend 10-15 minutes
-          just talking naturally — while cooking, walking, or during your morning
+          just talking naturally, while cooking, walking, or during your morning
           routine.
         </p>
         <p>
           when you&apos;re done, go to the{" "}
           <span className="text-white">Call history</span> tab in the ElevenLabs
           dashboard to grab the full transcript. feed it to claude code along
-          with your copywriting system — claude extracts the best content angles,
+          with your copywriting system. claude extracts the best content angles,
           applies your techniques, pairs it with a personal image, and produces a
           ready-to-post piece.
         </p>
@@ -232,7 +232,7 @@ const steps = [
       <div className="space-y-3">
         <ul className="list-disc pl-5 space-y-2">
           <li>
-            interview yourself about different topics each session — business
+            interview yourself about different topics each session: business
             updates, industry insights, personal stories, lessons learned
           </li>
           <li>
@@ -240,7 +240,7 @@ const steps = [
             workflow
           </li>
           <li>
-            build a content calendar — one 12-minute interview can produce
+            build a content calendar: one 12-minute interview can produce
             multiple posts across platforms
           </li>
           <li>
@@ -258,7 +258,7 @@ export default function ClaudeInterviewerPage() {
     <>
       <ArticleJsonLd
         title="AI Interviewer That Makes All Your Content"
-        description="Build an AI voice interviewer that turns casual conversations into viral LinkedIn posts. No writing required — just talk about your expertise."
+        description="Build an AI voice interviewer that turns casual conversations into viral LinkedIn posts. No writing required, just talk about your expertise."
         url="https://oleg.ae/claude-interviewer"
         datePublished="2026-05-17"
         dateModified="2026-05-17"

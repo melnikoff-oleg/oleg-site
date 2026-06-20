@@ -10,10 +10,10 @@ import { ContextDrawer } from "./components/context-drawer";
 import { ExpertStrip } from "./components/expert-strip";
 
 const STARTERS = [
-  "how do I make an irresistible offer?",
-  "should I focus on outbound or content?",
-  "how do I get my first 5 customers?",
-  "what makes a youtube thumbnail get clicks?",
+  "make an irresistible offer",
+  "outbound or content?",
+  "get my first 5 customers",
+  "thumbnails that get clicks",
 ];
 
 export default function MarketingBrainPage() {
@@ -44,7 +44,7 @@ export default function MarketingBrainPage() {
     return () => window.clearTimeout(t);
   }, [toast]);
 
-  // Follow the stream to the bottom — but the moment the user scrolls UP,
+  // Follow the stream to the bottom, but the moment the user scrolls UP,
   // disengage and leave them be. Re-engage only when they return to the bottom.
   useEffect(() => {
     lastY.current = window.scrollY;
@@ -134,21 +134,13 @@ export default function MarketingBrainPage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 py-12 text-center"
           >
-            <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400">
-              ask the marketing greats
-            </span>
-            <h1 className="mt-8 font-[family-name:var(--font-unbounded)] text-4xl tracking-tight sm:text-5xl">
-              the marketing brain
+            <h1 className="font-[family-name:var(--font-unbounded)] text-4xl tracking-tight sm:text-6xl">
+              $1B Marketing Brain
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-lg text-zinc-400">
-              ask anything about offers, content, persuasion, or growth. every
-              answer is grounded in the best marketing books and talks — with the
-              exact page or timecode it came from.
-            </p>
 
             <ExpertStrip />
 
-            <div className="mt-12 flex w-full flex-wrap justify-center gap-2">
+            <div className="mt-11 flex w-full flex-wrap justify-center gap-2">
               {STARTERS.map((s) => (
                 <button
                   key={s}
@@ -166,8 +158,8 @@ export default function MarketingBrainPage() {
               className="mt-8 text-sm text-zinc-500 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-200"
             >
               {memory.hasContext
-                ? "✦ personalized to your business — edit your context"
-                : "✦ add your business context for personalized answers"}
+                ? "✦ personalized — edit your context"
+                : "✦ add your business context"}
             </button>
           </motion.div>
         ) : (
@@ -248,9 +240,6 @@ export default function MarketingBrainPage() {
                 </svg>
               </button>
             </form>
-            <p className="mt-2 text-center text-xs text-zinc-600">
-              grounded in 8 books &amp; 75 talks · answers can be imperfect — verify the cited source
-            </p>
           </div>
         </div>
       </main>

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Marketing Brain — Knowledge Base of the Greatest Marketing Minds",
+  title: "The Marketing Brain: Knowledge Base of the Greatest Marketing Minds",
   description:
-    "A curated knowledge base of the best marketing and content minds — Hormozi, Brunson, Cialdini, Gary Vee, Ogilvy, Godin, Patel, Ralston, MrBeast. 8 books and 75 talks distilled into one searchable AI brain for marketing.",
+    "A curated knowledge base of the best marketing and content minds: Hormozi, Brunson, Cialdini, Gary Vee, Ogilvy, Godin, Patel, Ralston, MrBeast. 8 books and 75 talks distilled into one searchable AI brain for marketing.",
   keywords: [
     "marketing knowledge base",
     "best marketing books",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Claude Code for marketing",
   ],
   openGraph: {
-    title: "The Marketing Brain — Knowledge Base of the Greatest Marketing Minds",
+    title: "The Marketing Brain: Knowledge Base of the Greatest Marketing Minds",
     description:
       "8 books and 75 talks from the greatest marketing minds, distilled into one searchable AI brain. Every insight cited to the exact page or timecode.",
     type: "website",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Marketing Brain — Knowledge Base of the Greatest Marketing Minds",
+    title: "The Marketing Brain: Knowledge Base of the Greatest Marketing Minds",
     description:
       "8 books and 75 talks from the greatest marketing minds, distilled into one searchable AI brain.",
   },

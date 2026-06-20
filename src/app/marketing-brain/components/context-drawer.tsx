@@ -73,7 +73,7 @@ export function ContextDrawer({
             <div className="flex-1 space-y-6 overflow-y-auto px-6 py-5">
               <p className="text-sm leading-relaxed text-zinc-400">
                 tell the brain about your business so its advice is personalized to
-                you — your offers, audience, and goals. add a website, upload files,
+                you: your offers, audience, and goals. add a website, upload files,
                 or just write it below.
               </p>
 
@@ -134,7 +134,7 @@ export function ContextDrawer({
                 <textarea
                   value={memory.text}
                   onChange={(e) => memory.setText(e.target.value)}
-                  placeholder="e.g. I run Authority AI — done-for-you LinkedIn content for B2B founders, $900/mo…"
+                  placeholder="e.g. I run Authority AI, done-for-you LinkedIn content for B2B founders, $900/mo…"
                   rows={12}
                   className="w-full resize-y rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm leading-relaxed text-zinc-200 placeholder:text-zinc-600 focus:border-white/25 focus:outline-none"
                 />

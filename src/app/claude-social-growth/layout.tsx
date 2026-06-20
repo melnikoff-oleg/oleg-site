@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "AI Social Media Growth with Claude Code — Free Setup Guide (2026)",
+    "AI Social Media Growth with Claude Code: Free Setup Guide (2026)",
   description:
     "Use Claude Code to analyze thousands of competitor videos, identify viral outliers, and build a data-driven AI content strategy for YouTube, Instagram, and TikTok growth.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "AI for social media",
   ],
   openGraph: {
-    title: "AI Social Media Growth with Claude Code — Free Setup Guide",
+    title: "AI Social Media Growth with Claude Code: Free Setup Guide",
     description:
       "Analyze thousands of competitor videos, identify viral outliers, and build a data-driven AI content strategy for YouTube, Instagram, and TikTok.",
     type: "article",

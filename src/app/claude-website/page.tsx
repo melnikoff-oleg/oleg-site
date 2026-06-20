@@ -49,7 +49,7 @@ const steps = [
           search for &quot;Claude Code&quot;. install the extension.
         </p>
         <p>
-          claude code costs $19/mo — it gives you an AI coding agent right
+          claude code costs $19/mo. it gives you an AI coding agent right
           inside your editor that can build entire projects from a description.
         </p>
       </div>
@@ -90,7 +90,7 @@ const steps = [
           , and describe what you want.
         </p>
         <p>
-          tell it who you are, what you do, and what sections to include — hero,
+          tell it who you are, what you do, and what sections to include: hero,
           about, results, social links. claude code builds the full site from
           your description.
         </p>
@@ -115,7 +115,7 @@ const steps = [
           smooth fade-in animations as sections scroll into view.&quot;
         </div>
         <p>
-          no design skills needed — just describe the vibe you want and claude
+          no design skills needed. just describe the vibe you want and claude
           code handles the rest.
         </p>
       </div>
@@ -166,7 +166,7 @@ const steps = [
           your vercel dashboard, go to Settings → Domains and add your domain.
         </p>
         <p>
-          update the DNS records as shown in vercel — usually just an A record
+          update the DNS records as shown in vercel, usually just an A record
           and CNAME. your site will be live on your custom domain within minutes.
         </p>
       </div>
@@ -292,7 +292,7 @@ export default function ClaudeWebsitePage() {
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
               create a professional personal website from scratch using claude
-              code. no design skills needed — just describe what you want and
+              code. no design skills needed. just describe what you want and
               deploy it live.
             </motion.p>
           </motion.div>

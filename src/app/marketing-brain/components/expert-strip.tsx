@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 // The minds the corpus is distilled from. Images live in /public/marketing-brain/experts,
 // pre-cropped to square (face-centered). The premium "blend into the dark" look is all CSS:
 // grayscale + dimmed by default so the differing photo styles unify and melt into the black
-// page, with a bottom gradient fading each portrait into the background — color and light
+// page, with a bottom gradient fading each portrait into the background. color and light
 // return on hover.
 const EXPERTS = [
   { slug: "hormozi", name: "Alex Hormozi", note: "offers & money models" },

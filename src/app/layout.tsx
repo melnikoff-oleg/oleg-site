@@ -18,8 +18,8 @@ const unbounded = Unbounded({
 export const metadata: Metadata = {
   metadataBase: new URL("https://oleg.ae"),
   title: {
-    default: "Oleg Melnikov — AI Systems for Marketing & Claude Code Tutorials",
-    template: "%s — Oleg Melnikov",
+    default: "Oleg Melnikov: AI Systems for Marketing & Claude Code Tutorials",
+    template: "%s | Oleg Melnikov",
   },
   description:
     "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 18K+ YouTube community. Former big tech & hedge fund.",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "Oleg Melnikov",
   ],
   openGraph: {
-    title: "Oleg Melnikov — AI Systems for Marketing & Claude Code Tutorials",
+    title: "Oleg Melnikov: AI Systems for Marketing & Claude Code Tutorials",
     description:
       "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 18K+ YouTube community.",
     type: "website",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Oleg Melnikov — AI Systems for Marketing & Claude Code Tutorials",
+    title: "Oleg Melnikov: AI Systems for Marketing & Claude Code Tutorials",
     description:
       "AI software entrepreneur building AI systems for marketing. Claude Code tutorials, AI automation for B2B founders, and 18K+ YouTube community.",
   },

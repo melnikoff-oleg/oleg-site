@@ -31,8 +31,8 @@ const steps = [
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
             code.visualstudio.com
-          </a>{" "}
-          — it auto-detects your OS.
+          </a>
+          . it auto-detects your OS.
         </p>
         <p>run the installer and verify VS Code launches properly.</p>
       </div>
@@ -80,7 +80,7 @@ const steps = [
             <p className="text-white font-medium">
               Apify{" "}
               <span className="font-normal text-zinc-500">
-                — scraping trending content from social media
+                (scraping trending content from social media)
               </span>
             </p>
             <p className="mt-1">
@@ -101,7 +101,7 @@ const steps = [
             <p className="text-white font-medium">
               Kie.ai{" "}
               <span className="font-normal text-zinc-500">
-                — generating visuals (infographics, carousels)
+                (generating visuals: infographics, carousels)
               </span>
             </p>
             <p className="mt-1">
@@ -118,7 +118,7 @@ const steps = [
             </p>
           </div>
         </div>
-        <p>store both keys somewhere safe — you&apos;ll need them in step 5.</p>
+        <p>store both keys somewhere safe. you&apos;ll need them in step 5.</p>
       </div>
     ),
   },
@@ -157,7 +157,7 @@ const steps = [
           to start Claude Code.
         </p>
         <p>
-          insert both API keys into the project configuration — follow the
+          insert both API keys into the project configuration, following the
           README instructions in the project folder. claude code can help you
           set everything up if you ask it.
         </p>
@@ -171,7 +171,7 @@ export default function ClaudeContentPage() {
     <>
       <ArticleJsonLd
         title="AI Content Creation with Claude Code in 10 Minutes"
-        description="Generate weeks of social media content with custom visuals — infographics, carousels, personal images — from a single prompt using Claude Code."
+        description="Generate weeks of social media content with custom visuals (infographics, carousels, personal images) from a single prompt using Claude Code."
         url="https://oleg.ae/claude-content"
         datePublished="2026-05-12"
         dateModified="2026-05-13"
@@ -228,8 +228,8 @@ export default function ClaudeContentPage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              generate weeks of social media content with custom visuals —
-              infographics, carousels, personal images — from a single prompt.
+              generate weeks of social media content with custom visuals:
+              infographics, carousels, personal images, all from a single prompt.
               works for linkedin, instagram, x, and more.
             </motion.p>
           </motion.div>

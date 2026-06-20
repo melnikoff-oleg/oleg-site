@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "AI Content Creation with Claude Code in 10 Minutes — Free Setup Guide",
+    "AI Content Creation with Claude Code in 10 Minutes: Free Setup Guide",
   description:
-    "Set up an AI content creation system with Claude Code that generates weeks of social media posts with custom visuals — infographics, carousels, and personal images — from a single prompt. Works for LinkedIn, Instagram, X, and more.",
+    "Set up an AI content creation system with Claude Code that generates weeks of social media posts with custom visuals (infographics, carousels, and personal images) from a single prompt. Works for LinkedIn, Instagram, X, and more.",
   keywords: [
     "Claude Code",
     "Claude AI",
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     "AI social media content generator",
   ],
   openGraph: {
-    title: "AI Content Creation with Claude Code in 10 Minutes — Free Setup Guide",
+    title: "AI Content Creation with Claude Code in 10 Minutes: Free Setup Guide",
     description:
-      "Generate weeks of social media content with custom visuals — infographics, carousels, personal images — from one prompt using Claude Code.",
+      "Generate weeks of social media content with custom visuals (infographics, carousels, personal images) from one prompt using Claude Code.",
     type: "article",
     url: "https://oleg.ae/claude-content",
     publishedTime: "2026-05-12T00:00:00Z",

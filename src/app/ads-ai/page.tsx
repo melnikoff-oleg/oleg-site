@@ -56,7 +56,7 @@ const steps = [
       <div className="space-y-3">
         <p>
           Node.js is a small program that runs in the background. you install it
-          once and forget about it — the tool needs it to work.
+          once and forget about it. the tool needs it to work.
         </p>
         <ol className="list-decimal space-y-2 pl-5">
           <li>
@@ -75,7 +75,7 @@ const steps = [
             <span className="text-white">Download Node.js (LTS)</span>
           </li>
           <li>
-            open the downloaded file and install it — click &quot;Next&quot; /
+            open the downloaded file and install it, clicking &quot;Next&quot; /
             &quot;Continue&quot; through everything, don&apos;t change any
             settings
           </li>
@@ -108,7 +108,7 @@ const steps = [
             click the blue <span className="text-white">Install</span> button
           </li>
           <li>
-            once installed, it will ask you to sign in — follow the prompts to
+            once installed, it will ask you to sign in. follow the prompts to
             create an account. it costs{" "}
             <span className="text-white">$19/month</span> (you can cancel
             anytime)
@@ -147,7 +147,7 @@ const steps = [
           </li>
           <li>
             you should now have a folder called{" "}
-            <span className="text-white">ads-ai-main</span> — move it
+            <span className="text-white">ads-ai-main</span>. move it
             somewhere easy to find, like your Desktop
           </li>
         </ol>
@@ -169,7 +169,7 @@ const steps = [
             just downloaded and select it
           </li>
           <li>
-            if VS Code asks &quot;Do you trust the authors?&quot; — click{" "}
+            if VS Code asks &quot;Do you trust the authors?&quot;, click{" "}
             <span className="text-white">Yes, I trust the authors</span>
           </li>
         </ol>
@@ -197,7 +197,7 @@ const steps = [
             <p className="font-medium text-white">
               1. Anthropic (Claude AI){" "}
               <span className="font-normal text-zinc-500">
-                — writes your ad copy
+                (writes your ad copy)
               </span>
             </p>
             <p className="mt-1">
@@ -220,7 +220,7 @@ const steps = [
             <p className="font-medium text-white">
               2. Google Gemini{" "}
               <span className="font-normal text-zinc-500">
-                — analyzes your brand images
+                (analyzes your brand images)
               </span>
             </p>
             <p className="mt-1">
@@ -242,7 +242,7 @@ const steps = [
             <p className="font-medium text-white">
               3. FireCrawl{" "}
               <span className="font-normal text-zinc-500">
-                — reads your website
+                (reads your website)
               </span>
             </p>
             <p className="mt-1">
@@ -263,7 +263,7 @@ const steps = [
             <p className="font-medium text-white">
               4. Apify{" "}
               <span className="font-normal text-zinc-500">
-                — finds competitor ads on Meta
+                (finds competitor ads on Meta)
               </span>
             </p>
             <p className="mt-1">
@@ -277,7 +277,7 @@ const steps = [
                 console.apify.com
               </a>
               , create an account, go to{" "}
-              <span className="text-white">Settings → Integrations</span>, and
+              <span className="text-white">Settings, then Integrations</span>, and
               copy your API token
             </p>
           </div>
@@ -286,7 +286,7 @@ const steps = [
             <p className="font-medium text-white">
               5. Kie.ai{" "}
               <span className="font-normal text-zinc-500">
-                — generates ad images
+                (generates ad images)
               </span>
             </p>
             <p className="mt-1">
@@ -304,7 +304,7 @@ const steps = [
           </div>
         </div>
         <p>
-          save all 5 keys somewhere safe (like a notes app) — you&apos;ll paste
+          save all 5 keys somewhere safe (like a notes app). you&apos;ll paste
           them in the next step.
         </p>
       </div>
@@ -324,7 +324,7 @@ const steps = [
             <span className="text-white">Rename</span>
           </li>
           <li>
-            change the name from{" "}
+            change the name from {""}
             <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
               .env.example
             </code>{" "}
@@ -334,7 +334,7 @@ const steps = [
             </code>{" "}
             (remove the word &quot;example&quot;) and press Enter
           </li>
-          <li>click on the file to open it — you&apos;ll see something like this:</li>
+          <li>click on the file to open it. you&apos;ll see something like this:</li>
         </ol>
         <pre className="overflow-x-auto rounded-lg bg-white/5 p-4 text-sm text-zinc-300">
           <code>{`ANTHROPIC_API_KEY=
@@ -392,16 +392,16 @@ KIE_AI_API_KEY=kie-...`}</code>
         <ol className="list-decimal space-y-2 pl-5" start={3}>
           <li>
             Claude Code will run the commands for you. when it&apos;s done,
-            it&apos;ll say the server is running
+            it&apos;ll say the server is running.
           </li>
           <li>
             open your web browser (Chrome, Safari, etc.) and go to{" "}
-            <span className="text-white">localhost:3000</span> — you should see
+            <span className="text-white">localhost:3000</span>. you should see
             the tool
           </li>
         </ol>
         <p>
-          if anything goes wrong, just ask Claude Code in the chat — it can
+          if anything goes wrong, just ask Claude Code in the chat. it can
           read the error and fix it for you.
         </p>
       </div>
@@ -418,7 +418,7 @@ KIE_AI_API_KEY=kie-...`}</code>
         <ol className="list-decimal space-y-2 pl-5">
           <li>
             you should see the{" "}
-            <span className="text-white">Brand</span> page — if not, click{" "}
+            <span className="text-white">Brand</span> page. if not, click{" "}
             <span className="text-white">Brand</span> in the left sidebar
           </li>
           <li>
@@ -454,11 +454,11 @@ KIE_AI_API_KEY=kie-...`}</code>
             sidebar
           </li>
           <li>
-            you&apos;ll see suggested keywords based on your brand — you can
+            you&apos;ll see suggested keywords based on your brand. you can
             edit them or add your own
           </li>
           <li>
-            click <span className="text-white">Search</span> — the tool will
+            click <span className="text-white">Search</span>, and the tool will
             search the Meta Ad Library and find companies running ads in your
             space
           </li>
@@ -480,7 +480,7 @@ KIE_AI_API_KEY=kie-...`}</code>
             the left sidebar
           </li>
           <li>
-            click the <span className="text-white">Analyze</span> button — the
+            click the <span className="text-white">Analyze</span> button, and the
             AI will study the top 25 competitor ads
           </li>
           <li>
@@ -491,7 +491,7 @@ KIE_AI_API_KEY=kie-...`}</code>
                 they work
               </li>
               <li>
-                patterns across all the ads — what copy style, emotional angle,
+                patterns across all the ads: what copy style, emotional angle,
                 and visual approach keeps showing up
               </li>
             </ul>
@@ -536,7 +536,7 @@ KIE_AI_API_KEY=kie-...`}</code>
           </li>
         </ol>
         <p>
-          the tool automatically checks the quality of each concept — only the
+          the tool automatically checks the quality of each concept. only the
           good ones are shown.
         </p>
       </div>
@@ -548,13 +548,13 @@ export default function AdsAiPage() {
   return (
     <>
       <ArticleJsonLd
-        title="AI Ads Creator — Free Open Source Tool"
-        description="Clone winning Meta ads with AI. Study competitors' proven ads and generate new ad concepts — copy, visuals, and video scripts."
+        title="AI Ads Creator: Free Open Source Tool"
+        description="Clone winning Meta ads with AI. Study competitors' proven ads and generate new ad concepts: copy, visuals, and video scripts."
         url="https://oleg.ae/ads-ai"
         datePublished="2026-05-31"
         dateModified="2026-06-02"
         videoId={VIDEO_ID}
-        videoTitle="AI Ads Creator — Free Open Source Tool"
+        videoTitle="AI Ads Creator: Free Open Source Tool"
       />
 
       {/* Minimal header */}
@@ -593,7 +593,7 @@ export default function AdsAiPage() {
               variants={fadeUp}
               className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
             >
-              free tool — no coding required
+              free tool, no coding required
             </motion.span>
 
             <motion.h1
@@ -608,7 +608,7 @@ export default function AdsAiPage() {
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
               find what ads your competitors are running, see why they work, and
-              generate new ads for your brand — copy, images, and video scripts.
+              generate new ads for your brand: copy, images, and video scripts.
               all done by AI.
             </motion.p>
 

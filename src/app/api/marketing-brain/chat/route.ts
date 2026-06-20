@@ -15,7 +15,7 @@ export const maxDuration = 30;
 
 const MODEL = "claude-sonnet-4-6";
 const LIMIT_MESSAGE =
-  "you've hit today's limit of 30 questions. if you want more, just reach out to me — oleg@buildauthority.ai";
+  "you've hit today's limit of 30 questions. if you want more, just reach out to me: oleg@buildauthority.ai";
 
 export async function POST(req: Request) {
   let messages: ChatMessage[];
@@ -102,7 +102,7 @@ export async function POST(req: Request) {
         if (final.stop_reason === "refusal") {
           send(controller, {
             type: "error",
-            message: "i can't answer that one — try rephrasing.",
+            message: "i can't answer that one. try rephrasing.",
           });
         }
       } catch (err) {

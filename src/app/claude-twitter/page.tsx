@@ -71,7 +71,7 @@ const steps = [
           .
         </p>
         <p>
-          open the folder in VS Code — you&apos;ll see the full project
+          open the folder in VS Code. you&apos;ll see the full project
           structure on the left side with everything ready to configure.
         </p>
       </div>
@@ -87,7 +87,7 @@ const steps = [
             <p className="text-white font-medium">
               Apify{" "}
               <span className="font-normal text-zinc-500">
-                — scraping X/Twitter
+                for scraping X/Twitter
               </span>
             </p>
             <p className="mt-1">
@@ -107,7 +107,7 @@ const steps = [
             <p className="text-white font-medium">
               Gemini API{" "}
               <span className="font-normal text-zinc-500">
-                — analyzing competitor visuals
+                for analyzing competitor visuals
               </span>
             </p>
             <p className="mt-1">
@@ -127,7 +127,7 @@ const steps = [
             <p className="text-white font-medium">
               Anthropic API{" "}
               <span className="font-normal text-zinc-500">
-                — generating content
+                for generating content
               </span>
             </p>
             <p className="mt-1">
@@ -180,7 +180,7 @@ const steps = [
       <div className="space-y-3">
         <p>
           go to the creators tab in the dashboard. find twitter accounts in your
-          niche — people who are posting content related to your offer.
+          niche, people who are posting content related to your offer.
         </p>
         <p>
           paste their username, select a category, and the system will scrape
@@ -199,11 +199,11 @@ const steps = [
           <li>your brand context and ICP (ideal customer profile)</li>
           <li>content pillars and topics</li>
           <li>
-            analysis instructions — how to break down competitor posts (hooks,
+            analysis instructions: how to break down competitor posts (hooks,
             structure, engagement drivers)
           </li>
           <li>
-            generation instructions — how to turn their ideas into your own
+            generation instructions: how to turn their ideas into your own
             voice and niche
           </li>
         </ul>
@@ -257,7 +257,7 @@ const steps = [
           <p className="text-white font-medium">analyze competitor comments</p>
           <p className="mt-1">
             find gaps in what competitors cover by analyzing their comment
-            sections — then fill those gaps in your content.
+            sections, then fill those gaps in your content.
           </p>
         </div>
         <div>

@@ -35,7 +35,7 @@ export async function distillBusinessProfile(
     "that an AI marketing advisor will use to personalize its advice. Output clean markdown, " +
     "no preamble. Capture only what's actually present: what they do, their offers and pricing, " +
     "their ideal customer/audience, positioning and voice, notable proof/results, and key links. " +
-    "Be specific and brief — bullet points over prose. Omit anything not supported by the source. " +
+    "Be specific and brief: bullet points over prose. Omit anything not supported by the source. " +
     "No em dashes.";
   const user = `Source: ${sourceLabel}\n\nRAW CONTENT:\n${input}`;
   return complete(system, user, 1200);

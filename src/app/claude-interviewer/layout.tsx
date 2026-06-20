@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "AI Interviewer That Makes All Your Content — Free Setup Guide",
+    "AI Interviewer That Makes All Your Content: Free Setup Guide",
   description:
-    "Build an AI voice interviewer with Claude Code that asks you smart questions about your expertise, then turns the conversation into ready-to-post LinkedIn content. No writing, no editing — just talk.",
+    "Build an AI voice interviewer with Claude Code that asks you smart questions about your expertise, then turns the conversation into ready-to-post LinkedIn content. No writing, no editing, just talk.",
   keywords: [
     "Claude Code",
     "Claude AI",
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     "automated LinkedIn posts",
   ],
   openGraph: {
-    title: "AI Interviewer That Makes All Your Content — Free Setup Guide",
+    title: "AI Interviewer That Makes All Your Content: Free Setup Guide",
     description:
-      "Build an AI voice interviewer that turns casual conversations into viral LinkedIn posts. No writing required — just talk about your expertise.",
+      "Build an AI voice interviewer that turns casual conversations into viral LinkedIn posts. No writing required, just talk about your expertise.",
     type: "article",
     url: "https://oleg.ae/claude-interviewer",
     publishedTime: "2026-05-17T00:00:00Z",

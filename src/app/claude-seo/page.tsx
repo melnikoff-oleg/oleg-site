@@ -51,7 +51,7 @@ const steps = [
         </p>
         <p>
           claude code costs $19/mo through the Max plan. it gives you access to
-          claude directly inside your editor — no copy-pasting between tabs.
+          claude directly inside your editor, no copy-pasting between tabs.
         </p>
       </div>
     ),
@@ -103,7 +103,7 @@ const steps = [
           robots.txt, structured data, and internal linking.
         </p>
         <p>
-          you get a full report of what&apos;s missing and what needs fixing —
+          you get a full report of what&apos;s missing and what needs fixing,
           prioritized by impact.
         </p>
       </div>
@@ -188,7 +188,7 @@ export default function ClaudeSeoPage() {
     <>
       <ArticleJsonLd
         title="AI SEO Optimization with Claude Code"
-        description="Let Claude Code handle your entire SEO strategy — meta tags, structured data, sitemaps, keyword research, and content optimization in one session."
+        description="Let Claude Code handle your entire SEO strategy: meta tags, structured data, sitemaps, keyword research, and content optimization in one session."
         url="https://oleg.ae/claude-seo"
         datePublished="2026-05-12"
         dateModified="2026-05-13"
@@ -245,7 +245,7 @@ export default function ClaudeSeoPage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              let claude code handle your entire seo strategy — meta tags,
+              let claude code handle your entire seo strategy: meta tags,
               structured data, sitemaps, keyword research, and ongoing
               optimization. all in one session.
             </motion.p>

@@ -31,8 +31,8 @@ const steps = [
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
             code.visualstudio.com
-          </a>{" "}
-          — it auto-detects your OS.
+          </a>
+          . it auto-detects your OS.
         </p>
         <p>
           run the installer and verify VS Code launches properly.
@@ -113,7 +113,7 @@ const steps = [
             <p className="text-white font-medium">
               Apify{" "}
               <span className="font-normal text-zinc-500">
-                — scraping Instagram
+                (scraping Instagram)
               </span>
             </p>
             <p className="mt-1">
@@ -134,11 +134,11 @@ const steps = [
             <p className="text-white font-medium">
               Google Gemini{" "}
               <span className="font-normal text-zinc-500">
-                — analyzing video content
+                (analyzing video content)
               </span>
             </p>
             <p className="mt-1">
-              analyzes the actual video content of reels — hooks, visuals,
+              analyzes the actual video content of reels: hooks, visuals,
               retention mechanisms. get your key at{" "}
               <a
                 href="https://aistudio.google.com/apikey"
@@ -155,7 +155,7 @@ const steps = [
             <p className="text-white font-medium">
               Anthropic{" "}
               <span className="font-normal text-zinc-500">
-                — generating scripts
+                (generating scripts)
               </span>
             </p>
             <p className="mt-1">
@@ -222,7 +222,7 @@ const steps = [
         </p>
         <p>
           claude code will install dependencies, start the app, and walk you
-          through the workflow — scraping competitor reels, analyzing hooks and
+          through the workflow: scraping competitor reels, analyzing hooks and
           retention patterns, and generating ready-to-film scripts.
         </p>
       </div>

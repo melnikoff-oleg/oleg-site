@@ -71,7 +71,7 @@ const steps = [
           <div>
             <p className="text-white font-medium">
               Apify{" "}
-              <span className="font-normal text-zinc-500">— scraping leads</span>
+              <span className="font-normal text-zinc-500">(scraping leads)</span>
             </p>
             <p className="mt-1">
               scrapes social media platforms (LinkedIn, Instagram, Facebook) to
@@ -91,7 +91,7 @@ const steps = [
             <p className="text-white font-medium">
               Kie.ai{" "}
               <span className="font-normal text-zinc-500">
-                — generating visuals
+                (generating visuals)
               </span>
             </p>
             <p className="mt-1">
@@ -125,7 +125,7 @@ const steps = [
     content: (
       <div className="space-y-4">
         <p>
-          this is the key step. no project files to download — claude code
+          this is the key step. no project files to download: claude code
           builds the entire app from a prompt.
         </p>
         <p>
@@ -136,8 +136,8 @@ const steps = [
           , then give it a prompt like:
         </p>
         <div className="rounded-lg bg-white/[0.03] border border-white/10 p-5 text-[15px] leading-relaxed text-zinc-300 italic">
-          &quot;Create a web application where I can plug in a URL of a person —
-          it can be LinkedIn, Instagram, or Facebook. On the backend, scrape
+          &quot;Create a web application where I can plug in a URL of a person.
+          It can be LinkedIn, Instagram, or Facebook. On the backend, scrape
           information about this person using Apify, then generate a
           personalized outreach message with a visual using Kie.ai. The message
           should provide value based on what I&apos;m selling. I&apos;m selling
@@ -149,7 +149,7 @@ const steps = [
           the value piece.
         </p>
         <p>
-          claude code will build the full web app for you — frontend, backend,
+          claude code will build the full web app for you: frontend, backend,
           API integrations, everything.
         </p>
       </div>
@@ -161,7 +161,7 @@ export default function ClaudeOutreachPage() {
   return (
     <>
       <ArticleJsonLd
-        title="Claude Code for Cold Outreach — Free AI Outreach Setup Guide"
+        title="Claude Code for Cold Outreach: Free AI Outreach Setup Guide"
         description="Build an AI cold outreach system with Claude Code. Scrape leads, generate personalized messages with visuals, and close deals on LinkedIn, Instagram, or Facebook."
         url="https://oleg.ae/claude-outreach"
         datePublished="2026-05-12"

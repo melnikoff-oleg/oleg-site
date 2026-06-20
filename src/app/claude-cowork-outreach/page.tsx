@@ -69,11 +69,11 @@ const steps = [
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
             apify.com
-          </a>{" "}
-          — the free tier gives you 5,000 leads/month.
+          </a>
+          . the free tier gives you 5,000 leads/month.
         </p>
         <p>
-          use LinkedIn scraper actors to find prospects matching your ICP —
+          use LinkedIn scraper actors to find prospects matching your ICP:
           filter by industry, role, location, and company size.
         </p>
       </div>
@@ -85,7 +85,7 @@ const steps = [
       <div className="space-y-3">
         <p>
           decide what value you&apos;ll provide in each message. not generic
-          &quot;let&apos;s connect&quot; — send something useful: a content
+          &quot;let&apos;s connect&quot;, but something useful: a content
           audit, improved banner, industry insight.
         </p>
         <p>
@@ -131,7 +131,7 @@ const steps = [
           conversation and funnel toward booking a call.
         </p>
         <p>
-          keep it personal — use AI for research and drafting, but review before
+          keep it personal: use AI for research and drafting, but review before
           sending.
         </p>
       </div>
@@ -166,7 +166,7 @@ export default function ClaudeCoworkOutreachPage() {
   return (
     <>
       <ArticleJsonLd
-        title="Claude Cowork for Cold Outreach — AI LinkedIn Automation"
+        title="Claude Cowork for Cold Outreach: AI LinkedIn Automation"
         description="Use Claude Cowork to automate LinkedIn cold outreach. Research prospects, write personalized messages, and send connection requests on autopilot."
         url="https://oleg.ae/claude-cowork-outreach"
         datePublished="2026-05-12"
@@ -225,7 +225,7 @@ export default function ClaudeCoworkOutreachPage() {
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
               claude cowork browses linkedin, researches your prospects, writes
-              personalized messages, and sends connections — all on autopilot
+              personalized messages, and sends connections, all on autopilot
               while you focus on your business.
             </motion.p>
           </motion.div>

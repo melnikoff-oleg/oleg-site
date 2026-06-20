@@ -28,7 +28,7 @@ export type VideoChunk = {
 export type Chunk = BookChunk | VideoChunk;
 
 // A retrieved source, shaped for rendering a visual card on the client.
-// `quote` is a short (<=~25 word) snippet — the full chunk text never leaves the server.
+// `quote` is a short (<=~25 word) snippet; the full chunk text never leaves the server.
 export type Source = {
   n: number; // 1-based citation number shown to the model and the user
   type: "book" | "video";

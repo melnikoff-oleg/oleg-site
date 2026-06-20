@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI TikTok Content with Claude Code — Free Setup Guide (2026)",
+  title: "AI TikTok Content with Claude Code: Free Setup Guide (2026)",
   description:
     "Build an AI system with Claude Code that reverse-engineers viral TikToks in your niche, analyzes what makes them work, and generates scroll-stopping video concepts and scripts automatically.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "TikTok content AI",
   ],
   openGraph: {
-    title: "AI TikTok Content with Claude Code — Free Setup Guide",
+    title: "AI TikTok Content with Claude Code: Free Setup Guide",
     description:
       "Build an AI system that reverse-engineers viral TikToks and generates scroll-stopping video concepts and scripts automatically.",
     type: "article",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI TikTok Content with Claude Code — Free Setup Guide",
+    title: "AI TikTok Content with Claude Code: Free Setup Guide",
     description:
       "Reverse-engineer viral TikToks and generate scroll-stopping video concepts with Claude Code.",
   },

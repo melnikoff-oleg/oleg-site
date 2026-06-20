@@ -118,7 +118,7 @@ export function search(query: string, k = 6): Chunk[] {
   return scored.slice(0, k).map((x) => idx.docs[x.i].chunk);
 }
 
-// Extract a short, query-centered quote (<= `width` words) — mirrors query.py snippet().
+// Extract a short, query-centered quote (<= `width` words); mirrors query.py snippet().
 function snippet(text: string, query: string, width = 24): string {
   const qt = new Set(tok(query));
   const words = text.split(/\s+/);

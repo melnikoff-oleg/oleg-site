@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "AI B2B Outreach with Claude Code (35% Reply Rate) — Free Setup Guide",
+    "AI B2B Outreach with Claude Code (35% Reply Rate): Free Setup Guide",
   description:
     "Build a hyper-personalized AI B2B outreach system with Claude Code. Find leads on LinkedIn, score them with AI, and generate value-driven messages with custom visuals that get a 35% reply rate.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "B2B lead gen AI",
   ],
   openGraph: {
-    title: "AI B2B Outreach with Claude Code (35% Reply Rate) — Free Setup Guide",
+    title: "AI B2B Outreach with Claude Code (35% Reply Rate): Free Setup Guide",
     description:
       "Build a hyper-personalized AI B2B outreach system with Claude Code. Find leads, score them, and generate value-driven messages that actually get replies.",
     type: "article",

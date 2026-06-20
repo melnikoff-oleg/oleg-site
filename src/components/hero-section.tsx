@@ -44,7 +44,7 @@ export function HeroSection() {
             per="line"
             className="mx-auto mt-6 max-w-2xl text-balance text-lg text-zinc-400 md:text-xl"
           >
-            now i'm running a service business that's 90% AI inside — and sharing AI systems for marketing with 18K+ on youtube.
+            now i'm running a service business that's 90% AI inside, and sharing AI systems for marketing with 18K+ on youtube.
           </TextEffect>
 
           {/* CTAs */}
@@ -129,33 +129,27 @@ export function HeroSection() {
               priority
             />
 
-            {/* Legibility scrim — darkens the lower portion so the quote reads cleanly */}
-            <div className="pointer-events-none absolute inset-x-2 bottom-2 h-2/3 rounded-b-xl bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+            {/* Legibility scrim: darkens the lower portion so the quote reads cleanly */}
+            <div className="pointer-events-none absolute inset-x-2 bottom-2 h-3/4 rounded-b-xl bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
 
             {/* Quote overlay */}
             <motion.figure
-              initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ delay: 2, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-              className="pointer-events-none absolute inset-x-0 bottom-0 px-5 pb-5 sm:px-8 sm:pb-8"
+              transition={{ delay: 1.8, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+              className="pointer-events-none absolute inset-x-0 bottom-0 px-6 pb-6 sm:px-10 sm:pb-9"
             >
-              <div className="mx-auto max-w-2xl">
-                <span
-                  aria-hidden
-                  className="block text-2xl leading-none text-white/25 sm:text-3xl"
-                >
-                  &ldquo;
+              <blockquote className="mx-auto max-w-3xl text-balance text-lg font-semibold leading-snug tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] sm:text-2xl md:text-3xl">
+                <span className="text-white/70">&ldquo;</span>made{" "}
+                <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
+                  $700k by the age 24
+                </span>{" "}
+                by applying AI for trading, then went all-in on{" "}
+                <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
+                  AI for marketing
                 </span>
-                <blockquote className="-mt-1 text-balance text-sm font-light leading-relaxed tracking-tight text-white/85 sm:text-base md:text-lg">
-                  made{" "}
-                  <span className="font-medium text-white">$700k</span> by the
-                  age of 24 applying AI to trading — then went all-in on{" "}
-                  <span className="font-medium text-white">
-                    AI for marketing
-                  </span>
-                  .
-                </blockquote>
-              </div>
+                .<span className="text-white/70">&rdquo;</span>
+              </blockquote>
             </motion.figure>
 
             <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />

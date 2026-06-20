@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The $60K LinkedIn Post — 3 AI Prompts to Write Posts That Sell",
+  title: "The $60K LinkedIn Post: 3 AI Prompts to Write Posts That Sell",
   description:
     "The exact 3-prompt system that generated $60,000 from a single LinkedIn post. Build your content foundation, run an AI interview, and get posts written in your own words. Works with Claude or ChatGPT.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "Authority AI",
   ],
   openGraph: {
-    title: "The $60K LinkedIn Post — 3 AI Prompts to Write Posts That Sell",
+    title: "The $60K LinkedIn Post: 3 AI Prompts to Write Posts That Sell",
     description:
       "The exact 3-prompt system that generated $60,000 from a single LinkedIn post. Works with Claude or ChatGPT.",
     type: "article",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The $60K LinkedIn Post — 3 AI Prompts to Write Posts That Sell",
+    title: "The $60K LinkedIn Post: 3 AI Prompts to Write Posts That Sell",
     description:
       "The exact 3-prompt system that generated $60,000 from a single LinkedIn post. Works with Claude or ChatGPT.",
   },

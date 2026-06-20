@@ -24,7 +24,7 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
   {
     slug: "marketing-brain",
     title: "The Marketing Brain",
-    description: "Ask the greatest marketing minds — an AI chat grounded in 8 books & 75 talks, every answer cited to the page or timecode",
+    description: "Ask the greatest marketing minds with an AI chat grounded in 8 books & 75 talks, every answer cited to the page or timecode",
     icon: Brain,
   },
   {
@@ -108,13 +108,13 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
   {
     slug: "ads-ai",
     title: "AI Ads Creator",
-    description: "Study competitors' Meta ads with AI and generate ad concepts — copy, visuals, and video scripts",
+    description: "Study competitors' Meta ads with AI and generate ad concepts: copy, visuals, and video scripts",
     icon: Sparkles,
   },
   {
     slug: "60k-linkedin-post",
     title: "$60K LinkedIn Post",
-    description: "3 AI prompts that generated $60,000 from a single LinkedIn post — copy and use them",
+    description: "3 AI prompts that generated $60,000 from a single LinkedIn post, copy and use them",
     icon: DollarSign,
   },
 ];

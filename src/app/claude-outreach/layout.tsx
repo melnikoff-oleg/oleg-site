@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Claude Code for Cold Outreach — Free AI Outreach Setup Guide (2026)",
+  title: "Claude Code for Cold Outreach: Free AI Outreach Setup Guide (2026)",
   description:
     "Build an AI cold outreach system with Claude Code in minutes. Scrape leads from LinkedIn, Instagram, or Facebook, generate personalized messages with custom visuals, and close deals automatically.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "AI sales outreach",
   ],
   openGraph: {
-    title: "Claude Code for Cold Outreach — Free AI Outreach Setup Guide",
+    title: "Claude Code for Cold Outreach: Free AI Outreach Setup Guide",
     description:
       "Build an AI cold outreach system with Claude Code. Scrape leads, generate personalized messages with visuals, and close deals on autopilot.",
     type: "article",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Claude Code for Cold Outreach — Free Setup Guide",
+    title: "Claude Code for Cold Outreach: Free Setup Guide",
     description:
       "Build an AI cold outreach system with Claude Code. Scrape leads, generate personalized messages, and close deals automatically.",
   },
