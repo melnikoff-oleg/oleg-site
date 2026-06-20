@@ -15,7 +15,7 @@ export const maxDuration = 30;
 
 const MODEL = "claude-sonnet-4-6";
 const LIMIT_MESSAGE =
-  "you've hit today's limit of 30 questions. if you want more, just reach out to me: oleg@buildauthority.ai";
+  "you've hit today's limit of 30 questions. if you want more, just reach out to me on linkedin (linkedin.com/in/olegai).";
 
 export async function POST(req: Request) {
   let messages: ChatMessage[];

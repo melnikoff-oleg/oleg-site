@@ -59,7 +59,7 @@ export function useBrainChat() {
           error: true,
           content:
             data?.message ??
-            "you've hit today's limit. reach out: oleg@buildauthority.ai",
+            "you've hit today's limit. reach out on linkedin (linkedin.com/in/olegai).",
         }));
         return;
       }
