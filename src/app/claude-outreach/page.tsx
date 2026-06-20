@@ -219,8 +219,9 @@ export default function ClaudeOutreachPage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              follow these steps to set up your ai outreach system. click each
-              step for full instructions.
+              build a thoughtful cold outreach system with claude code. it
+              researches each prospect, then writes a personal, value-first
+              message. follow the steps below to set it up.
             </motion.p>
           </motion.div>
         </section>

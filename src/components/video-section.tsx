@@ -74,8 +74,7 @@ export function VideoSection() {
           variants={fadeUp}
           className="mt-6 text-center text-zinc-500"
         >
-          subscribe for weekly claude code tutorials and ai automation
-          breakdowns.
+          subscribe for weekly claude code and ai-for-marketing tutorials.
         </motion.p>
       </motion.div>
     </section>

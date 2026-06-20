@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is the workspace for **Oleg Melnikov's personal landing page** — a one-pager website that quickly communicates who Oleg is to the public world: his story, expertise, what he offers, and how to connect.
 
-**Oleg** is an AI software entrepreneur with 5 years in AI. Former big tech (Yandex, JetBrains) and hedge fund (Amsterdam). Now runs Authority AI (helps B2B founders build authentic personal brands) and a growing YouTube channel (16.6K subs, AI for marketing tutorials).
+**Oleg** is an AI software entrepreneur with 5 years in AI. Former big tech (Yandex, JetBrains) and hedge fund (Amsterdam). Now runs Boldane (boldane.com — premium personal branding that helps founders with real expertise become known and trusted; $2K/mo) and a growing YouTube channel (18K+ subs, AI for marketing tutorials). Core idea: bridging media and software so people with real stories become known. Not positioned as "an AI tool" or "fully automated"; AI is a capability under the hood, not the pitch.
 
 **This file (CLAUDE.md) is the foundation.** It is automatically loaded at the start of every session. Keep it current — it is the single source of truth for how Claude should understand and operate within this workspace.
 
@@ -128,9 +128,9 @@ This site should convey:
 
 - **Who Oleg is** -- AI software entrepreneur, 5 years in AI, big tech + hedge fund background, math olympiad winner
 - **The arc** -- Built AI in big tech and as an entrepreneur; now focused on AI systems for marketing
-- **What he offers** -- Authority AI (authentic personal brands for B2B founders), YouTube (AI for marketing tutorials), Skool community
+- **What he offers** -- Boldane (premium personal branding for founders with real expertise), YouTube (AI for marketing tutorials), Skool community
 - **Social proof** -- 1M+ client views, Mike Kamo, $6.6K first deal in 14 days, 16.6K YouTube subs, 500K+ YouTube views, math/CS credentials
-- **How to connect** -- YouTube (@Oleg-Melnikov), LinkedIn (/olegai), Instagram, buildauthority.ai
+- **How to connect** -- YouTube (@Oleg-Melnikov), LinkedIn (/olegai), Instagram, boldane.com
 
 Key references in the main repo (`/Users/olegmelnikov/Desktop/Software Projects/oleeeg`) contain deeper context if needed.
 

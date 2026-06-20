@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "ChatGPT LinkedIn prompts",
     "AI personal branding",
     "LinkedIn content strategy",
-    "Authority AI",
+    "Boldane",
   ],
   openGraph: {
     title: "The $60K LinkedIn Post: 3 AI Prompts to Write Posts That Sell",

@@ -47,13 +47,13 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
   },
   {
     slug: "claude-twitter",
-    title: "X/Twitter Content Machine",
-    description: "Automate viral X/Twitter content with Claude Code",
+    title: "X/Twitter Content System",
+    description: "Turn your expertise into a steady stream of X/Twitter content with Claude Code",
     icon: MessageSquare,
   },
   {
     slug: "claude-content",
-    title: "Content Creation in 10 Min",
+    title: "Content Creation System",
     description: "Generate weeks of social media content with custom visuals from one prompt",
     icon: PenTool,
   },
@@ -77,8 +77,8 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
   },
   {
     slug: "claude-trend-scanner",
-    title: "Trend Scanner for 10x Views",
-    description: "Scan trending topics in your niche to create content that gets views",
+    title: "Trend Scanner",
+    description: "Scan trending topics in your niche to create content worth watching",
     icon: Search,
   },
   {

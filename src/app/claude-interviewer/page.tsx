@@ -257,8 +257,8 @@ export default function ClaudeInterviewerPage() {
   return (
     <>
       <ArticleJsonLd
-        title="AI Interviewer That Makes All Your Content"
-        description="Build an AI voice interviewer that turns casual conversations into viral LinkedIn posts. No writing required, just talk about your expertise."
+        title="An AI Interviewer That Turns Your Expertise Into Content"
+        description="Build an AI voice interviewer that turns a real conversation about your work into ready-to-post LinkedIn content. You talk, it writes, the ideas stay yours."
         url="https://oleg.ae/claude-interviewer"
         datePublished="2026-05-17"
         dateModified="2026-05-17"
@@ -308,16 +308,16 @@ export default function ClaudeInterviewerPage() {
               variants={fadeUp}
               className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             >
-              AI interviewer that makes all your content
+              an AI interviewer that turns your expertise into content
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              build a voice AI agent that interviews you about your expertise,
-              then turns the conversation into ready-to-post linkedin content. no
-              writing. no editing. just talk.
+              build a voice AI agent that interviews you about your work, then
+              shapes the conversation into ready-to-post linkedin content. you
+              talk, it writes. the ideas stay yours.
             </motion.p>
           </motion.div>
         </section>

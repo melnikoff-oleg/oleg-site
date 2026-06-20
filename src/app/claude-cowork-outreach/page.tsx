@@ -224,9 +224,9 @@ export default function ClaudeCoworkOutreachPage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              claude cowork browses linkedin, researches your prospects, writes
-              personalized messages, and sends connections, all on autopilot
-              while you focus on your business.
+              claude cowork browses linkedin, researches each prospect, writes a
+              personalized message, and sends the connection. you handle the
+              relationships that matter while it does the groundwork.
             </motion.p>
           </motion.div>
         </section>

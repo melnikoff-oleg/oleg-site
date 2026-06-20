@@ -285,16 +285,16 @@ export default function ClaudeReelsPage() {
               variants={fadeUp}
               className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             >
-              claude code for viral instagram reels
+              claude code for instagram reels that earn attention
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              reverse-engineer viral reels from your competitors and generate
-              ready-to-film scripts with hooks, retention analysis, and visual
-              direction. built in under 30 minutes.
+              study the reels actually winning in your niche, then turn what you
+              learn into ready-to-film scripts with sharp hooks, retention
+              analysis, and clear visual direction. craft over guesswork.
             </motion.p>
           </motion.div>
         </section>

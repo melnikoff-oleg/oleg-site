@@ -263,7 +263,7 @@ export default function ClaudeMarketingPage() {
             >
               five real marketing use cases with claude code: instagram reels,
               competitor analysis, ad campaigns, cold outreach, and content
-              generation. all in one walkthrough.
+              creation. one walkthrough, all the systems oleg actually uses.
             </motion.p>
           </motion.div>
         </section>

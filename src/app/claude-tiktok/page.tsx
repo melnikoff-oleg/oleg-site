@@ -278,16 +278,16 @@ export default function ClaudeTiktokPage() {
               variants={fadeUp}
               className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             >
-              claude code for viral tiktok videos
+              claude code for tiktok videos that hold attention
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              reverse-engineer viral tiktoks in your niche and generate
-              scroll-stopping video concepts and scripts with ai. set it up in
-              10 minutes.
+              study the tiktoks earning real reach in your niche, understand
+              what makes them work, and turn it into thumb-stopping video
+              concepts and scripts with ai.
             </motion.p>
           </motion.div>
         </section>

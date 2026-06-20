@@ -170,13 +170,13 @@ export default function ClaudeContentPage() {
   return (
     <>
       <ArticleJsonLd
-        title="AI Content Creation with Claude Code in 10 Minutes"
-        description="Generate weeks of social media content with custom visuals (infographics, carousels, personal images) from a single prompt using Claude Code."
+        title="Content Creation System with Claude Code"
+        description="Produce weeks of social media content with custom visuals (infographics, carousels, personal images) from a single prompt using Claude Code."
         url="https://oleg.ae/claude-content"
         datePublished="2026-05-12"
         dateModified="2026-05-13"
         videoId="QOuH88WW7bQ"
-        videoTitle="Claude Code for Content Creation in 10 Minutes"
+        videoTitle="Claude Code Content Creation System"
       />
       {/* Minimal header */}
       <header className="px-2">
@@ -221,14 +221,14 @@ export default function ClaudeContentPage() {
               variants={fadeUp}
               className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             >
-              claude code for content creation in 10 minutes
+              claude code content creation system
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              generate weeks of social media content with custom visuals:
+              produce weeks of social media content with custom visuals:
               infographics, carousels, personal images, all from a single prompt.
               works for linkedin, instagram, x, and more.
             </motion.p>
@@ -273,7 +273,7 @@ export default function ClaudeContentPage() {
               >
                 <iframe
                   src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                  title="Claude Code for Content Creation in 10 Minutes"
+                  title="Claude Code Content Creation System"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="absolute inset-0 h-full w-full"

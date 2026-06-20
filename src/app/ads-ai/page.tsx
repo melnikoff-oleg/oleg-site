@@ -549,7 +549,7 @@ export default function AdsAiPage() {
     <>
       <ArticleJsonLd
         title="AI Ads Creator: Free Open Source Tool"
-        description="Clone winning Meta ads with AI. Study competitors' proven ads and generate new ad concepts: copy, visuals, and video scripts."
+        description="Study the Meta ads your competitors are actually running, understand why they convert, and generate new ad concepts for your brand: copy, visuals, and video scripts."
         url="https://oleg.ae/ads-ai"
         datePublished="2026-05-31"
         dateModified="2026-06-02"
@@ -607,9 +607,9 @@ export default function AdsAiPage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              find what ads your competitors are running, see why they work, and
-              generate new ads for your brand: copy, images, and video scripts.
-              all done by AI.
+              study the ads your competitors are actually running, understand
+              why they convert, and generate new ads for your brand: copy,
+              images, and video scripts. all done by AI.
             </motion.p>
 
             <motion.p

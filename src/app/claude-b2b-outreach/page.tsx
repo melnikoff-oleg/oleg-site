@@ -316,9 +316,10 @@ export default function ClaudeB2bOutreachPage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              build a personalized outreach system that finds leads on linkedin,
-              scores them, and generates value-first messages with custom
-              visuals. no generic pitches.
+              build a personalized b2b outreach system with claude code. it
+              finds the right leads on linkedin, scores them, and writes
+              value-first messages with custom visuals. no generic pitches, just
+              outreach worth replying to.
             </motion.p>
           </motion.div>
         </section>

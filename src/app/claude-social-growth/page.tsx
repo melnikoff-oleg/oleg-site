@@ -182,12 +182,12 @@ export default function ClaudeSocialGrowthPage() {
     <>
       <ArticleJsonLd
         title="AI Social Media Growth with Claude Code"
-        description="Analyze thousands of competitor videos, identify viral outliers, and build a data-driven AI content strategy for YouTube, Instagram, and TikTok growth."
+        description="Analyze thousands of competitor videos, find the standout performers, and build a data-driven content strategy for YouTube, Instagram, and TikTok growth."
         url="https://oleg.ae/claude-social-growth"
         datePublished="2026-05-12"
         dateModified="2026-05-13"
         videoId="GK3JFG7x7LA"
-        videoTitle="Claude Code for Viral Social Media Growth"
+        videoTitle="Claude Code for Social Media Growth"
       />
       {/* Minimal header */}
       <header className="px-2">
@@ -232,16 +232,16 @@ export default function ClaudeSocialGrowthPage() {
               variants={fadeUp}
               className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             >
-              claude code for viral social media growth
+              claude code for social media growth
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              analyze thousands of competitor videos, find viral outliers, and
-              build a data-driven content strategy for your channel. all
-              automated with claude code.
+              analyze thousands of competitor videos, find the ones that truly
+              outperform, and build a data-driven content strategy for your
+              channel, all with claude code.
             </motion.p>
           </motion.div>
         </section>
@@ -281,7 +281,7 @@ export default function ClaudeSocialGrowthPage() {
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                  title="Claude Code for Viral Social Media Growth"
+                  title="Claude Code for Social Media Growth"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="absolute inset-0 h-full w-full"

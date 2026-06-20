@@ -234,13 +234,13 @@ export default function ClaudeTrendScannerPage() {
   return (
     <>
       <ArticleJsonLd
-        title="AI Trend Scanner with Claude Code: Get 10x More Views"
-        description="Build an AI trend scanner that monitors Twitter, Reddit, YouTube, TikTok, and websites for trending topics in your niche. Get a daily briefing automatically."
+        title="AI Trend Scanner with Claude Code"
+        description="Build an AI trend scanner that monitors Twitter, Reddit, YouTube, TikTok, and websites for trending topics in your niche. Get a structured briefing every morning, automatically."
         url="https://oleg.ae/claude-trend-scanner"
         datePublished="2026-05-12"
         dateModified="2026-05-13"
         videoId="gVpAjLUnD2c"
-        videoTitle="Claude Code Trend Scanner for 10x More Views"
+        videoTitle="Claude Code Trend Scanner"
       />
       {/* Minimal header */}
       <header className="px-2">
@@ -285,7 +285,7 @@ export default function ClaudeTrendScannerPage() {
               variants={fadeUp}
               className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             >
-              claude code system for 10x more views
+              claude code trend scanner
             </motion.h1>
 
             <motion.p
@@ -334,7 +334,7 @@ export default function ClaudeTrendScannerPage() {
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                  title="Claude Code System for 10x More Views"
+                  title="Claude Code Trend Scanner"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="absolute inset-0 h-full w-full"

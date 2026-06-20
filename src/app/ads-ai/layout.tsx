@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "AI Ads Creator: Free Open Source Tool",
   description:
-    "Clone winning Meta ads with AI. Ads AI studies your competitors' proven ads and generates new ad concepts for your brand: copy, visuals, and video scripts. Free and open source.",
+    "Study the Meta ads your competitors are actually running, understand why they convert, and generate new ad concepts for your brand: copy, visuals, and video scripts. Free and open source.",
   keywords: [
     "AI ad creator",
     "AI ad generator",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Ads Creator: Free Open Source Tool",
     description:
-      "Clone winning Meta ads with AI. Study competitors' proven ads and generate new ad concepts: copy, visuals, and video scripts.",
+      "Study the Meta ads your competitors are actually running, understand why they convert, and generate new ad concepts: copy, visuals, and video scripts.",
     type: "article",
     url: "https://oleg.ae/ads-ai",
     publishedTime: "2026-05-31T00:00:00Z",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Ads Creator: Free Open Source Tool",
     description:
-      "Clone winning Meta ads with AI. Study competitors' proven ads and generate new ad concepts: copy, visuals, and video scripts.",
+      "Study the Meta ads your competitors are actually running, understand why they convert, and generate new ad concepts: copy, visuals, and video scripts.",
   },
   alternates: {
     canonical: "https://oleg.ae/ads-ai",

@@ -278,13 +278,13 @@ export default function ClaudeTwitterPage() {
   return (
     <>
       <ArticleJsonLd
-        title="AI Twitter Content Machine with Claude Code"
-        description="Build an AI-powered X/Twitter content system with Claude Code. Scrape competitor tweets, analyze what goes viral, and generate ready-to-publish posts."
+        title="X/Twitter Content System with Claude Code"
+        description="Build an X/Twitter content system with Claude Code. Study what works in your competitors' tweets and generate ready-to-publish posts in your own voice."
         url="https://oleg.ae/claude-twitter"
         datePublished="2026-05-12"
         dateModified="2026-05-13"
         videoId="JQQhT0edXXw"
-        videoTitle="Claude Code X/Twitter Content Machine"
+        videoTitle="Claude Code X/Twitter Content System"
       />
       {/* Minimal header */}
       <header className="px-2">
@@ -329,15 +329,16 @@ export default function ClaudeTwitterPage() {
               variants={fadeUp}
               className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
             >
-              claude code x/twitter content machine
+              claude code x/twitter content system
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              reverse-engineer viral tweets from your competitors and generate
-              ready-to-publish content for your niche. set it up in 10 minutes.
+              study what actually works in your competitors&apos; tweets, then
+              generate ready-to-publish content written in your own voice and
+              for your own niche.
             </motion.p>
           </motion.div>
         </section>
@@ -380,7 +381,7 @@ export default function ClaudeTwitterPage() {
               >
                 <iframe
                   src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                  title="Claude Code X/Twitter Content Machine"
+                  title="Claude Code X/Twitter Content System"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="absolute inset-0 h-full w-full"

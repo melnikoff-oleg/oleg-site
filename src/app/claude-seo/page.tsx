@@ -245,9 +245,10 @@ export default function ClaudeSeoPage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              let claude code handle your entire seo strategy: meta tags,
-              structured data, sitemaps, keyword research, and ongoing
-              optimization. all in one session.
+              put the technical side of seo on solid footing with claude code:
+              meta tags, structured data, sitemaps, keyword research, and the
+              ongoing work that keeps a site ranking. handled in one focused
+              session.
             </motion.p>
           </motion.div>
         </section>

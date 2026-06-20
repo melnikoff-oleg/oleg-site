@@ -32,8 +32,8 @@ const socials = [
     ),
   },
   {
-    name: "authority ai",
-    href: "https://buildauthority.ai",
+    name: "boldane",
+    href: "https://www.boldane.com",
     icon: (
       <svg viewBox="0 0 20 20" fill="currentColor" className="size-5">
         <path

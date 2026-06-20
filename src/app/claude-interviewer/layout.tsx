@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "AI Interviewer That Makes All Your Content: Free Setup Guide",
+    "An AI Interviewer That Turns Your Expertise Into Content: Free Setup Guide",
   description:
-    "Build an AI voice interviewer with Claude Code that asks you smart questions about your expertise, then turns the conversation into ready-to-post LinkedIn content. No writing, no editing, just talk.",
+    "Build an AI voice interviewer with Claude Code that asks thoughtful questions about your work, then shapes the conversation into ready-to-post LinkedIn content. You talk, it writes, the ideas stay yours.",
   keywords: [
     "Claude Code",
     "Claude AI",
@@ -15,12 +15,13 @@ export const metadata: Metadata = {
     "Claude Code tutorial",
     "AI content from voice",
     "Claude Code for marketing",
-    "automated LinkedIn posts",
+    "LinkedIn content system",
   ],
   openGraph: {
-    title: "AI Interviewer That Makes All Your Content: Free Setup Guide",
+    title:
+      "An AI Interviewer That Turns Your Expertise Into Content: Free Setup Guide",
     description:
-      "Build an AI voice interviewer that turns casual conversations into viral LinkedIn posts. No writing required, just talk about your expertise.",
+      "Build an AI voice interviewer that turns a real conversation about your work into ready-to-post LinkedIn content. You talk, it writes, the ideas stay yours.",
     type: "article",
     url: "https://oleg.ae/claude-interviewer",
     publishedTime: "2026-05-17T00:00:00Z",
@@ -29,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Interviewer That Makes All Your Content",
+    title: "An AI Interviewer That Turns Your Expertise Into Content",
     description:
-      "Build an AI voice interviewer that turns casual conversations into viral LinkedIn posts using Claude Code.",
+      "Build an AI voice interviewer with Claude Code that turns a real conversation about your work into ready-to-post LinkedIn content.",
   },
   alternates: {
     canonical: "https://oleg.ae/claude-interviewer",

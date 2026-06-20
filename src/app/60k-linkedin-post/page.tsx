@@ -199,8 +199,9 @@ export default function LinkedInPostPage() {
               variants={fadeUp}
               className="mt-3 text-sm text-zinc-500"
             >
-              this is a simplified version of the Authority AI system. copy the
-              prompts below and start writing posts that actually sound like you.
+              this is a simplified, do-it-yourself version of the Boldane
+              system. copy the prompts below and start writing posts that
+              actually sound like you.
             </motion.p>
           </motion.div>
         </section>
@@ -414,7 +415,7 @@ export default function LinkedInPostPage() {
           </div>
         </motion.section>
 
-        {/* Authority AI soft CTA */}
+        {/* Boldane soft CTA */}
         <motion.section
           initial="hidden"
           whileInView="visible"
@@ -425,18 +426,19 @@ export default function LinkedInPostPage() {
           <div className="mx-auto max-w-3xl px-6">
             <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center sm:p-8">
               <p className="text-sm leading-relaxed text-zinc-500">
-                this is the simplified, do-it-yourself version of what{" "}
+                this is the simple, do-it-yourself version of what{" "}
                 <a
-                  href="https://buildauthority.ai"
+                  href="https://www.boldane.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
                 >
-                  Authority AI
+                  Boldane
                 </a>{" "}
-                does automatically with a voice agent, deep context, and a full
-                quality pipeline. but even this simple version beats 99% of AI
-                content, because it starts from a real conversation with you.
+                does for founders who would rather just talk for an hour a week
+                and let real expertise become a presence their market trusts.
+                even this version beats 99% of AI content, because it starts
+                from a real conversation with you.
               </p>
             </div>
           </div>

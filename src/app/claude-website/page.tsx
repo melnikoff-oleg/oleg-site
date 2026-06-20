@@ -291,9 +291,9 @@ export default function ClaudeWebsitePage() {
               variants={fadeUp}
               className="mt-4 text-lg text-zinc-400 md:text-xl"
             >
-              create a professional personal website from scratch using claude
-              code. no design skills needed. just describe what you want and
-              deploy it live.
+              build a polished personal website with claude code, the kind that
+              actually looks designed. describe what you want, refine it in plain
+              english, and deploy it live on your own domain.
             </motion.p>
           </motion.div>
         </section>

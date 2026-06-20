@@ -134,7 +134,7 @@ export function ContextDrawer({
                 <textarea
                   value={memory.text}
                   onChange={(e) => memory.setText(e.target.value)}
-                  placeholder="e.g. I run Authority AI, done-for-you LinkedIn content for B2B founders, $900/mo…"
+                  placeholder="e.g. I run Boldane, premium personal branding for founders with real expertise…"
                   rows={12}
                   className="w-full resize-y rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm leading-relaxed text-zinc-200 placeholder:text-zinc-600 focus:border-white/25 focus:outline-none"
                 />

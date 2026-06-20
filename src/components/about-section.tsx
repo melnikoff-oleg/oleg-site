@@ -30,22 +30,28 @@ export function AboutSection() {
         >
           i run{" "}
           <Link
-            href="https://buildauthority.ai"
+            href="https://www.boldane.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
           >
-            authority ai
+            boldane
           </Link>
-
-          . we help B2B founders build authentic personal brands. you talk, our AI writes your content. one hour a week, five posts done for you.
+          . we help founders with real expertise become known. you have the stories worth telling, we turn them into a presence your market trusts and buys from. one real conversation a week, content that actually sounds like you.
         </motion.p>
 
         <motion.p
           variants={fadeUp}
           className="mt-6 text-xl leading-relaxed text-zinc-300 md:text-2xl"
         >
-          i teach ai and{" "}
+          my whole thing is bridging media and software: the storytelling that makes people care, and the code and AI that gives it real leverage. that intersection is the most exciting place to be right now.
+        </motion.p>
+
+        <motion.p
+          variants={fadeUp}
+          className="mt-6 text-xl leading-relaxed text-zinc-300 md:text-2xl"
+        >
+          i share how i build there with 18,000+ people on youtube, teaching{" "}
           <Link
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
@@ -54,14 +60,14 @@ export function AboutSection() {
           >
             claude code
           </Link>{" "}
-          to 18,000+ people on youtube.
+          and AI for marketing.
         </motion.p>
 
         <motion.p
           variants={fadeUp}
           className="mt-6 text-xl leading-relaxed text-zinc-300 md:text-2xl"
         >
-          before this, i used AI to build trading algorithms at a hedge fund in amsterdam. then i left to build my own company.
+          before this, i used AI to build trading algorithms at a hedge fund in amsterdam. then i left to build my own thing.
         </motion.p>
       </motion.div>
     </section>
