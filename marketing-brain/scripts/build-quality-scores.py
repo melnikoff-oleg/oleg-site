@@ -24,7 +24,6 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MB = os.path.join(ROOT, "marketing-brain")
-OUT = os.path.join(ROOT, "src", "app", "..", "lib", "marketing-brain", "quality-scores.json")
 OUT = os.path.normpath(os.path.join(ROOT, "src", "lib", "marketing-brain", "quality-scores.json"))
 
 # Manual book rubric (8-10). Books are the top tier by medium.

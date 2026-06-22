@@ -39,9 +39,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# marketing-brain raw source PDFs (large, not required for querying)
-marketing-brain/source-pdfs/
-marketing-brain/.staging/
+# marketing-brain: local KB build pipeline + raw source (PDFs, OCR'd books,
+# transcripts, caches). The site ships only the generated artifacts committed
+# under src/ (chunks.json, quality-scores.json); the generator scripts already
+# tracked under marketing-brain/scripts/ stay tracked. Everything else is local.
+/marketing-brain/
 
 # marketing-brain chat: local business-context memory (personal, local-only)
 marketing-brain-memory/
+
+# large local raw assets (kept out of the repo, not needed to build the site)
+reference/5sec.mov
+/thumb raw materials/
