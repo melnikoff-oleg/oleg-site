@@ -83,7 +83,7 @@ export async function POST(req: Request) {
         // 2. Stream Claude's synthesized, cited answer.
         const llm = client.messages.stream({
           model: MODEL,
-          max_tokens: 3000,
+          max_tokens: 8000,
           thinking: { type: "adaptive" },
           system,
           messages: apiMessages,
@@ -103,6 +103,14 @@ export async function POST(req: Request) {
           send(controller, {
             type: "error",
             message: "i can't answer that one. try rephrasing.",
+          });
+        } else if (final.stop_reason === "max_tokens") {
+          // Safety net: the answer ran past the budget. Don't leave it on a
+          // broken word. Append a short, honest note (the higher max_tokens
+          // makes this rare).
+          send(controller, {
+            type: "delta",
+            text: "\n\n(that answer ran long, ask me to continue and i'll pick up where i left off.)",
           });
         }
       } catch (err) {

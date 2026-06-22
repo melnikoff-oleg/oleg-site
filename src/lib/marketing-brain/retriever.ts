@@ -31,6 +31,31 @@ function tok(s: string): string[] {
   return out;
 }
 
+// Fold each chunk's identity (book: title + author; video: title + expert) into
+// the searchable text so a source is matchable by its name and creator
+// (e.g. "Influence" / "Cialdini"), not only by body prose.
+function indexText(chunk: Chunk): string {
+  if (chunk.type === "book") {
+    return `${chunk.title} ${chunk.author} ${chunk.text}`;
+  }
+  return `${chunk.title} ${chunk.expert} ${chunk.text}`;
+}
+
+// Unique source key: collapse near-duplicate chunks from the same book/video.
+function sourceKey(chunk: Chunk): string {
+  return chunk.type === "book" ? chunk.slug : chunk.videoId;
+}
+
+// Quality weight applied to a chunk's BM25 score. A book is years of distilled,
+// edited thinking; a video is a single talk. So books get a modest ranking
+// bonus, enough to surface a relevant book over a tangential clip, but small
+// enough that a clearly on-topic video still wins (and topics with no relevant
+// book stay video-led). Structured per type so it's easy to tune per source later.
+const BOOK_WEIGHT = 1.25;
+function qualityWeight(chunk: Chunk): number {
+  return chunk.type === "book" ? BOOK_WEIGHT : 1.0;
+}
+
 type Indexed = {
   chunk: Chunk;
   tokens: string[];
@@ -62,7 +87,7 @@ function load(): Index {
   let totalLen = 0;
 
   chunks.forEach((chunk, i) => {
-    const tokens = tok(chunk.text);
+    const tokens = tok(indexText(chunk));
     const tf = new Map<string, number>();
     for (const w of tokens) tf.set(w, (tf.get(w) ?? 0) + 1);
     docs.push({ chunk, tokens, tf });
@@ -87,6 +112,9 @@ function load(): Index {
 
 const K1 = 1.5;
 const B = 0.75;
+// Max chunks taken from any single source (book slug / video id) per query, so
+// near-duplicate same-source chunks can't crowd out other relevant material.
+const PER_SOURCE = 2;
 
 export function search(query: string, k = 6): Chunk[] {
   const idx = load();
@@ -111,11 +139,26 @@ export function search(query: string, k = 6): Chunk[] {
         s += (idfw * (f * (K1 + 1))) / (f + K1 * (1 - B + (B * dl) / idx.avgdl));
       }
     }
-    if (s > 0) scored.push({ score: s, i });
+    if (s > 0) scored.push({ score: s * qualityWeight(doc.chunk), i });
   }
 
   scored.sort((a, b) => b.score - a.score);
-  return scored.slice(0, k).map((x) => idx.docs[x.i].chunk);
+
+  // Take the top `k` by score, but allow at most PER_SOURCE chunks per source so
+  // one talk (or videos generally) can't monopolize every slot and the relevant
+  // book can surface.
+  const out: Chunk[] = [];
+  const perKey = new Map<string, number>();
+  for (const { i } of scored) {
+    const chunk = idx.docs[i].chunk;
+    const key = sourceKey(chunk);
+    const used = perKey.get(key) ?? 0;
+    if (used >= PER_SOURCE) continue;
+    perKey.set(key, used + 1);
+    out.push(chunk);
+    if (out.length >= k) break;
+  }
+  return out;
 }
 
 // Extract a short, query-centered quote (<= `width` words); mirrors query.py snippet().

@@ -25,7 +25,16 @@ export default function MarketingBrainPage() {
   const [toast, setToast] = useState<{ added: string; previous: string } | null>(null);
   const autoFollow = useRef(true);
   const lastY = useRef(0);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const started = messages.length > 0;
+
+  // Grow the composer to fit its content (up to max-h-40, then it scrolls).
+  const resizeTextarea = () => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  };
 
   // Persisted auto-capture preference.
   useEffect(() => {
@@ -73,6 +82,11 @@ export default function MarketingBrainPage() {
     if (!text.trim() || isStreaming) return;
     autoFollow.current = true;
     setInput("");
+    // shrink the composer back to one line after sending
+    requestAnimationFrame(() => {
+      const el = textareaRef.current;
+      if (el) el.style.height = "auto";
+    });
     await send(text, memory.text);
     // After the answer, optionally capture any durable business fact.
     if (autoCapture) {
@@ -217,8 +231,12 @@ export default function MarketingBrainPage() {
               className="flex items-end gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-2 focus-within:border-white/25"
             >
               <textarea
+                ref={textareaRef}
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => {
+                  setInput(e.target.value);
+                  resizeTextarea();
+                }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
@@ -227,7 +245,7 @@ export default function MarketingBrainPage() {
                 }}
                 rows={1}
                 placeholder="ask the brain…"
-                className="max-h-40 flex-1 resize-none bg-transparent px-3 py-2 text-[15px] text-zinc-100 placeholder:text-zinc-600 focus:outline-none"
+                className="max-h-40 flex-1 resize-none overflow-y-auto bg-transparent px-3 py-2 text-[15px] text-zinc-100 placeholder:text-zinc-600 focus:outline-none"
               />
               <button
                 type="submit"
