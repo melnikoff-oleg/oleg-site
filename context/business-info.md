@@ -4,7 +4,7 @@
 
 ## Organization Overview
 
-**Authority AI -- now operating as Boldane** (boldane.com) -- helps B2B founders build authentic personal brands on LinkedIn. You talk, AI writes your content. One hour per week, five posts done for you. Founded October 2025 by Oleg Melnikov. Legal entity: Evolva AI FZE LLC (Sharjah, UAE). (Rebrand verified from boldane.com on 2026-06-19; demo still booked via calendly.com/authority-ai/demo.)
+**Authority AI -- now operating as Boldane** (boldane.com) -- helps B2B founders build authentic personal brands on LinkedIn. You talk, AI writes your content. One hour per week, five posts done for you. Founded October 2025 by Oleg Melnikov. Legal entity: Evolva AI FZE LLC (Sharjah, UAE). (Rebrand verified from boldane.com on 2026-06-19; demo still booked via calendly.com/boldane/demo.)
 
 ## Products / Services
 
