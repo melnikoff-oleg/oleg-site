@@ -15,15 +15,19 @@ export default defineConfig({
   timeout: 60_000,
   expect: {
     timeout: 10_000,
-    // Generous tolerance: entrance animations / font hinting differ slightly.
-    toHaveScreenshot: { maxDiffPixelRatio: 0.05, animations: "disabled" },
+    // `animations` defaults to "disabled", which cancels Framer Motion's WAAPI
+    // entrance animations and freezes elements at their hidden (opacity 0)
+    // state, producing blank screenshots. Force "allow" and let `settle()`
+    // (scroll + wait) drive the entrance animations to completion instead.
+    // The only continuous motion (looping hero/preview video) is masked.
+    toHaveScreenshot: { maxDiffPixelRatio: 0.05, animations: "allow" },
   },
   use: {
     baseURL: "http://localhost:3000",
     trace: "on-first-retry",
-    // Framer Motion entrance animations + looping hero video settle faster
-    // and screenshots are deterministic when motion is reduced.
-    reducedMotion: "reduce",
+    // NOTE: do not set `reducedMotion: "reduce"` here. Framer Motion treats it
+    // as a signal to suppress entrance animations, which leaves `whileInView`
+    // sections at opacity 0 in screenshots. `settle()` scrolls + waits instead.
   },
   projects: [
     {

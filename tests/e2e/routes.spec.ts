@@ -83,7 +83,9 @@ test("5 - no console errors on load", async ({ page }) => {
       url,
       msgs.filter(
         (m) =>
-          !/youtube|ytimg|plausible|favicon|googletagmanager|gstatic/i.test(m)
+          !/youtube|ytimg|plausible|favicon|googletagmanager|gstatic/i.test(m) &&
+          // permissions-policy noise emitted by the embedded YouTube iframes
+          !/permissions policy|compute-pressure/i.test(m)
       ),
     ])
     .filter(([, msgs]) => (msgs as string[]).length > 0);

@@ -32,7 +32,8 @@ export function HeroSection() {
           <TextEffect
             as="h1"
             delay={0.2}
-            className="text-metallic mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-medium leading-[1.05] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
+            segmentClassName="text-metallic"
+            className="mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-medium leading-[1.05] tracking-tight text-silver sm:text-3xl md:text-4xl lg:text-5xl"
           >
             5 years in AI. left big tech and a hedge fund to build my own company.
           </TextEffect>

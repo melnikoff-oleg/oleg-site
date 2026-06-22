@@ -1,15 +1,41 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page, type Locator } from "@playwright/test";
 
 const SAMPLE_RESOURCE = "/claude-outreach";
 
 // Tests 12-15: visual regression snapshots. The first run establishes the
-// baselines (committed); later runs diff against them. Looping <video> regions
-// are masked so they never cause false diffs.
+// baselines (committed); later runs diff against them.
+//
+// We capture with `page.screenshot()` + `toMatchSnapshot()` rather than
+// `expect(page).toHaveScreenshot()`: the latter forces `animations: "disabled"`
+// (its default, and even "allow" misbehaved here), which cancels Framer Motion's
+// WAAPI entrance animations and yields blank screenshots. `page.screenshot()`
+// captures the real, settled page. Looping <video>/<iframe>/<img> regions are
+// masked so they never cause false diffs.
 
-async function settle(page: import("@playwright/test").Page) {
+const DIFF = { maxDiffPixelRatio: 0.05 };
+
+async function settle(page: Page) {
   await page.waitForLoadState("networkidle");
   await page.evaluate(() => document.fonts.ready);
-  await page.waitForTimeout(800);
+  // Sections animate in on scroll (Framer `whileInView`, `once: true`). Step
+  // down the full page so they reveal and stay revealed, then return to top,
+  // so a full-page screenshot captures real content rather than blank sections.
+  await page.evaluate(async () => {
+    const step = window.innerHeight;
+    const total = document.body.scrollHeight;
+    for (let y = 0; y < total; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 150));
+    }
+    window.scrollTo(0, 0);
+  });
+  // Let the hero's on-mount entrance (staggered, up to ~2.5s) fully finish.
+  await page.waitForTimeout(1800);
+}
+
+async function snapshot(page: Page, name: string, mask: Locator[]) {
+  const buffer = await page.screenshot({ fullPage: true, mask });
+  expect(buffer).toMatchSnapshot(name, DIFF);
 }
 
 // Test 12: homepage (desktop).
@@ -17,10 +43,7 @@ test("12 - homepage visual (desktop)", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "desktop only");
   await page.goto("/");
   await settle(page);
-  await expect(page).toHaveScreenshot("home-desktop.png", {
-    fullPage: true,
-    mask: [page.locator("video")],
-  });
+  await snapshot(page, "home-desktop.png", [page.locator("video")]);
 });
 
 // Test 13: a representative resource page (desktop).
@@ -28,10 +51,7 @@ test("13 - resource page visual (desktop)", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "desktop only");
   await page.goto(SAMPLE_RESOURCE);
   await settle(page);
-  await expect(page).toHaveScreenshot("resource-desktop.png", {
-    fullPage: true,
-    mask: [page.locator("iframe")],
-  });
+  await snapshot(page, "resource-desktop.png", [page.locator("iframe")]);
 });
 
 // Test 14: marketing-brain empty state (desktop).
@@ -39,10 +59,7 @@ test("14 - marketing-brain visual (desktop)", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "desktop only");
   await page.goto("/marketing-brain");
   await settle(page);
-  await expect(page).toHaveScreenshot("marketing-brain-desktop.png", {
-    fullPage: true,
-    mask: [page.locator("img")],
-  });
+  await snapshot(page, "marketing-brain-desktop.png", [page.locator("img")]);
 });
 
 // Test 15: homepage (mobile / iPhone viewport).
@@ -50,8 +67,5 @@ test("15 - homepage visual (mobile)", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile only");
   await page.goto("/");
   await settle(page);
-  await expect(page).toHaveScreenshot("home-mobile.png", {
-    fullPage: true,
-    mask: [page.locator("video")],
-  });
+  await snapshot(page, "home-mobile.png", [page.locator("video")]);
 });
