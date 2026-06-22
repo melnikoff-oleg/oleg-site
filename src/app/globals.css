@@ -1,13 +1,104 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-navy: #020b18;
+  --color-navy-light: #051c3e;
+  --color-navy-raised: #07142a;
+  --color-vivid-blue: #2863f0;
+  --color-silver: #d0d6e0;
+  --color-silver-muted: #8a93a3;
+  --color-hairline: rgba(208, 214, 224, 0.1);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-dm-sans), system-ui, sans-serif;
+  --font-body: var(--font-space), system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
 }
 
 body {
-  background-color: #000;
-  color: #fafafa;
+  background: var(--color-navy);
+  color: var(--color-silver);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Metallic silver text gradients ---- */
+.text-metallic {
+  background: linear-gradient(
+    135deg,
+    #8a919c 0%,
+    #d4dae6 25%,
+    #f0f2f5 40%,
+    #d4dae6 55%,
+    #8a919c 70%,
+    #c0c8d4 85%,
+    #e8ecf2 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-metallic-muted {
+  background: linear-gradient(
+    135deg,
+    #606872 0%,
+    #9aa2b0 30%,
+    #b8c0cc 50%,
+    #9aa2b0 70%,
+    #606872 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Brand wordmark: the same metallic character as .text-metallic, nudged
+   slightly brighter / more silver across every stop. */
+.brand-wordmark {
+  background: linear-gradient(
+    135deg,
+    #a8aeb8 0%,
+    #dde2ec 25%,
+    #f6f8fb 40%,
+    #dde2ec 55%,
+    #a8aeb8 70%,
+    #ccd3df 85%,
+    #eef1f6 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Surfaces & depth (premium dark, subtle, not flat) ---- */
+.surface-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--color-hairline);
+  border-radius: 1rem;
+}
+
+.surface-raised {
+  background: var(--color-navy-raised);
+}
+
+/* Subtle dot-grid texture for dark sections (avoids flat-black AI-slop look) */
+.bg-dotgrid {
+  background-image: radial-gradient(rgba(208, 214, 224, 0.06) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Glow used sparingly behind the hero / CTAs */
+.glow-blue {
+  box-shadow: 0 0 0 1px rgba(40, 99, 240, 0.25), 0 18px 60px -18px rgba(40, 99, 240, 0.55);
+}
+
+/* Eyebrow label */
+.eyebrow {
+  font-family: var(--font-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }

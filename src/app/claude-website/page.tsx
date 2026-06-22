@@ -28,7 +28,7 @@ const steps = [
             href="https://code.visualstudio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             code.visualstudio.com
           </a>
@@ -65,7 +65,7 @@ const steps = [
             href="https://www.skool.com/ai-automation-7100/about"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             free skool community
           </a>
@@ -84,7 +84,7 @@ const steps = [
       <div className="space-y-4">
         <p>
           open the terminal in VS Code (Terminal → New Terminal), type{" "}
-          <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+          <code className="rounded bg-vivid-blue/15 px-1.5 py-0.5 font-mono text-sm text-silver">
             claude
           </code>
           , and describe what you want.
@@ -94,7 +94,7 @@ const steps = [
           about, results, social links. claude code builds the full site from
           your description.
         </p>
-        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-5 text-[15px] leading-relaxed text-zinc-300 italic">
+        <div className="rounded-lg surface-raised border border-hairline p-5 text-[15px] leading-relaxed text-silver italic">
           &quot;Build me a personal website. I&apos;m [your name], I do [what
           you do]. Include a hero section with my tagline and photo, an about
           section, a results/stats section, and social links at the bottom.&quot;
@@ -110,7 +110,7 @@ const steps = [
           tell claude code to adjust colors, fonts, layout, and add animations.
           iterate in plain english until it looks right.
         </p>
-        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-5 text-[15px] leading-relaxed text-zinc-300 italic">
+        <div className="rounded-lg surface-raised border border-hairline p-5 text-[15px] leading-relaxed text-silver italic">
           &quot;Make the background darker, use a more modern font, and add
           smooth fade-in animations as sections scroll into view.&quot;
         </div>
@@ -146,7 +146,7 @@ const steps = [
             href="https://vercel.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             vercel.com
           </a>{" "}
@@ -179,7 +179,7 @@ const steps = [
         <p>once your site is live, here are 4 ways to take it further:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               a) add analytics
             </p>
             <p className="mt-1">
@@ -188,7 +188,7 @@ const steps = [
                 href="https://plausible.io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 plausible
               </a>{" "}
@@ -197,7 +197,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               b) optimize for SEO
             </p>
             <p className="mt-1">
@@ -206,7 +206,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               c) add resource pages
             </p>
             <p className="mt-1">
@@ -215,7 +215,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               d) keep iterating with claude code
             </p>
             <p className="mt-1">
@@ -246,7 +246,7 @@ export default function ClaudeWebsitePage() {
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
@@ -254,7 +254,7 @@ export default function ClaudeWebsitePage() {
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -275,21 +275,21 @@ export default function ClaudeWebsitePage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
+              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
             >
               free resource
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
             >
               build your personal website with claude code
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-lg text-zinc-400 md:text-xl"
+              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
             >
               build a polished personal website with claude code, the kind that
               actually looks designed. describe what you want, refine it in plain
@@ -309,7 +309,7 @@ export default function ClaudeWebsitePage() {
           <div className="mx-auto max-w-3xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="text-sm uppercase tracking-widest text-zinc-500"
+              className="eyebrow font-body text-xs text-vivid-blue/80"
             >
               setup guide
             </motion.h2>
@@ -329,7 +329,7 @@ export default function ClaudeWebsitePage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+            <div className="glow-blue overflow-hidden rounded-2xl border border-hairline">
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${VIDEO_ID}`}

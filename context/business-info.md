@@ -26,7 +26,7 @@
 
 - Solo founder + 1 part-time video editor (Andrew)
 - Revenue to date: ~$10K (growing fast -- $5.8K in March 2026 alone)
-- Service site boldane.com; personal site oleg.ae. ~2,300+ visitors/month historically, 75% from YouTube
+- Service site boldane.com; personal site oleg.ae (now shares Boldane's visual identity: navy + vivid-blue, metallic DM Sans headings). ~2,300+ visitors/month historically, 75% from YouTube
 - Pivoting focus from scaling the done-for-you service (Boldane) to YouTube + Skool as primary revenue engines (Apr-Sep 2026)
 - Target audience split: YouTube serves developers/learners, Boldane serves B2B founders
 

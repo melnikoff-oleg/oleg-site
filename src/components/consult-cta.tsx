@@ -21,14 +21,14 @@ export function ConsultCta() {
       className="pb-16 md:pb-20"
     >
       <div className="mx-auto max-w-3xl px-6">
-        <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-6 py-5 text-center">
-          <p className="text-sm text-zinc-500">
+        <div className="surface-card px-6 py-5 text-center">
+          <p className="font-body text-sm text-silver-muted">
             stuck on something?{" "}
             <a
               href="https://calendly.com/boldane/ai-consult"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-400 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-300 hover:decoration-zinc-500"
+              className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
             >
               book a 1:1 consult
             </a>

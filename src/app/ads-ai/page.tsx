@@ -33,13 +33,13 @@ const steps = [
               href="https://code.visualstudio.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+              className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
             >
               code.visualstudio.com
             </a>
           </li>
           <li>
-            click the big <span className="text-white">Download</span> button
+            click the big <span className="text-silver">Download</span> button
           </li>
           <li>open the downloaded file and install it like any other app</li>
           <li>
@@ -65,14 +65,14 @@ const steps = [
               href="https://nodejs.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+              className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
             >
               nodejs.org
             </a>
           </li>
           <li>
             click the big green button that says{" "}
-            <span className="text-white">Download Node.js (LTS)</span>
+            <span className="text-silver">Download Node.js (LTS)</span>
           </li>
           <li>
             open the downloaded file and install it, clicking &quot;Next&quot; /
@@ -96,21 +96,21 @@ const steps = [
           <li>open VS Code</li>
           <li>
             on the left sidebar, click the{" "}
-            <span className="text-white">Extensions</span> icon (it looks like
+            <span className="text-silver">Extensions</span> icon (it looks like
             four small squares)
           </li>
           <li>
             in the search bar at the top, type{" "}
-            <span className="text-white">Claude Code</span>
+            <span className="text-silver">Claude Code</span>
           </li>
           <li>
-            find the one by <span className="text-white">Anthropic</span> and
-            click the blue <span className="text-white">Install</span> button
+            find the one by <span className="text-silver">Anthropic</span> and
+            click the blue <span className="text-silver">Install</span> button
           </li>
           <li>
             once installed, it will ask you to sign in. follow the prompts to
             create an account. it costs{" "}
-            <span className="text-white">$19/month</span> (you can cancel
+            <span className="text-silver">$19/month</span> (you can cancel
             anytime)
           </li>
         </ol>
@@ -129,17 +129,17 @@ const steps = [
               href="https://github.com/melnikoff-oleg/ads-ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+              className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
             >
               github.com/melnikoff-oleg/ads-ai
             </a>
           </li>
           <li>
             click the green{" "}
-            <span className="text-white">&lt;&gt; Code</span> button
+            <span className="text-silver">&lt;&gt; Code</span> button
           </li>
           <li>
-            click <span className="text-white">Download ZIP</span>
+            click <span className="text-silver">Download ZIP</span>
           </li>
           <li>
             find the downloaded ZIP file (usually in your Downloads folder) and
@@ -147,7 +147,7 @@ const steps = [
           </li>
           <li>
             you should now have a folder called{" "}
-            <span className="text-white">ads-ai-main</span>. move it
+            <span className="text-silver">ads-ai-main</span>. move it
             somewhere easy to find, like your Desktop
           </li>
         </ol>
@@ -161,16 +161,16 @@ const steps = [
         <ol className="list-decimal space-y-2 pl-5">
           <li>open VS Code</li>
           <li>
-            click <span className="text-white">File</span> in the top menu,
-            then <span className="text-white">Open Folder...</span>
+            click <span className="text-silver">File</span> in the top menu,
+            then <span className="text-silver">Open Folder...</span>
           </li>
           <li>
-            find the <span className="text-white">ads-ai-main</span> folder you
+            find the <span className="text-silver">ads-ai-main</span> folder you
             just downloaded and select it
           </li>
           <li>
             if VS Code asks &quot;Do you trust the authors?&quot;, click{" "}
-            <span className="text-white">Yes, I trust the authors</span>
+            <span className="text-silver">Yes, I trust the authors</span>
           </li>
         </ol>
         <p>
@@ -189,14 +189,14 @@ const steps = [
           and copy the key they give you.
         </p>
         <p>
-          you need <span className="text-white">5 keys</span>. here&apos;s
+          you need <span className="text-silver">5 keys</span>. here&apos;s
           where to get each one:
         </p>
         <div className="space-y-4">
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-4">
-            <p className="font-medium text-white">
+          <div className="rounded-lg surface-raised border border-hairline p-4">
+            <p className="font-medium text-silver">
               1. Anthropic (Claude AI){" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (writes your ad copy)
               </span>
             </p>
@@ -206,20 +206,20 @@ const steps = [
                 href="https://console.anthropic.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 console.anthropic.com
               </a>
               , create an account, go to{" "}
-              <span className="text-white">API Keys</span>, click{" "}
-              <span className="text-white">Create Key</span>, and copy it
+              <span className="text-silver">API Keys</span>, click{" "}
+              <span className="text-silver">Create Key</span>, and copy it
             </p>
           </div>
 
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-4">
-            <p className="font-medium text-white">
+          <div className="rounded-lg surface-raised border border-hairline p-4">
+            <p className="font-medium text-silver">
               2. Google Gemini{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (analyzes your brand images)
               </span>
             </p>
@@ -229,19 +229,19 @@ const steps = [
                 href="https://aistudio.google.com/apikey"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 aistudio.google.com/apikey
               </a>
               , sign in with your Google account, click{" "}
-              <span className="text-white">Create API Key</span>, and copy it
+              <span className="text-silver">Create API Key</span>, and copy it
             </p>
           </div>
 
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-4">
-            <p className="font-medium text-white">
+          <div className="rounded-lg surface-raised border border-hairline p-4">
+            <p className="font-medium text-silver">
               3. FireCrawl{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (reads your website)
               </span>
             </p>
@@ -251,7 +251,7 @@ const steps = [
                 href="https://firecrawl.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 firecrawl.dev
               </a>
@@ -259,10 +259,10 @@ const steps = [
             </p>
           </div>
 
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-4">
-            <p className="font-medium text-white">
+          <div className="rounded-lg surface-raised border border-hairline p-4">
+            <p className="font-medium text-silver">
               4. Apify{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (finds competitor ads on Meta)
               </span>
             </p>
@@ -272,20 +272,20 @@ const steps = [
                 href="https://console.apify.com/account/integrations"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 console.apify.com
               </a>
               , create an account, go to{" "}
-              <span className="text-white">Settings, then Integrations</span>, and
+              <span className="text-silver">Settings, then Integrations</span>, and
               copy your API token
             </p>
           </div>
 
-          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-4">
-            <p className="font-medium text-white">
+          <div className="rounded-lg surface-raised border border-hairline p-4">
+            <p className="font-medium text-silver">
               5. Kie.ai{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (generates ad images)
               </span>
             </p>
@@ -295,7 +295,7 @@ const steps = [
                 href="https://kie.ai/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 kie.ai
               </a>
@@ -317,26 +317,26 @@ const steps = [
         <ol className="list-decimal space-y-2 pl-5">
           <li>
             in VS Code, look at the left sidebar and find a file called{" "}
-            <span className="text-white">.env.example</span>
+            <span className="text-silver">.env.example</span>
           </li>
           <li>
             right-click on it and choose{" "}
-            <span className="text-white">Rename</span>
+            <span className="text-silver">Rename</span>
           </li>
           <li>
             change the name from {""}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            <code className="rounded bg-vivid-blue/15 px-1.5 py-0.5 font-mono text-sm text-silver">
               .env.example
             </code>{" "}
             to just{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            <code className="rounded bg-vivid-blue/15 px-1.5 py-0.5 font-mono text-sm text-silver">
               .env
             </code>{" "}
             (remove the word &quot;example&quot;) and press Enter
           </li>
           <li>click on the file to open it. you&apos;ll see something like this:</li>
         </ol>
-        <pre className="overflow-x-auto rounded-lg bg-white/5 p-4 text-sm text-zinc-300">
+        <pre className="overflow-x-auto rounded-lg surface-raised border border-hairline p-4 font-mono text-sm text-silver">
           <code>{`ANTHROPIC_API_KEY=
 GEMINI_API_KEY=
 FIRECRAWL_API_KEY=
@@ -346,11 +346,11 @@ KIE_AI_API_KEY=`}</code>
         <ol className="list-decimal space-y-2 pl-5" start={5}>
           <li>
             paste each key right after the{" "}
-            <span className="text-white">=</span> sign, with no spaces. for
+            <span className="text-silver">=</span> sign, with no spaces. for
             example:
           </li>
         </ol>
-        <pre className="overflow-x-auto rounded-lg bg-white/5 p-4 text-sm text-zinc-300">
+        <pre className="overflow-x-auto rounded-lg surface-raised border border-hairline p-4 font-mono text-sm text-silver">
           <code>{`ANTHROPIC_API_KEY=sk-ant-abc123...
 GEMINI_API_KEY=AIzaSy...
 FIRECRAWL_API_KEY=fc-...
@@ -360,8 +360,8 @@ KIE_AI_API_KEY=kie-...`}</code>
         <ol className="list-decimal space-y-2 pl-5" start={6}>
           <li>
             press{" "}
-            <span className="text-white">Cmd+S</span> (Mac) or{" "}
-            <span className="text-white">Ctrl+S</span> (Windows) to save the
+            <span className="text-silver">Cmd+S</span> (Mac) or{" "}
+            <span className="text-silver">Ctrl+S</span> (Windows) to save the
             file
           </li>
         </ol>
@@ -379,14 +379,14 @@ KIE_AI_API_KEY=kie-...`}</code>
         <ol className="list-decimal space-y-2 pl-5">
           <li>
             in VS Code, click the{" "}
-            <span className="text-white">Claude Code</span> icon in the left
+            <span className="text-silver">Claude Code</span> icon in the left
             sidebar (it looks like a sparkle ✦)
           </li>
           <li>
             a chat panel will open. type this message and press Enter:
           </li>
         </ol>
-        <pre className="overflow-x-auto rounded-lg bg-white/5 p-4 text-sm text-zinc-300">
+        <pre className="overflow-x-auto rounded-lg surface-raised border border-hairline p-4 font-mono text-sm text-silver">
           <code>install the app dependencies and start the dev server</code>
         </pre>
         <ol className="list-decimal space-y-2 pl-5" start={3}>
@@ -396,7 +396,7 @@ KIE_AI_API_KEY=kie-...`}</code>
           </li>
           <li>
             open your web browser (Chrome, Safari, etc.) and go to{" "}
-            <span className="text-white">localhost:3000</span>. you should see
+            <span className="text-silver">localhost:3000</span>. you should see
             the tool
           </li>
         </ol>
@@ -418,21 +418,21 @@ KIE_AI_API_KEY=kie-...`}</code>
         <ol className="list-decimal space-y-2 pl-5">
           <li>
             you should see the{" "}
-            <span className="text-white">Brand</span> page. if not, click{" "}
-            <span className="text-white">Brand</span> in the left sidebar
+            <span className="text-silver">Brand</span> page. if not, click{" "}
+            <span className="text-silver">Brand</span> in the left sidebar
           </li>
           <li>
-            enter your <span className="text-white">website URL</span> (like
+            enter your <span className="text-silver">website URL</span> (like
             https://yourbrand.com)
           </li>
           <li>
             optionally add your{" "}
-            <span className="text-white">Instagram handle</span> (like
+            <span className="text-silver">Instagram handle</span> (like
             @yourbrand)
           </li>
           <li>
             click{" "}
-            <span className="text-white">&quot;Scrape Brand&quot;</span> and
+            <span className="text-silver">&quot;Scrape Brand&quot;</span> and
             wait about 30 seconds
           </li>
         </ol>
@@ -450,7 +450,7 @@ KIE_AI_API_KEY=kie-...`}</code>
       <div className="space-y-3">
         <ol className="list-decimal space-y-2 pl-5">
           <li>
-            click <span className="text-white">Competitors</span> in the left
+            click <span className="text-silver">Competitors</span> in the left
             sidebar
           </li>
           <li>
@@ -458,7 +458,7 @@ KIE_AI_API_KEY=kie-...`}</code>
             edit them or add your own
           </li>
           <li>
-            click <span className="text-white">Search</span>, and the tool will
+            click <span className="text-silver">Search</span>, and the tool will
             search the Meta Ad Library and find companies running ads in your
             space
           </li>
@@ -476,11 +476,11 @@ KIE_AI_API_KEY=kie-...`}</code>
       <div className="space-y-3">
         <ol className="list-decimal space-y-2 pl-5">
           <li>
-            click <span className="text-white">What&apos;s Working</span> in
+            click <span className="text-silver">What&apos;s Working</span> in
             the left sidebar
           </li>
           <li>
-            click the <span className="text-white">Analyze</span> button, and the
+            click the <span className="text-silver">Analyze</span> button, and the
             AI will study the top 25 competitor ads
           </li>
           <li>
@@ -506,18 +506,18 @@ KIE_AI_API_KEY=kie-...`}</code>
       <div className="space-y-3">
         <ol className="list-decimal space-y-2 pl-5">
           <li>
-            click <span className="text-white">Create</span> in the left
+            click <span className="text-silver">Create</span> in the left
             sidebar
           </li>
           <li>
             choose how many ad concepts you want (start with{" "}
-            <span className="text-white">3</span> to test it out)
+            <span className="text-silver">3</span> to test it out)
           </li>
           <li>
             pick which of your products to feature
           </li>
           <li>
-            click <span className="text-white">Generate</span> and wait a
+            click <span className="text-silver">Generate</span> and wait a
             couple of minutes
           </li>
           <li>
@@ -562,7 +562,7 @@ export default function AdsAiPage() {
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
@@ -570,7 +570,7 @@ export default function AdsAiPage() {
             href="https://github.com/melnikoff-oleg/ads-ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -591,21 +591,21 @@ export default function AdsAiPage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
+              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
             >
               free tool, no coding required
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
             >
               AI ads creator
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-lg text-zinc-400 md:text-xl"
+              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
             >
               study the ads your competitors are actually running, understand
               why they convert, and generate new ads for your brand: copy,
@@ -614,7 +614,7 @@ export default function AdsAiPage() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-3 text-sm text-zinc-500"
+              className="mt-3 font-body text-sm text-silver-muted"
             >
               follow the steps below to set everything up. takes about 15
               minutes.
@@ -633,14 +633,14 @@ export default function AdsAiPage() {
           <div className="mx-auto max-w-3xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="text-sm uppercase tracking-widest text-zinc-500"
+              className="eyebrow font-body text-xs text-vivid-blue/80"
             >
               setup guide
             </motion.h2>
 
             <motion.p
               variants={fadeUp}
-              className="mt-3 text-sm text-zinc-500"
+              className="mt-3 font-body text-sm text-silver-muted"
             >
               steps 1-8 are one-time setup. steps 9-12 are how you use the tool
               every time.
@@ -661,7 +661,7 @@ export default function AdsAiPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+            <div className="glow-blue overflow-hidden rounded-2xl border border-hairline">
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${VIDEO_ID}`}

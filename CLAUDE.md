@@ -169,17 +169,35 @@ Ongoing goal: optimize the site for search around keywords like **"AI systems fo
 ## Tech Stack
 
 - **Framework:** Next.js 15 + React 19 + TypeScript
-- **Styling:** Tailwind CSS 4
+- **Styling:** Tailwind CSS 4 (tokens in `@theme inline` inside `globals.css`, no `tailwind.config`)
+- **UI primitives:** `src/components/ui/{button,card}.tsx` (`class-variance-authority` + `@radix-ui/react-slot`, merged via `cn()` in `src/lib/utils.ts`)
 - **Animations:** Framer Motion
+- **Tests:** Playwright (`@playwright/test` + `@axe-core/playwright`), see Testing below
 - **Deployment target:** Vercel
+
+### Design System (Boldane-aligned)
+
+The site shares boldane.com's visual identity (premium dark navy). Source of truth: `src/app/globals.css`.
+
+- **Colors (tokens):** `navy` `#020b18` (page bg), `navy-raised` `#07142a`, `vivid-blue` `#2863f0` (accent/CTA), `silver` `#d0d6e0` (primary text), `silver-muted` `#8a93a3` (secondary text), `hairline` `rgba(208,214,224,0.1)` (all borders/dividers). Use these tokens, never `zinc-*` / `bg-white/*` / pure black.
+- **Fonts (`next/font/google`):** Inter (`font-sans`, default), DM Sans (`font-display`, headings), Space Grotesk (`font-body`, body). Loaded in `src/app/layout.tsx`.
+- **Signature classes:** `.text-metallic` / `.brand-wordmark` (metallic gradient headings + wordmark), `.surface-card` (gradient + hairline card), `.surface-raised`, `.bg-dotgrid`, `.glow-blue`, `.eyebrow` (uppercase `tracking-[0.2em]`, paired with `text-vivid-blue/80`).
+- **Buttons:** use the `Button` primitive (variants `primary` / `outline` / `ghost`; sizes `sm` / `md` / `lg`), all pill-shaped (`rounded-full`).
+- When building new pages/components, reuse these tokens and primitives so the brand stays consistent.
 
 ### Dev Commands
 
 ```bash
-npm run dev    # Start dev server (localhost:3000)
-npm run build  # Production build
-npm run start  # Start production server
+npm run dev          # Start dev server (localhost:3000)
+npm run build        # Production build
+npm run start        # Start production server
+npm run test         # Playwright suite (builds + starts, then runs 20 tests)
+npm run test:update  # Regenerate visual-regression baselines
 ```
+
+### Testing
+
+`tests/` holds a Playwright suite (`tests/playwright.config.ts`, specs in `tests/e2e/`) that verifies the redesign from 20 angles: route health (1-6), design-token/brand fidelity (7-11), visual-regression snapshots desktop + mobile (12-15), interactions (16-18), and a11y + no-em-dash content rules (19-20). It runs against a production build on desktop + a Chromium iPhone-sized viewport. Snapshot baselines live under `tests/e2e/visual.spec.ts-snapshots/` and are committed; regenerate with `npm run test:update` after intentional visual changes. Tests have their own `tests/tsconfig.json` (node resolution) and are excluded from the app `tsconfig.json`.
 
 ### Site Structure
 
@@ -229,6 +247,7 @@ Resource pages follow a shared pattern: minimal header, embedded YouTube video, 
 - **Business-context memory (personalization):** the chat can be taught about the user's business so its advice is personalized. A markdown file `business-context.md` holds it. Storage: locally it sits at the repo root (`marketing-brain-memory/`, gitignored); on Vercel `process.cwd()` (`/var/task`) is read-only, so `src/lib/marketing-brain/memory.ts` bases the dir on `os.tmpdir()` (`/tmp`) when `process.env.VERCEL` is set. Vercel `/tmp` is per-instance and ephemeral (intentional for this MVP; a durable store, Vercel KV / Blob, is the later upgrade). **Because of that, the chat does not rely on the server file in production:** the client sends its loaded "your context" text with each `/api/marketing-brain/chat` request (`businessContext` in the body), and the route prefers it (capped at `MAX_CONTEXT_CHARS`), falling back to the server file only for local dev. This makes personalization work regardless of Vercel's ephemeral fs, and is also correct for multiple visitors (each browser uses its own context). Managed via the "your context" drawer on `/marketing-brain`: paste/edit text, upload files (PDF via `unpdf`, txt/md), or scrape a website (Firecrawl `/v1/scrape` → distilled with `claude-sonnet-4-6`). Routes: `src/app/api/marketing-brain/memory/{route,scrape,upload,extract}`. Auto-capture: after each turn, `memory/extract` (Sonnet 4.6) appends durable business facts the user mentions, with an undo toast + a persisted toggle. Requires `FIRECRAWL_API_KEY` (already in `.env`). Helpers: `src/lib/marketing-brain/{memory,firecrawl,distill}.ts`. Integration tests: with the server running, `node scripts/test-marketing-brain-memory.mjs` (snapshots + restores the real memory; exercises scrape/upload/chat/extract; 18 assertions).
 
 **Shared components:**
+- UI primitives in `src/components/ui/` (`Button`, `Card`) — see Design System above
 - Animation primitives in `src/components/motion/` (TextEffect, AnimatedGroup)
 - `src/components/accordion.tsx` — Reusable accordion for setup steps (used by resource pages)
 - `src/components/resource-footer.tsx` — Cross-linked footer showing all other resource pages with icons (uses `lucide-react`). Rendered on the homepage (`currentSlug=""`), every resource/tool/lead-magnet page, and the Marketing Brain knowledge gallery. The Marketing Brain chat is the first entry. When adding a new resource page, update the `resources` array in this file.

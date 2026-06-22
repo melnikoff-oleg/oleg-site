@@ -62,9 +62,9 @@ function VideoCard({ v }: { v: Video }) {
       href={v.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex flex-col overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.02] transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.04]"
+      className="surface-card group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-vivid-blue/40"
     >
-      <div className="relative aspect-video overflow-hidden bg-zinc-900">
+      <div className="surface-raised relative aspect-video overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={v.thumb}
@@ -72,13 +72,13 @@ function VideoCard({ v }: { v: Video }) {
           loading="lazy"
           className="absolute inset-0 h-full w-full scale-[1.01] object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
-        <span className="absolute bottom-2 right-2 rounded-md bg-black/70 px-1.5 py-0.5 text-[11px] font-medium tabular-nums text-zinc-200 backdrop-blur-sm">
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-60" />
+        <span className="absolute bottom-2 right-2 rounded-md bg-navy/80 px-1.5 py-0.5 font-body text-[11px] font-medium tabular-nums text-silver backdrop-blur-sm">
           {formatDuration(v.duration)}
         </span>
         {/* play glyph on hover */}
         <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <span className="flex size-12 items-center justify-center rounded-full bg-white/15 backdrop-blur-md ring-1 ring-white/30">
+          <span className="flex size-12 items-center justify-center rounded-full bg-vivid-blue/25 backdrop-blur-md ring-1 ring-vivid-blue/40">
             <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 size-5 text-white">
               <path d="M8 5v14l11-7z" />
             </svg>
@@ -86,13 +86,13 @@ function VideoCard({ v }: { v: Video }) {
         </span>
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="line-clamp-2 text-sm font-medium leading-snug text-zinc-100">
+        <h3 className="line-clamp-2 font-display text-sm font-medium leading-snug text-silver">
           {v.title}
         </h3>
-        <p className="mt-1.5 text-xs text-zinc-500">
+        <p className="mt-1.5 font-body text-xs text-silver-muted">
           {v.channel} · {formatViews(v.views)} views
         </p>
-        <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-zinc-400">
+        <p className="mt-2 line-clamp-2 font-body text-xs leading-relaxed text-silver-muted">
           {v.summary}
         </p>
       </div>
@@ -108,13 +108,13 @@ export default function MarketingBrainKnowledgePage() {
         <div className="mx-auto mt-2 flex max-w-6xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
           <Link
             href="/marketing-brain"
-            className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
+            className="inline-flex items-center gap-2 rounded-full bg-vivid-blue px-4 py-2 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
           >
             ask the brain →
           </Link>
@@ -125,7 +125,7 @@ export default function MarketingBrainKnowledgePage() {
         {/* ambient glow */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(120,119,198,0.18),transparent)]"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[600px] bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(40,99,240,0.18),transparent)]"
         />
 
         {/* Hero */}
@@ -138,21 +138,21 @@ export default function MarketingBrainKnowledgePage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
+              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
             >
               curated knowledge base
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 w-full min-w-0 font-[family-name:var(--font-unbounded)] text-[1.9rem] leading-[1.1] tracking-tight sm:text-5xl md:text-6xl"
+              className="text-metallic mt-8 w-full min-w-0 font-display text-[1.9rem] leading-[1.1] tracking-tight sm:text-5xl md:text-6xl"
             >
               $1B Marketing Brain
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400 md:text-xl"
+              className="mx-auto mt-6 max-w-2xl font-body text-lg text-silver-muted md:text-xl"
             >
               the greatest marketing minds, distilled into one searchable brain:
               every book and every talk that shapes how i think about growth,
@@ -161,7 +161,7 @@ export default function MarketingBrainKnowledgePage() {
 
             <motion.div
               variants={fadeUp}
-              className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-zinc-500"
+              className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-body text-sm text-silver-muted"
             >
               {[
                 `${stats.experts} legendary experts`,
@@ -170,8 +170,8 @@ export default function MarketingBrainKnowledgePage() {
                 `${formatViews(stats.totalViews)}+ views distilled`,
               ].map((s, i) => (
                 <span key={s} className="flex items-center gap-3">
-                  {i > 0 && <span className="text-zinc-700">·</span>}
-                  <span className="font-medium text-zinc-300">{s}</span>
+                  {i > 0 && <span className="text-silver-muted/50">·</span>}
+                  <span className="font-medium text-silver">{s}</span>
                 </span>
               ))}
             </motion.div>
@@ -189,7 +189,7 @@ export default function MarketingBrainKnowledgePage() {
           <div className="mx-auto max-w-6xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="text-sm uppercase tracking-widest text-zinc-500"
+              className="eyebrow font-body text-xs text-vivid-blue/80"
             >
               the bookshelf
             </motion.h2>
@@ -199,7 +199,7 @@ export default function MarketingBrainKnowledgePage() {
             >
               {books.map((b) => (
                 <motion.div key={b.slug} variants={fadeUp} className="group">
-                  <div className="relative aspect-2/3 overflow-hidden rounded-lg shadow-lg shadow-black/40 ring-1 ring-white/10 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-black/60 group-hover:ring-white/25">
+                  <div className="relative aspect-2/3 overflow-hidden rounded-lg ring-1 ring-hairline transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:shadow-vivid-blue/20 group-hover:ring-vivid-blue/40">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={b.cover}
@@ -208,10 +208,10 @@ export default function MarketingBrainKnowledgePage() {
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  <p className="mt-3 text-sm font-medium leading-snug text-zinc-200">
+                  <p className="mt-3 font-display text-sm font-medium leading-snug text-silver">
                     {b.title}
                   </p>
-                  <p className="text-xs text-zinc-500">{b.author}</p>
+                  <p className="font-body text-xs text-silver-muted">{b.author}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -219,14 +219,14 @@ export default function MarketingBrainKnowledgePage() {
         </motion.section>
 
         {/* Expert quick-nav */}
-        <div className="sticky top-0 z-20 border-y border-white/[0.06] bg-black/70 backdrop-blur-md">
+        <div className="sticky top-0 z-20 border-y border-hairline bg-navy/70 backdrop-blur-md">
           <div className="mx-auto max-w-6xl px-6">
             <nav className="flex gap-2 overflow-x-auto py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {experts.map((e) => (
                 <a
                   key={e.slug}
                   href={`#${e.slug}`}
-                  className="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:border-white/25 hover:text-zinc-100"
+                  className="shrink-0 rounded-full border border-hairline px-3.5 py-1.5 font-body text-xs font-medium text-silver-muted transition-colors hover:border-vivid-blue/50 hover:text-white"
                 >
                   {e.name}
                 </a>
@@ -252,22 +252,22 @@ export default function MarketingBrainKnowledgePage() {
                 {/* expert header */}
                 <motion.div
                   variants={fadeUp}
-                  className="flex flex-wrap items-center gap-4 border-b border-white/10 pb-6"
+                  className="flex flex-wrap items-center gap-4 border-b border-hairline pb-6"
                 >
                   <span
                     className={`flex size-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${
-                      accents[e.slug] ?? "from-white/20 to-white/5 text-white"
-                    } text-lg font-semibold ring-1 ring-white/10`}
+                      accents[e.slug] ?? "from-vivid-blue/30 to-vivid-blue/10 text-silver"
+                    } text-lg font-semibold ring-1 ring-hairline`}
                   >
                     {initials(e.name)}
                   </span>
                   <div className="min-w-0">
-                    <h2 className="font-[family-name:var(--font-unbounded)] text-2xl tracking-tight md:text-3xl">
+                    <h2 className="text-metallic font-display text-2xl tracking-tight md:text-3xl">
                       {e.name}
                     </h2>
-                    <p className="mt-1 text-sm text-zinc-500">
+                    <p className="mt-1 font-body text-sm text-silver-muted">
                       {e.books.length > 0 && (
-                        <span className="text-zinc-400">
+                        <span className="text-silver">
                           {e.books.join(" · ")}
                           {"  ·  "}
                         </span>
@@ -292,12 +292,12 @@ export default function MarketingBrainKnowledgePage() {
         </div>
 
         {/* Footer CTA */}
-        <section className="border-t border-white/10 py-20 md:py-28">
+        <section className="border-t border-hairline py-20 md:py-28">
           <div className="mx-auto max-w-3xl px-6 text-center">
-            <h2 className="font-[family-name:var(--font-unbounded)] text-2xl tracking-tight md:text-3xl">
+            <h2 className="text-metallic font-display text-2xl tracking-tight md:text-3xl">
               this is the brain behind the content
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-zinc-400">
+            <p className="mx-auto mt-4 max-w-xl font-body text-silver-muted">
               i built an AI system that turns these minds into answers i can
               query, every claim cited to the exact page or timecode. ask it
               anything, or follow along as i build AI systems for marketing in
@@ -306,7 +306,7 @@ export default function MarketingBrainKnowledgePage() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/marketing-brain"
-                className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
+                className="inline-flex items-center gap-2 rounded-full bg-vivid-blue px-5 py-2.5 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
               >
                 ask the brain
               </Link>
@@ -314,7 +314,7 @@ export default function MarketingBrainKnowledgePage() {
                 href="https://www.youtube.com/@Oleg-Melnikov"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-5 py-2.5 text-sm font-medium text-zinc-200 transition-colors hover:bg-white/5"
+                className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
               >
                 watch on youtube
               </a>

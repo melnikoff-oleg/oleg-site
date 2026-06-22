@@ -28,7 +28,7 @@ const steps = [
             href="https://code.visualstudio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             code.visualstudio.com
           </a>
@@ -47,7 +47,7 @@ const steps = [
       <div className="space-y-3">
         <p>
           open VS Code, go to the Extensions tab (left sidebar), and search for{" "}
-          <span className="text-white">Claude Code</span>.
+          <span className="text-silver">Claude Code</span>.
         </p>
         <p>install it and log in with your Anthropic account.</p>
         <p>
@@ -82,7 +82,7 @@ const steps = [
             href="https://apify.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             apify.com
           </a>{" "}
@@ -103,7 +103,7 @@ const steps = [
           open terminal in VS Code, start claude code, and give it a prompt
           like:
         </p>
-        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-5 text-[15px] leading-relaxed text-zinc-300 italic">
+        <div className="rounded-lg surface-raised border border-hairline p-5 text-[15px] leading-relaxed text-silver italic">
           &quot;Analyze all videos from these YouTube channels: [paste URLs].
           Scrape every video, identify outliers that performed way above average,
           and analyze their titles, thumbnails, and transcripts.&quot;
@@ -123,7 +123,7 @@ const steps = [
           claude code generates a detailed report with everything you need to
           understand what&apos;s working in your niche:
         </p>
-        <ul className="list-disc space-y-1.5 pl-5 text-zinc-400">
+        <ul className="list-disc space-y-1.5 pl-5 text-silver-muted">
           <li>outlier videos ranked by performance</li>
           <li>common hooks and title patterns</li>
           <li>thumbnail analysis</li>
@@ -152,21 +152,21 @@ const steps = [
     title: "level up: extra tips",
     content: (
       <div className="space-y-3">
-        <ul className="list-disc space-y-2 pl-5 text-zinc-400">
+        <ul className="list-disc space-y-2 pl-5 text-silver-muted">
           <li>
-            <span className="text-zinc-300">re-run monthly</span> to catch new
+            <span className="text-silver">re-run monthly</span> to catch new
             trends and shifts in what&apos;s working
           </li>
           <li>
-            <span className="text-zinc-300">analyze transcript patterns</span>:{" "}
+            <span className="text-silver">analyze transcript patterns</span>:{" "}
             what story structures do top videos use?
           </li>
           <li>
-            <span className="text-zinc-300">study comment sections</span> for
+            <span className="text-silver">study comment sections</span> for
             video ideas your competitors haven&apos;t covered
           </li>
           <li>
-            <span className="text-zinc-300">
+            <span className="text-silver">
               track your own analytics
             </span>{" "}
             and feed them back to claude code for optimization
@@ -194,7 +194,7 @@ export default function ClaudeSocialGrowthPage() {
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
@@ -202,7 +202,7 @@ export default function ClaudeSocialGrowthPage() {
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -223,21 +223,21 @@ export default function ClaudeSocialGrowthPage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
+              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
             >
               free resource
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
             >
               claude code for social media growth
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-lg text-zinc-400 md:text-xl"
+              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
             >
               analyze thousands of competitor videos, find the ones that truly
               outperform, and build a data-driven content strategy for your
@@ -257,7 +257,7 @@ export default function ClaudeSocialGrowthPage() {
           <div className="mx-auto max-w-3xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="text-sm uppercase tracking-widest text-zinc-500"
+              className="eyebrow font-body text-xs text-vivid-blue/80"
             >
               setup guide
             </motion.h2>
@@ -277,7 +277,7 @@ export default function ClaudeSocialGrowthPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+            <div className="glow-blue overflow-hidden rounded-2xl border border-hairline">
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 <iframe
                   src={`https://www.youtube.com/embed/${VIDEO_ID}`}

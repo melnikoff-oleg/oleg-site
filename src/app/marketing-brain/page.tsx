@@ -108,7 +108,7 @@ export default function MarketingBrainPage() {
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
@@ -116,7 +116,7 @@ export default function MarketingBrainPage() {
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="relative inline-flex items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+              className="relative inline-flex items-center gap-2 rounded-full border border-hairline px-3.5 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
             >
               your context
               {memory.hasContext && (
@@ -125,7 +125,7 @@ export default function MarketingBrainPage() {
             </button>
             <Link
               href="/marketing-brain-knowledge"
-              className="hidden items-center gap-2 rounded-lg bg-white/10 px-3.5 py-2 text-sm font-medium transition-colors hover:bg-white/20 sm:inline-flex"
+              className="hidden items-center gap-2 rounded-full border border-hairline px-3.5 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white sm:inline-flex"
             >
               browse the sources
             </Link>
@@ -137,7 +137,7 @@ export default function MarketingBrainPage() {
         {/* ambient glow */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[500px] bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(120,119,198,0.18),transparent)]"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[500px] bg-[radial-gradient(ellipse_60%_50%_at_50%_-10%,rgba(40,99,240,0.18),transparent)]"
         />
 
         {!started ? (
@@ -148,7 +148,7 @@ export default function MarketingBrainPage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 py-12 text-center"
           >
-            <h1 className="w-full min-w-0 font-[family-name:var(--font-unbounded)] text-[1.9rem] leading-[1.1] tracking-tight sm:text-6xl">
+            <h1 className="text-metallic w-full min-w-0 font-display text-[1.9rem] leading-[1.1] tracking-tight sm:text-6xl">
               $1B Marketing Brain
             </h1>
 
@@ -160,7 +160,7 @@ export default function MarketingBrainPage() {
                   key={s}
                   type="button"
                   onClick={() => submit(s)}
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-zinc-300 transition-colors hover:border-white/25 hover:text-white"
+                  className="rounded-full border border-hairline px-4 py-2 font-body text-sm text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
                 >
                   {s}
                 </button>
@@ -169,7 +169,7 @@ export default function MarketingBrainPage() {
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="mt-8 text-sm text-zinc-500 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-zinc-200"
+              className="mt-8 font-body text-sm text-silver-muted underline decoration-silver-muted/50 underline-offset-4 transition-colors hover:text-silver"
             >
               {memory.hasContext
                 ? "✦ edit your context"
@@ -211,7 +211,7 @@ export default function MarketingBrainPage() {
         )}
 
         {/* Composer */}
-        <div className="sticky bottom-0 border-t border-white/[0.06] bg-black/70 backdrop-blur-md">
+        <div className="sticky bottom-0 border-t border-hairline bg-navy/70 backdrop-blur-md">
           <div className="mx-auto w-full max-w-3xl px-6 py-4">
             {/* "added to your context" toast */}
             <AnimatePresence>
@@ -220,23 +220,23 @@ export default function MarketingBrainPage() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
-                  className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm"
+                  className="mb-3 flex items-center justify-between gap-3 rounded-xl border border-hairline surface-card px-4 py-2.5 font-body text-sm"
                 >
-                  <span className="min-w-0 truncate text-zinc-300">
+                  <span className="min-w-0 truncate text-silver">
                     ✦ added to your context
                   </span>
                   <div className="flex shrink-0 items-center gap-3">
                     <button
                       type="button"
                       onClick={undoCapture}
-                      className="text-zinc-400 underline decoration-zinc-600 underline-offset-2 hover:text-white"
+                      className="text-silver-muted underline decoration-silver-muted/50 underline-offset-2 hover:text-white"
                     >
                       undo
                     </button>
                     <button
                       type="button"
                       onClick={() => setToast(null)}
-                      className="text-zinc-500 hover:text-zinc-200"
+                      className="text-silver-muted hover:text-silver"
                       aria-label="Dismiss"
                     >
                       ✕
@@ -251,7 +251,7 @@ export default function MarketingBrainPage() {
                 e.preventDefault();
                 submit(input);
               }}
-              className="flex items-end gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-2 focus-within:border-white/25"
+              className="flex items-end gap-2 rounded-2xl border border-hairline surface-card p-2 focus-within:border-vivid-blue/50"
             >
               <textarea
                 ref={textareaRef}
@@ -268,12 +268,12 @@ export default function MarketingBrainPage() {
                 }}
                 rows={1}
                 placeholder="ask the brain…"
-                className="max-h-40 flex-1 resize-none overflow-y-auto bg-transparent px-3 py-2 text-[15px] text-zinc-100 placeholder:text-zinc-600 focus:outline-none"
+                className="max-h-40 flex-1 resize-none overflow-y-auto bg-transparent px-3 py-2 font-body text-[15px] text-silver placeholder:text-silver-muted focus:outline-none"
               />
               <button
                 type="submit"
                 disabled={!input.trim() || isStreaming}
-                className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white text-black transition-opacity hover:bg-zinc-200 disabled:opacity-30"
+                className="flex size-9 shrink-0 items-center justify-center rounded-full bg-vivid-blue text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-30"
                 aria-label="Send"
               >
                 <svg viewBox="0 0 24 24" fill="none" className="size-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

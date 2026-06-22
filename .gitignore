@@ -10,6 +10,11 @@
 
 # testing
 /coverage
+# playwright artifacts (keep tracked snapshot baselines under tests/**-snapshots/)
+/test-results/
+/playwright-report/
+/blob-report/
+/tests/.cache/
 
 # next.js
 /.next/

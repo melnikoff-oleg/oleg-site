@@ -20,20 +20,20 @@ export function AboutSection() {
         }}
         className="mx-auto max-w-3xl px-6"
       >
-        <motion.h2 variants={fadeUp} className="text-sm uppercase tracking-widest text-zinc-500">
+        <motion.h2 variants={fadeUp} className="eyebrow font-body text-xs text-vivid-blue/80">
           what i do
         </motion.h2>
 
         <motion.p
           variants={fadeUp}
-          className="mt-8 text-xl leading-relaxed text-zinc-300 md:text-2xl"
+          className="mt-8 font-body text-xl leading-relaxed text-silver md:text-2xl"
         >
           i run{" "}
           <Link
             href="https://www.boldane.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             boldane
           </Link>
@@ -42,21 +42,21 @@ export function AboutSection() {
 
         <motion.p
           variants={fadeUp}
-          className="mt-6 text-xl leading-relaxed text-zinc-300 md:text-2xl"
+          className="mt-6 font-body text-xl leading-relaxed text-silver md:text-2xl"
         >
           my whole thing is bridging media and software: the storytelling that makes people care, and the code and AI that gives it real leverage. that intersection is the most exciting place to be right now.
         </motion.p>
 
         <motion.p
           variants={fadeUp}
-          className="mt-6 text-xl leading-relaxed text-zinc-300 md:text-2xl"
+          className="mt-6 font-body text-xl leading-relaxed text-silver md:text-2xl"
         >
           i share how i build there with 18,000+ people on youtube, teaching{" "}
           <Link
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             claude code
           </Link>{" "}
@@ -65,7 +65,7 @@ export function AboutSection() {
 
         <motion.p
           variants={fadeUp}
-          className="mt-6 text-xl leading-relaxed text-zinc-300 md:text-2xl"
+          className="mt-6 font-body text-xl leading-relaxed text-silver md:text-2xl"
         >
           before this, i used AI to build trading algorithms at a hedge fund in amsterdam. then i left to build my own thing.
         </motion.p>

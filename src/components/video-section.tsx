@@ -22,21 +22,21 @@ export function VideoSection() {
       >
         <motion.h2
           variants={fadeUp}
-          className="text-sm uppercase tracking-widest text-zinc-500"
+          className="eyebrow font-body text-xs text-vivid-blue/80"
         >
           watch
         </motion.h2>
 
         <motion.p
           variants={fadeUp}
-          className="mt-8 text-xl text-zinc-300 md:text-2xl"
+          className="mt-8 font-body text-xl text-silver md:text-2xl"
         >
           i share my journey building with ai on{" "}
           <Link
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             youtube
           </Link>
@@ -49,7 +49,7 @@ export function VideoSection() {
             href={YOUTUBE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative block overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40"
+            className="surface-card glow-blue group relative block overflow-hidden p-0"
           >
             <video
               autoPlay
@@ -62,8 +62,8 @@ export function VideoSection() {
             </video>
 
             {/* Subtle darkening + hover overlay */}
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/15 transition-all duration-500 group-hover:bg-black/40">
-              <span className="text-xl font-medium tracking-tight opacity-0 transition-all duration-500 group-hover:opacity-100 md:text-2xl">
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-navy/20 transition-all duration-500 group-hover:bg-navy/50">
+              <span className="font-display text-xl font-medium tracking-tight text-silver opacity-0 transition-all duration-500 group-hover:opacity-100 md:text-2xl">
                 watch on youtube
               </span>
             </div>
@@ -72,7 +72,7 @@ export function VideoSection() {
 
         <motion.p
           variants={fadeUp}
-          className="mt-6 text-center text-zinc-500"
+          className="mt-6 text-center font-body text-silver-muted"
         >
           subscribe for weekly claude code and ai-for-marketing tutorials.
         </motion.p>

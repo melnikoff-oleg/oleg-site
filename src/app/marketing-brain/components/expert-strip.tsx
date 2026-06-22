@@ -31,7 +31,7 @@ export function ExpertStrip() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.25 + i * 0.09 }}
           className="group flex flex-col items-center"
         >
-          <div className="relative aspect-square w-[74px] overflow-hidden rounded-2xl ring-1 ring-white/15 shadow-[0_14px_40px_-10px_rgba(0,0,0,0.85)] transition-all duration-500 ease-out group-hover:-translate-y-1.5 group-hover:shadow-[0_22px_55px_-12px_rgba(0,0,0,0.95)] group-hover:ring-white/40 sm:w-[104px]">
+          <div className="relative aspect-square w-[74px] overflow-hidden rounded-2xl ring-1 ring-hairline shadow-[0_14px_40px_-12px_rgba(2,11,24,0.9)] transition-all duration-500 ease-out group-hover:-translate-y-1.5 group-hover:shadow-[0_18px_60px_-18px_rgba(40,99,240,0.55)] group-hover:ring-vivid-blue/40 sm:w-[104px]">
             <Image
               src={`/marketing-brain/experts/${e.slug}.webp`}
               alt={e.name}
@@ -42,10 +42,10 @@ export function ExpertStrip() {
             {/* light bottom gradient so the bright photos sit on the dark page */}
             <div
               aria-hidden
-              className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/45 to-transparent"
+              className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/45 to-transparent"
             />
           </div>
-          <span className="mt-2.5 text-[11px] font-medium leading-tight text-zinc-400 transition-colors duration-300 group-hover:text-white sm:text-xs">
+          <span className="mt-2.5 font-body text-[11px] font-medium leading-tight text-silver-muted transition-colors duration-300 group-hover:text-white sm:text-xs">
             {e.name}
           </span>
         </motion.div>

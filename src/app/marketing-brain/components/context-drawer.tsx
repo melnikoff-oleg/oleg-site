@@ -45,23 +45,23 @@ export function ContextDrawer({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-navy/60 backdrop-blur-sm"
           />
           <motion.aside
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
-            className="fixed right-0 top-0 z-50 flex h-dvh w-full max-w-md flex-col border-l border-white/10 bg-zinc-950"
+            className="fixed right-0 top-0 z-50 flex h-dvh w-full max-w-md flex-col border-l border-hairline bg-navy"
           >
-            <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
-              <h2 className="font-[family-name:var(--font-unbounded)] text-lg tracking-tight">
+            <div className="flex items-center justify-between border-b border-hairline px-6 py-4">
+              <h2 className="font-display text-lg tracking-tight text-silver">
                 your business context
               </h2>
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-lg p-1.5 text-zinc-400 transition-colors hover:bg-white/10 hover:text-white"
+                className="rounded-lg p-1.5 text-silver-muted transition-colors hover:bg-vivid-blue/10 hover:text-white"
                 aria-label="Close"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="size-5">
@@ -71,7 +71,7 @@ export function ContextDrawer({
             </div>
 
             <div className="flex-1 space-y-6 overflow-y-auto px-6 py-5">
-              <p className="text-sm leading-relaxed text-zinc-400">
+              <p className="font-body text-sm leading-relaxed text-silver-muted">
                 tell the brain about your business so its advice is personalized to
                 you: your offers, audience, and goals. add a website, upload files,
                 or just write it below.
@@ -79,7 +79,7 @@ export function ContextDrawer({
 
               {/* Website */}
               <div className="space-y-2">
-                <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                <label className="eyebrow text-xs font-medium text-vivid-blue/80">
                   scrape a website
                 </label>
                 <div className="flex gap-2">
@@ -88,13 +88,13 @@ export function ContextDrawer({
                     onChange={(e) => setUrl(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && onScrape()}
                     placeholder="yourbusiness.com"
-                    className="min-w-0 flex-1 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600 focus:border-white/25 focus:outline-none"
+                    className="min-w-0 flex-1 rounded-lg border border-hairline surface-raised px-3 py-2 font-body text-sm text-silver placeholder:text-silver-muted focus:border-vivid-blue/50 focus:outline-none"
                   />
                   <button
                     type="button"
                     onClick={onScrape}
                     disabled={!url.trim() || !!memory.working}
-                    className="shrink-0 rounded-lg bg-white px-4 py-2 text-sm font-medium text-black transition-opacity hover:bg-zinc-200 disabled:opacity-40"
+                    className="shrink-0 rounded-full bg-vivid-blue px-4 py-2 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-40"
                   >
                     {memory.working === "scrape" ? "reading…" : "scrape"}
                   </button>
@@ -103,7 +103,7 @@ export function ContextDrawer({
 
               {/* Files */}
               <div className="space-y-2">
-                <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                <label className="eyebrow text-xs font-medium text-vivid-blue/80">
                   upload files (pdf, txt, md)
                 </label>
                 <input
@@ -113,22 +113,22 @@ export function ContextDrawer({
                   accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown"
                   onChange={(e) => onFiles(e.target.files)}
                   disabled={!!memory.working}
-                  className="block w-full text-sm text-zinc-400 file:mr-3 file:rounded-lg file:border-0 file:bg-white/10 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-white/20"
+                  className="block w-full font-body text-sm text-silver-muted file:mr-3 file:rounded-full file:border-0 file:bg-vivid-blue/15 file:px-4 file:py-2 file:text-sm file:font-medium file:text-silver hover:file:bg-vivid-blue/25"
                 />
                 {memory.working === "upload" && (
-                  <p className="text-xs text-zinc-500">reading file…</p>
+                  <p className="font-body text-xs text-silver-muted">reading file…</p>
                 )}
               </div>
 
               {memory.error && (
-                <p className="rounded-lg border border-amber-500/20 bg-amber-500/10 px-3 py-2 text-xs text-amber-200">
+                <p className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 font-body text-xs text-amber-300">
                   {memory.error}
                 </p>
               )}
 
               {/* Editor */}
               <div className="space-y-2">
-                <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+                <label className="eyebrow text-xs font-medium text-vivid-blue/80">
                   what the brain knows
                 </label>
                 <textarea
@@ -136,15 +136,15 @@ export function ContextDrawer({
                   onChange={(e) => memory.setText(e.target.value)}
                   placeholder="e.g. I run Boldane, premium personal branding for founders with real expertise…"
                   rows={12}
-                  className="w-full resize-y rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm leading-relaxed text-zinc-200 placeholder:text-zinc-600 focus:border-white/25 focus:outline-none"
+                  className="w-full resize-y rounded-lg border border-hairline surface-raised px-3 py-2 font-body text-sm leading-relaxed text-silver placeholder:text-silver-muted focus:border-vivid-blue/50 focus:outline-none"
                 />
               </div>
 
               {/* Auto-capture toggle */}
-              <label className="flex cursor-pointer items-center justify-between rounded-lg border border-white/10 bg-white/[0.02] px-3 py-2.5">
-                <span className="text-sm text-zinc-300">
+              <label className="flex cursor-pointer items-center justify-between rounded-lg border border-hairline surface-raised px-3 py-2.5">
+                <span className="font-body text-sm text-silver">
                   auto-capture facts from chat
-                  <span className="mt-0.5 block text-xs text-zinc-600">
+                  <span className="mt-0.5 block text-xs text-silver-muted">
                     save new business details you mention while chatting
                   </span>
                 </span>
@@ -154,24 +154,24 @@ export function ContextDrawer({
                   aria-checked={autoCapture}
                   onClick={() => setAutoCapture(!autoCapture)}
                   className={`relative h-6 w-10 shrink-0 rounded-full transition-colors ${
-                    autoCapture ? "bg-white" : "bg-white/15"
+                    autoCapture ? "bg-vivid-blue" : "bg-vivid-blue/15"
                   }`}
                 >
                   <span
                     className={`absolute top-0.5 size-5 rounded-full transition-all ${
-                      autoCapture ? "left-[1.125rem] bg-black" : "left-0.5 bg-zinc-400"
+                      autoCapture ? "left-[1.125rem] bg-white" : "left-0.5 bg-silver-muted"
                     }`}
                   />
                 </button>
               </label>
             </div>
 
-            <div className="border-t border-white/10 px-6 py-4">
+            <div className="border-t border-hairline px-6 py-4">
               <button
                 type="button"
                 onClick={() => memory.save(memory.text)}
                 disabled={!!memory.working}
-                className="w-full rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-black transition-opacity hover:bg-zinc-200 disabled:opacity-40"
+                className="w-full rounded-full bg-vivid-blue px-4 py-2.5 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-40"
               >
                 {memory.working === "save" ? "saving…" : "save context"}
               </button>

@@ -24,7 +24,7 @@ function CopyButton({ text }: { text: string }) {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }}
-      className="inline-flex items-center gap-1.5 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-medium text-zinc-300 transition-colors hover:bg-white/20 hover:text-white"
+      className="inline-flex items-center gap-1.5 rounded-full border border-hairline px-3 py-1.5 font-body text-xs font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
     >
       {copied ? (
         <>
@@ -144,7 +144,7 @@ export default function LinkedInPostPage() {
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
@@ -152,7 +152,7 @@ export default function LinkedInPostPage() {
             href="https://youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
@@ -174,21 +174,21 @@ export default function LinkedInPostPage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
+              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
             >
               3 prompts &middot; ~30 min &middot; works with Claude or ChatGPT
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
             >
               the $60K LinkedIn post
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-lg text-zinc-400 md:text-xl"
+              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
             >
               the exact system that generated $60,000 in sales from a single
               LinkedIn post. 3 prompts, 3 separate chats, your real voice, not
@@ -197,7 +197,7 @@ export default function LinkedInPostPage() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-3 text-sm text-zinc-500"
+              className="mt-3 font-body text-sm text-silver-muted"
             >
               this is a simplified, do-it-yourself version of the Boldane
               system. copy the prompts below and start writing posts that
@@ -217,7 +217,7 @@ export default function LinkedInPostPage() {
           <div className="mx-auto max-w-3xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="text-sm uppercase tracking-widest text-zinc-500"
+              className="eyebrow font-body text-xs text-vivid-blue/80"
             >
               how it works
             </motion.h2>
@@ -245,15 +245,15 @@ export default function LinkedInPostPage() {
               ].map((s) => (
                 <div
                   key={s.step}
-                  className="rounded-xl border border-white/5 bg-white/[0.02] p-5"
+                  className="surface-raised rounded-xl border border-hairline p-5"
                 >
-                  <span className="text-xs font-medium text-zinc-600">
+                  <span className="font-body text-xs font-medium text-silver-muted">
                     chat {s.step}
                   </span>
-                  <p className="mt-1 text-sm font-medium text-white">
+                  <p className="mt-1 text-sm font-medium text-silver">
                     {s.label}
                   </p>
-                  <p className="mt-1.5 text-xs leading-relaxed text-zinc-500">
+                  <p className="mt-1.5 font-body text-xs leading-relaxed text-silver-muted">
                     {s.desc}
                   </p>
                 </div>
@@ -262,10 +262,10 @@ export default function LinkedInPostPage() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-5 text-sm text-zinc-500"
+              className="mt-5 font-body text-sm text-silver-muted"
             >
               the magic is in step 2: the posts are built from what{" "}
-              <span className="text-zinc-300">you</span> actually said, not from
+              <span className="text-silver">you</span> actually said, not from
               what AI invents. that is what makes them sound human.
             </motion.p>
           </div>
@@ -284,25 +284,25 @@ export default function LinkedInPostPage() {
               <motion.div
                 key={p.number}
                 variants={fadeUp}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8"
+                className="surface-card rounded-2xl p-6 sm:p-8"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <span className="text-xs font-medium text-zinc-600">
+                    <span className="font-body text-xs font-medium text-silver-muted">
                       prompt {p.number} &middot; {p.time}
                     </span>
-                    <h3 className="mt-1 text-lg font-medium text-white">
+                    <h3 className="mt-1 text-lg font-medium text-silver">
                       {p.title}
                     </h3>
                   </div>
                   <CopyButton text={p.prompt} />
                 </div>
 
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                <p className="mt-3 font-body text-sm leading-relaxed text-silver-muted">
                   {p.description}
                 </p>
 
-                <pre className="mt-5 max-h-64 overflow-auto rounded-lg bg-black/40 p-4 text-xs leading-relaxed text-zinc-400 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-800">
+                <pre className="mt-5 max-h-64 overflow-auto rounded-lg surface-raised border border-hairline p-4 text-xs leading-relaxed text-silver scrollbar-thin scrollbar-track-transparent scrollbar-thumb-silver-muted/30">
                   <code className="whitespace-pre-wrap break-words">
                     {p.prompt}
                   </code>
@@ -321,36 +321,36 @@ export default function LinkedInPostPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <h2 className="text-sm uppercase tracking-widest text-zinc-500">
+            <h2 className="eyebrow font-body text-xs text-vivid-blue/80">
               tips for better results
             </h2>
-            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-zinc-400">
+            <ul className="mt-5 space-y-3 font-body text-sm leading-relaxed text-silver-muted">
               <li className="flex gap-3">
-                <span className="mt-0.5 text-zinc-600">01</span>
+                <span className="mt-0.5 text-silver-muted">01</span>
                 <span>
                   in the interview (prompt 2), give{" "}
-                  <span className="text-zinc-300">specific numbers</span> and{" "}
-                  <span className="text-zinc-300">real names</span>. &quot;we
+                  <span className="text-silver">specific numbers</span> and{" "}
+                  <span className="text-silver">real names</span>. &quot;we
                   grew 40% in 3 months&quot; beats &quot;we grew a lot.&quot;
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="mt-0.5 text-zinc-600">02</span>
+                <span className="mt-0.5 text-silver-muted">02</span>
                 <span>
                   talk for at least{" "}
-                  <span className="text-zinc-300">15 minutes</span> in prompt 2.
+                  <span className="text-silver">15 minutes</span> in prompt 2.
                   short interviews = generic posts.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="mt-0.5 text-zinc-600">03</span>
+                <span className="mt-0.5 text-silver-muted">03</span>
                 <span>
                   repeat weekly: same foundation (prompt 1 is one-time), new
                   interview, fresh posts every week.
                 </span>
               </li>
               <li className="flex gap-3">
-                <span className="mt-0.5 text-zinc-600">04</span>
+                <span className="mt-0.5 text-silver-muted">04</span>
                 <span>
                   always do a light edit before posting. fix anything that
                   doesn&apos;t sound like you.
@@ -369,17 +369,17 @@ export default function LinkedInPostPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <h2 className="text-sm uppercase tracking-widest text-zinc-500">
+            <h2 className="eyebrow font-body text-xs text-vivid-blue/80">
               the post that started it
             </h2>
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">
-              <p className="text-sm leading-relaxed text-zinc-400">
+            <div className="surface-card mt-6 rounded-2xl p-6 sm:p-8">
+              <p className="font-body text-sm leading-relaxed text-silver-muted">
                 this system was built for{" "}
                 <a
                   href="https://www.linkedin.com/in/chintanaroad/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                  className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
                 >
                   Jon Chintanaroad
                 </a>
@@ -388,19 +388,19 @@ export default function LinkedInPostPage() {
                   href="https://www.recruitinglaunch.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                  className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
                 >
                   Recruiting Launch
                 </a>
                 . one post written with this method generated{" "}
-                <span className="text-white">$60,000 in sales</span>.
+                <span className="text-silver">$60,000 in sales</span>.
               </p>
 
               <a
                 href="https://www.linkedin.com/posts/chintanaroad_i-feel-like-theres-no-safe-haven-for-recruiters-activity-7462169996266328064-3gqd"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2.5 text-sm font-medium transition-colors hover:bg-white/20"
+                className="mt-5 inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -424,14 +424,14 @@ export default function LinkedInPostPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center sm:p-8">
-              <p className="text-sm leading-relaxed text-zinc-500">
+            <div className="surface-card rounded-2xl p-6 text-center sm:p-8">
+              <p className="font-body text-sm leading-relaxed text-silver-muted">
                 this is the simple, do-it-yourself version of what{" "}
                 <a
                   href="https://www.boldane.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-300 underline decoration-zinc-700 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+                  className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
                 >
                   Boldane
                 </a>{" "}

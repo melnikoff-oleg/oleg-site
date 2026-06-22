@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
   { name: "about", href: "#about" },
@@ -27,23 +28,26 @@ export function Header() {
         className={cn(
           "mx-auto mt-2 max-w-6xl rounded-2xl border px-6 transition-all duration-300 lg:px-12",
           scrolled
-            ? "max-w-4xl border-white/10 bg-black/60 backdrop-blur-xl lg:px-5"
+            ? "max-w-4xl border-hairline bg-navy/70 backdrop-blur-md lg:px-5"
             : "border-transparent"
         )}
       >
         <div className="relative flex items-center justify-between py-3 lg:py-4">
-          <Link href="/" className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight">
+          <Link
+            href="/"
+            className="brand-wordmark font-display text-lg tracking-tight"
+          >
             oleg melnikov
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden lg:block absolute inset-0 m-auto w-fit h-fit">
-            <ul className="flex gap-8 text-sm">
+            <ul className="flex gap-8 font-body text-sm">
               {navItems.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-zinc-400 transition-colors hover:text-white"
+                    className="text-silver-muted transition-colors hover:text-white"
                   >
                     {item.name}
                   </Link>
@@ -53,15 +57,21 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA */}
-          <Link
-            href="https://www.youtube.com/@Oleg-Melnikov"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+          <Button
+            asChild
+            size="sm"
+            variant="outline"
+            className="hidden lg:inline-flex"
           >
-            <YoutubeIcon className="size-4" />
-            youtube
-          </Link>
+            <Link
+              href="https://www.youtube.com/@Oleg-Melnikov"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <YoutubeIcon className="size-4" />
+              youtube
+            </Link>
+          </Button>
 
           {/* Mobile toggle */}
           <button
@@ -72,19 +82,19 @@ export function Header() {
             <div className="flex flex-col gap-1.5">
               <span
                 className={cn(
-                  "block h-0.5 w-5 bg-white transition-all duration-200",
+                  "block h-0.5 w-5 bg-silver transition-all duration-200",
                   menuOpen && "translate-y-2 rotate-45"
                 )}
               />
               <span
                 className={cn(
-                  "block h-0.5 w-5 bg-white transition-all duration-200",
+                  "block h-0.5 w-5 bg-silver transition-all duration-200",
                   menuOpen && "opacity-0"
                 )}
               />
               <span
                 className={cn(
-                  "block h-0.5 w-5 bg-white transition-all duration-200",
+                  "block h-0.5 w-5 bg-silver transition-all duration-200",
                   menuOpen && "-translate-y-2 -rotate-45"
                 )}
               />
@@ -95,27 +105,29 @@ export function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl lg:hidden">
+        <div className="fixed inset-0 z-40 bg-navy/95 backdrop-blur-md lg:hidden">
           <div className="flex h-full flex-col items-center justify-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-2xl text-zinc-300 transition-colors hover:text-white"
+                className="font-display text-2xl text-silver transition-colors hover:text-white"
               >
                 {item.name}
               </Link>
             ))}
-            <Link
-              href="https://www.youtube.com/@Oleg-Melnikov"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-white/10 px-6 py-3 text-lg transition-colors hover:bg-white/20"
-            >
-              <YoutubeIcon className="size-5" />
-              youtube
-            </Link>
+            <Button asChild size="lg" variant="outline" className="mt-4">
+              <Link
+                href="https://www.youtube.com/@Oleg-Melnikov"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+              >
+                <YoutubeIcon className="size-5" />
+                youtube
+              </Link>
+            </Button>
           </div>
         </div>
       )}

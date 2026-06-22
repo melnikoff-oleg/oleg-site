@@ -29,7 +29,7 @@ const steps = [
             href="https://claude.ai/code"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             claude.ai/code
           </a>
@@ -49,7 +49,7 @@ const steps = [
       <div className="space-y-3">
         <p>
           create a file called{" "}
-          <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+          <code className="rounded bg-vivid-blue/15 px-1.5 py-0.5 font-mono text-sm text-silver">
             CLAUDE.md
           </code>{" "}
           in your project folder. this is where you tell claude everything about
@@ -74,7 +74,7 @@ const steps = [
             href="https://elevenlabs.io/app/agents"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             elevenlabs.io/app/agents
           </a>{" "}
@@ -84,9 +84,9 @@ const steps = [
         <p>configure two things in the Agent tab:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               first message{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (what the agent says when the conversation starts)
               </span>
             </p>
@@ -97,9 +97,9 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               system prompt{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (tells the agent how to behave)
               </span>
             </p>
@@ -112,7 +112,7 @@ const steps = [
         </div>
         <p>
           pick a voice you like from the Voice tab, then hit{" "}
-          <span className="text-white">&quot;Test AI agent&quot;</span> to try it
+          <span className="text-silver">&quot;Test AI agent&quot;</span> to try it
           out.
         </p>
       </div>
@@ -129,25 +129,25 @@ const steps = [
         </p>
         <div className="space-y-3">
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               viral hooks{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (opening lines that stop the scroll)
               </span>
             </p>
           </div>
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               storytelling frameworks{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (structures that keep people reading)
               </span>
             </p>
           </div>
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               platform-specific formatting{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 (line breaks, emojis, CTAs optimized for LinkedIn)
               </span>
             </p>
@@ -187,7 +187,7 @@ const steps = [
         </p>
         <p>
           when you&apos;re done, go to the{" "}
-          <span className="text-white">Call history</span> tab in the ElevenLabs
+          <span className="text-silver">Call history</span> tab in the ElevenLabs
           dashboard to grab the full transcript. feed it to claude code along
           with your copywriting system. claude extracts the best content angles,
           applies your techniques, pairs it with a personal image, and produces a
@@ -270,7 +270,7 @@ export default function ClaudeInterviewerPage() {
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
@@ -278,7 +278,7 @@ export default function ClaudeInterviewerPage() {
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -299,21 +299,21 @@ export default function ClaudeInterviewerPage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
+              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
             >
               free resource
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
             >
               an AI interviewer that turns your expertise into content
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-lg text-zinc-400 md:text-xl"
+              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
             >
               build a voice AI agent that interviews you about your work, then
               shapes the conversation into ready-to-post linkedin content. you
@@ -333,7 +333,7 @@ export default function ClaudeInterviewerPage() {
           <div className="mx-auto max-w-3xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="text-sm uppercase tracking-widest text-zinc-500"
+              className="eyebrow font-body text-xs text-vivid-blue/80"
             >
               setup guide
             </motion.h2>
@@ -353,7 +353,7 @@ export default function ClaudeInterviewerPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+            <div className="glow-blue overflow-hidden rounded-2xl border border-hairline">
               <div
                 className="relative w-full"
                 style={{ paddingBottom: "56.25%" }}

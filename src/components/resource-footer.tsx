@@ -124,8 +124,8 @@ export function ResourceFooter({ currentSlug }: { currentSlug: string }) {
 
   return (
     <footer className="mx-auto max-w-3xl px-6 pb-12">
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-10 sm:px-8 sm:py-12 mt-16">
-        <p className="text-center text-xs font-medium uppercase tracking-widest text-zinc-600">
+      <div className="surface-card px-5 py-10 sm:px-8 sm:py-12 mt-16">
+        <p className="eyebrow text-center text-xs font-medium text-vivid-blue/80">
           more free resources
         </p>
 
@@ -134,24 +134,24 @@ export function ResourceFooter({ currentSlug }: { currentSlug: string }) {
             <Link
               key={resource.slug}
               href={`/${resource.slug}`}
-              className="group flex items-start gap-3 rounded-xl px-4 py-3 transition-colors duration-150 hover:bg-white/5"
+              className="group flex items-start gap-3 rounded-xl px-4 py-3 transition-colors duration-150 hover:bg-vivid-blue/10"
             >
-              <resource.icon className="mt-0.5 size-4 shrink-0 text-zinc-600 transition-colors group-hover:text-white" />
+              <resource.icon className="mt-0.5 size-4 shrink-0 text-vivid-blue transition-colors group-hover:text-white" />
               <div className="min-w-0">
-                <p className="text-sm font-medium text-zinc-400 transition-colors group-hover:text-white">
+                <p className="text-sm font-medium text-silver transition-colors group-hover:text-white">
                   {resource.title}
                 </p>
-                <p className="mt-0.5 text-xs leading-relaxed text-zinc-600">
+                <p className="mt-0.5 text-xs leading-relaxed text-silver-muted">
                   {resource.description}
                 </p>
               </div>
-              <ArrowRight className="mt-1 size-3 shrink-0 text-zinc-700 transition-all duration-150 group-hover:translate-x-0.5 group-hover:text-white" />
+              <ArrowRight className="mt-1 size-3 shrink-0 text-silver-muted/60 transition-all duration-150 group-hover:translate-x-0.5 group-hover:text-white" />
             </Link>
           ))}
         </div>
       </div>
 
-      <p className="mt-8 text-center text-sm text-zinc-600">
+      <p className="mt-8 text-center text-sm text-silver-muted">
         &copy; 2026 oleg melnikov
       </p>
     </footer>

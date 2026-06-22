@@ -63,7 +63,7 @@ function linkifyCitations(children: ReactNode, onCite: (n: number) => void): Rea
           key={i}
           type="button"
           onClick={() => onCite(n)}
-          className="mx-0.5 inline-flex h-[1.1rem] min-w-[1.1rem] items-center justify-center rounded bg-white/10 px-1 align-text-top text-[10px] font-semibold text-zinc-300 transition-colors hover:bg-white/25 hover:text-white"
+          className="mx-0.5 inline-flex h-[1.1rem] min-w-[1.1rem] items-center justify-center rounded bg-vivid-blue/15 px-1 align-text-top text-[10px] font-semibold text-silver transition-colors hover:bg-vivid-blue/25 hover:text-white"
         >
           {n}
         </button>
@@ -74,9 +74,9 @@ function linkifyCitations(children: ReactNode, onCite: (n: number) => void): Rea
 
 const dots = (
   <span className="inline-flex gap-0.5">
-    <span className="size-1 animate-bounce rounded-full bg-zinc-500 [animation-delay:-0.3s]" />
-    <span className="size-1 animate-bounce rounded-full bg-zinc-500 [animation-delay:-0.15s]" />
-    <span className="size-1 animate-bounce rounded-full bg-zinc-500" />
+    <span className="size-1 animate-bounce rounded-full bg-silver-muted [animation-delay:-0.3s]" />
+    <span className="size-1 animate-bounce rounded-full bg-silver-muted [animation-delay:-0.15s]" />
+    <span className="size-1 animate-bounce rounded-full bg-silver-muted" />
   </span>
 );
 
@@ -121,7 +121,7 @@ export function ChatMessage({
   if (message.role === "user") {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-white/10 px-4 py-2.5 text-sm leading-relaxed text-zinc-100">
+        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-vivid-blue/15 px-4 py-2.5 font-body text-sm leading-relaxed text-silver">
           {message.content}
         </div>
       </div>
@@ -142,7 +142,7 @@ export function ChatMessage({
   return (
     <div className="space-y-5">
       {showSearching && (
-        <p className="flex items-center gap-1.5 text-sm text-zinc-500">
+        <p className="flex items-center gap-1.5 font-body text-sm text-silver-muted">
           searching the brain
           {dots}
         </p>
@@ -152,7 +152,7 @@ export function ChatMessage({
         <motion.div initial="hidden" animate="visible" variants={stagger} className="space-y-3">
           <motion.p
             variants={reveal}
-            className="text-xs uppercase tracking-widest text-zinc-500"
+            className="eyebrow text-xs text-vivid-blue/80"
           >
             foundational sources
           </motion.p>
@@ -176,7 +176,7 @@ export function ChatMessage({
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="flex items-center gap-1.5 text-sm text-zinc-500"
+          className="flex items-center gap-1.5 font-body text-sm text-silver-muted"
         >
           thinking it through
           {dots}
@@ -187,8 +187,8 @@ export function ChatMessage({
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className={`prose-brain text-[15px] leading-relaxed ${
-              message.error ? "text-amber-200/90" : "text-zinc-200"
+            className={`prose-brain font-body text-[15px] leading-relaxed ${
+              message.error ? "text-amber-200/90" : "text-silver"
             }`}
           >
             <ReactMarkdown
@@ -200,7 +200,7 @@ export function ChatMessage({
                 ol: ({ children }) => <ol className="mb-3 list-decimal space-y-1 pl-5">{children}</ol>,
                 strong: ({ children }) => <strong className="font-semibold text-white">{children}</strong>,
                 a: ({ children, href }) => (
-                  <a href={href} target="_blank" rel="noopener noreferrer" className="text-white underline decoration-zinc-600 underline-offset-2 hover:decoration-white">
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-2 hover:decoration-white">
                     {children}
                   </a>
                 ),
@@ -209,7 +209,7 @@ export function ChatMessage({
               {message.content}
             </ReactMarkdown>
             {message.streaming && (
-              <span className="ml-0.5 inline-block h-4 w-1.5 animate-pulse bg-zinc-500 align-text-bottom" />
+              <span className="ml-0.5 inline-block h-4 w-1.5 animate-pulse bg-vivid-blue align-text-bottom" />
             )}
           </motion.div>
         )
@@ -217,13 +217,13 @@ export function ChatMessage({
 
       {/* Cut off because the answer got long: offer to continue it. */}
       {!message.streaming && message.truncated && (
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-amber-400/25 bg-amber-400/10 px-4 py-3 text-sm text-amber-200/90">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 font-body text-sm text-amber-300">
           <span>this answer hit the length limit, so it stops here.</span>
           {onContinue && (
             <button
               type="button"
               onClick={onContinue}
-              className="rounded-lg bg-amber-400/20 px-3 py-1.5 font-medium text-amber-100 transition-colors hover:bg-amber-400/30"
+              className="rounded-full bg-amber-500/20 px-3 py-1.5 font-medium text-amber-100 transition-colors hover:bg-amber-500/30"
             >
               continue the answer
             </button>
@@ -233,7 +233,7 @@ export function ChatMessage({
 
       {/* Stream died before finishing (timeout / dropped connection): offer retry. */}
       {!message.streaming && message.interrupted && (
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-red-400/25 bg-red-400/10 px-4 py-3 text-sm text-red-200/90">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 font-body text-sm text-red-300">
           <span>
             this answer was cut off before it finished, the connection dropped or
             timed out. it wasn&apos;t you.
@@ -242,7 +242,7 @@ export function ChatMessage({
             <button
               type="button"
               onClick={onRetry}
-              className="rounded-lg bg-red-400/20 px-3 py-1.5 font-medium text-red-100 transition-colors hover:bg-red-400/30"
+              className="rounded-full bg-red-500/20 px-3 py-1.5 font-medium text-red-100 transition-colors hover:bg-red-500/30"
             >
               try again
             </button>

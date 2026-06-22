@@ -5,25 +5,25 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { TextEffect } from "@/components/motion/text-effect";
 import { AnimatedGroup } from "@/components/motion/animated-group";
+import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
-      {/* Radial gradient background effects */}
+      {/* Dot-grid texture */}
+      <div aria-hidden className="bg-dotgrid pointer-events-none absolute inset-0" />
+
+      {/* Ambient blue glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 isolate opacity-65"
-      >
-        <div className="absolute left-0 top-0 h-[80rem] w-[35rem] -translate-y-[22rem] -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
-        <div className="absolute left-0 top-0 h-[80rem] w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-        <div className="absolute left-0 top-0 h-[80rem] w-60 -translate-y-[22rem] -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
-      </div>
+        className="pointer-events-none absolute inset-0 isolate bg-[radial-gradient(ellipse_55%_45%_at_50%_18%,rgba(40,99,240,0.16),transparent)]"
+      />
 
       <div className="relative pt-32 md:pt-44">
         <div className="mx-auto max-w-4xl px-6 text-center">
           {/* Top label */}
           <AnimatedGroup>
-            <span className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400">
+            <span className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
               ai software entrepreneur
             </span>
           </AnimatedGroup>
@@ -32,7 +32,7 @@ export function HeroSection() {
           <TextEffect
             as="h1"
             delay={0.2}
-            className="mx-auto mt-8 max-w-3xl text-balance text-2xl font-medium tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
+            className="text-metallic mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-medium leading-[1.05] tracking-tight sm:text-3xl md:text-4xl lg:text-5xl"
           >
             5 years in AI. left big tech and a hedge fund to build my own company.
           </TextEffect>
@@ -42,7 +42,7 @@ export function HeroSection() {
             as="p"
             delay={0.6}
             per="line"
-            className="mx-auto mt-6 max-w-2xl text-balance text-lg text-zinc-400 md:text-xl"
+            className="mx-auto mt-6 max-w-2xl text-balance font-body text-lg text-silver-muted md:text-xl"
           >
             now i run boldane, helping founders with real expertise become the names their market trusts. and i share the AI systems i build for marketing with 18K+ on youtube.
           </TextEffect>
@@ -67,34 +67,34 @@ export function HeroSection() {
             }}
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <Link
-              href="https://www.youtube.com/@Oleg-Melnikov"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black transition-opacity hover:opacity-90"
-            >
-              watch on youtube
-              <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-            </Link>
-            <Link
-              href="#results"
-              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-zinc-400 transition-colors hover:text-white"
-            >
-              see my work
-              <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="size-4"
+            <Button asChild size="lg" variant="primary">
+              <Link
+                href="https://www.youtube.com/@Oleg-Melnikov"
+                target="_blank"
+                rel="noopener noreferrer"
               >
+                watch on youtube
+                <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="ghost">
+              <Link href="#results">
+                see my work
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="size-4"
+                >
                 <path
                   fillRule="evenodd"
                   d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06z"
                   clipRule="evenodd"
                 />
-              </svg>
-            </Link>
+                </svg>
+              </Link>
+            </Button>
           </AnimatedGroup>
         </div>
 
@@ -119,7 +119,7 @@ export function HeroSection() {
           }}
           className="mt-16 px-4 sm:px-6"
         >
-          <div className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl shadow-black/40">
+          <div className="surface-card glow-blue relative mx-auto max-w-4xl overflow-hidden p-2">
             <Image
               src="/hero.jpg"
               alt="Oleg Melnikov"
@@ -131,7 +131,7 @@ export function HeroSection() {
 
             {/* Soft scrim: a short, gentle band at the very bottom only, so the
                 glass panel blends in without darkening Oleg's face above it */}
-            <div className="pointer-events-none absolute inset-x-2 bottom-2 h-1/3 rounded-b-xl bg-gradient-to-t from-black/55 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-2 bottom-2 h-1/3 rounded-b-xl bg-gradient-to-t from-navy/80 to-transparent" />
 
             {/* Quote overlay: self-contained glass panel for crisp readability */}
             <motion.figure
@@ -140,27 +140,23 @@ export function HeroSection() {
               transition={{ delay: 1.8, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-x-2 bottom-2 px-3 pb-3 sm:px-4 sm:pb-4"
             >
-              <div className="mx-auto max-w-3xl rounded-xl border border-white/10 bg-black/55 px-5 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
-                <blockquote className="text-balance text-base font-semibold leading-snug tracking-tight text-white sm:text-xl md:text-2xl">
-                  <span className="text-white/60">&ldquo;</span>made{" "}
-                  <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
-                    $700k by the age 24
-                  </span>{" "}
-                  by applying AI for trading, then went all-in on{" "}
-                  <span className="bg-gradient-to-r from-white to-zinc-300 bg-clip-text text-transparent">
-                    AI for marketing
-                  </span>
-                  .<span className="text-white/60">&rdquo;</span>
+              <div className="mx-auto max-w-3xl rounded-xl border border-hairline bg-navy/70 px-5 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
+                <blockquote className="text-balance font-display text-base font-medium leading-snug tracking-tight text-silver sm:text-xl md:text-2xl">
+                  <span className="text-silver-muted">&ldquo;</span>made{" "}
+                  <span className="text-metallic">$700k by the age 24</span> by
+                  applying AI for trading, then went all-in on{" "}
+                  <span className="text-metallic">AI for marketing</span>
+                  .<span className="text-silver-muted">&rdquo;</span>
                 </blockquote>
               </div>
             </motion.figure>
 
-            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
+            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-hairline" />
           </div>
         </AnimatedGroup>
 
         {/* Bottom fade */}
-        <div className="pointer-events-none relative -mt-32 h-32 bg-gradient-to-t from-black to-transparent" />
+        <div className="pointer-events-none relative -mt-32 h-32 bg-gradient-to-t from-navy to-transparent" />
       </div>
     </section>
   );

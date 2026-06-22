@@ -28,7 +28,7 @@ const steps = [
             href="https://code.visualstudio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             code.visualstudio.com
           </a>
@@ -46,7 +46,7 @@ const steps = [
       <div className="space-y-3">
         <p>
           open VS Code, go to the Extensions tab, and search for{" "}
-          <span className="text-white">Claude Code</span>. install the
+          <span className="text-silver">Claude Code</span>. install the
           extension.
         </p>
         <p>
@@ -68,7 +68,7 @@ const steps = [
           if you don&apos;t have a website yet, check out the{" "}
           <Link
             href="/claude-website"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             /claude-website
           </Link>{" "}
@@ -117,15 +117,15 @@ const steps = [
           claude code implements everything from the audit. here&apos;s what it
           handles:
         </p>
-        <ul className="list-disc space-y-1.5 pl-5 text-zinc-400">
+        <ul className="list-disc space-y-1.5 pl-5 text-silver-muted">
           <li>adds meta tags to every page</li>
           <li>
             creates{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            <code className="rounded bg-vivid-blue/15 px-1.5 py-0.5 font-mono text-sm text-silver">
               sitemap.ts
             </code>{" "}
             and{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+            <code className="rounded bg-vivid-blue/15 px-1.5 py-0.5 font-mono text-sm text-silver">
               robots.ts
             </code>
           </li>
@@ -147,7 +147,7 @@ const steps = [
             href="https://search.google.com/search-console"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             Google Search Console
           </a>{" "}
@@ -165,7 +165,7 @@ const steps = [
     content: (
       <div className="space-y-4">
         <p>once the basics are in place, keep going:</p>
-        <ul className="list-disc space-y-2 pl-5 text-zinc-400">
+        <ul className="list-disc space-y-2 pl-5 text-silver-muted">
           <li>
             set up weekly automated SEO reviews with claude code to track
             analytics and adjust your strategy
@@ -200,7 +200,7 @@ export default function ClaudeSeoPage() {
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
@@ -208,7 +208,7 @@ export default function ClaudeSeoPage() {
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -229,21 +229,21 @@ export default function ClaudeSeoPage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
+              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
             >
               free resource
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
             >
               claude code for seo optimization
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-lg text-zinc-400 md:text-xl"
+              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
             >
               put the technical side of seo on solid footing with claude code:
               meta tags, structured data, sitemaps, keyword research, and the
@@ -264,7 +264,7 @@ export default function ClaudeSeoPage() {
           <div className="mx-auto max-w-3xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="text-sm uppercase tracking-widest text-zinc-500"
+              className="eyebrow font-body text-xs text-vivid-blue/80"
             >
               setup guide
             </motion.h2>
@@ -284,7 +284,7 @@ export default function ClaudeSeoPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+            <div className="glow-blue overflow-hidden rounded-2xl border border-hairline">
               <div
                 className="relative w-full"
                 style={{ paddingBottom: "56.25%" }}

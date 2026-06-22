@@ -1,18 +1,27 @@
 import type { Metadata } from "next";
-import { Inter, Unbounded } from "next/font/google";
+import { Inter, DM_Sans, Space_Grotesk } from "next/font/google";
 import { Plausible } from "@/components/plausible";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
-const unbounded = Unbounded({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: "400",
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "700"],
   display: "swap",
-  variable: "--font-unbounded",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space",
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -57,8 +66,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.className} ${unbounded.variable}`}>
-      <body>
+    <html lang="en" className={`${inter.variable} ${dmSans.variable} ${spaceGrotesk.variable}`}>
+      <body className="font-sans antialiased">
         <Plausible />
         {children}
       </body>

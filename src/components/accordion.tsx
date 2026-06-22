@@ -26,21 +26,21 @@ export function Accordion({ items, defaultOpen }: AccordionProps) {
         return (
           <div
             key={index}
-            className="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden"
+            className="surface-card overflow-hidden"
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-center gap-4 px-6 py-5 text-left transition-colors hover:bg-white/[0.02]"
+              className="flex w-full items-center gap-4 px-6 py-5 text-left transition-colors hover:bg-vivid-blue/[0.06]"
             >
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-sm font-medium">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-vivid-blue/15 font-body text-sm font-medium text-vivid-blue">
                 {index + 1}
               </span>
-              <span className="flex-1 text-lg font-medium">{item.title}</span>
+              <span className="flex-1 font-display text-lg font-medium text-silver">{item.title}</span>
               <svg
                 viewBox="0 0 20 20"
                 fill="currentColor"
                 className={cn(
-                  "size-5 shrink-0 text-zinc-500 transition-transform duration-200",
+                  "size-5 shrink-0 text-silver-muted transition-transform duration-200",
                   isOpen && "rotate-180"
                 )}
               >
@@ -59,7 +59,7 @@ export function Accordion({ items, defaultOpen }: AccordionProps) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                 >
-                  <div className="px-6 pb-6 pt-0 text-zinc-400 leading-relaxed">
+                  <div className="px-6 pb-6 pt-0 font-body text-silver-muted leading-relaxed">
                     {item.content}
                   </div>
                 </motion.div>

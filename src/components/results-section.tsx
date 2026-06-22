@@ -41,7 +41,7 @@ export function ResultsSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUp}
-          className="text-sm uppercase tracking-widest text-zinc-500"
+          className="eyebrow font-body text-xs text-vivid-blue/80"
         >
           results
         </motion.h2>
@@ -56,10 +56,10 @@ export function ResultsSection() {
         >
           {stats.map((stat) => (
             <motion.div key={stat.label} variants={fadeUp}>
-              <p className="text-3xl font-semibold tracking-tight md:text-4xl">
+              <p className="text-metallic font-display text-3xl font-medium tracking-tight md:text-4xl">
                 {stat.value}
               </p>
-              <p className="mt-2 text-sm text-zinc-500">{stat.label}</p>
+              <p className="mt-2 font-body text-sm text-silver-muted">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -76,10 +76,10 @@ export function ResultsSection() {
             <motion.div
               key={h.title}
               variants={fadeUp}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+              className="surface-card p-6"
             >
-              <p className="text-lg font-medium">{h.title}</p>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+              <p className="font-display text-lg font-medium text-silver">{h.title}</p>
+              <p className="mt-3 font-body text-sm leading-relaxed text-silver-muted">
                 {h.description}
               </p>
             </motion.div>

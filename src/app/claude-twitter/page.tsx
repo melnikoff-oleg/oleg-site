@@ -28,7 +28,7 @@ const steps = [
             href="https://code.visualstudio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             code.visualstudio.com
           </a>
@@ -64,7 +64,7 @@ const steps = [
             href="https://www.skool.com/ai-automation-7100/about"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
           >
             free skool community
           </a>
@@ -84,9 +84,9 @@ const steps = [
         <p>you need three services:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               Apify{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 for scraping X/Twitter
               </span>
             </p>
@@ -96,7 +96,7 @@ const steps = [
                 href="https://apify.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 apify.com
               </a>{" "}
@@ -104,9 +104,9 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               Gemini API{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 for analyzing competitor visuals
               </span>
             </p>
@@ -116,7 +116,7 @@ const steps = [
                 href="https://aistudio.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 aistudio.google.com
               </a>{" "}
@@ -124,9 +124,9 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-white font-medium">
+            <p className="text-silver font-medium">
               Anthropic API{" "}
-              <span className="font-normal text-zinc-500">
+              <span className="font-normal text-silver-muted">
                 for generating content
               </span>
             </p>
@@ -136,7 +136,7 @@ const steps = [
                 href="https://console.anthropic.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline decoration-zinc-600 underline-offset-4 transition-colors hover:decoration-white"
+                className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
                 console.anthropic.com
               </a>{" "}
@@ -145,7 +145,7 @@ const steps = [
           </div>
         </div>
         <p>paste all three keys in the .env file:</p>
-        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
+        <div className="rounded-lg surface-raised border border-hairline p-4 font-mono text-sm text-silver">
           APIFY_API_KEY=your_apify_key
           <br />
           GEMINI_API_KEY=your_gemini_key
@@ -160,12 +160,12 @@ const steps = [
     content: (
       <div className="space-y-3">
         <p>open terminal in VS Code and run:</p>
-        <div className="rounded-lg bg-white/[0.03] border border-white/10 p-4 font-mono text-sm text-zinc-300">
+        <div className="rounded-lg surface-raised border border-hairline p-4 font-mono text-sm text-silver">
           npm run dev
         </div>
         <p>
           open{" "}
-          <code className="rounded bg-white/10 px-1.5 py-0.5 text-sm text-zinc-300">
+          <code className="rounded bg-vivid-blue/15 px-1.5 py-0.5 font-mono text-sm text-silver">
             localhost:3000
           </code>{" "}
           in your browser. you&apos;ll see the full dashboard where you can add
@@ -240,28 +240,28 @@ const steps = [
     content: (
       <div className="space-y-4">
         <div>
-          <p className="text-white font-medium">provide more brand context</p>
+          <p className="text-silver font-medium">provide more brand context</p>
           <p className="mt-1">
             tell claude code to scrape your website, LinkedIn, and Instagram to
             build a richer brand DNA for the generator.
           </p>
         </div>
         <div>
-          <p className="text-white font-medium">add calls to action</p>
+          <p className="text-silver font-medium">add calls to action</p>
           <p className="mt-1">
             configure CTAs for some posts (e.g. &quot;book a 30-min
             consultation&quot;) to turn content into lead generation.
           </p>
         </div>
         <div>
-          <p className="text-white font-medium">analyze competitor comments</p>
+          <p className="text-silver font-medium">analyze competitor comments</p>
           <p className="mt-1">
             find gaps in what competitors cover by analyzing their comment
             sections, then fill those gaps in your content.
           </p>
         </div>
         <div>
-          <p className="text-white font-medium">
+          <p className="text-silver font-medium">
             feed your own performance data
           </p>
           <p className="mt-1">
@@ -291,7 +291,7 @@ export default function ClaudeTwitterPage() {
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
           <Link
             href="/"
-            className="text-lg font-[family-name:var(--font-unbounded)] tracking-tight"
+            className="brand-wordmark font-display text-lg tracking-tight"
           >
             oleg melnikov
           </Link>
@@ -299,7 +299,7 @@ export default function ClaudeTwitterPage() {
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -320,21 +320,21 @@ export default function ClaudeTwitterPage() {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-zinc-400"
+              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
             >
               free resource
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
             >
               claude code x/twitter content system
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="mt-4 text-lg text-zinc-400 md:text-xl"
+              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
             >
               study what actually works in your competitors&apos; tweets, then
               generate ready-to-publish content written in your own voice and
@@ -354,7 +354,7 @@ export default function ClaudeTwitterPage() {
           <div className="mx-auto max-w-3xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="text-sm uppercase tracking-widest text-zinc-500"
+              className="eyebrow font-body text-xs text-vivid-blue/80"
             >
               setup guide
             </motion.h2>
@@ -374,7 +374,7 @@ export default function ClaudeTwitterPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
+            <div className="glow-blue overflow-hidden rounded-2xl border border-hairline">
               <div
                 className="relative w-full"
                 style={{ paddingBottom: "56.25%" }}

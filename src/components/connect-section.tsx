@@ -68,14 +68,14 @@ export function ConnectSection() {
       >
         <motion.h2
           variants={fadeUp}
-          className="text-sm uppercase tracking-widest text-zinc-500"
+          className="eyebrow font-body text-xs text-vivid-blue/80"
         >
           connect
         </motion.h2>
 
         <motion.p
           variants={fadeUp}
-          className="mt-8 text-xl text-zinc-300 md:text-2xl"
+          className="mt-8 font-body text-xl text-silver md:text-2xl"
         >
           let&apos;s connect. i&apos;m always open to interesting conversations
           and collaborations.
@@ -92,7 +92,7 @@ export function ConnectSection() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3 text-sm text-zinc-400 transition-all hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-hairline px-5 py-3 font-body text-sm text-silver-muted transition-all hover:border-vivid-blue/50 hover:text-white"
             >
               {social.icon}
               {social.name}
@@ -103,7 +103,7 @@ export function ConnectSection() {
         {/* Sign-off */}
         <motion.p
           variants={fadeUp}
-          className="mt-16 text-lg text-zinc-500"
+          className="mt-16 font-body text-lg text-silver-muted"
         >
           cheers, oleg
         </motion.p>

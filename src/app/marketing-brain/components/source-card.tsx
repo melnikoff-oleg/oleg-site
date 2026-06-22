@@ -10,11 +10,11 @@ export const SourceCard = forwardRef<
   const [activeItem, setActiveItem] = useState<number | null>(null);
 
   const ring = highlight
-    ? "border-white/40 bg-white/[0.06]"
-    : "border-white/[0.07] bg-white/[0.02]";
+    ? "border-vivid-blue/50 bg-vivid-blue/10"
+    : "border-hairline bg-navy-raised";
 
   const numBadge = (n: number) => (
-    <span className="flex size-[1.05rem] shrink-0 items-center justify-center rounded bg-white/10 text-[10px] font-semibold text-zinc-300">
+    <span className="flex size-[1.05rem] shrink-0 items-center justify-center rounded bg-vivid-blue/15 text-[10px] font-semibold text-silver">
       {n}
     </span>
   );
@@ -27,18 +27,18 @@ export const SourceCard = forwardRef<
           src={source.cover}
           alt={source.title}
           loading="lazy"
-          className="h-36 w-24 shrink-0 rounded-md object-cover shadow-md shadow-black/40 ring-1 ring-white/10"
+          className="h-36 w-24 shrink-0 rounded-md object-cover shadow-md shadow-navy/40 ring-1 ring-hairline"
         />
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium leading-snug text-zinc-100">{source.title}</p>
-          <p className="text-xs text-zinc-500">{source.attribution}</p>
+          <p className="font-body text-sm font-medium leading-snug text-silver">{source.title}</p>
+          <p className="font-body text-xs text-silver-muted">{source.attribution}</p>
           <ul className="mt-2 space-y-2">
             {source.items.map((it) => (
               <li key={it.n} className="flex gap-2">
                 {numBadge(it.n)}
                 <div className="min-w-0">
-                  <span className="text-[11px] font-medium text-zinc-400">p.&nbsp;{it.page}</span>
-                  <p className="line-clamp-2 text-xs italic leading-relaxed text-zinc-400">
+                  <span className="font-body text-[11px] font-medium text-silver-muted">p.&nbsp;{it.page}</span>
+                  <p className="line-clamp-2 font-body text-xs italic leading-relaxed text-silver-muted">
                     “{it.quote}”
                   </p>
                 </div>
@@ -70,7 +70,7 @@ export const SourceCard = forwardRef<
         <button
           type="button"
           onClick={() => setActiveItem(0)}
-          className="group relative block aspect-video w-full overflow-hidden bg-zinc-900"
+          className="group relative block aspect-video w-full overflow-hidden bg-navy-raised"
           aria-label="Play at cited moment"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -81,7 +81,7 @@ export const SourceCard = forwardRef<
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           <span className="absolute inset-0 flex items-center justify-center">
-            <span className="flex size-12 items-center justify-center rounded-full bg-black/55 ring-1 ring-white/30 backdrop-blur-sm transition-transform group-hover:scale-110">
+            <span className="flex size-12 items-center justify-center rounded-full bg-navy/55 ring-1 ring-vivid-blue/40 backdrop-blur-sm transition-transform group-hover:scale-110">
               <svg viewBox="0 0 24 24" fill="currentColor" className="ml-0.5 size-5 text-white">
                 <path d="M8 5v14l11-7z" />
               </svg>
@@ -90,8 +90,8 @@ export const SourceCard = forwardRef<
         </button>
       )}
       <div className="p-3">
-        <p className="line-clamp-2 text-sm font-medium leading-snug text-zinc-100">{source.title}</p>
-        <p className="text-xs text-zinc-500">{source.attribution}</p>
+        <p className="line-clamp-2 font-body text-sm font-medium leading-snug text-silver">{source.title}</p>
+        <p className="font-body text-xs text-silver-muted">{source.attribution}</p>
         <ul className="mt-2 space-y-2">
           {source.items.map((it, i) => (
             <li key={it.n} className="flex gap-2">
@@ -103,8 +103,8 @@ export const SourceCard = forwardRef<
                     onClick={() => setActiveItem(i)}
                     className={`inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[11px] font-medium tabular-nums transition-colors ${
                       activeItem === i
-                        ? "bg-white/20 text-white"
-                        : "bg-white/[0.06] text-zinc-300 hover:bg-white/15 hover:text-white"
+                        ? "bg-vivid-blue/25 text-white"
+                        : "bg-vivid-blue/15 text-silver hover:bg-vivid-blue/25 hover:text-white"
                     }`}
                   >
                     <svg viewBox="0 0 24 24" fill="currentColor" className="size-2.5">
@@ -116,12 +116,12 @@ export const SourceCard = forwardRef<
                     href={it.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] text-zinc-600 underline decoration-zinc-700 underline-offset-2 hover:text-zinc-300"
+                    className="text-[11px] text-silver-muted underline decoration-silver-muted/50 underline-offset-2 hover:text-silver"
                   >
                     ↗
                   </a>
                 </div>
-                <p className="mt-1 line-clamp-2 text-xs italic leading-relaxed text-zinc-400">
+                <p className="mt-1 line-clamp-2 font-body text-xs italic leading-relaxed text-silver-muted">
                   “{it.quote}”
                 </p>
               </div>
