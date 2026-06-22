@@ -5,7 +5,7 @@ Copy everything below the line into the YouTube description field:
 ---
 
 📌 Free setup guide & template: https://www.oleg.ae/claude-interviewer
-🙌🏻 My content creation service: https://www.buildauthority.ai/
+🙌🏻 My content creation service: https://www.boldane.com/
 
 I built an AI agent that interviews me about my expertise, then turns that conversation into ready-to-post LinkedIn content. No writing. No editing. I literally made a post that got 5,000 views while cooking breakfast.
 

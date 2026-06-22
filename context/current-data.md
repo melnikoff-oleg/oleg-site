@@ -11,7 +11,7 @@
 | LinkedIn followers | 3,395 | -- | 2,496 connections, premium verified |
 | Website visitors/mo | 2,322 | -- | 75% from YouTube |
 | Monthly revenue (Mar) | $5,820 | $10K (Apr) | Total to date: ~$10K |
-| Authority AI clients | Active (invoice-based) | Maintain | Not actively scaling |
+| Boldane clients | Active (invoice-based) | Maintain | Not actively scaling |
 | Skool community | Not launched | 300 members | $99/mo, launching Apr 2026 |
 | Team size | 2 | -- | Oleg + Andrew (PT video editor) |
 
@@ -20,7 +20,7 @@
 - YouTube: youtube.com/@Oleg-Melnikov -- primary channel
 - LinkedIn: linkedin.com/in/olegai (premium, verified)
 - Instagram personal: @melnikoff_oleg (1,038 followers)
-- Personal site: oleg.ae (2,300+ visitors/mo); service site: boldane.com (formerly buildauthority.ai)
+- Personal site: oleg.ae (2,300+ visitors/mo); service site: boldane.com
 
 ## Top Performing Content
 

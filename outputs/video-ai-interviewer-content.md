@@ -16,7 +16,7 @@
 ## Description
 
 📌 Free template & guide: https://www.oleg.ae
-🙌🏻 My content creation service: https://www.buildauthority.ai/
+🙌🏻 My content creation service: https://www.boldane.com/
 
 I built an AI agent that interviews me about my expertise, then turns that conversation into ready-to-post LinkedIn content. No writing. No editing. I literally made a post that got 5,000 views while cooking breakfast.
 
@@ -29,7 +29,7 @@ Instagram: /melnikoff_oleg
 ## Links
 
 - https://www.oleg.ae/ — Free template & guide
-- https://www.buildauthority.ai/ — Content creation service
+- https://www.boldane.com/ — Content creation service
 - https://www.linkedin.com/in/melnikoff-oleg — LinkedIn
 - https://www.instagram.com/melnikoff_oleg — Instagram
 

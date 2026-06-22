@@ -10,7 +10,7 @@ Oleg Melnikov, 25, Russian founder based in Belgrade, Serbia (as of April 2026).
 
 - **Math/CS:** Winner of Russian National Math Olympiad (2017, 2018), International Math Olympiad candidate, codeforces.com Master (2280)
 - **Education:** BS Mathematics & Computer Science, Saint Petersburg State University (2018-2022)
-- **Career:** Yandex (DL intern) -> JetBrains (DL intern) -> Hedge fund in Amsterdam (quant, 2 years, used AI for trading) -> Evolva AI (founder, no longer active) -> Authority AI (current founder, Oct 2025-present)
+- **Career:** Yandex (DL intern) -> JetBrains (DL intern) -> Hedge fund in Amsterdam (quant, 2 years, used AI for trading) -> Evolva AI (founder, no longer active) -> Boldane (current founder, Oct 2025-present)
 
 ## Key Strengths
 
@@ -21,7 +21,7 @@ Oleg Melnikov, 25, Russian founder based in Belgrade, Serbia (as of April 2026).
 ## Current Focus
 
 - Growing YouTube channel (16.6K subs, targeting 120K by Oct 2026) as primary growth engine -- AI for marketing niche
-- Running Authority AI (helping B2B founders build authentic personal brands)
+- Running Boldane (helping B2B founders build authentic personal brands)
 - Launching paid Skool community ($99/mo)
 - Planning US relocation via O-1 visa
 

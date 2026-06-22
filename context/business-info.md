@@ -4,11 +4,11 @@
 
 ## Organization Overview
 
-**Authority AI -- now operating as Boldane** (boldane.com) -- helps B2B founders build authentic personal brands on LinkedIn. You talk, AI writes your content. One hour per week, five posts done for you. Founded October 2025 by Oleg Melnikov. Legal entity: Evolva AI FZE LLC (Sharjah, UAE). (Rebrand verified from boldane.com on 2026-06-19; demo still booked via calendly.com/boldane/demo.)
+**Boldane** (boldane.com) -- helps B2B founders build authentic personal brands on LinkedIn. You talk, AI writes your content. One hour per week, five posts done for you. Founded October 2025 by Oleg Melnikov. Legal entity: Evolva AI FZE LLC (Sharjah, UAE). (Verified from boldane.com on 2026-06-19; demo booked via calendly.com/boldane/demo.)
 
 ## Products / Services
 
-- **Boldane** (boldane.com, formerly Authority AI) -- Weekly 45-min voice chat -> 5 LinkedIn posts/week (text + visual), published every weekday; ~1 hr/week from the client; week 1 includes a full profile rebuild. Pricing not public (discovery call; historically ~$900/mo). Capacity capped at 5 new founders/month. ICP: founders with 5+ years of real expertise selling high-ticket B2B who want inbound leads, not vanity metrics -- strong in cybersecurity, recruiting, B2B services, agencies. Positioning: "Stop hiding. Get known." -- expertise-first, anti-ghostwriting (it sounds like you because it starts with you talking).
+- **Boldane** (boldane.com) -- Weekly 45-min voice chat -> 5 LinkedIn posts/week (text + visual), published every weekday; ~1 hr/week from the client; week 1 includes a full profile rebuild. Pricing not public (discovery call; historically ~$900/mo). Capacity capped at 5 new founders/month. ICP: founders with 5+ years of real expertise selling high-ticket B2B who want inbound leads, not vanity metrics -- strong in cybersecurity, recruiting, B2B services, agencies. Positioning: "Stop hiding. Get known." -- expertise-first, anti-ghostwriting (it sounds like you because it starts with you talking).
 - **YouTube Channel** (youtube.com/@Oleg-Melnikov) -- AI for marketing tutorials, building in public. 16.6K subs, 500K+ views.
 - **Paid Skool Community** (launching Apr 2026) -- $99/month, capped at 300 members, for devs/founders learning AI automation.
 - **Free LinkedIn Profile Breakdown Tool** -- Lead magnet, 350+ profiles analyzed.
@@ -26,7 +26,7 @@
 
 - Solo founder + 1 part-time video editor (Andrew)
 - Revenue to date: ~$10K (growing fast -- $5.8K in March 2026 alone)
-- Service site now boldane.com (was buildauthority.ai); personal site oleg.ae. ~2,300+ visitors/month historically, 75% from YouTube
+- Service site boldane.com; personal site oleg.ae. ~2,300+ visitors/month historically, 75% from YouTube
 - Pivoting focus from scaling the done-for-you service (Boldane) to YouTube + Skool as primary revenue engines (Apr-Sep 2026)
 - Target audience split: YouTube serves developers/learners, Boldane serves B2B founders
 
