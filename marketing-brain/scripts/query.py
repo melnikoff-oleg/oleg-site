@@ -18,6 +18,33 @@ import os, re, sys, math, glob, pickle, time, html as _html
 MB = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 CACHE = os.path.join(MB, ".cache", "query-index.pkl")
 
+# Per-source quality scores (books 8-10, videos 2-7); see build-quality-scores.py.
+_SCORES_PATH = os.path.normpath(os.path.join(MB, "..", "src", "lib", "marketing-brain", "quality-scores.json"))
+try:
+    import json as _json
+    _QUALITY = _json.load(open(_SCORES_PATH))
+except Exception:
+    _QUALITY = {"books": {}, "videos": {}}
+
+BETA = 0.35            # weight of the quality prior vs normalized relevance
+RESERVE_VIDEOS = 2     # always let the best N videos through
+PER_SOURCE = 2         # max chunks per book/video
+
+def _src_key(cite):
+    if cite["type"] == "book":
+        return os.path.splitext(os.path.basename(cite.get("path", "")))[0]
+    m = re.search(r"[?&]v=([^&]+)", cite.get("url", ""))
+    return m.group(1) if m else ""
+
+def _quality_prior(cite):
+    """Quality prior added to normalized relevance; mirrors retriever.ts.
+    Books 0.90-1.00 (lead timeless topics); videos 0.00-0.40 (view-graded)."""
+    if cite["type"] == "book":
+        s = min(10, max(8, _QUALITY["books"].get(_src_key(cite), 8)))
+        return 0.9 + (s - 8) / 2 * 0.1
+    s = min(7, max(2, _QUALITY["videos"].get(_src_key(cite), 4)))
+    return (s - 2) / 5 * 0.4
+
 STOP = set("a an the of to in is it for and or but on with as at by from this that "
            "you your i we they he she them his her our my me do does so if then than "
            "be been being are was were will would can could should how what why when "
@@ -126,7 +153,9 @@ def search(idx, q, k=5, k1=1.5, b=0.75):
     cand = set()
     for w in qt:
         cand.update(idx["inv"].get(w, []))
-    scores = []
+    # 1. raw BM25 relevance, tracking the per-query max for normalization
+    raw = []
+    maxraw = 0.0
     for i in cand:
         c = idx["chunks"][i]
         dl = len(c["tokens"]) or 1
@@ -136,13 +165,43 @@ def search(idx, q, k=5, k1=1.5, b=0.75):
                 f = c["tf"][w]
                 s += idx["idf"].get(w, 0) * (f*(k1+1)) / (f + k1*(1 - b + b*dl/idx["avgdl"]))
         if s > 0:
-            # Quality weight: books are years of distilled, edited thinking vs a
-            # single talk, so they get a modest ranking bonus (mirrors the web
-            # retriever, src/lib/marketing-brain/retriever.ts).
-            s *= 1.25 if c["cite"]["type"] == "book" else 1.0
-            scores.append((s, i))
-    scores.sort(reverse=True)
-    return [idx["chunks"][i] for _, i in scores[:k]]
+            raw.append((s, i))
+            maxraw = max(maxraw, s)
+    if not raw:
+        return []
+    # 2. final = normalized relevance + quality prior (mirrors retriever.ts)
+    scored = sorted(((s/maxraw + BETA*_quality_prior(idx["chunks"][i]["cite"]), i) for s, i in raw), reverse=True)
+    smap = {i: sc for sc, i in scored}
+    # 3. per-source cap
+    picked, per = [], {}
+    for sc, i in scored:
+        key = _src_key(idx["chunks"][i]["cite"])
+        if per.get(key, 0) >= PER_SOURCE:
+            continue
+        per[key] = per.get(key, 0) + 1
+        picked.append(i)
+        if len(picked) >= k:
+            break
+    # 4. guarantee >= RESERVE_VIDEOS videos (drop lowest-ranked books for room)
+    is_vid = lambda i: idx["chunks"][i]["cite"]["type"] == "video"
+    nv = sum(1 for i in picked if is_vid(i))
+    if nv < RESERVE_VIDEOS:
+        have = set(picked); extra = []
+        for sc, i in scored:
+            if nv + len(extra) >= RESERVE_VIDEOS:
+                break
+            if not is_vid(i) or i in have:
+                continue
+            key = _src_key(idx["chunks"][i]["cite"])
+            if per.get(key, 0) >= PER_SOURCE:
+                continue
+            per[key] = per.get(key, 0) + 1
+            extra.append(i); have.add(i)
+        if extra:
+            books = [i for i in picked if not is_vid(i)]
+            drop = set(books[-len(extra):])
+            picked = sorted([i for i in picked if i not in drop] + extra, key=lambda i: smap[i], reverse=True)[:k]
+    return [idx["chunks"][i] for i in picked]
 
 def snippet(text, q, width=45):
     qt = set(tok(q)); words = text.split()

@@ -391,3 +391,20 @@ User feedback after the first pass: when an answer stops mid-sentence it's not c
 - `scripts/test-completion-ux.mjs` — Playwright drives the real page with network interception forcing each end state. **5/5 pass**: clean→no banner; max_tokens→amber banner + continue extends same answer; no-done→red banner + retry replaces.
 - Real route contract check: a live (non-mocked) call emits exactly one `done` frame, reason `end_turn`, as the last frame. **PASS**.
 - Regression: 20-question suite **20/20** (Cialdini 10/10) and composer **8/8** still pass.
+
+---
+
+## Follow-up: Per-source quality scoring + relevance-first ranking (2026-06-22)
+
+User direction: rate every data point 1-10 and let value propel higher-value sources; books are worth ~5x a video; rate every video individually (views matter); then "think through 20 scenarios, define the best answer, and reverse-engineer how to achieve it."
+
+**Scoring**
+- `marketing-brain/scripts/build-quality-scores.py` generates `src/lib/marketing-brain/quality-scores.json`: 8 books scored 8-10 (authority/timelessness rubric) and all 75 videos scored 2-7 individually, anchored on real view counts (log scale) + a small long-form depth bump. (Every video md carries `views`/`duration`.)
+
+**Ranking model (reverse-engineered, not guessed)**
+- `marketing-brain/scripts/sim-ranking-policies.py` defines 20 diverse scenarios (book-topic, video-native, mixed, source-specific), each with an ideal-mix check, and scores candidate policies.
+- Finding: a flat multiplicative "books Nx videos" caps at ~14/20 because it fights relevance — weakly-matching books hijack video-native topics (a generic offers book leading a "MrBeast thumbnails" question). Pure 5x = 9/20.
+- Winner (19/20): **additive** `final = BM25/maxBM25 + BETA*qualityPrior` with `BETA=0.35`, book prior 0.90-1.00, video prior 0.00-0.40 (view-graded), per-source cap 2, and a guaranteed `RESERVE_VIDEOS=2`. Books lead timeless/principle/mixed topics; the best video leads platform/format topics (YouTube, thumbnails, SEO, short-form); blends on mixed; named sources always present. The single miss ("grow on social media right now" led by a Gary video not his book) is a defensible near-call.
+- Implemented in `retriever.ts` (replaces the earlier multiplicative `BOOK_WEIGHT`); `query.py` updated in parity (additive scoring + cap + reserve).
+
+**Tests (real environment):** 20-question live suite **20/20** (Cialdini 10/10, all answers complete); `query.py` smoke-test confirms MrBeast-thumbnails now leads with MrBeast videos (was Hormozi books); build clean.
