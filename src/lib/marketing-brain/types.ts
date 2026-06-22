@@ -78,4 +78,9 @@ export type ChatMessage = {
 export type StreamFrame =
   | { type: "sources"; sources: Source[] }
   | { type: "delta"; text: string }
-  | { type: "error"; message: string };
+  | { type: "error"; message: string }
+  // Sent once, last, when the model finishes cleanly. `reason` is the Anthropic
+  // stop_reason ("end_turn" | "max_tokens" | "stop_sequence" | …). If the client
+  // never receives a `done` frame, the stream was cut off (timeout / dropped
+  // connection) and the answer is incomplete.
+  | { type: "done"; reason: string };

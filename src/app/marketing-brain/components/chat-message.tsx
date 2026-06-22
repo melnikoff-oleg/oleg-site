@@ -89,7 +89,15 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
 };
 
-export function ChatMessage({ message }: { message: UiMessage }) {
+export function ChatMessage({
+  message,
+  onContinue,
+  onRetry,
+}: {
+  message: UiMessage;
+  onContinue?: () => void;
+  onRetry?: () => void;
+}) {
   const [highlight, setHighlight] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -205,6 +213,41 @@ export function ChatMessage({ message }: { message: UiMessage }) {
             )}
           </motion.div>
         )
+      )}
+
+      {/* Cut off because the answer got long: offer to continue it. */}
+      {!message.streaming && message.truncated && (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-amber-400/25 bg-amber-400/10 px-4 py-3 text-sm text-amber-200/90">
+          <span>this answer hit the length limit, so it stops here.</span>
+          {onContinue && (
+            <button
+              type="button"
+              onClick={onContinue}
+              className="rounded-lg bg-amber-400/20 px-3 py-1.5 font-medium text-amber-100 transition-colors hover:bg-amber-400/30"
+            >
+              continue the answer
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Stream died before finishing (timeout / dropped connection): offer retry. */}
+      {!message.streaming && message.interrupted && (
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-red-400/25 bg-red-400/10 px-4 py-3 text-sm text-red-200/90">
+          <span>
+            this answer was cut off before it finished, the connection dropped or
+            timed out. it wasn&apos;t you.
+          </span>
+          {onRetry && (
+            <button
+              type="button"
+              onClick={onRetry}
+              className="rounded-lg bg-red-400/20 px-3 py-1.5 font-medium text-red-100 transition-colors hover:bg-red-400/30"
+            >
+              try again
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

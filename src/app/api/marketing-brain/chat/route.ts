@@ -11,7 +11,9 @@ import type { ChatMessage, StreamFrame } from "@/lib/marketing-brain/types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 30;
+// Long, cited answers with adaptive thinking can take a while; give the function
+// headroom so it isn't killed mid-stream (which would look like a random cutoff).
+export const maxDuration = 60;
 
 const MODEL = "claude-sonnet-4-6";
 const LIMIT_MESSAGE =
@@ -104,15 +106,14 @@ export async function POST(req: Request) {
             type: "error",
             message: "i can't answer that one. try rephrasing.",
           });
-        } else if (final.stop_reason === "max_tokens") {
-          // Safety net: the answer ran past the budget. Don't leave it on a
-          // broken word. Append a short, honest note (the higher max_tokens
-          // makes this rare).
-          send(controller, {
-            type: "delta",
-            text: "\n\n(that answer ran long, ask me to continue and i'll pick up where i left off.)",
-          });
         }
+        // Always signal a clean finish with the reason, so the client can tell
+        // "complete" from "hit the length cap" from "connection died" (the last
+        // case = no done frame ever arrives). The UI renders the right banner.
+        send(controller, {
+          type: "done",
+          reason: final.stop_reason ?? "end_turn",
+        });
       } catch (err) {
         console.error("[marketing-brain] chat error", err);
         send(controller, {

@@ -375,3 +375,19 @@ return out;
 
 - `scripts/test-marketing-brain-fixes.mjs` — 20 real API tests against the running dev server (10 Cialdini/persuasion + 10 deep-topic, all long-answer). Result: **20/20 pass**, Cialdini book surfaced **10/10**, every answer completed on a sentence boundary (1.5K–6.8K chars), no truncation sentinel.
 - `scripts/test-composer-resize.mjs` — 8 real headless-Chromium DOM tests of the input box. Result: **8/8 pass** (empty 39px → multi-line 151px → caps 160px, Shift+Enter newlines, overflow scrolls, resets on clear).
+
+---
+
+## Follow-up: Clear incomplete-answer communication (2026-06-22)
+
+User feedback after the first pass: when an answer stops mid-sentence it's not clear whether the model cut it, the length cap hit, or the server bugged. The original inline parenthetical note was easy to miss and ambiguous. Replaced it with a real completion protocol + distinct UI.
+
+**Changes**
+- **Protocol:** added a `done` frame (`{ type: "done"; reason }`) to `StreamFrame` (`types.ts`). The route (`route.ts`) now always emits `done` last with the Anthropic `stop_reason`, and `maxDuration` raised 30 → 60s to make timeout-kills rarer. The inline "ran long" note was removed.
+- **Client (`use-brain-chat.ts`):** the hook now distinguishes three end states — clean finish (done reason `end_turn`/etc.), `truncated` (done reason `max_tokens`), and `interrupted` (stream ended with **no** `done` frame = timeout/dropped connection). Partial text is preserved on a drop (the old catch overwrote it with a generic error). Added `retry()` (re-answers the last question in place) and `continueLast()` (extends a truncated answer in the same bubble via a hidden "keep going" nudge).
+- **UI (`chat-message.tsx` + `page.tsx`):** truncated → amber banner "this answer hit the length limit…" + **continue the answer**; interrupted → red banner "…cut off before it finished, the connection dropped or timed out. it wasn't you." + **try again**. Buttons render only on the latest message.
+
+**Tests (all real environment)**
+- `scripts/test-completion-ux.mjs` — Playwright drives the real page with network interception forcing each end state. **5/5 pass**: clean→no banner; max_tokens→amber banner + continue extends same answer; no-done→red banner + retry replaces.
+- Real route contract check: a live (non-mocked) call emits exactly one `done` frame, reason `end_turn`, as the last frame. **PASS**.
+- Regression: 20-question suite **20/20** (Cialdini 10/10) and composer **8/8** still pass.

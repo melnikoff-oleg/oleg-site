@@ -17,7 +17,7 @@ const STARTERS = [
 ];
 
 export default function MarketingBrainPage() {
-  const { messages, isStreaming, send } = useBrainChat();
+  const { messages, isStreaming, send, retry, continueLast } = useBrainChat();
   const memory = useMemory();
   const [input, setInput] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -180,9 +180,32 @@ export default function MarketingBrainPage() {
           // Conversation
           <div className="mx-auto w-full max-w-3xl flex-1 px-6 pt-8 pb-40">
             <div className="space-y-8">
-              {messages.map((m, i) => (
-                <ChatMessage key={i} message={m} />
-              ))}
+              {messages.map((m, i) => {
+                // Action buttons only make sense on the most recent answer.
+                const isLast = i === messages.length - 1;
+                return (
+                  <ChatMessage
+                    key={i}
+                    message={m}
+                    onContinue={
+                      isLast && !isStreaming
+                        ? () => {
+                            autoFollow.current = true;
+                            continueLast(memory.text);
+                          }
+                        : undefined
+                    }
+                    onRetry={
+                      isLast && !isStreaming
+                        ? () => {
+                            autoFollow.current = true;
+                            retry(memory.text);
+                          }
+                        : undefined
+                    }
+                  />
+                );
+              })}
             </div>
           </div>
         )}
