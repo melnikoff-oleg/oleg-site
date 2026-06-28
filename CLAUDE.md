@@ -224,8 +224,9 @@ npm run test:update  # Regenerate visual-regression baselines
 - `/claude-content` — Content creation in 10 minutes
 - `/claude-interviewer` — AI voice interviewer for content creation
 
-**Tool pages** — free open-source tool lead magnets (GitHub download + setup guide, no YouTube video):
+**Tool pages** — free open-source tool lead magnets (GitHub download + setup guide):
 - `/ads-ai` — AI ads creator (study competitors' Meta ads, generate ad concepts)
+- `/high-converting-website` — kit that builds a high-converting landing page with Claude Code, deployed to a live domain. Carries a distilled conversion playbook (Hormozi + top marketers, the value equation) so the page sells, not just looks nice. Repo: `melnikoff-oleg/high-converting-website`. Proof: Oleg built boldane.com with it and closed a B2B deal. YouTube walkthrough ("How I Built a High-Converting Landing Using Claude Code") to be added later (see the commented placeholder in `page.tsx`; `ArticleJsonLd` now takes optional `videoId`/`videoTitle`).
 
 **Lead magnet pages** — prompt-based giveaways (no code setup, just copy-paste prompts):
 - `/60k-linkedin-post` — 3 AI prompts for LinkedIn content that sells ($60K client case study)

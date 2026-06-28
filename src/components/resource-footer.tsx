@@ -16,6 +16,7 @@ import {
   Sparkles,
   DollarSign,
   Brain,
+  LayoutTemplate,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
@@ -26,6 +27,12 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
     title: "The Marketing Brain",
     description: "Ask the greatest marketing minds with an AI chat grounded in 8 books & 75 talks, every answer cited to the page or timecode",
     icon: Brain,
+  },
+  {
+    slug: "high-converting-website",
+    title: "High-Converting Landing Page",
+    description: "Build a landing page that actually sells with Claude Code, powered by a conversion playbook from Hormozi and top marketers",
+    icon: LayoutTemplate,
   },
   {
     slug: "claude-outreach",
