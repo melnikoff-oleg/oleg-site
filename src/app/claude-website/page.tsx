@@ -344,7 +344,7 @@ export default function ClaudeWebsitePage() {
         </motion.section>
       </main>
 
-      <ResourceFooter currentSlug="claude-website" />
+      <ResourceFooter currentSlug="claude-website" boldaneCredit />
     </>
   );
 }

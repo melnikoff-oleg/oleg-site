@@ -302,7 +302,7 @@ export default function ClaudeSeoPage() {
         </motion.section>
       </main>
 
-      <ResourceFooter currentSlug="claude-seo" />
+      <ResourceFooter currentSlug="claude-seo" boldaneCredit />
     </>
   );
 }

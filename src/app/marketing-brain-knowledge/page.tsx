@@ -322,7 +322,7 @@ export default function MarketingBrainKnowledgePage() {
           </div>
         </section>
 
-        <ResourceFooter currentSlug="marketing-brain" />
+        <ResourceFooter currentSlug="marketing-brain" boldaneCredit />
       </main>
     </>
   );

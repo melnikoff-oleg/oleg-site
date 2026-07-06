@@ -200,8 +200,8 @@ export default function LinkedInPostPage() {
               className="mt-3 font-body text-sm text-silver-muted"
             >
               this is a simplified, do-it-yourself version of the Boldane
-              system. copy the prompts below and start writing posts that
-              actually sound like you.
+              system. copy the prompts below and start writing posts built
+              from what you actually say.
             </motion.p>
           </motion.div>
         </section>
@@ -240,7 +240,7 @@ export default function LinkedInPostPage() {
                 {
                   step: "3",
                   label: "writing",
-                  desc: "paste context + interview. get 3-5 LinkedIn posts written in your own words.",
+                  desc: "paste context + interview. get 3-5 LinkedIn posts built from what you said.",
                 },
               ].map((s) => (
                 <div

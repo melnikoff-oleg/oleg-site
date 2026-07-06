@@ -341,7 +341,7 @@ export default function ClaudeTiktokPage() {
         </motion.section>
       </main>
 
-      <ResourceFooter currentSlug="claude-tiktok" />
+      <ResourceFooter currentSlug="claude-tiktok" boldaneCredit />
     </>
   );
 }

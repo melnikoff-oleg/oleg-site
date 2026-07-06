@@ -348,7 +348,7 @@ export default function ClaudeReelsPage() {
         </motion.section>
       </main>
 
-      <ResourceFooter currentSlug="claude-reels" />
+      <ResourceFooter currentSlug="claude-reels" boldaneCredit />
     </>
   );
 }

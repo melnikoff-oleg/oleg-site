@@ -345,7 +345,7 @@ export default function ClaudeTrendScannerPage() {
         </motion.section>
       </main>
 
-      <ResourceFooter currentSlug="claude-trend-scanner" />
+      <ResourceFooter currentSlug="claude-trend-scanner" boldaneCredit />
     </>
   );
 }

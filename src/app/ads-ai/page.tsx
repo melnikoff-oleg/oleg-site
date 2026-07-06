@@ -676,7 +676,7 @@ export default function AdsAiPage() {
         </motion.section>
       </main>
 
-      <ResourceFooter currentSlug="ads-ai" />
+      <ResourceFooter currentSlug="ads-ai" boldaneCredit />
     </>
   );
 }
