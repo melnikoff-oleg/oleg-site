@@ -159,6 +159,18 @@ export function ResourceFooter({ currentSlug }: { currentSlug: string }) {
       </div>
 
       <p className="mt-8 text-center text-sm text-silver-muted">
+        free guides by oleg, founder of{" "}
+        <a
+          href="https://www.boldane.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+        >
+          Boldane
+        </a>
+      </p>
+
+      <p className="mt-3 text-center text-sm text-silver-muted">
         &copy; 2026 oleg melnikov
       </p>
     </footer>
