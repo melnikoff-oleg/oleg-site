@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
+import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
 import { ArticleJsonLd } from "@/components/json-ld";
 
 const VIDEO_ID = "QoiFASDh8J8";
@@ -278,6 +279,14 @@ export default function ClaudeCoworkOutreachPage() {
             </div>
           </div>
         </motion.section>
+
+        {/* Boldane soft CTA */}
+        <BoldaneCta>
+          one thing makes every outreach system convert better: before anyone
+          replies, they check your LinkedIn profile. if it shows a real
+          expert, reply rates climb. <BoldaneLink /> builds that presence for
+          founders, from one hour of talking a week.
+        </BoldaneCta>
       </main>
 
       <ResourceFooter currentSlug="claude-cowork-outreach" />

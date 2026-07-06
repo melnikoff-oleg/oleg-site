@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
+import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
 import { ArticleJsonLd } from "@/components/json-ld";
 
 const VIDEO_ID = "QOuH88WW7bQ";
@@ -282,6 +283,13 @@ export default function ClaudeContentPage() {
             </div>
           </div>
         </motion.section>
+
+        {/* Boldane soft CTA */}
+        <BoldaneCta>
+          prefer the done-for-you version? <BoldaneLink /> turns one hour of
+          talking a week into five LinkedIn posts, all from what you said. a
+          real team does the crafting. you just approve.
+        </BoldaneCta>
       </main>
 
       <ResourceFooter currentSlug="claude-content" />

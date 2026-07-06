@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
+import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
 import { ArticleJsonLd } from "@/components/json-ld";
 
 const VIDEO_ID = "Na1ET0-s4CA";
@@ -369,6 +370,15 @@ export default function ClaudeInterviewerPage() {
             </div>
           </div>
         </motion.section>
+
+        {/* Boldane soft CTA */}
+        <BoldaneCta>
+          this interviewer is the do-it-yourself version of how <BoldaneLink />{" "}
+          works. our clients talk for one hour a week, and a real team shapes
+          what they said into a LinkedIn presence their market trusts and buys
+          from. if you would rather skip the setup and the upkeep, that is
+          exactly what we do.
+        </BoldaneCta>
       </main>
 
       <ResourceFooter currentSlug="claude-interviewer" />

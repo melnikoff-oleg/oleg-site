@@ -2,6 +2,14 @@
 
 ---
 
+## Site Traffic + Boldane Funnel (2026-07-06)
+
+Plausible (site_id `oleg.ae`, API key lives in the boldane-site repo's `.env`), last 30 days: **2,867 visitors / 4,836 pageviews**, 84% from YouTube, bounce 77%, avg visit ~2 min. Top pages: `/claude-reels` 1,181 visitors (41%), `/marketing-brain` 401, `/claude-cowork-outreach` 379, `/` 282, `/claude-tiktok` 239, `/claude-content` 199, `/claude-twitter` 176, `/claude-b2b-outreach` 173; the rest ≤146 each.
+
+**Boldane soft CTAs added 2026-07-06** (shared `BoldaneCta` component) on the 7 relevant pages: DIY-vs-done-for-you angle on claude-interviewer/content/twitter/social-growth, profile-authority angle on the 3 outreach pages. Skipped reels/tiktok/ads/seo/trend-scanner/marketing-brain (wrong intent). Not yet done: outbound-link tracking in Plausible (`src/components/plausible.tsx` only tracks pageviews, so boldane.com clicks are not measurable yet).
+
+---
+
 ## Key Metrics (as of April 2026)
 
 | Metric | Current Value | Target | Notes |

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
+import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
 import { ArticleJsonLd } from "@/components/json-ld";
 
 const VIDEO_ID = "JQQhT0edXXw";
@@ -390,6 +391,13 @@ export default function ClaudeTwitterPage() {
             </div>
           </div>
         </motion.section>
+
+        {/* Boldane soft CTA */}
+        <BoldaneCta>
+          building this for X? <BoldaneLink /> does the same job on LinkedIn,
+          done for you: you talk for one hour a week, and a real team turns
+          what you said into five posts your market trusts.
+        </BoldaneCta>
       </main>
 
       <ResourceFooter currentSlug="claude-twitter" />

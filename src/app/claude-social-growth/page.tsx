@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
+import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
 import { ArticleJsonLd } from "@/components/json-ld";
 
 const VIDEO_ID = "GK3JFG7x7LA";
@@ -290,6 +291,14 @@ export default function ClaudeSocialGrowthPage() {
             </div>
           </div>
         </motion.section>
+
+        {/* Boldane soft CTA */}
+        <BoldaneCta>
+          want this outcome without running the system yourself? that is what{" "}
+          <BoldaneLink /> does: founders talk for one hour a week, and a real
+          team turns what they said into a LinkedIn presence their market
+          trusts and buys from.
+        </BoldaneCta>
       </main>
 
       <ResourceFooter currentSlug="claude-social-growth" />

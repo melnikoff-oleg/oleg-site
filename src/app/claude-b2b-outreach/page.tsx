@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
+import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
 import { ArticleJsonLd } from "@/components/json-ld";
 
 const VIDEO_ID = "Jjz4YxtlwHQ";
@@ -371,6 +372,14 @@ export default function ClaudeB2bOutreachPage() {
             </div>
           </div>
         </motion.section>
+
+        {/* Boldane soft CTA */}
+        <BoldaneCta>
+          cold messages work harder when your profile backs them up. prospects
+          look you up on LinkedIn before they reply. <BoldaneLink /> builds
+          that authority for founders: one hour of talking a week, turned into
+          a presence your market trusts.
+        </BoldaneCta>
       </main>
 
       <ResourceFooter currentSlug="claude-b2b-outreach" />
