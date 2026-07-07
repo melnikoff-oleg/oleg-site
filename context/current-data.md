@@ -28,7 +28,7 @@ Plausible (site_id `oleg.ae`, API key lives in the boldane-site repo's `.env`), 
 ## Social Presence
 
 - YouTube: youtube.com/@Oleg-Melnikov -- primary channel
-- LinkedIn: linkedin.com/in/olegai (premium, verified)
+- LinkedIn: linkedin.com/in/olegane (premium, verified)
 - Instagram personal: @melnikoff_oleg (1,038 followers)
 - Personal site: oleg.ae (2,300+ visitors/mo); service site: boldane.com
 

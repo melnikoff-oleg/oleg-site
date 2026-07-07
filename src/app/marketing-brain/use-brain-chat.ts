@@ -127,7 +127,7 @@ export function useBrainChat() {
             error: true,
             content:
               data?.message ??
-              "you've hit today's limit. reach out on linkedin (linkedin.com/in/olegai).",
+              "you've hit today's limit. reach out on linkedin (linkedin.com/in/olegane).",
           }));
           return;
         }
