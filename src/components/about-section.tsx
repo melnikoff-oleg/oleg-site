@@ -66,7 +66,7 @@ export function AboutSection() {
           variants={fadeUp}
           className="mt-6 font-body text-xl leading-relaxed text-silver md:text-2xl"
         >
-          before this, i used AI to build trading algorithms at a hedge fund in amsterdam. then i left to build my own thing.
+          before this, i used AI to build trading algorithms at a hedge fund in amsterdam. then i left to build my own company.
         </motion.p>
       </motion.div>
     </section>
