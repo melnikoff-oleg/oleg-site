@@ -9,7 +9,7 @@
 ## Products / Services
 
 - **Boldane** (boldane.com) -- Weekly 45-min voice chat -> 5 LinkedIn posts/week (text + visual), published every weekday; ~1 hr/week from the client; week 1 includes a full profile rebuild. Pricing not public (discovery call; historically ~$900/mo). Capacity capped at 5 new founders/month. ICP: founders with 5+ years of real expertise selling high-ticket B2B who want inbound leads, not vanity metrics -- strong in cybersecurity, recruiting, B2B services, agencies. Positioning: "Stop hiding. Get known." -- expertise-first, anti-ghostwriting (it sounds like you because it starts with you talking).
-- **YouTube Channel** (youtube.com/@Oleg-Melnikov) -- AI for marketing tutorials, building in public. 30K subs, 650K+ views (as of July 2026).
+- **YouTube Channel** (youtube.com/@Oleg-Melnikov) -- AI for marketing tutorials, building in public. 19K subs, 650K+ views (as of July 2026).
 - **Paid Skool Community** (launching Apr 2026) -- $99/month, capped at 300 members, for devs/founders learning AI automation.
 - **Free LinkedIn Profile Breakdown Tool** -- Lead magnet, 350+ profiles analyzed.
 - **$1B Marketing Brain** (oleg.ae/marketing-brain) -- Free lead magnet on the personal site: an AI chat grounded in the best marketing books + talks (8 books, 75 videos, ~10K cited chunks). Can be taught about a business (paste/files/website-scrape) to give personalized advice. Hero shows the faces behind it (Hormozi, Brunson, Cialdini, Godin). Paired with a knowledge-base gallery (oleg.ae/marketing-brain-knowledge). Demonstrates "AI systems for marketing" and drives top-of-funnel.

@@ -20,7 +20,7 @@ Oleg Melnikov, 25, Russian founder based in Belgrade, Serbia (as of April 2026).
 
 ## Current Focus
 
-- Growing YouTube channel (30K subs as of July 2026, targeting 120K by Oct 2026) as primary growth engine -- AI for marketing niche
+- Growing YouTube channel (19K subs as of July 2026, targeting 120K by Oct 2026) as primary growth engine -- AI for marketing niche
 - Running Boldane (helping B2B founders build authentic personal brands)
 - Launching paid Skool community ($99/mo)
 - Planning US relocation via O-1 visa

@@ -45,7 +45,7 @@ export function HeroSection() {
             per="line"
             className="mx-auto mt-6 max-w-2xl text-balance font-body text-lg text-silver-muted md:text-xl"
           >
-            now i run boldane, helping founders with real expertise become the names their market trusts. and i share the AI systems i build for marketing with 30K+ on youtube.
+            now i run boldane, helping founders with real expertise become the names their market trusts. and i share the AI systems i build for marketing with 19K+ on youtube.
           </TextEffect>
 
           {/* CTAs */}
