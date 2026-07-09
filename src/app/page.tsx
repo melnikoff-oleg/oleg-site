@@ -17,7 +17,7 @@ export default function Home() {
         <VideoSection />
         <ConnectSection />
       </main>
-      <ResourceFooter currentSlug="" />
+      <ResourceFooter currentSlug="" collapsed />
     </>
   );
 }

@@ -18,6 +18,7 @@ import {
   Brain,
   LayoutTemplate,
   ArrowRight,
+  ChevronDown,
   type LucideIcon,
 } from "lucide-react";
 
@@ -129,42 +130,60 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
 export function ResourceFooter({
   currentSlug,
   boldaneCredit = false,
+  collapsed = false,
 }: {
   currentSlug: string;
   /** Show the "founder of Boldane" credit line. Opt in ONLY on pages with no
    *  other Boldane mention — one Boldane moment per page, never two. */
   boldaneCredit?: boolean;
+  /** Render as a small collapsed disclosure instead of the full card. Used on
+   *  the homepage, where "more free resources" reads wrong (the page itself
+   *  isn't a resource) and the full grid is too loud. */
+  collapsed?: boolean;
 }) {
   const filtered = resources.filter((r) => r.slug !== currentSlug);
 
+  const grid = (
+    <div className="mx-auto mt-6 grid max-w-4xl gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+      {filtered.map((resource) => (
+        <Link
+          key={resource.slug}
+          href={`/${resource.slug}`}
+          className="group flex items-start gap-3 rounded-xl px-4 py-3 transition-colors duration-150 hover:bg-vivid-blue/10"
+        >
+          <resource.icon className="mt-0.5 size-4 shrink-0 text-vivid-blue transition-colors group-hover:text-white" />
+          <div className="min-w-0">
+            <p className="text-sm font-medium text-silver transition-colors group-hover:text-white">
+              {resource.title}
+            </p>
+            <p className="mt-0.5 text-xs leading-relaxed text-silver-muted">
+              {resource.description}
+            </p>
+          </div>
+          <ArrowRight className="mt-1 size-3 shrink-0 text-silver-muted/60 transition-all duration-150 group-hover:translate-x-0.5 group-hover:text-white" />
+        </Link>
+      ))}
+    </div>
+  );
+
   return (
     <footer className="mx-auto max-w-3xl px-6 pb-12">
-      <div className="surface-card px-5 py-10 sm:px-8 sm:py-12 mt-16">
-        <p className="eyebrow text-center text-xs font-medium text-vivid-blue/80">
-          more free resources
-        </p>
-
-        <div className="mx-auto mt-6 grid max-w-4xl gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((resource) => (
-            <Link
-              key={resource.slug}
-              href={`/${resource.slug}`}
-              className="group flex items-start gap-3 rounded-xl px-4 py-3 transition-colors duration-150 hover:bg-vivid-blue/10"
-            >
-              <resource.icon className="mt-0.5 size-4 shrink-0 text-vivid-blue transition-colors group-hover:text-white" />
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-silver transition-colors group-hover:text-white">
-                  {resource.title}
-                </p>
-                <p className="mt-0.5 text-xs leading-relaxed text-silver-muted">
-                  {resource.description}
-                </p>
-              </div>
-              <ArrowRight className="mt-1 size-3 shrink-0 text-silver-muted/60 transition-all duration-150 group-hover:translate-x-0.5 group-hover:text-white" />
-            </Link>
-          ))}
+      {collapsed ? (
+        <details className="group mt-16">
+          <summary className="flex cursor-pointer list-none items-center justify-center gap-1.5 font-body text-sm text-silver-muted transition-colors hover:text-silver [&::-webkit-details-marker]:hidden">
+            free resources: {filtered.length} guides and tools from my videos
+            <ChevronDown className="size-3.5 transition-transform duration-200 group-open:rotate-180" />
+          </summary>
+          <div className="surface-card mt-6 px-5 py-8 sm:px-8">{grid}</div>
+        </details>
+      ) : (
+        <div className="surface-card px-5 py-10 sm:px-8 sm:py-12 mt-16">
+          <p className="eyebrow text-center text-xs font-medium text-vivid-blue/80">
+            more free resources
+          </p>
+          {grid}
         </div>
-      </div>
+      )}
 
       {boldaneCredit && (
         <p className="mt-8 text-center text-sm text-silver-muted">

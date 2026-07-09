@@ -45,7 +45,7 @@ export function HeroSection() {
             per="line"
             className="mx-auto mt-6 max-w-2xl text-balance font-body text-lg text-silver-muted md:text-xl"
           >
-            now i run boldane, helping founders with real expertise become the names their market trusts. and i share the AI systems i build for marketing with 18K+ on youtube.
+            now i run boldane, helping founders with real expertise become the names their market trusts. and i share the AI systems i build for marketing with 30K+ on youtube.
           </TextEffect>
 
           {/* CTAs */}
@@ -139,7 +139,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 1.8, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-x-2 bottom-2 px-3 pb-3 sm:px-4 sm:pb-4"
+              className="absolute inset-x-2 bottom-[12%] px-3 sm:px-4"
             >
               <div className="mx-auto max-w-3xl rounded-xl border border-hairline bg-navy/70 px-5 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
                 <blockquote className="text-balance font-display text-base font-medium leading-snug tracking-tight text-silver sm:text-xl md:text-2xl">

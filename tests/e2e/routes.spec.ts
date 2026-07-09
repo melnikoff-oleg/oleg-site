@@ -53,13 +53,13 @@ test("3 - header wordmark present on every route", async ({ page }) => {
   }
 });
 
-// Test 4: ResourceFooter ("more free resources") renders on the homepage and
-// every resource/tool/lead-magnet/knowledge page.
+// Test 4: ResourceFooter renders on the homepage (collapsed disclosure) and
+// every resource/tool/lead-magnet/knowledge page (full "more free resources" card).
 test("4 - resource footer renders on footer routes", async ({ page }) => {
   for (const route of FOOTER_ROUTES) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
     await expect(
-      page.getByText(/more free resources/i),
+      page.getByText(/free resources/i).first(),
       `${route} footer`
     ).toBeVisible();
   }
