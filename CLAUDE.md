@@ -151,7 +151,7 @@ Ongoing goal: optimize the site for search around keywords like **"AI systems fo
 **Still to do:**
 - Open Graph images (branded preview for social shares)
 - Structured data / JSON-LD (Person schema)
-- Internal linking (homepage → resource pages — resource pages are now interlinked via `ResourceFooter`)
+- Internal linking (resource pages are interlinked via `ResourceFooter`; the homepage deliberately links to NO resource pages since 2026-07-09 — Oleg wants it to end on "cheers, oleg" — so any homepage → resource linking would need a different, subtle form if ever revisited)
 - Performance audit (Lighthouse, image optimization)
 - More content pages (each YouTube video = a potential resource page targeting keywords)
 - Google Search Console verification (blocked for now, revisit later)
@@ -237,7 +237,7 @@ npm run test:update  # Regenerate visual-regression baselines
 - `/marketing-brain-knowledge` — static gallery of the whole corpus (8 books + 75 talks, grouped by expert). Data is generated from `marketing-brain/manifest.json` into `src/app/marketing-brain-knowledge/data.ts`. Book covers are served from `public/marketing-brain/book-covers/`.
 - `/marketing-brain` — **AI chat** (RAG), branded **"$1B Marketing Brain"**: ask a marketing question, get a streamed, cited answer with visual source cards (book cover + page, or video thumbnail/embed + timecode). This is the visual twin of `marketing-brain/scripts/query.py`. The hero/empty state is deliberately minimal (Jobs-style: title, faces, starter prompts, input, personalize link, nothing else). It shows an **expert portrait strip** (`src/app/marketing-brain/components/expert-strip.tsx`) of the four faces behind the corpus (Hormozi, Brunson, Cialdini, Godin) so visitors instantly grasp whose minds power the answers; portraits are bright color (they appear in a YouTube thumbnail), square face-centered webp crops in `public/marketing-brain/experts/`, unified by a rounded frame + ring + soft drop shadow, with color/lift on hover. Keep visible body text lean (target under ~300 chars).
 
-The two pages are cross-linked (chat header → "browse the sources"; knowledge header + footer → "ask the brain"). The chat (`/marketing-brain`) is also listed in `ResourceFooter`, so it appears in the "more free resources" grid on the homepage and every resource/tool/lead-magnet page; the knowledge gallery renders the `ResourceFooter` too, linking it to the rest of the site.
+The two pages are cross-linked (chat header → "browse the sources"; knowledge header + footer → "ask the brain"). The chat (`/marketing-brain`) is also listed in `ResourceFooter`, so it appears in the "more free resources" grid on every resource/tool/lead-magnet page; the knowledge gallery renders the `ResourceFooter` too, linking it to the rest of the site.
 
 Resource pages follow a shared pattern: minimal header, embedded YouTube video, accordion setup steps, cross-linked resource footer. Tool pages follow the same pattern but replace the video embed with a GitHub download CTA and "how it works" overview. Lead magnet pages have their own structure: prompts with copy buttons, how-it-works overview, and client proof. Each lives in `src/app/{slug}/page.tsx` with its own `layout.tsx` for metadata.
 
@@ -257,7 +257,7 @@ Resource pages follow a shared pattern: minimal header, embedded YouTube video, 
 - UI primitives in `src/components/ui/` (`Button`, `Card`) — see Design System above
 - Animation primitives in `src/components/motion/` (TextEffect, AnimatedGroup)
 - `src/components/accordion.tsx` — Reusable accordion for setup steps (used by resource pages)
-- `src/components/resource-footer.tsx` — Cross-linked footer showing all other resource pages with icons (uses `lucide-react`). Rendered on the homepage (`currentSlug=""` + `collapsed`, a small native `<details>` disclosure reading "free resources: N guides and tools from my videos" since the homepage itself isn't a resource, so "more free resources" read wrong), every resource/tool/lead-magnet page, and the Marketing Brain knowledge gallery. The Marketing Brain chat is the first entry. When adding a new resource page, update the `resources` array in this file. Takes an opt-in `boldaneCredit` prop for the "founder of Boldane" credit line — see the Boldane presence policy above for which pages get it.
+- `src/components/resource-footer.tsx` — Cross-linked footer showing all other resource pages with icons (uses `lucide-react`). Rendered on every resource/tool/lead-magnet page and the Marketing Brain knowledge gallery. NOT on the homepage (removed 2026-07-09: "more free resources" read wrong there and Oleg wants the page to end on the connect section's "cheers, oleg"; the homepage has no footer/copyright line at all). The Marketing Brain chat is the first entry. When adding a new resource page, update the `resources` array in this file. Takes an opt-in `boldaneCredit` prop for the "founder of Boldane" credit line — see the Boldane presence policy above for which pages get it.
 - `src/components/boldane-cta.tsx` — `BoldaneCta` (soft-CTA card, copy passed as children) + `BoldaneLink` (styled boldane.com link). Used on 7 resource pages (see "Boldane soft CTAs" above); when adding a new resource page, decide whether a Boldane plug is relevant (content-from-expertise or outreach topics: yes; virality/ads/SEO topics: no).
 
 ---

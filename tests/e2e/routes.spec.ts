@@ -21,8 +21,9 @@ const ROUTES = [
   "/marketing-brain",
   "/marketing-brain-knowledge",
 ];
-// Pages that render the cross-linked ResourceFooter (all except the chat).
-const FOOTER_ROUTES = ROUTES.filter((r) => r !== "/marketing-brain");
+// Pages that render the cross-linked ResourceFooter (all except the homepage
+// and the chat).
+const FOOTER_ROUTES = ROUTES.filter((r) => r !== "/" && r !== "/marketing-brain");
 
 // Tests 1-6: route health across the whole site.
 
@@ -53,13 +54,13 @@ test("3 - header wordmark present on every route", async ({ page }) => {
   }
 });
 
-// Test 4: ResourceFooter renders on the homepage (collapsed disclosure) and
-// every resource/tool/lead-magnet/knowledge page (full "more free resources" card).
+// Test 4: ResourceFooter ("more free resources") renders on every
+// resource/tool/lead-magnet/knowledge page.
 test("4 - resource footer renders on footer routes", async ({ page }) => {
   for (const route of FOOTER_ROUTES) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
     await expect(
-      page.getByText(/free resources/i).first(),
+      page.getByText(/more free resources/i),
       `${route} footer`
     ).toBeVisible();
   }

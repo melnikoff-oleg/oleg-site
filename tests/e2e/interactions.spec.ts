@@ -45,19 +45,15 @@ test("17 - accordion opens and closes", async ({ page }) => {
   await expect(panelText).toBeHidden();
 });
 
-// Test 18: a ResourceFooter card navigates to its page. On the homepage the
-// footer is a collapsed disclosure, so expand it first.
+// Test 18: a ResourceFooter card navigates to its page. The homepage no longer
+// renders the footer, so use a resource page.
 test("18 - resource footer link navigates", async ({ page }) => {
-  await page.goto("/", { waitUntil: "networkidle" });
-  await page
-    .getByRole("contentinfo")
-    .getByText(/free resources/i)
-    .click();
+  await page.goto("/claude-seo", { waitUntil: "networkidle" });
   const footerLink = page
     .getByRole("contentinfo")
     .getByRole("link", { name: /cold outreach/i })
     .first();
   await footerLink.click();
-  await page.waitForURL(/\/claude-/);
-  expect(page.url()).toMatch(/\/claude-/);
+  await page.waitForURL(/\/claude-outreach/);
+  expect(page.url()).toMatch(/\/claude-outreach/);
 });
