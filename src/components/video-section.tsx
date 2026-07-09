@@ -31,16 +31,7 @@ export function VideoSection() {
           variants={fadeUp}
           className="mt-8 font-body text-xl text-silver md:text-2xl"
         >
-          i share my journey building with ai on{" "}
-          <Link
-            href="https://www.youtube.com/@Oleg-Melnikov"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-          >
-            youtube
-          </Link>
-          .
+          i share my journey building with ai on youtube.
         </motion.p>
 
         {/* Looping video preview */}
@@ -74,7 +65,7 @@ export function VideoSection() {
           variants={fadeUp}
           className="mt-6 text-center font-body text-silver-muted"
         >
-          subscribe for weekly claude code and ai-for-marketing tutorials.
+          new claude code and ai-for-marketing tutorials every week.
         </motion.p>
       </motion.div>
     </section>

@@ -50,16 +50,7 @@ export function AboutSection() {
           variants={fadeUp}
           className="mt-6 font-body text-xl leading-relaxed text-silver md:text-2xl"
         >
-          i share how i build there on youtube, teaching{" "}
-          <Link
-            href="https://www.youtube.com/@Oleg-Melnikov"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-          >
-            claude code
-          </Link>{" "}
-          and AI for marketing.
+          i share how i build there on youtube, teaching claude code and AI for marketing.
         </motion.p>
 
         <motion.p
