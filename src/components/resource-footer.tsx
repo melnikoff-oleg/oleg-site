@@ -18,6 +18,7 @@ import {
   Brain,
   LayoutTemplate,
   ArrowRight,
+  ListOrdered,
   type LucideIcon,
 } from "lucide-react";
 
@@ -123,6 +124,12 @@ const resources: { slug: string; title: string; description: string; icon: Lucid
     title: "$60K LinkedIn Post",
     description: "3 AI prompts that generated $60,000 from a single LinkedIn post, copy and use them",
     icon: DollarSign,
+  },
+  {
+    slug: "5-levels-ai",
+    title: "The 5 Levels of AI Adoption",
+    description: "A map from copy-pasting out of a chat window to a thousand agents that launch themselves, with the move to each next rung",
+    icon: ListOrdered,
   },
 ];
 

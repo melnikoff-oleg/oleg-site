@@ -105,6 +105,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://oleg.ae/5-levels-ai",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: "https://oleg.ae/marketing-brain-knowledge",
       lastModified: new Date(),
       changeFrequency: "monthly",

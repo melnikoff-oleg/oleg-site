@@ -17,6 +17,7 @@ const ROUTES = [
   "/claude-interviewer",
   "/ads-ai",
   "/60k-linkedin-post",
+  "/5-levels-ai",
   "/marketing-brain",
   "/marketing-brain-knowledge",
 ];
