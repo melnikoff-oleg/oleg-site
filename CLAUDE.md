@@ -187,6 +187,18 @@ The site shares boldane.com's visual identity (premium dark navy). Source of tru
 - **Buttons:** use the `Button` primitive (variants `primary` / `outline` / `ghost`; sizes `sm` / `md` / `lg`), all pill-shaped (`rounded-full`).
 - When building new pages/components, reuse these tokens and primitives so the brand stays consistent.
 
+### Mobile-First (MANDATORY for every page)
+
+**Every page and component must be fully usable and beautiful on a 390px phone. This is not optional and is not a follow-up pass: design and build mobile-first, then enhance for wider screens.** Mobile is the primary viewport (most traffic is phones); a layout that only works on desktop is unfinished.
+
+Rules:
+- **Never ship horizontal scrolling of content.** The page body must never scroll sideways at 390px. If something is wider than the viewport, it is a bug, not a scroll affordance.
+- **No fixed-min-width layout inside `overflow-x-auto` as the mobile answer.** A wide table/grid in an `overflow-x` box does NOT clip gracefully: on a phone it hides the off-screen columns entirely (this is exactly what broke `/5-levels-ai`). Instead, below the breakpoint, **swap wide multi-column layouts for a stacked / card layout** driven by the same data (render both from one data source; `hidden lg:block` desktop + `lg:hidden` mobile). See `/5-levels-ai` (`src/app/5-levels-ai/page.tsx`) for the reference pattern: a comparison table at `lg`+, a rung-card stack below `lg`.
+- **Pick the swap breakpoint from the content width, not by habit.** A `min-w-[52rem]` (832px) table needs ~880px to fit, so swap at `lg` (1024px), not `md` (768px), or scroll returns on tablets.
+- **Long unbreakable strings** (commands, URLs, emails) get `[overflow-wrap:anywhere]` or wrap, so they never push past the viewport edge; keep numbers/labels that must stay on one line as `whitespace-nowrap` in a `shrink-0` slot next to a `min-w-0` sibling.
+- **Verify before shipping** at 390px: run the Playwright `mobile` project (390px viewport) and eyeball a real mobile screenshot (see the [mobile screenshot verification] memory: headless `--screenshot` lies for mobile; use CDP device-metrics or Playwright's mobile project). Add a mobile assertion/snapshot for any new page with non-trivial layout, following `tests/e2e/mobile-ladder.spec.ts`.
+- **Touch + readability:** tap targets ~44px, body text stays legible (don't shrink below the site's `text-sm` for primary copy), respect safe gutters (`px-6`).
+
 ### Dev Commands
 
 ```bash
