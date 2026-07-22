@@ -159,6 +159,25 @@ const moves: { to: string; text: ReactNode; cmds: string[] }[] = [
   },
 ];
 
+// Command chips shared by the desktop move-row and the mobile move-card.
+// [overflow-wrap:anywhere] guarantees even the longest command (the npm install
+// line) can never push past the viewport edge on a narrow phone.
+function CmdChips({ cmds }: { cmds: string[] }) {
+  return (
+    <div className="mt-2.5 flex flex-wrap gap-2">
+      {cmds.map((c) => (
+        <span
+          key={c}
+          className="rounded border border-vivid-blue/40 px-2.5 py-1 font-mono text-xs font-medium text-vivid-blue/90 [overflow-wrap:anywhere]"
+        >
+          {c}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+// Desktop (lg+): the move between two rungs, a dark band spanning the table.
 function MoveRow({ to, text, cmds }: { to: string; text: ReactNode; cmds: string[] }) {
   return (
     <tr>
@@ -167,18 +186,92 @@ function MoveRow({ to, text, cmds }: { to: string; text: ReactNode; cmds: string
           how to get to {to}
         </span>
         <span className="font-body text-sm text-silver-muted">{text}</span>
-        <div className="mt-2.5 flex flex-wrap gap-2">
-          {cmds.map((c) => (
-            <span
-              key={c}
-              className="rounded border border-vivid-blue/40 px-2.5 py-1 font-mono text-xs font-medium text-vivid-blue/90"
-            >
-              {c}
-            </span>
-          ))}
-        </div>
+        <CmdChips cmds={cmds} />
       </td>
     </tr>
+  );
+}
+
+// Small up-chevron marking each "step up" on the mobile ladder rail.
+const chevronUp = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 15l6-6 6 6" />
+  </svg>
+);
+
+// Mobile (below lg): one level rendered as a rung. The line icon is pulled out
+// of the card into a circular node that sits ON the vertical ladder rail; the
+// card to its right holds level + role, the agent count, and the two prose
+// fields, all always visible (no clipping, no disclosure).
+function LevelRung({ lvl }: { lvl: Level }) {
+  return (
+    <div className="relative flex items-start gap-4">
+      <span
+        data-testid="rung-node"
+        className="relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full border border-silver/40 bg-navy text-silver [&_svg]:size-6"
+      >
+        {lvl.icon}
+      </span>
+      <div className="min-w-0 flex-1 surface-card rounded-2xl p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <span className="eyebrow block text-[0.62rem] font-semibold text-silver-muted">
+              {lvl.level}
+            </span>
+            <span className="mt-0.5 block font-display text-lg font-semibold leading-tight text-silver">
+              {lvl.role}
+            </span>
+          </div>
+          <div className="shrink-0 text-right">
+            <span className="block font-display text-2xl font-light leading-none tabular-nums whitespace-nowrap text-silver">
+              {lvl.agents}
+            </span>
+            <span className="eyebrow mt-1 block text-[0.55rem] font-semibold text-silver-muted">
+              agents
+            </span>
+          </div>
+        </div>
+        <div className="mt-4 space-y-4 border-t border-hairline pt-4">
+          <div>
+            <span className="eyebrow block text-[0.6rem] font-semibold text-silver-muted/80">
+              what it looks like
+            </span>
+            <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">
+              {lvl.looks}
+            </p>
+          </div>
+          <div className="border-l-2 border-vivid-blue pl-3.5 [&_strong]:font-semibold [&_strong]:text-silver">
+            <span className="eyebrow block text-[0.6rem] font-semibold text-vivid-blue/80">
+              what keeps you stuck
+            </span>
+            <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">
+              {lvl.stuck}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Mobile (below lg): the "step up" between two rungs. A full-width band (so the
+// longest command chip never clips) pinned to the rail by an up-chevron badge
+// straddling its top edge, so the spine reads rung, step up, rung.
+function MoveStep({ to, text, cmds }: { to: string; text: ReactNode; cmds: string[] }) {
+  return (
+    <div className="relative surface-raised rounded-xl border border-hairline px-5 pb-4 pt-5">
+      <span
+        aria-hidden
+        className="absolute -top-3 left-6 z-10 flex size-6 -translate-x-1/2 items-center justify-center rounded-full border border-vivid-blue/40 bg-navy text-vivid-blue [&_svg]:size-3.5"
+      >
+        {chevronUp}
+      </span>
+      <span className="eyebrow block text-[0.62rem] font-semibold text-vivid-blue/90">
+        how to get to {to}
+      </span>
+      <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">{text}</p>
+      <CmdChips cmds={cmds} />
+    </div>
   );
 }
 
@@ -256,7 +349,8 @@ export default function FiveLevelsPage() {
           className="pb-24 md:pb-28"
         >
           <div className="mx-auto max-w-5xl px-6">
-            <div className="surface-card overflow-x-auto rounded-2xl">
+            {/* Desktop (lg+): the full comparison table. */}
+            <div className="hidden overflow-x-auto rounded-2xl surface-card lg:block">
               <table className="w-full min-w-[52rem] border-collapse text-left">
                 <thead>
                   <tr>
@@ -314,6 +408,33 @@ export default function FiveLevelsPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            {/* Mobile / tablet (below lg): the same data rendered as a climbable
+                ladder. A vertical rail threads every rung node, so no field is
+                ever clipped by horizontal scroll and the page reads top to
+                bottom as the climb its title promises. */}
+            <div
+              data-testid="ladder-cards"
+              className="relative mx-auto max-w-xl lg:hidden"
+            >
+              {/* the rail: one continuous hairline behind the rung nodes,
+                  fading out below the last rung so it never dangles. */}
+              <span
+                aria-hidden
+                data-testid="ladder-rail"
+                className="pointer-events-none absolute left-6 top-6 bottom-0 w-px -translate-x-1/2 bg-[linear-gradient(to_bottom,var(--color-hairline),var(--color-hairline)_80%,transparent)]"
+              />
+              <div className="relative flex flex-col gap-4">
+                {levels.map((lvl, i) => (
+                  <Fragment key={lvl.level}>
+                    <LevelRung lvl={lvl} />
+                    {i < moves.length && (
+                      <MoveStep to={moves[i].to} text={moves[i].text} cmds={moves[i].cmds} />
+                    )}
+                  </Fragment>
+                ))}
+              </div>
             </div>
 
             <p className="mx-auto mt-6 max-w-2xl text-center font-body text-sm text-silver-muted">

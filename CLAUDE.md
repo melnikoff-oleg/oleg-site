@@ -193,13 +193,13 @@ The site shares boldane.com's visual identity (premium dark navy). Source of tru
 npm run dev          # Start dev server (localhost:3000)
 npm run build        # Production build
 npm run start        # Start production server
-npm run test         # Playwright suite (builds + starts, then runs 20 tests)
+npm run test         # Playwright suite (builds + starts, then runs 28 tests)
 npm run test:update  # Regenerate visual-regression baselines
 ```
 
 ### Testing
 
-`tests/` holds a Playwright suite (`tests/playwright.config.ts`, specs in `tests/e2e/`) that verifies the redesign from 20 angles: route health (1-6), design-token/brand fidelity (7-11), visual-regression snapshots desktop + mobile (12-15), interactions (16-18), and a11y + no-em-dash content rules (19-20). It runs against a production build on desktop + a Chromium iPhone-sized viewport. Snapshot baselines live under `tests/e2e/visual.spec.ts-snapshots/` and are committed; regenerate with `npm run test:update` after intentional visual changes. Tests have their own `tests/tsconfig.json` (node resolution) and are excluded from the app `tsconfig.json`.
+`tests/` holds a Playwright suite (`tests/playwright.config.ts`, specs in `tests/e2e/`) that verifies the redesign from 28 angles: route health (1-6), design-token/brand fidelity (7-11), visual-regression snapshots desktop + mobile (12-15, 28), interactions (16-18), a11y + no-em-dash content rules (19-20), and the `/5-levels-ai` mobile ladder (`mobile-ladder.spec.ts`, 21-27: below `lg` the wide comparison table is swapped for a rail-threaded rung-card stack so no field is clipped on a phone; at `lg`+ the original table is preserved). It runs against a production build on desktop + a Chromium iPhone-sized viewport. Snapshot baselines live under `tests/e2e/visual.spec.ts-snapshots/` and are committed; regenerate with `npm run test:update` after intentional visual changes. Tests have their own `tests/tsconfig.json` (node resolution) and are excluded from the app `tsconfig.json`.
 
 ### Site Structure
 

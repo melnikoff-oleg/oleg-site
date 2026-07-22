@@ -69,3 +69,12 @@ test("15 - homepage visual (mobile)", async ({ page }, testInfo) => {
   await settle(page);
   await snapshot(page, "home-mobile.png", [page.locator("video")]);
 });
+
+// Test 28: the 5-levels ladder on mobile (the rung-card layout that replaces the
+// wide comparison table below lg). Locks in the responsive redesign.
+test("28 - 5-levels ladder visual (mobile)", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "mobile", "mobile only");
+  await page.goto("/5-levels-ai");
+  await settle(page);
+  await snapshot(page, "ladder-mobile.png", []);
+});
