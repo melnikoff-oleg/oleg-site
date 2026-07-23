@@ -12,7 +12,7 @@ const fadeUp = {
 
 export function VideoSection() {
   return (
-    <section id="watch" className="py-24 md:py-32">
+    <section id="watch" className="py-16 md:py-32">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -22,7 +22,7 @@ export function VideoSection() {
       >
         <motion.h2
           variants={fadeUp}
-          className="eyebrow font-body text-xs text-vivid-blue/80"
+          className="eyebrow font-body text-[13px] text-vivid-blue"
         >
           watch
         </motion.h2>

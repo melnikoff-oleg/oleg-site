@@ -63,7 +63,7 @@ function linkifyCitations(children: ReactNode, onCite: (n: number) => void): Rea
           key={i}
           type="button"
           onClick={() => onCite(n)}
-          className="mx-0.5 inline-flex h-[1.1rem] min-w-[1.1rem] items-center justify-center rounded bg-vivid-blue/15 px-1 align-text-top text-[10px] font-semibold text-silver transition-colors hover:bg-vivid-blue/25 hover:text-white"
+          className="mx-1 inline-flex h-5 min-w-5 items-center justify-center rounded bg-vivid-blue/15 px-1.5 align-text-bottom text-[11px] font-semibold text-silver transition-colors hover:bg-vivid-blue/25 hover:text-white"
         >
           {n}
         </button>
@@ -121,7 +121,7 @@ export function ChatMessage({
   if (message.role === "user") {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-vivid-blue/15 px-4 py-2.5 font-body text-sm leading-relaxed text-silver">
+        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-vivid-blue/15 px-4 py-2.5 font-body text-base leading-relaxed text-silver">
           {message.content}
         </div>
       </div>
@@ -152,7 +152,7 @@ export function ChatMessage({
         <motion.div initial="hidden" animate="visible" variants={stagger} className="space-y-3">
           <motion.p
             variants={reveal}
-            className="eyebrow text-xs text-vivid-blue/80"
+            className="eyebrow text-[13px] text-vivid-blue"
           >
             foundational sources
           </motion.p>
@@ -187,7 +187,7 @@ export function ChatMessage({
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className={`prose-brain font-body text-[15px] leading-relaxed ${
+            className={`prose-brain font-body text-base leading-relaxed ${
               message.error ? "text-amber-200/90" : "text-silver"
             }`}
           >

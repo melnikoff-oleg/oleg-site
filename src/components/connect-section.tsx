@@ -59,7 +59,7 @@ const fadeUp = {
 
 export function ConnectSection() {
   return (
-    <section id="connect" className="py-24 md:py-32">
+    <section id="connect" className="py-16 md:py-32">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -69,7 +69,7 @@ export function ConnectSection() {
       >
         <motion.h2
           variants={fadeUp}
-          className="eyebrow font-body text-xs text-vivid-blue/80"
+          className="eyebrow font-body text-[13px] text-vivid-blue"
         >
           connect
         </motion.h2>

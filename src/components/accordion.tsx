@@ -59,7 +59,7 @@ export function Accordion({ items, defaultOpen }: AccordionProps) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.25, ease: "easeInOut" }}
                 >
-                  <div className="px-6 pb-6 pt-0 font-body text-silver-muted leading-relaxed">
+                  <div className="px-6 pb-6 pt-0 font-body text-silver leading-relaxed">
                     {item.content}
                   </div>
                 </motion.div>

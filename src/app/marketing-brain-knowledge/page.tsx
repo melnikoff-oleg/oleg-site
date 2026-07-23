@@ -86,13 +86,13 @@ function VideoCard({ v }: { v: Video }) {
         </span>
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="line-clamp-2 font-display text-sm font-medium leading-snug text-silver">
+        <h3 className="line-clamp-2 font-display text-base font-medium leading-snug text-silver sm:text-sm">
           {v.title}
         </h3>
         <p className="mt-1.5 font-body text-xs text-silver-muted">
           {v.channel} · {formatViews(v.views)} views
         </p>
-        <p className="mt-2 line-clamp-2 font-body text-xs leading-relaxed text-silver-muted">
+        <p className="mt-2 line-clamp-2 font-body text-sm leading-relaxed text-silver-muted sm:text-xs">
           {v.summary}
         </p>
       </div>
@@ -189,7 +189,7 @@ export default function MarketingBrainKnowledgePage() {
           <div className="mx-auto max-w-6xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="eyebrow font-body text-xs text-vivid-blue/80"
+              className="eyebrow font-body text-[13px] text-vivid-blue"
             >
               the bookshelf
             </motion.h2>
@@ -218,20 +218,27 @@ export default function MarketingBrainKnowledgePage() {
           </div>
         </motion.section>
 
-        {/* Expert quick-nav */}
+        {/* Expert quick-nav (sticky on the long scroll) with an always-present CTA */}
         <div className="sticky top-0 z-20 border-y border-hairline bg-navy/70 backdrop-blur-md">
-          <div className="mx-auto max-w-6xl px-6">
-            <nav className="flex gap-2 overflow-x-auto py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mx-auto flex max-w-6xl items-center gap-3 px-6">
+            <nav className="flex min-w-0 flex-1 gap-3 overflow-x-auto py-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {experts.map((e) => (
                 <a
                   key={e.slug}
                   href={`#${e.slug}`}
-                  className="shrink-0 rounded-full border border-hairline px-3.5 py-1.5 font-body text-xs font-medium text-silver-muted transition-colors hover:border-vivid-blue/50 hover:text-white"
+                  data-testid="kb-nav-chip"
+                  className="inline-flex min-h-[44px] shrink-0 items-center rounded-full border border-hairline px-4 font-body text-sm font-medium text-silver-muted transition-colors hover:border-vivid-blue/50 hover:text-white"
                 >
                   {e.name}
                 </a>
               ))}
             </nav>
+            <Link
+              href="/marketing-brain"
+              className="inline-flex min-h-[44px] shrink-0 items-center rounded-full bg-vivid-blue px-4 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
+            >
+              ask&nbsp;→
+            </Link>
           </div>
         </div>
 

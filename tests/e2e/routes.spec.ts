@@ -69,29 +69,63 @@ test("4 - resource footer renders on footer routes", async ({ page }) => {
 
 // Test 5: no uncaught console errors on any route load.
 test("5 - no console errors on load", async ({ page }) => {
-  const errors: Record<string, string[]> = {};
+  // Two independent buckets so an origin-scoped failure can never be dropped by
+  // a third-party-noise text filter:
+  //  - resourceFails: same-origin (localhost) responses with status >=400,
+  //    classified by URL ORIGIN in the handler. These are ALWAYS meaningful; a
+  //    same-origin path that merely contains a brand word (e.g. /youtube-x.svg)
+  //    must not be filtered out.
+  //  - consoleErrors: console.error messages, noise-filtered. A failed *resource*
+  //    load only surfaces in the console as a generic, URL-less "Failed to load
+  //    resource: ... 404", so that line is dropped here (the response listener
+  //    already accounts for every failed request, with its URL and origin).
+  const resourceFails: Record<string, string[]> = {};
+  const consoleErrors: Record<string, string[]> = {};
+  page.on("response", (resp) => {
+    if (resp.status() < 400) return;
+    const rurl = resp.url();
+    let sameOrigin = false;
+    try {
+      sameOrigin = new URL(rurl).origin === "http://localhost:3000";
+    } catch {
+      /* opaque/data URL — treat as third-party */
+    }
+    if (sameOrigin && !/\/favicon/i.test(rurl)) {
+      (resourceFails[page.url()] ||= []).push(`resource ${resp.status()}: ${rurl}`);
+    }
+  });
   page.on("console", (msg) => {
     if (msg.type() === "error") {
-      const url = page.url();
-      (errors[url] ||= []).push(msg.text());
+      (consoleErrors[page.url()] ||= []).push(msg.text());
     }
   });
   for (const route of ROUTES) {
     await page.goto(route, { waitUntil: "networkidle" });
   }
   // Ignore noise from third-party embeds (YouTube iframes, analytics).
-  const meaningful = Object.entries(errors)
+  const meaningfulConsole = Object.entries(consoleErrors)
     .map(([url, msgs]) => [
       url,
       msgs.filter(
         (m) =>
-          !/youtube|ytimg|plausible|favicon|googletagmanager|gstatic/i.test(m) &&
+          !/youtube|ytimg|ggpht|plausible|googletagmanager|gstatic|doubleclick/i.test(m) &&
+          // the bare, URL-less resource-load line; the response listener covers these
+          !/failed to load resource/i.test(m) &&
+          !/favicon/i.test(m) &&
           // permissions-policy noise emitted by the embedded YouTube iframes
           !/permissions policy|compute-pressure/i.test(m)
       ),
     ])
     .filter(([, msgs]) => (msgs as string[]).length > 0);
-  expect(meaningful, JSON.stringify(meaningful, null, 2)).toEqual([]);
+
+  const meaningfulResources = Object.entries(resourceFails).filter(
+    ([, msgs]) => msgs.length > 0
+  );
+
+  expect(
+    { console: meaningfulConsole, resources: meaningfulResources },
+    JSON.stringify({ console: meaningfulConsole, resources: meaningfulResources }, null, 2)
+  ).toEqual({ console: [], resources: [] });
 });
 
 // Test 6: homepage section anchors resolve.

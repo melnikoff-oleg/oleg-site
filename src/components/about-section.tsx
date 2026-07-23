@@ -10,7 +10,7 @@ const fadeUp = {
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 md:py-32">
+    <section id="about" className="py-16 md:py-32">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -20,7 +20,7 @@ export function AboutSection() {
         }}
         className="mx-auto max-w-3xl px-6"
       >
-        <motion.h2 variants={fadeUp} className="eyebrow font-body text-xs text-vivid-blue/80">
+        <motion.h2 variants={fadeUp} className="eyebrow font-body text-[13px] text-vivid-blue">
           what i do
         </motion.h2>
 

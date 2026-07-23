@@ -116,7 +116,7 @@ export default function MarketingBrainPage() {
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="relative inline-flex items-center gap-2 rounded-full border border-hairline px-3.5 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+              className="relative inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
             >
               your context
               {memory.hasContext && (
@@ -125,7 +125,7 @@ export default function MarketingBrainPage() {
             </button>
             <Link
               href="/marketing-brain-knowledge"
-              className="hidden items-center gap-2 rounded-full border border-hairline px-3.5 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white sm:inline-flex"
+              className="hidden min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white sm:inline-flex"
             >
               browse the sources
             </Link>
@@ -154,27 +154,36 @@ export default function MarketingBrainPage() {
 
             <ExpertStrip />
 
-            <div className="mt-11 flex w-full flex-wrap justify-center gap-2">
+            <div className="mt-8 flex w-full flex-wrap justify-center gap-2.5">
               {STARTERS.map((s) => (
                 <button
                   key={s}
                   type="button"
                   onClick={() => submit(s)}
-                  className="rounded-full border border-hairline px-4 py-2 font-body text-sm text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+                  className="inline-flex min-h-[44px] items-center rounded-full border border-hairline px-5 py-2.5 font-body text-[15px] text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
                 >
                   {s}
                 </button>
               ))}
             </div>
-            <button
-              type="button"
-              onClick={() => setDrawerOpen(true)}
-              className="mt-8 font-body text-sm text-silver-muted underline decoration-silver-muted/50 underline-offset-4 transition-colors hover:text-silver"
-            >
-              {memory.hasContext
-                ? "✦ edit your context"
-                : "✦ add your business context"}
-            </button>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(true)}
+                className="inline-flex min-h-[44px] items-center font-body text-sm text-silver-muted underline decoration-silver-muted/50 underline-offset-4 transition-colors hover:text-silver"
+              >
+                {memory.hasContext
+                  ? "✦ edit your context"
+                  : "✦ add your business context"}
+              </button>
+              {/* Mobile-only: on sm+ the header already shows "browse the sources". */}
+              <Link
+                href="/marketing-brain-knowledge"
+                className="inline-flex min-h-[44px] items-center font-body text-sm text-silver-muted underline decoration-silver-muted/50 underline-offset-4 transition-colors hover:text-silver sm:hidden"
+              >
+                browse the sources
+              </Link>
+            </div>
           </motion.div>
         ) : (
           // Conversation
@@ -273,7 +282,7 @@ export default function MarketingBrainPage() {
               <button
                 type="submit"
                 disabled={!input.trim() || isStreaming}
-                className="flex size-9 shrink-0 items-center justify-center rounded-full bg-vivid-blue text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-30"
+                className="flex size-11 shrink-0 items-center justify-center rounded-full bg-vivid-blue text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-30"
                 aria-label="Send"
               >
                 <svg viewBox="0 0 24 24" fill="none" className="size-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
