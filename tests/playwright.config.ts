@@ -14,6 +14,10 @@ const BASE_URL = `http://localhost:${PORT}`;
 
 export default defineConfig({
   testDir: "./e2e",
+  // Resolve test imports with the tests' node-resolution tsconfig. The app's
+  // root tsconfig uses moduleResolution:"bundler", which Playwright's resolver
+  // can't parse (it throws on any cross-file import like the shared ./routes).
+  tsconfig: "./tsconfig.json",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,

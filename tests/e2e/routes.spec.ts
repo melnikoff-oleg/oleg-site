@@ -1,30 +1,5 @@
 import { test, expect } from "@playwright/test";
-
-// Every public route on the site.
-const ROUTES = [
-  "/",
-  "/claude-outreach",
-  "/claude-b2b-outreach",
-  "/claude-cowork-outreach",
-  "/claude-twitter",
-  "/claude-content",
-  "/claude-reels",
-  "/claude-tiktok",
-  "/claude-social-growth",
-  "/claude-trend-scanner",
-  "/claude-marketing",
-  "/claude-seo",
-  "/claude-website",
-  "/claude-interviewer",
-  "/ads-ai",
-  "/60k-linkedin-post",
-  "/5-levels-ai",
-  "/marketing-brain",
-  "/marketing-brain-knowledge",
-];
-// Pages that render the cross-linked ResourceFooter (all except the homepage
-// and the chat).
-const FOOTER_ROUTES = ROUTES.filter((r) => r !== "/" && r !== "/marketing-brain");
+import { ROUTES, FOOTER_ROUTES } from "./routes";
 
 // Tests 1-6: route health across the whole site.
 

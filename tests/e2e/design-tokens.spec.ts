@@ -1,26 +1,6 @@
 import { test, expect } from "@playwright/test";
+import { ROUTES } from "./routes";
 
-const ROUTES = [
-  "/",
-  "/claude-outreach",
-  "/claude-b2b-outreach",
-  "/claude-cowork-outreach",
-  "/claude-twitter",
-  "/claude-content",
-  "/claude-reels",
-  "/claude-tiktok",
-  "/claude-social-growth",
-  "/claude-trend-scanner",
-  "/claude-marketing",
-  "/claude-seo",
-  "/claude-website",
-  "/claude-interviewer",
-  "/ads-ai",
-  "/60k-linkedin-post",
-  "/5-levels-ai",
-  "/marketing-brain",
-  "/marketing-brain-knowledge",
-];
 const SAMPLE_RESOURCE = "/claude-outreach";
 
 // Tests 7-11: brand fidelity to the Boldane design system.
