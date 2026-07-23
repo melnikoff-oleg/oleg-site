@@ -20,12 +20,15 @@ const ALL_ROUTES = [
   "/claude-seo", "/claude-website", "/claude-interviewer",
 ];
 
-// Every resource/tool page that historically shipped a raw eager <iframe>.
+// Resource/tool pages that carry a video (now via the click-to-load facade).
+// NOTE: /claude-outreach, /claude-trend-scanner, /claude-seo and
+// /claude-interviewer had their video blocks removed entirely (the source
+// YouTube videos were hidden for low views), so they are intentionally absent.
 const YT_FACADE_ROUTES = [
   "/claude-reels", "/claude-tiktok", "/claude-content", "/claude-twitter",
-  "/claude-b2b-outreach", "/claude-cowork-outreach", "/claude-outreach",
-  "/claude-marketing", "/claude-social-growth", "/claude-trend-scanner",
-  "/claude-seo", "/claude-website", "/claude-interviewer", "/ads-ai",
+  "/claude-b2b-outreach", "/claude-cowork-outreach",
+  "/claude-marketing", "/claude-social-growth",
+  "/claude-website", "/ads-ai",
 ];
 
 const MIN_TAP = 44;

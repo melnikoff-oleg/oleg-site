@@ -4,10 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
-import { YouTubeEmbed } from "@/components/youtube-embed";
 import { ArticleJsonLd } from "@/components/json-ld";
-
-const VIDEO_ID = "gVpAjLUnD2c";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -240,8 +237,6 @@ export default function ClaudeTrendScannerPage() {
         url="https://oleg.ae/claude-trend-scanner"
         datePublished="2026-05-12"
         dateModified="2026-05-13"
-        videoId="gVpAjLUnD2c"
-        videoTitle="Claude Code Trend Scanner"
       />
       {/* Minimal header */}
       <header className="px-2">
@@ -319,19 +314,6 @@ export default function ClaudeTrendScannerPage() {
             <motion.div variants={fadeUp} className="mt-8">
               <Accordion items={steps} defaultOpen={0} />
             </motion.div>
-          </div>
-        </motion.section>
-
-        {/* YouTube video */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
-          className="pb-24 md:pb-32"
-        >
-          <div className="mx-auto max-w-3xl px-6">
-            <YouTubeEmbed videoId={VIDEO_ID} title="Claude Code Trend Scanner" />
           </div>
         </motion.section>
       </main>
