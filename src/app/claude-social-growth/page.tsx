@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
 import { YouTubeEmbed } from "@/components/youtube-embed";
+import { RepoCta, DOWNLOAD_ICON } from "@/components/repo-cta";
 import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
 import { ArticleJsonLd } from "@/components/json-ld";
 
@@ -245,6 +246,15 @@ export default function ClaudeSocialGrowthPage() {
               outperform, and build a data-driven content strategy for your
               channel, all with claude code.
             </motion.p>
+
+            <motion.div variants={fadeUp}>
+              <RepoCta
+                href="https://claude.ai/download"
+                label="get claude code"
+                icon={DOWNLOAD_ICON}
+                className="mt-8"
+              />
+            </motion.div>
           </motion.div>
         </section>
 

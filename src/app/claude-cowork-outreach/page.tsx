@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Accordion } from "@/components/accordion";
 import { ResourceFooter } from "@/components/resource-footer";
 import { YouTubeEmbed } from "@/components/youtube-embed";
+import { RepoCta, DOWNLOAD_ICON } from "@/components/repo-cta";
 import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
 import { ArticleJsonLd } from "@/components/json-ld";
 
@@ -230,6 +231,15 @@ export default function ClaudeCoworkOutreachPage() {
               personalized message, and sends the connection. you handle the
               relationships that matter while it does the groundwork.
             </motion.p>
+
+            <motion.div variants={fadeUp}>
+              <RepoCta
+                href="https://claude.ai/download"
+                label="download claude cowork"
+                icon={DOWNLOAD_ICON}
+                className="mt-8"
+              />
+            </motion.div>
           </motion.div>
         </section>
 
