@@ -49,7 +49,9 @@ export function Accordion({ items, defaultOpen }: AccordionProps) {
                 />
               </svg>
             </button>
-            {/* CSS-only expand/collapse (grid 0fr -> 1fr) — no animation-runtime JS. */}
+            {/* CSS-only expand/collapse (grid 0fr -> 1fr) — no animation-runtime JS.
+                `hidden` (+ inert) when collapsed so the clipped content is truly
+                hidden from AT, keyboard, and find-in-page, not just visually. */}
             <div
               className={cn(
                 "grid transition-[grid-template-rows] duration-300 ease-in-out",
@@ -57,7 +59,10 @@ export function Accordion({ items, defaultOpen }: AccordionProps) {
               )}
             >
               <div className="overflow-hidden">
-                <div className="px-6 pb-6 pt-0 font-body text-silver-muted leading-relaxed">
+                <div
+                  hidden={!isOpen}
+                  className="px-6 pb-6 pt-0 font-body text-silver-muted leading-relaxed"
+                >
                   {item.content}
                 </div>
               </div>

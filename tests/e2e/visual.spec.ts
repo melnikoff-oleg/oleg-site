@@ -17,17 +17,27 @@ const DIFF = { maxDiffPixelRatio: 0.05 };
 async function settle(page: Page) {
   await page.waitForLoadState("networkidle");
   await page.evaluate(() => document.fonts.ready);
-  // Sections animate in on scroll (Framer `whileInView`, `once: true`). Step
-  // down the full page so they reveal and stay revealed, then return to top,
-  // so a full-page screenshot captures real content rather than blank sections.
+  // Sections animate in on scroll (IntersectionObserver reveals, `once`). Step
+  // down the full page so they reveal and stay revealed, then return to top, so
+  // a full-page screenshot captures real content rather than blank sections.
+  // IMPORTANT: force instant scrolling. The site sets `scroll-behavior: smooth`,
+  // which makes programmatic scrollTo animate and lag, so stepped scrolls never
+  // actually reach the lower sections within the pauses (they'd stay hidden).
   await page.evaluate(async () => {
+    const root = document.documentElement;
+    const prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
     const step = window.innerHeight;
-    const total = document.body.scrollHeight;
-    for (let y = 0; y < total; y += step) {
+    const bottom = () => root.scrollHeight - window.innerHeight;
+    for (let y = 0; y <= bottom(); y += step) {
       window.scrollTo(0, y);
       await new Promise((r) => setTimeout(r, 150));
     }
+    // Ensure the very bottom (final section) is reached, then return to top.
+    window.scrollTo(0, bottom());
+    await new Promise((r) => setTimeout(r, 200));
     window.scrollTo(0, 0);
+    root.style.scrollBehavior = prev;
   });
   // Let the hero's on-mount entrance (staggered, up to ~2.5s) fully finish.
   await page.waitForTimeout(1800);

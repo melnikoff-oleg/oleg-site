@@ -38,12 +38,23 @@ function useReveal(immediate: boolean) {
     }
     const io = new IntersectionObserver(
       (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setVisible(true);
-          io.disconnect();
+        // Reveal when the element is in view OR has already scrolled above the
+        // viewport top. The second case makes it robust to fast/programmatic
+        // scrolling (and the observer's initial callback), where a section can
+        // be reported as already-passed (isIntersecting:false) and would
+        // otherwise never reveal.
+        for (const e of entries) {
+          if (e.isIntersecting || e.boundingClientRect.top < 0) {
+            setVisible(true);
+            io.disconnect();
+            return;
+          }
         }
       },
-      { rootMargin: "-100px 0px" },
+      // No bottom dead-zone: a section flush with the page bottom (e.g. the
+      // final "connect" block) must still reveal when scrolled to. A small top
+      // inset delays the reveal until the element is a touch into view.
+      { rootMargin: "-40px 0px 0px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();

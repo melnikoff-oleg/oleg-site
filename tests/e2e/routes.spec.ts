@@ -70,8 +70,16 @@ test("4 - resource footer renders on footer routes", async ({ page }) => {
 // Test 5: no uncaught console errors on any route load.
 test("5 - no console errors on load", async ({ page }) => {
   const errors: Record<string, string[]> = {};
+  const THIRD_PARTY =
+    /youtube|ytimg|plausible|favicon|googletagmanager|gstatic|permissions policy|compute-pressure/i;
   page.on("console", (msg) => {
     if (msg.type() === "error") {
+      // A failed-resource error's text is often just "Failed to load resource:
+      // ... 404" with no URL; the URL lives in msg.location(). Check both so
+      // third-party noise (e.g. a YouTube embed's missing maxres thumbnail) is
+      // correctly ignored regardless of which field carries the URL.
+      const loc = msg.location()?.url ?? "";
+      if (THIRD_PARTY.test(msg.text()) || THIRD_PARTY.test(loc)) return;
       const url = page.url();
       (errors[url] ||= []).push(msg.text());
     }
@@ -79,18 +87,9 @@ test("5 - no console errors on load", async ({ page }) => {
   for (const route of ROUTES) {
     await page.goto(route, { waitUntil: "networkidle" });
   }
-  // Ignore noise from third-party embeds (YouTube iframes, analytics).
-  const meaningful = Object.entries(errors)
-    .map(([url, msgs]) => [
-      url,
-      msgs.filter(
-        (m) =>
-          !/youtube|ytimg|plausible|favicon|googletagmanager|gstatic/i.test(m) &&
-          // permissions-policy noise emitted by the embedded YouTube iframes
-          !/permissions policy|compute-pressure/i.test(m)
-      ),
-    ])
-    .filter(([, msgs]) => (msgs as string[]).length > 0);
+  const meaningful = Object.entries(errors).filter(
+    ([, msgs]) => (msgs as string[]).length > 0
+  );
   expect(meaningful, JSON.stringify(meaningful, null, 2)).toEqual([]);
 });
 
