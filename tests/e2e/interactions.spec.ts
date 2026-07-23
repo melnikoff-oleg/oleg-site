@@ -27,7 +27,11 @@ test("16 - header blurs on scroll", async ({ page }) => {
   );
 });
 
-// Test 17: accordion items open and close on click.
+// Test 17: accordion items open and close on click. Resource pages now open the
+// first step by default (defaultOpen={0}) so the setup guide reads as real
+// content, not a wall of collapsed bars, for the mostly-YouTube-arriving,
+// already-watched-the-video audience. So step 1 starts OPEN, and clicking it
+// toggles closed, then open again.
 test("17 - accordion opens and closes", async ({ page }) => {
   await page.goto(SAMPLE_RESOURCE, { waitUntil: "networkidle" });
   const firstStep = page
@@ -36,13 +40,14 @@ test("17 - accordion opens and closes", async ({ page }) => {
   await expect(firstStep).toBeVisible();
 
   const panelText = page.getByText(/code\.visualstudio\.com/i).first();
-  await expect(panelText).toBeHidden();
-
-  await firstStep.click();
+  // open by default
   await expect(panelText).toBeVisible();
 
   await firstStep.click();
   await expect(panelText).toBeHidden();
+
+  await firstStep.click();
+  await expect(panelText).toBeVisible();
 });
 
 // Test 18: a ResourceFooter card navigates to its page. The homepage no longer

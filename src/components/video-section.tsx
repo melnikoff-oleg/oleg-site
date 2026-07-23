@@ -6,9 +6,9 @@ const YOUTUBE_URL = "https://youtu.be/AKtT6NLZGoM";
 
 export function VideoSection() {
   return (
-    <section id="watch" className="py-24 md:py-32">
+    <section id="watch" className="py-16 md:py-32">
       <RevealGroup stagger={0.15} className="mx-auto max-w-4xl px-6">
-        <h2 className="eyebrow font-body text-xs text-vivid-blue/80">
+        <h2 className="eyebrow font-body text-[13px] text-vivid-blue">
           watch
         </h2>
 

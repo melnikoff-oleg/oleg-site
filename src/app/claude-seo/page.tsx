@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 
-const VIDEO_ID = "KOK8-0v4mUc";
-const VIDEO_TITLE = "Claude Code for SEO Optimization";
-
 const steps = [
   {
     title: "install visual studio code",
@@ -174,8 +171,6 @@ export default function ClaudeSeoPage() {
   return (
     <ResourcePageShell
       slug="claude-seo"
-      videoId={VIDEO_ID}
-      videoTitle={VIDEO_TITLE}
       title="claude code for seo optimization"
       subhead="put the technical side of seo on solid footing with claude code: meta tags, structured data, sitemaps, keyword research, and the ongoing work that keeps a site ranking. handled in one focused session."
       steps={steps}

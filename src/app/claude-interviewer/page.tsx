@@ -1,8 +1,6 @@
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { BoldaneLink } from "@/components/boldane-cta";
 
-const VIDEO_ID = "Na1ET0-s4CA";
-const VIDEO_TITLE = "My AI Interviewer Makes All My Content";
 
 const steps = [
   {
@@ -244,8 +242,6 @@ export default function ClaudeInterviewerPage() {
   return (
     <ResourcePageShell
       slug="claude-interviewer"
-      videoId={VIDEO_ID}
-      videoTitle={VIDEO_TITLE}
       title="an AI interviewer that turns your expertise into content"
       subhead="build a voice AI agent that interviews you about your work, then shapes the conversation into ready-to-post linkedin content. you talk, it writes. the ideas stay yours."
       steps={steps}

@@ -63,7 +63,7 @@ export function Header() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="relative z-50 -m-2 p-2 lg:hidden"
+            className="relative z-50 -mr-2.5 flex size-11 items-center justify-center lg:hidden"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             <div className="flex flex-col gap-1.5">

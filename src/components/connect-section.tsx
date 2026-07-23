@@ -52,12 +52,12 @@ const socials = [
 
 export function ConnectSection() {
   return (
-    <section id="connect" className="py-24 md:py-32">
+    <section id="connect" className="py-16 md:py-32">
       <RevealGroup
         stagger={0.12}
         className="mx-auto max-w-3xl px-6 text-center"
       >
-        <h2 className="eyebrow font-body text-xs text-vivid-blue/80">
+        <h2 className="eyebrow font-body text-[13px] text-vivid-blue">
           connect
         </h2>
 

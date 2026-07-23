@@ -1,5 +1,6 @@
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { BoldaneLink } from "@/components/boldane-cta";
+import { DOWNLOAD_ICON } from "@/components/repo-cta";
 
 const VIDEO_ID = "QoiFASDh8J8";
 const VIDEO_TITLE = "Claude Cowork for Cold Outreach";
@@ -153,6 +154,7 @@ export default function ClaudeCoworkOutreachPage() {
   return (
     <ResourcePageShell
       slug="claude-cowork-outreach"
+      repoCta={{ href: "https://claude.ai/download", label: "download claude cowork", icon: DOWNLOAD_ICON }}
       videoId={VIDEO_ID}
       videoTitle={VIDEO_TITLE}
       title="claude cowork for cold outreach (b2b sales)"

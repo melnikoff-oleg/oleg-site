@@ -220,6 +220,7 @@ export default function ClaudeReelsPage() {
   return (
     <ResourcePageShell
       slug="claude-reels"
+      repoCta={{ href: "https://github.com/melnikoff-oleg/social-media" }}
       videoId={VIDEO_ID}
       videoTitle={VIDEO_TITLE}
       title="claude code for instagram reels that earn attention"

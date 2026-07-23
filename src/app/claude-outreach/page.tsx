@@ -1,8 +1,6 @@
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { BoldaneLink } from "@/components/boldane-cta";
 
-const VIDEO_ID = "aUO7kUc8aJU";
-const VIDEO_TITLE = "Claude Code for Cold Outreach";
 
 const steps = [
   {
@@ -148,8 +146,6 @@ export default function ClaudeOutreachPage() {
   return (
     <ResourcePageShell
       slug="claude-outreach"
-      videoId={VIDEO_ID}
-      videoTitle={VIDEO_TITLE}
       title="claude code for cold outreach"
       subhead="build a thoughtful cold outreach system with claude code. it researches each prospect, then writes a personal, value-first message. follow the steps below to set it up."
       steps={steps}

@@ -213,6 +213,7 @@ export default function ClaudeTiktokPage() {
   return (
     <ResourcePageShell
       slug="claude-tiktok"
+      repoCta={{ href: "https://github.com/melnikoff-oleg/tiktok-ai" }}
       videoId={VIDEO_ID}
       videoTitle={VIDEO_TITLE}
       title="claude code for tiktok videos that hold attention"

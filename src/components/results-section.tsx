@@ -27,9 +27,9 @@ const highlights = [
 
 export function ResultsSection() {
   return (
-    <section id="results" className="py-24 md:py-32">
+    <section id="results" className="py-16 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
-        <Reveal as="h2" className="eyebrow font-body text-xs text-vivid-blue/80">
+        <Reveal as="h2" className="eyebrow font-body text-[13px] text-vivid-blue">
           results
         </Reveal>
 
@@ -57,7 +57,7 @@ export function ResultsSection() {
           {highlights.map((h) => (
             <div key={h.title} className="surface-card p-6">
               <p className="font-display text-lg font-medium text-silver">{h.title}</p>
-              <p className="mt-3 font-body text-sm leading-relaxed text-silver-muted">
+              <p className="mt-3 font-body text-base leading-relaxed text-silver-muted">
                 {h.description}
               </p>
             </div>

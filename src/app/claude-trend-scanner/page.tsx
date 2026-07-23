@@ -1,7 +1,5 @@
 import { ResourcePageShell } from "@/components/resource-page-shell";
 
-const VIDEO_ID = "gVpAjLUnD2c";
-const VIDEO_TITLE = "Claude Code Trend Scanner";
 
 const steps = [
   {
@@ -220,8 +218,6 @@ export default function ClaudeTrendScannerPage() {
   return (
     <ResourcePageShell
       slug="claude-trend-scanner"
-      videoId={VIDEO_ID}
-      videoTitle={VIDEO_TITLE}
       title="claude code trend scanner"
       subhead="scan twitter, reddit, instagram, tiktok, youtube, and any website for trending topics in your niche. get a structured briefing every morning, automatically."
       steps={steps}

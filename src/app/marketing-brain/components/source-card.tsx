@@ -101,7 +101,7 @@ export const SourceCard = forwardRef<
                   <button
                     type="button"
                     onClick={() => setActiveItem(i)}
-                    className={`inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[11px] font-medium tabular-nums transition-colors ${
+                    className={`inline-flex items-center gap-1 rounded px-2 py-1 text-[11px] font-medium tabular-nums transition-colors ${
                       activeItem === i
                         ? "bg-vivid-blue/25 text-white"
                         : "bg-vivid-blue/15 text-silver hover:bg-vivid-blue/25 hover:text-white"
@@ -116,7 +116,8 @@ export const SourceCard = forwardRef<
                     href={it.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] text-silver-muted underline decoration-silver-muted/50 underline-offset-2 hover:text-silver"
+                    aria-label="Open on YouTube"
+                    className="inline-flex size-6 items-center justify-center rounded text-silver-muted transition-colors hover:text-silver"
                   >
                     ↗
                   </a>

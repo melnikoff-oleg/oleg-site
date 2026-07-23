@@ -24,7 +24,7 @@ function CopyButton({ text }: { text: string }) {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }}
-      className="inline-flex items-center gap-1.5 rounded-full border border-hairline px-3 py-1.5 font-body text-xs font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+      className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
     >
       {copied ? (
         <>
@@ -33,7 +33,7 @@ function CopyButton({ text }: { text: string }) {
             fill="none"
             stroke="currentColor"
             strokeWidth={2}
-            className="size-3.5"
+            className="size-4"
           >
             <path
               strokeLinecap="round"
@@ -50,7 +50,7 @@ function CopyButton({ text }: { text: string }) {
             fill="none"
             stroke="currentColor"
             strokeWidth={2}
-            className="size-3.5"
+            className="size-4"
           >
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
             <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
@@ -197,7 +197,7 @@ export default function LinkedInPostPage() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-3 font-body text-sm text-silver-muted"
+              className="mt-3 font-body text-base text-silver-muted"
             >
               this is a simplified, do-it-yourself version of the Boldane
               system. copy the prompts below and start writing posts built
@@ -217,7 +217,7 @@ export default function LinkedInPostPage() {
           <div className="mx-auto max-w-3xl px-6">
             <motion.h2
               variants={fadeUp}
-              className="eyebrow font-body text-xs text-vivid-blue/80"
+              className="eyebrow font-body text-[13px] text-vivid-blue"
             >
               how it works
             </motion.h2>
@@ -250,10 +250,10 @@ export default function LinkedInPostPage() {
                   <span className="font-body text-xs font-medium text-silver-muted">
                     chat {s.step}
                   </span>
-                  <p className="mt-1 text-sm font-medium text-silver">
+                  <p className="mt-1 text-base font-medium text-silver">
                     {s.label}
                   </p>
-                  <p className="mt-1.5 font-body text-xs leading-relaxed text-silver-muted">
+                  <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">
                     {s.desc}
                   </p>
                 </div>
@@ -262,7 +262,7 @@ export default function LinkedInPostPage() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-5 font-body text-sm text-silver-muted"
+              className="mt-5 font-body text-base text-silver-muted"
             >
               the magic is in step 2: the posts are built from what{" "}
               <span className="text-silver">you</span> actually said, not from
@@ -298,11 +298,11 @@ export default function LinkedInPostPage() {
                   <CopyButton text={p.prompt} />
                 </div>
 
-                <p className="mt-3 font-body text-sm leading-relaxed text-silver-muted">
+                <p className="mt-3 font-body text-base leading-relaxed text-silver-muted">
                   {p.description}
                 </p>
 
-                <pre className="mt-5 max-h-64 overflow-auto rounded-lg surface-raised border border-hairline p-4 text-xs leading-relaxed text-silver scrollbar-thin scrollbar-track-transparent scrollbar-thumb-silver-muted/30">
+                <pre className="mt-5 max-h-80 overflow-auto rounded-lg surface-raised border border-hairline p-4 text-sm leading-relaxed text-silver scrollbar-thin scrollbar-track-transparent scrollbar-thumb-silver-muted/30">
                   <code className="whitespace-pre-wrap break-words">
                     {p.prompt}
                   </code>
@@ -321,10 +321,10 @@ export default function LinkedInPostPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <h2 className="eyebrow font-body text-xs text-vivid-blue/80">
+            <h2 className="eyebrow font-body text-[13px] text-vivid-blue">
               tips for better results
             </h2>
-            <ul className="mt-5 space-y-3 font-body text-sm leading-relaxed text-silver-muted">
+            <ul className="mt-5 space-y-3 font-body text-base leading-relaxed text-silver-muted">
               <li className="flex gap-3">
                 <span className="mt-0.5 text-silver-muted">01</span>
                 <span>
@@ -369,11 +369,11 @@ export default function LinkedInPostPage() {
           className="pb-24 md:pb-32"
         >
           <div className="mx-auto max-w-3xl px-6">
-            <h2 className="eyebrow font-body text-xs text-vivid-blue/80">
+            <h2 className="eyebrow font-body text-[13px] text-vivid-blue">
               the post that started it
             </h2>
             <div className="surface-card mt-6 rounded-2xl p-6 sm:p-8">
-              <p className="font-body text-sm leading-relaxed text-silver-muted">
+              <p className="font-body text-base leading-relaxed text-silver-muted">
                 this system was built for{" "}
                 <a
                   href="https://www.linkedin.com/in/chintanaroad/"
@@ -425,7 +425,7 @@ export default function LinkedInPostPage() {
         >
           <div className="mx-auto max-w-3xl px-6">
             <div className="surface-card rounded-2xl p-6 text-center sm:p-8">
-              <p className="font-body text-sm leading-relaxed text-silver-muted">
+              <p className="font-body text-base leading-relaxed text-silver-muted">
                 this is the simple, do-it-yourself version of what{" "}
                 <a
                   href="https://www.boldane.com"

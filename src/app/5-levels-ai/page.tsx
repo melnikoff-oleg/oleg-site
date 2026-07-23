@@ -215,7 +215,7 @@ function LevelRung({ lvl }: { lvl: Level }) {
       <div className="min-w-0 flex-1 surface-card rounded-2xl p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <span className="eyebrow block text-[0.62rem] font-semibold text-silver-muted">
+            <span className="eyebrow block text-[0.7rem] font-semibold text-silver-muted">
               {lvl.level}
             </span>
             <span className="mt-0.5 block font-display text-lg font-semibold leading-tight text-silver">
@@ -226,25 +226,25 @@ function LevelRung({ lvl }: { lvl: Level }) {
             <span className="block font-display text-2xl font-light leading-none tabular-nums whitespace-nowrap text-silver">
               {lvl.agents}
             </span>
-            <span className="eyebrow mt-1 block text-[0.55rem] font-semibold text-silver-muted">
+            <span className="eyebrow mt-1 block text-[0.62rem] font-semibold text-silver-muted">
               agents
             </span>
           </div>
         </div>
         <div className="mt-4 space-y-4 border-t border-hairline pt-4">
           <div>
-            <span className="eyebrow block text-[0.6rem] font-semibold text-silver-muted/80">
+            <span className="eyebrow block text-[0.7rem] font-semibold text-silver-muted">
               what it looks like
             </span>
-            <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">
+            <p className="mt-1.5 font-body text-base leading-relaxed text-silver-muted">
               {lvl.looks}
             </p>
           </div>
           <div className="border-l-2 border-vivid-blue pl-3.5 [&_strong]:font-semibold [&_strong]:text-silver">
-            <span className="eyebrow block text-[0.6rem] font-semibold text-vivid-blue/80">
+            <span className="eyebrow block text-[0.7rem] font-semibold text-vivid-blue">
               what keeps you stuck
             </span>
-            <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">
+            <p className="mt-1.5 font-body text-base leading-relaxed text-silver-muted">
               {lvl.stuck}
             </p>
           </div>
@@ -266,10 +266,10 @@ function MoveStep({ to, text, cmds }: { to: string; text: ReactNode; cmds: strin
       >
         {chevronUp}
       </span>
-      <span className="eyebrow block text-[0.62rem] font-semibold text-vivid-blue/90">
+      <span className="eyebrow block text-[0.7rem] font-semibold text-vivid-blue">
         how to get to {to}
       </span>
-      <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">{text}</p>
+      <p className="mt-1.5 font-body text-base leading-relaxed text-silver-muted">{text}</p>
       <CmdChips cmds={cmds} />
     </div>
   );
@@ -288,7 +288,7 @@ export default function FiveLevelsPage() {
             href="https://youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
@@ -332,7 +332,7 @@ export default function FiveLevelsPage() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-3 font-body text-sm text-silver-muted"
+              className="mt-3 font-body text-base text-silver-muted"
             >
               find where you are today, then take the one move that gets you to
               the next rung. every step runs on Claude Code.

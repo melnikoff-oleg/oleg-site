@@ -3,9 +3,9 @@ import { RevealGroup } from "@/components/motion/reveal";
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 md:py-32">
+    <section id="about" className="py-16 md:py-32">
       <RevealGroup stagger={0.15} className="mx-auto max-w-3xl px-6">
-        <h2 className="eyebrow font-body text-xs text-vivid-blue/80">
+        <h2 className="eyebrow font-body text-[13px] text-vivid-blue">
           what i do
         </h2>
 

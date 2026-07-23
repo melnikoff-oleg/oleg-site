@@ -1,5 +1,6 @@
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { BoldaneLink } from "@/components/boldane-cta";
+import { DOWNLOAD_ICON } from "@/components/repo-cta";
 
 const VIDEO_ID = "GK3JFG7x7LA";
 const VIDEO_TITLE = "Claude Code for Social Media Growth";
@@ -168,6 +169,7 @@ export default function ClaudeSocialGrowthPage() {
   return (
     <ResourcePageShell
       slug="claude-social-growth"
+      repoCta={{ href: "https://claude.ai/download", label: "get claude code", icon: DOWNLOAD_ICON }}
       videoId={VIDEO_ID}
       videoTitle={VIDEO_TITLE}
       title="claude code for social media growth"
