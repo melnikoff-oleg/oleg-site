@@ -1,0 +1,97 @@
+{
+  "_generatedBy": "scripts/build-recommendations.mjs",
+  "_note": "Ranked 'up next' picks per resource page (position 0 = hero). Regenerate with: node scripts/build-recommendations.mjs",
+  "_model": "claude-sonnet-4-6",
+  "recommendations": {
+    "marketing-brain": [
+      "5-levels-ai",
+      "claude-content",
+      "claude-cowork-outreach"
+    ],
+    "high-converting-website": [
+      "claude-b2b-outreach",
+      "claude-outreach",
+      "marketing-brain"
+    ],
+    "claude-outreach": [
+      "claude-b2b-outreach",
+      "claude-cowork-outreach",
+      "high-converting-website"
+    ],
+    "claude-b2b-outreach": [
+      "claude-cowork-outreach",
+      "claude-outreach",
+      "high-converting-website"
+    ],
+    "claude-cowork-outreach": [
+      "claude-b2b-outreach",
+      "claude-outreach",
+      "high-converting-website"
+    ],
+    "claude-twitter": [
+      "claude-content",
+      "60k-linkedin-post",
+      "claude-social-growth"
+    ],
+    "claude-content": [
+      "claude-reels",
+      "claude-tiktok",
+      "claude-social-growth"
+    ],
+    "claude-reels": [
+      "claude-tiktok",
+      "claude-content",
+      "claude-social-growth"
+    ],
+    "claude-tiktok": [
+      "claude-reels",
+      "claude-content",
+      "claude-trend-scanner"
+    ],
+    "claude-social-growth": [
+      "claude-reels",
+      "claude-content",
+      "claude-trend-scanner"
+    ],
+    "claude-trend-scanner": [
+      "claude-content",
+      "claude-reels",
+      "claude-tiktok"
+    ],
+    "claude-marketing": [
+      "claude-b2b-outreach",
+      "ads-ai",
+      "claude-cowork-outreach"
+    ],
+    "claude-seo": [
+      "high-converting-website",
+      "claude-website",
+      "marketing-brain"
+    ],
+    "claude-website": [
+      "high-converting-website",
+      "claude-seo",
+      "marketing-brain"
+    ],
+    "claude-interviewer": [
+      "60k-linkedin-post",
+      "claude-content",
+      "claude-twitter"
+    ],
+    "ads-ai": [
+      "claude-marketing",
+      "high-converting-website",
+      "claude-b2b-outreach"
+    ],
+    "60k-linkedin-post": [
+      "claude-interviewer",
+      "claude-twitter",
+      "marketing-brain"
+    ],
+    "5-levels-ai": [
+      "marketing-brain",
+      "claude-cowork-outreach",
+      "claude-reels"
+    ]
+  }
+}

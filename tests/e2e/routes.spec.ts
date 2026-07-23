@@ -30,13 +30,14 @@ test("3 - header wordmark present on every route", async ({ page }) => {
   }
 });
 
-// Test 4: ResourceFooter ("more free resources") renders on every
-// resource/tool/lead-magnet/knowledge page.
+// Test 4: the cross-linked ResourceFooter renders on every
+// resource/tool/lead-magnet/knowledge page. The wall of equal links is now
+// collapsed behind a "see all free resources" disclosure, always present.
 test("4 - resource footer renders on footer routes", async ({ page }) => {
   for (const route of FOOTER_ROUTES) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
     await expect(
-      page.getByText(/more free resources/i),
+      page.getByTestId("see-all-resources"),
       `${route} footer`
     ).toBeVisible();
   }

@@ -50,10 +50,12 @@ test("17 - accordion opens and closes", async ({ page }) => {
   await expect(panelText).toBeVisible();
 });
 
-// Test 18: a ResourceFooter card navigates to its page. The homepage no longer
-// renders the footer, so use a resource page.
+// Test 18: a ResourceFooter grid link navigates to its page. The grid is now
+// collapsed behind the "see all free resources" disclosure, so open it first.
+// The homepage no longer renders the footer, so use a resource page.
 test("18 - resource footer link navigates", async ({ page }) => {
   await page.goto("/claude-seo", { waitUntil: "networkidle" });
+  await page.getByTestId("see-all-resources").click();
   const footerLink = page
     .getByRole("contentinfo")
     .getByRole("link", { name: /cold outreach/i })
