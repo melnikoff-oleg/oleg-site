@@ -2,6 +2,14 @@
 
 ---
 
+## Code-review hardening + mobile merge (2026-07-23)
+
+Full-codebase review pass (branch `code-review-hardening`), then merged into `main` on top of the same-day `mobile-optimization` pass — both feature sets kept. Shipped:
+- **Security:** the paid marketing-brain routes (`scrape`/`upload`/`extract`) and `PUT /memory` are now rate-limited (own `MEMORY_DAILY_LIMIT` bucket) so they can't be looped to burn Anthropic/Firecrawl credits; client IP is non-spoofable (`x-real-ip`); business context is client-owned (browser localStorage, sent per request) so it no longer bleeds between visitors on a warm Vercel instance; the chat validates/clamps input (no more 500 on malformed body) and aborts the Anthropic stream on client disconnect; scrape rejects private/metadata hosts (SSRF) and hides internal errors.
+- **Performance (Telegram-fast goal):** Framer Motion removed from the homepage + all 13 resource pages (replaced by CSS `Reveal` primitives) — homepage First Load JS 165→124 kB, each resource page 163→116 kB. Hero photo 2.6 MB→~550 KB (kept 3:2, quality 90). `preview.mp4` 1.9 MB→~300 KB + lazy-loaded (poster, plays on scroll). Cache-Control + AVIF added.
+- **DRY:** the 13 resource pages collapsed into one `ResourcePageShell` (~1,200 duplicated lines removed; net −4,400 lines across the branch).
+- **Tests:** 28 → ~130 instances (API validation, retriever invariants, stubbed chat flow, per-route 390px overflow guard).
+
 ## Homepage link de-duplication (2026-07-09)
 
 Oleg flagged the homepage as reading like an ad, too many YouTube links ("it feels like I'm trying to sell you"). Fixed to a **one-link-per-destination rule: every external link appears exactly once**. YouTube channel link went from 6 spots down to 1 (the Connect row icon); the video section keeps the specific-video preview (a different URL, actual content), so YouTube is 2 touches total, both distinct. Removed: header YouTube button (desktop + mobile, header is now wordmark + nav only), hero "watch on youtube" CTA (both hero CTAs are now internal anchors: "see my work" -> #results, "let's connect" -> #connect), the "claude code" YouTube link in About (now plain text), the "youtube" link in the video prose (plain text), and Boldane from the Connect row (it lives once as the inline About link, since it's a company not a contact channel). Connect row is now youtube, linkedin, instagram, telegram, email. Video caption softened from "subscribe for weekly..." to "new ... tutorials every week." Visual baselines regenerated. **Rule going forward: no link on the homepage twice.**

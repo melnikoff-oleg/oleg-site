@@ -29,7 +29,7 @@ Runs typically complete in 15-30 seconds. Dataset ID is returned in the initial 
 **What:** Powers the `/marketing-brain` AI chat (RAG synthesis over the marketing-brain corpus).
 **API Key:** `ANTHROPIC_API_KEY` in `.env` (local) and Vercel env vars (Production + Preview).
 **Model:** `claude-sonnet-4-6` (streaming, adaptive thinking, `max_tokens` 8000 — high enough that thinking tokens plus a full answer fit without truncation).
-**Where:** `src/app/api/marketing-brain/chat/route.ts` via `@anthropic-ai/sdk`. Retrieval is local BM25 (no API cost); only synthesis calls the API. A per-IP daily cap of 30 limits spend. The chat also accepts the user's business context from the client (`businessContext` in the request body) and injects it into the system prompt for personalized answers. Also used by the memory routes: `distill` (website scrape → profile) and `extract` (auto-capture business facts).
+**Where:** `src/app/api/marketing-brain/chat/route.ts` via `@anthropic-ai/sdk`. Retrieval is local BM25 (no API cost); only synthesis calls the API. Spend is capped per-IP (chat: 30/day; the paid memory routes scrape/upload/extract share a tighter 20/day bucket — added 2026-07-23 so they can't be looped to burn credits). Client IP is read from `x-real-ip` (not spoofable via `x-forwarded-for`). The chat accepts the user's business context from the client (`businessContext` in the request body, held in browser localStorage — client-owned so it never bleeds between visitors) and injects it into the system prompt. Also used by the memory routes: `distill` (website scrape → profile; the scrape route rejects private/metadata hosts as an SSRF guard) and `extract` (auto-capture business facts). Firecrawl (`FIRECRAWL_API_KEY`) powers the website scrape.
 
 ---
 
