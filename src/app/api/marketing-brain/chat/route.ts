@@ -18,13 +18,31 @@ export const maxDuration = 60;
 const MODEL = "claude-sonnet-4-6";
 const LIMIT_MESSAGE =
   "you've hit today's limit of 30 questions. if you want more, just reach out to me on linkedin (linkedin.com/in/olegane).";
+// Bound the client-controlled conversation so a caller can't drive unbounded
+// input-token cost or forge non-user/assistant turns.
+const MAX_MESSAGES = 20;
+const MAX_MESSAGE_CHARS = 8000;
 
 export async function POST(req: Request) {
   let messages: ChatMessage[];
   let clientContext = "";
   try {
     const body = await req.json();
-    messages = Array.isArray(body?.messages) ? body.messages : [];
+    // Validate element shape at the runtime boundary (the ChatMessage[] type is
+    // compile-time only): keep only well-formed user/assistant turns, clamp each
+    // message, and keep the most recent MAX_MESSAGES. This also prevents an
+    // unhandled TypeError on a malformed { role } with no string content.
+    const raw = Array.isArray(body?.messages) ? body.messages : [];
+    messages = raw
+      .filter(
+        (m: unknown): m is ChatMessage =>
+          !!m &&
+          typeof (m as ChatMessage).content === "string" &&
+          ((m as ChatMessage).role === "user" ||
+            (m as ChatMessage).role === "assistant"),
+      )
+      .slice(-MAX_MESSAGES)
+      .map((m: ChatMessage) => ({ ...m, content: m.content.slice(0, MAX_MESSAGE_CHARS) }));
     // The client sends its loaded "your context" so personalization works even
     // on Vercel, where the server-side memory file (in /tmp) is ephemeral and
     // not shared across function instances. Server memory is the local fallback.
@@ -73,8 +91,16 @@ export async function POST(req: Request) {
     .map((m) => ({ role: m.role, content: m.content }));
 
   const encoder = new TextEncoder();
-  const send = (controller: ReadableStreamDefaultController, frame: StreamFrame) =>
-    controller.enqueue(encoder.encode(JSON.stringify(frame) + "\n"));
+  // Guard every enqueue: once the client disconnects the controller is closed,
+  // and enqueue-after-close throws. Swallow that specific case so a normal
+  // abort doesn't surface as an error.
+  const send = (controller: ReadableStreamDefaultController, frame: StreamFrame) => {
+    try {
+      controller.enqueue(encoder.encode(JSON.stringify(frame) + "\n"));
+    } catch {
+      /* controller already closed (client gone) */
+    }
+  };
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -82,14 +108,19 @@ export async function POST(req: Request) {
         // 1. Sources first, so cards render while the answer streams.
         send(controller, { type: "sources", sources });
 
-        // 2. Stream Claude's synthesized, cited answer.
-        const llm = client.messages.stream({
-          model: MODEL,
-          max_tokens: 8000,
-          thinking: { type: "adaptive" },
-          system,
-          messages: apiMessages,
-        });
+        // 2. Stream Claude's synthesized, cited answer. Pass the request signal
+        // so generation (and Anthropic billing) stops the moment the client
+        // aborts, instead of running to max_tokens against a dead connection.
+        const llm = client.messages.stream(
+          {
+            model: MODEL,
+            max_tokens: 8000,
+            thinking: { type: "adaptive" },
+            system,
+            messages: apiMessages,
+          },
+          { signal: req.signal },
+        );
 
         for await (const event of llm) {
           if (
@@ -115,13 +146,22 @@ export async function POST(req: Request) {
           reason: final.stop_reason ?? "end_turn",
         });
       } catch (err) {
-        console.error("[marketing-brain] chat error", err);
-        send(controller, {
-          type: "error",
-          message: "something went wrong reaching the brain. try again in a moment.",
-        });
+        // A client disconnect surfaces here as an AbortError; that's expected
+        // teardown, not a failure, so don't log it or try to emit an error frame
+        // to a controller that's already gone.
+        if (!req.signal.aborted) {
+          console.error("[marketing-brain] chat error", err);
+          send(controller, {
+            type: "error",
+            message: "something went wrong reaching the brain. try again in a moment.",
+          });
+        }
       } finally {
-        controller.close();
+        try {
+          controller.close();
+        } catch {
+          /* already closed */
+        }
       }
     },
   });

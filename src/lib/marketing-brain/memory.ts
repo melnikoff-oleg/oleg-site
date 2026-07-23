@@ -1,20 +1,21 @@
 // Local business-context "memory" for the Marketing Brain chat.
 //
-// Single-user, local-only MVP: one markdown file on disk, read/written via fs
-// from Node-runtime routes. No database. Gitignored (personal business data).
-// NOTE: this lives on the local filesystem, so it will NOT persist on Vercel's
-// ephemeral fs. That's intentional for the prototype; a durable store
-// (SQLite / Vercel KV / Blob) is the later upgrade.
+// The CLIENT is the source of truth for a visitor's business context: it holds
+// the text (localStorage) and sends it as `businessContext` on every request.
+// The write endpoints (scrape / upload / extract) therefore append to the
+// CLIENT-SENT context (see mergeSection) and return the merged result; they do
+// not read a shared server file back to the visitor. That removes the
+// cross-visitor data bleed a single global file would cause on a warm instance.
+//
+// The on-disk file below is a LOCAL-DEV convenience only (so the drawer can
+// reload across restarts on your own machine). On Vercel process.cwd()
+// (`/var/task`) is read-only and /tmp is per-instance + ephemeral, so it is not
+// relied upon in production.
 
 import fs from "fs";
 import os from "os";
 import path from "path";
 
-// Where the memory file lives. Locally it sits in the repo root so it's easy to
-// read/edit. On Vercel, process.cwd() (`/var/task`) is a read-only filesystem,
-// only the OS temp dir (`/tmp`) is writable, so we base the path there instead.
-// Storage on Vercel is per-instance and ephemeral (intentional for this MVP; a
-// durable store is the later upgrade), but at minimum writes no longer crash.
 const BASE = process.env.VERCEL ? os.tmpdir() : process.cwd();
 const DIR = path.join(BASE, "marketing-brain-memory");
 const FILE = path.join(DIR, "business-context.md");
@@ -31,19 +32,39 @@ export function getMemory(): string {
 }
 
 export function setMemory(text: string): void {
+  // Never persist more than the cap: the injected context is bounded anyway, and
+  // this stops an unbounded write from filling the (small) writable fs.
+  const capped = text.slice(0, MAX_CONTEXT_CHARS);
   fs.mkdirSync(DIR, { recursive: true });
-  fs.writeFileSync(FILE, text, "utf8");
+  fs.writeFileSync(FILE, capped, "utf8");
 }
 
-// Append a clearly-delimited section; returns { previous, text } for undo support.
+// Pure helper: append a clearly-delimited section to a base document and return
+// the merged text (bounded to MAX_CONTEXT_CHARS) plus the section that was added.
+// `date` is passed in so this stays a pure function (callers own the clock).
+export function mergeSection(
+  base: string,
+  heading: string,
+  body: string,
+  date: string,
+): { previous: string; text: string; added: string } {
+  const previous = base ?? "";
+  const section = `## ${heading} (${date})\n\n${body.trim()}\n`;
+  const merged = previous.trim() ? `${previous.trim()}\n\n${section}` : section;
+  const text = merged.slice(0, MAX_CONTEXT_CHARS);
+  return { previous, text, added: section };
+}
+
+// Append a section against the local server file (LOCAL-DEV fallback only).
+// Prefer mergeSection with the client-sent context in request handlers.
 export function appendMemory(
   heading: string,
   body: string,
+  base?: string,
 ): { previous: string; text: string; added: string } {
-  const previous = getMemory();
+  const source = base ?? getMemory();
   const date = new Date().toISOString().slice(0, 10);
-  const section = `## ${heading} (${date})\n\n${body.trim()}\n`;
-  const text = previous.trim() ? `${previous.trim()}\n\n${section}` : section;
-  setMemory(text);
-  return { previous, text, added: section };
+  const result = mergeSection(source, heading, body, date);
+  setMemory(result.text);
+  return result;
 }
