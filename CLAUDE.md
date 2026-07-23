@@ -173,7 +173,7 @@ Ongoing goal: optimize the site for search around keywords like **"AI systems fo
 - **Framework:** Next.js 15 + React 19 + TypeScript
 - **Styling:** Tailwind CSS 4 (tokens in `@theme inline` inside `globals.css`, no `tailwind.config`)
 - **UI primitives:** `src/components/ui/{button,card}.tsx` (`class-variance-authority` + `@radix-ui/react-slot`, merged via `cn()` in `src/lib/utils.ts`)
-- **Animations:** Framer Motion
+- **Animations:** CSS keyframes + IntersectionObserver via the `Reveal` primitives (`src/components/motion/reveal.tsx`: `Reveal` / `RevealGroup`, keyframes in `globals.css`). These replaced Framer Motion for the marketing surface (homepage + all resource pages) so those routes ship **no animation-runtime JS** (each resource page dropped ~47 kB First Load JS; homepage 165→124 kB). `TextEffect` / `AnimatedGroup` are CSS reimplementations keeping their old DOM + API. Framer Motion still powers the `/marketing-brain` chat only (context-drawer, chat-message) and a few not-yet-migrated pages (ads-ai, high-converting-website, 60k-linkedin-post, 5-levels-ai, marketing-brain-knowledge). Reveals honor `prefers-reduced-motion` (show immediately). Real wheel/touch scroll triggers them; programmatic scrolls must be instant (the site sets `scroll-behavior: smooth`), see `settle()` in `tests/e2e/visual.spec.ts`.
 - **Tests:** Playwright (`@playwright/test` + `@axe-core/playwright`), see Testing below
 - **Deployment target:** Vercel
 
@@ -211,7 +211,17 @@ npm run test:update  # Regenerate visual-regression baselines
 
 ### Testing
 
-`tests/` holds a Playwright suite (`tests/playwright.config.ts`, specs in `tests/e2e/`) that verifies the redesign from 28 angles: route health (1-6), design-token/brand fidelity (7-11), visual-regression snapshots desktop + mobile (12-15, 28), interactions (16-18), a11y + no-em-dash content rules (19-20), and the `/5-levels-ai` mobile ladder (`mobile-ladder.spec.ts`, 21-27: below `lg` the wide comparison table is swapped for a rail-threaded rung-card stack so no field is clipped on a phone; at `lg`+ the original table is preserved). It runs against a production build on desktop + a Chromium iPhone-sized viewport. Snapshot baselines live under `tests/e2e/visual.spec.ts-snapshots/` and are committed; regenerate with `npm run test:update` after intentional visual changes. Tests have their own `tests/tsconfig.json` (node resolution) and are excluded from the app `tsconfig.json`.
+`tests/` holds a Playwright suite (`tests/playwright.config.ts`, specs in `tests/e2e/`). Original angles: route health (1-6), design-token/brand fidelity (7-11), visual-regression snapshots desktop + mobile (12-15, 28), interactions (16-18), a11y + no-em-dash content rules (19-20), and the `/5-levels-ai` mobile ladder (`mobile-ladder.spec.ts`, 21-27: below `lg` the wide comparison table is swapped for a rail-threaded rung-card stack; at `lg`+ the original table is preserved). It runs against a production build on desktop + a Chromium iPhone-sized viewport (~100 test instances across both projects). Snapshot baselines live under `tests/e2e/visual.spec.ts-snapshots/` and are committed; regenerate with `npm run test:update` after intentional visual changes.
+
+**Added by the `code-review-hardening` branch:**
+- Route list is a single source of truth: `tests/e2e/routes.ts` (`ROUTES` / `FOOTER_ROUTES`), imported by `routes.spec` + `design-tokens.spec` + `mobile-overflow.spec` so a new page can't be silently absent from half the suite. Add new routes there.
+- `mobile-overflow.spec.ts` — the 390px no-horizontal-scroll mandate asserted on EVERY route (skips content inside intentional `overflow-x` scrollers).
+- `api-chat.spec.ts` / `api-memory.spec.ts` — deterministic, key-free validation branches of the backend routes (bad body, empty, missing/invalid/private-host url, size cap). Use a raw `Buffer` for malformed-JSON bodies (Playwright re-serializes string `data` under a JSON content-type).
+- `retriever.spec.ts` — pure unit test of the BM25 ranking invariants (PER_SOURCE cap, RESERVE_VIDEOS floor, identity folding, short quotes). Imports `src/lib/marketing-brain/retriever` directly; runs from repo root (retriever reads `chunks.json` via `process.cwd()`).
+- `brain-chat.spec.ts` — drives the chat with a **stubbed** NDJSON stream (`page.route`), covering source cards, streamed text, and the `max_tokens`→continue / dropped-stream→try-again banners, fully offline.
+- Config: `tsconfig: "./tsconfig.json"` + `PORT`-configurable (default 3000) so a server another git worktree holds on :3000 can't make the suite silently test a stale build (run `PORT=3100 npm run test` to avoid a collision). Requires `@playwright/test` **≥ 1.61.1** (1.61.0's transform hook throws `context.conditions?.includes` on any relative test import under Node 22).
+
+Tests have their own `tests/tsconfig.json` (node resolution) and are excluded from the app `tsconfig.json`.
 
 ### Site Structure
 
@@ -273,6 +283,15 @@ Resource pages follow a shared pattern: minimal header, embedded YouTube video, 
 - `src/components/boldane-cta.tsx` — `BoldaneCta` (soft-CTA card, copy passed as children) + `BoldaneLink` (styled boldane.com link). Used on 7 resource pages (see "Boldane soft CTAs" above); when adding a new resource page, decide whether a Boldane plug is relevant (content-from-expertise or outreach topics: yes; virality/ads/SEO topics: no).
 
 ---
+
+## Code-review hardening (branch `code-review-hardening`, 2026-07-23)
+
+A full-codebase review pass. Key permanent changes beyond the animation swap (Tech Stack) and test additions (Testing):
+
+- **`ResourcePageShell` (`src/components/resource-page-shell.tsx`)** — the 13 near-identical video resource pages (claude-*) now delegate to one server-rendered shell (header + hero + setup accordion + `YouTube` embed + optional `BoldaneCta` + footer). Each `page.tsx` is reduced to its data (`steps`, title, subhead, `jsonLd`, `videoId`/`VIDEO_TITLE` single-sourced). To add a resource page, render `<ResourcePageShell .../>` and pass `boldaneCta` (7 pages) **or** `boldaneCredit` (never both — see Boldane presence policy). ads-ai / high-converting-website / 60k-linkedin-post keep bespoke layouts.
+- **Security (marketing-brain backend):** the paid routes (`scrape`/`upload`/`extract`) and `PUT /memory` are rate-limited (`rate-limit.ts` now has namespaced buckets + a `MEMORY_DAILY_LIMIT`, opportunistic pruning, and a non-spoofable client IP via `x-real-ip`/right-most XFF). Business context is **client-owned** (browser `localStorage`, sent as `businessContext` each request); the write routes append to the client-sent context via the pure `mergeSection` (no shared server-file bleed), and `GET /memory` returns empty on Vercel. The chat route validates/clamps the `messages` array (fixes a 500 on malformed input, bounds prompt cost) and passes `req.signal` so the Anthropic stream aborts on client disconnect. `scrape` rejects private/loopback/metadata hosts and returns generic errors; `upload` caps PDF pages + extracted chars.
+- **Assets/perf:** `hero.jpg` re-exported to 1920×1080 (2.6 MB→~200 KB, EXIF stripped, `sizes` prop); `preview.mp4` re-encoded 1.9 MB→~300 KB and lazy-loaded via `LazyVideo` (`preload=none` + poster, plays on viewport); dead Space Grotesk 300 weight dropped; `next.config.ts` adds AVIF + `Cache-Control` on static `public/` media.
+- **Note:** overlaps heavily with the parallel `mobile-optimization` branch (both refactor resource pages, accordion, eyebrows, YouTube embeds) — merging the two needs care.
 
 ## Notes
 
