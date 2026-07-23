@@ -115,8 +115,9 @@ export function HeroSection() {
             <Image
               src="/hero.jpg"
               alt="Oleg Melnikov"
-              width={1920}
-              height={1280}
+              width={2560}
+              height={1706}
+              quality={90}
               className="rounded-xl"
               sizes="(max-width: 896px) 100vw, 896px"
               priority
