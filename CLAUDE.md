@@ -205,7 +205,7 @@ Rules:
 npm run dev          # Start dev server (localhost:3000)
 npm run build        # Production build
 npm run start        # Start production server
-npm run test         # Playwright suite (builds + starts, then runs 28 tests)
+npm run test         # Playwright suite (builds + starts, then runs the full e2e suite)
 npm run test:update  # Regenerate visual-regression baselines
 ```
 
