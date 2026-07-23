@@ -1,54 +1,60 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import React from "react";
+// Staggered entrance for a group of children, with zero animation-runtime JS.
+// CSS reimplementation of the former framer-motion version: same rendered DOM
+// (a container div wrapping each child in an item div) and same `variants` prop
+// shape, but the stagger/delay are read off the variants and applied as CSS
+// animation delays (visuals in globals.css @keyframes reveal-blur). Runs on
+// mount, like the original initial/animate behavior.
+
+import {
+  Children,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
+
+type Transition = { staggerChildren?: number; delayChildren?: number };
+type Variant = {
+  hidden?: unknown;
+  visible?: { transition?: Transition } & Record<string, unknown>;
+};
 
 type AnimatedGroupProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   variants?: {
-    container?: Variants;
-    item?: Variants;
+    container?: Variant;
+    item?: unknown;
   };
 };
 
-const defaultContainerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.6,
-    },
-  },
-};
-
-const defaultItemVariants: Variants = {
-  hidden: { opacity: 0, filter: "blur(12px)", y: 12 },
-  visible: {
-    opacity: 1,
-    filter: "blur(0px)",
-    y: 0,
-    transition: { type: "spring", bounce: 0.3, duration: 1.5 },
-  },
-};
+const DEFAULT_STAGGER = 0.08;
+const DEFAULT_DELAY = 0.6;
 
 export function AnimatedGroup({
   children,
   className,
   variants,
 }: AnimatedGroupProps) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => setVisible(true), []);
+
+  const t = variants?.container?.visible?.transition;
+  const stagger = t?.staggerChildren ?? DEFAULT_STAGGER;
+  const delayChildren = t?.delayChildren ?? DEFAULT_DELAY;
+
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={variants?.container ?? defaultContainerVariants}
-      className={className}
-    >
-      {React.Children.map(children, (child) => (
-        <motion.div variants={variants?.item ?? defaultItemVariants}>
+    <div className={className}>
+      {Children.map(children, (child, i) => (
+        <div
+          className={visible ? "is-visible" : ""}
+          data-reveal="blur"
+          style={{ "--reveal-delay": `${delayChildren + i * stagger}s` } as React.CSSProperties}
+        >
           {child}
-        </motion.div>
+        </div>
       ))}
-    </motion.div>
+    </div>
   );
 }

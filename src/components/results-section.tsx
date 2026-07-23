@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { Reveal, RevealGroup } from "@/components/motion/reveal";
 
 const stats = [
   { value: "2.5M+", label: "views generated for clients" },
@@ -27,64 +25,44 @@ const highlights = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
 export function ResultsSection() {
   return (
     <section id="results" className="py-24 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
-        <motion.h2
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
-          className="eyebrow font-body text-xs text-vivid-blue/80"
-        >
+        <Reveal as="h2" className="eyebrow font-body text-xs text-vivid-blue/80">
           results
-        </motion.h2>
+        </Reveal>
 
         {/* Stats grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        <RevealGroup
+          stagger={0.1}
           className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4"
         >
           {stats.map((stat) => (
-            <motion.div key={stat.label} variants={fadeUp}>
+            <div key={stat.label}>
               <p className="text-metallic font-display text-3xl font-medium tracking-tight md:text-4xl">
                 {stat.value}
               </p>
               <p className="mt-2 font-body text-sm text-silver-muted">{stat.label}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </RevealGroup>
 
         {/* Highlight cards */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{ visible: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } }}
+        <RevealGroup
+          stagger={0.12}
+          delayChildren={0.2}
           className="mt-16 grid gap-6 md:grid-cols-3"
         >
           {highlights.map((h) => (
-            <motion.div
-              key={h.title}
-              variants={fadeUp}
-              className="surface-card p-6"
-            >
+            <div key={h.title} className="surface-card p-6">
               <p className="font-display text-lg font-medium text-silver">{h.title}</p>
               <p className="mt-3 font-body text-sm leading-relaxed text-silver-muted">
                 {h.description}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </RevealGroup>
       </div>
     </section>
   );

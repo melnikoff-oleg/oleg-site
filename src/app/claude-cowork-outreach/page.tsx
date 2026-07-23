@@ -1,22 +1,8 @@
-"use client";
-
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Accordion } from "@/components/accordion";
-import { ResourceFooter } from "@/components/resource-footer";
-import { BoldaneCta, BoldaneLink } from "@/components/boldane-cta";
-import { ArticleJsonLd } from "@/components/json-ld";
+import { ResourcePageShell } from "@/components/resource-page-shell";
+import { BoldaneLink } from "@/components/boldane-cta";
 
 const VIDEO_ID = "QoiFASDh8J8";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
-  },
-};
+const VIDEO_TITLE = "Claude Cowork for Cold Outreach";
 
 const steps = [
   {
@@ -165,131 +151,29 @@ const steps = [
 
 export default function ClaudeCoworkOutreachPage() {
   return (
-    <>
-      <ArticleJsonLd
-        title="Claude Cowork for Cold Outreach: AI LinkedIn Automation"
-        description="Use Claude Cowork to automate LinkedIn cold outreach. Research prospects, write personalized messages, and send connection requests on autopilot."
-        url="https://oleg.ae/claude-cowork-outreach"
-        datePublished="2026-05-12"
-        dateModified="2026-05-13"
-        videoId="QoiFASDh8J8"
-        videoTitle="Claude Cowork for Cold Outreach"
-      />
-      {/* Minimal header */}
-      <header className="px-2">
-        <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="brand-wordmark font-display text-lg tracking-tight"
-          >
-            oleg melnikov
-          </Link>
-          <Link
-            href="https://www.youtube.com/@Oleg-Melnikov"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
-            youtube
-          </Link>
-        </div>
-      </header>
-
-      <main>
-        {/* Hero / title */}
-        <section className="pt-16 pb-12 md:pt-24 md:pb-16">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-            className="mx-auto max-w-3xl px-6 text-center"
-          >
-            <motion.span
-              variants={fadeUp}
-              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
-            >
-              free resource
-            </motion.span>
-
-            <motion.h1
-              variants={fadeUp}
-              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
-            >
-              claude cowork for cold outreach (b2b sales)
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
-            >
-              claude cowork browses linkedin, researches each prospect, writes a
-              personalized message, and sends the connection. you handle the
-              relationships that matter while it does the groundwork.
-            </motion.p>
-          </motion.div>
-        </section>
-
-        {/* Setup guide */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
-          className="pb-16 md:pb-20"
-        >
-          <div className="mx-auto max-w-3xl px-6">
-            <motion.h2
-              variants={fadeUp}
-              className="eyebrow font-body text-xs text-vivid-blue/80"
-            >
-              setup guide
-            </motion.h2>
-
-            <motion.div variants={fadeUp} className="mt-8">
-              <Accordion items={steps} />
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* YouTube video */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
-          className="pb-24 md:pb-32"
-        >
-          <div className="mx-auto max-w-3xl px-6">
-            <div className="glow-blue overflow-hidden rounded-2xl border border-hairline">
-              <div
-                className="relative w-full"
-                style={{ paddingBottom: "56.25%" }}
-              >
-                <iframe
-                  src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                  title="Claude Cowork for Cold Outreach"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
-                />
-              </div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Boldane soft CTA */}
-        <BoldaneCta>
+    <ResourcePageShell
+      slug="claude-cowork-outreach"
+      videoId={VIDEO_ID}
+      videoTitle={VIDEO_TITLE}
+      title="claude cowork for cold outreach (b2b sales)"
+      subhead="claude cowork browses linkedin, researches each prospect, writes a personalized message, and sends the connection. you handle the relationships that matter while it does the groundwork."
+      steps={steps}
+      jsonLd={{
+        title: "Claude Cowork for Cold Outreach: AI LinkedIn Automation",
+        description:
+          "Use Claude Cowork to automate LinkedIn cold outreach. Research prospects, write personalized messages, and send connection requests on autopilot.",
+        url: "https://oleg.ae/claude-cowork-outreach",
+        datePublished: "2026-05-12",
+        dateModified: "2026-05-13",
+      }}
+      boldaneCta={
+        <>
           one thing makes every outreach system convert better: before anyone
           replies, they check your LinkedIn profile. if it shows a real
           expert, reply rates climb. <BoldaneLink /> builds that presence for
           founders, from one hour of talking a week.
-        </BoldaneCta>
-      </main>
-
-      <ResourceFooter currentSlug="claude-cowork-outreach" />
-    </>
+        </>
+      }
+    />
   );
 }

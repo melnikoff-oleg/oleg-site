@@ -1,21 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Accordion } from "@/components/accordion";
-import { ResourceFooter } from "@/components/resource-footer";
-import { ArticleJsonLd } from "@/components/json-ld";
+import { ResourcePageShell } from "@/components/resource-page-shell";
 
 const VIDEO_ID = "KOK8-0v4mUc";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
-  },
-};
+const VIDEO_TITLE = "Claude Code for SEO Optimization";
 
 const steps = [
   {
@@ -185,124 +172,22 @@ const steps = [
 
 export default function ClaudeSeoPage() {
   return (
-    <>
-      <ArticleJsonLd
-        title="AI SEO Optimization with Claude Code"
-        description="Let Claude Code handle your entire SEO strategy: meta tags, structured data, sitemaps, keyword research, and content optimization in one session."
-        url="https://oleg.ae/claude-seo"
-        datePublished="2026-05-12"
-        dateModified="2026-05-13"
-        videoId="KOK8-0v4mUc"
-        videoTitle="Claude Code for SEO Optimization"
-      />
-      {/* Minimal header */}
-      <header className="px-2">
-        <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="brand-wordmark font-display text-lg tracking-tight"
-          >
-            oleg melnikov
-          </Link>
-          <Link
-            href="https://www.youtube.com/@Oleg-Melnikov"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-hairline px-4 py-2 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
-            youtube
-          </Link>
-        </div>
-      </header>
-
-      <main>
-        {/* Hero / title */}
-        <section className="pt-16 pb-12 md:pt-24 md:pb-16">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-            className="mx-auto max-w-3xl px-6 text-center"
-          >
-            <motion.span
-              variants={fadeUp}
-              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
-            >
-              free resource
-            </motion.span>
-
-            <motion.h1
-              variants={fadeUp}
-              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
-            >
-              claude code for seo optimization
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
-            >
-              put the technical side of seo on solid footing with claude code:
-              meta tags, structured data, sitemaps, keyword research, and the
-              ongoing work that keeps a site ranking. handled in one focused
-              session.
-            </motion.p>
-          </motion.div>
-        </section>
-
-        {/* Setup guide */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
-          className="pb-16 md:pb-20"
-        >
-          <div className="mx-auto max-w-3xl px-6">
-            <motion.h2
-              variants={fadeUp}
-              className="eyebrow font-body text-xs text-vivid-blue/80"
-            >
-              setup guide
-            </motion.h2>
-
-            <motion.div variants={fadeUp} className="mt-8">
-              <Accordion items={steps} />
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* YouTube video */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeUp}
-          className="pb-24 md:pb-32"
-        >
-          <div className="mx-auto max-w-3xl px-6">
-            <div className="glow-blue overflow-hidden rounded-2xl border border-hairline">
-              <div
-                className="relative w-full"
-                style={{ paddingBottom: "56.25%" }}
-              >
-                <iframe
-                  src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                  title="Claude Code for SEO Optimization"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
-                />
-              </div>
-            </div>
-          </div>
-        </motion.section>
-      </main>
-
-      <ResourceFooter currentSlug="claude-seo" boldaneCredit />
-    </>
+    <ResourcePageShell
+      slug="claude-seo"
+      videoId={VIDEO_ID}
+      videoTitle={VIDEO_TITLE}
+      title="claude code for seo optimization"
+      subhead="put the technical side of seo on solid footing with claude code: meta tags, structured data, sitemaps, keyword research, and the ongoing work that keeps a site ranking. handled in one focused session."
+      steps={steps}
+      jsonLd={{
+        title: "AI SEO Optimization with Claude Code",
+        description:
+          "Let Claude Code handle your entire SEO strategy: meta tags, structured data, sitemaps, keyword research, and content optimization in one session.",
+        url: "https://oleg.ae/claude-seo",
+        datePublished: "2026-05-12",
+        dateModified: "2026-05-13",
+      }}
+      boldaneCredit
+    />
   );
 }

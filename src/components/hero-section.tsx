@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { TextEffect } from "@/components/motion/text-effect";
 import { AnimatedGroup } from "@/components/motion/animated-group";
+import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
@@ -118,6 +118,7 @@ export function HeroSection() {
               width={1920}
               height={1080}
               className="rounded-xl"
+              sizes="(max-width: 896px) 100vw, 896px"
               priority
             />
 
@@ -126,10 +127,11 @@ export function HeroSection() {
             <div className="pointer-events-none absolute inset-x-2 bottom-2 h-1/3 rounded-b-xl bg-gradient-to-t from-navy/80 to-transparent" />
 
             {/* Quote overlay: self-contained glass panel for crisp readability */}
-            <motion.figure
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ delay: 1.8, duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+            <Reveal
+              as="figure"
+              immediate
+              variant="blur"
+              delay={1.8}
               className="absolute inset-x-2 bottom-[12%] px-3 sm:px-4"
             >
               <div className="mx-auto max-w-3xl rounded-xl border border-hairline bg-navy/70 px-5 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
@@ -141,7 +143,7 @@ export function HeroSection() {
                   .<span className="text-silver-muted">&rdquo;</span>
                 </blockquote>
               </div>
-            </motion.figure>
+            </Reveal>
 
             <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-hairline" />
           </div>

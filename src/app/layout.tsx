@@ -20,7 +20,9 @@ const dmSans = DM_Sans({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space",
-  weight: ["300", "400", "500"],
+  // 300 was dead: the only font-light usages sit on font-display (DM Sans),
+  // which renders them at 400. Dropping it saves a woff2 + a preload.
+  weight: ["400", "500"],
   display: "swap",
 });
 

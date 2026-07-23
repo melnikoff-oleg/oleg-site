@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { RevealGroup } from "@/components/motion/reveal";
 
 const socials = [
   {
@@ -52,41 +50,24 @@ const socials = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
 export function ConnectSection() {
   return (
     <section id="connect" className="py-24 md:py-32">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
+      <RevealGroup
+        stagger={0.12}
         className="mx-auto max-w-3xl px-6 text-center"
       >
-        <motion.h2
-          variants={fadeUp}
-          className="eyebrow font-body text-xs text-vivid-blue/80"
-        >
+        <h2 className="eyebrow font-body text-xs text-vivid-blue/80">
           connect
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          variants={fadeUp}
-          className="mt-8 font-body text-xl text-silver md:text-2xl"
-        >
+        <p className="mt-8 font-body text-xl text-silver md:text-2xl">
           let&apos;s connect. i&apos;m always open to interesting conversations
           and collaborations.
-        </motion.p>
+        </p>
 
         {/* Social links */}
-        <motion.div
-          variants={fadeUp}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           {socials.map((social) => (
             <Link
               key={social.name}
@@ -99,17 +80,13 @@ export function ConnectSection() {
               {social.name}
             </Link>
           ))}
-        </motion.div>
+        </div>
 
         {/* Sign-off */}
-        <motion.p
-          variants={fadeUp}
-          className="mt-16 font-body text-lg text-silver-muted"
-        >
+        <p className="mt-16 font-body text-lg text-silver-muted">
           cheers, oleg
-        </motion.p>
-      </motion.div>
-
+        </p>
+      </RevealGroup>
     </section>
   );
 }

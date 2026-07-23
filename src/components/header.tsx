@@ -16,8 +16,13 @@ export function Header() {
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
+    // Passive listener (never blocks scroll compositing) that only triggers a
+    // re-render when the boolean actually flips, not on every scroll event.
+    const onScroll = () => setScrolled((prev) => {
+      const next = window.scrollY > 50;
+      return next === prev ? prev : next;
+    });
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 

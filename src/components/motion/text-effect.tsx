@@ -1,32 +1,28 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import React from "react";
+// Per-word / per-line entrance animation with zero animation-runtime JS.
+// CSS reimplementation of the former framer-motion version, same public API and
+// same rendered DOM (a container span wrapping one inline-block span per
+// segment). The blur/opacity/translate visuals live in globals.css
+// (@keyframes reveal-blur); this only stamps `is-visible` + a per-segment delay.
+
+import { useEffect, useState, type ElementType } from "react";
 
 type TextEffectProps = {
   children: string;
-  as?: React.ElementType;
+  as?: ElementType;
   className?: string;
   delay?: number;
   per?: "word" | "line";
   /**
    * Class applied to each animated segment span. Use this (not `className`)
    * for gradient-clip text like `.text-metallic`: `background-clip: text`
-   * must live on the same element as the glyphs, and segments render as
-   * inline-block children, so a gradient on the parent would clip to nothing.
+   * must live on the same element as the glyphs.
    */
   segmentClassName?: string;
 };
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, filter: "blur(8px)", y: 8 },
-  visible: {
-    opacity: 1,
-    filter: "blur(0px)",
-    y: 0,
-    transition: { type: "spring", bounce: 0.3, duration: 1.2 },
-  },
-};
+const STAGGER = 0.04;
 
 export function TextEffect({
   children,
@@ -36,29 +32,20 @@ export function TextEffect({
   per = "word",
   segmentClassName,
 }: TextEffectProps) {
-  const segments =
-    per === "line" ? children.split("\n") : children.split(" ");
+  const segments = per === "line" ? children.split("\n") : children.split(" ");
+  const [visible, setVisible] = useState(false);
+  useEffect(() => setVisible(true), []);
 
   return (
     <Tag className={className}>
-      <motion.span
-        initial="hidden"
-        animate="visible"
-        variants={{
-          visible: {
-            transition: {
-              staggerChildren: 0.04,
-              delayChildren: delay,
-            },
-          },
-        }}
-        className="inline"
-      >
+      <span className="inline">
         {segments.map((segment, i) => (
-          <motion.span key={i} variants={itemVariants} className="inline-block">
-            {/* The gradient-clip (e.g. .text-metallic) must live on a static
-                span: Chromium breaks `background-clip: text` when the same
-                element also carries a `filter` (framer-motion sets blur here). */}
+          <span
+            key={i}
+            className={`inline-block ${visible ? "is-visible" : ""}`}
+            data-reveal="blur"
+            style={{ "--reveal-delay": `${delay + i * STAGGER}s` } as React.CSSProperties}
+          >
             {segmentClassName ? (
               <span className={`inline-block ${segmentClassName}`}>{segment}</span>
             ) : (
@@ -67,9 +54,9 @@ export function TextEffect({
             {i < segments.length - 1 && (
               <span className="inline-block">&nbsp;</span>
             )}
-          </motion.span>
+          </span>
         ))}
-      </motion.span>
+      </span>
     </Tag>
   );
 }
