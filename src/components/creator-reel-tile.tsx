@@ -1,4 +1,5 @@
 import { tileImage } from "@/lib/reels/paint-order";
+import { ReelPlayButton } from "@/components/reel-video";
 import { Eye, Film, Handshake, Heart, Users2 } from "lucide-react";
 import { compactNumber, formatRelative } from "@/lib/reels/format";
 import type { CreatorReel } from "@/lib/creators/types";
@@ -96,12 +97,12 @@ export function CreatorReelTile({
   const posted = formatRelative(reel.posted_on);
 
   return (
-    <a
-      href={reel.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative block overflow-hidden rounded-lg border border-hairline bg-navy-raised"
-    >
+    // A box, not an anchor. The whole tile WAS the link to Instagram until
+    // 2026-09-17; it became a box the day a tile learned to play its own video,
+    // because a button inside a link is invalid HTML and a click on it follows
+    // the link as well. The link is laid over the picture instead, the same
+    // shape the library tile has always had.
+    <article className="group relative overflow-hidden rounded-lg border border-hairline bg-navy-raised">
       <div className="aspect-[9/16] w-full">
         {reel.thumb_url ? (
           // A plain <img>. These are 360x640 JPEGs served immutable from our own
@@ -135,9 +136,33 @@ export function CreatorReelTile({
         aria-hidden
       />
 
+      {/* The whole picture is the link to Instagram, and it carries the reel's
+          only accessible name. */}
+      <a
+        href={reel.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-0 z-10"
+      >
+        <span className="sr-only">
+          {`Open this reel on Instagram: ${compactNumber(reel.views)} views, posted ${posted}`}
+        </span>
+      </a>
+
+      {/* When we hold the file, playing it here replaces leaving for Instagram.
+          Renders nothing otherwise. After the link in the DOM and at the same
+          z-index, so it wins. */}
+      <ReelPlayButton
+        shortcode={reel.shortcode}
+        url={reel.url}
+        poster={reel.thumb_url}
+        label={`Play this reel: ${compactNumber(reel.views)} views, posted ${posted}`}
+      />
+
       {/* Frosted rather than solid, so the still keeps reading through it the
-          way Instagram's own overlays do. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 p-1.5 sm:p-2">
+          way Instagram's own overlays do. Above the link, and it lets every
+          click through to it. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 p-1.5 sm:p-2">
         <div className="rounded-xl border border-white/10 bg-navy/50 px-2.5 py-2 backdrop-blur-md sm:px-3 sm:py-2.5">
           <div className="flex items-center justify-between gap-2">
             {/* The headline. Big, white, and first, because it is the whole
@@ -183,6 +208,6 @@ export function CreatorReelTile({
           </div>
         </div>
       </div>
-    </a>
+    </article>
   );
 }

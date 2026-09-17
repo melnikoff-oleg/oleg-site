@@ -27,6 +27,7 @@ import {
 import { compactNumber, formatScore } from "@/lib/reels/format";
 import { normalizePage } from "@/lib/reels/types";
 import { CreatorReelTile } from "@/components/creator-reel-tile";
+import { ReelVideoProvider } from "@/components/reel-video";
 
 // One creator, read live from a table creators.py rewrites.
 export const dynamic = "force-dynamic";
@@ -456,11 +457,13 @@ export default async function CreatorPage({ params, searchParams }: Params & Sea
             // a tablet, two on a phone, hairline gaps. The whole point of this
             // page is the wall of stills, so the thumbnails get the width and
             // the numbers ride on top of them.
-            <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4">
-              {reels.map((reel, i) => (
-                <CreatorReelTile key={reel.shortcode} reel={reel} index={i} />
-              ))}
-            </div>
+            <ReelVideoProvider codes={reels.map((r) => r.shortcode)}>
+              <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4">
+                {reels.map((reel, i) => (
+                  <CreatorReelTile key={reel.shortcode} reel={reel} index={i} />
+                ))}
+              </div>
+            </ReelVideoProvider>
           )}
 
           {pages > 1 && (

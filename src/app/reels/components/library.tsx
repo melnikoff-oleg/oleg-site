@@ -27,6 +27,7 @@ import {
 } from "@/lib/reels/types";
 import { FilterBar } from "@/components/filter-bar";
 import { LibraryReelTile } from "@/components/library-reel-tile";
+import { ReelVideoProvider } from "@/components/reel-video";
 import { AnswerCache, answerKey } from "@/lib/search/answer-cache";
 import { PREFETCH_DELAY_MS, shouldPrefetch } from "@/lib/search/prefetch";
 import { Pending } from "@/lib/search/pending";
@@ -154,11 +155,14 @@ function Wall({ reels }: { reels: readonly ReelTileRow[] }) {
     // tablet, two on a phone, hairline gaps. The whole point of this page is the
     // wall of stills, so the thumbnails get the width and the numbers ride on
     // top of them.
-    <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4">
-      {reels.map((reel, i) => (
-        <LibraryReelTile key={reel.shortcode} reel={reel} index={i} />
-      ))}
-    </div>
+    // One question to the server per wall: which of these can play in place.
+    <ReelVideoProvider codes={reels.map((r) => r.shortcode)}>
+      <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 sm:gap-2 lg:grid-cols-4">
+        {reels.map((reel, i) => (
+          <LibraryReelTile key={reel.shortcode} reel={reel} index={i} />
+        ))}
+      </div>
+    </ReelVideoProvider>
   );
 }
 

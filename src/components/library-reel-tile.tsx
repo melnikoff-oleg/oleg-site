@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Eye, Film, Flame, Heart } from "lucide-react";
 import { compactNumber, formatRelative, formatScore } from "@/lib/reels/format";
 import { tileImage } from "@/lib/reels/paint-order";
+import { ReelPlayButton } from "@/components/reel-video";
 import type { ReelTileRow } from "@/lib/reels/types";
 
 /**
@@ -107,6 +108,16 @@ export function LibraryReelTile({
           {`Open this reel on Instagram: ${compactNumber(reel.views)} views, ${score}x outlier, posted ${posted}`}
         </span>
       </a>
+
+      {/* When we hold the file, playing it here replaces leaving for Instagram.
+          Renders nothing otherwise, and then the link above is the tile. It is
+          after that link in the DOM and at the same z-index, so it wins. */}
+      <ReelPlayButton
+        shortcode={reel.shortcode}
+        url={reel.url}
+        poster={reel.thumb_url}
+        label={`Play this reel: ${compactNumber(reel.views)} views, ${score}x outlier, posted ${posted}`}
+      />
 
       {/* Above the picture link, so it stays clickable. */}
       <Link
