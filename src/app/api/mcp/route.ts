@@ -149,7 +149,47 @@ export async function POST(req: Request) {
   return NextResponse.json(reply, { headers: CORS });
 }
 
-export function GET() {
+// What a PERSON gets. An MCP client opens a GET asking for text/event-stream and
+// is told 405, the spec's way of saying no stream is offered. A person who
+// pastes the link into a browser asks for text/html, and a bare 405 there reads
+// as "the site is broken", which is exactly what Oleg saw the first time he
+// opened it. Same URL, so the link that gets shared is the link that explains
+// itself.
+const URL_SELF = "https://www.oleg.ae/api/mcp";
+const HUMAN_PAGE = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Viral Reels Database for your AI</title>
+<style>
+  body{margin:0;background:#0b0f1a;color:#e6e9f2;font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+  main{max-width:640px;margin:0 auto;padding:56px 16px 72px}
+  h1{font-size:30px;line-height:1.2;margin:0 0 12px}
+  h2{font-size:18px;margin:36px 0 8px}
+  p{margin:0 0 12px;color:#aab1c5}
+  code{display:block;background:#141a2b;border:1px solid #242c44;border-radius:10px;padding:12px 14px;color:#fff;font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-x:auto;white-space:nowrap}
+  a{color:#7aa2ff}
+</style></head><body><main>
+<h1>Viral Reels Database, inside your AI</h1>
+<p>This link is not a web page. It is a connector. Add it to ChatGPT, Claude or Claude Code and your AI can search thousands of viral Instagram reels, each one broken down into idea, hook, retain and reward. Free, no login.</p>
+<code>${URL_SELF}</code>
+<h2>Claude</h2>
+<p>Settings, Connectors, Add custom connector, paste the link.</p>
+<h2>ChatGPT</h2>
+<p>Settings, Connectors, turn on developer mode, add the link. Needs a paid plan.</p>
+<h2>Claude Code</h2>
+<code>claude mcp add --transport http viral-reels ${URL_SELF}</code>
+<h2>Then just ask</h2>
+<p>"Find viral reels about my topic and write me a reel on the best format."</p>
+<p>Browse the same database by hand at <a href="https://www.oleg.ae/reels">oleg.ae/reels</a>.</p>
+</main></body></html>`;
+
+export function GET(req: Request) {
+  if ((req.headers.get("accept") ?? "").includes("text/html")) {
+    return new NextResponse(HUMAN_PAGE, {
+      headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=300" },
+    });
+  }
   return new NextResponse(null, { status: 405, headers: { ...CORS, Allow: "POST, OPTIONS" } });
 }
 
