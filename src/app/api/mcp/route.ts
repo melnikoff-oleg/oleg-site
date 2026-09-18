@@ -187,7 +187,10 @@ const HUMAN_PAGE = `<!doctype html>
 export function GET(req: Request) {
   if ((req.headers.get("accept") ?? "").includes("text/html")) {
     return new NextResponse(HUMAN_PAGE, {
-      headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=300" },
+      // Never cached. This URL answers by Accept header, and a shared cache that
+      // kept the page handed it to MCP clients in place of their 405, which is
+      // what the first deploy of this did.
+      headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", Vary: "Accept" },
     });
   }
   return new NextResponse(null, { status: 405, headers: { ...CORS, Allow: "POST, OPTIONS" } });
