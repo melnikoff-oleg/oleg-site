@@ -47,6 +47,7 @@ export const ROUTES = [
   "/marketing-brain",
   "/marketing-brain-knowledge",
   "/reels",
+  "/viral",
   "/creators",
   "/ideas",
 ] as const;
@@ -60,7 +61,7 @@ export const ROUTES = [
 // pages: /viral-reels folded into the library on 2026-08-25, and on 2026-08-27
 // /viral-reels-browse became /reels, /viral-reels-creators became /creators, and
 // /viral-reels-ideas was deleted outright.
-const BARE_ROUTES: readonly string[] = ["/reels", "/creators"];
+const BARE_ROUTES: readonly string[] = ["/reels", "/creators", "/viral"];
 
 export const SHELL_ROUTES = ROUTES.filter((r) => !BARE_ROUTES.includes(r));
 

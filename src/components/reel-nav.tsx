@@ -18,6 +18,7 @@ import Link from "next/link";
  * the same corpus from the other end, and its own detail pages hang under it.
  */
 const PAGES = [
+  { href: "/viral", label: "Your next viral reel" },
   { href: "/reels", label: "Reels" },
   { href: "/creators", label: "Creators" },
 ] as const;
