@@ -90,6 +90,40 @@ export function PostCard({ post }: { post: Post }) {
       <div className="ubs-acts" style={{ margin: `4px ${pad}px 0` }}>
         <span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span>
       </div>
+      {post.comment && <FirstComment text={post.comment} pad={pad} />}
+    </div>
+  );
+}
+
+/** Links in a comment become real links; everything else stays text. */
+function linkify(line: string) {
+  return line.split(/(https?:\/\/\S+)/g).map((part, i) =>
+    /^https?:\/\//.test(part) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer">{part.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}</a> : part,
+  );
+}
+
+/** The author's own first comment, where the link and the sources live (LinkedIn shows posts without links to more people). */
+function FirstComment({ text, pad }: { text: string; pad: number }) {
+  const [open, setOpen] = useState(false);
+  const lines = text.split("\n");
+  const cut = lines.findIndex((l) => /^Sources?:/.test(l));
+  const head = cut > 0 ? lines.slice(0, cut) : lines;
+  const rest = cut > 0 ? lines.slice(cut) : [];
+  const count = rest.filter((l) => l.startsWith("- ")).length;
+  return (
+    <div className="ubs-cmt" style={{ padding: `8px ${pad}px 12px` }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="ubs-cmt-av" src="/ubersuggest-feed/avatar.jpg" alt="" />
+      <div className="ubs-cmt-bubble">
+        <div className="ubs-cmt-nm">Ubersuggest <span>Author</span></div>
+        <div className="ubs-cmt-tx">
+          {head.join("\n").trim().split("\n").map((l, i) => <div key={i}>{linkify(l) }</div>)}
+          {rest.length > 0 && (open
+            ? <>{rest.map((l, i) => <div key={i} className={l.startsWith("- ") ? "ubs-cmt-src" : undefined}>{l ? linkify(l) : "\u200b"}</div>)}
+                <button className="ubs-more" onClick={() => setOpen(false)}>hide sources</button></>
+            : <button className="ubs-more" onClick={() => setOpen(true)}>Sources ({count}) …see more</button>)}
+        </div>
+      </div>
     </div>
   );
 }

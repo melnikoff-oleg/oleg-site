@@ -14,6 +14,8 @@ export type Post = {
   media: string;
   poster: string | null;
   text: string;
+  /** The first comment under the post: the link and the sources. */
+  comment?: string;
   /** The viral post whose format this draft borrows. */
   refAuthor: string;
   refUrl: string;

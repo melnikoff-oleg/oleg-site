@@ -91,6 +91,17 @@
 .ubs-acts { display: flex; justify-content: space-between; border-top: 1px solid rgba(0,0,0,.12); color: rgba(0,0,0,.6); font-size: 12px; }
 .ubs-acts span { padding: 8px 6px; }
 
+.ubs-cmt { display: flex; gap: 8px; border-top: 1px solid rgba(0,0,0,.08); }
+.ubs-cmt-av { width: 32px; height: 32px; border-radius: 4px; flex: none; margin-top: 2px; }
+.ubs-cmt-bubble { background: #f2f2f2; border-radius: 0 8px 8px 8px; padding: 8px 12px; min-width: 0; flex: 1; }
+.ubs-cmt-nm { font-weight: 600; font-size: 13px; }
+.ubs-cmt-nm span { font-weight: 400; font-size: 11px; background: #56687a; color: #fff; border-radius: 3px; padding: 1px 4px; margin-left: 4px; }
+.ubs-cmt-tx { font-size: 13px; line-height: 1.45; margin-top: 2px; overflow-wrap: anywhere; }
+.ubs-cmt-tx a { color: #0a66c2; font-weight: 600; text-decoration: none; }
+.ubs-cmt-tx a:hover { text-decoration: underline; }
+.ubs-cmt-src { padding-left: 2px; color: rgba(0,0,0,.75); }
+.ubs-cmt .ubs-more { font-size: 13px; margin-top: 2px; }
+
 /* rating */
 .ubs-rate { width: 100%; margin-top: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; backdrop-filter: blur(10px); transition: box-shadow .2s, border-color .2s; }
 .ubs-rate.ubs-missing { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(255,122,69,.18), 0 0 40px -6px rgba(255,122,69,.5); }
