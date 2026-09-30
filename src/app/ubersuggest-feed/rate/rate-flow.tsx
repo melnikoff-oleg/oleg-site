@@ -120,7 +120,7 @@ export function RateFlow({ posts }: { posts: Post[] }) {
         {stage === "intro" && (
           <div className="ubs-cta-row">
             <button className="ubs-cta" onClick={() => setAskName(true)}>Rate the posts</button>
-            <a href="/ubersuggest-feed" style={{ color: "#0a66c2", fontWeight: 600 }}>See all 30 posts</a>
+            <a className="ubs-hint" href="/ubersuggest-feed/results" style={{ color: "inherit" }}>See the ratings so far</a>
           </div>
         )}
       </header>

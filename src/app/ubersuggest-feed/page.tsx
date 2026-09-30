@@ -16,7 +16,7 @@ export default function UbersuggestFeedPage() {
         </div>
         <div className="ubs-cta-row">
           <a className="ubs-cta" href="/ubersuggest-feed/rate">Rate the posts <span aria-hidden="true">→</span></a>
-          <span className="ubs-hint">3 minutes, one post from each format</span>
+          <span className="ubs-hint">3 minutes, one post from each format · <a href="/ubersuggest-feed/results" style={{ color: "inherit" }}>See the ratings</a></span>
         </div>
       </header>
       <Feed posts={POSTS} />

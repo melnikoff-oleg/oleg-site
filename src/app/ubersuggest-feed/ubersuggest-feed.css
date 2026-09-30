@@ -153,3 +153,6 @@
   .ubs-scale { gap: 3px; }
   .ubs-scale button { min-height: 42px; font-size: 17px; }
 }
+.ubs-dist { display: flex; align-items: flex-end; gap: 3px; height: 40px; margin: 8px 0 4px; }
+.ubs-dist i { width: 14px; border-radius: 3px; background: var(--line2); }
+.ubs-dist i[data-on="true"] { background: linear-gradient(180deg, var(--accent2), var(--accent)); }

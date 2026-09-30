@@ -103,3 +103,25 @@ export async function results(postIds: string[]): Promise<PostResult[]> {
     return { post_id, count: mine.length, average: mine.length ? Math.round((sum / mine.length) * 10) / 10 : null, notes };
   });
 }
+
+export type Rating = { name: string; rating: number; note: string | null; at: string };
+
+/** Every rating for each post, newest first, with a first name and initial only. For /ubersuggest-feed/results. */
+export async function allRatings(postIds: string[]): Promise<{ people: number; byPost: Record<string, Rating[]> }> {
+  const byPost: Record<string, Rating[]> = Object.fromEntries(postIds.map((id) => [id, []]));
+  if (!dbConfigured) return { people: 0, byPost };
+  const { data, error } = await db()
+    .from("ubs_vote")
+    .select("submission_id, post_id, rating, note, created_at, ubs_vote_submission(voter_name)")
+    .in("post_id", postIds)
+    .order("created_at", { ascending: false })
+    .limit(5000);
+  if (error) throw error;
+  type Row = { submission_id: string; post_id: string; rating: number; note: string | null; created_at: string; ubs_vote_submission: { voter_name: string } | { voter_name: string }[] | null };
+  const rows = (data ?? []) as Row[];
+  for (const r of rows) {
+    const sub = Array.isArray(r.ubs_vote_submission) ? r.ubs_vote_submission[0] : r.ubs_vote_submission;
+    byPost[r.post_id]?.push({ name: shortName(sub?.voter_name ?? "Someone"), rating: r.rating, note: r.note?.trim() || null, at: r.created_at });
+  }
+  return { people: new Set(rows.map((r) => r.submission_id)).size, byPost };
+}
