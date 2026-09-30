@@ -19,7 +19,7 @@ export type Post = {
   poster: string | null;
   text: string;
   /** The author's first comment: sources and the link. */
-  comment?: string;
+  comment?: string | null;
   /** The viral post whose format this draft borrows, with its real numbers as proof. */
   refAuthor: string;
   refUrl: string;
@@ -30,5 +30,5 @@ export type Post = {
   why: string;
 };
 
-export const POSTS = raw as Post[];
+export const POSTS = raw as unknown as Post[];
 export const POST_IDS = POSTS.map((p) => p.id);
