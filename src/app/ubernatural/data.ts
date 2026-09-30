@@ -2,6 +2,7 @@
 // generated in the vault (projects/ubernatural/scripts/build_site.py) and copied here;
 // edit the drafts there, not here.
 import raw from "./posts.json";
+import archive from "./round-2/posts-round-2.json";
 
 export type Post = {
   id: string;
@@ -31,4 +32,5 @@ export type Post = {
 };
 
 export const POSTS = raw as unknown as Post[];
-export const POST_IDS = POSTS.map((p) => p.id);
+// Votes are accepted for any post shown on either page, so the archive stays rateable.
+export const POST_IDS = [...new Set([...POSTS, ...(archive as unknown as Post[])].map((p) => p.id))];
