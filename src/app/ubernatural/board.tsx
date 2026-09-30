@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Post } from "./data";
 import { PostCard, RefProof } from "./post-card";
 
-const KEY = "ubn-draft-v2";
+const KEY = "ubn-draft-v3";
 const WHO = [
   { id: "all", label: "All" },
   { id: "ivan", label: "Ivan" },
@@ -17,7 +17,7 @@ const WHO = [
 
 type Draft = { name: string; ratings: Record<string, number>; notes: Record<string, string> };
 
-export function Board({ posts }: { posts: Post[] }) {
+export function Board({ posts, archive = false }: { posts: Post[]; archive?: boolean }) {
   const [filter, setFilter] = useState<string>("all");
   const [draft, setDraft] = useState<Draft>({ name: "", ratings: {}, notes: {} });
   const [loaded, setLoaded] = useState(false);
@@ -88,7 +88,7 @@ export function Board({ posts }: { posts: Post[] }) {
     <>
       <header className="ubs-hero">
         <div className="ubs-eyebrow"><span className="ubs-dot" />übernatural · LinkedIn drafts</div>
-        <h1>{posts.length} posts, <em>round two.</em></h1>
+        <h1>{archive ? <>{posts.length} posts, <em>round two archive.</em></> : <>{posts.length} posts, <em>best first.</em></>}</h1>
         <p>Every draft exactly as it would appear on LinkedIn, with the viral post it borrows its format from underneath. Score any of them from 1 to 10, add a note if you like, and press Submit. You do not have to rate them all.</p>
         <div className="ubs-stats">
           <div><b>{posts.length}</b><span>posts</span></div>
