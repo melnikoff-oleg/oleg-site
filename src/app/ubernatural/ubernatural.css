@@ -1,0 +1,5 @@
+/* /ubernatural: reuses the .ubs- gallery frame from /ubersuggest-feed and adds only
+   the proof block under each card. */
+.ubn-ref { display: flex; flex-direction: column; gap: 6px; }
+.ubn-ref-top { color: var(--mute); }
+.ubn-why { font-size: 13px; line-height: 1.5; color: var(--faint); text-wrap: pretty; }
