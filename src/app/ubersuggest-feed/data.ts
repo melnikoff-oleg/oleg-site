@@ -14,6 +14,9 @@ export type Post = {
   media: string;
   poster: string | null;
   text: string;
+  /** The viral post whose format this draft borrows. */
+  refAuthor: string;
+  refUrl: string;
 };
 
 export const POSTS = raw as Post[];

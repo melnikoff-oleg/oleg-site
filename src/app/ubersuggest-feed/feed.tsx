@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Post } from "./data";
-import { PostCard } from "./post-card";
+import { PostCard, RefLink } from "./post-card";
 
 export function Feed({ posts }: { posts: Post[] }) {
   const formats = ["All", ...new Set(posts.map((p) => p.format))];
@@ -19,17 +19,19 @@ export function Feed({ posts }: { posts: Post[] }) {
               </button>
             ))}
           </div>
-          <a className="ubs-cta" href="/ubersuggest-feed/rate" style={{ minHeight: 40, padding: "8px 18px", fontSize: 14 }}>Rate the posts</a>
+          <a className="ubs-cta ubs-cta-sm" href="/ubersuggest-feed/rate">Rate the posts</a>
         </div>
       </nav>
       <main className="ubs-feed">
         {shown.map((p) => (
           <section key={p.id} className="ubs-item">
-            <div className="ubs-tag"><span>#{p.n} · <b>{p.format}</b></span><span>{p.title}</span></div>
+            <div className="ubs-tag"><span className="ubs-num">{String(p.n).padStart(2, "0")}</span><span className="ubs-fmtpill">{p.format}</span><span className="ubs-ttl">{p.title}</span></div>
             <PostCard post={p} />
+            <RefLink post={p} />
           </section>
         ))}
       </main>
+      <footer className="ubs-foot">Prepared for Ubersuggest by Oleg Melnikov</footer>
     </>
   );
 }

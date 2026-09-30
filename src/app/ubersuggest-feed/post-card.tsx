@@ -93,3 +93,12 @@ export function PostCard({ post }: { post: Post }) {
     </div>
   );
 }
+
+/** The small credit under a card: which viral post this format was modelled on. */
+export function RefLink({ post }: { post: Post }) {
+  return (
+    <a className="ubs-ref" href={post.refUrl} target="_blank" rel="noopener noreferrer">
+      Format from <b>{post.refAuthor}</b>&rsquo;s viral post <span aria-hidden="true">↗</span>
+    </a>
+  );
+}
