@@ -99,6 +99,11 @@ export function RefLink({ post }: { post: Post }) {
   return (
     <a className="ubs-ref" href={post.refUrl} target="_blank" rel="noopener noreferrer">
       Format from <b>{post.refAuthor}</b>&rsquo;s viral post <span aria-hidden="true">↗</span>
+      <span className="ubs-refstats">
+        <span>{post.refLikes.toLocaleString("en-US")} reactions</span>
+        <span>{post.refComments.toLocaleString("en-US")} comments</span>
+        <span>{post.refFollowers} followers</span>
+      </span>
     </a>
   );
 }
