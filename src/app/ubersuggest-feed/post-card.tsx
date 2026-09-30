@@ -102,13 +102,13 @@ function linkify(line: string) {
   );
 }
 
-/** The author's own first comment, where the link and the sources live (LinkedIn shows posts without links to more people). */
+/** The author's own first comment, where the sources live. */
 function FirstComment({ text, pad }: { text: string; pad: number }) {
   const [open, setOpen] = useState(false);
   const lines = text.split("\n");
   const cut = lines.findIndex((l) => /^Sources?:/.test(l));
-  const head = cut > 0 ? lines.slice(0, cut) : lines;
-  const rest = cut > 0 ? lines.slice(cut) : [];
+  const head = cut >= 0 ? lines.slice(0, cut) : lines;
+  const rest = cut >= 0 ? lines.slice(cut) : [];
   const count = rest.filter((l) => l.startsWith("- ")).length;
   return (
     <div className="ubs-cmt" style={{ padding: `8px ${pad}px 12px` }}>
@@ -117,7 +117,7 @@ function FirstComment({ text, pad }: { text: string; pad: number }) {
       <div className="ubs-cmt-bubble">
         <div className="ubs-cmt-nm">Ubersuggest <span>Author</span></div>
         <div className="ubs-cmt-tx">
-          {head.join("\n").trim().split("\n").map((l, i) => <div key={i}>{linkify(l) }</div>)}
+          {head.join("\n").trim() && head.join("\n").trim().split("\n").map((l, i) => <div key={i}>{linkify(l)}</div>)}
           {rest.length > 0 && (open
             ? <>{rest.map((l, i) => <div key={i} className={l.startsWith("- ") ? "ubs-cmt-src" : undefined}>{l ? linkify(l) : "\u200b"}</div>)}
                 <button className="ubs-more" onClick={() => setOpen(false)}>hide sources</button></>
