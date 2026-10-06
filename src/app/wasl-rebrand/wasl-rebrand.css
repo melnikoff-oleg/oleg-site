@@ -1,0 +1,35 @@
+/* /wasl-rebrand: the Ubersuggest rating frame, repainted in Boldane's navy, silver and
+   vivid blue, plus the name card. Every selector is prefixed .wsl- . */
+.wsl-page {
+  --ink: #020b18; --txt: #eef1f6; --mute: rgba(208,214,224,.72); --faint: rgba(208,214,224,.46);
+  --accent: #2863f0; --accent2: #7da2ff; --gold: #d0d6e0;
+  background:
+    radial-gradient(1100px 520px at 50% -140px, rgba(40,99,240,.30), transparent 70%),
+    radial-gradient(700px 500px at 100% 20%, rgba(77,126,245,.08), transparent 70%),
+    var(--ink);
+  background-attachment: fixed;
+}
+.wsl-page .ubs-cta { color: #fff; background: linear-gradient(180deg, #4d7ef5, #2863f0); box-shadow: 0 10px 30px -8px rgba(40,99,240,.7), inset 0 1px 0 rgba(255,255,255,.3); }
+.wsl-page .ubs-cta:hover { box-shadow: 0 14px 36px -8px rgba(40,99,240,.85), inset 0 1px 0 rgba(255,255,255,.3); }
+.wsl-page .ubs-cta[aria-disabled="true"] { background: rgba(255,255,255,.1); color: var(--faint); box-shadow: none; }
+.wsl-page .ubs-scale button:hover { border-color: rgba(125,162,255,.6); background: rgba(40,99,240,.12); }
+.wsl-page .ubs-scale button[aria-pressed="true"] { background: linear-gradient(180deg, #4d7ef5, #2863f0); color: #fff; box-shadow: 0 6px 18px -6px rgba(40,99,240,.8); }
+.wsl-page .ubs-rate.ubs-missing { box-shadow: 0 0 0 4px rgba(40,99,240,.22), 0 0 40px -6px rgba(40,99,240,.6); }
+.wsl-page .ubs-rate textarea:focus, .wsl-page .ubs-modal input:focus { border-color: rgba(125,162,255,.6); }
+.wsl-page .ubs-modal { background: #07142a; }
+.wsl-page .ubs-bar { background: rgba(2,11,24,.82); }
+
+.wsl-feed { gap: 64px; }
+.wsl-item { max-width: 640px; }
+.wsl-card { width: 100%; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: #07142a;
+  box-shadow: 0 30px 60px -24px rgba(0,0,0,.8); }
+.wsl-img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #051c3e; }
+.wsl-body { position: relative; padding: 22px 24px 26px; }
+.wsl-rank { position: absolute; right: 22px; top: 18px; font: italic 400 30px/1 var(--serif); color: var(--faint); }
+.wsl-body h2 { margin: 0 56px 10px 0; font: 400 clamp(34px, 7vw, 48px)/1.02 var(--serif); letter-spacing: -.01em; text-wrap: balance; }
+.wsl-domain { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-bottom: 14px; }
+.wsl-domain b { font: 600 14px/1 var(--sans); color: #fff; background: rgba(40,99,240,.22); border: 1px solid rgba(125,162,255,.4); padding: 7px 12px; border-radius: 999px; overflow-wrap: anywhere; }
+.wsl-domain span { font-size: 13px; color: var(--faint); }
+.wsl-body p { margin: 0; color: var(--mute); font-size: 16px; line-height: 1.55; text-wrap: pretty; }
+.wsl-res img { width: 104px; height: 104px; }
+@media (max-width: 619px) { .wsl-body { padding: 18px 18px 22px; } .wsl-feed { gap: 48px; } }
