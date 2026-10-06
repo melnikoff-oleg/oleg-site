@@ -1,52 +1,34 @@
 [
  {
-  "id": "blue_is_glue",
+  "id": "sunset_twice",
   "n": 1,
-  "name": "Blue Is Glue",
-  "domain": "blueisglue.com",
+  "name": "Sunset Twice",
+  "domain": "sunsettwice.com",
   "price": "Free to register, about $11 a year",
-  "story": "In Mission: Impossible Ghost Protocol, Tom Cruise climbs the outside of the Burj Khalifa on suction gloves. He gets one instruction: blue is glue, red is dead. He hung off the real tower to film it. This is the Bending Spoons move with a Dubai address: a film scene about doing the impossible, shot on the building you see every day. And blue is already your colour.",
-  "image": "/wasl-rebrand/blue_is_glue.jpg"
+  "story": "The Burj Khalifa is so tall that you can watch the sun set at its foot, take the lift up, and watch it set again. In 2011 Dubai's clerics even ruled that people living above floor 80 must break the Ramadan fast two minutes later than the street below. Build high enough and you get a second sunset.",
+  "image": "/wasl-rebrand/sunset_twice.jpg"
  },
  {
-  "id": "still_see_the_sun",
+  "id": "wrong_sand",
   "n": 2,
-  "name": "Still See The Sun",
-  "domain": "stillseethesun.com",
-  "price": "Free to register, about $11 a year",
-  "story": "The Burj Khalifa is so tall that the sun sets later at the top. In 2011 Dubai's clerics ruled that people living above floor 80 must break the Ramadan fast two minutes later, and above floor 150 three minutes later, because up there they can still see the sun. Build high enough and you get more daylight than everyone else.",
-  "image": "/wasl-rebrand/still_see_the_sun.jpg"
- },
- {
-  "id": "back_of_the_fence",
-  "n": 3,
-  "name": "Back Of The Fence",
-  "domain": "backofthefence.com",
-  "price": "Free to register, about $11 a year",
-  "story": "Paul Jobs taught his son Steve to build the back of a fence as carefully as the front, even though nobody would ever see it. You will know it is there, he said. Steve later demanded the same of the circuit boards inside the first Mac. A name for people who finish the part no user sees.",
-  "image": "/wasl-rebrand/back_of_the_fence.jpg"
- },
- {
-  "id": "wrong_kind_of_sand",
-  "n": 4,
-  "name": "Wrong Kind Of Sand",
-  "domain": "wrongkindofsand.com",
+  "name": "Wrong Sand",
+  "domain": "wrongsand.com",
   "price": "Free to register, about $11 a year",
   "story": "The UAE sits in a desert and still imports sand. Desert grains are blown round and smooth by the wind, so they cannot hold concrete together. The towers were built with rougher sand brought in from elsewhere. Having a lot of something is not the same as having the right thing. Funny, true, and hard to forget.",
-  "image": "/wasl-rebrand/wrong_kind_of_sand.jpg"
+  "image": "/wasl-rebrand/wrong_sand.jpg"
  },
  {
-  "id": "two_leased_planes",
-  "n": 5,
-  "name": "Two Leased Planes",
-  "domain": "twoleasedplanes.com",
+  "id": "sushi_rain",
+  "n": 3,
+  "name": "Sushi Rain",
+  "domain": "sushirain.com",
   "price": "Free to register, about $11 a year",
-  "story": "Emirates took off on 25 October 1985 with 10 million dollars and two planes leased from Pakistan's national airline. Today it is one of the biggest airlines in the world. The whole Dubai story in three words: start with what you can borrow, then build something nobody can ignore.",
-  "image": "/wasl-rebrand/two_leased_planes.jpg"
+  "story": "The green code that rains down the screen in The Matrix is sushi recipes. Its designer, Simon Whiteley, scanned the characters from his wife's Japanese cookbooks. Bending Spoons took the spoon from that film. This is the other secret in it: the most famous image of the digital world was made from something warm and human.",
+  "image": "/wasl-rebrand/sushi_rain.jpg"
  },
  {
   "id": "signed_inside",
-  "n": 6,
+  "n": 4,
   "name": "Signed Inside",
   "domain": "signedinside.com",
   "price": "Free to register, about $11 a year",
@@ -54,39 +36,57 @@
   "image": "/wasl-rebrand/signed_inside.jpg"
  },
  {
-  "id": "luck_of_lucks",
+  "id": "floor_80",
+  "n": 5,
+  "name": "Floor 80",
+  "domain": "floor80.com",
+  "price": "Free to register, about $11 a year",
+  "story": "A number with a story, like 37signals. In 2011 Dubai's clerics ruled that in the Burj Khalifa, people living above floor 80 must break the Ramadan fast two minutes later than everyone on the ground. Up there the sun has not set yet. Floor 80 is the height where the rules change.",
+  "image": "/wasl-rebrand/floor_80.jpg"
+ },
+ {
+  "id": "borrowed_planes",
+  "n": 6,
+  "name": "Borrowed Planes",
+  "domain": "borrowedplanes.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Emirates took off on 25 October 1985 with 10 million dollars and two planes borrowed from Pakistan's national airline, crews included. Today it is one of the biggest airlines in the world. The whole Dubai story in two words: start with what you can borrow, then build something nobody can ignore.",
+  "image": "/wasl-rebrand/borrowed_planes.jpg"
+ },
+ {
+  "id": "sand_runway",
   "n": 7,
-  "name": "Luck Of Lucks",
-  "domain": "luckoflucks.com",
+  "name": "Sand Runway",
+  "domain": "sandrunway.com",
   "price": "Free to register, about $11 a year",
-  "story": "Most bright stars still carry the names Arab astronomers gave them. One of them is Sadalsuud, which means luck of lucks. It rose with the sun when winter ended and the good season began. Like 37signals, it is a name taken from the sky. Unlike it, the story comes from this part of the world.",
-  "image": "/wasl-rebrand/luck_of_lucks.jpg"
+  "story": "Dubai's airport opened in 1960 with a runway made of compacted sand, 1,800 metres of it. It is now the busiest international airport in the world. A name about taking off from whatever you have under your feet.",
+  "image": "/wasl-rebrand/sand_runway.jpg"
  },
  {
-  "id": "sheep_in_a_box",
+  "id": "80_falcons",
   "n": 8,
-  "name": "Sheep In A Box",
-  "domain": "sheepinabox.com",
+  "name": "80 Falcons",
+  "domain": "80falcons.com",
   "price": "Free to register, about $11 a year",
-  "story": "In The Little Prince, a pilot crashes in the desert and a boy asks him to draw a sheep. Three drawings fail. So he draws a box with air holes and says the sheep is inside. The boy is delighted: it is exactly the sheep he wanted. A desert story about products that leave room for the imagination.",
-  "image": "/wasl-rebrand/sheep_in_a_box.jpg"
- },
- {
-  "id": "confuse_the_wind",
-  "n": 9,
-  "name": "Confuse The Wind",
-  "domain": "confusethewind.com",
-  "price": "Free to register, about $11 a year",
-  "story": "A tower as tall as the Burj Khalifa should be shaken apart by the wind. Its engineer, Bill Baker, explained why it is not: we confuse the wind. Every setback gives the tower a different shape, so the wind never gets organised against it. A name about beating a huge force with design, not with muscle.",
-  "image": "/wasl-rebrand/confuse_the_wind.jpg"
+  "story": "In 2017 a photo went around the world: 80 hooded falcons sitting in the seats of a Gulf airliner, each with its own ticket. Falcons here even carry their own passports. A number plus a noun, like 37signals, and a picture nobody forgets. Here even the strangest idea gets a boarding pass.",
+  "image": "/wasl-rebrand/80_falcons.jpg"
  },
  {
   "id": "penguins_upstairs",
-  "n": 10,
+  "n": 9,
   "name": "Penguins Upstairs",
   "domain": "penguinsupstairs.com",
   "price": "Free to register, about $11 a year",
   "story": "Inside the Mall of the Emirates, a short walk from the shops, lives a colony of king and gentoo penguins. In a desert city where summer passes 45 degrees. Nobody finds it strange any more. This is the Mustard and Linen kind of name: ridiculous, true, and a reminder that here somebody always says yes to the idea.",
   "image": "/wasl-rebrand/penguins_upstairs.jpg"
+ },
+ {
+  "id": "two_tortoises",
+  "n": 10,
+  "name": "Two Tortoises",
+  "domain": "twotortoises.com",
+  "price": "Free to register, about $11 a year",
+  "story": "The first living beings to fly around the Moon were not astronauts. They were two tortoises, on the Soviet Zond 5 in September 1968, three months before Apollo 8. They came back alive. A name for a small team that gets there first without making noise about it.",
+  "image": "/wasl-rebrand/two_tortoises.jpg"
  }
 ]
