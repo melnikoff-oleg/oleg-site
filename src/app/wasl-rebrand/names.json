@@ -1,34 +1,16 @@
 [
  {
-  "id": "sunset_twice",
+  "id": "adding_lightness",
   "n": 1,
-  "name": "Sunset Twice",
-  "domain": "sunsettwice.com",
+  "name": "Adding Lightness",
+  "domain": "addinglightness.com",
   "price": "Free to register, about $11 a year",
-  "story": "The Burj Khalifa is so tall that you can watch the sun set at its foot, take the lift up, and watch it set again. In 2011 Dubai's clerics even ruled that people living above floor 80 must break the Ramadan fast two minutes later than the street below. Build high enough and you get a second sunset.",
-  "image": "/wasl-rebrand/sunset_twice.jpg"
- },
- {
-  "id": "wrong_sand",
-  "n": 2,
-  "name": "Wrong Sand",
-  "domain": "wrongsand.com",
-  "price": "Free to register, about $11 a year",
-  "story": "The UAE sits in a desert and still imports sand. Desert grains are blown round and smooth by the wind, so they cannot hold concrete together. The towers were built with rougher sand brought in from elsewhere. Having a lot of something is not the same as having the right thing. Funny, true, and hard to forget.",
-  "image": "/wasl-rebrand/wrong_sand.jpg"
- },
- {
-  "id": "sushi_rain",
-  "n": 3,
-  "name": "Sushi Rain",
-  "domain": "sushirain.com",
-  "price": "Free to register, about $11 a year",
-  "story": "The green code that rains down the screen in The Matrix is sushi recipes. Its designer, Simon Whiteley, scanned the characters from his wife's Japanese cookbooks. Bending Spoons took the spoon from that film. This is the other secret in it: the most famous image of the digital world was made from something warm and human.",
-  "image": "/wasl-rebrand/sushi_rain.jpg"
+  "story": "Colin Chapman, the founder of Lotus, had one rule for building race cars: simplify, then add lightness. You cannot add lightness, and yet his cars won seven Formula 1 constructors' titles with less power than their rivals. It is the Bending Spoons kind of name, an impossible act, and it is also the whole product philosophy in two words: every good thing you ship is something you took away.",
+  "image": "/wasl-rebrand/adding_lightness.jpg"
  },
  {
   "id": "signed_inside",
-  "n": 4,
+  "n": 2,
   "name": "Signed Inside",
   "domain": "signedinside.com",
   "price": "Free to register, about $11 a year",
@@ -36,57 +18,75 @@
   "image": "/wasl-rebrand/signed_inside.jpg"
  },
  {
-  "id": "floor_80",
+  "id": "eight_proofs",
+  "n": 3,
+  "name": "Eight Proofs",
+  "domain": "eightproofs.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Gauss called one result his golden theorem. He proved it at 19. Then he proved it again, and again, eight different ways across his life, because no single proof satisfied him. One right answer is enough for most people. Eight is taste. A number plus a noun, like 37signals, for founders who came out of a maths school.",
+  "image": "/wasl-rebrand/eight_proofs.jpg"
+ },
+ {
+  "id": "crown_flint",
+  "n": 4,
+  "name": "Crown Flint",
+  "domain": "crownflint.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Every good lens is two pieces of glass: one of crown glass, one of flint glass. Each bends colour wrongly on its own. Put together, they cancel each other's error and the image comes out sharp. That is how telescopes and cameras became possible. A name about co-founders, and about products where two imperfect parts make one clear thing.",
+  "image": "/wasl-rebrand/crown_flint.jpg"
+ },
+ {
+  "id": "vine_black",
   "n": 5,
-  "name": "Floor 80",
-  "domain": "floor80.com",
+  "name": "Vine Black",
+  "domain": "vineblack.com",
   "price": "Free to register, about $11 a year",
-  "story": "A number with a story, like 37signals. In 2011 Dubai's clerics ruled that in the Burj Khalifa, people living above floor 80 must break the Ramadan fast two minutes later than everyone on the ground. Up there the sun has not set yet. Floor 80 is the height where the rules change.",
-  "image": "/wasl-rebrand/floor_80.jpg"
+  "story": "One of the oldest blacks in painting is vine black: charred grapevine twigs, ground to powder. Painters have used it since antiquity and it does not fade. A deep, lasting thing made out of almost nothing. Short, dark and elegant, and it already looks good on a black hoodie.",
+  "image": "/wasl-rebrand/vine_black.jpg"
  },
  {
-  "id": "borrowed_planes",
+  "id": "forty_flags",
   "n": 6,
-  "name": "Borrowed Planes",
-  "domain": "borrowedplanes.com",
+  "name": "Forty Flags",
+  "domain": "fortyflags.com",
   "price": "Free to register, about $11 a year",
-  "story": "Emirates took off on 25 October 1985 with 10 million dollars and two planes borrowed from Pakistan's national airline, crews included. Today it is one of the biggest airlines in the world. The whole Dubai story in two words: start with what you can borrow, then build something nobody can ignore.",
-  "image": "/wasl-rebrand/borrowed_planes.jpg"
+  "story": "The International Code of Signals is exactly forty flags. With them, any ship can talk to any other ship, in any language, anywhere on the sea. It is the closest cousin of 37signals there is: a number, a noun, and a story about a small set of simple things that lets the whole world connect. 40flags.com is free too.",
+  "image": "/wasl-rebrand/forty_flags.jpg"
  },
  {
-  "id": "sand_runway",
+  "id": "painting_air",
   "n": 7,
-  "name": "Sand Runway",
-  "domain": "sandrunway.com",
+  "name": "Painting Air",
+  "domain": "paintingair.com",
   "price": "Free to register, about $11 a year",
-  "story": "Dubai's airport opened in 1960 with a runway made of compacted sand, 1,800 metres of it. It is now the busiest international airport in the world. A name about taking off from whatever you have under your feet.",
-  "image": "/wasl-rebrand/sand_runway.jpg"
+  "story": "Claude Monet, 1895: other painters paint a bridge, a house, a boat. I want to paint the air in which the bridge, the house and the boat are, and that is nothing less than the impossible. The same shape as Bending Spoons. For a company that cares about the part of a product nobody can point at: the feel.",
+  "image": "/wasl-rebrand/painting_air.jpg"
  },
  {
-  "id": "80_falcons",
+  "id": "venus_arc",
   "n": 8,
-  "name": "80 Falcons",
-  "domain": "80falcons.com",
+  "name": "Venus Arc",
+  "domain": "venusarc.com",
   "price": "Free to register, about $11 a year",
-  "story": "In 2017 a photo went around the world: 80 hooded falcons sitting in the seats of a Gulf airliner, each with its own ticket. Falcons here even carry their own passports. A number plus a noun, like 37signals, and a picture nobody forgets. Here even the strangest idea gets a boarding pass.",
-  "image": "/wasl-rebrand/80_falcons.jpg"
+  "story": "On 6 June 1761, in St Petersburg, Mikhail Lomonosov watched Venus cross the Sun. Everyone saw the same thing. He alone noticed a hair-thin arc of light around the planet and concluded, correctly and first, that Venus has an atmosphere. A name about seeing what everybody looked at and nobody saw.",
+  "image": "/wasl-rebrand/venus_arc.jpg"
  },
  {
-  "id": "penguins_upstairs",
+  "id": "dash_eighty",
   "n": 9,
-  "name": "Penguins Upstairs",
-  "domain": "penguinsupstairs.com",
+  "name": "Dash Eighty",
+  "domain": "dasheighty.com",
   "price": "Free to register, about $11 a year",
-  "story": "Inside the Mall of the Emirates, a short walk from the shops, lives a colony of king and gentoo penguins. In a desert city where summer passes 45 degrees. Nobody finds it strange any more. This is the Mustard and Linen kind of name: ridiculous, true, and a reminder that here somebody always says yes to the idea.",
-  "image": "/wasl-rebrand/penguins_upstairs.jpg"
+  "story": "In 1955 Boeing had one prototype jet, the Dash 80, and every airline boss in America watching from the shore. Test pilot Tex Johnston flew it over them and rolled it upside down. Asked what he thought he was doing, he said: I was selling airplanes. The plane became the 707. A name for people who show the product instead of the deck.",
+  "image": "/wasl-rebrand/dash_eighty.jpg"
  },
  {
-  "id": "two_tortoises",
+  "id": "dazzle_fleet",
   "n": 10,
-  "name": "Two Tortoises",
-  "domain": "twotortoises.com",
+  "name": "Dazzle Fleet",
+  "domain": "dazzlefleet.com",
   "price": "Free to register, about $11 a year",
-  "story": "The first living beings to fly around the Moon were not astronauts. They were two tortoises, on the Soviet Zond 5 in September 1968, three months before Apollo 8. They came back alive. A name for a small team that gets there first without making noise about it.",
-  "image": "/wasl-rebrand/two_tortoises.jpg"
+  "story": "In 1917 the Royal Navy could not hide its ships from submarines. So the painter Norman Wilkinson did the opposite: thousands of ships were painted in loud cubist stripes, so no periscope could tell which way they were going. Design as a weapon, and the bravest brief a designer ever got. The best sounding name on the list.",
+  "image": "/wasl-rebrand/dazzle_fleet.jpg"
  }
 ]
