@@ -6,7 +6,7 @@
 import { NextResponse } from "next/server";
 import { getClientIp } from "@/lib/marketing-brain/rate-limit";
 import { dbConfigured, recentSubmissions, results, saveSubmission } from "@/lib/wasl-rebrand/db";
-import { NAME_IDS } from "@/app/wasl-rebrand/data";
+import { NAME_IDS, TO_RATE } from "@/app/wasl-rebrand/data";
 
 export const dynamic = "force-dynamic";
 
@@ -43,7 +43,8 @@ export async function POST(req: Request) {
     const note = typeof v.note === "string" && v.note.trim() ? v.note.trim().slice(0, 2000) : null;
     byName.set(v.name_id, { name_id: v.name_id, rating, note });
   }
-  const missing = NAME_IDS.filter((id) => !byName.has(id));
+  // Saved names already carry a score from an earlier round, so only the new ones are required.
+  const missing = TO_RATE.map((x) => x.id).filter((id) => !byName.has(id));
   if (missing.length) {
     return NextResponse.json({ error: "Please rate every name.", missing }, { status: 400 });
   }

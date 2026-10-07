@@ -14,7 +14,12 @@ export type NameIdea = {
   image: string;
   /** Set on a name carried over from an earlier round. */
   saved?: string;
+  /** Oleg's score and note from the round he saved it in. A saved name is shown, not rated again. */
+  savedRating?: number;
+  savedNote?: string;
 };
 
 export const NAMES = raw as NameIdea[];
 export const NAME_IDS = NAMES.map((x) => x.id);
+/** The names that still need a score: the saved ones already carry Oleg's. */
+export const TO_RATE = NAMES.filter((x) => !x.savedRating);

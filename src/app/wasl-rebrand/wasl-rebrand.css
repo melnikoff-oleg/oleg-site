@@ -35,3 +35,6 @@
 @media (max-width: 619px) { .wsl-body { padding: 18px 18px 22px; } .wsl-feed { gap: 48px; } }
 
 .wsl-saved { display: inline-block; margin: 2px 0 8px; padding: 3px 10px; border-radius: 999px; font-size: 12px; letter-spacing: .02em; color: #9fc0ff; background: rgba(40, 99, 240, .18); border: 1px solid rgba(40, 99, 240, .45); }
+.wsl-verdict { margin-top: 16px; padding: 14px 16px; border-radius: 14px; background: rgba(40, 99, 240, .1); border: 1px solid rgba(40, 99, 240, .3); font-size: 14px; line-height: 1.5; color: var(--mute); }
+.wsl-verdict b { display: block; margin-bottom: 4px; color: #9fc0ff; font-weight: 600; }
+.wsl-verdict span { white-space: pre-line; }

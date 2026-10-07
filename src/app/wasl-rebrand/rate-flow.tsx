@@ -22,8 +22,10 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
   const [results, setResults] = useState<Result[] | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const rated = names.filter((p) => ratings[p.id]).length;
-  const complete = rated === names.length;
+  // Saved names carry Oleg's score from an earlier round and are shown, not rated again.
+  const toRate = names.filter((p) => !p.savedRating);
+  const rated = toRate.filter((p) => ratings[p.id]).length;
+  const complete = rated === toRate.length;
   const nameOk = name.trim().replace(/\s+/g, " ").length >= 2;
 
   useEffect(() => () => { if (toastTimer.current) clearTimeout(toastTimer.current); }, []);
@@ -42,11 +44,11 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
 
   async function submit() {
     if (!complete) {
-      const first = names.find((p) => !ratings[p.id]);
+      const first = toRate.find((p) => !ratings[p.id]);
       if (first) {
         setMissing(first.id);
         document.getElementById(`panel-${first.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
-        flash(`Please rate this name too (${names.length - rated} left).`);
+        flash(`Please rate this name too (${toRate.length - rated} left).`);
       }
       return;
     }
@@ -56,7 +58,7 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
       const res = await fetch("/api/wasl-rebrand/votes", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ name, votes: names.map((p) => ({ name_id: p.id, rating: ratings[p.id], note: notes[p.id] || null })) }),
+        body: JSON.stringify({ name, votes: toRate.map((p) => ({ name_id: p.id, rating: ratings[p.id], note: notes[p.id] || null })) }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || "Could not save your votes. Please try again.");
@@ -94,7 +96,7 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
                     <b>{r?.average ?? "–"}</b>
                     <span>average from {r?.count ?? 0} {r?.count === 1 ? "person" : "people"}</span>
                   </div>
-                  <div className="ubs-yours">You gave it {ratings[p.id]}</div>
+                  {ratings[p.id] && <div className="ubs-yours">You gave it {ratings[p.id]}</div>}
                 </div>
                 {r && r.notes.length > 0 && (
                   <div className="ubs-notes">
@@ -115,11 +117,11 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
     <>
       <header className="ubs-hero">
         <div className="ubs-eyebrow"><span className="ubs-dot" />Wasl Apps · the new name</div>
-        <h1>Twenty names. <em>Each with a story.</em></h1>
-        <p>Round four: ten random sources (Nolan films, Bulgakov, Miyazaki, Lego, the Tour de France), 385 screened names, three blind judges. Twenty new names plus the two saved from last round, strongest first. Plain words, real objects, two words at most. Every .com is free to register today. Score each from 1 to 10 and add a comment if you like. At the end you see how everyone else voted.</p>
+        <h1>Twenty new names. <em>Sixteen you already saved.</em></h1>
+        <p>Round five: eleven sources from Gleb's own world (Hamilton, Porsche, Monaco, Top Gear, Switzerland, Batman, Mission Impossible, London, Rimowa, Cars, Atlas Shrugged), 275 screened names, three blind judges. Twenty new names first, strongest first, then the sixteen saved from earlier rounds with Oleg's score and note kept as they were. Simple words, one funny picture, winning stories. Every .com is free to register today. Score the new ones from 1 to 10 and add a comment if you like.</p>
         <div className="ubs-stats">
-          <div><b>385</b><span>names screened</span></div>
-          <div><b>{names.length}</b><span>finalists</span></div>
+          <div><b>275</b><span>names screened</span></div>
+          <div><b>{toRate.length}</b><span>new names</span></div>
           <div><b>.com</b><span>all available</span></div>
         </div>
         {stage === "intro" && (
@@ -134,7 +136,7 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
         {names.map((p) => (
           <section key={p.id} className="ubs-item wsl-item" id={`rate-${p.id}`}>
             <NameCard idea={p} />
-            {stage !== "intro" && (
+            {stage !== "intro" && !p.savedRating && (
               <div id={`panel-${p.id}`} className={`ubs-rate${missing === p.id && !ratings[p.id] ? " ubs-missing" : ""}`}>
                 <div className="ubs-rate-label" id={`lbl-${p.id}`}>Your score for {p.name}</div>
                 <div className="ubs-scale" role="group" aria-labelledby={`lbl-${p.id}`}>
@@ -162,8 +164,8 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
         <div className="ubs-bar">
           <div className="ubs-bar-in">
             <div>
-              <div className="ubs-count">{rated} of {names.length} rated</div>
-              <div className="ubs-prog" aria-hidden="true"><i style={{ width: `${(rated / names.length) * 100}%` }} /></div>
+              <div className="ubs-count">{rated} of {toRate.length} rated</div>
+              <div className="ubs-prog" aria-hidden="true"><i style={{ width: `${(rated / toRate.length) * 100}%` }} /></div>
               {error && <div className="ubs-error" role="alert">{error}</div>}
             </div>
             <button className="ubs-cta" aria-disabled={!complete || stage === "sending"} onClick={submit} disabled={stage === "sending"}>

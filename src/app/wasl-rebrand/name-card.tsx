@@ -12,6 +12,12 @@ export function NameCard({ idea }: { idea: NameIdea }) {
         {idea.saved && <div className="wsl-saved">{idea.saved}</div>}
         <div className="wsl-domain"><b>{idea.domain}</b><span>{idea.price}</span></div>
         <p>{idea.story}</p>
+        {idea.savedRating && (
+          <div className="wsl-verdict">
+            <b>Oleg gave it {idea.savedRating}/10</b>
+            {idea.savedNote && <span>{idea.savedNote}</span>}
+          </div>
+        )}
       </div>
     </article>
   );
