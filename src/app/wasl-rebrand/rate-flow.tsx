@@ -22,8 +22,7 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
   const [results, setResults] = useState<Result[] | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Saved names carry Oleg's score from an earlier round and are shown, not rated again.
-  const toRate = names.filter((p) => !p.savedRating);
+  const toRate = names;
   const rated = toRate.filter((p) => ratings[p.id]).length;
   const complete = rated === toRate.length;
   const nameOk = name.trim().replace(/\s+/g, " ").length >= 2;
@@ -117,11 +116,11 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
     <>
       <header className="ubs-hero">
         <div className="ubs-eyebrow"><span className="ubs-dot" />Wasl Apps · the new name</div>
-        <h1>Twenty new names. <em>Sixteen you already saved.</em></h1>
-        <p>Round five: eleven sources from Gleb's own world (Hamilton, Porsche, Monaco, Top Gear, Switzerland, Batman, Mission Impossible, London, Rimowa, Cars, Atlas Shrugged), 275 screened names, three blind judges. Twenty new names first, strongest first, then the sixteen saved from earlier rounds with Oleg's score and note kept as they were. Simple words, one funny picture, winning stories. Every .com is free to register today. Score the new ones from 1 to 10 and add a comment if you like.</p>
+        <h1>Thirty-three names. <em>Oleg’s picks, his score first.</em></h1>
+        <p>Five rounds, about 1,000 screened names, three blind judges each round. These are the thirty-three Oleg saved, in the order of his own score, with his note on each. Simple words, one funny picture, a story behind it. Every .com is free to register today. Score each from 1 to 10 and add a comment if you like. At the end you see how everyone voted.</p>
         <div className="ubs-stats">
-          <div><b>275</b><span>names screened</span></div>
-          <div><b>{toRate.length}</b><span>new names</span></div>
+          <div><b>5</b><span>rounds</span></div>
+          <div><b>{toRate.length}</b><span>names saved</span></div>
           <div><b>.com</b><span>all available</span></div>
         </div>
         {stage === "intro" && (
@@ -136,7 +135,7 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
         {names.map((p) => (
           <section key={p.id} className="ubs-item wsl-item" id={`rate-${p.id}`}>
             <NameCard idea={p} />
-            {stage !== "intro" && !p.savedRating && (
+            {stage !== "intro" && (
               <div id={`panel-${p.id}`} className={`ubs-rate${missing === p.id && !ratings[p.id] ? " ubs-missing" : ""}`}>
                 <div className="ubs-rate-label" id={`lbl-${p.id}`}>Your score for {p.name}</div>
                 <div className="ubs-scale" role="group" aria-labelledby={`lbl-${p.id}`}>

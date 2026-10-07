@@ -1,12 +1,15 @@
 [
  {
-  "id": "speeding_turtles",
+  "id": "rocket_fridge",
   "n": 1,
-  "name": "Speeding Turtles",
-  "domain": "speedingturtles.com",
+  "name": "Rocket Fridge",
+  "domain": "rocketfridge.com",
   "price": "Free to register, about $11 a year",
-  "story": "Monte Carlo Rally, 1964. The tiny Mini Cooper, half the size and a third of the power of the big Fords and Mercedes, won the whole thing on the icy mountain roads. Then it won again in 1965 and 1967. The slow-looking small thing that beats the giants. A two-person company out-building the big ones.",
-  "image": "/wasl-rebrand/speeding_turtles.jpg"
+  "story": "Two Top Gear wins in one picture. The fridge on the Cool Wall was the sub-zero section, for cars too cool for the wall itself. And the Reliant Robin space shuttle: they strapped a tiny three-wheeled car to a rocket and really launched it. The coolest thing there is, going up.",
+  "image": "/wasl-rebrand/rocket_fridge.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 8,
+  "savedNote": "Very funny, save it."
  },
  {
   "id": "puppy_driver",
@@ -15,173 +18,110 @@
   "domain": "puppydriver.com",
   "price": "Free to register, about $11 a year",
   "story": "Roscoe, Lewis Hamilton's bulldog, had his own passport, his own sunglasses and his own seat on the private jet. He walked the paddock at every race while his owner collected seven world titles. The champion's dog at the wheel: the team that makes the hardest job look easy and has fun doing it.",
-  "image": "/wasl-rebrand/puppy_driver.jpg"
- },
- {
-  "id": "swimming_piano",
-  "n": 3,
-  "name": "Swimming Piano",
-  "domain": "swimmingpiano.com",
-  "price": "Free to register, about $11 a year",
-  "story": "Monte Carlo is the grand piano in the casino's marble rooms and the swimming pool corner of the Grand Prix, where cars brush the barriers at 200 km/h in front of the yachts. Put the two together: elegance that moves. Beautiful, heavy, and somehow doing laps.",
-  "image": "/wasl-rebrand/swimming_piano.jpg"
- },
- {
-  "id": "rowing_bears",
-  "n": 4,
-  "name": "Rowing Bears",
-  "domain": "rowingbears.com",
-  "price": "Free to register, about $11 a year",
-  "story": "Hamleys, the London toy shop open since 1760, meets the Boat Race on the Thames: eight rowers, one rhythm, a win by a length. Soft things that pull together and win. The picture every founder wants for a team: everyone on the same stroke.",
-  "image": "/wasl-rebrand/rowing_bears.jpg"
- },
- {
-  "id": "swimming_bus",
-  "n": 5,
-  "name": "Swimming Bus",
-  "domain": "swimmingbus.com",
-  "price": "Free to register, about $11 a year",
-  "story": "London's amphibious tour buses roll down a ramp at Vauxhall and splash straight into the Thames, passengers still in their seats. A vehicle that refuses the rule about where it is allowed to go. Built on land, happy in the water.",
-  "image": "/wasl-rebrand/swimming_bus.jpg"
- },
- {
-  "id": "skiing_cactus",
-  "n": 6,
-  "name": "Skiing Cactus",
-  "domain": "skiingcactus.com",
-  "price": "Free to register, about $11 a year",
-  "story": "Monaco has two extremes a few kilometres apart: the icy Col de Turini, where the Monte Carlo Rally climbs through the night, and the Exotic Garden on the cliff, where cactus grow in the sun. A cactus on skis is both at once. Something that should stand still, going fast downhill.",
-  "image": "/wasl-rebrand/skiing_cactus.jpg"
- },
- {
-  "id": "flying_tractors",
-  "n": 7,
-  "name": "Flying Tractors",
-  "domain": "flyingtractors.com",
-  "price": "Free to register, about $11 a year",
-  "story": "Two sources in one picture. In Cars, McQueen and Mater sneak into the field at night and one honk sends the tractors tipping over. And Porsche built 125,000 red tractors in the old Zeppelin airship factory in Friedrichshafen: farm machines made where flying machines were built. The heaviest thing on the farm, in the air.",
-  "image": "/wasl-rebrand/flying_tractors.jpg"
+  "image": "/wasl-rebrand/puppy_driver.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 7,
+  "savedNote": "Very funny shit. I love it. Save it."
  },
  {
   "id": "jumping_bus",
-  "n": 8,
+  "n": 3,
   "name": "Jumping Bus",
   "domain": "jumpingbus.com",
   "price": "Free to register, about $11 a year",
   "story": "30 December 1952. Tower Bridge began to open while the number 78 bus was on it. Driver Albert Gunter did not brake. He floored it, jumped the six-foot gap with twenty passengers on board, and landed on the other side. He got a day off and ten pounds. Nerve over the gap is how a company ships.",
-  "image": "/wasl-rebrand/jumping_bus.jpg"
+  "image": "/wasl-rebrand/jumping_bus.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 7,
+  "savedNote": "That's a very interesting concept. I like it. Let's save it."
  },
  {
-  "id": "skiing_bear",
-  "n": 9,
-  "name": "Skiing Bear",
-  "domain": "skiingbear.com",
+  "id": "speeding_turtles",
+  "n": 4,
+  "name": "Speeding Turtles",
+  "domain": "speedingturtles.com",
   "price": "Free to register, about $11 a year",
-  "story": "The bear is the symbol of Bern, the Swiss capital; it is on the flag and in the city's name. Skiing is the Swiss way of winning: more alpine World Cup wins than any other country. A big, strong animal moving fast and light. Power with grace.",
-  "image": "/wasl-rebrand/skiing_bear.jpg"
+  "story": "Monte Carlo Rally, 1964. The tiny Mini Cooper, half the size and a third of the power of the big Fords and Mercedes, won the whole thing on the icy mountain roads. Then it won again in 1965 and 1967. The slow-looking small thing that beats the giants. A two-person company out-building the big ones.",
+  "image": "/wasl-rebrand/speeding_turtles.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 6,
+  "savedNote": "Very decent name. Save it."
  },
  {
-  "id": "rocket_fridge",
-  "n": 10,
-  "name": "Rocket Fridge",
-  "domain": "rocketfridge.com",
+  "id": "swimming_piano",
+  "n": 5,
+  "name": "Swimming Piano",
+  "domain": "swimmingpiano.com",
   "price": "Free to register, about $11 a year",
-  "story": "Two Top Gear wins in one picture. The fridge on the Cool Wall was the sub-zero section, for cars too cool for the wall itself. And the Reliant Robin space shuttle: they strapped a tiny three-wheeled car to a rocket and really launched it. The coolest thing there is, going up.",
-  "image": "/wasl-rebrand/rocket_fridge.jpg"
+  "story": "Monte Carlo is the grand piano in the casino's marble rooms and the swimming pool corner of the Grand Prix, where cars brush the barriers at 200 km/h in front of the yachts. Put the two together: elegance that moves. Beautiful, heavy, and somehow doing laps.",
+  "image": "/wasl-rebrand/swimming_piano.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 6,
+  "savedNote": "Interesting concept. Save it."
  },
  {
-  "id": "bedroom_rocket",
-  "n": 11,
-  "name": "Bedroom Rocket",
-  "domain": "bedroomrocket.com",
+  "id": "rowing_bears",
+  "n": 6,
+  "name": "Rowing Bears",
+  "domain": "rowingbears.com",
   "price": "Free to register, about $11 a year",
-  "story": "Lewis Hamilton started with a radio-controlled car at six, raced from the living room floor of a council house in Stevenage, and beat adults with it. Then a second-hand kart for Christmas. Then seven world titles. Big things start in small rooms, the way apps start on a laptop.",
-  "image": "/wasl-rebrand/bedroom_rocket.jpg"
+  "story": "Hamleys, the London toy shop open since 1760, meets the Boat Race on the Thames: eight rowers, one rhythm, a win by a length. Soft things that pull together and win. The picture every founder wants for a team: everyone on the same stroke.",
+  "image": "/wasl-rebrand/rowing_bears.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 6,
+  "savedNote": "Funny, save it."
+ },
+ {
+  "id": "swimming_bus",
+  "n": 7,
+  "name": "Swimming Bus",
+  "domain": "swimmingbus.com",
+  "price": "Free to register, about $11 a year",
+  "story": "London's amphibious tour buses roll down a ramp at Vauxhall and splash straight into the Thames, passengers still in their seats. A vehicle that refuses the rule about where it is allowed to go. Built on land, happy in the water.",
+  "image": "/wasl-rebrand/swimming_bus.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 6,
+  "savedNote": "Nice concept, save it."
+ },
+ {
+  "id": "skiing_cactus",
+  "n": 8,
+  "name": "Skiing Cactus",
+  "domain": "skiingcactus.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Monaco has two extremes a few kilometres apart: the icy Col de Turini, where the Monte Carlo Rally climbs through the night, and the Exotic Garden on the cliff, where cactus grow in the sun. A cactus on skis is both at once. Something that should stand still, going fast downhill.",
+  "image": "/wasl-rebrand/skiing_cactus.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 6,
+  "savedNote": "That's ridiculously stupid, but I love it. Save it. The only thing is that maybe \"skiing\" is a bit of a hard word because of the \"i,\" but it's still fine. Let's keep it."
  },
  {
   "id": "jumping_camels",
-  "n": 12,
+  "n": 9,
   "name": "Jumping Camels",
   "domain": "jumpingcamels.com",
   "price": "Free to register, about $11 a year",
   "story": "Paris to Dakar, 1986. Porsche took a road car, the 959, across the Sahara and finished first and second. A sports car beat the desert. Camels leaping over the dunes is that win in one picture, and it sits well in a Gulf city.",
-  "image": "/wasl-rebrand/jumping_camels.jpg"
- },
- {
-  "id": "climbing_train",
-  "n": 13,
-  "name": "Climbing Train",
-  "domain": "climbingtrain.com",
-  "price": "Free to register, about $11 a year",
-  "story": "The Pilatus railway near Lucerne is the steepest cogwheel railway in the world, 48 per cent, a train going almost straight up a cliff since 1889. The Glacier Express crosses 291 bridges and 91 tunnels. Builders who take trains where trains were never meant to go.",
-  "image": "/wasl-rebrand/climbing_train.jpg"
- },
- {
-  "id": "lightning_sofa",
-  "n": 14,
-  "name": "Lightning Sofa",
-  "domain": "lightningsofa.com",
-  "price": "Free to register, about $11 a year",
-  "story": "The Top Gear studio sofa: every star sat on it after their power lap in the Reasonably Priced Car, and the fastest time got the applause and the top of the board. The slowest object in the building, hit by the fastest lap.",
-  "image": "/wasl-rebrand/lightning_sofa.jpg"
- },
- {
-  "id": "skiing_whale",
-  "n": 15,
-  "name": "Skiing Whale",
-  "domain": "skiingwhale.com",
-  "price": "Free to register, about $11 a year",
-  "story": "The whale skeleton hangs in the Oceanographic Museum on the cliff above Monaco harbour. The Monte Carlo Rally runs on ice over the Col de Turini above it. Put the two together: the biggest thing in the sea, on skis, going downhill fast. Huge and quick at once.",
-  "image": "/wasl-rebrand/skiing_whale.jpg"
- },
- {
-  "id": "pocket_crown",
-  "n": 16,
-  "name": "Pocket Crown",
-  "domain": "pocketcrown.com",
-  "price": "Free to register, about $11 a year",
-  "story": "At ten, Lewis Hamilton walked up to Ron Dennis at an awards dinner, asked for an autograph, and said he would race for McLaren one day. Three years later McLaren signed him. He won the karting world title at fifteen. A crown small enough to carry in a pocket, that grew into seven.",
-  "image": "/wasl-rebrand/pocket_crown.jpg"
+  "image": "/wasl-rebrand/jumping_camels.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 6,
+  "savedNote": "Really not bad, actually. Save it."
  },
  {
   "id": "flying_tie",
-  "n": 17,
+  "n": 10,
   "name": "Flying Tie",
   "domain": "flyingtie.com",
   "price": "Free to register, about $11 a year",
   "story": "Mission: Impossible. Ethan Hunt does the impossible in a suit: hanging on the glass of the Burj Khalifa, on the door of a plane taking off, on the wing of a biplane. The tie flying straight back in the wind is the picture of calm style at full speed.",
-  "image": "/wasl-rebrand/flying_tie.jpg"
- },
- {
-  "id": "singing_hammer",
-  "n": 18,
-  "name": "Singing Hammer",
-  "domain": "singinghammer.com",
-  "price": "Free to register, about $11 a year",
-  "story": "Gmund, Austria, 1948. The first fifty Porsche 356 bodies were beaten by hand out of aluminium sheets over wooden forms in a sawmill barn. A hammer that rings like a bell as it works: craft at full speed, beautiful things made by hand from nothing.",
-  "image": "/wasl-rebrand/singing_hammer.jpg"
- },
- {
-  "id": "chocolate_skis",
-  "n": 19,
-  "name": "Chocolate Skis",
-  "domain": "chocolateskis.com",
-  "price": "Free to register, about $11 a year",
-  "story": "Switzerland gave the world milk chocolate in 1875 and then won the ski slopes. Two Swiss crafts in one sweet, impossible object: a product people love the moment they see it. Yes, they would melt. That is the joke.",
-  "image": "/wasl-rebrand/chocolate_skis.jpg"
- },
- {
-  "id": "rowing_car",
-  "n": 20,
-  "name": "Rowing Car",
-  "domain": "rowingcar.com",
-  "price": "Free to register, about $11 a year",
-  "story": "Top Gear's amphibious cars, the best worst idea on television: a Toyota pickup turned boat, a van with an outboard, and in the end a car that crossed the English Channel. A car in a lake with oars out of the windows is still moving forward.",
-  "image": "/wasl-rebrand/rowing_car.jpg"
+  "image": "/wasl-rebrand/flying_tie.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 6,
+  "savedNote": "Interesting. Let's save it."
  },
  {
   "id": "rolling_ducks",
-  "n": 21,
+  "n": 11,
   "name": "Rolling Ducks",
   "domain": "rollingducks.com",
   "price": "Free to register, about $11 a year",
@@ -193,7 +133,7 @@
  },
  {
   "id": "moon_tram",
-  "n": 22,
+  "n": 12,
   "name": "Moon Tram",
   "domain": "moontram.com",
   "price": "Free to register, about $11 a year",
@@ -205,7 +145,7 @@
  },
  {
   "id": "standing_pencil",
-  "n": 23,
+  "n": 13,
   "name": "Standing Pencil",
   "domain": "standingpencil.com",
   "price": "Free to register, about $11 a year",
@@ -217,7 +157,7 @@
  },
  {
   "id": "lamp_boat",
-  "n": 24,
+  "n": 14,
   "name": "Lamp Boat",
   "domain": "lampboat.com",
   "price": "Free to register, about $11 a year",
@@ -229,7 +169,7 @@
  },
  {
   "id": "lake_sword",
-  "n": 25,
+  "n": 15,
   "name": "Lake Sword",
   "domain": "lakesword.com",
   "price": "Free to register, about $11 a year",
@@ -241,7 +181,7 @@
  },
  {
   "id": "cow_flight",
-  "n": 26,
+  "n": 16,
   "name": "Cow Flight",
   "domain": "cowflight.com",
   "price": "Free to register, about $11 a year",
@@ -253,7 +193,7 @@
  },
  {
   "id": "copper_bells",
-  "n": 27,
+  "n": 17,
   "name": "Copper Bells",
   "domain": "copperbells.com",
   "price": "Free to register, about $11 a year",
@@ -265,7 +205,7 @@
  },
  {
   "id": "honey_arrow",
-  "n": 28,
+  "n": 18,
   "name": "Honey Arrow",
   "domain": "honeyarrow.com",
   "price": "Free to register, about $11 a year",
@@ -277,7 +217,7 @@
  },
  {
   "id": "magnet_hand",
-  "n": 29,
+  "n": 19,
   "name": "Magnet Hand",
   "domain": "magnethand.com",
   "price": "Free to register, about $11 a year",
@@ -288,8 +228,56 @@
   "savedNote": "I like the name. Let's save it, but also, you're talking about Zelda. I have no idea about Zelda. Maybe use other sources of inspiration that I told you about, like Ferrari, Hamilton, Switzerland, etc.\n\nGleb loves Laura Piana and Porsche for sure. One of his favorite books is Atlas Shrugged, and another is The Financier by Theodore Dreiser.\n\nAnother guy is Gleb's co-founder. He is an app developer and worked at Facebook, from what I remember. He also has a connection to the United Kingdom and lived there for a while in London."
  },
  {
+  "id": "skiing_bear",
+  "n": 20,
+  "name": "Skiing Bear",
+  "domain": "skiingbear.com",
+  "price": "Free to register, about $11 a year",
+  "story": "The bear is the symbol of Bern, the Swiss capital; it is on the flag and in the city's name. Skiing is the Swiss way of winning: more alpine World Cup wins than any other country. A big, strong animal moving fast and light. Power with grace.",
+  "image": "/wasl-rebrand/skiing_bear.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 5,
+  "savedNote": "It's not bad. Let's save it."
+ },
+ {
+  "id": "climbing_train",
+  "n": 21,
+  "name": "Climbing Train",
+  "domain": "climbingtrain.com",
+  "price": "Free to register, about $11 a year",
+  "story": "The Pilatus railway near Lucerne is the steepest cogwheel railway in the world, 48 per cent, a train going almost straight up a cliff since 1889. The Glacier Express crosses 291 bridges and 91 tunnels. Builders who take trains where trains were never meant to go.",
+  "image": "/wasl-rebrand/climbing_train.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 5,
+  "savedNote": "A little bit too long, but that's okay. Save it."
+ },
+ {
+  "id": "pocket_crown",
+  "n": 22,
+  "name": "Pocket Crown",
+  "domain": "pocketcrown.com",
+  "price": "Free to register, about $11 a year",
+  "story": "At ten, Lewis Hamilton walked up to Ron Dennis at an awards dinner, asked for an autograph, and said he would race for McLaren one day. Three years later McLaren signed him. He won the karting world title at fifteen. A crown small enough to carry in a pocket, that grew into seven.",
+  "image": "/wasl-rebrand/pocket_crown.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 5,
+  "savedNote": "Interesting. Let's save it."
+ },
+ {
+  "id": "singing_hammer",
+  "n": 23,
+  "name": "Singing Hammer",
+  "domain": "singinghammer.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Gmund, Austria, 1948. The first fifty Porsche 356 bodies were beaten by hand out of aluminium sheets over wooden forms in a sawmill barn. A hammer that rings like a bell as it works: craft at full speed, beautiful things made by hand from nothing.",
+  "image": "/wasl-rebrand/singing_hammer.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 5,
+  "savedNote": "Interesting. Let's save it."
+ },
+ {
   "id": "pillow_tower",
-  "n": 30,
+  "n": 24,
   "name": "Pillow Tower",
   "domain": "pillowtower.com",
   "price": "Free to register, about $11 a year",
@@ -301,7 +289,7 @@
  },
  {
   "id": "iron_mushroom",
-  "n": 31,
+  "n": 25,
   "name": "Iron Mushroom",
   "domain": "ironmushroom.com",
   "price": "Free to register, about $11 a year",
@@ -313,7 +301,7 @@
  },
  {
   "id": "butter_goat",
-  "n": 32,
+  "n": 26,
   "name": "Butter Goat",
   "domain": "buttergoat.com",
   "price": "Free to register, about $11 a year",
@@ -325,7 +313,7 @@
  },
  {
   "id": "rocket_fields",
-  "n": 33,
+  "n": 27,
   "name": "Rocket Fields",
   "domain": "rocketfields.com",
   "price": "Free to register, about $11 a year",
@@ -337,7 +325,7 @@
  },
  {
   "id": "fifty_mirrors",
-  "n": 34,
+  "n": 28,
   "name": "Fifty Mirrors",
   "domain": "fiftymirrors.com",
   "price": "Free to register, about $11 a year",
@@ -349,7 +337,7 @@
  },
  {
   "id": "forty_flags",
-  "n": 35,
+  "n": 29,
   "name": "Forty Flags",
   "domain": "fortyflags.com",
   "price": "Free to register, about $11 a year",
@@ -361,7 +349,7 @@
  },
  {
   "id": "painting_air",
-  "n": 36,
+  "n": 30,
   "name": "Painting Air",
   "domain": "paintingair.com",
   "price": "Free to register, about $11 a year",
@@ -370,5 +358,41 @@
   "saved": "Saved by Oleg in round three, kept in round four",
   "savedRating": 5,
   "savedNote": "That is slightly better than other options, although it's also still hard to visualize. What the fuck do I visualize in my mind when you're saying “painting air”? It's a little hard, but it also feels creative. It's okay, so let's also keep it. Let's save it.\n\nRound four: Same feedback as before, keep it."
+ },
+ {
+  "id": "chocolate_skis",
+  "n": 31,
+  "name": "Chocolate Skis",
+  "domain": "chocolateskis.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Switzerland gave the world milk chocolate in 1875 and then won the ski slopes. Two Swiss crafts in one sweet, impossible object: a product people love the moment they see it. Yes, they would melt. That is the joke.",
+  "image": "/wasl-rebrand/chocolate_skis.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 4,
+  "savedNote": "A bit too long, but let's keep it."
+ },
+ {
+  "id": "rowing_car",
+  "n": 32,
+  "name": "Rowing Car",
+  "domain": "rowingcar.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Top Gear's amphibious cars, the best worst idea on television: a Toyota pickup turned boat, a van with an outboard, and in the end a car that crossed the English Channel. A car in a lake with oars out of the windows is still moving forward.",
+  "image": "/wasl-rebrand/rowing_car.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 4,
+  "savedNote": "Not bad. Let's keep it."
+ },
+ {
+  "id": "flying_tractors",
+  "n": 33,
+  "name": "Flying Tractors",
+  "domain": "flyingtractors.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Two sources in one picture. In Cars, McQueen and Mater sneak into the field at night and one honk sends the tractors tipping over. And Porsche built 125,000 red tractors in the old Zeppelin airship factory in Friedrichshafen: farm machines made where flying machines were built. The heaviest thing on the farm, in the air.",
+  "image": "/wasl-rebrand/flying_tractors.jpg",
+  "saved": "Saved by Oleg in round five",
+  "savedRating": 3,
+  "savedNote": "I think the word \"tractor\" is not that good. Sorry.  But let's keep it, okay"
  }
 ]

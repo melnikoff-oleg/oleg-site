@@ -21,5 +21,5 @@ export type NameIdea = {
 
 export const NAMES = raw as NameIdea[];
 export const NAME_IDS = NAMES.map((x) => x.id);
-/** The names that still need a score: the saved ones already carry Oleg's. */
-export const TO_RATE = NAMES.filter((x) => !x.savedRating);
+/** Every name needs a score from each reviewer; Oleg's own score is shown on the card as context. */
+export const TO_RATE = NAMES;
