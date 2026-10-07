@@ -116,11 +116,11 @@ export function RateFlow({ names }: { names: NameIdea[] }) {
     <>
       <header className="ubs-hero">
         <div className="ubs-eyebrow"><span className="ubs-dot" />Wasl Apps · the new name</div>
-        <h1>Thirty-three names. <em>Oleg’s picks, his score first.</em></h1>
-        <p>Five rounds, about 1,000 screened names, three blind judges each round. These are the thirty-three Oleg saved, in the order of his own score, with his note on each. Simple words, one funny picture, a story behind it. Every .com is free to register today. Score each from 1 to 10 and add a comment if you like. At the end you see how everyone voted.</p>
+        <h1>Twenty-two names. <em>Each with a story.</em></h1>
+        <p>Five rounds, about 1,000 screened names, three blind judges each round. These are the twenty-two that made it through. Simple words, one funny picture, a story behind it. Every .com is free to register today. Score each from 1 to 10 and add a comment if you like. At the end you see how everyone voted.</p>
         <div className="ubs-stats">
           <div><b>5</b><span>rounds</span></div>
-          <div><b>{toRate.length}</b><span>names saved</span></div>
+          <div><b>{toRate.length}</b><span>finalists</span></div>
           <div><b>.com</b><span>all available</span></div>
         </div>
         {stage === "intro" && (
