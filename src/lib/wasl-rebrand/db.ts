@@ -1,4 +1,4 @@
-// Supabase data layer for /wasl-rebrand, where people rate the ten name candidates for the
+// Supabase data layer for /wasl-rebrand, where people rate the name candidates for the
 // Wasl Apps rebrand.
 //
 // Server-side only, with the SERVICE ROLE key. The two tables (wasl_vote_submission,

@@ -1,92 +1,202 @@
 [
  {
-  "id": "adding_lightness",
+  "id": "pillow_tower",
   "n": 1,
-  "name": "Adding Lightness",
-  "domain": "addinglightness.com",
+  "name": "Pillow Tower",
+  "domain": "pillowtower.com",
   "price": "Free to register, about $11 a year",
-  "story": "Colin Chapman, the founder of Lotus, had one rule for building race cars: simplify, then add lightness. You cannot add lightness, and yet his cars won seven Formula 1 constructors' titles with less power than their rivals. It is the Bending Spoons kind of name, an impossible act, and it is also the whole product philosophy in two words: every good thing you ship is something you took away.",
-  "image": "/wasl-rebrand/adding_lightness.jpg"
+  "story": "In Spirited Away the witch Yubaba keeps her giant baby in a room buried under a mountain of pillows. Nobody sees the baby. They only see the pillows, stacked higher than a man. Something enormous, hidden under something soft. The founders know what is under the pillows. Everyone else just remembers the picture.",
+  "image": "/wasl-rebrand/pillow_tower.jpg"
  },
  {
-  "id": "signed_inside",
+  "id": "hollow_rabbit",
   "n": 2,
-  "name": "Signed Inside",
-  "domain": "signedinside.com",
+  "name": "Hollow Rabbit",
+  "domain": "hollowrabbit.com",
   "price": "Free to register, about $11 a year",
-  "story": "In 1982 the team that built the first Macintosh signed a sheet of paper. Steve Jobs had the signatures moulded into the inside of every case, where no customer would ever look, because real artists sign their work. A name for a company that puts its name on everything it ships, even the parts nobody opens.",
-  "image": "/wasl-rebrand/signed_inside.jpg"
+  "story": "Monty Python and the Holy Grail. The knights cannot take the French castle, so they build a huge wooden rabbit on wheels and roll it to the gate. The French pull it inside. Then the knights realise they forgot to climb in. The company is the rabbit: big, beautifully built, with a secret inside. The founders keep the joke to themselves.",
+  "image": "/wasl-rebrand/hollow_rabbit.jpg"
  },
  {
-  "id": "eight_proofs",
+  "id": "rolling_ducks",
   "n": 3,
-  "name": "Eight Proofs",
-  "domain": "eightproofs.com",
+  "name": "Rolling Ducks",
+  "domain": "rollingducks.com",
   "price": "Free to register, about $11 a year",
-  "story": "Gauss called one result his golden theorem. He proved it at 19. Then he proved it again, and again, eight different ways across his life, because no single proof satisfied him. One right answer is enough for most people. Eight is taste. A number plus a noun, like 37signals, for founders who came out of a maths school.",
-  "image": "/wasl-rebrand/eight_proofs.jpg"
+  "story": "In 1932 a carpenter in Billund, Denmark, made a wooden duck on red wheels. You pulled it on a string and its beak opened and closed as it rolled. That duck was the first toy of the company that became Lego. Every big system starts as one small thing that moves.",
+  "image": "/wasl-rebrand/rolling_ducks.jpg"
  },
  {
-  "id": "crown_flint",
+  "id": "moon_tram",
   "n": 4,
-  "name": "Crown Flint",
-  "domain": "crownflint.com",
+  "name": "Moon Tram",
+  "domain": "moontram.com",
   "price": "Free to register, about $11 a year",
-  "story": "Every good lens is two pieces of glass: one of crown glass, one of flint glass. Each bends colour wrongly on its own. Put together, they cancel each other's error and the image comes out sharp. That is how telescopes and cameras became possible. A name about co-founders, and about products where two imperfect parts make one clear thing.",
-  "image": "/wasl-rebrand/crown_flint.jpg"
+  "story": "The Master and Margarita opens at Patriarch's Ponds in Moscow, a tram, a full moon, a stranger who says exactly how the evening will end. Everything in the book turns on that tram under that moon. A thing you take every day meeting something enormous above it.",
+  "image": "/wasl-rebrand/moon_tram.jpg"
  },
  {
-  "id": "vine_black",
+  "id": "iron_mushroom",
   "n": 5,
-  "name": "Vine Black",
-  "domain": "vineblack.com",
+  "name": "Iron Mushroom",
+  "domain": "ironmushroom.com",
   "price": "Free to register, about $11 a year",
-  "story": "One of the oldest blacks in painting is vine black: charred grapevine twigs, ground to powder. Painters have used it since antiquity and it does not fade. A deep, lasting thing made out of almost nothing. Short, dark and elegant, and it already looks good on a black hoodie.",
-  "image": "/wasl-rebrand/vine_black.jpg"
+  "story": "In Zelda, Breath of the Wild, there is a mushroom that grows out of rock on cliffs. It is called the ironshroom. Cook it and you get tougher. A soft thing made of a hard material. You hear the name once and you see it.",
+  "image": "/wasl-rebrand/iron_mushroom.jpg"
+ },
+ {
+  "id": "paper_stove",
+  "n": 6,
+  "name": "Paper Stove",
+  "domain": "paperstove.com",
+  "price": "Free to register, about $11 a year",
+  "story": "In The Master and Margarita the writer burns his novel in a small basement stove. Later the devil's cat hands it back without a mark: manuscripts do not burn. The name keeps the stove and the paper. The sentence stays hidden, for the founders only.",
+  "image": "/wasl-rebrand/paper_stove.jpg"
+ },
+ {
+  "id": "standing_pencil",
+  "n": 7,
+  "name": "Standing Pencil",
+  "domain": "standingpencil.com",
+  "price": "Free to register, about $11 a year",
+  "story": "The Dark Knight. The Joker walks into a meeting of every crime boss in Gotham and offers a magic trick: he stands a pencil upright in the table and makes it disappear. One small object, one impossible move, and nobody in the room ever forgets it.",
+  "image": "/wasl-rebrand/standing_pencil.jpg"
+ },
+ {
+  "id": "lamp_boat",
+  "n": 8,
+  "name": "Lamp Boat",
+  "domain": "lampboat.com",
+  "price": "Free to register, about $11 a year",
+  "story": "In Spirited Away, at dusk, a ferry crosses the river with no engine sound and no crew you can see, only rows of paper lamps. The whole town wakes up when it arrives. A boat made of light.",
+  "image": "/wasl-rebrand/lamp_boat.jpg"
+ },
+ {
+  "id": "butter_goat",
+  "n": 9,
+  "name": "Butter Goat",
+  "domain": "buttergoat.com",
+  "price": "Free to register, about $11 a year",
+  "story": "In Zelda, Breath of the Wild, every cake you bake needs goat butter. A goat and a block of butter. Silly to say out loud, impossible to forget. This is the Mustard and Linen kind of name: two plain things that should not sit together, and now you cannot unsee them.",
+  "image": "/wasl-rebrand/butter_goat.jpg"
+ },
+ {
+  "id": "brick_airport",
+  "n": 10,
+  "name": "Brick Airport",
+  "domain": "brickairport.com",
+  "price": "Free to register, about $11 a year",
+  "story": "In 1964 the toy company in Billund, a village in Denmark, built its own airport so the bricks could leave the village. Billund Airport is still there and is now the second biggest in Denmark. A company that builds its own runway.",
+  "image": "/wasl-rebrand/brick_airport.jpg"
+ },
+ {
+  "id": "lion_suitcase",
+  "n": 11,
+  "name": "Lion Suitcase",
+  "domain": "lionsuitcase.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Dmitri Mendeleev, the man who wrote the periodic table, cut his hair once a year and painters gave him the mane of a lion. In Moscow shops he was known as something else: the suitcase master, because he made leather suitcases by hand as a hobby. The lion and the suitcase in one name.",
+  "image": "/wasl-rebrand/lion_suitcase.jpg"
+ },
+ {
+  "id": "painted_ducks",
+  "n": 12,
+  "name": "Painted Ducks",
+  "domain": "paintedducks.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Billund, 1930s. Godtfred, the founder's son, saved money by giving a batch of wooden ducks two coats of varnish instead of three. His father sent him to the railway station to bring the crates back and paint them again. Only the best is good enough. The ducks are the company: nothing leaves half finished.",
+  "image": "/wasl-rebrand/painted_ducks.jpg"
+ },
+ {
+  "id": "lake_sword",
+  "n": 13,
+  "name": "Lake Sword",
+  "domain": "lakesword.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Monty Python and the Holy Grail. King Arthur explains that a lady rose from a lake and handed him a sword, which is why he is king. A peasant named Dennis replies that strange women lying in ponds handing out swords is no basis for a system of government. The sword from the lake: the founding object of a whole kingdom.",
+  "image": "/wasl-rebrand/lake_sword.jpg"
+ },
+ {
+  "id": "rocket_fields",
+  "n": 14,
+  "name": "Rocket Fields",
+  "domain": "rocketfields.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Interstellar. The world is all farms and dust, and NASA is officially closed. Cooper cuts through a wire fence in the middle of farm country and finds the biggest rocket on Earth hidden inside a mountain. The largest launch in history, started from a field.",
+  "image": "/wasl-rebrand/rocket_fields.jpg"
+ },
+ {
+  "id": "fifty_mirrors",
+  "n": 15,
+  "name": "Fifty Mirrors",
+  "domain": "fiftymirrors.com",
+  "price": "Free to register, about $11 a year",
+  "story": "The Master and Margarita. Everything strange in Moscow happens in apartment number 50, and the devil's retinue steps straight out of the hall mirror. The number and the object, nothing explained. Fifty mirrors: a hallway you could walk into forever.",
+  "image": "/wasl-rebrand/fifty_mirrors.jpg"
+ },
+ {
+  "id": "cow_flight",
+  "n": 16,
+  "name": "Cow Flight",
+  "domain": "cowflight.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Monty Python and the Holy Grail. The knights demand the French castle. The French answer by firing a cow over the wall with a catapult. The shortest, strangest picture in the film: a cow in the air. Two short words that nobody will ever forget.",
+  "image": "/wasl-rebrand/cow_flight.jpg"
+ },
+ {
+  "id": "copper_bells",
+  "n": 17,
+  "name": "Copper Bells",
+  "domain": "copperbells.com",
+  "price": "Free to register, about $11 a year",
+  "story": "On every mountain stage of the Tour de France the crowd rings copper cowbells, carried up the Alpe d'Huez days before the riders arrive. Warm metal, loud, made by hand, built to last a hundred summers. The sound of a mountain full of people cheering for someone who cannot see them.",
+  "image": "/wasl-rebrand/copper_bells.jpg"
+ },
+ {
+  "id": "honey_arrow",
+  "n": 18,
+  "name": "Honey Arrow",
+  "domain": "honeyarrow.com",
+  "price": "Free to register, about $11 a year",
+  "story": "In Zelda, Breath of the Wild, the beehives hang from branches full of honey. You cannot climb to them. You shoot an arrow and the honey drops at your feet. The sweet thing is right there. You just have to aim.",
+  "image": "/wasl-rebrand/honey_arrow.jpg"
+ },
+ {
+  "id": "magnet_hand",
+  "n": 19,
+  "name": "Magnet Hand",
+  "domain": "magnethand.com",
+  "price": "Free to register, about $11 a year",
+  "story": "In Zelda, Breath of the Wild, the first power you get is a magnet in your hand. Point it at anything made of metal and it lifts into the air: a chest out of a pond, a bridge into place. Heavy things moved with no visible effort.",
+  "image": "/wasl-rebrand/magnet_hand.jpg"
+ },
+ {
+  "id": "six_kettles",
+  "n": 20,
+  "name": "Six Kettles",
+  "domain": "sixkettles.com",
+  "price": "Free to register, about $11 a year",
+  "story": "Spirited Away. Under the bathhouse is a boiler room where a man with six arms works six kettles at once, grinding herbs and feeding the furnace that heats every bath upstairs. The engine room nobody upstairs ever sees.",
+  "image": "/wasl-rebrand/six_kettles.jpg"
  },
  {
   "id": "forty_flags",
-  "n": 6,
+  "n": 21,
   "name": "Forty Flags",
   "domain": "fortyflags.com",
   "price": "Free to register, about $11 a year",
   "story": "The International Code of Signals is exactly forty flags. With them, any ship can talk to any other ship, in any language, anywhere on the sea. It is the closest cousin of 37signals there is: a number, a noun, and a story about a small set of simple things that lets the whole world connect. 40flags.com is free too.",
-  "image": "/wasl-rebrand/forty_flags.jpg"
+  "image": "/wasl-rebrand/forty_flags.jpg",
+  "saved": "Saved by Oleg from round three"
  },
  {
   "id": "painting_air",
-  "n": 7,
+  "n": 22,
   "name": "Painting Air",
   "domain": "paintingair.com",
   "price": "Free to register, about $11 a year",
   "story": "Claude Monet, 1895: other painters paint a bridge, a house, a boat. I want to paint the air in which the bridge, the house and the boat are, and that is nothing less than the impossible. The same shape as Bending Spoons. For a company that cares about the part of a product nobody can point at: the feel.",
-  "image": "/wasl-rebrand/painting_air.jpg"
- },
- {
-  "id": "venus_arc",
-  "n": 8,
-  "name": "Venus Arc",
-  "domain": "venusarc.com",
-  "price": "Free to register, about $11 a year",
-  "story": "On 6 June 1761, in St Petersburg, Mikhail Lomonosov watched Venus cross the Sun. Everyone saw the same thing. He alone noticed a hair-thin arc of light around the planet and concluded, correctly and first, that Venus has an atmosphere. A name about seeing what everybody looked at and nobody saw.",
-  "image": "/wasl-rebrand/venus_arc.jpg"
- },
- {
-  "id": "dash_eighty",
-  "n": 9,
-  "name": "Dash Eighty",
-  "domain": "dasheighty.com",
-  "price": "Free to register, about $11 a year",
-  "story": "In 1955 Boeing had one prototype jet, the Dash 80, and every airline boss in America watching from the shore. Test pilot Tex Johnston flew it over them and rolled it upside down. Asked what he thought he was doing, he said: I was selling airplanes. The plane became the 707. A name for people who show the product instead of the deck.",
-  "image": "/wasl-rebrand/dash_eighty.jpg"
- },
- {
-  "id": "dazzle_fleet",
-  "n": 10,
-  "name": "Dazzle Fleet",
-  "domain": "dazzlefleet.com",
-  "price": "Free to register, about $11 a year",
-  "story": "In 1917 the Royal Navy could not hide its ships from submarines. So the painter Norman Wilkinson did the opposite: thousands of ships were painted in loud cubist stripes, so no periscope could tell which way they were going. Design as a weapon, and the bravest brief a designer ever got. The best sounding name on the list.",
-  "image": "/wasl-rebrand/dazzle_fleet.jpg"
+  "image": "/wasl-rebrand/painting_air.jpg",
+  "saved": "Saved by Oleg from round three"
  }
 ]

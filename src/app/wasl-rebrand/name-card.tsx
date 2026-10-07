@@ -9,6 +9,7 @@ export function NameCard({ idea }: { idea: NameIdea }) {
       <div className="wsl-body">
         <div className="wsl-rank">{String(idea.n).padStart(2, "0")}</div>
         <h2>{idea.name}</h2>
+        {idea.saved && <div className="wsl-saved">{idea.saved}</div>}
         <div className="wsl-domain"><b>{idea.domain}</b><span>{idea.price}</span></div>
         <p>{idea.story}</p>
       </div>

@@ -33,3 +33,5 @@
 .wsl-body p { margin: 0; color: var(--mute); font-size: 16px; line-height: 1.55; text-wrap: pretty; }
 .wsl-res img { width: 104px; height: 104px; }
 @media (max-width: 619px) { .wsl-body { padding: 18px 18px 22px; } .wsl-feed { gap: 48px; } }
+
+.wsl-saved { display: inline-block; margin: 2px 0 8px; padding: 3px 10px; border-radius: 999px; font-size: 12px; letter-spacing: .02em; color: #9fc0ff; background: rgba(40, 99, 240, .18); border: 1px solid rgba(40, 99, 240, .45); }

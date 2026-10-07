@@ -1,4 +1,4 @@
-// The ten name candidates for the Wasl Apps rebrand, strongest first. names.json and
+// The name candidates for the Wasl Apps rebrand, strongest first. names.json and
 // public/wasl-rebrand are generated in the vault (projects/wasl_apps_rebrand/); edit there.
 import raw from "./names.json";
 
@@ -12,6 +12,8 @@ export type NameIdea = {
   /** The story behind the name, 500 characters at most. */
   story: string;
   image: string;
+  /** Set on a name carried over from an earlier round. */
+  saved?: string;
 };
 
 export const NAMES = raw as NameIdea[];

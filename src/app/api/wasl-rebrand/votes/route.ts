@@ -1,4 +1,4 @@
-// GET  /api/wasl-rebrand/votes         -> results for the ten names
+// GET  /api/wasl-rebrand/votes         -> results for every name
 // POST /api/wasl-rebrand/votes         -> { name, votes: [{ name_id, rating, note }] }, then the results
 //
 // A submission must rate EVERY name on the rating page (1 to 10); notes are optional.
