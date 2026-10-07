@@ -7,7 +7,8 @@ import { useEffect, useRef, useState } from "react";
 import type { Post } from "./data";
 import { PostCard, RefProof } from "./post-card";
 
-const KEY = "ubn-draft-v3";
+// One draft per page, and a new key each round so last round's scores never prefill the new drafts.
+const KEY = "ubn-draft-v4";
 const WHO = [
   { id: "all", label: "All" },
   { id: "ivan", label: "Ivan" },
@@ -17,7 +18,8 @@ const WHO = [
 
 type Draft = { name: string; ratings: Record<string, number>; notes: Record<string, string> };
 
-export function Board({ posts, archive = false }: { posts: Post[]; archive?: boolean }) {
+export function Board({ posts, archive }: { posts: Post[]; archive?: string }) {
+  const key = archive ? `${KEY}-${archive}` : KEY;
   const [filter, setFilter] = useState<string>("all");
   const [draft, setDraft] = useState<Draft>({ name: "", ratings: {}, notes: {} });
   const [loaded, setLoaded] = useState(false);
@@ -30,14 +32,14 @@ export function Board({ posts, archive = false }: { posts: Post[]; archive?: boo
 
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(KEY);
+      const raw = localStorage.getItem(key);
       if (raw) setDraft({ name: "", ratings: {}, notes: {}, ...JSON.parse(raw) });
     } catch {}
     setLoaded(true);
   }, []);
   useEffect(() => {
     if (!loaded) return;
-    try { localStorage.setItem(KEY, JSON.stringify(draft)); } catch {}
+    try { localStorage.setItem(key, JSON.stringify(draft)); } catch {}
   }, [draft, loaded]);
 
   const touched = posts.filter((p) => draft.ratings[p.id] || draft.notes[p.id]?.trim()).length;
@@ -88,7 +90,7 @@ export function Board({ posts, archive = false }: { posts: Post[]; archive?: boo
     <>
       <header className="ubs-hero">
         <div className="ubs-eyebrow"><span className="ubs-dot" />übernatural · LinkedIn drafts</div>
-        <h1>{archive ? <>{posts.length} posts, <em>round two archive.</em></> : <>{posts.length} posts, <em>best first.</em></>}</h1>
+        <h1>{archive ? <>{posts.length} posts, <em>{archive}.</em></> : <>{posts.length} posts, <em>round four.</em></>}</h1>
         <p>Every draft exactly as it would appear on LinkedIn, with the viral post it borrows its format from underneath. Score any of them from 1 to 10, add a note if you like, and press Submit. You do not have to rate them all.</p>
         <div className="ubs-stats">
           <div><b>{posts.length}</b><span>posts</span></div>

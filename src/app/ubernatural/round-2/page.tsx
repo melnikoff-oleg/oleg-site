@@ -5,5 +5,5 @@ import type { Post } from "../data";
 import { Board } from "../board";
 
 export default function RoundTwoArchive() {
-  return <Board posts={raw as unknown as Post[]} archive />;
+  return <Board posts={raw as unknown as Post[]} archive="round two archive" />;
 }
