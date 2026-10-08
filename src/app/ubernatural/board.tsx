@@ -8,7 +8,7 @@ import type { Post } from "./data";
 import { PostCard, RefProof } from "./post-card";
 
 // One draft per page, and a new key each round so last round's scores never prefill the new drafts.
-const KEY = "ubn-draft-v5";
+const KEY = "ubn-draft-v6";
 const WHO = [
   { id: "all", label: "All" },
   { id: "ivan", label: "Ivan" },
@@ -42,6 +42,7 @@ export function Board({ posts, archive }: { posts: Post[]; archive?: string }) {
     try { localStorage.setItem(key, JSON.stringify(draft)); } catch {}
   }, [draft, loaded]);
 
+  const open = posts.filter((p) => !p.approved);
   const touched = posts.filter((p) => draft.ratings[p.id] || draft.notes[p.id]?.trim()).length;
   const rated = posts.filter((p) => draft.ratings[p.id]).length;
   const nameOk = draft.name.trim().replace(/\s+/g, " ").split(" ").length >= 2 && draft.name.trim().length >= 3;
@@ -90,11 +91,12 @@ export function Board({ posts, archive }: { posts: Post[]; archive?: string }) {
     <>
       <header className="ubs-hero">
         <div className="ubs-eyebrow"><span className="ubs-dot" />übernatural · LinkedIn drafts</div>
-        <h1>{archive ? <>{posts.length} posts, <em>{archive}.</em></> : <>{posts.length} posts, <em>round five.</em></>}</h1>
-        <p>Every draft exactly as it would appear on LinkedIn, with the viral post it borrows its format from underneath. Score any of them from 1 to 10, add a note if you like, and press Submit. You do not have to rate them all.</p>
+        <h1>{archive ? <>{posts.length} posts, <em>{archive}.</em></> : <>{posts.length} posts, <em>round six.</em></>}</h1>
+        <p>Every draft exactly as it would appear on LinkedIn, with the viral post it borrows its format from underneath. {open.length} posts need a score; the {posts.length - open.length} you already approved sit below with their score and are not rated again.</p>
         <div className="ubs-stats">
           <div><b>{posts.length}</b><span>posts</span></div>
-          <div><b>3</b><span>founders</span></div>
+          <div><b>{open.length}</b><span>to rate</span></div>
+          <div><b>{posts.length - open.length}</b><span>approved</span></div>
           <div><b>{new Set(posts.map((p) => p.format)).size}</b><span>formats</span></div>
         </div>
       </header>
@@ -121,6 +123,11 @@ export function Board({ posts, archive }: { posts: Post[]; archive?: string }) {
             </div>
             <PostCard post={p} />
             <RefProof post={p} />
+            {p.approved ? (
+            <div className="ubs-rate ubs-approved">
+              <div className="ubs-rate-label">Approved, {p.approved}/10. Ready to ship.</div>
+            </div>
+            ) : (
             <div className="ubs-rate">
               <div className="ubs-rate-label" id={`lbl-${p.id}`}>Your score for this post</div>
               <div className="ubs-scale" role="group" aria-labelledby={`lbl-${p.id}`}>
@@ -136,6 +143,7 @@ export function Board({ posts, archive }: { posts: Post[]; archive?: string }) {
                 onChange={(e) => note(p.id, e.target.value)}
               />
             </div>
+            )}
           </section>
         ))}
       </main>
@@ -144,8 +152,8 @@ export function Board({ posts, archive }: { posts: Post[]; archive?: string }) {
       <div className="ubs-bar">
         <div className="ubs-bar-in">
           <div>
-            <div className="ubs-count">{rated} of {posts.length} scored{touched > rated ? `, ${touched - rated} with a note only` : ""}{done ? " · saved" : ""}</div>
-            <div className="ubs-prog" aria-hidden="true"><i style={{ width: `${(touched / Math.max(posts.length, 1)) * 100}%` }} /></div>
+            <div className="ubs-count">{rated} of {open.length} to rate scored{touched > rated ? `, ${touched - rated} with a note only` : ""}{done ? " · saved" : ""}</div>
+            <div className="ubs-prog" aria-hidden="true"><i style={{ width: `${(touched / Math.max(open.length, 1)) * 100}%` }} /></div>
             {error && <div className="ubs-error" role="alert">{error}</div>}
           </div>
           <button className="ubs-cta" aria-disabled={touched === 0 || sending} onClick={trySubmit} disabled={sending}>

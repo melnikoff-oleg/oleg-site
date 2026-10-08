@@ -3,3 +3,6 @@
 .ubn-ref { display: flex; flex-direction: column; gap: 6px; }
 .ubn-ref-top { color: var(--mute); }
 .ubn-why { font-size: 13px; line-height: 1.5; color: var(--faint); text-wrap: pretty; }
+
+.ubs-rate.ubs-approved{background:#EEF7EE;border-color:#BFE0BF}
+.ubs-rate.ubs-approved .ubs-rate-label{color:#1E6B2E;font-weight:600;margin:0}
