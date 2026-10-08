@@ -8,7 +8,7 @@ import type { Post } from "./data";
 import { PostCard, RefProof } from "./post-card";
 
 // One draft per page, and a new key each round so last round's scores never prefill the new drafts.
-const KEY = "ubn-draft-v4";
+const KEY = "ubn-draft-v5";
 const WHO = [
   { id: "all", label: "All" },
   { id: "ivan", label: "Ivan" },
@@ -90,7 +90,7 @@ export function Board({ posts, archive }: { posts: Post[]; archive?: string }) {
     <>
       <header className="ubs-hero">
         <div className="ubs-eyebrow"><span className="ubs-dot" />übernatural · LinkedIn drafts</div>
-        <h1>{archive ? <>{posts.length} posts, <em>{archive}.</em></> : <>{posts.length} posts, <em>round four.</em></>}</h1>
+        <h1>{archive ? <>{posts.length} posts, <em>{archive}.</em></> : <>{posts.length} posts, <em>round five.</em></>}</h1>
         <p>Every draft exactly as it would appear on LinkedIn, with the viral post it borrows its format from underneath. Score any of them from 1 to 10, add a note if you like, and press Submit. You do not have to rate them all.</p>
         <div className="ubs-stats">
           <div><b>{posts.length}</b><span>posts</span></div>
