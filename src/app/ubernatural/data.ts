@@ -6,6 +6,7 @@ import round2 from "./round-2/posts-round-2.json";
 import round3 from "./round-3/posts-round-3.json";
 import round4 from "./round-4/posts-round-4.json";
 import round5 from "./round-5/posts-round-5.json";
+import round6 from "./round-6/posts-round-6.json";
 
 export type Post = {
   id: string;
@@ -38,4 +39,4 @@ export type Post = {
 
 export const POSTS = raw as unknown as Post[];
 // Votes are accepted for any post shown on any page, so the archives stay rateable.
-export const POST_IDS = [...new Set([...POSTS, ...(round2 as unknown as Post[]), ...(round3 as unknown as Post[]), ...(round4 as unknown as Post[]), ...(round5 as unknown as Post[])].map((p) => p.id))];
+export const POST_IDS = [...new Set([...POSTS, ...(round2 as unknown as Post[]), ...(round3 as unknown as Post[]), ...(round4 as unknown as Post[]), ...(round5 as unknown as Post[]), ...(round6 as unknown as Post[])].map((p) => p.id))];
