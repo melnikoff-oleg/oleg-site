@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Put the CSS in the HTML instead of two render-blocking requests, so the
+    // first paint needs one round trip, not two. Measured 2026-10-16, Lighthouse
+    // mobile with real (devtools) throttling: FCP and LCP 1.6 s without, 0.8-0.9 s
+    // with. The cost is bytes: the HTML grows ~36 KB gzipped (the stylesheet is
+    // also repeated in the RSC payload) and nothing is cached across pages, a
+    // fair trade for a site whose visitors mostly arrive cold from a video.
+    inlineCss: true,
+  },
   images: {
     // Prefer modern formats for the optimized <Image> outputs.
     formats: ["image/avif", "image/webp"],

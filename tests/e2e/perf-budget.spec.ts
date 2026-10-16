@@ -41,7 +41,10 @@ test("81 - the homepage stays under its weight budget", async ({ page }) => {
   const w = await weigh(page, "/");
   expect(w.font / KB, "fonts").toBeLessThan(70);
   expect(w.js / KB, "javascript").toBeLessThan(140);
-  expect(w.total / KB, "total").toBeLessThan(280);
+  // 280 until 2026-10-16, when the CSS was inlined into the HTML (next.config.ts
+  // experimental.inlineCss): +~15 KB net on the wire, bought for one less
+  // render-blocking round trip (FCP 1.6 s to 0.8 s on throttled mobile).
+  expect(w.total / KB, "total").toBeLessThan(310);
 });
 
 // Test 82: a guide page is pure server-rendered reading matter. It must not

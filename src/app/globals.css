@@ -72,16 +72,18 @@ body {
   }
 }
 
+/* Named "blur" for history: it no longer animates filter. A blur(12px) on
+   every word of the hero kept the phone's main thread busy rasterising for the
+   whole entrance, which Lighthouse measured as up to 1.1 s of LCP render delay
+   (2026-10-16). Opacity and transform run on the compositor and cost nothing. */
 @keyframes reveal-blur {
   from {
     opacity: 0;
     transform: translateY(12px);
-    filter: blur(12px);
   }
   to {
     opacity: 1;
     transform: none;
-    filter: blur(0);
   }
 }
 /* Hidden only when JS runs (layout.tsx adds .js), so no-script visitors and

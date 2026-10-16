@@ -78,6 +78,17 @@ screens from 320 px to 2560 px; hero photo shown 3.3 s before, 0.77-1.04 s after
 CLS 0; no horizontal overflow on any screen; nothing below the fold fetched before
 scroll on any screen.
 
+## Lighthouse
+
+Lighthouse 12.6.1, mobile, real (devtools) throttling: score 100, FCP 0.8 s,
+LCP 0.9 s, TBT 0-10 ms, CLS 0 (three runs, production build). Two changes came
+out of reading its trace: the hero words no longer animate filter: blur (up to
+1.1 s of LCP render delay on a phone CPU), and the CSS is inlined into the HTML
+(FCP 1.6 s to 0.8 s under the same throttle). Lighthouse's default simulated mode
+reports LCP 2.7 s for the same build because it replays every script that
+finished before the observed paint onto its model network; the applied-throttle
+run and scripts/perf-home.mjs both measure the paint itself.
+
 ## Sources
 
 - https://core.telegram.org/type/PhotoSize
