@@ -1,11 +1,12 @@
-"use client";
-
 import Image from "next/image";
-import Link from "next/link";
+import { SectionLink } from "@/components/section-link";
 import { TextEffect } from "@/components/motion/text-effect";
 import { AnimatedGroup } from "@/components/motion/animated-group";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
+// Static import so Next inlines a ~300-byte blurred preview (the Telegram
+// "stripped thumbnail" idea): the frame is never an empty box while the photo loads.
+import hero from "../../public/hero.jpg";
 
 export function HeroSection() {
   return (
@@ -31,7 +32,7 @@ export function HeroSection() {
           {/* Main heading */}
           <TextEffect
             as="h1"
-            delay={0.2}
+            delay={0}
             segmentClassName="text-metallic"
             className="mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-medium leading-[1.05] tracking-tight text-silver sm:text-3xl md:text-4xl lg:text-5xl"
           >
@@ -41,7 +42,7 @@ export function HeroSection() {
           {/* Subheading */}
           <TextEffect
             as="p"
-            delay={0.6}
+            delay={0.15}
             per="line"
             className="mx-auto mt-6 max-w-2xl text-balance font-body text-lg text-silver-muted md:text-xl"
           >
@@ -54,7 +55,7 @@ export function HeroSection() {
               container: {
                 hidden: {},
                 visible: {
-                  transition: { staggerChildren: 0.1, delayChildren: 1 },
+                  transition: { staggerChildren: 0.1, delayChildren: 0.3 },
                 },
               },
               item: {
@@ -69,7 +70,7 @@ export function HeroSection() {
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <Button asChild size="lg" variant="primary">
-              <Link href="#vision">
+              <SectionLink href="#vision">
                 see the vision
                 <svg
                   viewBox="0 0 20 20"
@@ -82,41 +83,24 @@ export function HeroSection() {
                   clipRule="evenodd"
                 />
                 </svg>
-              </Link>
+              </SectionLink>
             </Button>
             <Button asChild size="lg" variant="ghost">
-              <Link href="#connect">let&apos;s connect</Link>
+              <SectionLink href="#connect">let&apos;s connect</SectionLink>
             </Button>
           </AnimatedGroup>
         </div>
 
-        {/* Hero image */}
-        <AnimatedGroup
-          variants={{
-            container: {
-              hidden: {},
-              visible: {
-                transition: { delayChildren: 1.2 },
-              },
-            },
-            item: {
-              hidden: { opacity: 0, y: 24, filter: "blur(12px)" },
-              visible: {
-                opacity: 1,
-                y: 0,
-                filter: "blur(0px)",
-                transition: { type: "spring", bounce: 0.2, duration: 2 },
-              },
-            },
-          }}
-          className="mt-16 px-4 sm:px-6"
-        >
+        {/* Hero image. No entrance animation on purpose: it is the largest
+            thing on screen, so it shows the moment it arrives, and the inline
+            blurred preview underneath is the transition (a fade-in held the
+            browser's LCP back to the end of the animation, ~1.8s on a phone). */}
+        <div className="mt-16 px-4 sm:px-6">
           <div className="surface-card glow-blue relative mx-auto max-w-4xl overflow-hidden p-2">
             <Image
-              src="/hero.jpg"
+              src={hero}
               alt="Oleg Melnikov"
-              width={2560}
-              height={1706}
+              placeholder="blur"
               quality={90}
               className="rounded-xl"
               sizes="(max-width: 896px) 100vw, 896px"
@@ -124,18 +108,21 @@ export function HeroSection() {
             />
 
             {/* Soft scrim: a short, gentle band at the very bottom only, so the
-                glass panel blends in without darkening Oleg's face above it */}
-            <div className="pointer-events-none absolute inset-x-2 bottom-2 h-1/3 rounded-b-xl bg-gradient-to-t from-navy/80 to-transparent" />
+                glass panel blends in without darkening Oleg's face above it.
+                Overlay layout only (sm and up); on a phone the quote sits below. */}
+            <div className="pointer-events-none absolute inset-x-2 bottom-2 hidden h-1/3 sm:block rounded-b-xl bg-gradient-to-t from-navy/80 to-transparent" />
 
-            {/* Quote overlay: self-contained glass panel for crisp readability */}
+            {/* Quote: a glass panel over the photo from sm up. On a phone the photo
+                is too small to carry it, the panel covered the face at 390px, so
+                there it sits in the card under the photo instead. */}
             <Reveal
               as="figure"
               immediate
               variant="blur"
-              delay={1.8}
-              className="absolute inset-x-2 bottom-[12%] px-3 sm:px-4"
+              delay={0.8}
+              className="mt-2 sm:absolute sm:inset-x-2 sm:bottom-[12%] sm:mt-0 sm:px-4"
             >
-              <div className="mx-auto max-w-3xl rounded-xl border border-hairline bg-navy/70 px-5 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
+              <div className="mx-auto max-w-3xl rounded-xl border border-hairline bg-navy/70 px-4 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
                 <blockquote className="text-balance font-display text-base font-medium leading-snug tracking-tight text-silver sm:text-xl md:text-2xl">
                   <span className="text-silver-muted">&ldquo;</span>made{" "}
                   <span className="text-metallic">$700k by the age 24</span> by
@@ -148,10 +135,10 @@ export function HeroSection() {
 
             <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-hairline" />
           </div>
-        </AnimatedGroup>
+        </div>
 
         {/* Bottom fade */}
-        <div className="pointer-events-none relative -mt-32 h-32 bg-gradient-to-t from-navy to-transparent" />
+        <div className="pointer-events-none relative -mt-32 hidden h-32 bg-gradient-to-t from-navy to-transparent sm:block" />
       </div>
     </section>
   );

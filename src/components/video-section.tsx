@@ -4,9 +4,13 @@ import { LazyVideo } from "@/components/lazy-video";
 
 const YOUTUBE_URL = "https://youtu.be/AKtT6NLZGoM";
 
+// python3 scripts/stripped-thumb.py public/preview-poster.jpg
+const POSTER_THUMB =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD//gAQTGF2YzYxLjE5LjEwMQD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAASACADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDEt7cEDitW1sV8vc5ZVwTlRnn+lZcF5CGALjnpwauXGtrHbGKCNZBjlm6demO9D2Ki0nqNmsPmZXS6nYE42sSp446GqLWgVpduntuBHDYG3j3NSWus3n2tkgZCrnhWAXJx0Hp6VbuZpg08gcKWwxRkBI4x/ShPowkt2tjJiRSwyoPPpUMnFqccfvT/ACoooEVpPumtXWySUYnkryfwFFFJ7opfCz//2Q==";
+
 export function VideoSection() {
   return (
-    <section id="watch" className="py-16 md:py-32">
+    <section id="watch" className="offscreen-lazy py-16 md:py-32">
       <RevealGroup stagger={0.15} className="mx-auto max-w-4xl px-6">
         <h2 className="eyebrow font-body text-[13px] text-vivid-blue">
           Watch
@@ -27,6 +31,7 @@ export function VideoSection() {
             <LazyVideo
               src="/preview.mp4"
               poster="/preview-poster.jpg"
+              placeholder={POSTER_THUMB}
               className="w-full transition-all duration-500 group-hover:scale-105 group-hover:blur-md"
             />
 

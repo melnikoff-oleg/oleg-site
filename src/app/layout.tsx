@@ -73,7 +73,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable}`}>
+    // suppressHydrationWarning: the inline script below adds "js" to <html>
+    // before React hydrates, on purpose.
+    <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Scroll reveals hide content only when JavaScript is running to show
+            it again. Without this, a blocked or failed script left everything
+            below the hero at opacity 0. Inline and first, so it is set before
+            the first paint. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body className="font-body antialiased">
         <Plausible />
         {children}

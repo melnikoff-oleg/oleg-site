@@ -1,18 +1,13 @@
-"use client";
-
 // Staggered entrance for a group of children, with zero animation-runtime JS.
 // CSS reimplementation of the former framer-motion version: same rendered DOM
 // (a container div wrapping each child in an item div) and same `variants` prop
 // shape, but the stagger/delay are read off the variants and applied as CSS
 // animation delays (visuals in globals.css @keyframes reveal-blur). Runs on
-// mount, like the original initial/animate behavior.
+// mount, like the original initial/animate behavior, and `is-visible` is
+// rendered on the server so the animation starts at first paint, not after
+// hydration.
 
-import {
-  Children,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { Children, type CSSProperties, type ReactNode } from "react";
 
 type Transition = { staggerChildren?: number; delayChildren?: number };
 type Variant = {
@@ -37,9 +32,6 @@ export function AnimatedGroup({
   className,
   variants,
 }: AnimatedGroupProps) {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => setVisible(true), []);
-
   const t = variants?.container?.visible?.transition;
   const stagger = t?.staggerChildren ?? DEFAULT_STAGGER;
   const delayChildren = t?.delayChildren ?? DEFAULT_DELAY;
@@ -48,9 +40,9 @@ export function AnimatedGroup({
     <div className={className}>
       {Children.map(children, (child, i) => (
         <div
-          className={visible ? "is-visible" : ""}
+          className="is-visible"
           data-reveal="blur"
-          style={{ "--reveal-delay": `${delayChildren + i * stagger}s` } as React.CSSProperties}
+          style={{ "--reveal-delay": `${delayChildren + i * stagger}s` } as CSSProperties}
         >
           {child}
         </div>

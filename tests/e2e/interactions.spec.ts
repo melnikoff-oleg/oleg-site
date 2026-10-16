@@ -64,3 +64,33 @@ test("18 - resource footer link navigates", async ({ page }) => {
   await page.waitForURL(/\/claude-b2b-outreach/);
   expect(page.url()).toMatch(/\/claude-b2b-outreach/);
 });
+
+// Test 18a: in-page links land on their section even though the sections in
+// between are content-visibility:auto and only guessed at 900px until drawn.
+// "On target" = the section's top at the viewport top, or, for a last section
+// shorter than the screen, the page scrolled all the way down.
+test("18a - homepage section links land on target", async ({ page }) => {
+  await page.goto("/", { waitUntil: "networkidle" });
+  const onTarget = (href: string) =>
+    page.locator(href).evaluate((el) => {
+      const top = el.getBoundingClientRect().top;
+      const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      return Math.abs(top) <= 4 || (atBottom && top > 0);
+    });
+  const go = async (href: string) => {
+    if (page.viewportSize()!.width < 1024) {
+      await page.getByRole("button", { name: /open menu/i }).click();
+      await page.locator(`div.inset-0 a[href="${href}"]`).click();
+    } else {
+      await page.locator(`header nav a[href="${href}"]`).click();
+    }
+    await expect.poll(() => onTarget(href), { timeout: 8000 }).toBe(true);
+  };
+  await go("#connect");
+  await go("#watch");
+  await go("#story");
+  // The hero CTA uses the same landing logic.
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.getByRole("link", { name: /let.s connect/i }).click();
+  await expect.poll(() => onTarget("#connect"), { timeout: 8000 }).toBe(true);
+});

@@ -1,12 +1,12 @@
-"use client";
-
 // Per-word / per-line entrance animation with zero animation-runtime JS.
 // CSS reimplementation of the former framer-motion version, same public API and
 // same rendered DOM (a container span wrapping one inline-block span per
 // segment). The blur/opacity/translate visuals live in globals.css
-// (@keyframes reveal-blur); this only stamps `is-visible` + a per-segment delay.
+// (@keyframes reveal-blur). It is a mount animation, so `is-visible` is rendered
+// on the server: the CSS animation starts at first paint and the text never
+// waits for JavaScript to hydrate (it used to stay invisible until it did).
 
-import { useEffect, useState, type ElementType } from "react";
+import type { CSSProperties, ElementType } from "react";
 
 type TextEffectProps = {
   children: string;
@@ -33,8 +33,6 @@ export function TextEffect({
   segmentClassName,
 }: TextEffectProps) {
   const segments = per === "line" ? children.split("\n") : children.split(" ");
-  const [visible, setVisible] = useState(false);
-  useEffect(() => setVisible(true), []);
 
   return (
     <Tag className={className}>
@@ -42,9 +40,9 @@ export function TextEffect({
         {segments.map((segment, i) => (
           <span
             key={i}
-            className={`inline-block ${visible ? "is-visible" : ""}`}
+            className="inline-block is-visible"
             data-reveal="blur"
-            style={{ "--reveal-delay": `${delay + i * STAGGER}s` } as React.CSSProperties}
+            style={{ "--reveal-delay": `${delay + i * STAGGER}s` } as CSSProperties}
           >
             {segmentClassName ? (
               <span className={`inline-block ${segmentClassName}`}>{segment}</span>

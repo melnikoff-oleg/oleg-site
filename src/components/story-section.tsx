@@ -60,7 +60,7 @@ const chapters = [
 
 export function StorySection() {
   return (
-    <section id="story" className="py-16 md:py-32">
+    <section id="story" className="offscreen-lazy py-16 md:py-32">
       <RevealGroup stagger={0.1} className="mx-auto max-w-5xl px-6">
         <h2 className="eyebrow font-body text-[13px] text-vivid-blue">
           The story

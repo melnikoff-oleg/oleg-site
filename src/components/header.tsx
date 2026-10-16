@@ -3,8 +3,9 @@
 import Link from "next/link";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { SectionLink } from "@/components/section-link";
 
-const navItems = [
+const navItems: { name: string; href: `#${string}` }[] = [
   { name: "Vision", href: "#vision" },
   { name: "About", href: "#about" },
   { name: "Story", href: "#story" },
@@ -51,12 +52,12 @@ export function Header() {
             <ul className="flex gap-8 font-body text-sm">
               {navItems.map((item) => (
                 <li key={item.name}>
-                  <Link
+                  <SectionLink
                     href={item.href}
                     className="text-silver-muted transition-colors hover:text-white"
                   >
                     {item.name}
-                  </Link>
+                  </SectionLink>
                 </li>
               ))}
             </ul>
@@ -97,14 +98,14 @@ export function Header() {
         <div className="fixed inset-0 z-40 bg-navy/95 backdrop-blur-md lg:hidden">
           <div className="flex h-full flex-col items-center justify-center gap-8">
             {navItems.map((item) => (
-              <Link
+              <SectionLink
                 key={item.name}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
                 className="font-display text-2xl text-silver transition-colors hover:text-white"
               >
                 {item.name}
-              </Link>
+              </SectionLink>
             ))}
           </div>
         </div>

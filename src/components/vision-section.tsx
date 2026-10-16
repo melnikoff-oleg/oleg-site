@@ -57,7 +57,7 @@ export function VisionSection() {
           {steps.map((s) => (
             <div key={s.n} className="surface-card p-6">
               <div className="flex items-start justify-between">
-                <Image src={`/icons/${s.icon}.webp`} alt="" width={72} height={72} className="size-16" />
+                <Image src={`/icons/${s.icon}.webp`} alt="" width={64} height={64} className="size-16" />
                 <p className="font-display text-sm text-vivid-blue">{s.n}</p>
               </div>
               <p className="mt-4 font-display text-lg font-medium text-silver">{s.title}</p>

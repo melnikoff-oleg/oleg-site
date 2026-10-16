@@ -29,7 +29,7 @@ const highlights = [
 
 export function ResultsSection() {
   return (
-    <section id="results" className="py-16 md:py-32">
+    <section id="results" className="offscreen-lazy py-16 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal as="h2" className="eyebrow font-body text-[13px] text-vivid-blue">
           Results

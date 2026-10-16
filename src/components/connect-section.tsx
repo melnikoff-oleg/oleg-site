@@ -52,7 +52,7 @@ const socials = [
 
 export function ConnectSection() {
   return (
-    <section id="connect" className="py-16 md:py-32">
+    <section id="connect" className="offscreen-lazy py-16 md:py-32">
       <RevealGroup
         stagger={0.12}
         className="mx-auto max-w-3xl px-6 text-center"

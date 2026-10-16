@@ -23,13 +23,12 @@ type Variant = "up" | "blur";
 
 function useReveal(immediate: boolean) {
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  // `immediate` content is above the fold: render it visible from the server so
+  // its CSS animation starts at first paint instead of after hydration.
+  const [visible, setVisible] = useState(immediate);
 
   useEffect(() => {
-    if (immediate) {
-      setVisible(true);
-      return;
-    }
+    if (immediate) return;
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {

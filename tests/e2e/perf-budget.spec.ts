@@ -104,3 +104,31 @@ test("84 - first contentful paint is prompt on a guide page", async ({ page }) =
   // resource creeping in, not a Lighthouse score.
   expect(fcp, "first contentful paint (ms)").toBeLessThan(1500);
 });
+
+// Test 84a: the homepage fetches nothing from below the fold until the visitor
+// heads there (2026-10-16). The preview poster used to download on first load
+// because `<video poster>` fetches eagerly; the hero copy waited for hydration.
+test("84a - homepage: below-the-fold media waits, hero copy needs no javascript", async ({ page }) => {
+  const urls: string[] = [];
+  page.on("request", (r) => urls.push(decodeURIComponent(r.url())));
+  await page.goto("/", { waitUntil: "networkidle" });
+  await page.waitForTimeout(1000);
+  expect(urls.filter((u) => /preview(-poster)?\.(jpg|mp4)/.test(u)), "video media before scroll").toEqual([]);
+  expect(urls.filter((u) => /\/icons\/(math|trading|building|media|life)\.webp/.test(u)), "story icons before scroll").toEqual([]);
+  expect(urls.filter((u) => /hero[^&]*&w=(2048|3840)/.test(u)), "oversized hero").toEqual([]);
+
+  // Server HTML alone must carry the headline as visible, animated text.
+  const html = await (await page.request.get("/")).text();
+  const h1 = html.match(/<h1[\s\S]*?<\/h1>/)?.[0] ?? "";
+  expect(h1).toContain("is-visible");
+
+  // Scrolling to the video does fetch it. The sections above it render as the
+  // page scrolls (content-visibility) and can push it back down, so re-aim on
+  // every poll, as a reader's thumb would.
+  await expect
+    .poll(async () => {
+      await page.locator("video").scrollIntoViewIfNeeded();
+      return urls.some((u) => /preview\.mp4/.test(u));
+    })
+    .toBe(true);
+});

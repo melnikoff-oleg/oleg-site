@@ -19,11 +19,9 @@ import { isoDuration, thumbnailUrl, videoMeta } from "@/lib/videos";
 // and the Person @id derive from this one line.
 export const SITE_URL = "https://www.oleg.ae";
 
-// The profiles Oleg actively points people at, checked against his own YouTube
-// descriptions on 2026-08-27 (handles changed to olegdoes on LinkedIn, Instagram
-// and Telegram on 2026-10-16, on Oleg's instruction): linkedin.com/in/olegane appears in all 24 live
-// videos, instagram.com/oleg_tech and tiktok.com/@oleg_tech in 20 of them, and
-// instagram.com/melnikoff_oleg only in the four oldest. `sameAs` is what tells
+// The profiles Oleg actively points people at. LinkedIn, Instagram and Telegram
+// moved to the handle "olegdoes" on 2026-10-16, on his instruction. TikTok was
+// not part of that change and stays @oleg_tech until he says otherwise. `sameAs` is what tells
 // Google these accounts are one person, so a handle that is wrong here actively
 // merges his entity with somebody else's. connect-section.tsx links the same
 // set: if you change one, change both.

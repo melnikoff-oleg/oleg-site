@@ -114,7 +114,7 @@ test("33 - knowledge: sticky quick-nav chips are >=44px tall", async ({ page }, 
 test("34 - home: results highlight-card copy is >=16px", async ({ page }, testInfo) => {
   MOBILE_ONLY(testInfo);
   await settle(page, "/");
-  const p = page.getByText(/co-founder of NP Digital/i);
+  const p = page.locator("#results").getByText(/co-founder of NP Digital/i);
   await expect(p).toBeVisible();
   expect(await fontSize(p), "results card body px").toBeGreaterThanOrEqual(16);
 });

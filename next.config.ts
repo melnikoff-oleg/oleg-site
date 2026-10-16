@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   images: {
     // Prefer modern formats for the optimized <Image> outputs.
     formats: ["image/avif", "image/webp"],
+    // No 2048/3840 variants. Nothing on the site is drawn wider than ~960 CSS px,
+    // so 1920 covers it at 2x; without this cap a 3x tablet asked for the 3840
+    // hero (measured 2026-10-16), the biggest file on the page for no visible gain.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     remotePatterns: [
       {
         protocol: "https",

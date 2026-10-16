@@ -79,7 +79,9 @@ body {
     filter: blur(0);
   }
 }
-[data-reveal] {
+/* Hidden only when JS runs (layout.tsx adds .js), so no-script visitors and
+   crawlers still see everything. `.is-visible` animates in either case. */
+.js [data-reveal] {
   opacity: 0;
 }
 [data-reveal].is-visible {
@@ -333,4 +335,14 @@ body {
 .prose-guide code,
 .prose-guide pre {
   overflow-wrap: anywhere;
+}
+
+/* ---- Skip off-screen work ----
+   Sections far below the fold are neither laid out nor painted until they come
+   near the viewport, so the first paint only pays for what is on screen.
+   `auto` in contain-intrinsic-size makes the browser remember each section's
+   real height once it has rendered, so the scrollbar and #anchor jumps settle. */
+.offscreen-lazy {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
