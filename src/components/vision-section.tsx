@@ -7,7 +7,7 @@ const steps = [
   {
     n: "01",
     title: "Collect",
-    body: "Billions of data points on content: organic posts, reels, videos and ads, across every platform. What was made, who made it, and how far it went.",
+    body: "Every piece of content worth learning from: organic posts, reels, videos and ads, across every platform. What was made, who made it, and how far it went. The goal is billions.",
   },
   {
     n: "02",
@@ -72,7 +72,7 @@ export function VisionSection() {
         </div>
 
         <p className="mt-10 max-w-3xl font-body text-lg leading-relaxed text-silver-muted">
-          It&apos;s already working: the same data writes the posts for Boldane&apos;s clients and for Ubersuggest, Neil Patel&apos;s SEO platform.
+          It&apos;s already in use: the LinkedIn database was built out into the niches of Boldane&apos;s paying clients.
         </p>
       </RevealGroup>
     </section>

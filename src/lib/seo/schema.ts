@@ -218,7 +218,7 @@ export function personSchema(): any {
     url: SITE_URL,
     jobTitle: "AI software entrepreneur",
     description:
-      "AI software entrepreneur. Former Yandex and JetBrains engineer and quant at a hedge fund, now building AI systems for marketing and teaching them on YouTube.",
+      "AI software entrepreneur building the best AI for marketing. Former Yandex and JetBrains AI intern and quant at a hedge fund, founder of Boldane, teaching Claude Code and AI for marketing on YouTube.",
     sameAs: SAME_AS,
     knowsAbout: [
       "Claude Code",
