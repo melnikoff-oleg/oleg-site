@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Oleg Melnikov: AI Systems for Marketing & Claude Code Tutorials",
     description:
-      "AI software entrepreneur bridging media and software. I run Boldane, helping founders with real expertise become known, and teach AI systems for marketing and Claude Code to 19K+ on YouTube.",
+      "Building the best AI for marketing: media superintelligence. Ex-hedge fund AI engineer, math olympiad medalist, founder of Boldane, teaching Claude Code and AI for marketing to 20K+ on YouTube.",
     type: "website",
     url: "https://www.oleg.ae",
     siteName: "Oleg Melnikov",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Oleg Melnikov: AI Systems for Marketing & Claude Code Tutorials",
     description:
-      "AI software entrepreneur bridging media and software. I run Boldane, helping founders with real expertise become known, and teach AI systems for marketing and Claude Code to 19K+ on YouTube.",
+      "Building the best AI for marketing: media superintelligence. Ex-hedge fund AI engineer, math olympiad medalist, founder of Boldane, teaching Claude Code and AI for marketing to 20K+ on YouTube.",
   },
   alternates: {
     canonical: "https://www.oleg.ae",

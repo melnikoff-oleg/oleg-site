@@ -24,7 +24,7 @@ export function HeroSection() {
           {/* Top label */}
           <AnimatedGroup>
             <span className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
-              AI software entrepreneur
+              Building media superintelligence
             </span>
           </AnimatedGroup>
 
@@ -35,7 +35,7 @@ export function HeroSection() {
             segmentClassName="text-metallic"
             className="mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-medium leading-[1.05] tracking-tight text-silver sm:text-3xl md:text-4xl lg:text-5xl"
           >
-            5 years in AI. Left big tech and a hedge fund to build my own company.
+            I&apos;m building the best AI for marketing.
           </TextEffect>
 
           {/* Subheading */}
@@ -45,7 +45,7 @@ export function HeroSection() {
             per="line"
             className="mx-auto mt-6 max-w-2xl text-balance font-body text-lg text-silver-muted md:text-xl"
           >
-            Now I run Boldane, helping founders with real expertise become the names their market trusts. And I share the AI systems I build for marketing with 19K+ on YouTube.
+            Marketing is data. I collect it at scale, every piece of content that won and why, and teach an AI to make the next one win. A mathematician going after marketing the way science goes after anything.
           </TextEffect>
 
           {/* CTAs */}
@@ -69,8 +69,8 @@ export function HeroSection() {
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <Button asChild size="lg" variant="primary">
-              <Link href="#results">
-                see my work
+              <Link href="#vision">
+                see the vision
                 <svg
                   viewBox="0 0 20 20"
                   fill="currentColor"

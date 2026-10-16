@@ -1,5 +1,7 @@
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
+import { VisionSection } from "@/components/vision-section";
+import { StorySection } from "@/components/story-section";
 import { AboutSection } from "@/components/about-section";
 import { ResultsSection } from "@/components/results-section";
 import { VideoSection } from "@/components/video-section";
@@ -18,7 +20,9 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <VisionSection />
         <AboutSection />
+        <StorySection />
         <ResultsSection />
         <VideoSection />
         <ConnectSection />

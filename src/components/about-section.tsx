@@ -6,11 +6,11 @@ export function AboutSection() {
     <section id="about" className="py-16 md:py-32">
       <RevealGroup stagger={0.15} className="mx-auto max-w-3xl px-6">
         <h2 className="eyebrow font-body text-[13px] text-vivid-blue">
-          What I do
+          What I do now
         </h2>
 
         <p className="mt-8 font-body text-xl leading-relaxed text-silver md:text-2xl">
-          My whole thing is bridging media and software: the storytelling that makes people care, and the code and AI that gives it real leverage. That intersection is the most exciting place to be right now.
+          Three things, all feeding the same AI: a company, a client, and a channel.
         </p>
 
         <p className="mt-6 font-body text-xl leading-relaxed text-silver md:text-2xl">
@@ -22,15 +22,15 @@ export function AboutSection() {
           >
             Boldane
           </Link>{" "}
-          is that idea as a company: you have the stories worth telling, we turn them into a presence your market trusts and buys from. One real conversation a week, all from what you said.
+          is my company: you have the stories worth telling, we turn them into a presence your market trusts and buys from. One real conversation a week, all from what you said.
         </p>
 
         <p className="mt-6 font-body text-xl leading-relaxed text-silver md:text-2xl">
-          I share how I build there on YouTube, teaching Claude Code and AI for marketing.
+          I run content marketing for Ubersuggest, working with Mike Kamo, co-founder of NP Digital.
         </p>
 
         <p className="mt-6 font-body text-xl leading-relaxed text-silver md:text-2xl">
-          Before this, I used AI to build trading algorithms at a hedge fund in amsterdam. Then I left to build my own company.
+          And I share how I build it all on YouTube, teaching Claude Code and AI for marketing to 20K+ subscribers.
         </p>
       </RevealGroup>
     </section>

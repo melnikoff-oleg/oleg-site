@@ -5,7 +5,9 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { name: "Vision", href: "#vision" },
   { name: "About", href: "#about" },
+  { name: "Story", href: "#story" },
   { name: "Results", href: "#results" },
   { name: "Watch", href: "#watch" },
   { name: "Connect", href: "#connect" },

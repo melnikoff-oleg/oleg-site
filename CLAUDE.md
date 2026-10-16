@@ -10,7 +10,7 @@ This is the workspace for **Oleg Melnikov's personal landing page** — a one-pa
 
 **Repo:** `oleg-site` (github.com/melnikoff-oleg/oleg-site) — renamed 2026-07-06 from `oleeeg-landing` (GitHub, Vercel project, local folder, package name). No Inngest in this project, so the rename had no async-jobs implications.
 
-**Oleg** is an AI software entrepreneur with 5 years in AI. Former big tech (Yandex, JetBrains) and hedge fund (Amsterdam). Now runs Boldane (boldane.com — premium personal branding that helps founders with real expertise become known and trusted; $2K/mo) and a growing YouTube channel (19K+ subs, AI for marketing tutorials). Core idea: bridging media and software so people with real stories become known. Not positioned as "an AI tool" or "fully automated"; AI is a capability under the hood, not the pitch.
+**Oleg** is building the best AI for marketing (media superintelligence: collect and score billions of content data points, then train an AI that knows what makes content win). The homepage leads with that vision since 2026-10-16. He has 5 years in AI. Former big tech (Yandex, JetBrains) and hedge fund (Amsterdam). Now runs Boldane (boldane.com — premium personal branding that helps founders with real expertise become known and trusted; $2K/mo) and a growing YouTube channel (20.7K subs, 665K views as of 2026-10-16, AI for marketing tutorials). Core idea: bridging media and software so people with real stories become known. Not positioned as "an AI tool" or "fully automated"; AI is a capability under the hood, not the pitch.
 
 **This file (CLAUDE.md) is the foundation.** It is automatically loaded at the start of every session. Keep it current — it is the single source of truth for how Claude should understand and operate within this workspace.
 
@@ -234,7 +234,7 @@ Route list is a single source of truth: `tests/e2e/routes.ts` (`ROUTES` / `FOOTE
 **Main page** (`/`) — single page with 6 sections:
 1. **Hero** — Tagline, photo, CTAs (`src/components/hero-section.tsx`)
 2. **About** — What Oleg does now (`src/components/about-section.tsx`)
-3. **Results** — Stats, client proof, credentials (`src/components/results-section.tsx`)
+3. **Results** — Stats, client proof, credentials (`src/components/results-section.tsx`). Since 2026-10-16 the order is Hero, Vision (`vision-section.tsx`, the media superintelligence pitch plus database sizes), About, Story (`story-section.tsx`, Oleg's biggest wins from his Google Doc "My Major Victories", relationship items left out on purpose), Results, Watch, Connect
 4. **Video** — Looping 5s muted preview, blur + "watch on youtube" on hover (`src/components/video-section.tsx`)
 5. **Connect** — Social links + footer (`src/components/connect-section.tsx`)
 6. **Header** — Floating nav, blurs on scroll (`src/components/header.tsx`)
