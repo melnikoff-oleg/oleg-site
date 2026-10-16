@@ -17,7 +17,7 @@ export const maxDuration = 60;
 
 const MODEL = "claude-sonnet-4-6";
 const LIMIT_MESSAGE =
-  "you've hit today's limit of 30 questions. if you want more, just reach out to me on linkedin (linkedin.com/in/olegane).";
+  "you've hit today's limit of 30 questions. if you want more, just reach out to me on linkedin (linkedin.com/in/olegdoes).";
 // Bound the client-controlled conversation so a caller can't drive unbounded
 // input-token cost or forge non-user/assistant turns.
 const MAX_MESSAGES = 20;

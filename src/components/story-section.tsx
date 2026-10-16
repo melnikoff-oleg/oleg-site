@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { RevealGroup } from "@/components/motion/reveal";
 
 // The whole story, from Oleg's own list of his biggest wins (Google Doc
@@ -5,6 +6,7 @@ import { RevealGroup } from "@/components/motion/reveal";
 const chapters = [
   {
     title: "Math & code",
+    icon: "math",
     wins: [
       "Top 12 mathematicians in Russia under 18",
       "Medalist of the All-Russian math olympiad",
@@ -15,6 +17,7 @@ const chapters = [
   },
   {
     title: "AI & trading",
+    icon: "trading",
     wins: [
       "AI internships at Yandex and JetBrains, the two most famous Russian tech firms",
       "E+ grade on my last review at Pinely",
@@ -24,6 +27,7 @@ const chapters = [
   },
   {
     title: "Building",
+    icon: "building",
     wins: [
       "Tried 4 startups during university: Univerchick, RentAlliance, EveryFriend, Woozer",
       "Closed 20+ international B2B deals",
@@ -32,6 +36,7 @@ const chapters = [
   },
   {
     title: "Media",
+    icon: "media",
     wins: [
       "20,000+ subscribers on my YouTube channel",
       "A YouTube video with 100,000+ views",
@@ -40,6 +45,7 @@ const chapters = [
   },
   {
     title: "Life",
+    icon: "life",
     wins: [
       "Lived 3+ months in 7 cities across 6 countries: Saint Petersburg, Moscow, Bishkek, Limassol, Amsterdam, Dubai, Belgrade",
       "Travelled to 30 countries",
@@ -67,7 +73,10 @@ export function StorySection() {
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {chapters.map((c) => (
             <div key={c.title} className="surface-card p-6">
-              <p className="font-display text-lg font-medium text-silver">{c.title}</p>
+              <div className="flex items-center gap-4">
+                <Image src={`/icons/${c.icon}.webp`} alt="" width={64} height={64} className="size-14 shrink-0" />
+                <p className="font-display text-lg font-medium text-silver">{c.title}</p>
+              </div>
               <ul className="mt-4 space-y-3">
                 {c.wins.map((w) => (
                   <li

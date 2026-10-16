@@ -20,7 +20,8 @@ import { isoDuration, thumbnailUrl, videoMeta } from "@/lib/videos";
 export const SITE_URL = "https://www.oleg.ae";
 
 // The profiles Oleg actively points people at, checked against his own YouTube
-// descriptions on 2026-08-27: linkedin.com/in/olegane appears in all 24 live
+// descriptions on 2026-08-27 (handles changed to olegdoes on LinkedIn, Instagram
+// and Telegram on 2026-10-16, on Oleg's instruction): linkedin.com/in/olegane appears in all 24 live
 // videos, instagram.com/oleg_tech and tiktok.com/@oleg_tech in 20 of them, and
 // instagram.com/melnikoff_oleg only in the four oldest. `sameAs` is what tells
 // Google these accounts are one person, so a handle that is wrong here actively
@@ -28,10 +29,10 @@ export const SITE_URL = "https://www.oleg.ae";
 // set: if you change one, change both.
 const SAME_AS = [
   "https://www.youtube.com/@Oleg-Melnikov",
-  "https://www.linkedin.com/in/olegane",
-  "https://www.instagram.com/oleg_tech",
+  "https://www.linkedin.com/in/olegdoes",
+  "https://www.instagram.com/olegdoes",
   "https://www.tiktok.com/@oleg_tech",
-  "https://t.me/melnikoff_oleg",
+  "https://t.me/olegdoes",
   "https://boldane.com",
 ];
 
