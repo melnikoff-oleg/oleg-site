@@ -17,7 +17,6 @@ const chapters = [
     title: "AI & trading",
     wins: [
       "AI internships at Yandex and JetBrains, the two most famous Russian tech firms",
-      "Built AI trading algorithms at Pinely, a hedge fund in Amsterdam",
       "E+ grade on my last review at Pinely",
       "Earning $40,000 a month at 23, top 0.005% worldwide",
       "Walked away from that job at 24 to build my own company",
@@ -27,7 +26,6 @@ const chapters = [
     title: "Building",
     wins: [
       "Tried 4 startups during university: Univerchick, RentAlliance, EveryFriend, Woozer",
-      "Founded Boldane, personal branding for founders with real expertise",
       "Closed 20+ international B2B deals",
       "Working with Mike Kamo, co-founder of NP Digital, the $100M agency",
     ],

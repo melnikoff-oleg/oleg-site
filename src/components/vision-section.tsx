@@ -1,7 +1,8 @@
 import { RevealGroup } from "@/components/motion/reveal";
 
 // The bigger vision, told before anything else on the page. Numbers are the
-// databases as they stood in October 2026; update them when they grow.
+// databases as counted live in Supabase on 2026-10-16 (creator_reel 43,711,
+// ms_linkedin_post 32,127, ms_linkedin_account 1,772); update them when they grow.
 const steps = [
   {
     n: "01",
@@ -26,9 +27,9 @@ const steps = [
 ];
 
 const proof = [
-  { value: "24,000+", label: "Instagram reels in the viral library" },
-  { value: "22,000+", label: "LinkedIn posts scored" },
-  { value: "1,250+", label: "LinkedIn creators read" },
+  { value: "43,000+", label: "Instagram reels in the viral library" },
+  { value: "32,000+", label: "LinkedIn posts scored" },
+  { value: "1,700+", label: "LinkedIn creators read" },
 ];
 
 export function VisionSection() {
