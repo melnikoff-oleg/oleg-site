@@ -269,7 +269,9 @@ test("75 - viral reels: the two pages reach each other", async ({ page }) => {
   // The search tab is gone (the library has the box) and so is the ideas chat.
   await expect(nav().getByRole("link", { name: "search" })).toHaveCount(0);
   await expect(nav().getByRole("link", { name: "ideas" })).toHaveCount(0);
-  await expect(nav().getByRole("link")).toHaveCount(2);
+  // Three tabs since 2026-09-22, when /viral joined the nav.
+  await expect(nav().getByRole("link", { name: /your next viral reel/i })).toHaveCount(1);
+  await expect(nav().getByRole("link")).toHaveCount(3);
 });
 
 test("75b - every retired url still resolves", async ({ page }) => {

@@ -3,9 +3,11 @@ import { ReelNav } from "@/components/reel-nav";
 import { viralAdaptConfigured, viralSearchConfigured } from "@/lib/reels/viral";
 import { Viral } from "./components/viral";
 
-const title = "Your Next Viral Reel: Describe Your Brand, Copy What Already Worked";
+// The root layout appends " | Oleg Melnikov", and Google cuts a title past ~65
+// characters, so this stays under 49.
+const title = "Your Next Viral Reel, Built From What Worked";
 const description =
-  "Describe what you do. See the reels in your niche that went viral from small accounts in the last three months. Pick one and get it rewritten for your brand, script included.";
+  "Describe what you do. See the reels in your niche that went viral from small accounts in the last 3 months, then get one rewritten for your brand.";
 
 export const metadata: Metadata = {
   title,
