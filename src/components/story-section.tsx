@@ -18,7 +18,7 @@ const chapters = [
     wins: [
       "AI internships at Yandex and JetBrains, the two most famous Russian tech firms",
       "Built AI trading algorithms at Pinely, a hedge fund in Amsterdam",
-      "Top grade, E+, on my last review there",
+      "E+ grade on my last review at Pinely",
       "Earning $40,000 a month at 23, top 0.005% worldwide",
       "Walked away from that job at 24 to build my own company",
     ],
