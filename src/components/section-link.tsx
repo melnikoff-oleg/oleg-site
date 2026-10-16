@@ -9,34 +9,63 @@ import type { ComponentProps } from "react";
 // between draw on the way down, lands inside the wrong one. So a nav click
 // scrolls, waits for the scroll to settle, and re-aims until it is on target.
 //
-// The re-aim must never fight the reader. Each click bumps `currentJump`, and so
-// does any wheel, touch or key press, so a pending re-aim from an older click,
-// or one still armed after the reader took over, sees the change and stops.
-let currentJump = 0;
-const USER_INPUT = ["wheel", "touchstart", "keydown"] as const;
+// The re-aim must never fight the reader. Each jump owns an AbortController; a
+// new click aborts the previous jump, and so does any reader input (wheel,
+// touch, key, or a pointer press, which covers dragging the scrollbar). Aborting
+// removes every listener the jump added, so nothing stays armed afterwards.
+let current: AbortController | null = null;
+const READER_INPUT = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
+const MAX_TRIES = 4;
+const SETTLE_FALLBACK_MS = 1200; // scrollend unsupported, or no scroll happened
+
+const atBottom = () =>
+  window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
 
 export function scrollToSection(hash: string) {
   const target = document.querySelector<HTMLElement>(hash);
   if (!target) return;
-  const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const behavior: ScrollBehavior = still ? "auto" : "smooth";
-  history.pushState(null, "", hash);
-  const jump = ++currentJump;
-  const cancel = () => {
-    if (jump === currentJump) currentJump += 1;
+
+  if (location.hash === hash) history.replaceState(null, "", hash);
+  else history.pushState(null, "", hash);
+
+  current?.abort();
+  const jump = new AbortController();
+  current = jump;
+  const { signal } = jump;
+  for (const ev of READER_INPUT) {
+    window.addEventListener(ev, () => jump.abort(), { once: true, passive: true, signal });
+  }
+
+  const behavior: ScrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "instant" // not "auto": that defers to the CSS, which says smooth
+    : "smooth";
+  // On target: the section's top at the viewport top, or, for a last section
+  // shorter than the screen, the page already scrolled as far as it goes
+  // with the section still below the top edge.
+  const onTarget = () => {
+    const top = target.getBoundingClientRect().top;
+    return Math.abs(top) <= 4 || (top > 0 && atBottom());
   };
-  for (const ev of USER_INPUT) window.addEventListener(ev, cancel, { once: true, passive: true });
+
   let tries = 0;
   const aim = () => {
-    target.scrollIntoView({ behavior, block: "start" });
+    if (signal.aborted) return;
+    if (onTarget() || tries >= MAX_TRIES) {
+      jump.abort();
+      return;
+    }
     tries += 1;
+    target.scrollIntoView({ behavior, block: "start" });
+    // Whichever comes first, the end of this scroll or the fallback, checks again.
+    let timer = 0;
     const settle = () => {
-      if (jump !== currentJump) return;
-      const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
-      if (Math.abs(target.getBoundingClientRect().top) > 4 && !atBottom && tries < 4) aim();
+      window.clearTimeout(timer);
+      window.removeEventListener("scrollend", settle);
+      aim();
     };
-    if ("onscrollend" in window) window.addEventListener("scrollend", settle, { once: true });
-    else setTimeout(settle, 900);
+    window.addEventListener("scrollend", settle, { once: true, signal });
+    timer = window.setTimeout(settle, SETTLE_FALLBACK_MS);
+    signal.addEventListener("abort", () => window.clearTimeout(timer), { once: true });
   };
   aim();
 }

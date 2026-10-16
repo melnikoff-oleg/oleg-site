@@ -94,3 +94,18 @@ test("18a - homepage section links land on target", async ({ page }) => {
   await page.getByRole("link", { name: /let.s connect/i }).click();
   await expect.poll(() => onTarget("#connect"), { timeout: 8000 }).toBe(true);
 });
+
+// Test 18b: once the reader takes over (here a pointer press, as when grabbing
+// the scrollbar), a pending re-aim never pulls the page back.
+test("18b - a section jump yields to the reader", async ({ page }) => {
+  test.skip(page.viewportSize()!.width < 1024, "desktop nav");
+  await page.goto("/", { waitUntil: "networkidle" });
+  await page.locator('header nav a[href="#connect"]').click();
+  await page.waitForTimeout(150);
+  await page.mouse.move(5, 400);
+  await page.mouse.down();
+  await page.mouse.up();
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "auto" }));
+  await page.waitForTimeout(2500);
+  expect(await page.evaluate(() => window.scrollY)).toBeLessThan(50);
+});

@@ -66,8 +66,9 @@ web.telegram.org/a that won Telegram's Lightweight Client Contest).
 
 - Telegram: a file is addressed by an id and never changes, so the client caches
   it forever.
-- Here: Next's hashed /_next/static files are immutable, the hero is a hashed
-  static import, and public media has a week of cache plus stale-while-revalidate.
+- Here: Next's hashed /_next/static files are immutable and the hero is one of
+  them (a static import); the preview video and its poster in public/ get a week
+  of cache plus stale-while-revalidate.
 
 ## Measured result
 

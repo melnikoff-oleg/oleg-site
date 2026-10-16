@@ -20,6 +20,11 @@ html {
   scroll-behavior: smooth;
   color-scheme: dark;
 }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 body {
   background: var(--color-navy);

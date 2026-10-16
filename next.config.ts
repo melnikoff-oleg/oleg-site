@@ -107,9 +107,10 @@ const nextConfig: NextConfig = {
     return [
       {
         // Long-lived caching for the static media served straight from public/
-        // (hero still frame, looping preview + poster) so repeat visits paint
+        // (the looping preview + poster; the hero is a hashed static import now,
+        // served immutable from /_next/static) so repeat visits paint
         // from cache instead of re-fetching the heavy assets.
-        source: "/:file(hero.jpg|preview.mp4|preview-poster.jpg)",
+        source: "/:file(preview.mp4|preview-poster.jpg)",
         headers: [
           {
             key: "Cache-Control",
