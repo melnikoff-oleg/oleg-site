@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ResourceFooter } from "@/components/resource-footer";
 import { Button } from "@/components/ui/button";
+import { BoldaneAnchor } from "@/components/boldane-anchor";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -489,14 +490,9 @@ export default function LinkedInPostPage() {
             <div className="surface-card rounded-2xl p-6 text-center sm:p-8">
               <p className="font-body text-base leading-relaxed text-silver-muted">
                 This is the simple, do-it-yourself version of what{" "}
-                <a
-                  href="https://www.boldane.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-                >
+                <BoldaneAnchor className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white">
                   Boldane
-                </a>{" "}
+                </BoldaneAnchor>{" "}
                 does for founders who would rather just talk for an hour a week
                 and let real expertise become a presence their market trusts.
                 Even this version beats 99% of AI content, because it starts

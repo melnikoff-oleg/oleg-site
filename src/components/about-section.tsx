@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RevealGroup } from "@/components/motion/reveal";
+import { BoldaneAnchor } from "@/components/boldane-anchor";
 
 const linkClass =
   "text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white";
@@ -12,9 +13,9 @@ export function AboutSection() {
       title: "A company",
       body: (
         <>
-          <Link href="https://www.boldane.com" target="_blank" rel="noopener noreferrer" className={linkClass}>
+          <BoldaneAnchor className={linkClass}>
             Boldane
-          </Link>
+          </BoldaneAnchor>
           : you have the stories worth telling, we turn them into a presence your market trusts and buys from. One real conversation a week, all from what you said.
         </>
       ),

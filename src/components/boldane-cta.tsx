@@ -1,15 +1,9 @@
 import { Reveal } from "@/components/motion/reveal";
+import { BoldaneAnchor } from "@/components/boldane-anchor";
 
 export function BoldaneLink() {
   return (
-    <a
-      href="https://www.boldane.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-    >
-      Boldane
-    </a>
+    <BoldaneAnchor className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white">Boldane</BoldaneAnchor>
   );
 }
 

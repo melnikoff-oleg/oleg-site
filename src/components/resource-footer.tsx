@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { RESOURCES } from "@/components/resources-data";
 import { NextUp } from "@/components/next-up";
+import { BoldaneAnchor } from "@/components/boldane-anchor";
 
 export function ResourceFooter({
   currentSlug,
@@ -78,14 +79,7 @@ export function ResourceFooter({
           className={`${currentSlug !== "ideas" ? "mt-3" : "mt-8"} text-center text-sm text-silver-muted`}
         >
           Free guides by Oleg, founder of{" "}
-          <a
-            href="https://www.boldane.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-          >
-            Boldane
-          </a>
+          <BoldaneAnchor className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white">Boldane</BoldaneAnchor>
         </p>
       )}
 
