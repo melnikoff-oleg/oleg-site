@@ -36,7 +36,6 @@ const IDS = [
   ["mFYKAsGcnso", "5-levels-ai"],
   ["JQQhT0edXXw", "claude-twitter"],
   ["sUqLRKyU0PY", "claude-riemann-hypothesis"],
-  ["bz1C3dmiOvg", "claude-code-sessions"],
 ];
 
 const toSeconds = (stamp) => {

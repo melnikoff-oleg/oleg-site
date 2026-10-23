@@ -7,14 +7,9 @@ import {
   Clapperboard,
   TrendingUp,
   Megaphone,
-  Sparkles,
   DollarSign,
-  Brain,
-  LayoutTemplate,
   ListOrdered,
-  Gauge,
   Scissors,
-  FolderTree,
   Library,
   BookOpen,
   Bot,
@@ -73,20 +68,6 @@ export const RESOURCES: Resource[] = [
     icon: GitCompare,
   },
   {
-    slug: "marketing-brain",
-    title: "The Marketing Brain",
-    description:
-      "Ask the greatest marketing minds with an AI chat grounded in 8 books & 75 talks, every answer cited to the page or timecode",
-    icon: Brain,
-  },
-  {
-    slug: "high-converting-website",
-    title: "High-Converting Landing Page",
-    description:
-      "Build a landing page that actually sells with Claude Code, powered by a conversion playbook from Hormozi and top marketers",
-    icon: LayoutTemplate,
-  },
-  {
     slug: "claude-b2b-outreach",
     title: "B2B Outreach (35% Reply Rate)",
     description:
@@ -142,20 +123,6 @@ export const RESOURCES: Resource[] = [
     icon: Megaphone,
   },
   {
-    slug: "ads-ai",
-    title: "AI Ads Creator",
-    description:
-      "Study competitors' Meta ads with AI and generate ad concepts: copy, visuals, and video scripts",
-    icon: Sparkles,
-  },
-  {
-    slug: "60k-linkedin-post",
-    title: "$60K LinkedIn Post",
-    description:
-      "3 AI prompts that generated $60,000 from a single LinkedIn post, copy and use them",
-    icon: DollarSign,
-  },
-  {
     slug: "5-levels-ai",
     title: "The 5 Levels of AI Adoption",
     description:
@@ -163,32 +130,11 @@ export const RESOURCES: Resource[] = [
     icon: ListOrdered,
   },
   {
-    slug: "opus-5",
-    title: "Opus 5, No Hype",
-    description:
-      "5 rules for Claude Opus 5 straight from Anthropic's own charts: why max effort is worse, what to delete from your prompt, and which model to run per task",
-    icon: Gauge,
-  },
-  {
     slug: "claude-code-instagram",
     title: "Claude Code as a Video Editor",
     description:
       "Reel Studio: drop in photos and a voice take, get a finished Instagram Reel. Free and local",
     icon: Scissors,
-  },
-  {
-    slug: "claude-code-second-brain",
-    title: "AI Second Brain on Claude Code",
-    description:
-      "An Obsidian vault Claude Code operates: dump thoughts in plain English, it files, links and remembers. Six steps, one prompt, about 10 minutes",
-    icon: FolderTree,
-  },
-  {
-    slug: "claude-code-ads",
-    title: "Video Ads With Claude Code",
-    description:
-      "Ads Studio: paste a company's website, get a finished video ad in their own colours, fonts and logo. Local, free per ad, no editing skills",
-    icon: Clapperboard,
   },
   {
     slug: "reels",

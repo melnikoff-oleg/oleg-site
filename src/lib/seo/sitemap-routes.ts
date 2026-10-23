@@ -49,27 +49,13 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: "/claude-content", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
   { path: "/claude-social-growth", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
   { path: "/claude-marketing", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
-  { path: "/claude-code-second-brain", lastModified: "2026-08-12", changeFrequency: "monthly", priority: GUIDE },
-  { path: "/claude-code-ads", lastModified: "2026-08-12", changeFrequency: "monthly", priority: GUIDE },
 
   // Tools and lead magnets.
-  { path: "/high-converting-website", lastModified: "2026-08-15", changeFrequency: "monthly", priority: GUIDE },
-  { path: "/ads-ai", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
-  { path: "/60k-linkedin-post", lastModified: "2026-08-15", changeFrequency: "monthly", priority: SECONDARY },
   { path: "/5-levels-ai", lastModified: "2026-08-15", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/opus-5", lastModified: "2026-08-15", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/fable-money", lastModified: "2026-09-03", changeFrequency: "monthly", priority: GUIDE },
 
   // The marketing brain.
-  { path: "/marketing-brain", lastModified: "2026-08-15", changeFrequency: "monthly", priority: GUIDE },
-  { path: "/marketing-brain-knowledge", lastModified: "2026-08-15", changeFrequency: "monthly", priority: SECONDARY },
 
   // Filmed pages. They render none of the shared shell, by design.
-  { path: "/elon-musk-ai", lastModified: "2026-08-27", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/boris-cherny-ai", lastModified: "2026-08-12", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/sam-altman-ai", lastModified: "2026-08-12", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/andrej-karpathy-ai", lastModified: "2026-08-13", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/claude-code-sessions", lastModified: "2026-08-12", changeFrequency: "monthly", priority: SECONDARY },
   { path: "/claude-riemann-hypothesis", lastModified: "2026-08-12", changeFrequency: "monthly", priority: SECONDARY },
 
   // Audience and tool surfaces. These genuinely change often.

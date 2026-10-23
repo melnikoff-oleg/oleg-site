@@ -64,14 +64,6 @@ test("13 - resource page visual (desktop)", async ({ page }, testInfo) => {
   await snapshot(page, "resource-desktop.png", [page.locator("iframe")]);
 });
 
-// Test 14: marketing-brain empty state (desktop).
-test("14 - marketing-brain visual (desktop)", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "desktop", "desktop only");
-  await page.goto("/marketing-brain");
-  await settle(page);
-  await snapshot(page, "marketing-brain-desktop.png", [page.locator("img")]);
-});
-
 // Test 15: homepage (mobile / iPhone viewport).
 test("15 - homepage visual (mobile)", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile only");

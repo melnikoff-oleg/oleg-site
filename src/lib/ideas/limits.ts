@@ -1,6 +1,6 @@
 // Durable per-IP daily caps for the /ideas board, counted out of the audit log.
 //
-// Deliberately NOT the in-memory limiter in marketing-brain/rate-limit.ts: that
+// Deliberately NOT the in-memory limiter in lib/rate-limit.ts: that
 // one is per serverless instance and resets on every cold start, which is fine
 // for throttling a paid endpoint but would let anyone stuff votes just by
 // waiting for a new instance. We reuse its getClientIp() though, since it

@@ -4,7 +4,7 @@
 // A submission must rate EVERY post on the rating page (1 to 10); notes are optional.
 
 import { NextResponse } from "next/server";
-import { getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { getClientIp } from "@/lib/rate-limit";
 import { dbConfigured, recentSubmissions, results, saveSubmission } from "@/lib/ubersuggest-feed/db";
 import { RATE_POST_IDS } from "@/app/ubersuggest-feed/data";
 

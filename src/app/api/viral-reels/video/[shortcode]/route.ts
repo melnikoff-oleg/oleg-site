@@ -5,7 +5,7 @@
 // byte of video passes through a Vercel function.
 
 import { NextResponse } from "next/server";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { isShortcode, reelVideoConfigured, signedVideoUrl } from "@/lib/reels/video";
 
 export const runtime = "nodejs";

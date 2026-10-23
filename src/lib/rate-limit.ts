@@ -1,4 +1,6 @@
-// Simple per-IP daily rate limit for the Marketing Brain endpoints.
+// Simple per-IP daily rate limit for the site's API endpoints (viral reels, MCP,
+// and getClientIp for the vote boards). Born as the Marketing Brain's limiter;
+// moved here from lib/marketing-brain/ when the brain was deleted on 2026-10-23.
 //
 // "Limited, for now" approach: an in-memory counter keyed by `bucket:ip:YYYY-MM-DD`.
 // NOTE: serverless instances each hold their own memory and recycle on cold

@@ -24,9 +24,6 @@ type Spec = {
 const SPECS: Spec[] = [
   { route: "/claude-reels", href: /github\.com\/melnikoff-oleg\/social-media/, label: /github/i },
   { route: "/claude-tiktok", href: /github\.com\/melnikoff-oleg\/tiktok-ai/, label: /github/i },
-  // The Ads Studio video went private before 2026-08-27, so the page ships no
-  // facade any more and the CTA is checked against the setup guide instead.
-  { route: "/ads-ai", href: /github\.com\/melnikoff-oleg\/ads-ai/, label: /github/i, hasVideo: false },
   { route: "/claude-cowork-outreach", href: /claude\.com\/download/, label: /download claude cowork/i },
   { route: "/claude-social-growth", href: /claude\.com\/claude-code/, label: /get claude code/i },
   { route: "/claude-code-instagram", href: /github\.com\/melnikoff-oleg\/reel-studio/, label: /github/i },
@@ -34,9 +31,9 @@ const SPECS: Spec[] = [
   // Mobile-optimize pass: the fold hands over the promised asset everywhere.
   { route: "/claude-content", href: /drive\.google\.com/, label: /get the project files/i },
   { route: "/claude-b2b-outreach", href: /skool\.com\/ai-automation-7100/, label: /get the source code/i },
-  // /claude-trend-scanner and /claude-website were consolidated into
-  // /claude-social-growth and /high-converting-website on 2026-08-27 (see
-  // seo/2026-08-27-strategy.md); they are redirects now, not pages.
+  // /claude-trend-scanner and /claude-website were consolidated on 2026-08-27
+  // (see seo/2026-08-27-strategy.md); they are redirects now, not pages. So are
+  // the pages deleted on 2026-10-23 (/ads-ai, /high-converting-website and more).
 ];
 
 for (const spec of SPECS) {

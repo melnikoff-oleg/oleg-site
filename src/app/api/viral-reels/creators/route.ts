@@ -5,7 +5,7 @@
 
 import { NextResponse } from "next/server";
 import { Stopwatch } from "@/lib/perf/timing";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { creatorSearchConfigured, searchCreators } from "@/lib/creators/search";
 import {
   CREATOR_RESULT_MAX,

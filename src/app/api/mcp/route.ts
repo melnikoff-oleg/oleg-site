@@ -13,7 +13,7 @@
 // stream is offered.
 
 import { NextResponse } from "next/server";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import {
   callTool,
   isTool,

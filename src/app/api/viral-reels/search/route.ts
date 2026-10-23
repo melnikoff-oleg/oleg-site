@@ -7,7 +7,7 @@
 
 import { NextResponse } from "next/server";
 import { Stopwatch } from "@/lib/perf/timing";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { readRanges } from "@/lib/filters/range";
 import { LIBRARY_RESULT_MAX, REEL_FILTERS } from "@/lib/reels/filters";
 import { reelSearchConfigured, searchReels } from "@/lib/reels/search";

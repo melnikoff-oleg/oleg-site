@@ -276,9 +276,6 @@ const CLUSTER = [
   { href: "/claude-social-growth", label: "Social media growth", note: "The system that decides what to post next" },
   { href: "/claude-b2b-outreach", label: "B2b outreach, 35% reply rate", note: "Research, write, review, send" },
   { href: "/claude-cowork-outreach", label: "LinkedIn outreach with cowork", note: "The browser-driving version" },
-  { href: "/claude-code-second-brain", label: "A second brain in Obsidian", note: "Notes that answer back" },
-  { href: "/claude-code-ads", label: "Video ads", note: "Concept to cut" },
-  { href: "/high-converting-website", label: "A high-converting landing page", note: "The kit I built boldane.com with" },
 ];
 
 export default function ClaudeCodeTutorialPage() {

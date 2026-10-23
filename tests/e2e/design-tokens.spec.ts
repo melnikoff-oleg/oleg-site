@@ -23,7 +23,7 @@ test("7 - body background is navy", async ({ page }) => {
 // Test 8: the vivid-blue accent appears (as color or background) on each of a
 // few representative pages.
 test("8 - vivid-blue accent is present", async ({ page }) => {
-  for (const route of ["/", SAMPLE_RESOURCE, "/marketing-brain-knowledge"]) {
+  for (const route of ["/", SAMPLE_RESOURCE, "/claude-code-tutorial"]) {
     await page.goto(route, { waitUntil: "networkidle" });
     const hasAccent = await page.evaluate((blue) => {
       return [...document.querySelectorAll("*")].some((el) => {
@@ -65,7 +65,7 @@ test("10 - no legacy zinc/white-opacity/black classes in DOM", async ({
     "to-black",
     "decoration-zinc",
   ];
-  for (const route of ["/", SAMPLE_RESOURCE, "/marketing-brain", "/marketing-brain-knowledge"]) {
+  for (const route of ["/", SAMPLE_RESOURCE, "/claude-code-tutorial"]) {
     await page.goto(route, { waitUntil: "networkidle" });
     const hits = await page.evaluate((bad) => {
       const found = new Set<string>();

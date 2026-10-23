@@ -2,7 +2,7 @@
 // Any subset of the 30 posts may be rated; a vote needs a rating (1 to 10), a note, or both.
 
 import { NextResponse } from "next/server";
-import { getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { getClientIp } from "@/lib/rate-limit";
 import { dbConfigured, recentSubmissions, saveSubmission, type Vote } from "@/lib/ubernatural-feed/db";
 import { POST_IDS } from "@/app/ubernatural/data";
 

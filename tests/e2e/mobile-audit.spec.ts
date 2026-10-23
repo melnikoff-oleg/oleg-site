@@ -62,51 +62,12 @@ test("29 - home: hamburger menu button is a >=44px tap target", async ({ page },
   expect(Math.min(w, h), `hamburger ${w}x${h}`).toBeGreaterThanOrEqual(MIN_TAP - 0.5);
 });
 
-test("30 - marketing-brain: send + starter chips + context pill are >=44px", async ({ page }, testInfo) => {
-  MOBILE_ONLY(testInfo);
-  await settle(page, "/marketing-brain");
-
-  const send = page.locator("button[aria-label='Send']");
-  const sBox = await tapSize(send);
-  expect(Math.min(sBox.w, sBox.h), `send ${sBox.w}x${sBox.h}`).toBeGreaterThanOrEqual(MIN_TAP - 0.5);
-
-  const starter = page.getByRole("button", { name: "make an irresistible offer" });
-  const stBox = await tapSize(starter);
-  expect(stBox.h, `starter height ${stBox.h}`).toBeGreaterThanOrEqual(MIN_TAP - 0.5);
-
-  const ctx = page.locator("header").getByRole("button", { name: /your context/i });
-  const cBox = await tapSize(ctx);
-  expect(cBox.h, `context pill height ${cBox.h}`).toBeGreaterThanOrEqual(MIN_TAP - 0.5);
-});
-
 test("31 - resource header pill (youtube) is a >=44px tap target", async ({ page }, testInfo) => {
   MOBILE_ONLY(testInfo);
   await settle(page, "/claude-reels");
   const pill = page.locator("header a", { hasText: "youtube" });
   const { h } = await tapSize(pill);
   expect(h, `youtube pill height ${h}`).toBeGreaterThanOrEqual(MIN_TAP - 0.5);
-});
-
-test("32 - 60k: every 'copy prompt' button is a >=44px tap target", async ({ page }, testInfo) => {
-  MOBILE_ONLY(testInfo);
-  await settle(page, "/60k-linkedin-post");
-  const buttons = page.getByRole("button", { name: /copy prompt/i });
-  const n = await buttons.count();
-  expect(n).toBeGreaterThan(0);
-  for (let i = 0; i < n; i++) {
-    const { h } = await tapSize(buttons.nth(i));
-    expect(h, `copy button #${i} height ${h}`).toBeGreaterThanOrEqual(MIN_TAP - 0.5);
-  }
-});
-
-test("33 - knowledge: sticky quick-nav chips are >=44px tall", async ({ page }, testInfo) => {
-  MOBILE_ONLY(testInfo);
-  await settle(page, "/marketing-brain-knowledge");
-  const chips = page.getByTestId("kb-nav-chip");
-  const n = await chips.count();
-  expect(n).toBeGreaterThan(0);
-  const { h } = await tapSize(chips.first());
-  expect(h, `nav chip height ${h}`).toBeGreaterThanOrEqual(MIN_TAP - 0.5);
 });
 
 // ── Primary reading copy >= 16px ──────────────────────────────────────────────
@@ -125,15 +86,6 @@ test("35 - 5-levels: rung prose is >=16px on mobile", async ({ page }, testInfo)
   const prose = page.getByTestId("ladder-cards").getByText(/never touches your files/i);
   await expect(prose).toBeVisible();
   expect(await fontSize(prose), "rung prose px").toBeGreaterThanOrEqual(16);
-});
-
-test("36 - high-converting: 'what makes it convert' card body is >=16px", async ({ page }, testInfo) => {
-  MOBILE_ONLY(testInfo);
-  await settle(page, "/high-converting-website");
-  // representative principle body copy on the page
-  const body = page.getByText(/dream outcome/i).first();
-  await expect(body).toBeVisible();
-  expect(await fontSize(body), "principle card body px").toBeGreaterThanOrEqual(15.5);
 });
 
 // ── YouTube player (a real iframe, which is what Google requires) ────────────

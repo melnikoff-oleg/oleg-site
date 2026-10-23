@@ -34,7 +34,7 @@ test("19 - no critical a11y or heading-order violations", async ({ page }) => {
 
 // Test 20: no em/en dashes in rendered text (a standing copy rule for the site).
 test("20 - no em or en dashes in rendered text", async ({ page }) => {
-  for (const route of ["/", SAMPLE_RESOURCE, "/marketing-brain"]) {
+  for (const route of ["/", SAMPLE_RESOURCE]) {
     await page.goto(route, { waitUntil: "networkidle" });
     const text = await page.evaluate(() => document.body.innerText);
     const emDash = text.includes("—");

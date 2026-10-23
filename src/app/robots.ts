@@ -5,7 +5,7 @@ import { SITE_URL } from "@/lib/seo/schema";
 // guides out in full is being useful when someone asks ChatGPT or Perplexity
 // rather than Google, and blocking those crawlers to "protect the content"
 // would trade the audience for nothing. The site holds no private data: the
-// server-only corpora (marketing-brain chunks, reel embeddings) are never under
+// server-only corpora (reel embeddings) are never under
 // public/ and are not reachable as urls.
 export default function robots(): MetadataRoute.Robots {
   return {

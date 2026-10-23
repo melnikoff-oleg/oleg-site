@@ -43,15 +43,6 @@ const SUMMARY: Record<string, string> = {
     "Building a social growth report from thousands of competitor videos, ICE-scored so it is actionable.",
   "/claude-code-instagram":
     "Editing Instagram videos with Claude Code and Reel Studio: cost per video, how many a plan buys, and the style-first workflow.",
-  "/claude-code-second-brain": "A second brain in Obsidian, driven by Claude Code.",
-  "/claude-code-ads": "Making video ads with Claude Code.",
-  "/high-converting-website":
-    "A kit that builds a high-converting landing page with Claude Code, plus the conversion playbook behind it.",
-  "/ads-ai":
-    "A free open-source tool that studies competitors' Meta ads and generates new ad concepts.",
-  "/marketing-brain":
-    "An AI chat grounded in 8 marketing books and 75 talks, every answer cited to the page or timecode.",
-  "/opus-5": "Five sourced rules about Claude Opus 5 that are not in the launch coverage.",
   "/5-levels-ai": "Anthropic's research on how the top 1% use AI, as five levels of adoption.",
 };
 

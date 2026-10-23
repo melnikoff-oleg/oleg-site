@@ -9,7 +9,7 @@
 // this is what the five sliders talk to afterwards.
 
 import { NextResponse } from "next/server";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { readRanges } from "@/lib/filters/range";
 import { browseReels, reelBrowseConfigured } from "@/lib/reels/browse";
 import { LIBRARY_PAGE_SIZE, REEL_FILTERS } from "@/lib/reels/filters";

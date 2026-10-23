@@ -1,5 +1,22 @@
 import type { NextConfig } from "next";
 
+const DELETED_2026_10_23 = [
+  "marketing-brain",
+  "marketing-brain-knowledge",
+  "ads-ai",
+  "fable-money",
+  "opus-5",
+  "60k-linkedin-post",
+  "high-converting-website",
+  "claude-code-second-brain",
+  "claude-code-ads",
+  "boris-cherny-ai",
+  "elon-musk-ai",
+  "sam-altman-ai",
+  "claude-code-sessions",
+  "andrej-karpathy-ai",
+];
+
 const nextConfig: NextConfig = {
   experimental: {
     // Put the CSS in the HTML instead of two render-blocking requests, so the
@@ -97,10 +114,10 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        // Fully superseded: /high-converting-website has a public repo and real
-        // proof, and both targeted "build a site with Claude Code".
+        // Pointed at /high-converting-website until that page was deleted on
+        // 2026-10-23 (see below), so it now lands on the home page too.
         source: "/claude-website",
-        destination: "/high-converting-website",
+        destination: "/",
         permanent: true,
       },
       {
@@ -110,6 +127,17 @@ const nextConfig: NextConfig = {
         destination: "/claude-code-tutorial",
         permanent: true,
       },
+      // ---- Deleted on 2026-10-23, on Oleg's instruction ----
+      // Fourteen pages whose source video is private, unlisted or never went
+      // out (and /marketing-brain-knowledge, which only fed /marketing-brain).
+      // Oleg called them bad and wanted them gone. Their slugs land on the home
+      // page so old links, search results and private-video descriptions do
+      // not dead-end. Do not re-port them from the vault.
+      ...DELETED_2026_10_23.map((slug) => ({
+        source: `/${slug}/:path*`,
+        destination: "/",
+        permanent: true,
+      })),
     ];
   },
   async headers() {
@@ -127,21 +155,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        // Book covers / expert portraits are stable content assets.
-        source: "/marketing-brain/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=604800, stale-while-revalidate=86400",
-          },
-        ],
-      },
     ];
-  },
-  // Ensure the server-only retrieval corpus ships with the chat function on Vercel.
-  outputFileTracingIncludes: {
-    "/api/marketing-brain/chat": ["./src/app/marketing-brain/_data/chunks.json"],
   },
 };
 

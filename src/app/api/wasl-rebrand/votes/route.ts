@@ -4,7 +4,7 @@
 // A submission must rate EVERY name on the rating page (1 to 10); notes are optional.
 
 import { NextResponse } from "next/server";
-import { getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { getClientIp } from "@/lib/rate-limit";
 import { dbConfigured, recentSubmissions, results, saveSubmission } from "@/lib/wasl-rebrand/db";
 import { NAME_IDS, TO_RATE } from "@/app/wasl-rebrand/data";
 

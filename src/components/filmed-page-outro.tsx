@@ -1,6 +1,6 @@
-// End card for the filmed evidence-wall pages (/elon-musk-ai,
-// /boris-cherny-ai, /claude-code-sessions, /claude-riemann-hypothesis,
-// /andrej-karpathy-ai, /sam-altman-ai).
+// End card for the filmed evidence-wall pages. Only /claude-riemann-hypothesis
+// is left: /elon-musk-ai, /boris-cherny-ai, /claude-code-sessions,
+// /andrej-karpathy-ai and /sam-altman-ai were deleted on 2026-10-23.
 //
 // Those pages are ported in from the vault and render none of the shared shell:
 // no header, no ResourceFooter, no internal link of any kind. So a visitor who

@@ -41,8 +41,6 @@ const OUT_PATH = join(ROOT, "src/lib/recommendations.json");
 // Quality signal from the plan: pages that punch above their raw traffic on
 // engagement (dwell / bounce) and deserve a boost even when clicks are lower.
 const QUALITY_BOOST = {
-  "marketing-brain": "rising, stickiest surface (the AI chat); highest quality",
-  "high-converting-website": "deepest engagement, lowest bounce; high quality",
   "5-levels-ai": "long-dwell explainer article; high quality",
 };
 
@@ -127,13 +125,13 @@ Balance three things for every pick:
 Guidelines:
 - Never recommend a page to itself.
 - Spread the wealth a little: it is fine (good, even) if very popular pages appear often, but try to give every recommendation set a coherent theme rather than always listing the same 3 pages everywhere.
-- Think in clusters: outreach pages -> other outreach + high-converting-website; short-video pages (reels/tiktok) -> each other + content/social-growth; content/writing pages -> each other + the marketing-brain and 60k-linkedin-post; ads/seo/trend -> marketing + relevant siblings; the-5-levels/marketing-brain are broad and pair well as a "go deeper" pick.
+- Think in clusters: outreach pages -> other outreach + marketing; short-video pages (reels/tiktok) -> each other + content/social-growth; content/writing pages -> each other; ads/seo/trend -> marketing + relevant siblings; the-5-levels and the tutorial hub are broad and pair well as a "go deeper" pick.
 
 Here is the catalog (JSON):
 ${JSON.stringify(catalog, null, 2)}
 
 Return ONLY a JSON object (no prose, no markdown fence) mapping every slug to an array of exactly 3 other slugs, ranked best-first. Every value slug MUST be one of: ${slugs.join(", ")}. Example shape:
-{"claude-reels":["claude-tiktok","claude-content","marketing-brain"], ...}`;
+{"claude-reels":["claude-tiktok","claude-content","claude-code-instagram"], ...}`;
 
   const client = new Anthropic();
   const msg = await client.messages.create({

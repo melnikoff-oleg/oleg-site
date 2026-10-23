@@ -2,9 +2,9 @@
 // that iterates them (routes, design-tokens, mobile-overflow). Keeping one list
 // means a new page can't be silently absent from half the suite.
 //
-// Four live routes are deliberately NOT here: /elon-musk-ai, /boris-cherny-ai,
-// /claude-code-sessions and /claude-riemann-hypothesis. They are the filmed
-// pages, ported in from the vault, and they render none of the shared shell — no
+// One live route is deliberately NOT here: /claude-riemann-hypothesis, the last
+// filmed page (the other filmed ones were deleted on 2026-10-23). It is ported in
+// from the vault, and it renders none of the shared shell — no
 // header, no footer, no design tokens, and their own scoped ground — so every
 // spec that iterates this list would fail on them for reasons that are the point
 // of the pages. Adding one means teaching those specs to skip it; excluding it
@@ -35,17 +35,8 @@ export const ROUTES = [
   "/claude-tiktok",
   "/claude-social-growth",
   "/claude-marketing",
-  "/ads-ai",
-  "/high-converting-website",
-  "/60k-linkedin-post",
   "/5-levels-ai",
-  "/opus-5",
-  "/fable-money",
   "/claude-code-instagram",
-  "/claude-code-second-brain",
-  "/claude-code-ads",
-  "/marketing-brain",
-  "/marketing-brain-knowledge",
   "/reels",
   "/viral",
   "/creators",
@@ -65,11 +56,9 @@ const BARE_ROUTES: readonly string[] = ["/reels", "/creators", "/viral"];
 
 export const SHELL_ROUTES = ROUTES.filter((r) => !BARE_ROUTES.includes(r));
 
-// Pages that render the cross-linked ResourceFooter (all except the homepage,
-// the chat and the bare search).
-export const FOOTER_ROUTES = SHELL_ROUTES.filter(
-  (r) => r !== "/" && r !== "/marketing-brain",
-);
+// Pages that render the cross-linked ResourceFooter (all except the homepage
+// and the bare search).
+export const FOOTER_ROUTES = SHELL_ROUTES.filter((r) => r !== "/");
 
 // The routes that carry a full written guide: the video's content as a readable
 // article, so the page answers the query without the video. guide.spec.ts holds
@@ -100,6 +89,20 @@ export const REDIRECTED_ROUTES: Record<string, string> = {
   "/claude-outreach": "/claude-b2b-outreach",
   "/claude-trend-scanner": "/claude-social-growth",
   "/claude-interviewer": "/claude-content",
-  "/claude-website": "/high-converting-website",
+  "/claude-website": "/",
   "/claude-seo": "/claude-code-tutorial",
+  "/marketing-brain": "/",
+  "/marketing-brain-knowledge": "/",
+  "/ads-ai": "/",
+  "/fable-money": "/",
+  "/opus-5": "/",
+  "/60k-linkedin-post": "/",
+  "/high-converting-website": "/",
+  "/claude-code-second-brain": "/",
+  "/claude-code-ads": "/",
+  "/boris-cherny-ai": "/",
+  "/elon-musk-ai": "/",
+  "/sam-altman-ai": "/",
+  "/claude-code-sessions": "/",
+  "/andrej-karpathy-ai": "/",
 };

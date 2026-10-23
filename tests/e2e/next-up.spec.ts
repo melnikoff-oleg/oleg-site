@@ -16,9 +16,9 @@ const MIN_TAP = 44;
 const NEXT_UP_ROUTES = [
   "/claude-reels",
   "/claude-cowork-outreach",
-  "/high-converting-website",
+  "/claude-b2b-outreach",
   "/5-levels-ai",
-  "/marketing-brain-knowledge",
+  "/claude-code-tutorial",
 ];
 
 async function settle(page: Page, route: string) {

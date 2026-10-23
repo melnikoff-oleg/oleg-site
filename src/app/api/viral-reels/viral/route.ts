@@ -2,7 +2,7 @@
 // should copy, re-ranked for small accounts and recent posts.
 
 import { NextResponse } from "next/server";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import {
   BRAND_MIN,
   findViralReels,

@@ -9,7 +9,7 @@
 // JavaScript get; this is what the five sliders talk to afterwards.
 
 import { NextResponse } from "next/server";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { creatorRosterConfigured, listCreators } from "@/lib/creators/roster";
 import { readCreatorFilters } from "@/lib/creators/types";
 import { normalizePage } from "@/lib/reels/types";

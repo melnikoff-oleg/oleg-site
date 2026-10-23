@@ -11,7 +11,7 @@ import {
   VOTER_COOKIE,
   voterCookieHeader,
 } from "@/lib/ideas/session";
-import { getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { getClientIp } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Shared copy-to-clipboard button for prompts and commands. Extracted from the
- * /60k-linkedin-post inline pattern so every page that hands out a paste-able
+ * /60k-linkedin-post inline pattern (that page was deleted on 2026-10-23) so every page that hands out a paste-able
  * prompt can offer one-tap copy (on a phone, selecting a long prompt by hand is
  * the single most fiddly interaction on the site).
  *

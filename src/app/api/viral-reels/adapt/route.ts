@@ -4,7 +4,7 @@
 // call, about a cent), so its cap is per IP and much lower than the search.
 
 import { NextResponse } from "next/server";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import {
   adaptReel,
   BRAND_MIN,

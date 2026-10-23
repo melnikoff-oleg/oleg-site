@@ -7,7 +7,7 @@
 // so the guard-rail branches are deterministic in an environment with no keys.
 
 import { NextResponse } from "next/server";
-import { checkRateLimit, getClientIp } from "@/lib/marketing-brain/rate-limit";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { HELD_LIMIT, heldVideos, isShortcode, reelVideoConfigured } from "@/lib/reels/video";
 
 export const runtime = "nodejs";
