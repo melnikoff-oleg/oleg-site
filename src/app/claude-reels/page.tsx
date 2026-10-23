@@ -113,7 +113,7 @@ irm https://claude.ai/install.ps1 | iex`}
         <p>You need three API keys:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Apify{" "}
               <span className="font-normal text-silver-muted">
                 (scraping Instagram)
@@ -134,7 +134,7 @@ irm https://claude.ai/install.ps1 | iex`}
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Google Gemini{" "}
               <span className="font-normal text-silver-muted">
                 (analyzing video content)
@@ -155,7 +155,7 @@ irm https://claude.ai/install.ps1 | iex`}
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Anthropic{" "}
               <span className="font-normal text-silver-muted">
                 (generating scripts)
@@ -687,7 +687,7 @@ export default function ClaudeReelsPage() {
               have to write.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <p className="font-display text-lg font-medium text-silver">
+              <p className="font-display text-lg font-semibold text-silver">
                 Analysis instruction
               </p>
               <CopyButton text={ANALYSIS_PROMPT} label="copy" />
@@ -699,7 +699,7 @@ export default function ClaudeReelsPage() {
               is a thing you will not read.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <p className="font-display text-lg font-medium text-silver">
+              <p className="font-display text-lg font-semibold text-silver">
                 New concepts instruction
               </p>
               <CopyButton text={CONCEPTS_PROMPT} label="copy" />

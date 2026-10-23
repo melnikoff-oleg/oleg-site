@@ -109,7 +109,7 @@ const steps = [
         <p>You need four services:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Apify{" "}
               <span className="font-normal text-silver-muted">
                 For scraping X/Twitter
@@ -129,7 +129,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Gemini API{" "}
               <span className="font-normal text-silver-muted">
                 For analyzing competitor visuals
@@ -149,7 +149,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Anthropic API{" "}
               <span className="font-normal text-silver-muted">
                 For generating content
@@ -169,7 +169,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Kie AI{" "}
               <span className="font-normal text-silver-muted">
                 For the infographic images
@@ -298,28 +298,28 @@ const steps = [
     content: (
       <div className="space-y-4">
         <div>
-          <p className="text-silver font-medium">Provide more brand context</p>
+          <p className="text-silver font-semibold">Provide more brand context</p>
           <p className="mt-1">
             Tell Claude Code to scrape your website, LinkedIn, and Instagram to
             build a richer brand DNA for the generator.
           </p>
         </div>
         <div>
-          <p className="text-silver font-medium">Add calls to action</p>
+          <p className="text-silver font-semibold">Add calls to action</p>
           <p className="mt-1">
             Configure CTAs for some posts (e.g. &quot;book a 30-min
             consultation&quot;) to turn content into lead generation.
           </p>
         </div>
         <div>
-          <p className="text-silver font-medium">Analyze competitor comments</p>
+          <p className="text-silver font-semibold">Analyze competitor comments</p>
           <p className="mt-1">
             Find gaps in what competitors cover by analyzing their comment
             sections, then fill those gaps in your content.
           </p>
         </div>
         <div>
-          <p className="text-silver font-medium">
+          <p className="text-silver font-semibold">
             Feed your own performance data
           </p>
           <p className="mt-1">

@@ -51,7 +51,7 @@ export function GuideSection({
   const anchor = id ?? slugify(title);
   return (
     <section id={anchor} className="mt-14 scroll-mt-24 first:mt-0">
-      <h2 className="font-display text-2xl font-medium leading-tight tracking-tight text-silver md:text-3xl">
+      <h2 className="font-display text-2xl font-semibold leading-[1.15] tracking-tight text-silver md:text-3xl">
         {title}
       </h2>
       <div className="mt-5 space-y-4">{children}</div>
@@ -86,7 +86,7 @@ export function GuideSteps({
           id={`step-${start + i}`}
           className="scroll-mt-24 border-l-2 border-vivid-blue/25 pl-5 md:pl-6"
         >
-          <h3 className="flex items-baseline gap-3 font-display text-lg font-medium text-silver md:text-xl">
+          <h3 className="flex items-baseline gap-3 font-display text-lg font-semibold text-silver md:text-xl">
             <span className="font-body text-sm text-vivid-blue">{start + i}</span>
             <span>{s.title}</span>
           </h3>
@@ -156,7 +156,7 @@ export function Callout({
   return (
     <div className={`mt-6 rounded-xl border ${accent} px-5 py-4 md:px-6`}>
       {title ? (
-        <p className="font-display text-base font-medium text-silver">{title}</p>
+        <p className="font-display text-base font-semibold text-silver">{title}</p>
       ) : null}
       <div className="space-y-3 font-body text-base text-silver [&>p]:m-0">
         {children}
@@ -255,7 +255,7 @@ export function CompareTable({
                 <th
                   key={c}
                   scope="col"
-                  className="px-3 py-3 font-body text-sm font-medium text-vivid-blue first:pl-0"
+                  className="px-3 py-3 font-body text-sm font-semibold text-vivid-blue first:pl-0"
                 >
                   {c}
                 </th>
@@ -289,7 +289,7 @@ export function CompareTable({
       <div className="space-y-4 lg:hidden">
         {columns.slice(1).map((col, ci) => (
           <div key={col} className="surface-card px-5 py-4">
-            <p className="font-display text-lg font-medium text-silver">{col}</p>
+            <p className="font-display text-lg font-semibold text-silver">{col}</p>
             <dl className="mt-3 divide-y divide-hairline">
               {rows.map((r) => (
                 <div key={r.label} className="flex flex-col gap-0.5 py-3 first:pt-0 last:pb-0">
@@ -410,7 +410,7 @@ export function Stats({
     >
       {items.map((s) => (
         <div key={s.label} className="bg-navy-raised px-4 py-5 md:px-5">
-          <dt className="font-display text-2xl font-medium text-white md:text-3xl">{s.value}</dt>
+          <dt className="font-display text-2xl font-semibold text-white md:text-3xl">{s.value}</dt>
           <dd className="mt-1 font-body text-sm leading-snug text-silver-muted">{s.label}</dd>
         </div>
       ))}
@@ -464,7 +464,7 @@ export function Quote({
 }) {
   return (
     <figure className="mt-7 border-l-2 border-vivid-blue/40 pl-5 md:pl-6">
-      <blockquote className="font-display text-lg leading-relaxed text-silver md:text-xl">
+      <blockquote className="font-body text-lg leading-relaxed text-silver md:text-xl">
         {children}
       </blockquote>
       {videoId && at !== undefined ? (
@@ -494,6 +494,6 @@ export function Quote({
  */
 export function Answer({ children }: { children: ReactNode }) {
   return (
-    <p className="font-display text-lg leading-relaxed text-white md:text-xl">{children}</p>
+    <p className="font-body text-lg leading-relaxed text-white md:text-xl">{children}</p>
   );
 }

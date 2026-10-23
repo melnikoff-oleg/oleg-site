@@ -129,7 +129,7 @@ export function Viral({ configured, adaptConfigured }: { configured: boolean; ad
   return (
     <div>
       <section className="mx-auto max-w-3xl">
-        <p className="font-display text-2xl font-semibold leading-tight text-white sm:text-4xl">
+        <p className="font-display text-2xl font-semibold leading-[1.15] text-white sm:text-4xl">
           Your next reel should be one that already went viral.
         </p>
         <p className="mt-3 font-body text-sm text-silver-muted sm:text-base">
@@ -165,7 +165,7 @@ export function Viral({ configured, adaptConfigured }: { configured: boolean; ad
             <button
               type="submit"
               disabled={loading || !configured}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-vivid-blue px-5 font-body text-sm font-medium text-white transition-colors hover:bg-vivid-blue/85 disabled:opacity-60"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-vivid-blue px-5 font-body text-sm font-semibold text-white transition-colors hover:bg-vivid-blue/85 disabled:opacity-60"
             >
               {loading ? <Loader2 className="size-4 animate-spin" aria-hidden /> : <ArrowRight className="size-4" aria-hidden />}
               Show me what went viral
@@ -248,7 +248,7 @@ function Tile({ reel, index, onOpen }: { reel: Reel; index: number; onOpen: () =
         <span className="sr-only">{`Open: ${compactNumber(reel.views)} views, ${score}x outlier, posted ${posted}`}</span>
       </button>
 
-      <span className="pointer-events-none absolute left-2 top-2 z-20 max-w-[calc(100%-1rem)] truncate rounded-full bg-navy/55 px-2 py-1 font-body text-[11px] font-medium text-white/85 backdrop-blur-md sm:text-xs">
+      <span className="pointer-events-none absolute left-2 top-2 z-20 max-w-[calc(100%-1rem)] truncate rounded-full bg-navy/55 px-2 py-1 font-body text-[11px] font-semibold text-white/85 backdrop-blur-md sm:text-xs">
         @{reel.account} · {compactNumber(reel.followers)}
       </span>
 
@@ -267,10 +267,10 @@ function Tile({ reel, index, onOpen }: { reel: Reel; index: number; onOpen: () =
             </span>
           </div>
           <div className="mt-1.5 flex items-center justify-between gap-2">
-            <span className="truncate font-body text-[11px] font-medium tabular-nums text-white/75 sm:text-xs">{posted}</span>
+            <span className="truncate font-body text-[11px] font-semibold tabular-nums text-white/75 sm:text-xs">{posted}</span>
             <span className="inline-flex shrink-0 items-center gap-1 text-white/60">
               <Heart className="size-3 shrink-0" aria-hidden />
-              <span className="font-body text-[11px] font-medium tabular-nums sm:text-xs">{compactNumber(reel.likes)}</span>
+              <span className="font-body text-[11px] font-semibold tabular-nums sm:text-xs">{compactNumber(reel.likes)}</span>
             </span>
           </div>
         </div>
@@ -283,7 +283,7 @@ function Field({ label, summary, points }: { label: string; summary: string | nu
   if (!summary && !points?.length) return null;
   return (
     <div>
-      <p className="font-body text-[11px] font-medium uppercase tracking-wider text-silver-muted">{label}</p>
+      <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-silver-muted">{label}</p>
       {summary && <p className="mt-1 font-body text-sm text-silver">{summary}</p>}
       {points && points.length > 0 && (
         <ul className="mt-1.5 space-y-1">
@@ -443,7 +443,7 @@ function Panel({
                   type="button"
                   disabled={busy || !adaptConfigured}
                   onClick={() => void adapt(false)}
-                  className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-full bg-vivid-blue px-5 font-body text-sm font-medium text-white transition-colors hover:bg-vivid-blue/85 disabled:opacity-60"
+                  className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-full bg-vivid-blue px-5 font-body text-sm font-semibold text-white transition-colors hover:bg-vivid-blue/85 disabled:opacity-60"
                 >
                   {busy ? <Loader2 className="size-4 animate-spin" aria-hidden /> : <Sparkles className="size-4" aria-hidden />}
                   {busy ? "Writing, about 15 seconds" : "Adapt for my brand"}
@@ -453,14 +453,14 @@ function Panel({
               </div>
             ) : (
               <div className={busy ? "opacity-50" : ""}>
-                <p className="font-display text-xl font-semibold leading-tight text-white">{concept.name}</p>
+                <p className="font-display text-xl font-semibold leading-[1.15] text-white">{concept.name}</p>
                 <div className="mt-4 space-y-4">
                   <Field label="Idea" summary={concept.idea} />
                   <Field label="Hook" summary={concept.hook} />
                   <Field label="Why people keep watching" summary={concept.retain} />
                   <Field label="What they get" summary={concept.reward} />
                   <div>
-                    <p className="font-body text-[11px] font-medium uppercase tracking-wider text-silver-muted">Script</p>
+                    <p className="font-body text-[11px] font-semibold uppercase tracking-wider text-silver-muted">Script</p>
                     <pre className="mt-1 whitespace-pre-wrap rounded-xl border border-hairline bg-navy p-3 font-body text-sm leading-relaxed text-silver">
                       {concept.script}
                     </pre>
@@ -490,7 +490,7 @@ function Panel({
                       type="button"
                       disabled={busy || !feedback.trim()}
                       onClick={() => void adapt(true)}
-                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-vivid-blue/60 px-4 font-body text-sm font-medium text-white transition-colors hover:bg-vivid-blue/15 disabled:opacity-50"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-vivid-blue/60 px-4 font-body text-sm font-semibold text-white transition-colors hover:bg-vivid-blue/15 disabled:opacity-50"
                     >
                       {busy ? <Loader2 className="size-4 animate-spin" aria-hidden /> : <RefreshCw className="size-4" aria-hidden />}
                       Regenerate

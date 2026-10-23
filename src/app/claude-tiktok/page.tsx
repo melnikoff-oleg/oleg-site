@@ -104,7 +104,7 @@ const steps = [
         <p>You need three API keys:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Apify{" "}
               <span className="font-normal text-silver-muted">
                 (scraping TikTok)
@@ -125,7 +125,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Google Gemini{" "}
               <span className="font-normal text-silver-muted">
                 (analyzing competitor visuals)
@@ -146,7 +146,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Anthropic{" "}
               <span className="font-normal text-silver-muted">
                 (generating concepts)

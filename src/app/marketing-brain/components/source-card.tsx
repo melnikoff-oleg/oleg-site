@@ -75,14 +75,14 @@ export const SourceCard = forwardRef<
           className="h-36 w-24 shrink-0 rounded-md object-cover shadow-md shadow-navy/40 ring-1 ring-hairline"
         />
         <div className="min-w-0 flex-1">
-          <p className="font-body text-sm font-medium leading-snug text-silver">{source.title}</p>
+          <p className="font-body text-sm font-semibold leading-snug text-silver">{source.title}</p>
           <p className="font-body text-xs text-silver-muted">{source.attribution}</p>
           <ul className="mt-2 space-y-2">
             {source.items.map((it) => (
               <li key={it.n} className="flex gap-2">
                 {numBadge(it.n)}
                 <div className="min-w-0">
-                  <span className="font-body text-[11px] font-medium text-silver-muted">p.&nbsp;{it.page}</span>
+                  <span className="font-body text-[11px] font-semibold text-silver-muted">p.&nbsp;{it.page}</span>
                   <p className="line-clamp-2 font-body text-xs italic leading-relaxed text-silver-muted">
                     “{it.quote}”
                   </p>
@@ -140,7 +140,7 @@ export const SourceCard = forwardRef<
         </PosterFrame>
       )}
       <div className="p-3">
-        <p className="line-clamp-2 font-body text-sm font-medium leading-snug text-silver">{source.title}</p>
+        <p className="line-clamp-2 font-body text-sm font-semibold leading-snug text-silver">{source.title}</p>
         <p className="font-body text-xs text-silver-muted">{source.attribution}</p>
         <ul className="mt-2 space-y-2">
           {source.items.map((it, i) => (
@@ -156,7 +156,7 @@ export const SourceCard = forwardRef<
                       href={it.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded bg-vivid-blue/15 px-2 py-1 text-[11px] font-medium tabular-nums text-silver transition-colors hover:bg-vivid-blue/25 hover:text-white"
+                      className="inline-flex items-center gap-1 rounded bg-vivid-blue/15 px-2 py-1 text-[11px] font-semibold tabular-nums text-silver transition-colors hover:bg-vivid-blue/25 hover:text-white"
                     >
                       <svg viewBox="0 0 24 24" fill="currentColor" className="size-2.5">
                         <path d="M8 5v14l11-7z" />
@@ -167,7 +167,7 @@ export const SourceCard = forwardRef<
                     <button
                       type="button"
                       onClick={() => setActiveItem(i)}
-                      className={`inline-flex items-center gap-1 rounded px-2 py-1 text-[11px] font-medium tabular-nums transition-colors ${
+                      className={`inline-flex items-center gap-1 rounded px-2 py-1 text-[11px] font-semibold tabular-nums transition-colors ${
                         activeItem === i
                           ? "bg-vivid-blue/25 text-white"
                           : "bg-vivid-blue/15 text-silver hover:bg-vivid-blue/25 hover:text-white"

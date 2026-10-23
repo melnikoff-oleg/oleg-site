@@ -27,7 +27,7 @@ export function ResourceFooter({
         <details className="group mt-6">
           <summary
             data-testid="see-all-resources"
-            className="flex min-h-11 cursor-pointer list-none items-center justify-center gap-2 rounded-full text-sm font-medium text-silver-muted transition-colors hover:text-white [&::-webkit-details-marker]:hidden"
+            className="flex min-h-11 cursor-pointer list-none items-center justify-center gap-2 rounded-full text-sm font-semibold text-silver-muted transition-colors hover:text-white [&::-webkit-details-marker]:hidden"
           >
             see all free resources
             <ChevronDown className="size-4 transition-transform duration-200 group-open:rotate-180" />
@@ -45,7 +45,7 @@ export function ResourceFooter({
               >
                 <resource.icon className="mt-0.5 size-4 shrink-0 text-vivid-blue transition-colors group-hover/item:text-white" />
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-silver transition-colors group-hover/item:text-white">
+                  <p className="text-sm font-semibold text-silver transition-colors group-hover/item:text-white">
                     {resource.title}
                   </p>
                   <p className="mt-0.5 text-xs leading-relaxed text-silver-muted">

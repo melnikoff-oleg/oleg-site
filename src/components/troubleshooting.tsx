@@ -486,7 +486,7 @@ export function Troubleshooting({ items }: { items: FixKey[] }) {
               key={item.q}
               className="group rounded-xl border border-hairline surface-card"
             >
-              <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-body text-base font-medium text-silver transition-colors hover:text-white [&::-webkit-details-marker]:hidden">
+              <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-body text-base font-semibold text-silver transition-colors hover:text-white [&::-webkit-details-marker]:hidden">
                 <span>{item.q}</span>
                 <svg
                   viewBox="0 0 24 24"

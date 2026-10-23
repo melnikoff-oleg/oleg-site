@@ -180,7 +180,7 @@ function CmdChip({ cmd }: { cmd: string }) {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }}
-      className="inline-flex min-h-[44px] items-center gap-2 rounded border border-vivid-blue/40 px-3 py-1.5 text-left font-mono text-sm font-medium text-vivid-blue/90 transition-colors hover:border-vivid-blue hover:text-vivid-blue"
+      className="inline-flex min-h-[44px] items-center gap-2 rounded border border-vivid-blue/40 px-3 py-1.5 text-left font-mono text-sm font-semibold text-vivid-blue/90 transition-colors hover:border-vivid-blue hover:text-vivid-blue"
     >
       <span className="min-w-0 [overflow-wrap:anywhere]">{cmd}</span>
       {copied ? (
@@ -211,7 +211,7 @@ function CmdChips({ cmds, copyable = true }: { cmds: string[]; copyable?: boolea
         ) : (
           <span
             key={c}
-            className="rounded border border-hairline px-2.5 py-1.5 font-mono text-sm font-medium text-silver-muted [overflow-wrap:anywhere]"
+            className="rounded border border-hairline px-2.5 py-1.5 font-mono text-sm font-semibold text-silver-muted [overflow-wrap:anywhere]"
           >
             {c}
           </span>
@@ -272,12 +272,12 @@ function LevelRung({ lvl }: { lvl: Level }) {
             <span className="eyebrow block text-xs font-semibold text-silver-muted">
               {lvl.level}
             </span>
-            <span className="mt-0.5 block font-display text-lg font-semibold leading-tight text-silver">
+            <span className="mt-0.5 block font-display text-lg font-semibold leading-[1.15] text-silver">
               {lvl.role}
             </span>
           </div>
           <div className="shrink-0 text-right">
-            <span className="block font-display text-2xl font-light leading-none tabular-nums whitespace-nowrap text-silver">
+            <span className="block font-display text-2xl font-normal leading-none tabular-nums whitespace-nowrap text-silver">
               {lvl.agents}
             </span>
             <span className="eyebrow mt-1 block text-xs font-semibold text-silver-muted">
@@ -352,7 +352,7 @@ export default function FiveLevelsPage() {
             href="https://youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
@@ -381,7 +381,7 @@ export default function FiveLevelsPage() {
 
             <motion.h1
               variants={fadeUp}
-              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl"
             >
               The builder&apos;s ladder
             </motion.h1>
@@ -459,7 +459,7 @@ export default function FiveLevelsPage() {
                           </div>
                         </td>
                         {/* Agents */}
-                        <td className="border-b border-hairline px-5 py-6 align-top font-display text-2xl font-light tabular-nums whitespace-nowrap text-silver sm:px-6">
+                        <td className="border-b border-hairline px-5 py-6 align-top font-display text-2xl font-normal tabular-nums whitespace-nowrap text-silver sm:px-6">
                           {lvl.agents}
                         </td>
                         {/* What it looks like */}

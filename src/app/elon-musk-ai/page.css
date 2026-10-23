@@ -39,8 +39,8 @@
    intersection observer loses that race, leaving a band blank for a beat.
 
    Type roles are informational, not decorative:
-     DM Sans        headlines
-     Space Grotesk  labels, timecodes (tabular figures)
+     Wix Madefor Display  headlines (Oleg's brand font since 2026-10-23, 600)
+     Wix Madefor Text     labels, timecodes (tabular figures)
      Newsreader     verbatim quotes only — what ELON says, so his words never
                     look like Oleg's words
      Roboto         inside the YouTube cards only, because that is YouTube
@@ -61,8 +61,8 @@
   --blue-dim:rgba(40, 99, 240, 0.14);
   --ochre:   #d9a05b;   /* the one warm note: rank numerals, timecodes used */
 
-  --display: var(--font-dm-sans), system-ui, sans-serif;
-  --body:    var(--font-space), system-ui, sans-serif;
+  --display: var(--font-wix-display), system-ui, sans-serif;
+  --body:    var(--font-wix-text), system-ui, sans-serif;
   --quote:   var(--font-newsreader), Charter, Georgia, serif;
 
   /* platform typefaces, for the cards that must be recognised on sight */
@@ -124,7 +124,7 @@
   margin: 0 0 84px;
   padding: 112px 0 0;
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(38px, 4.4vw, 66px);
   line-height: 1.02;
   letter-spacing: -0.035em;
@@ -183,7 +183,7 @@
 .elon-page .tally b {
   display: block;
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 38px;
   line-height: 1;
   letter-spacing: -0.04em;
@@ -194,7 +194,7 @@
   display: block;
   margin-top: 6px;
   font-size: 11.5px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--faint);
@@ -381,7 +381,7 @@
 
 .elon-page .rank {
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 76px;
   line-height: 0.82;
   letter-spacing: -0.05em;
@@ -394,7 +394,7 @@
 .elon-page .rule h2 {
   margin: 0;
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(26px, 3vw, 40px);
   line-height: 1.1;
   letter-spacing: -0.028em;
@@ -435,7 +435,7 @@
   transition: border-color 0.16s ease, background 0.16s ease, color 0.16s ease;
 }
 .elon-page .cite:hover { border-color: var(--blue); background: var(--blue-dim); color: var(--ink); }
-.elon-page .cite b { font-weight: 500; color: var(--blue-lit); font-variant-numeric: tabular-nums; }
+.elon-page .cite b { font-weight: 600; color: var(--blue-lit); font-variant-numeric: tabular-nums; }
 
 .elon-page .shelf { position: sticky; top: 40px; }
 .elon-page .shelf img {
@@ -454,7 +454,7 @@
   border: 1px solid var(--ochre);
   border-radius: 999px;
   font-size: 11.5px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ochre);

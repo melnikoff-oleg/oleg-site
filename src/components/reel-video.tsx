@@ -166,7 +166,7 @@ function Player({ reel, onClose }: { reel: Playing; onClose: () => void }) {
           href={reel.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 font-body text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 font-body text-sm font-semibold text-white/85 transition-colors hover:bg-white/10 hover:text-white"
         >
           <ExternalLink className="size-4" aria-hidden />
           Open on Instagram

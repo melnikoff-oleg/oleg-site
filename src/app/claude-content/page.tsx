@@ -82,7 +82,7 @@ const steps = [
         <p>You need two API keys:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Apify{" "}
               <span className="font-normal text-silver-muted">
                 (scraping trending content from social media)
@@ -103,7 +103,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Kie.ai{" "}
               <span className="font-normal text-silver-muted">
                 (generating visuals: infographics, carousels)

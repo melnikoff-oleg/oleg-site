@@ -34,7 +34,7 @@ export function HeroSection() {
             as="h1"
             delay={0}
             segmentClassName="text-metallic"
-            className="mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-medium leading-[1.05] tracking-tight text-silver sm:text-3xl md:text-4xl lg:text-5xl"
+            className="mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-semibold leading-[1.1] tracking-tight text-silver sm:text-3xl md:text-4xl lg:text-5xl"
           >
             I&apos;m building the best AI for marketing.
           </TextEffect>
@@ -123,7 +123,7 @@ export function HeroSection() {
               className="mt-2 sm:absolute sm:inset-x-2 sm:bottom-[12%] sm:mt-0 sm:px-4"
             >
               <div className="mx-auto max-w-3xl rounded-xl border border-hairline bg-navy/70 px-4 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
-                <blockquote className="text-balance font-display text-base font-medium leading-snug tracking-tight text-silver sm:text-xl md:text-2xl">
+                <blockquote className="text-balance font-display text-base font-semibold leading-snug tracking-tight text-silver sm:text-xl md:text-2xl">
                   <span className="text-silver-muted">&ldquo;</span>made{" "}
                   <span className="text-metallic">$700k by the age 24</span> by
                   applying AI for trading, then went all-in on{" "}

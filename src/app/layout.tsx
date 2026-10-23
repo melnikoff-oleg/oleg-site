@@ -1,33 +1,28 @@
 import type { Metadata } from "next";
-import { DM_Sans, Space_Grotesk } from "next/font/google";
+import { Wix_Madefor_Display, Wix_Madefor_Text } from "next/font/google";
 import { Plausible } from "@/components/plausible";
 import "./globals.css";
 
-// Inter used to be loaded here as the body default. It was the largest font
-// file on the site (about 47 kB on every cold visit) and it rendered almost
-// nothing: `font-sans` appeared exactly twice in the whole codebase, once being
-// the <body> tag below, because every element specifies font-display (DM Sans)
-// or font-body (Space Grotesk). Removing it takes roughly 45% off the font
-// payload and changes nothing anyone can see. --font-sans now points at the
-// body face, so text that specifies no family inherits the one the design
-// already uses for body copy. Guarded by tests/e2e/perf-budget.spec.ts (83).
+// One family, two cuts, two weights (Oleg's type rules, MS repo
+// projects/accounts/oleg_melnikov/style/TYPOGRAPHY.md, since 2026-10-23):
+// Wix Madefor Display for titles (font-display), Wix Madefor Text for
+// everything else (font-body, and font-sans for text that names no family),
+// each at 400 and 600 only. Both are variable fonts, so each family is one
+// file whatever the weights: two font files in all, as
+// tests/e2e/perf-budget.spec.ts (83) expects. DM Sans and Space Grotesk, the
+// faces before this, are gone; Inter went earlier (it rendered almost nothing).
 
-const dmSans = DM_Sans({
+const wixDisplay = Wix_Madefor_Display({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["400", "500", "700"],
+  variable: "--font-wix-display",
+  weight: ["400", "600"],
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const wixText = Wix_Madefor_Text({
   subsets: ["latin"],
-  variable: "--font-space",
-  // 300 was dead: the only font-light usages sit on font-display (DM Sans),
-  // which renders them at 400. Dropping it saves a woff2 + a preload.
-  // 700 is here for `.prose-guide strong`, which is the emphasis inside the
-  // written guides. Without it the browser synthesises a fake bold off the 500
-  // face, which on a body face this geometric looks smeared rather than strong.
-  weight: ["400", "500", "700"],
+  variable: "--font-wix-text",
+  weight: ["400", "600"],
   display: "swap",
 });
 
@@ -75,7 +70,7 @@ export default function RootLayout({
   return (
     // suppressHydrationWarning: the inline script below adds "js" to <html>
     // before React hydrates, on purpose.
-    <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${wixDisplay.variable} ${wixText.variable}`} suppressHydrationWarning>
       <head>
         {/* Scroll reveals hide content only when JavaScript is running to show
             it again. Without this, a blocked or failed script left everything

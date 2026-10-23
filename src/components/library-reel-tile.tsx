@@ -122,7 +122,7 @@ export function LibraryReelTile({
       {/* Above the picture link, so it stays clickable. */}
       <Link
         href={`/creators/${reel.account}`}
-        className="absolute left-2 top-2 z-20 max-w-[calc(100%-1rem)] truncate rounded-full bg-navy/55 px-2 py-1 font-body text-[11px] font-medium text-white/85 backdrop-blur-md transition-colors hover:bg-navy/80 hover:text-white sm:text-xs"
+        className="absolute left-2 top-2 z-20 max-w-[calc(100%-1rem)] truncate rounded-full bg-navy/55 px-2 py-1 font-body text-[11px] font-semibold text-white/85 backdrop-blur-md transition-colors hover:bg-navy/80 hover:text-white sm:text-xs"
       >
         @{reel.account}
       </Link>
@@ -161,7 +161,7 @@ export function LibraryReelTile({
             {/* Third. No icon: a date needs no glyph to be read as a date, and
                 leaving it off is what stops the strip reading as a row of equal
                 badges. */}
-            <span data-field="date" className="truncate font-body text-[11px] font-medium tabular-nums text-white/75 sm:text-xs">
+            <span data-field="date" className="truncate font-body text-[11px] font-semibold tabular-nums text-white/75 sm:text-xs">
               {posted}
             </span>
 
@@ -169,7 +169,7 @@ export function LibraryReelTile({
                 count is only ever read against the view count above it. */}
             <span data-field="likes" className="inline-flex shrink-0 items-center gap-1 text-white/60">
               <Heart className="size-3 shrink-0" aria-hidden />
-              <span className="font-body text-[11px] font-medium tabular-nums sm:text-xs">
+              <span className="font-body text-[11px] font-semibold tabular-nums sm:text-xs">
                 {compactNumber(reel.likes)}
               </span>
               <span className="sr-only">Likes</span>

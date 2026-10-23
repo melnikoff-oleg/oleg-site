@@ -114,7 +114,7 @@ export function CreatorCard({ creator }: { creator: CreatorTileRow }) {
           {/* The handle is the heading. The real name used to be, but Oleg asked
               for the username, and a card headed "The AI Filmmaker" gives no way
               to find the account again. */}
-          <h3 className="font-display text-base leading-snug text-white sm:text-lg">
+          <h3 className="font-display text-base font-semibold leading-snug text-white sm:text-lg">
             <Link href={href} className="hover:text-vivid-blue [overflow-wrap:anywhere]">
               {handle}
               {creator.verified ? (

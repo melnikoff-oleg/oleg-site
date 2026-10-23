@@ -150,7 +150,7 @@ export function AdminPanel({ ideas, events }: { ideas: Idea[]; events: IdeaEvent
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
-      <h1 className="font-display text-2xl text-silver">Ideas admin</h1>
+      <h1 className="font-display text-2xl font-semibold text-silver">Ideas admin</h1>
 
       <form
         onSubmit={async (e) => {

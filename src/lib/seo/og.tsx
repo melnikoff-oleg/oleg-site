@@ -1,3 +1,5 @@
+import { readFileSync } from "fs";
+import { join } from "path";
 import { ImageResponse } from "next/og";
 
 // One generator for every route's Open Graph card.
@@ -10,10 +12,17 @@ import { ImageResponse } from "next/og";
 // Rendered at BUILD time, not per request, because each route's card is a fixed
 // string. The crawler gets a static png and no function ever runs.
 //
-// Deliberately no external fonts: ImageResponse would have to fetch them at
-// build, which turns a network hiccup into a failed build. The system stack
-// renders the wordmark and title well enough at this size, and a card that
-// always builds beats a slightly nicer one that sometimes does not.
+// No font is fetched: ImageResponse would have to fetch it at build, which
+// turns a network hiccup into a failed build. The brand font (Wix Madefor,
+// since 2026-10-23) is bundled instead, read from disk: fixed-weight Latin cuts
+// in ./fonts, because ImageResponse cannot read a variable font's weights.
+// Display SemiBold for the title, Text for the rest (two weights, 400 and 600).
+const FONT_DIR = join(process.cwd(), "src/lib/seo/fonts");
+const FONTS = [
+  { name: "Wix Madefor Display", file: "WixMadeforDisplay-SemiBold.ttf", weight: 600 },
+  { name: "Wix Madefor Text", file: "WixMadeforText-Regular.ttf", weight: 400 },
+  { name: "Wix Madefor Text", file: "WixMadeforText-SemiBold.ttf", weight: 600 },
+] as const;
 
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
@@ -44,6 +53,7 @@ export function ogImage({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          fontFamily: "Wix Madefor Text",
           background: `linear-gradient(140deg, ${NAVY} 0%, ${NAVY_RAISED} 100%)`,
           padding: "72px 80px",
         }}
@@ -62,6 +72,7 @@ export function ogImage({
           <div
             style={{
               fontSize: 30,
+              fontWeight: 600,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               color: VIVID_BLUE,
@@ -74,8 +85,9 @@ export function ogImage({
         <div
           style={{
             display: "flex",
+            fontFamily: "Wix Madefor Display",
             fontSize: size,
-            lineHeight: 1.08,
+            lineHeight: 1.1,
             color: SILVER,
             fontWeight: 600,
             letterSpacing: "-0.02em",
@@ -91,6 +103,7 @@ export function ogImage({
             justifyContent: "space-between",
             alignItems: "flex-end",
             fontSize: 30,
+            letterSpacing: "0.01em",
             color: SILVER_MUTED,
           }}
         >
@@ -101,6 +114,14 @@ export function ogImage({
         </div>
       </div>
     ),
-    OG_SIZE,
+    {
+      ...OG_SIZE,
+      fonts: FONTS.map(({ name, file, weight }) => ({
+        name,
+        data: readFileSync(join(FONT_DIR, file)),
+        weight,
+        style: "normal" as const,
+      })),
+    },
   );
 }

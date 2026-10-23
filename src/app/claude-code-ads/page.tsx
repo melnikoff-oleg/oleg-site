@@ -95,7 +95,7 @@ function Why({
 }) {
   return (
     <details className="group mt-4">
-      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-medium text-silver-muted transition-colors hover:text-white [&::-webkit-details-marker]:hidden">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-sm font-semibold text-silver-muted transition-colors hover:text-white [&::-webkit-details-marker]:hidden">
         {label}
         <ChevronDown className="size-4 transition-transform duration-200 group-open:rotate-180" />
       </summary>

@@ -47,7 +47,7 @@ const steps = [
       <div className="space-y-3">
         <p>
           Open VS Code, go to the Extensions tab, and search for{" "}
-          <span className="text-silver font-medium">Claude Code</span>. Install
+          <span className="text-silver font-semibold">Claude Code</span>. Install
           the extension and sign in.
         </p>
         <p>
@@ -65,7 +65,7 @@ const steps = [
         <p>You need two services:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Apify{" "}
               <span className="font-normal text-silver-muted">
                 For scraping social media
@@ -86,7 +86,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Kie.ai{" "}
               <span className="font-normal text-silver-muted">
                 For generating visuals
@@ -113,7 +113,7 @@ const steps = [
           <li>Open it in VS Code (File → Open Folder)</li>
           <li>
             Inside it, create a new file named{" "}
-            <span className="text-silver font-medium">.env</span>
+            <span className="text-silver font-semibold">.env</span>
           </li>
           <li>Paste these two lines into it:</li>
         </ul>
@@ -180,25 +180,25 @@ const steps = [
       <div className="space-y-3">
         <ul className="list-disc pl-5 space-y-2">
           <li>
-            <span className="text-silver font-medium">
+            <span className="text-silver font-semibold">
               Combine use cases
             </span>
             : scrape trends then generate content in one session
           </li>
           <li>
-            <span className="text-silver font-medium">
+            <span className="text-silver font-semibold">
               Use your brand style guide
             </span>{" "}
             for consistent visuals across all outputs
           </li>
           <li>
-            <span className="text-silver font-medium">
+            <span className="text-silver font-semibold">
               Let Claude Code analyze your analytics
             </span>{" "}
             to optimize what&apos;s working
           </li>
           <li>
-            <span className="text-silver font-medium">
+            <span className="text-silver font-semibold">
               Start with one use case
             </span>
             , master it, then add more

@@ -672,7 +672,7 @@ export function Library({
         <button
           type="submit"
           disabled={!input.trim() || state.kind === "loading"}
-          className="absolute right-2 top-1/2 inline-flex h-11 -translate-y-1/2 items-center gap-2 rounded-full bg-vivid-blue px-5 font-body text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-40 sm:h-12 sm:px-6"
+          className="absolute right-2 top-1/2 inline-flex h-11 -translate-y-1/2 items-center gap-2 rounded-full bg-vivid-blue px-5 font-body text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-40 sm:h-12 sm:px-6"
         >
           {state.kind === "loading" ? (
             <Loader2 className="size-4 animate-spin" aria-hidden />

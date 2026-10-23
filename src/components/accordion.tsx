@@ -29,10 +29,10 @@ export function Accordion({ items, defaultOpen }: AccordionProps) {
               aria-expanded={isOpen}
               className="flex w-full items-center gap-4 px-6 py-5 text-left transition-colors hover:bg-vivid-blue/[0.06]"
             >
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-vivid-blue/15 font-body text-sm font-medium text-vivid-blue">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-vivid-blue/15 font-body text-sm font-semibold text-vivid-blue">
                 {index + 1}
               </span>
-              <span className="flex-1 font-display text-lg font-medium text-silver">{item.title}</span>
+              <span className="flex-1 font-display text-lg font-semibold text-silver">{item.title}</span>
               <svg
                 viewBox="0 0 20 20"
                 fill="currentColor"

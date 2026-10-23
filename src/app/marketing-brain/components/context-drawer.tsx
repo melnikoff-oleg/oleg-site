@@ -63,7 +63,7 @@ export function ContextDrawer({
             className="fixed right-0 top-0 z-50 flex h-dvh w-full max-w-md flex-col border-l border-hairline bg-navy"
           >
             <div className="flex items-center justify-between border-b border-hairline px-6 py-4">
-              <h2 className="font-display text-lg tracking-tight text-silver">
+              <h2 className="font-display text-lg font-semibold tracking-tight text-silver">
                 Your business context
               </h2>
               <button
@@ -88,7 +88,7 @@ export function ContextDrawer({
 
               {/* Website */}
               <div className="space-y-2">
-                <label className="eyebrow text-xs font-medium text-vivid-blue/80">
+                <label className="eyebrow text-xs font-semibold text-vivid-blue/80">
                   Scrape a website
                 </label>
                 <div className="flex gap-2">
@@ -104,7 +104,7 @@ export function ContextDrawer({
                     type="button"
                     onClick={onScrape}
                     disabled={!url.trim() || !!memory.working}
-                    className="inline-flex min-h-[44px] shrink-0 items-center rounded-full bg-vivid-blue px-4 py-2 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-40"
+                    className="inline-flex min-h-[44px] shrink-0 items-center rounded-full bg-vivid-blue px-4 py-2 font-body text-sm font-semibold text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-40"
                   >
                     {memory.working === "scrape" ? "reading…" : "scrape"}
                   </button>
@@ -113,7 +113,7 @@ export function ContextDrawer({
 
               {/* Files */}
               <div className="space-y-2">
-                <label className="eyebrow text-xs font-medium text-vivid-blue/80">
+                <label className="eyebrow text-xs font-semibold text-vivid-blue/80">
                   Upload files (PDF, txt, md)
                 </label>
                 <input
@@ -123,7 +123,7 @@ export function ContextDrawer({
                   accept=".pdf,.txt,.md,application/pdf,text/plain,text/markdown"
                   onChange={(e) => onFiles(e.target.files)}
                   disabled={!!memory.working}
-                  className="block w-full font-body text-sm text-silver-muted file:mr-3 file:rounded-full file:border-0 file:bg-vivid-blue/15 file:px-4 file:py-2 file:text-sm file:font-medium file:text-silver hover:file:bg-vivid-blue/25"
+                  className="block w-full font-body text-sm text-silver-muted file:mr-3 file:rounded-full file:border-0 file:bg-vivid-blue/15 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-silver hover:file:bg-vivid-blue/25"
                 />
                 {memory.working === "upload" && (
                   <p className="font-body text-xs text-silver-muted">Reading file…</p>
@@ -138,7 +138,7 @@ export function ContextDrawer({
 
               {/* Editor */}
               <div className="space-y-2">
-                <label className="eyebrow text-xs font-medium text-vivid-blue/80">
+                <label className="eyebrow text-xs font-semibold text-vivid-blue/80">
                   What the brain knows
                 </label>
                 <textarea
@@ -182,7 +182,7 @@ export function ContextDrawer({
                 type="button"
                 onClick={() => memory.save(memory.text)}
                 disabled={!!memory.working}
-                className="flex min-h-[44px] w-full items-center justify-center rounded-full bg-vivid-blue px-4 py-2.5 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-40"
+                className="flex min-h-[44px] w-full items-center justify-center rounded-full bg-vivid-blue px-4 py-2.5 font-body text-sm font-semibold text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8] disabled:opacity-40"
               >
                 {memory.working === "save" ? "saving…" : "save context"}
               </button>

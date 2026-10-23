@@ -42,7 +42,7 @@ export function ResultsSection() {
         >
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="text-metallic font-display text-3xl font-medium tracking-tight md:text-4xl">
+              <p className="text-metallic font-display text-3xl font-semibold tracking-tight md:text-4xl">
                 {stat.value}
               </p>
               <p className="mt-2 font-body text-sm text-silver-muted">{stat.label}</p>
@@ -58,7 +58,7 @@ export function ResultsSection() {
         >
           {highlights.map((h) => (
             <div key={h.title} className="surface-card p-6">
-              <p className="font-display text-lg font-medium text-silver">{h.title}</p>
+              <p className="font-display text-lg font-semibold text-silver">{h.title}</p>
               <p className="mt-3 font-body text-base leading-relaxed text-silver-muted">
                 {h.description}
               </p>

@@ -91,7 +91,7 @@ const steps = [
         <p>You need three services:</p>
         <div className="space-y-3">
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Apify{" "}
               <span className="font-normal text-silver-muted">
                 For scraping LinkedIn leads
@@ -112,7 +112,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Kie.ai{" "}
               <span className="font-normal text-silver-muted">
                 For generating custom visuals/banners
@@ -133,7 +133,7 @@ const steps = [
             </p>
           </div>
           <div>
-            <p className="text-silver font-medium">
+            <p className="text-silver font-semibold">
               Anthropic API{" "}
               <span className="font-normal text-silver-muted">
                 For crafting messages

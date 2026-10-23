@@ -45,7 +45,7 @@ export function VisionSection() {
           The vision
         </h2>
 
-        <p className="mt-8 max-w-3xl font-display text-2xl font-medium leading-snug tracking-tight text-silver md:text-4xl">
+        <p className="mt-8 max-w-3xl font-display text-2xl font-semibold leading-[1.2] tracking-tight text-silver md:text-4xl">
           Media and software are the two biggest industries on the planet. I&apos;m merging them.
         </p>
 
@@ -60,7 +60,7 @@ export function VisionSection() {
                 <Image src={`/icons/${s.icon}.webp`} alt="" width={64} height={64} className="size-16" />
                 <p className="font-display text-sm text-vivid-blue">{s.n}</p>
               </div>
-              <p className="mt-4 font-display text-lg font-medium text-silver">{s.title}</p>
+              <p className="mt-4 font-display text-lg font-semibold text-silver">{s.title}</p>
               <p className="mt-3 font-body text-base leading-relaxed text-silver-muted">
                 {s.body}
               </p>
@@ -71,7 +71,7 @@ export function VisionSection() {
         <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
           {proof.map((p) => (
             <div key={p.label}>
-              <p className="text-metallic font-display text-3xl font-medium tracking-tight md:text-4xl">
+              <p className="text-metallic font-display text-3xl font-semibold tracking-tight md:text-4xl">
                 {p.value}
               </p>
               <p className="mt-2 font-body text-sm text-silver-muted">{p.label}</p>

@@ -44,13 +44,13 @@ function Credits({ reel }: { reel: CreatorReel }) {
   return (
     <div className="flex min-w-0 items-center justify-end gap-1">
       {reel.sponsored ? (
-        <span className="inline-flex items-center gap-1 rounded-full border border-white/25 px-1.5 py-0.5 font-body text-[11px] font-medium tracking-wide text-white/80 sm:text-xs">
+        <span className="inline-flex items-center gap-1 rounded-full border border-white/25 px-1.5 py-0.5 font-body text-[11px] font-semibold tracking-wide text-white/80 sm:text-xs">
           <Handshake className="size-3 shrink-0" aria-hidden />
           paid
         </span>
       ) : null}
       {named.length > 0 ? (
-        <span className="inline-flex min-w-0 items-center gap-1 rounded-full border border-white/25 px-1.5 py-0.5 font-body text-[11px] font-medium text-white/80 sm:text-xs">
+        <span className="inline-flex min-w-0 items-center gap-1 rounded-full border border-white/25 px-1.5 py-0.5 font-body text-[11px] font-semibold text-white/80 sm:text-xs">
           <Users2 className="size-3 shrink-0" aria-hidden />
           {/* Truncated rather than wrapped: an Instagram handle can be 30
               characters and the tile is ~140px wide on a phone. */}
@@ -180,7 +180,7 @@ export function CreatorReelTile({
                 equal badges again. */}
             <span
               data-field="date"
-              className="shrink-0 font-body text-[11px] font-medium tabular-nums text-white/75 sm:text-xs"
+              className="shrink-0 font-body text-[11px] font-semibold tabular-nums text-white/75 sm:text-xs"
             >
               {posted}
             </span>
@@ -198,7 +198,7 @@ export function CreatorReelTile({
               className="inline-flex shrink-0 items-center gap-1 rounded-full border border-transparent px-1.5 py-0.5 text-white/60"
             >
               <Heart className="size-3 shrink-0" aria-hidden />
-              <span className="font-body text-[11px] font-medium tabular-nums sm:text-xs">
+              <span className="font-body text-[11px] font-semibold tabular-nums sm:text-xs">
                 {compactNumber(reel.likes)}
               </span>
               <span className="sr-only">Likes</span>

@@ -56,7 +56,7 @@ export function AboutSection() {
             <div key={r.icon} className="flex items-start gap-5">
               <Image src={`/icons/${r.icon}.webp`} alt="" width={64} height={64} className="size-14 shrink-0 md:size-16" />
               <div className="min-w-0">
-                <p className="font-display text-lg font-medium text-silver">{r.title}</p>
+                <p className="font-display text-lg font-semibold text-silver">{r.title}</p>
                 <p className="mt-1 font-body text-lg leading-relaxed text-silver-muted md:text-xl">{r.body}</p>
               </div>
             </div>

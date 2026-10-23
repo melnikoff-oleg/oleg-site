@@ -45,7 +45,7 @@ export function ExpertStrip() {
               className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/45 to-transparent"
             />
           </div>
-          <span className="mt-2.5 font-body text-[11px] font-medium leading-tight text-silver-muted transition-colors duration-300 group-hover:text-white sm:text-xs">
+          <span className="mt-2.5 font-body text-[11px] font-semibold leading-tight text-silver-muted transition-colors duration-300 group-hover:text-white sm:text-xs">
             {e.name}
           </span>
         </motion.div>

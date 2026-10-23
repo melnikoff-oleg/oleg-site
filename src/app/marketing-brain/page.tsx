@@ -116,7 +116,7 @@ export default function MarketingBrainPage() {
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="relative inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+              className="relative inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
             >
               your context
               {memory.hasContext && (
@@ -125,7 +125,7 @@ export default function MarketingBrainPage() {
             </button>
             <Link
               href="/marketing-brain-knowledge"
-              className="hidden min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white sm:inline-flex"
+              className="hidden min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white sm:inline-flex"
             >
               browse the sources
             </Link>
@@ -148,7 +148,7 @@ export default function MarketingBrainPage() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 py-12 text-center"
           >
-            <h1 className="text-metallic w-full min-w-0 font-display text-[1.9rem] leading-[1.1] tracking-tight sm:text-6xl">
+            <h1 className="text-metallic w-full min-w-0 font-display text-[1.9rem] font-semibold leading-[1.1] tracking-tight sm:text-6xl">
               $1B Marketing Brain
             </h1>
 

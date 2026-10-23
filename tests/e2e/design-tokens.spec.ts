@@ -35,18 +35,21 @@ test("8 - vivid-blue accent is present", async ({ page }) => {
   }
 });
 
-// Test 9: the brand fonts are actually loaded.
-test("9 - DM Sans, Space Grotesk and Inter are loaded", async ({ page }) => {
+// Test 9: the brand fonts are actually loaded (Wix Madefor since 2026-10-23,
+// the Display cut for titles and the Text cut for the rest). Read from
+// document.fonts rather than document.fonts.check(), which also answers true
+// for a family that is not declared at all.
+test("9 - Wix Madefor Display and Text are loaded", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
-  const loaded = await page.evaluate(() => ({
-    dmSans: document.fonts.check('16px "DM Sans"'),
-    spaceGrotesk: document.fonts.check('16px "Space Grotesk"'),
-    inter: document.fonts.check('16px "Inter"'),
-  }));
-  expect(loaded.dmSans, "DM Sans").toBe(true);
-  expect(loaded.spaceGrotesk, "Space Grotesk").toBe(true);
-  expect(loaded.inter, "Inter").toBe(true);
+  const loaded = await page.evaluate(() => {
+    const faces = [...document.fonts];
+    const ok = (family: string) =>
+      faces.some((f) => f.family.replace(/["']/g, "") === family && f.status === "loaded");
+    return { display: ok("Wix Madefor Display"), text: ok("Wix Madefor Text") };
+  });
+  expect(loaded.display, "Wix Madefor Display").toBe(true);
+  expect(loaded.text, "Wix Madefor Text").toBe(true);
 });
 
 // Test 10: no legacy color classes survive anywhere in the rendered DOM.

@@ -7,7 +7,7 @@
   --txt: #f4f1ea; --mute: rgba(244,241,234,.62); --faint: rgba(244,241,234,.42);
   --accent: #ff7a45; --accent2: #ffb38a; --gold: #e9c98b;
   --serif: var(--ubs-serif), "Iowan Old Style", Georgia, serif;
-  --sans: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sans: var(--font-wix-text), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   min-height: 100vh; color: var(--txt); font: 15px/1.5 var(--sans); padding: 0 16px 140px;
   background:
     radial-gradient(1100px 520px at 50% -140px, rgba(255,122,69,.22), transparent 70%),

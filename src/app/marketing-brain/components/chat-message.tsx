@@ -223,7 +223,7 @@ export function ChatMessage({
             <button
               type="button"
               onClick={onContinue}
-              className="rounded-full bg-amber-500/20 px-3 py-1.5 font-medium text-amber-100 transition-colors hover:bg-amber-500/30"
+              className="rounded-full bg-amber-500/20 px-3 py-1.5 font-semibold text-amber-100 transition-colors hover:bg-amber-500/30"
             >
               continue the answer
             </button>
@@ -242,7 +242,7 @@ export function ChatMessage({
             <button
               type="button"
               onClick={onRetry}
-              className="rounded-full bg-red-500/20 px-3 py-1.5 font-medium text-red-100 transition-colors hover:bg-red-500/30"
+              className="rounded-full bg-red-500/20 px-3 py-1.5 font-semibold text-red-100 transition-colors hover:bg-red-500/30"
             >
               try again
             </button>

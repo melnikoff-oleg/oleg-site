@@ -41,7 +41,7 @@ function Act({
       <span className="eyebrow shrink-0 pt-1 font-body text-[13px] text-silver-muted sm:w-20">
         {tag}
       </span>
-      <p className="font-display text-lg font-medium leading-snug tracking-tight text-white sm:text-xl">
+      <p className="font-display text-lg font-semibold leading-snug tracking-tight text-white sm:text-xl">
         {children}
       </p>
     </div>
@@ -110,11 +110,11 @@ function RuleHead({
 }) {
   return (
     <div className="flex flex-col gap-2 md:flex-row md:gap-7">
-      <span className="font-body text-3xl font-bold leading-none tracking-tight text-silver/25 md:text-5xl">
+      <span className="font-body text-3xl font-semibold leading-none tracking-tight text-silver/25 md:text-5xl">
         {num}
       </span>
       <div>
-        <h2 className="max-w-[20ch] font-display text-2xl font-semibold leading-[1.08] tracking-tight text-white sm:text-3xl md:text-4xl">
+        <h2 className="max-w-[20ch] font-display text-2xl font-semibold leading-[1.1] tracking-tight text-white sm:text-3xl md:text-4xl">
           {title}
         </h2>
         <p className="mt-4 max-w-[44ch] font-body text-lg leading-snug text-silver-muted md:text-xl">
@@ -170,7 +170,7 @@ function BarChart({ rows }: { rows: readonly Bar[] }) {
               style={{ width: `${row.width}%` }}
             />
           </span>
-          <span className="whitespace-nowrap font-body text-[15px] font-bold tabular-nums text-white sm:text-base">
+          <span className="whitespace-nowrap font-body text-[15px] font-semibold tabular-nums text-white sm:text-base">
             {row.value}
           </span>
         </div>
@@ -220,7 +220,7 @@ function UseCaseChart({ rows }: { rows: readonly UseCase[] }) {
             <span className="min-w-0 font-body text-base font-semibold leading-tight text-white">
               {row.label}
             </span>
-            <span className="whitespace-nowrap font-body text-base font-bold tabular-nums text-white sm:order-3">
+            <span className="whitespace-nowrap font-body text-base font-semibold tabular-nums text-white sm:order-3">
               {row.share}
             </span>
             <span className="col-span-2 flex h-4 items-center sm:order-2 sm:col-span-1 sm:h-7">
@@ -231,7 +231,7 @@ function UseCaseChart({ rows }: { rows: readonly UseCase[] }) {
               />
             </span>
             <span
-              className={`col-span-2 inline-flex w-fit items-center rounded-lg border px-2.5 py-1.5 font-body text-[13px] font-bold sm:order-4 sm:col-span-1 sm:w-full sm:justify-center ${chip.className}`}
+              className={`col-span-2 inline-flex w-fit items-center rounded-lg border px-2.5 py-1.5 font-body text-[13px] font-semibold sm:order-4 sm:col-span-1 sm:w-full sm:justify-center ${chip.className}`}
             >
               {chip.text}
             </span>
@@ -291,14 +291,14 @@ function BenchmarkBoard() {
                   {row.name}
                 </td>
                 <td
-                  className={`whitespace-nowrap border-b border-hairline px-3 py-3 font-body text-base font-bold tabular-nums ${
+                  className={`whitespace-nowrap border-b border-hairline px-3 py-3 font-body text-base font-semibold tabular-nums ${
                     row.winner === "opus" ? "text-vivid-blue" : "text-silver-muted"
                   }`}
                 >
                   {row.opus}
                 </td>
                 <td
-                  className={`whitespace-nowrap border-b border-hairline px-3 py-3 font-body text-base font-bold tabular-nums ${
+                  className={`whitespace-nowrap border-b border-hairline px-3 py-3 font-body text-base font-semibold tabular-nums ${
                     row.winner === "fable" ? "text-amber-400" : "text-silver-muted"
                   }`}
                 >
@@ -328,7 +328,7 @@ function BenchmarkBoard() {
                   Opus 5
                 </p>
                 <p
-                  className={`mt-1 font-body text-lg font-bold tabular-nums ${
+                  className={`mt-1 font-body text-lg font-semibold tabular-nums ${
                     row.winner === "opus" ? "text-vivid-blue" : "text-silver-muted"
                   }`}
                 >
@@ -340,7 +340,7 @@ function BenchmarkBoard() {
                   Fable 5
                 </p>
                 <p
-                  className={`mt-1 font-body text-lg font-bold tabular-nums ${
+                  className={`mt-1 font-body text-lg font-semibold tabular-nums ${
                     row.winner === "fable" ? "text-amber-400" : "text-silver-muted"
                   }`}
                 >
@@ -385,7 +385,7 @@ export default function Opus5Page() {
             href="https://www.youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg
               viewBox="0 0 24 24"
@@ -411,7 +411,7 @@ export default function Opus5Page() {
                 <p className="eyebrow font-body text-[13px] text-vivid-blue">
                   Claude Opus 5 &middot; released 24 july 2026
                 </p>
-                <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-white sm:text-5xl">
+                <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl">
                   Opus 5, no hype.
                   <br />5 rules nobody is{" "}
                   <span className="text-amber-400">talking about</span>.
@@ -523,7 +523,7 @@ export default function Opus5Page() {
               <p className="eyebrow font-body text-[13px] text-silver-muted">
                 Old way
               </p>
-              <p className="font-display text-lg font-bold tracking-tight text-amber-400">
+              <p className="font-display text-lg font-semibold tracking-tight text-amber-400">
                 Written for Opus 4.8
               </p>
               <ul className="flex list-none flex-col gap-2.5">
@@ -537,7 +537,7 @@ export default function Opus5Page() {
                     key={line}
                     className="flex gap-2.5 font-body text-base leading-relaxed text-amber-200/90"
                   >
-                    <span aria-hidden className="font-bold">
+                    <span aria-hidden className="font-semibold">
                       &times;
                     </span>
                     <span>{line}</span>
@@ -550,7 +550,7 @@ export default function Opus5Page() {
               <p className="eyebrow font-body text-[13px] text-silver-muted">
                 New way
               </p>
-              <p className="font-display text-lg font-bold tracking-tight text-vivid-blue">
+              <p className="font-display text-lg font-semibold tracking-tight text-vivid-blue">
                 Written for Opus 5
               </p>
               <ul className="flex list-none flex-col gap-2.5">
@@ -561,9 +561,9 @@ export default function Opus5Page() {
                 ].map((line) => (
                   <li
                     key={line}
-                    className="flex gap-2.5 font-body text-base font-medium leading-relaxed text-silver"
+                    className="flex gap-2.5 font-body text-base font-semibold leading-relaxed text-silver"
                   >
-                    <span aria-hidden className="font-bold text-vivid-blue">
+                    <span aria-hidden className="font-semibold text-vivid-blue">
                       +
                     </span>
                     <span>{line}</span>
@@ -662,11 +662,11 @@ export default function Opus5Page() {
 
           <Reveal>
             <Act>
-              <span className="font-bold text-emerald-400">Haiku</span> for
+              <span className="font-semibold text-emerald-400">Haiku</span> for
               boring repeat work.{" "}
-              <span className="font-bold text-sky-400">Sonnet</span> for writing
+              <span className="font-semibold text-sky-400">Sonnet</span> for writing
               and answers.{" "}
-              <span className="font-bold text-fuchsia-400">Opus</span> for long
+              <span className="font-semibold text-fuchsia-400">Opus</span> for long
               jobs it finishes on its own.
             </Act>
           </Reveal>
@@ -688,10 +688,10 @@ export default function Opus5Page() {
                     i < 2 ? "border-r-2 border-silver/30" : ""
                   }`}
                 >
-                  <p className="font-body text-base font-bold tracking-tight text-white sm:text-lg">
+                  <p className="font-body text-base font-semibold tracking-tight text-white sm:text-lg">
                     {cell.label}
                   </p>
-                  <p className="mt-1 font-display text-4xl font-bold leading-none tracking-tight tabular-nums text-white sm:text-5xl">
+                  <p className="mt-1 font-display text-4xl font-semibold leading-none tracking-tight tabular-nums text-white sm:text-5xl">
                     {cell.value}
                   </p>
                 </div>
@@ -849,7 +849,7 @@ export default function Opus5Page() {
               <p className="eyebrow font-body text-[13px] text-vivid-blue">
                 The bottom line
               </p>
-              <h2 className="mt-5 max-w-[22ch] font-display text-2xl font-semibold leading-[1.08] tracking-tight text-white sm:text-3xl md:text-4xl">
+              <h2 className="mt-5 max-w-[22ch] font-display text-2xl font-semibold leading-[1.1] tracking-tight text-white sm:text-3xl md:text-4xl">
                 57 days. Same price. Double the score.
               </h2>
               <p className="mt-4 max-w-[44ch] font-body text-lg leading-snug text-silver-muted md:text-xl">
@@ -863,10 +863,10 @@ export default function Opus5Page() {
                 <p className="eyebrow font-body text-[13px] text-silver-muted">
                   28 may 2026
                 </p>
-                <p className="mt-1.5 font-display text-lg font-bold tracking-tight text-white sm:text-xl">
+                <p className="mt-1.5 font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
                   Claude Opus 4.8
                 </p>
-                <p className="mt-2.5 font-display text-4xl font-bold leading-none tracking-tight tabular-nums text-silver-muted sm:text-5xl">
+                <p className="mt-2.5 font-display text-4xl font-semibold leading-none tracking-tight tabular-nums text-silver-muted sm:text-5xl">
                   21.1%
                 </p>
                 <p className="mt-2 font-body text-[15px] text-silver-muted">
@@ -877,10 +877,10 @@ export default function Opus5Page() {
                 <p className="eyebrow font-body text-[13px] text-silver-muted">
                   24 july 2026 &middot; 57 days later
                 </p>
-                <p className="mt-1.5 font-display text-lg font-bold tracking-tight text-white sm:text-xl">
+                <p className="mt-1.5 font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
                   Claude Opus 5
                 </p>
-                <p className="mt-2.5 font-display text-4xl font-bold leading-none tracking-tight tabular-nums text-vivid-blue sm:text-5xl">
+                <p className="mt-2.5 font-display text-4xl font-semibold leading-none tracking-tight tabular-nums text-vivid-blue sm:text-5xl">
                   43.3%
                 </p>
                 <p className="mt-2 font-body text-[15px] text-silver-muted">

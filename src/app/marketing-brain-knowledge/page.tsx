@@ -80,7 +80,7 @@ function VideoCard({ v }: { v: Video }) {
           className="absolute inset-0 h-full w-full scale-[1.01] object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-60" />
-        <span className="absolute bottom-2 right-2 rounded-md bg-navy/80 px-1.5 py-0.5 font-body text-[11px] font-medium tabular-nums text-silver backdrop-blur-sm">
+        <span className="absolute bottom-2 right-2 rounded-md bg-navy/80 px-1.5 py-0.5 font-body text-[11px] font-semibold tabular-nums text-silver backdrop-blur-sm">
           {formatDuration(v.duration)}
         </span>
         {/* play glyph on hover */}
@@ -93,7 +93,7 @@ function VideoCard({ v }: { v: Video }) {
         </span>
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="line-clamp-2 font-display text-base font-medium leading-snug text-silver sm:text-sm">
+        <h3 className="line-clamp-2 font-display text-base font-semibold leading-snug text-silver sm:text-sm">
           {v.title}
         </h3>
         <p className="mt-1.5 font-body text-xs text-silver-muted">
@@ -121,7 +121,7 @@ export default function MarketingBrainKnowledgePage() {
           </Link>
           <Link
             href="/marketing-brain"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-vivid-blue px-4 py-2 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-vivid-blue px-4 py-2 font-body text-sm font-semibold text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
           >
             ask the brain →
           </Link>
@@ -152,7 +152,7 @@ export default function MarketingBrainKnowledgePage() {
 
             <motion.h1
               variants={fadeUp}
-              className="text-metallic mt-8 w-full min-w-0 font-display text-[1.9rem] leading-[1.1] tracking-tight sm:text-5xl md:text-6xl"
+              className="text-metallic mt-8 w-full min-w-0 font-display text-[1.9rem] font-semibold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl"
             >
               $1B Marketing Brain
             </motion.h1>
@@ -178,7 +178,7 @@ export default function MarketingBrainKnowledgePage() {
               ].map((s, i) => (
                 <span key={s} className="flex items-center gap-3">
                   {i > 0 && <span className="text-silver-muted/50">·</span>}
-                  <span className="font-medium text-silver">{s}</span>
+                  <span className="font-semibold text-silver">{s}</span>
                 </span>
               ))}
             </motion.div>
@@ -215,7 +215,7 @@ export default function MarketingBrainKnowledgePage() {
                       className="h-full w-full object-cover"
                     />
                   </div>
-                  <p className="mt-3 font-display text-sm font-medium leading-snug text-silver">
+                  <p className="mt-3 font-display text-sm font-semibold leading-snug text-silver">
                     {b.title}
                   </p>
                   <p className="font-body text-xs text-silver-muted">{b.author}</p>
@@ -235,7 +235,7 @@ export default function MarketingBrainKnowledgePage() {
                     key={e.slug}
                     href={`#${e.slug}`}
                     data-testid="kb-nav-chip"
-                    className="inline-flex min-h-[44px] shrink-0 items-center rounded-full border border-hairline px-3 font-body text-sm font-medium text-silver-muted transition-colors hover:border-vivid-blue/50 hover:text-white sm:px-4"
+                    className="inline-flex min-h-[44px] shrink-0 items-center rounded-full border border-hairline px-3 font-body text-sm font-semibold text-silver-muted transition-colors hover:border-vivid-blue/50 hover:text-white sm:px-4"
                   >
                     {e.name}
                   </a>
@@ -250,7 +250,7 @@ export default function MarketingBrainKnowledgePage() {
             </div>
             <Link
               href="/marketing-brain"
-              className="inline-flex min-h-[44px] shrink-0 items-center rounded-full bg-vivid-blue px-4 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
+              className="inline-flex min-h-[44px] shrink-0 items-center rounded-full bg-vivid-blue px-4 font-body text-sm font-semibold text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
             >
               ask&nbsp;→
             </Link>
@@ -286,7 +286,7 @@ export default function MarketingBrainKnowledgePage() {
                   {/* flex-1 keeps the name beside the avatar on every expert;
                       without it the block wraps below on long subtitles */}
                   <div className="min-w-0 flex-1">
-                    <h2 className="text-metallic font-display text-2xl tracking-tight md:text-3xl">
+                    <h2 className="text-metallic font-display text-2xl font-semibold tracking-tight md:text-3xl">
                       {e.name}
                     </h2>
                     <p className="mt-1 font-body text-sm text-silver-muted">
@@ -316,7 +316,7 @@ export default function MarketingBrainKnowledgePage() {
                   <details className="group/talks mt-5">
                     <summary
                       data-testid="see-all-talks"
-                      className="flex min-h-11 cursor-pointer list-none items-center justify-center gap-2 rounded-full text-sm font-medium text-silver-muted transition-colors hover:text-white [&::-webkit-details-marker]:hidden"
+                      className="flex min-h-11 cursor-pointer list-none items-center justify-center gap-2 rounded-full text-sm font-semibold text-silver-muted transition-colors hover:text-white [&::-webkit-details-marker]:hidden"
                     >
                       see all {e.videos.length} talks
                       <ChevronDown className="size-4 transition-transform duration-200 group-open/talks:rotate-180" />
@@ -336,7 +336,7 @@ export default function MarketingBrainKnowledgePage() {
         {/* Footer CTA */}
         <section className="border-t border-hairline py-20 md:py-28">
           <div className="mx-auto max-w-3xl px-6 text-center">
-            <h2 className="text-metallic font-display text-2xl tracking-tight md:text-3xl">
+            <h2 className="text-metallic font-display text-2xl font-semibold tracking-tight md:text-3xl">
               This is the brain behind the content
             </h2>
             <p className="mx-auto mt-4 max-w-xl font-body text-silver-muted">
@@ -348,7 +348,7 @@ export default function MarketingBrainKnowledgePage() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/marketing-brain"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full bg-vivid-blue px-5 py-2.5 font-body text-sm font-medium text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full bg-vivid-blue px-5 py-2.5 font-body text-sm font-semibold text-white shadow-[0_10px_40px_-12px_rgba(40,99,240,0.7)] transition-colors hover:bg-[#1b50d8]"
               >
                 ask the brain
               </Link>
@@ -356,7 +356,7 @@ export default function MarketingBrainKnowledgePage() {
                 href="https://www.youtube.com/@Oleg-Melnikov"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-hairline px-5 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-hairline px-5 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
               >
                 watch on YouTube
               </a>

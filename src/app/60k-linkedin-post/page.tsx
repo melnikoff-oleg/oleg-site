@@ -26,7 +26,7 @@ function CopyButton({ text }: { text: string }) {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       }}
-      className="inline-flex min-h-[44px] shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+      className="inline-flex min-h-[44px] shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
     >
       {copied ? (
         <>
@@ -90,7 +90,7 @@ function PromptBox({ text }: { text: string }) {
       <button
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
-        className="mt-1 inline-flex min-h-[44px] items-center gap-1.5 px-1 font-body text-sm font-medium text-silver-muted transition-colors hover:text-white"
+        className="mt-1 inline-flex min-h-[44px] items-center gap-1.5 px-1 font-body text-sm font-semibold text-silver-muted transition-colors hover:text-white"
       >
         <svg
           viewBox="0 0 24 24"
@@ -197,7 +197,7 @@ export default function LinkedInPostPage() {
             href="https://youtube.com/@Oleg-Melnikov"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="size-4">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
@@ -226,7 +226,7 @@ export default function LinkedInPostPage() {
 
             <motion.h1
               variants={fadeUp}
-              className="text-metallic mt-8 font-display text-3xl font-medium leading-[1.05] tracking-tight sm:text-4xl md:text-5xl"
+              className="text-metallic mt-8 font-display text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl"
             >
               The $60K LinkedIn post
             </motion.h1>
@@ -313,10 +313,10 @@ export default function LinkedInPostPage() {
                   key={s.step}
                   className="surface-raised rounded-xl border border-hairline p-5"
                 >
-                  <span className="font-body text-xs font-medium text-silver-muted">
+                  <span className="font-body text-xs font-semibold text-silver-muted">
                     chat {s.step}
                   </span>
-                  <p className="mt-1 text-base font-medium text-silver">
+                  <p className="mt-1 text-base font-semibold text-silver">
                     {s.label}
                   </p>
                   <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">
@@ -355,10 +355,10 @@ export default function LinkedInPostPage() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
-                    <span className="font-body text-xs font-medium text-silver-muted">
+                    <span className="font-body text-xs font-semibold text-silver-muted">
                       prompt {p.number} &middot; {p.time}
                     </span>
-                    <h3 className="mt-1 text-lg font-medium text-silver">
+                    <h3 className="mt-1 text-lg font-semibold text-silver">
                       {p.title}
                     </h3>
                   </div>
@@ -463,7 +463,7 @@ export default function LinkedInPostPage() {
                 href="https://www.linkedin.com/posts/chintanaroad_i-feel-like-theres-no-safe-haven-for-recruiters-activity-7462169996266328064-3gqd"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-medium text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
+                className="mt-5 inline-flex min-h-[44px] items-center gap-2 rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white"
               >
                 <svg
                   viewBox="0 0 24 24"

@@ -31,7 +31,7 @@ export function NextUp({ currentSlug }: { currentSlug: string }) {
     <section aria-labelledby="next-up-title" data-testid="next-up">
       <p
         id="next-up-title"
-        className="eyebrow text-center text-[13px] font-medium text-vivid-blue"
+        className="eyebrow text-center text-[13px] font-semibold text-vivid-blue"
       >
         Keep going
       </p>
@@ -73,7 +73,7 @@ export function NextUp({ currentSlug }: { currentSlug: string }) {
                 <r.icon className="size-5" />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-base font-medium text-silver transition-colors group-hover:text-white">
+                <p className="text-base font-semibold text-silver transition-colors group-hover:text-white">
                   {r.title}
                 </p>
                 <p className="mt-0.5 text-sm leading-relaxed text-silver-muted">

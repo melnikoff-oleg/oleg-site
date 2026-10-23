@@ -8,12 +8,45 @@
   --color-silver: #d0d6e0;
   --color-silver-muted: #8a93a3;
   --color-hairline: rgba(208, 214, 224, 0.1);
-  /* Inter is gone: it was downloaded on every visit and rendered nothing.
-     font-sans now resolves to the body face, so unstyled text inherits the
-     family the design already uses for body copy. */
-  --font-sans: var(--font-space), system-ui, sans-serif;
-  --font-display: var(--font-dm-sans), system-ui, sans-serif;
-  --font-body: var(--font-space), system-ui, sans-serif;
+  /* Wix Madefor (Oleg's brand font since 2026-10-23): the Display cut for
+     titles, the Text cut for everything else. font-sans resolves to the Text
+     cut too, so unstyled text inherits the body face. */
+  --font-sans: var(--font-wix-text), system-ui, sans-serif;
+  --font-display: var(--font-wix-display), system-ui, sans-serif;
+  --font-body: var(--font-wix-text), system-ui, sans-serif;
+  /* Line height goes the opposite way to size. Tailwind's defaults give small
+     text too little air (1.33 at 12px, 1.43 at 14px) and titles too much
+     (1.33 at 24px, 1.2 at 30px). */
+  --text-xs--line-height: 1.5;
+  --text-sm--line-height: 1.5;
+  --text-2xl--line-height: 1.2;
+  --text-3xl--line-height: 1.15;
+}
+
+/* ---- Type rules (Oleg's TYPOGRAPHY.md, MS repo projects/accounts/oleg_melnikov/style/) ----
+   Two weights: 400 for text, 600 for titles, buttons and emphasis. Letter spacing goes
+   the opposite way to size: titles a little tighter, text a little looser, and bold
+   small text (buttons, labels) looser still. In @layer base, so a tracking-* or
+   leading-* utility on an element still wins, and so does any page's own CSS. */
+@layer base {
+  body,
+  .font-body {
+    letter-spacing: 0.01em;
+  }
+  .font-display {
+    letter-spacing: -0.02em;
+  }
+  .font-semibold:not(.font-display) {
+    letter-spacing: 0.02em;
+  }
+  /* Gradient text is painted only inside the element's box, and a title's tight line
+     height puts the last line's descenders (g, y, p) below that box, where they
+     vanish. The padding gives them room and the negative margin takes it back. */
+  .text-metallic,
+  .text-metallic-muted {
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+  }
 }
 
 html {
@@ -252,7 +285,7 @@ body {
   font-family: var(--font-body);
   color: var(--color-silver);
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .prose-guide p {
@@ -298,9 +331,9 @@ body {
 
 .prose-guide strong {
   color: #fff;
-  /* 700, not 600: Space Grotesk is loaded at 400/500/700, and asking for a
-     weight that is not loaded gets a browser-synthesised fake bold. */
-  font-weight: 700;
+  /* 600: the two-weight rule. Wix Madefor Text is a variable font, so 600 is
+     drawn, not synthesised. */
+  font-weight: 600;
 }
 
 .prose-guide ul,

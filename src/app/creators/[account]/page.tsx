@@ -320,7 +320,7 @@ export default async function CreatorPage({ params, searchParams }: Params & Sea
                   />
                 ) : null}
                 <div className="min-w-0">
-                <h1 className="font-display text-xl leading-tight text-white sm:text-2xl">
+                <h1 className="font-display text-xl font-semibold leading-[1.15] text-white sm:text-2xl">
                   {name}
                   {creator.verified ? (
                     <BadgeCheck
@@ -338,7 +338,7 @@ export default async function CreatorPage({ params, searchParams }: Params & Sea
                     href={creator.profile_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-display text-base font-medium text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white/60"
+                    className="font-display text-base font-semibold text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white/60"
                   >
                     @{creator.account}
                   </a>
