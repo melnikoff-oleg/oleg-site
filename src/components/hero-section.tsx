@@ -1,13 +1,17 @@
 import Image from "next/image";
 import { SectionLink } from "@/components/section-link";
-import { TextEffect } from "@/components/motion/text-effect";
-import { AnimatedGroup } from "@/components/motion/animated-group";
-import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 // Static import so Next inlines a ~300-byte blurred preview (the Telegram
 // "stripped thumbnail" idea): the frame is never an empty box while the photo loads.
 import hero from "../../public/hero.jpg";
 
+const HEADLINE = "I'm building the best AI for marketing.";
+
+// The hero has no entrance animation, on purpose. The first frame the browser
+// paints is the finished hero: a fade or a staggered word reveal kept the
+// headline unreadable for up to 0.7 s after it had arrived (measured
+// 2026-10-23, scripts/perf-pages.mjs), which is exactly the wait Telegram never
+// makes you sit through. Motion is kept for content that scrolls in later.
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden">
@@ -22,53 +26,34 @@ export function HeroSection() {
 
       <div className="relative pt-32 md:pt-44">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          {/* Top label */}
-          <AnimatedGroup>
-            <span className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
-              Building media superintelligence
-            </span>
-          </AnimatedGroup>
+          {/* Top label. align-top so its line is exactly the pill's height: on
+              the text baseline, the line took its height from the font, which
+              shrank 18px when Wix Madefor replaced the fallback and pulled
+              the whole hero up (CLS 0.07 on a slow phone, 2026-10-23). The
+              other hero pills on the site carry it for the same reason. */}
+          <span className="eyebrow inline-block align-top rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
+            Building media superintelligence
+          </span>
 
-          {/* Main heading */}
-          <TextEffect
-            as="h1"
-            delay={0}
-            segmentClassName="text-metallic"
-            className="mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-semibold leading-[1.1] tracking-tight text-silver sm:text-3xl md:text-4xl lg:text-5xl"
-          >
-            I&apos;m building the best AI for marketing.
-          </TextEffect>
+          {/* Main heading. One inline-block span per word, because the metallic
+              gradient is painted per word (background-clip: text has to sit on
+              the element holding the glyphs). */}
+          <h1 className="mx-auto mt-8 max-w-3xl text-balance font-display text-2xl font-semibold leading-[1.1] tracking-tight text-silver sm:text-3xl md:text-4xl lg:text-5xl">
+            {HEADLINE.split(" ").map((word, i, words) => (
+              <span key={i} className="inline-block">
+                <span className="text-metallic inline-block">{word}</span>
+                {i < words.length - 1 && <span className="inline-block">&nbsp;</span>}
+              </span>
+            ))}
+          </h1>
 
           {/* Subheading */}
-          <TextEffect
-            as="p"
-            delay={0.15}
-            per="line"
-            className="mx-auto mt-6 max-w-2xl text-balance font-body text-lg text-silver-muted md:text-xl"
-          >
+          <p className="mx-auto mt-6 max-w-2xl text-balance font-body text-lg text-silver-muted md:text-xl">
             Marketing is data. I collect it at scale, every piece of content that won and why, and teach an AI to make the next one win. A mathematician going after marketing the way science goes after anything.
-          </TextEffect>
+          </p>
 
           {/* CTAs */}
-          <AnimatedGroup
-            variants={{
-              container: {
-                hidden: {},
-                visible: {
-                  transition: { staggerChildren: 0.1, delayChildren: 0.3 },
-                },
-              },
-              item: {
-                hidden: { opacity: 0, y: 12 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { type: "spring", bounce: 0.3, duration: 1.5 },
-                },
-              },
-            }}
-            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          >
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild size="lg" variant="primary">
               <SectionLink href="#vision">
                 see the vision
@@ -88,7 +73,7 @@ export function HeroSection() {
             <Button asChild size="lg" variant="ghost">
               <SectionLink href="#connect">let&apos;s connect</SectionLink>
             </Button>
-          </AnimatedGroup>
+          </div>
         </div>
 
         {/* Hero image. No entrance animation on purpose: it is the largest
@@ -115,13 +100,7 @@ export function HeroSection() {
             {/* Quote: a glass panel over the photo from sm up. On a phone the photo
                 is too small to carry it, the panel covered the face at 390px, so
                 there it sits in the card under the photo instead. */}
-            <Reveal
-              as="figure"
-              immediate
-              variant="blur"
-              delay={0.8}
-              className="mt-2 sm:absolute sm:inset-x-2 sm:bottom-[12%] sm:mt-0 sm:px-4"
-            >
+            <figure className="mt-2 sm:absolute sm:inset-x-2 sm:bottom-[12%] sm:mt-0 sm:px-4">
               <div className="mx-auto max-w-3xl rounded-xl border border-hairline bg-navy/70 px-4 py-3.5 backdrop-blur-md sm:px-7 sm:py-4">
                 <blockquote className="text-balance font-display text-base font-semibold leading-snug tracking-tight text-silver sm:text-xl md:text-2xl">
                   <span className="text-silver-muted">&ldquo;</span>made{" "}
@@ -131,7 +110,7 @@ export function HeroSection() {
                   .<span className="text-silver-muted">&rdquo;</span>
                 </blockquote>
               </div>
-            </Reveal>
+            </figure>
 
             <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-hairline" />
           </div>

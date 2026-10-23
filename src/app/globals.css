@@ -66,11 +66,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ---- Enter/scroll reveals ----
-   Replaces framer-motion for the site's one-shot entrance animations so the
-   marketing pages ship no animation-runtime JS. Elements start hidden and the
-   Reveal component adds `is-visible` (on mount for above-the-fold, or on
-   intersection) to play the animation. Per-element stagger via --reveal-delay. */
+/* ---- Scroll reveals ----
+   Entrances for content that was still below the fold, with zero animation
+   runtime. Nothing starts hidden: the Reveal component (motion/reveal.tsx) arms
+   an element only after hydration and only while it is entirely off screen,
+   then sets data-reveal="shown" when it scrolls in. Per-element stagger via
+   --reveal-delay. */
 @keyframes reveal-up {
   from {
     opacity: 0;
@@ -81,6 +82,20 @@ body {
     transform: none;
   }
 }
+[data-reveal="armed"] {
+  opacity: 0;
+}
+[data-reveal="shown"] {
+  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--reveal-delay, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
+
 /* ---- Search progress ----
    A hairline that crosses the top of the wall while a new answer is coming.
    It measures nothing on purpose: one upstream call reports no progress, so a
@@ -102,43 +117,6 @@ body {
     animation: none;
     width: 100%;
     opacity: 0.5;
-  }
-}
-
-/* Named "blur" for history: it no longer animates filter. A blur(12px) on
-   every word of the hero kept the phone's main thread busy rasterising for the
-   whole entrance, which Lighthouse measured as up to 1.1 s of LCP render delay
-   (2026-10-16). Opacity and transform run on the compositor and cost nothing. */
-@keyframes reveal-blur {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-/* Hidden only when JS runs (layout.tsx adds .js), so no-script visitors and
-   crawlers still see everything. `.is-visible` animates in either case. */
-.js [data-reveal] {
-  opacity: 0;
-}
-[data-reveal].is-visible {
-  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: var(--reveal-delay, 0s);
-}
-[data-reveal="blur"].is-visible {
-  animation-name: reveal-blur;
-  animation-duration: 0.9s;
-}
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal],
-  [data-reveal].is-visible {
-    opacity: 1 !important;
-    animation: none !important;
-    transform: none !important;
-    filter: none !important;
   }
 }
 
@@ -213,11 +191,48 @@ body {
   box-shadow: 0 0 0 1px rgba(40, 99, 240, 0.25), 0 18px 60px -18px rgba(40, 99, 240, 0.55);
 }
 
-/* Eyebrow label */
+/* Eyebrow label. --font-eyebrow (set on <html> in layout.tsx) is the Text
+   cut with the caps fallback below; --font-body is there for any page that
+   renders without the root layout's variables. */
 .eyebrow {
-  font-family: var(--font-body);
+  font-family: var(--font-eyebrow, var(--font-body));
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+/* ---- Fallbacks that match the real faces where next/font's do not ----
+   The hero paints before Wix Madefor arrives (see font-kickoff.tsx), so for a
+   moment it is set in next/font's metric-matched fallback: Arial, sized for
+   lowercase text at 400. Two kinds of text here are neither, and both reflowed
+   when the real font replaced it (measured 2026-10-23 on every page, 375 to
+   1440 px wide, with ascent/descent carried over from next/font's own numbers):
+   - Titles are semibold, and faux-bolded regular Arial ran 2.7% narrower than
+     Wix Madefor Display 600 on the median title (up to 6.4%), so the
+     /claude-code-pricing h1 went from one line to two on a desktop and two
+     phone titles gained a line. Real Arial Bold at 99.4% is within 0.6% on the
+     median and 2% on eight titles in ten. This adds a 600 face to next/font's
+     own fallback family; if next/font ever renames that family, it goes inert.
+   - Eyebrows are capitals tracked 0.2em, which ran ~4% wider in the fallback,
+     enough to wrap the homepage pill onto a second line on a 390px iPhone and
+     drop the whole hero 18px when the font landed (CLS 0.07). Arial at 98%
+     keeps every label on the site at or just under its real width, so a label
+     never wraps in the fallback where it would not in the real face. */
+@font-face {
+  font-family: "Wix Madefor Display Fallback";
+  font-weight: 600;
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  size-adjust: 99.4%;
+  ascent-override: 101.41%;
+  descent-override: 25.35%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Wix Madefor Caps Fallback";
+  src: local("Arial");
+  size-adjust: 98%;
+  ascent-override: 102.86%;
+  descent-override: 25.72%;
+  line-gap-override: 0%;
 }
 
 /* ---- Dual-thumb range slider (/reels follower filter) ----

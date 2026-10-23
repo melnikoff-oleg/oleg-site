@@ -1,9 +1,12 @@
 // Shared shell for the video resource pages (claude-*). Renders the minimal
-// header + hero (+ optional hero RepoCta) + setup guide + optional YouTube facade
-// + optional Boldane CTA + footer, driven by props, so each page.tsx is reduced
-// to its unique data. Server component; the only client leaves are Reveal
-// (entrance animation), Accordion, and the YouTubeEmbed facade, so the pages ship
-// no animation-runtime JS.
+// header + hero (+ optional hero RepoCta and YouTube player) + setup guide +
+// written guide + optional Boldane CTA + footer, driven by props, so each
+// page.tsx is reduced to its unique data. Server component; the only client
+// leaves are Reveal (scroll-in entrances below the fold) and Accordion, so the
+// pages ship no animation-runtime JS.
+//
+// The hero has no entrance animation: the first painted frame is the finished
+// hero (see hero-section.tsx for the measurement behind that rule).
 
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -22,7 +25,7 @@ import { RepoCta } from "@/components/repo-cta";
 import { VideoChapters, VideoProof, YouTubeEmbed } from "@/components/youtube-embed";
 import { Troubleshooting } from "@/components/troubleshooting";
 import { faqEntriesFor, type FixKey } from "@/components/troubleshooting-data";
-import { Reveal, RevealGroup } from "@/components/motion/reveal";
+import { RevealGroup } from "@/components/motion/reveal";
 
 type Step = { title: string; content: ReactNode };
 
@@ -177,14 +180,10 @@ export function ResourcePageShell({
         */}
         <section className="pt-12 pb-10 md:pt-20 md:pb-14">
           {videoId ? (
-            <RevealGroup
-              immediate
-              stagger={0.15}
-              className="mx-auto max-w-5xl px-6"
-            >
+            <div className="mx-auto max-w-5xl px-6">
               <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-14">
                 <div>
-                  <span className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
+                  <span className="eyebrow inline-block align-top rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
                     {eyebrow}
                   </span>
 
@@ -243,14 +242,10 @@ export function ResourcePageShell({
               </div>
 
               <VideoChapters videoId={videoId} />
-            </RevealGroup>
+            </div>
           ) : (
-            <RevealGroup
-              immediate
-              stagger={0.15}
-              className="mx-auto max-w-3xl px-6 text-center"
-            >
-              <span className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
+            <div className="mx-auto max-w-3xl px-6 text-center">
+              <span className="eyebrow inline-block align-top rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
                 {eyebrow}
               </span>
 
@@ -267,7 +262,7 @@ export function ResourcePageShell({
                   <RepoCta href={repoCta.href} label={repoCta.label} icon={repoCta.icon} />
                 </div>
               ) : null}
-            </RevealGroup>
+            </div>
           )}
         </section>
 

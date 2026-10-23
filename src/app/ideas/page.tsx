@@ -1,19 +1,32 @@
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { ResourceFooter } from "@/components/resource-footer";
-import { listIdeas, votedIdeaIds } from "@/lib/ideas/db";
-import { readVoterId, VOTER_COOKIE } from "@/lib/ideas/session";
+import { listIdeas, type Idea } from "@/lib/ideas/db";
 import { IdeaBoard } from "./components/idea-board";
 
-// The board changes on every vote, so it is never cached.
-export const dynamic = "force-dynamic";
+// Cached first, then synced, the way Telegram opens a chat. The board is the
+// same for every visitor, so the page is static and served from the edge cache:
+// refreshed in the background a minute after it goes stale, and purged when an
+// idea appears or changes (revalidatePath in the submit and admin routes; a
+// vote does not purge it, since the mount sync brings counts up to date). What only this
+// browser knows, which ideas it voted for, and anything newer than the cached
+// copy arrive from GET /api/ideas the moment the board mounts. It used to read
+// the cookie and wait on two database queries before sending a byte: about a
+// second to first byte, on the one page that asks a visitor to act.
+export const revalidate = 60;
 
 export default async function IdeasPage() {
-  const store = await cookies();
-  const voterId = readVoterId(store.get(VOTER_COOKIE)?.value);
-  // The vote lookup only matters for a browser that has voted before, so it is
-  // skipped entirely (and returns []) for a first-time visitor.
-  const [ideas, voted] = await Promise.all([listIdeas(), votedIdeaIds(voterId)]);
+  let ideas: Idea[] = [];
+  try {
+    ideas = await listIdeas();
+  } catch (err) {
+    // At runtime a failed read throws, so a background rebuild fails and the
+    // cache keeps serving its last good board. At build there is no last good
+    // board: ship an empty one rather than a failed deploy, which the mount
+    // sync fills in and the next rebuild replaces.
+    if (process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) throw err;
+    console.error(err);
+  }
 
   return (
     <>
@@ -39,7 +52,7 @@ export default async function IdeasPage() {
       <main>
         <section className="pt-12 pb-10 md:pt-20 md:pb-14">
           <div className="mx-auto max-w-3xl px-6 text-center">
-            <span className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue">
+            <span className="eyebrow inline-block align-top rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue">
               you decide
             </span>
 
@@ -56,7 +69,7 @@ export default async function IdeasPage() {
 
         <section className="pb-16 md:pb-20">
           <div className="mx-auto max-w-3xl px-6">
-            <IdeaBoard initialIdeas={ideas} initialVoted={voted} />
+            <IdeaBoard initialIdeas={ideas} />
 
             <p className="mt-8 font-body text-sm text-silver-muted">
               One vote per idea per browser. I log an ip address and a browser id with

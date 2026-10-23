@@ -63,6 +63,12 @@ function db(): SupabaseClient {
 
 // ---- reads ----
 
+/**
+ * The public board. Throws on a database error, unlike the other reads here:
+ * the /ideas page is cached, and an empty board returned for a failed read
+ * would be stored and served to everyone until the next rebuild. Thrown, the
+ * cache keeps its last good copy. Unconfigured still means an empty board.
+ */
 export async function listIdeas(): Promise<Idea[]> {
   if (!dbConfigured) return [];
   const { data, error } = await db()
@@ -72,10 +78,7 @@ export async function listIdeas(): Promise<Idea[]> {
     .order("votes_count", { ascending: false })
     .order("created_at", { ascending: false })
     .limit(300);
-  if (error) {
-    console.error("[ideas] listIdeas", error.message);
-    return [];
-  }
+  if (error) throw new Error(`[ideas] listIdeas: ${error.message}`);
   return (data ?? []) as Idea[];
 }
 

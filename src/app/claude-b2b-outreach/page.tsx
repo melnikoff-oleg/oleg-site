@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import {
   Answer,
@@ -642,10 +643,10 @@ export default function ClaudeB2bOutreachPage() {
             </ul>
             <p>
               The browser-driving version of this, using{" "}
-              <a href="/claude-cowork">Claude Cowork</a>, is on{" "}
-              <a href="/claude-cowork-outreach">The cowork outreach page</a>, and
+              <Link href="/claude-cowork">Claude Cowork</Link>, is on{" "}
+              <Link href="/claude-cowork-outreach">The cowork outreach page</Link>, and
               it carries the same caveat. If you have not set Claude Code up,{" "}
-              <a href="/claude-code-tutorial">Start here</a>.
+              <Link href="/claude-code-tutorial">Start here</Link>.
             </p>
           </GuideSection>
         </Guide>

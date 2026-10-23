@@ -11,6 +11,7 @@
 // the creator the database has read.
 
 import "server-only";
+import { memoize } from "@/lib/perf/memo";
 import { boundsOf } from "@/lib/filters/range";
 import { FEATURED_ACCOUNTS, mixedAccounts } from "@/lib/featured/accounts";
 import {
@@ -225,15 +226,15 @@ export async function listCreators(
  * the rows are re-ordered here against the same mix the reel wall uses. A handle
  * in the list that is not in the index simply does not come back.
  *
- * Cached for a minute: it is the same answer for every visitor and it only moves
- * when creators.py runs. It deliberately carries no count, so there is no number
+ * Cached for a minute, in the running instance and in Next's data cache: it is
+ * the same answer for every visitor and it only moves when creators.py runs. It deliberately carries no count, so there is no number
  * on screen a stale read could contradict.
  *
  * Returns an empty array rather than throwing on an empty result, so the caller
  * can fall back to the ordinary roster. An empty front page is the one outcome
  * worse than an ugly one.
  */
-export async function featuredCreators(signal?: AbortSignal): Promise<CreatorRow[]> {
+async function readFeaturedCreators(): Promise<CreatorRow[]> {
   // Checked rather than trusted: a typo added to the list years from now should
   // drop one account, not corrupt a filter.
   const handles = FEATURED_ACCOUNTS.filter((a) => /^[A-Za-z0-9._]{1,64}$/.test(a));
@@ -246,7 +247,6 @@ export async function featuredCreators(signal?: AbortSignal): Promise<CreatorRow
 
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?${params}`, {
     headers: headers(),
-    signal,
     next: { revalidate: 60 },
   });
   if (!res.ok) throw new Error(`featured creators failed: ${res.status}`);
@@ -258,6 +258,8 @@ export async function featuredCreators(signal?: AbortSignal): Promise<CreatorRow
     .map((account) => byAccount.get(account))
     .filter((row): row is CreatorRow => Boolean(row));
 }
+
+export const featuredCreators = memoize(60_000, readFeaturedCreators);
 
 /** One creator, or null if that handle is not in the index. */
 export async function getCreator(
@@ -343,11 +345,12 @@ export async function getCreatorReels(
  * A tuple, not an object: the four keys repeated 240 times would triple the
  * payload and buy nothing, since the order is fixed by the CreatorFact type.
  *
- * Cached for a minute rather than `no-store`. It is the same answer for every
- * visitor and it only moves when creators.py runs, which is a handful of times
- * a week; the roster next to it stays uncached because its count is on screen.
+ * Cached for a minute rather than `no-store`, in the running instance and in
+ * Next's data cache. It is the same answer for every visitor and it only moves
+ * when creators.py runs, which is a handful of times a week; the roster next to
+ * it stays uncached because its count is on screen.
  */
-export async function listCreatorFacts(signal?: AbortSignal): Promise<CreatorFact[]> {
+async function readCreatorFacts(): Promise<CreatorFact[]> {
   const params = new URLSearchParams();
   params.set(
     "select",
@@ -361,7 +364,6 @@ export async function listCreatorFacts(signal?: AbortSignal): Promise<CreatorFac
 
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?${params}`, {
     headers: headers(),
-    signal,
     next: { revalidate: 60 },
   });
   if (!res.ok) throw new Error(`creator facts failed: ${res.status}`);
@@ -393,6 +395,8 @@ export async function listCreatorFacts(signal?: AbortSignal): Promise<CreatorFac
     r.inspirational,
   ]);
 }
+
+export const listCreatorFacts = memoize(60_000, readCreatorFacts);
 
 /**
  * Every handle in the index, for the sitemap.

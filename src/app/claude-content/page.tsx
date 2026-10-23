@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import {
   Answer,
@@ -580,11 +581,11 @@ and make each one useful to my audience rather than about me.`}</Block>
             <p>
               The research half of this, working out what to make rather than
               making it, is on{" "}
-              <a href="/claude-social-growth">The growth guide</a>. The
+              <Link href="/claude-social-growth">The growth guide</Link>. The
               short-video versions are on{" "}
-              <a href="/claude-reels">Reels</a> and{" "}
-              <a href="/claude-tiktok">TikTok</a>. New to Claude Code?{" "}
-              <a href="/claude-code-tutorial">Start here</a>.
+              <Link href="/claude-reels">Reels</Link> and{" "}
+              <Link href="/claude-tiktok">TikTok</Link>. New to Claude Code?{" "}
+              <Link href="/claude-code-tutorial">Start here</Link>.
             </p>
           </GuideSection>
         </Guide>

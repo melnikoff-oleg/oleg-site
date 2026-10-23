@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { DOWNLOAD_ICON } from "@/components/repo-cta";
 import {
@@ -197,7 +198,7 @@ export default function ClaudeCodePricingPage() {
             </p>
             <Callout title="The thing most comparisons miss">
               <p>
-                {usd(PLANS.pro.monthly)} does not buy Claude Code. It buys Claude Code, <a href="/claude-cowork">Claude Cowork</a>, Claude design
+                {usd(PLANS.pro.monthly)} does not buy Claude Code. It buys Claude Code, <Link href="/claude-cowork">Claude Cowork</Link>, Claude design
                 and Claude science on one plan. Compared against a single coding
                 assistant subscription it looks like a normal price. Compared
                 against buying a terminal agent and an office agent separately,
@@ -356,9 +357,9 @@ export default function ClaudeCodePricingPage() {
 /model     switch to a cheaper model for routine work`}</Block>
             <p>
               If you have not set it up yet, start with{" "}
-              <a href="/claude-code-tutorial">The Claude Code guide</a>. If you
+              <Link href="/claude-code-tutorial">The Claude Code guide</Link>. If you
               are deciding between Claude Code and something else, the{" "}
-              <a href="/claude-code-vs-cursor">Comparison page</a> covers what
+              <Link href="/claude-code-vs-cursor">Comparison page</Link> covers what
               you actually get for the money in each.
             </p>
             <p className="text-silver-muted">

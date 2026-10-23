@@ -1,12 +1,14 @@
-// GET  /api/ideas  -> the public board
+// GET  /api/ideas  -> the public board, plus which ideas this browser voted for
 // POST /api/ideas  -> submit an idea (screened by Claude, then published)
 
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import {
   createIdea,
   listIdeas,
   logEvent,
   toggleVote,
+  votedIdeaIds,
   writesConfigured,
 } from "@/lib/ideas/db";
 import { screenIdea } from "@/lib/ideas/screen";
@@ -34,8 +36,20 @@ export const dynamic = "force-dynamic";
 // holding the function open for the platform maximum.
 export const maxDuration = 30;
 
-export async function GET() {
-  return NextResponse.json({ ideas: await listIdeas() });
+// The sync the cached /ideas page runs on mount. Per browser (the voter
+// cookie), so it must never be stored by a shared cache.
+export async function GET(req: Request) {
+  const voterId = readVoterId(cookieFrom(req, VOTER_COOKIE));
+  const headers = { "Cache-Control": "private, no-store" };
+  try {
+    // The vote lookup is skipped (and returns []) for a browser that never voted.
+    const [ideas, voted] = await Promise.all([listIdeas(), votedIdeaIds(voterId)]);
+    return NextResponse.json({ ideas, voted }, { headers });
+  } catch (err) {
+    // The board keeps the cached copy it rendered with on any non-200.
+    console.error(err);
+    return NextResponse.json({ error: "unavailable" }, { status: 503, headers });
+  }
 }
 
 export async function POST(req: Request) {
@@ -84,7 +98,11 @@ export async function POST(req: Request) {
   const minted = existingVoterId ? null : mintVoterId();
   const voterId = existingVoterId ?? minted!.id;
 
-  const board = await listIdeas();
+  // A failed read only costs the duplicate check: the screen still runs.
+  const board = await listIdeas().catch((err) => {
+    console.error(err);
+    return [];
+  });
   const verdict = await screenIdea(
     { title, detail },
     board.map((i) => ({ id: i.id, title: i.title })),
@@ -149,6 +167,9 @@ export async function POST(req: Request) {
     await toggleVote(idea.id, voterId, hashIp(ip));
     idea.votes_count = 1;
   }
+  // The cached board is out of date the moment anything lands on it. A held
+  // idea is hidden, so it changes nothing a visitor can see.
+  if (!held) revalidatePath("/ideas");
 
   return respond({ status: held ? "held" : "published", idea });
 }

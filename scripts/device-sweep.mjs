@@ -39,7 +39,7 @@ for (const [name, width, height, dpr, mobile] of DEVICES) {
     window.__t = {};
     const op = (el) => { let o = 1; for (let n = el; n; n = n.parentElement) o *= +getComputedStyle(n).opacity; return o; };
     const poll = () => {
-      const h = document.querySelector("h1 [data-reveal]");
+      const h = document.querySelector("h1");
       const img = document.querySelector("main img");
       if (h && !window.__t.h && op(h) > 0.9) window.__t.h = performance.now();
       if (img && !window.__t.p && img.complete && img.naturalWidth > 100 && op(img) > 0.9) window.__t.p = performance.now();

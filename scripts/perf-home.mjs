@@ -28,7 +28,7 @@ for (const [name, width, height, mobile] of DEVICES) {
     // fully shown. LCP alone misses this, because it ignores invisible elements.
     const t0 = performance.now();
     const poll = () => {
-      const h = document.querySelector("h1 [data-reveal]");
+      const h = document.querySelector("h1");
       const img = document.querySelector("main img");
       const op = (el) => { let o = 1; for (let n = el; n; n = n.parentElement) o *= +getComputedStyle(n).opacity; return o; };
       if (h && !window.__m.headline && op(h) > 0.9) window.__m.headline = performance.now();

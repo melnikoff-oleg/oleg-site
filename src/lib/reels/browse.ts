@@ -9,7 +9,9 @@
 // score, and a row that is right for one is not necessarily right for the other.
 
 import "server-only";
+import { unstable_cache } from "next/cache";
 import { binOf, packBins, type BinRow } from "@/lib/filters/range";
+import { memoize } from "@/lib/perf/memo";
 import {
   ageInDays,
   reelRangeParams,
@@ -188,9 +190,14 @@ export type ReelFacts = {
  * disagree about which bar a reel belongs to: there is one binOf call in the
  * codebase and this is where it runs for reels.
  *
- * Cached for a minute rather than `no-store`. It is the same answer for every
- * visitor and it only moves when sync.py runs, which is a handful of times a
- * week; the page's own count next to it stays uncached because it is on screen.
+ * Cached rather than `no-store`. It is the same answer for every visitor and it
+ * only moves when sync.py runs, which is a handful of times a week; the page's
+ * own count next to it stays uncached because it is on screen. Cached whole,
+ * once binned, rather than page by page: at 9,743 reels the read is ten pages,
+ * and ten sequential data-cache lookups were most of the ~300 ms /reels took to
+ * send its first byte. Two layers, each about a minute, so a sync shows within
+ * two: the running instance (memoize) and Next's data cache across instances
+ * (unstable_cache), which refreshes in the background once stale.
  */
 type FactRow = {
   followers: number | null;
@@ -200,39 +207,61 @@ type FactRow = {
   inspirational: number | null;
 };
 
-export async function listReelFacts(signal?: AbortSignal): Promise<ReelFacts> {
-  const rows: FactRow[] = [];
-  for (let offset = 0; offset < FACTS_LIMIT; offset += FACTS_PAGE) {
-    const params = new URLSearchParams();
-    params.set(
-      "select",
-      "followers,posted_on,entertaining,educational,inspirational",
-    );
-    // Without `order` a paged read has no defined order at all, so pages could
-    // skip or repeat rows. It also makes the payload byte-identical between two
-    // renders, which is what keeps the client's histograms from shifting under a
-    // refresh.
-    params.set("order", "shortcode.asc");
-    params.set("limit", String(FACTS_PAGE));
-    params.set("offset", String(offset));
+/** One page of facts; the first also asks PostgREST to count the table. */
+async function readFactsPage(
+  offset: number,
+  count: boolean,
+): Promise<{ rows: FactRow[]; total: number | null }> {
+  const params = new URLSearchParams();
+  params.set(
+    "select",
+    "followers,posted_on,entertaining,educational,inspirational",
+  );
+  // Without `order` a paged read has no defined order at all, so pages could
+  // skip or repeat rows. It also makes the payload byte-identical between two
+  // renders, which is what keeps the client's histograms from shifting under a
+  // refresh.
+  params.set("order", "shortcode.asc");
+  params.set("limit", String(FACTS_PAGE));
+  params.set("offset", String(offset));
 
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?${params}`, {
-      headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` },
-      signal,
-      next: { revalidate: 60 },
-    });
-    if (!res.ok) throw new Error(`reel facts failed: ${res.status}`);
-    const page = (await res.json()) as FactRow[];
-    if (!Array.isArray(page)) throw new Error("reel facts returned a non-array");
-    rows.push(...page);
-    // A short page is the last page. PostgREST answers with whatever is left,
-    // so this is the only reliable end condition.
-    if (page.length < FACTS_PAGE) break;
+  // no-store: the finished answer is what gets cached (listReelFacts below).
+  // Caching each page as well would only stack a second minute of staleness.
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?${params}`, {
+    headers: {
+      apikey: SERVICE_KEY,
+      Authorization: `Bearer ${SERVICE_KEY}`,
+      ...(count ? { Prefer: "count=exact" } : {}),
+    },
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`reel facts failed: ${res.status}`);
+  const rows = (await res.json()) as FactRow[];
+  if (!Array.isArray(rows)) throw new Error("reel facts returned a non-array");
+  // Content-Range: "0-999/9743". Only present as a number when counted.
+  const total = Number(res.headers.get("content-range")?.split("/")[1]);
+  return { rows, total: count && Number.isFinite(total) ? total : null };
+}
+
+async function readReelFacts(): Promise<ReelFacts> {
+  // The first page also counts the table, so every other page can be asked
+  // for at once: two round trips on a cache miss rather than one per 1,000
+  // reels in a row, which at 9,743 reels was ten.
+  const first = await readFactsPage(0, true);
+  const rows = [...first.rows];
+  if (first.rows.length === FACTS_PAGE) {
+    if (first.total === null) throw new Error("reel facts: no row count in the response");
+    const offsets: number[] = [];
+    for (let at = FACTS_PAGE; at < Math.min(first.total, FACTS_LIMIT); at += FACTS_PAGE) {
+      offsets.push(at);
+    }
+    const pages = await Promise.all(offsets.map((at) => readFactsPage(at, false)));
+    for (const page of pages) rows.push(...page.rows);
   }
   // A silent truncation would not break anything visibly: the charts would
   // describe a prefix of the index while the count under them came from the
   // database. Say so instead.
-  if (rows.length >= FACTS_LIMIT) {
+  if ((first.total ?? rows.length) > FACTS_LIMIT) {
     console.error(
       `reel facts hit the ${FACTS_LIMIT}-row cap; the histograms are now a prefix of the index`,
     );
@@ -256,3 +285,8 @@ export async function listReelFacts(signal?: AbortSignal): Promise<ReelFacts> {
   });
   return { packed: packBins(binned), count: binned.length };
 }
+
+export const listReelFacts = memoize(
+  60_000,
+  unstable_cache(readReelFacts, ["reel-facts"], { revalidate: 60 }),
+);

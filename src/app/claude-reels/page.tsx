@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { CopyButton } from "@/components/copy-button";
 import {
@@ -470,7 +471,7 @@ const guideSteps = [
           changing it is a sentence, not a code change. &quot;change the theme
           from dark to light&quot; works. So does &quot;switch the scraping from
           Instagram to TikTok&quot;, which is how{" "}
-          <a href="/claude-tiktok">The TikTok version</a> exists.
+          <Link href="/claude-tiktok">The TikTok version</Link> exists.
         </p>
         <p>
           You do not need to read the code. You need to be able to say what you
@@ -790,13 +791,13 @@ export default function ClaudeReelsPage() {
             </ul>
             <p>
               The same pipeline pointed at other platforms is on{" "}
-              <a href="/claude-tiktok">The TikTok guide</a>; the version that
+              <Link href="/claude-tiktok">The TikTok guide</Link>; the version that
               writes and packages the posts rather than researching them is on{" "}
-              <a href="/claude-content">The content guide</a>; and if you want to
+              <Link href="/claude-content">The content guide</Link>; and if you want to
               edit the video too, <Code>reel studio</Code> is on{" "}
-              <a href="/claude-code-instagram">The Instagram editor guide</a>.
+              <Link href="/claude-code-instagram">The Instagram editor guide</Link>.
               New to Claude Code entirely? Start with{" "}
-              <a href="/claude-code-tutorial">The setup guide</a>.
+              <Link href="/claude-code-tutorial">The setup guide</Link>.
             </p>
           </GuideSection>
         </Guide>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { BoldaneLink } from "@/components/boldane-cta";
 import { DOWNLOAD_ICON } from "@/components/repo-cta";
@@ -121,7 +122,7 @@ const guideSteps = [
         <p>
           This trips up almost everyone once, because the install itself works
           perfectly and then the login refuses you. Nothing is broken. The full
-          cost picture is on <a href="/claude-code-pricing">The pricing page</a>.
+          cost picture is on <Link href="/claude-code-pricing">The pricing page</Link>.
         </p>
       </>
     ),
@@ -487,7 +488,7 @@ export default function ClaudeCodeTutorialPage() {
             </ul>
             <p>
               And if the job is a document rather than a repository,{" "}
-              <a href="/claude-cowork">Claude Cowork</a> is the other half of
+              <Link href="/claude-cowork">Claude Cowork</Link> is the other half of
               the same plan.
             </p>
           </GuideSection>
@@ -527,9 +528,9 @@ export default function ClaudeCodeTutorialPage() {
               videos, are answered in the troubleshooting section above. What it
               costs, including Anthropic&apos;s own figures for what real usage
               runs to, is on{" "}
-              <a href="/claude-code-pricing">The pricing page</a>. And if you are
+              <Link href="/claude-code-pricing">The pricing page</Link>. And if you are
               still deciding between this and an editor, the{" "}
-              <a href="/claude-code-vs-cursor">Comparison</a> is next door.
+              <Link href="/claude-code-vs-cursor">Comparison</Link> is next door.
             </p>
             <p className="text-silver-muted">
               Install commands and system requirements checked against{" "}

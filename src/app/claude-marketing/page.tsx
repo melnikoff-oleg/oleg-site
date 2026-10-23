@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import {
   Answer,
@@ -436,7 +437,7 @@ export default function ClaudeMarketingPage() {
                 concepts.</strong> Ten trending reels in the niche, about seven
                 million views between them, analysed for what they were doing,
                 then new scripts written for us. The deeper version of this is{" "}
-                <a href="/claude-reels">The reels system</a>.
+                <Link href="/claude-reels">The reels system</Link>.
               </li>
               <li>
                 <strong>A trending podcast, turned into five posts.</strong> It
@@ -448,7 +449,7 @@ export default function ClaudeMarketingPage() {
                 <strong>100 outreach leads with personalised
                 openers.</strong> Name, niche, LinkedIn URL and a first message
                 written for that specific person. The serious version of this is{" "}
-                <a href="/claude-b2b-outreach">The b2b outreach system</a>.
+                <Link href="/claude-b2b-outreach">The b2b outreach system</Link>.
               </li>
               <li>
                 <strong>Competitor ads, analysed.</strong> The one I would start
@@ -585,9 +586,9 @@ output as an html page in our style.`}</Block>
             </ul>
             <p>
               If you have not set Claude Code up yet, do that first on{" "}
-              <a href="/claude-code-tutorial">The setup guide</a>. What it all
+              <Link href="/claude-code-tutorial">The setup guide</Link>. What it all
               costs in total is on{" "}
-              <a href="/claude-code-pricing">The pricing page</a>.
+              <Link href="/claude-code-pricing">The pricing page</Link>.
             </p>
           </GuideSection>
         </Guide>

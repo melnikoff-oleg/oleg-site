@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import {
   Answer,
@@ -671,12 +672,12 @@ export default function ClaudeSocialGrowthPage() {
             </ul>
             <p>
               Once you know what to make, the making half is on{" "}
-              <a href="/claude-content">The content guide</a>, and the
+              <Link href="/claude-content">The content guide</Link>, and the
               short-video versions are on{" "}
-              <a href="/claude-reels">Reels</a> and{" "}
-              <a href="/claude-tiktok">TikTok</a>. Never used Claude Code?{" "}
-              <a href="/claude-code-tutorial">Start here</a>, and{" "}
-              <a href="/claude-code-pricing">This is what it costs</a>.
+              <Link href="/claude-reels">Reels</Link> and{" "}
+              <Link href="/claude-tiktok">TikTok</Link>. Never used Claude Code?{" "}
+              <Link href="/claude-code-tutorial">Start here</Link>, and{" "}
+              <Link href="/claude-code-pricing">This is what it costs</Link>.
             </p>
           </GuideSection>
         </Guide>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import {
@@ -690,9 +691,9 @@ ANTHROPIC_API_KEY=...`}</Block>
             </ul>
             <p>
               The same architecture for short video is on{" "}
-              <a href="/claude-reels">Reels</a> and{" "}
-              <a href="/claude-tiktok">TikTok</a>; the multi-format version is on{" "}
-              <a href="/claude-content">The content guide</a>. New to Claude Code? <a href="/claude-code-tutorial">Start here</a>.
+              <Link href="/claude-reels">Reels</Link> and{" "}
+              <Link href="/claude-tiktok">TikTok</Link>; the multi-format version is on{" "}
+              <Link href="/claude-content">The content guide</Link>. New to Claude Code? <Link href="/claude-code-tutorial">Start here</Link>.
             </p>
           </GuideSection>
         </Guide>

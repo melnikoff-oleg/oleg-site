@@ -1,22 +1,17 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Fragment, useState, type ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { ResourceFooter } from "@/components/resource-footer";
+import { Reveal } from "@/components/motion/reveal";
 import { VideoChapters, VideoProof, YouTubeEmbed } from "@/components/youtube-embed";
+import { CmdChip } from "./cmd-chip";
+
+// A server component: the page ships no JavaScript of its own beyond the copy
+// chips and the scroll-in reveal. It used to be one client component on
+// framer-motion, which cost ~50 kB of JS and held the headline behind a fade
+// until hydration (largest paint ~1 s on broadband, 2.8 s on a slow phone).
 
 const VIDEO_ID = "mFYKAsGcnso";
 const VIDEO_TITLE = "Anthropic Just Revealed How the Top 1% Use AI";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
-  },
-};
 
 type Level = {
   level: string;
@@ -164,38 +159,6 @@ const moves: { to: string; text: ReactNode; cmds: string[]; copyable?: boolean }
     copyable: false,
   },
 ];
-
-// One real command: tap to copy, with the same copied-check feedback as the
-// shared CopyButton. The command text lives in its own span so it can wrap
-// ([overflow-wrap:anywhere]) while the icon stays put; min-h keeps the tap
-// target at 44px.
-function CmdChip({ cmd }: { cmd: string }) {
-  const [copied, setCopied] = useState(false);
-  return (
-    <button
-      type="button"
-      aria-label={`copy ${cmd}`}
-      onClick={() => {
-        navigator.clipboard.writeText(cmd);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      }}
-      className="inline-flex min-h-[44px] items-center gap-2 rounded border border-vivid-blue/40 px-3 py-1.5 text-left font-mono text-sm font-semibold text-vivid-blue/90 transition-colors hover:border-vivid-blue hover:text-vivid-blue"
-    >
-      <span className="min-w-0 [overflow-wrap:anywhere]">{cmd}</span>
-      {copied ? (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5 shrink-0">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-        </svg>
-      ) : (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="size-3.5 shrink-0">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-        </svg>
-      )}
-    </button>
-  );
-}
 
 // Command chips shared by the desktop move-row and the mobile move-card.
 // Real commands are tap-to-copy buttons; the level 4 chips are plain labels
@@ -366,58 +329,35 @@ export default function FiveLevelsPage() {
       <main>
         {/* Hero */}
         <section className="pt-16 pb-8 md:pt-24 md:pb-12">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-            className="mx-auto max-w-3xl px-6 text-center"
-          >
-            <motion.span
-              variants={fadeUp}
-              className="eyebrow inline-block rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90"
-            >
+          <div className="mx-auto max-w-3xl px-6 text-center">
+            <span className="eyebrow inline-block align-top rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
               5 levels &middot; find your rung &middot; take the next step
-            </motion.span>
+            </span>
 
-            <motion.h1
-              variants={fadeUp}
-              className="text-metallic mt-8 font-display text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl"
-            >
+            <h1 className="text-metallic mt-8 font-display text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
               The builder&apos;s ladder
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              variants={fadeUp}
-              className="mt-4 font-body text-lg text-silver-muted md:text-xl"
-            >
+            <p className="mt-4 font-body text-lg text-silver-muted md:text-xl">
               The 5 levels of AI adoption, from copy-pasting out of a chat window
               to a thousand agents that launch themselves.
-            </motion.p>
+            </p>
 
-            <motion.p
-              variants={fadeUp}
-              className="mt-3 font-body text-base text-silver-muted"
-            >
+            <p className="mt-3 font-body text-base text-silver-muted">
               Find where you are today, then take the one move that gets you to
               the next rung. Every step runs on Claude Code.
-            </motion.p>
+            </p>
 
-            <motion.div variants={fadeUp} className="mt-10">
+            <div className="mt-10">
               <YouTubeEmbed videoId={VIDEO_ID} title={VIDEO_TITLE} />
               <VideoProof videoId={VIDEO_ID} />
               <VideoChapters videoId={VIDEO_ID} />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </section>
 
         {/* The ladder */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={fadeUp}
-          className="pb-16 md:pb-28"
-        >
+        <Reveal as="section" className="pb-16 md:pb-28">
           <div className="mx-auto max-w-5xl px-6">
             {/* Desktop (lg+): the full comparison table. */}
             <div className="hidden overflow-x-auto rounded-2xl surface-card lg:block">
@@ -509,10 +449,7 @@ export default function FiveLevelsPage() {
               keystrokes.
             </p>
           </div>
-        </motion.section>
-
-        {/* The video this page came from. Click-to-load facade, kept low on the
-            page: almost everyone here arrived from that video already. */}
+        </Reveal>
       </main>
 
       <ResourceFooter currentSlug="5-levels-ai" boldaneCredit />

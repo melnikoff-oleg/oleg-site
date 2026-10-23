@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { DOWNLOAD_ICON } from "@/components/repo-cta";
 import {
@@ -341,7 +342,7 @@ export default function ClaudeCodeVsCursorPage() {
               All three come with the same {usd(PLANS.pro.monthly)} plan, so
               this is not a purchase decision, it is a habit decision. There is
               a fuller version of the cowork half on{" "}
-              <a href="/claude-cowork">The cowork guide</a>.
+              <Link href="/claude-cowork">The cowork guide</Link>.
             </p>
           </GuideSection>
 
@@ -406,9 +407,9 @@ export default function ClaudeCodeVsCursorPage() {
             <p>
               If you land on Claude Code, the setup and the first twenty minutes
               are on{" "}
-              <a href="/claude-code-tutorial">The Claude Code guide</a>, the full
+              <Link href="/claude-code-tutorial">The Claude Code guide</Link>, the full
               cost picture is on{" "}
-              <a href="/claude-code-pricing">The pricing page</a>, and the{" "}
+              <Link href="/claude-code-pricing">The pricing page</Link>, and the{" "}
               <Code>CLAUDE.md</Code> habit is the one thing I would not skip.
             </p>
             <p className="text-silver-muted">

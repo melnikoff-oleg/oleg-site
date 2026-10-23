@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Wix_Madefor_Display, Wix_Madefor_Text } from "next/font/google";
+import { FontKickoff } from "@/components/font-kickoff";
 import { Plausible } from "@/components/plausible";
 import "./globals.css";
 
@@ -11,12 +12,17 @@ import "./globals.css";
 // file whatever the weights: two font files in all, as
 // tests/e2e/perf-budget.spec.ts (83) expects. DM Sans and Space Grotesk, the
 // faces before this, are gone; Inter went earlier (it rendered almost nothing).
+//
+// `preload: false` on both, deliberately: Next's head preloads hold Chrome's
+// first paint until the files arrive. FontKickoff, the first thing in <body>,
+// starts the same two downloads without that wait (see font-kickoff.tsx).
 
 const wixDisplay = Wix_Madefor_Display({
   subsets: ["latin"],
   variable: "--font-wix-display",
   weight: ["400", "600"],
   display: "swap",
+  preload: false,
 });
 
 const wixText = Wix_Madefor_Text({
@@ -24,7 +30,14 @@ const wixText = Wix_Madefor_Text({
   variable: "--font-wix-text",
   weight: ["400", "600"],
   display: "swap",
+  preload: false,
 });
+
+// Eyebrow labels fall back to a face sized for capitals rather than to the
+// Text cut's own fallback (see "Wix Madefor Caps Fallback" in globals.css).
+// Built from next/font's family name, the first entry of its stack, so it
+// keeps pointing at the real face whatever name next/font gives it.
+const eyebrowFont = `${wixText.style.fontFamily.split(",")[0]}, "Wix Madefor Caps Fallback", system-ui, sans-serif`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.oleg.ae"),
@@ -68,17 +81,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // suppressHydrationWarning: the inline script below adds "js" to <html>
-    // before React hydrates, on purpose.
-    <html lang="en" className={`${wixDisplay.variable} ${wixText.variable}`} suppressHydrationWarning>
-      <head>
-        {/* Scroll reveals hide content only when JavaScript is running to show
-            it again. Without this, a blocked or failed script left everything
-            below the hero at opacity 0. Inline and first, so it is set before
-            the first paint. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
-      </head>
+    <html
+      lang="en"
+      className={`${wixDisplay.variable} ${wixText.variable}`}
+      style={{ "--font-eyebrow": eyebrowFont } as React.CSSProperties}
+    >
       <body className="font-body antialiased">
+        <FontKickoff
+          fonts={[
+            `400 1em ${wixDisplay.style.fontFamily}`,
+            `600 1em ${wixDisplay.style.fontFamily}`,
+            `400 1em ${wixText.style.fontFamily}`,
+            `600 1em ${wixText.style.fontFamily}`,
+          ]}
+        />
         <Plausible />
         {children}
       </body>

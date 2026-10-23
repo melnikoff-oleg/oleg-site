@@ -17,7 +17,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.oleg.ae/viral" },
 };
 
-export const dynamic = "force-dynamic";
+// Static on purpose: the page is a shell the client fills (search and
+// adaptation are API calls), so there is nothing per request to render. It used
+// to be force-dynamic, which put a serverless function between every visitor
+// and an HTML file that never changes. The two flags are read from env at
+// build time, which on Vercel is the same env the functions see.
 
 export default function ViralPage() {
   return (

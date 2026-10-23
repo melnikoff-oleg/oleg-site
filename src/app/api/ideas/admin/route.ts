@@ -2,6 +2,7 @@
 // status, delete. Everything here is gated on the IDEAS_ADMIN_SECRET cookie set
 // by the login action, so the page itself carries no secret in its URL.
 
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import {
   createIdea,
@@ -70,6 +71,7 @@ export async function POST(req: Request) {
       status: "live",
     });
     if (!idea) return NextResponse.json({ error: "write_failed" }, { status: 500 });
+    revalidatePath("/ideas");
     await logEvent({ kind: "admin", ideaId: idea.id, ip, payload: { action, title } });
     return NextResponse.json({ ok: true, idea });
   }
@@ -79,6 +81,7 @@ export async function POST(req: Request) {
 
   if (action === "delete") {
     const ok = await deleteIdea(id);
+    if (ok) revalidatePath("/ideas");
     await logEvent({ kind: "admin", ideaId: id, ip, payload: { action } });
     return NextResponse.json({ ok });
   }
@@ -97,6 +100,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "nothing_to_update" }, { status: 400 });
     }
     const ok = await updateIdea(id, patch);
+    if (ok) revalidatePath("/ideas");
     await logEvent({ kind: "admin", ideaId: id, ip, payload: { action, ...patch } });
     return NextResponse.json({ ok });
   }

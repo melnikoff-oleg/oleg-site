@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { BoldaneLink } from "@/components/boldane-cta";
 import { DOWNLOAD_ICON } from "@/components/repo-cta";
@@ -539,9 +540,9 @@ when the table is done, stop and show it to me.`}</Block>
             <p>
               If you want the same research-then-draft loop without the browser
               automation, the <Code>claude code</Code> version of this is on the{" "}
-              <a href="/claude-b2b-outreach">B2b outreach page</a>, and the
+              <Link href="/claude-b2b-outreach">B2b outreach page</Link>, and the
               broader picture of what cowork is for is on{" "}
-              <a href="/claude-cowork">The cowork guide</a>.
+              <Link href="/claude-cowork">The cowork guide</Link>.
             </p>
           </GuideSection>
         </Guide>

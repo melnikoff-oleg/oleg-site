@@ -15,6 +15,7 @@
 // with no opinion about which rows matter, and stays that way.
 
 import "server-only";
+import { memoize } from "@/lib/perf/memo";
 import {
   FEATURED_ACCOUNTS,
   interleave,
@@ -60,15 +61,16 @@ const TILE_COLUMNS = [
  * has no `distinct on` and a per-account query would be ten round trips.
  *
  * The same answer for every visitor and it only moves when sync.py runs, so it
- * is cached for a minute: after the first visitor of the minute the default
- * screen costs nothing at all. It deliberately carries no count, so there is no
- * number on screen that a stale read could contradict.
+ * is cached for a minute, in the running instance and in Next's data cache:
+ * after the first visitor of the minute the default screen costs nothing at
+ * all. It deliberately carries no count, so there is no number on screen that a
+ * stale read could contradict.
  *
  * Returns an empty array rather than throwing on an empty result, so the caller
  * can fall back to the ordinary wall. An empty front page is the one outcome
  * worse than an ugly one.
  */
-export async function featuredReels(signal?: AbortSignal): Promise<ReelTileRow[]> {
+async function readFeaturedReels(): Promise<ReelTileRow[]> {
   const params = new URLSearchParams();
   params.set("select", TILE_COLUMNS);
   // Instagram handles are [A-Za-z0-9._] and nothing else, so none of them can
@@ -87,7 +89,6 @@ export async function featuredReels(signal?: AbortSignal): Promise<ReelTileRow[]
 
   const res = await fetch(`${SUPABASE_URL}/rest/v1/reel_search?${params}`, {
     headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` },
-    signal,
     next: { revalidate: 60 },
   });
   if (!res.ok) throw new Error(`featured reels failed: ${res.status}`);
@@ -104,3 +105,5 @@ export async function featuredReels(signal?: AbortSignal): Promise<ReelTileRow[]
 
   return interleave(groups, mixedAccounts(), FEATURED_REEL_COUNT);
 }
+
+export const featuredReels = memoize(60_000, readFeaturedReels);

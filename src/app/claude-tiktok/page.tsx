@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import {
   Answer,
@@ -548,13 +549,13 @@ include b-roll direction for each shot.`}</Block>
             </ul>
             <p>
               The same pipeline for Instagram is on{" "}
-              <a href="/claude-reels">The reels guide</a>, the version that
+              <Link href="/claude-reels">The reels guide</Link>, the version that
               writes and packages posts is on{" "}
-              <a href="/claude-content">The content guide</a>, and the
+              <Link href="/claude-content">The content guide</Link>, and the
               account-level strategy layer is on{" "}
-              <a href="/claude-social-growth">The growth guide</a>. Never used{" "}
+              <Link href="/claude-social-growth">The growth guide</Link>. Never used{" "}
               <Code>claude code</Code>?{" "}
-              <a href="/claude-code-tutorial">Start here</a>.
+              <Link href="/claude-code-tutorial">Start here</Link>.
             </p>
           </GuideSection>
         </Guide>

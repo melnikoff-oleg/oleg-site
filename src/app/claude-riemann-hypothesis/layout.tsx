@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import { Nunito, Comic_Neue } from "next/font/google";
 import { FilmedPageOutro } from "@/components/filmed-page-outro";
+import { FontKickoff } from "@/components/font-kickoff";
 
 // Two faces the rest of the site does not load. Nunito carries the slide titles
 // — heavy, round and friendly, so a hard idea does not look severe. Comic Neue
 // is the hand-drawn label face inside the diagrams; it is what makes the
 // Excalidraw-style artwork read as drawn rather than rendered.
+// `preload: false` on both: a head preload holds Chrome's first paint until the
+// file lands, so FontKickoff in the layout below starts the downloads instead.
 const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
   weight: ["600", "800", "900"],
   display: "swap",
+  preload: false,
 });
 
 const comic = Comic_Neue({
@@ -18,6 +22,7 @@ const comic = Comic_Neue({
   variable: "--font-comic",
   weight: ["700"],
   display: "swap",
+  preload: false,
 });
 
 const TITLE = "Claude and the Riemann Hypothesis, Explained";
@@ -76,6 +81,14 @@ export default function ClaudeRiemannLayout({
   // page.tsx because page.tsx is generated from the vault and gets overwritten.
   return (
     <>
+      <FontKickoff
+        fonts={[
+          `600 1em ${nunito.style.fontFamily}`,
+          `800 1em ${nunito.style.fontFamily}`,
+          `900 1em ${nunito.style.fontFamily}`,
+          `700 1em ${comic.style.fontFamily}`,
+        ]}
+      />
       <div className={`crh-page ${nunito.variable} ${comic.variable}`}>
         {children}
       </div>

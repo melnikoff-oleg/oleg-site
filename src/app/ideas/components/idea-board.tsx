@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import type { Idea } from "@/lib/ideas/db";
 import { IdeaCard } from "./idea-card";
@@ -8,20 +8,48 @@ import { SubmitForm } from "./submit-form";
 
 type Sort = "top" | "new";
 
-export function IdeaBoard({
-  initialIdeas,
-  initialVoted,
-}: {
-  initialIdeas: Idea[];
-  initialVoted: string[];
-}) {
+export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
   const [ideas, setIdeas] = useState<Idea[]>(initialIdeas);
-  const [voted, setVoted] = useState<Set<string>>(new Set(initialVoted));
+  const [voted, setVoted] = useState<Set<string>>(() => new Set());
   const [pending, setPending] = useState<Set<string>>(new Set());
   const [highlight, setHighlight] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [sort, setSort] = useState<Sort>("top");
   const highlightTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Ideas this browser voted on, unvoted or added since the page opened. The
+  // server answered each of those actions with their state, which is newer
+  // than the mount sync if that lands later, so the sync merges around them.
+  const mine = useRef<Set<string>>(new Set());
+
+  // The page arrives from the edge cache (see page.tsx): its list can be up to
+  // a minute old and knows nothing about this browser. One read, right after
+  // the board shows, brings both up to date: fresh counts, new ideas, and the
+  // pressed state of every idea this browser has voted for.
+  useEffect(() => {
+    const ctrl = new AbortController();
+    fetch("/api/ideas", { signal: ctrl.signal })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: { ideas: Idea[]; voted: string[] } | null) => {
+        if (!data) return;
+        const own = mine.current;
+        setIdeas((current) => {
+          const kept = new Map(current.filter((i) => own.has(i.id)).map((i) => [i.id, i]));
+          const fresh = data.ideas.map((i) => kept.get(i.id) ?? i);
+          // One published here a moment ago may not be in the read yet.
+          const added = [...kept.values()].filter((i) => !data.ideas.some((d) => d.id === i.id));
+          return [...added, ...fresh];
+        });
+        setVoted((current) => {
+          const next = new Set(data.voted.filter((id) => !own.has(id)));
+          for (const id of own) if (current.has(id)) next.add(id);
+          return next;
+        });
+      })
+      .catch(() => {
+        // Offline or aborted: the cached board stays, which is the point of it.
+      });
+    return () => ctrl.abort();
+  }, []);
 
   const sorted = useMemo(() => {
     const copy = [...ideas];
@@ -51,6 +79,7 @@ export function IdeaBoard({
 
   async function vote(id: string) {
     if (pending.has(id)) return;
+    mine.current.add(id);
     const wasVoted = voted.has(id);
 
     // Optimistic: the tap has to feel instant, the request catches up.
@@ -98,11 +127,21 @@ export function IdeaBoard({
         return;
       }
 
-      // Trust the server's count over the optimistic one.
+      // Trust the server over the optimistic guess, for the count and for the
+      // pressed state: a tap that landed before the mount sync could not know
+      // this browser had already voted, and the server's toggle can.
       if (typeof data.votes === "number") {
         setIdeas((list) =>
           list.map((i) => (i.id === id ? { ...i, votes_count: data.votes } : i)),
         );
+      }
+      if (data.action === "voted" || data.action === "unvoted") {
+        setVoted((v) => {
+          const next = new Set(v);
+          if (data.action === "voted") next.add(id);
+          else next.delete(id);
+          return next;
+        });
       }
     } finally {
       setPending((p) => {
@@ -114,6 +153,7 @@ export function IdeaBoard({
   }
 
   function onPublished(idea: Idea) {
+    mine.current.add(idea.id);
     setIdeas((list) => [idea, ...list]);
     setVoted((v) => new Set(v).add(idea.id));
     flash(idea.id);

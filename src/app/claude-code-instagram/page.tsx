@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { ResourcePageShell } from "@/components/resource-page-shell";
@@ -681,7 +682,7 @@ export default function ClaudeCodeInstagramPage() {
               <li>
                 <strong>Not a script writer.</strong> It cuts the video. What to
                 say is a different job, and{" "}
-                <a href="/claude-reels">The reels research system</a> is the one
+                <Link href="/claude-reels">The reels research system</Link> is the one
                 that does it.
               </li>
               <li>
@@ -697,12 +698,12 @@ export default function ClaudeCodeInstagramPage() {
             <p>
               If you want the other half, deciding what the video should be
               about, that is{" "}
-              <a href="/claude-reels">The reels system</a>, and the
+              <Link href="/claude-reels">The reels system</Link>, and the
               account-level strategy is on{" "}
-              <a href="/claude-social-growth">The growth guide</a>. Never used{" "}
+              <Link href="/claude-social-growth">The growth guide</Link>. Never used{" "}
               <Code>claude code</Code>?{" "}
-              <a href="/claude-code-tutorial">Start here</a>, and{" "}
-              <a href="/claude-code-pricing">This is what the plans cost</a>.
+              <Link href="/claude-code-tutorial">Start here</Link>, and{" "}
+              <Link href="/claude-code-pricing">This is what the plans cost</Link>.
             </p>
           </GuideSection>
         </Guide>

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { ROUTES } from "./routes";
 
 /**
  * Tests 81-84: performance budgets.
@@ -120,10 +121,13 @@ test("84a - homepage: below-the-fold media waits, hero copy needs no javascript"
   expect(urls.filter((u) => /\/icons\/(math|trading|building|media|life)\.webp/.test(u)), "story icons before scroll").toEqual([]);
   expect(urls.filter((u) => /hero[^&]*&w=(2048|3840)/.test(u)), "oversized hero").toEqual([]);
 
-  // Server HTML alone must carry the headline as visible, animated text.
+  // Server HTML alone must carry the headline, in its final state: no entrance
+  // animation and nothing that waits for JavaScript (84b holds every route to
+  // the same rule).
   const html = await (await page.request.get("/")).text();
   const h1 = html.match(/<h1[\s\S]*?<\/h1>/)?.[0] ?? "";
-  expect(h1).toContain("is-visible");
+  expect(h1).toContain("marketing.");
+  expect(h1).not.toContain("data-reveal");
 
   // Scrolling to the video does fetch it. The sections above it render as the
   // page scrolls (content-visibility) and can push it back down, so re-aim on
@@ -134,4 +138,34 @@ test("84a - homepage: below-the-fold media waits, hero copy needs no javascript"
       return urls.some((u) => /preview\.mp4/.test(u));
     })
     .toBe(true);
+});
+
+// Test 84b: nothing a page sends is hidden (2026-10-23, the Telegram pass). The
+// hero used to fade in from opacity 0, which held every headline unreadable
+// for 0.3-0.7 s after it had arrived. Reveals now arm only after hydration and
+// only for content still off screen, so the server HTML carries no reveal
+// state at all, on any route.
+test("84b - no route's server HTML hides content behind a reveal", async ({ request }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop", "server HTML is the same for every viewport");
+  for (const route of ROUTES) {
+    const html = await (await request.get(route)).text();
+    // An attribute on an element, not the [data-reveal=...] rules in the
+    // inlined stylesheet.
+    expect(html, route).not.toMatch(/<[a-z][^<>]*\sdata-reveal=/i);
+  }
+});
+
+// Test 84c: web fonts never hold the first paint. A <link rel=preload as=font>
+// in <head> is render-blocking in Chrome (up to ~100 ms, measured 152-196 ms vs
+// 64-72 ms first paint on a 4G phone), so the site has none: FontKickoff starts
+// the downloads from the body instead (src/components/font-kickoff.tsx). The
+// files must still arrive, which is what 83 counts.
+test("84c - no font preload in <head>; the body kicks the downloads off", async ({ request }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop", "server HTML is the same for every viewport");
+  for (const route of ["/", "/claude-code-tutorial", "/claude-riemann-hypothesis", "/ideas"]) {
+    const html = await (await request.get(route)).text();
+    const head = html.slice(0, html.indexOf("<body"));
+    expect(head, route).not.toMatch(/<link[^>]+as="font"/);
+    expect(html.slice(html.indexOf("<body")), route).toMatch(/document\.fonts\)<\/script>/);
+  }
 });

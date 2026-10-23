@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { BoldaneLink } from "@/components/boldane-cta";
 import { DOWNLOAD_ICON } from "@/components/repo-cta";
@@ -350,7 +351,7 @@ export default function ClaudeCoworkPage() {
             <p>
               In my own week it splits cleanly. Anything that produces a repo or
               a running system goes to Claude Code, and there are{" "}
-              <a href="/claude-code-tutorial">Guides for most of those here</a>.
+              <Link href="/claude-code-tutorial">Guides for most of those here</Link>.
               Anything that produces a document, a report or a browser action
               goes to cowork.
             </p>
@@ -388,7 +389,7 @@ export default function ClaudeCoworkPage() {
               will hit the limit in the middle of something rather than
               wondering in advance. The full breakdown, including what happens
               when you run out, is on{" "}
-              <a href="/claude-cowork-pricing">The pricing page</a>.
+              <Link href="/claude-cowork-pricing">The pricing page</Link>.
             </p>
           </GuideSection>
 
@@ -485,7 +486,7 @@ if a source is missing, say so at the top instead of guessing.`}</Block>
               <li>
                 <strong>Prospect research.</strong> Read a person&apos;s recent
                 posts and write down what they are actually working on. The{" "}
-                <a href="/claude-cowork-outreach">Full outreach system</a> is
+                <Link href="/claude-cowork-outreach">Full outreach system</Link> is
                 built on this one.
               </li>
               <li>
@@ -583,8 +584,8 @@ if a source is missing, say so at the top instead of guessing.`}</Block>
             </ul>
             <p>
               If you want the terminal half of this, start with{" "}
-              <a href="/claude-code-tutorial">The Claude Code guide</a>, and{" "}
-              <a href="/claude-cowork-pricing">The pricing page</a> has the full
+              <Link href="/claude-code-tutorial">The Claude Code guide</Link>, and{" "}
+              <Link href="/claude-cowork-pricing">The pricing page</Link> has the full
               cost picture including what the API alternative works out at. The{" "}
               <Code>cowork</Code> and <Code>claude code</Code> split is the only
               decision you have to make, and both are in the same{" "}

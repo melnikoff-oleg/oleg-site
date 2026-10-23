@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { BoldaneLink } from "@/components/boldane-cta";
 import { DOWNLOAD_ICON } from "@/components/repo-cta";
@@ -248,7 +249,7 @@ export default function ClaudeCoworkPricingPage() {
                 more people than LinkedIn will let you send connection requests
                 to. So for outreach specifically, the scraping is genuinely free
                 and the whole system costs the plan. The full setup is on{" "}
-                <a href="/claude-cowork-outreach">The outreach page</a>.
+                <Link href="/claude-cowork-outreach">The outreach page</Link>.
               </p>
             </Callout>
           </GuideSection>
@@ -307,9 +308,9 @@ export default function ClaudeCoworkPricingPage() {
             <p>
               For the same question about Claude Code, where the API genuinely
               is an alternative to the subscription, see{" "}
-              <a href="/claude-code-pricing">Claude Code pricing</a>. And for
+              <Link href="/claude-code-pricing">Claude Code pricing</Link>. And for
               what cowork actually does with the money, see{" "}
-              <a href="/claude-cowork">The main cowork guide</a>.
+              <Link href="/claude-cowork">The main cowork guide</Link>.
             </p>
             <p className="text-silver-muted">
               Prices above were read off{" "}

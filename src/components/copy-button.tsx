@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -22,13 +22,22 @@ export function CopyButton({
   className?: string;
 }) {
   const [copied, setCopied] = useState(false);
+  const reset = useRef<ReturnType<typeof setTimeout>>(undefined);
+  useEffect(() => () => clearTimeout(reset.current), []);
 
   return (
     <button
-      onClick={() => {
-        navigator.clipboard.writeText(text);
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          // Permission denied or the page not focused (in-app browsers): no
+          // "copied" for a copy that did not happen.
+          return;
+        }
         setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        clearTimeout(reset.current);
+        reset.current = setTimeout(() => setCopied(false), 2000);
       }}
       className={cn(
         "inline-flex min-h-[44px] shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white",

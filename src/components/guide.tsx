@@ -19,6 +19,7 @@
 
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { THUMBS } from "@/lib/guide-thumbs";
 import { slugify } from "@/lib/seo/slug";
 import { clock, watchUrl } from "@/lib/videos";
 
@@ -350,6 +351,10 @@ export function Figure({
   /** Break out of the prose column on a wide screen, for dense screenshots. */
   wide?: boolean;
 }) {
+  // Lazy by default (next/image), so a figure costs nothing until the reader
+  // is about to reach it, and its ~200-byte stripped thumbnail is painted,
+  // blurred, the moment the box is: never an empty frame while the file lands.
+  const thumb = THUMBS[src];
   const img = (
     <Image
       src={src}
@@ -357,6 +362,8 @@ export function Figure({
       width={1280}
       height={720}
       sizes="(max-width: 768px) 100vw, 768px"
+      placeholder={thumb ? "blur" : "empty"}
+      blurDataURL={thumb}
       className="h-auto w-full"
     />
   );
