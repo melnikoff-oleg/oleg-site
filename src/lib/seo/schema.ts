@@ -21,7 +21,7 @@ export const SITE_URL = "https://www.oleg.ae";
 
 // The profiles Oleg actively points people at. LinkedIn, Instagram and Telegram
 // moved to the handle "olegdoes" on 2026-10-16, on his instruction. TikTok was
-// not part of that change and stays @oleg_tech until he says otherwise. `sameAs` is what tells
+// taken out on 2026-10-23, also on his instruction ("for now"). `sameAs` is what tells
 // Google these accounts are one person, so a handle that is wrong here actively
 // merges his entity with somebody else's. connect-section.tsx links the same
 // set: if you change one, change both.
@@ -29,7 +29,6 @@ const SAME_AS = [
   "https://www.youtube.com/@Oleg-Melnikov",
   "https://www.linkedin.com/in/olegdoes",
   "https://www.instagram.com/olegdoes",
-  "https://www.tiktok.com/@oleg_tech",
   "https://t.me/olegdoes",
   "https://boldane.com",
 ];
