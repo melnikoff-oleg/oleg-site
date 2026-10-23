@@ -23,15 +23,15 @@ I built an AI agent that interviews me about my expertise, then turns that conve
 In this video I show you the full system: from the voice AI interview to the finished post, and walk you through how I built it with Claude Code. If you hate writing content but know you should be posting, this is for you.
 
 👋🏻 My socials
-LinkedIn: /melnikoff-oleg
-Instagram: /melnikoff_oleg
+LinkedIn: /olegdoes
+Instagram: /olegdoes
 
 ## Links
 
 - https://www.oleg.ae/ — Free template & guide
 - https://www.boldane.com/ — Content creation service
-- https://www.linkedin.com/in/melnikoff-oleg — LinkedIn
-- https://www.instagram.com/melnikoff_oleg — Instagram
+- https://www.linkedin.com/in/olegdoes — LinkedIn
+- https://www.instagram.com/olegdoes — Instagram
 
 ---
 

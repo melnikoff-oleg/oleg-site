@@ -44,9 +44,11 @@ Plausible (site_id `oleg.ae`, API key lives in the boldane-site repo's `.env`), 
 ## Social Presence
 
 - YouTube: youtube.com/@Oleg-Melnikov -- primary channel
-- LinkedIn: linkedin.com/in/olegane (premium, verified)
-- Instagram personal: @melnikoff_oleg (1,038 followers)
-- Telegram: t.me/melnikoff_oleg; email: oleg@boldane.com (both linked in the site's connect section since 2026-07-09)
+- LinkedIn: linkedin.com/in/olegdoes (premium, verified)
+- Instagram personal: @olegdoes; TikTok @oleg_tech
+- X: x.com/olegrows
+- Retired handles, never use again (2026-10-23): olegane, melnikoff_oleg
+- Telegram: t.me/olegdoes; email: oleg@boldane.com (both linked in the site's connect section since 2026-07-09)
 - Personal site: oleg.ae (2,300+ visitors/mo); service site: boldane.com
 
 ## Top Performing Content

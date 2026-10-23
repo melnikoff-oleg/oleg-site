@@ -23,5 +23,5 @@ In this video I show you the full system: from the voice AI interview to the fin
 4:55 — Free setup guide link
 
 👋🏻 My socials
-LinkedIn: https://www.linkedin.com/in/melnikoff-oleg
-Instagram: https://www.instagram.com/melnikoff_oleg
+LinkedIn: https://www.linkedin.com/in/olegdoes
+Instagram: https://www.instagram.com/olegdoes
