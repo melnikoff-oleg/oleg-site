@@ -125,8 +125,8 @@ and after:
 | `/ideas` | 1078 → 40 | 551 → 120 | 606 → 275 |
 
 Broadband is 20 ms RTT and 50 Mbps; the 4G phone is 70 ms and 9 Mbps at 2x
-CPU; slow 4G is Lighthouse's 150 ms and 1.6 Mbps at 4x CPU, where the round
-trip alone puts 200 ms out of reach. Against a local server, so add the real
+CPU; slow 4G is Lighthouse's 150 ms and 1.6 Mbps at 4x CPU, where 200 ms is out of
+reach for any styled page (see "Why slow 4G is reported, not gated" below). Against a local server, so add the real
 network's connection setup (one to three round trips) on top of every number.
 
 What did it, in the order it mattered:
@@ -181,6 +181,32 @@ the same document, so the hint changed nothing measurable.
 Left alone on purpose: the YouTube player stays a real iframe in the fold
 (Google will not index a click-to-load facade), and its long tasks land 5-7 s
 after load on a slow phone, after the page is interactive.
+
+### Why slow 4G is reported, not gated (measured 2026-10-24)
+
+Every route reads in 264-297 ms on the slow-4G phone (150 ms, 1.6 Mbps, 4x
+CPU), so the 200 ms standard is gated on broadband and the 4G phone only. That
+is a floor, not a gap left open, and it was measured rather than assumed, on
+the same profile, median of three cold loads:
+
+| What was loaded | Headline readable |
+|---|---|
+| a bare `<h1>Hello</h1>` document, nothing else | 180 ms |
+| our real pages with every byte of CSS removed (unstyled) | 196-197 ms |
+| our real pages with only the CSS rules they use (coverage) | about 20% less CSS; the phone's CPU saved 0-26 ms |
+| our real pages as shipped | 268-299 ms |
+
+The emulated round trip is 150 ms and the throttled CPU needs about 25 ms to
+draw even an empty page, so 200 ms leaves no room for a stylesheet of any
+size. The 70-100 ms our pages sit above the floor is the one inlined
+stylesheet (78 KB, about 15 KB compressed) arriving at 1.6 Mbps and being
+parsed at 4x: pages use about 78% of it, so pruning unused rules buys about
+15 ms, and only above-the-fold critical CSS with the rest deferred could buy
+more (at the price of the lower page restyling as it lands). On a real slow-4G
+link it is starker: a cold visit spends three or four round trips on DNS, TCP
+and TLS, 450-600 ms, before the first byte, for any site. The decomposition
+scripts (latency, bandwidth and CPU switched on one at a time) were one-offs;
+`scripts/perf-pages.mjs` reports the profile on every run.
 
 ## Sources
 
