@@ -1,5 +1,5 @@
 -- /ubersuggest-feed/rate: people rate the Ubersuggest LinkedIn drafts.
--- New tables only, prefixed `ubs_` like the /ideas board's `yt_` tables, in the shared Boldane project.
+-- New tables only, prefixed `ubs_` like the `yt_` tables of the old /ideas board (deleted 2026-10-24), in the shared Boldane project.
 -- RLS on with NO policies: only the service-role key used by the site's route handler gets in.
 
 create table if not exists ubs_vote_submission (

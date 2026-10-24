@@ -138,6 +138,15 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       })),
+      // ---- Deleted on 2026-10-24, on Oleg's instruction ----
+      // The /ideas vote board (and /ideas/admin with it): 11 visitors in three
+      // months, nothing linking to it once its suggest form went. Home, like
+      // the pages above.
+      {
+        source: "/ideas/:path*",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
   async headers() {

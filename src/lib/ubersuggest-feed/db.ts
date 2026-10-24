@@ -3,9 +3,9 @@
 //
 // Server-side only, with the SERVICE ROLE key. The two tables (ubs_vote_submission,
 // ubs_vote; DDL in scripts/ubersuggest-votes-schema.sql) have RLS on with no
-// policies, so this module is the only way in. Like the /ideas board it degrades
-// instead of throwing when the env vars are missing: reads return empty and
-// writes report that the database is not configured.
+// policies, so this module is the only way in. It degrades instead of throwing
+// when the env vars are missing: reads return empty and writes report that the
+// database is not configured.
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 

@@ -162,7 +162,7 @@ test("84b - no route's server HTML hides content behind a reveal", async ({ requ
 // files must still arrive, which is what 83 counts.
 test("84c - no font preload in <head>; the body kicks the downloads off", async ({ request }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop", "server HTML is the same for every viewport");
-  for (const route of ["/", "/claude-code-tutorial", "/claude-riemann-hypothesis", "/ideas"]) {
+  for (const route of ["/", "/claude-code-tutorial", "/claude-riemann-hypothesis", "/reels"]) {
     const html = await (await request.get(route)).text();
     const head = html.slice(0, html.indexOf("<body"));
     expect(head, route).not.toMatch(/<link[^>]+as="font"/);

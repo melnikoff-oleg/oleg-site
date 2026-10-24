@@ -40,7 +40,6 @@ export const ROUTES = [
   "/reels",
   "/viral",
   "/creators",
-  "/ideas",
 ] as const;
 
 // The two reel pages are in ROUTES (they must still return 200, render one h1
@@ -105,4 +104,6 @@ export const REDIRECTED_ROUTES: Record<string, string> = {
   "/sam-altman-ai": "/",
   "/claude-code-sessions": "/",
   "/andrej-karpathy-ai": "/",
+  // The vote board, deleted 2026-10-24.
+  "/ideas": "/",
 };

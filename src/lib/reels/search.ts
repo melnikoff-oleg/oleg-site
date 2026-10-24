@@ -14,9 +14,9 @@
 // the Playwright suite run in an environment with no secrets.
 
 // A build error, not a runtime one, if this module is ever pulled into a client
-// bundle. It reads three secrets at import time, and `src/lib/ideas/db.ts` is
-// the proof this can happen by accident: its module-level env expression is
-// visible in the shipped /ideas client chunk.
+// bundle. It reads three secrets at import time, and the old /ideas board's
+// data module (deleted 2026-10-24) was the proof this can happen by accident:
+// its module-level env expression was visible in the shipped client chunk.
 import "server-only";
 import { rangesKey } from "@/lib/filters/range";
 import { embedQuery } from "@/lib/search/embed";

@@ -59,7 +59,6 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: "/claude-riemann-hypothesis", lastModified: "2026-08-12", changeFrequency: "monthly", priority: SECONDARY },
 
   // Audience and tool surfaces. These genuinely change often.
-  { path: "/ideas", lastModified: "2026-08-27", changeFrequency: "daily", priority: SECONDARY },
   { path: "/reels", lastModified: "2026-08-27", changeFrequency: "daily", priority: SECONDARY },
   { path: "/creators", lastModified: "2026-08-27", changeFrequency: "weekly", priority: SECONDARY },
 ];
