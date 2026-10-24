@@ -1,7 +1,9 @@
-// POST /api/ideas/vote -> toggle this browser's vote on one idea.
+// POST /api/ideas/vote {ideaId, vote} -> set this browser's vote on one idea
+// (vote: true to vote, false to unvote; see setVote in lib/ideas/db.ts for why
+// it is a set and not a toggle).
 
 import { NextResponse } from "next/server";
-import { logEvent, toggleVote, writesConfigured } from "@/lib/ideas/db";
+import { logEvent, setVote, writesConfigured } from "@/lib/ideas/db";
 import { voteAllowed } from "@/lib/ideas/limits";
 import {
   cookieFrom,
@@ -25,12 +27,13 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ error: "bad_request" }, { status: 400 });
   }
-  const ideaId =
-    typeof body === "object" && body !== null
-      ? (body as Record<string, unknown>).ideaId
-      : undefined;
+  const raw = typeof body === "object" && body !== null ? (body as Record<string, unknown>) : {};
+  const { ideaId, vote } = raw;
   if (typeof ideaId !== "string" || !UUID.test(ideaId)) {
     return NextResponse.json({ error: "invalid_idea" }, { status: 400 });
+  }
+  if (typeof vote !== "boolean") {
+    return NextResponse.json({ error: "bad_request" }, { status: 400 });
   }
 
   if (!writesConfigured) {
@@ -49,7 +52,7 @@ export async function POST(req: Request) {
   const minted = existing ? null : mintVoterId();
   const voterId = existing ?? minted!.id;
 
-  const result = await toggleVote(ideaId, voterId, hashIp(ip));
+  const result = await setVote(ideaId, voterId, hashIp(ip), vote);
   if (!result.ok) {
     const status = result.reason === "not_found" ? 404 : 500;
     return NextResponse.json({ error: result.reason }, { status });

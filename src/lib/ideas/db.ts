@@ -162,46 +162,48 @@ export type VoteResult =
   | { ok: false; reason: "not_found" | "error" };
 
 /**
- * Toggle this browser's vote on one idea.
+ * Set this browser's vote on one idea to `want`: true to vote, false to unvote.
  *
- * The insert is the guard: the table's primary key is (idea_id, voter_id), so a
- * second vote from the same browser fails with 23505 rather than double
- * counting, and we read that as "they tapped again, so unvote". Doing it this
- * way (rather than read-then-write) means two racing requests cannot both see
- * "not voted yet" and both insert. `votes_count` is maintained by a trigger, so
- * we re-read the row afterwards rather than doing our own arithmetic.
+ * The client sends the state it wants rather than asking for a toggle, because
+ * the /ideas page is cached and knows nothing about the visitor until its mount
+ * sync lands: a returning voter who taps an idea before then sees it unpressed
+ * and means "vote", and a toggle would have taken their old vote away. Both
+ * directions are idempotent. The insert is the guard: the table's primary key
+ * is (idea_id, voter_id), so a repeat vote fails with 23505, which here just
+ * means "already voted", and two racing requests cannot both insert.
+ * `votes_count` is maintained by a trigger, so we re-read the row afterwards
+ * rather than doing our own arithmetic.
  */
-export async function toggleVote(
+export async function setVote(
   ideaId: string,
   voterId: string,
   ipHash: string,
+  want: boolean,
 ): Promise<VoteResult> {
   if (!dbConfigured) return { ok: false, reason: "error" };
 
-  const { error: insertError } = await db()
-    .from("yt_idea_vote")
-    .insert({ idea_id: ideaId, voter_id: voterId, ip_hash: ipHash });
-
-  let action: VoteAction;
-  if (!insertError) {
-    action = "voted";
-  } else if (insertError.code === "23505") {
-    const { error: delError } = await db()
+  if (want) {
+    const { error } = await db()
+      .from("yt_idea_vote")
+      .insert({ idea_id: ideaId, voter_id: voterId, ip_hash: ipHash });
+    if (error?.code === "23503") {
+      // Foreign key: the idea id does not exist (or was deleted).
+      return { ok: false, reason: "not_found" };
+    }
+    if (error && error.code !== "23505") {
+      console.error("[ideas] setVote insert", error.message);
+      return { ok: false, reason: "error" };
+    }
+  } else {
+    const { error } = await db()
       .from("yt_idea_vote")
       .delete()
       .eq("idea_id", ideaId)
       .eq("voter_id", voterId);
-    if (delError) {
-      console.error("[ideas] toggleVote delete", delError.message);
+    if (error) {
+      console.error("[ideas] setVote delete", error.message);
       return { ok: false, reason: "error" };
     }
-    action = "unvoted";
-  } else if (insertError.code === "23503") {
-    // Foreign key: the idea id does not exist (or was deleted).
-    return { ok: false, reason: "not_found" };
-  } else {
-    console.error("[ideas] toggleVote insert", insertError.message);
-    return { ok: false, reason: "error" };
   }
 
   const { data } = await db()
@@ -210,7 +212,11 @@ export async function toggleVote(
     .eq("id", ideaId)
     .single();
 
-  return { ok: true, action, votes: (data?.votes_count as number) ?? 0 };
+  return {
+    ok: true,
+    action: want ? "voted" : "unvoted",
+    votes: (data?.votes_count as number) ?? 0,
+  };
 }
 
 export async function updateIdea(

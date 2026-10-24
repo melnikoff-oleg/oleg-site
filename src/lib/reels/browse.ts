@@ -257,6 +257,13 @@ async function readReelFacts(): Promise<ReelFacts> {
     }
     const pages = await Promise.all(offsets.map((at) => readFactsPage(at, false)));
     for (const page of pages) rows.push(...page.rows);
+    // A sync that landed after the count grew the table past it, which shows as
+    // a full last page: read on, one page at a time, until a short one.
+    let last = pages.at(-1) ?? first;
+    while (last.rows.length === FACTS_PAGE && rows.length < FACTS_LIMIT) {
+      last = await readFactsPage(rows.length, false);
+      rows.push(...last.rows);
+    }
   }
   // A silent truncation would not break anything visibly: the charts would
   // describe a prefix of the index while the count under them came from the

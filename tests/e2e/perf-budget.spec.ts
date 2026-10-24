@@ -169,3 +169,25 @@ test("84c - no font preload in <head>; the body kicks the downloads off", async 
     expect(html.slice(html.indexOf("<body")), route).toMatch(/document\.fonts\)<\/script>/);
   }
 });
+
+// Test 84d: the fallback faces still attach. With no preload, text paints in a
+// fallback first, and globals.css gives titles a real 600 face by adding one to
+// the family next/font generates, "Wix Madefor Display Fallback", by name. If a
+// Next upgrade renames that family the rule matches nothing, silently: titles
+// fall back to faux-bold Arial and reflow when the font lands. So check that the
+// title's font stack really names the family the extra face is declared for,
+// and the same for the caps labels' own fallback.
+test("84d - the title and caps fallback faces are the ones the page uses", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop", "font stacks are the same for every viewport");
+  await page.goto("/");
+  const found = await page.evaluate(() => {
+    const declared = [...document.fonts].map((f) => `${f.family.replace(/"/g, "")}|${f.weight}`);
+    const stack = (sel: string) => getComputedStyle(document.querySelector(sel)!).fontFamily;
+    return { declared, title: stack("h1"), caps: stack(".eyebrow") };
+  });
+  expect(found.declared).toContain("Wix Madefor Display Fallback|600");
+  expect(found.title).toContain("Wix Madefor Display Fallback");
+  // The caps face declares no weight (it is used at the one the labels set).
+  expect(found.declared.some((d) => d.startsWith("Wix Madefor Caps Fallback|"))).toBe(true);
+  expect(found.caps).toContain("Wix Madefor Caps Fallback");
+});

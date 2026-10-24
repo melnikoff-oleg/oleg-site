@@ -7,8 +7,8 @@ import { IdeaBoard } from "./components/idea-board";
 // Cached first, then synced, the way Telegram opens a chat. The board is the
 // same for every visitor, so the page is static and served from the edge cache:
 // refreshed in the background a minute after it goes stale, and purged when an
-// idea appears or changes (revalidatePath in the submit and admin routes; a
-// vote does not purge it, since the mount sync brings counts up to date). What only this
+// idea appears or changes (revalidatePath in the admin route; a vote does not
+// purge it, since the mount sync brings counts up to date). What only this
 // browser knows, which ideas it voted for, and anything newer than the cached
 // copy arrive from GET /api/ideas the moment the board mounts. It used to read
 // the cookie and wait on two database queries before sending a byte: about a
@@ -61,8 +61,8 @@ export default async function IdeasPage() {
             </h1>
 
             <p className="mt-4 font-body text-lg text-silver-muted md:text-xl">
-              Suggest a video, or vote for one that is already here. The ideas with the
-              most votes are the ones I make.
+              Vote for the video you want to see. The ideas with the most votes are the
+              ones I make.
             </p>
           </div>
         </section>

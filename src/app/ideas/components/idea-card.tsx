@@ -11,25 +11,17 @@ export function IdeaCard({
   idea,
   voted,
   pending,
-  highlighted,
   onVote,
 }: {
   idea: Idea;
   voted: boolean;
   pending: boolean;
-  highlighted: boolean;
   onVote: (id: string) => void;
 }) {
   const status = STATUS_LABEL[idea.status];
 
   return (
-    <li
-      id={`idea-${idea.id}`}
-      className={cn(
-        "surface-card flex gap-4 p-4 transition-shadow duration-500 sm:gap-5 sm:p-5",
-        highlighted && "glow-blue",
-      )}
-    >
+    <li className="surface-card flex gap-4 p-4 sm:gap-5 sm:p-5">
       <button
         type="button"
         onClick={() => onVote(idea.id)}

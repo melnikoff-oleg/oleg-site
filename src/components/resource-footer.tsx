@@ -59,25 +59,8 @@ export function ResourceFooter({
         </details>
       </div>
 
-      {/* The one internal entry point to the ideas board. Deliberately a single
-          line rather than a card: it sits after the library, so it reads as a
-          way to keep going, not as another thing to grab. */}
-      {currentSlug !== "ideas" && (
-        <p className="mt-8 text-center text-sm text-silver-muted">
-          Got an idea for a video?{" "}
-          <Link
-            href="/ideas"
-            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-          >
-            vote on what I build next
-          </Link>
-        </p>
-      )}
-
       {boldaneCredit && (
-        <p
-          className={`${currentSlug !== "ideas" ? "mt-3" : "mt-8"} text-center text-sm text-silver-muted`}
-        >
+        <p className="mt-8 text-center text-sm text-silver-muted">
           Free guides by Oleg, founder of{" "}
           <BoldaneAnchor className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white">Boldane</BoldaneAnchor>
         </p>

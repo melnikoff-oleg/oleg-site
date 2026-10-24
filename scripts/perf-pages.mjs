@@ -6,40 +6,27 @@
 // on screen with its opacity past 0.9.
 //
 // Run against a production build:
-//   npm run build && npx next start -p 3100 & node scripts/perf-pages.mjs [base] [route...]
+//   npm run build && npx next start -p 3100 & npm run perf -- [base] [route...]
 // Exits non-zero when a page's headline is not readable within BUDGET_MS on
-// the broadband profile, the one that matches "open a link on a laptop".
+// broadband ("open a link on a laptop") or on the 4G phone. The slow-4G phone
+// is reported, not gated: at 150 ms a round trip, the connection alone uses
+// most of the budget.
 import { chromium } from "@playwright/test";
+import { ROUTES as SITE_ROUTES } from "../tests/e2e/routes.ts";
 
 const BASE = (process.argv[2] ?? "http://localhost:3100").replace(/\/$/, "");
+// Every public route by default, from the list the test suite uses, so a new
+// page is measured the moment it is added there. The filmed page is kept out
+// of that list for the shell specs' sake (see routes.ts), not for this one.
 const ROUTES = process.argv.slice(3).length
   ? process.argv.slice(3)
-  : [
-      "/",
-      "/claude-code-tutorial",
-      "/claude-code-pricing",
-      "/claude-code-vs-cursor",
-      "/claude-cowork",
-      "/claude-cowork-pricing",
-      "/claude-b2b-outreach",
-      "/claude-cowork-outreach",
-      "/claude-twitter",
-      "/claude-content",
-      "/claude-reels",
-      "/claude-tiktok",
-      "/claude-social-growth",
-      "/claude-marketing",
-      "/5-levels-ai",
-      "/claude-code-instagram",
-      "/claude-riemann-hypothesis",
-      "/reels",
-      "/viral",
-      "/creators",
-      "/ideas",
-    ];
+  : [...SITE_ROUTES, "/claude-riemann-hypothesis"];
+// The site's speed standard (CLAUDE.md, "Speed"): every page's headline
+// readable within 200 ms of the click.
 const BUDGET_MS = 200;
 
 // [name, width, height, dpr, mobile, latency ms, down kbit/s, cpu slowdown]
+const GATED = new Set(["broadband desktop", "4G phone"]);
 const PROFILES = [
   ["broadband desktop", 1440, 900, 2, false, 20, 50_000, 1],
   ["4G phone", 390, 844, 3, true, 70, 9_000, 2],
@@ -92,7 +79,7 @@ for (const route of ROUTES) {
     // at all, so first paint is the moment that counts there.
     r.h1 ||= r.fcp;
     rows.push({ route, name, status: res?.status(), ...r });
-    if (name === "broadband desktop" && (!ok || r.h1 > BUDGET_MS)) over++;
+    if (GATED.has(name) && (!ok || r.h1 > BUDGET_MS)) over++;
     const kb = (n) => Math.round(n / 1024);
     console.log(
       `${route.padEnd(28)} ${name.padEnd(18)} ttfb ${String(Math.round(r.ttfb)).padStart(4)}  fcp ${String(Math.round(r.fcp)).padStart(5)}  lcp ${String(Math.round(r.lcp)).padStart(5)}  h1 ${String(Math.round(r.h1)).padStart(5)}  cls ${r.cls.toFixed(3)}  tbt ${String(Math.round(r.tbt)).padStart(4)}  doc ${kb(r.doc)}KB ` +
@@ -106,5 +93,6 @@ if (process.env.PERF_JSON) {
   const { writeFileSync } = await import("node:fs");
   writeFileSync(process.env.PERF_JSON, JSON.stringify(rows, null, 2));
 }
-console.log(over ? `\n${over} page(s) missed the ${BUDGET_MS} ms headline budget on broadband.` : `\nEvery page's headline readable within ${BUDGET_MS} ms on broadband.`);
+const gated = [...GATED].join(" and ");
+console.log(over ? `\n${over} load(s) missed the ${BUDGET_MS} ms headline budget on ${gated}.` : `\nEvery page's headline readable within ${BUDGET_MS} ms on ${gated}.`);
 process.exit(over ? 1 : 0);

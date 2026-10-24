@@ -10,7 +10,8 @@
     "test": "playwright test --config tests/playwright.config.ts",
     "test:update": "playwright test --config tests/playwright.config.ts --update-snapshots",
     "test:unit": "node --test --experimental-strip-types --import ./tests/unit/register.mjs 'tests/unit/*.test.ts'",
-    "bench:search": "node --experimental-strip-types scripts/search-bench.mts"
+    "bench:search": "node --experimental-strip-types scripts/search-bench.mts",
+    "perf": "node --experimental-strip-types --no-warnings=ExperimentalWarning scripts/perf-pages.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.105.0",

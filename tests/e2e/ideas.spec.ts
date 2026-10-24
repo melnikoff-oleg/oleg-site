@@ -1,6 +1,7 @@
-import { test, expect, type Page, type Locator } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 
-// Tests 59+: the /ideas board (suggest a video, vote on the ones already there).
+// Tests 59+: the /ideas board (vote on the video ideas already there). The
+// suggest-a-video form was removed on 2026-10-24: nobody used it.
 //
 // Two halves, both deterministic without any secret:
 //  - the API guard rails, which all return before the route touches Supabase or
@@ -9,7 +10,7 @@ import { test, expect, type Page, type Locator } from "@playwright/test";
 //    absent (that graceful degradation is a design requirement precisely so this
 //    suite runs in a key-free environment).
 //
-// The vote/submit happy paths need a live database and are verified by hand
+// The vote happy path needs a live database and are verified by hand
 // against a real Supabase project, not here.
 
 const MOBILE_ONLY = (testInfo: { project: { name: string } }) =>
@@ -22,42 +23,28 @@ async function settle(page: Page, route: string) {
   await page.evaluate(() => document.fonts.ready);
 }
 
-async function fontSize(loc: Locator) {
-  return loc.evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
-}
-
 // ── API guard rails ──────────────────────────────────────────────────────────
 
 test.describe("59 - ideas api validation", () => {
-  test("submit with a non-JSON body -> 400 bad_request", async ({ request }) => {
-    // Raw Buffer so Playwright doesn't re-serialize the string into valid JSON.
-    const res = await request.post("/api/ideas", { data: Buffer.from("}{") });
-    expect(res.status()).toBe(400);
-    expect((await res.json()).error).toBe("bad_request");
-  });
-
-  test("submit with no title -> 400 missing_title", async ({ request }) => {
-    const res = await request.post("/api/ideas", { data: { detail: "hi" } });
-    expect(res.status()).toBe(400);
-    expect((await res.json()).error).toBe("missing_title");
-  });
-
-  test("submit with a two-word title -> 400 too_short", async ({ request }) => {
-    const res = await request.post("/api/ideas", { data: { title: "hi ok" } });
-    expect(res.status()).toBe(400);
-    expect((await res.json()).error).toBe("too_short");
-  });
-
-  test("submit over the length caps -> 400 too_long", async ({ request }) => {
-    const res = await request.post("/api/ideas", { data: { title: "a".repeat(101) } });
-    expect(res.status()).toBe(400);
-    expect((await res.json()).error).toBe("too_long");
+  test("the submit endpoint is gone -> 405", async ({ request }) => {
+    const res = await request.post("/api/ideas", { data: { title: "a real video idea here" } });
+    expect(res.status()).toBe(405);
   });
 
   test("vote with a non-uuid ideaId -> 400 invalid_idea", async ({ request }) => {
     const res = await request.post("/api/ideas/vote", { data: { ideaId: "1; drop" } });
     expect(res.status()).toBe(400);
     expect((await res.json()).error).toBe("invalid_idea");
+  });
+
+  test("vote without the wanted state -> 400 bad_request", async ({ request }) => {
+    // A toggle is not accepted: the client must say whether it is voting or
+    // unvoting (see setVote in src/lib/ideas/db.ts).
+    const res = await request.post("/api/ideas/vote", {
+      data: { ideaId: "00000000-0000-4000-8000-000000000000" },
+    });
+    expect(res.status()).toBe(400);
+    expect((await res.json()).error).toBe("bad_request");
   });
 
   test("vote with no body -> 400", async ({ request }) => {
@@ -85,32 +72,26 @@ test.describe("59 - ideas api validation", () => {
 
 // ── The page ─────────────────────────────────────────────────────────────────
 
-test("60 - ideas: hero, submit form and board render", async ({ page }) => {
+test("60 - ideas: hero and board render", async ({ page }) => {
   await settle(page, "/ideas");
 
   await expect(page.locator("h1")).toHaveText(/what should i build next/i);
-
-  const title = page.locator("#idea-title");
-  await expect(title).toBeVisible();
-  await expect(page.getByRole("button", { name: /add it to the board/i })).toBeVisible();
 
   // The sort control is the board's own affordance and must always be there,
   // whether or not the board has any ideas on it yet.
   await expect(page.getByRole("group", { name: /sort ideas/i })).toBeVisible();
 });
 
-test("61 - ideas: the submit button stays disabled until the title is real", async ({
-  page,
-}) => {
+test("61 - no suggest-a-video form, on the board or in any footer", async ({ page }) => {
   await settle(page, "/ideas");
-  const send = page.getByRole("button", { name: /add it to the board/i });
-  await expect(send).toBeDisabled();
+  await expect(page.locator("form")).toHaveCount(0);
+  await expect(page.locator("input, textarea")).toHaveCount(0);
 
-  await page.locator("#idea-title").fill("hey");
-  await expect(send).toBeDisabled();
-
-  await page.locator("#idea-title").fill("claude code that writes my newsletter");
-  await expect(send).toBeEnabled();
+  // The footer used to invite every reader to the board ("Got an idea for a
+  // video?"); it no longer links there.
+  await settle(page, "/claude-code-tutorial");
+  await expect(page.locator('footer a[href="/ideas"]')).toHaveCount(0);
+  await expect(page.getByText(/got an idea for a video/i)).toHaveCount(0);
 });
 
 test("62 - ideas: no em dashes in the copy", async ({ page }) => {
@@ -128,26 +109,13 @@ test("63 - ideas admin: locked behind the secret", async ({ page }) => {
 
 // ── Mobile ───────────────────────────────────────────────────────────────────
 
-test("64 - ideas: inputs are 16px so iOS does not zoom on focus", async ({
-  page,
-}, testInfo) => {
-  MOBILE_ONLY(testInfo);
-  await settle(page, "/ideas");
-  for (const sel of ["#idea-title", "#idea-detail", "#idea-name"]) {
-    expect(await fontSize(page.locator(sel)), `${sel} font size`).toBeGreaterThanOrEqual(16);
-  }
-});
-
-test("65 - ideas: form and sort controls are >=44px tap targets", async ({
+test("65 - ideas: sort controls are >=44px tap targets", async ({
   page,
 }, testInfo) => {
   MOBILE_ONLY(testInfo);
   await settle(page, "/ideas");
 
   const targets = [
-    page.locator("#idea-title"),
-    page.locator("#idea-name"),
-    page.getByRole("button", { name: /add it to the board/i }),
     page.getByRole("button", { name: "top", exact: true }),
     page.getByRole("button", { name: "new", exact: true }),
   ];

@@ -4,6 +4,44 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
+ * Copy `text` to the clipboard on demand. `copied` turns true for two seconds
+ * after a copy that worked, and only then: a denied write (permission, or an
+ * in-app browser whose page is not focused) must not claim it copied.
+ */
+export function useCopy(text: string) {
+  const [copied, setCopied] = useState(false);
+  const reset = useRef<ReturnType<typeof setTimeout>>(undefined);
+  useEffect(() => () => clearTimeout(reset.current), []);
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      return;
+    }
+    setCopied(true);
+    clearTimeout(reset.current);
+    reset.current = setTimeout(() => setCopied(false), 2000);
+  }
+
+  return { copied, copy };
+}
+
+/** The copy icon, or the check mark once a copy has landed. */
+export function CopyGlyph({ copied, className }: { copied: boolean; className?: string }) {
+  return copied ? (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden className={className}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden className={className}>
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+    </svg>
+  );
+}
+
+/**
  * Shared copy-to-clipboard button for prompts and commands. Extracted from the
  * /60k-linkedin-post inline pattern (that page was deleted on 2026-10-23) so every page that hands out a paste-able
  * prompt can offer one-tap copy (on a phone, selecting a long prompt by hand is
@@ -21,57 +59,18 @@ export function CopyButton({
   label?: string;
   className?: string;
 }) {
-  const [copied, setCopied] = useState(false);
-  const reset = useRef<ReturnType<typeof setTimeout>>(undefined);
-  useEffect(() => () => clearTimeout(reset.current), []);
+  const { copied, copy } = useCopy(text);
 
   return (
     <button
-      onClick={async () => {
-        try {
-          await navigator.clipboard.writeText(text);
-        } catch {
-          // Permission denied or the page not focused (in-app browsers): no
-          // "copied" for a copy that did not happen.
-          return;
-        }
-        setCopied(true);
-        clearTimeout(reset.current);
-        reset.current = setTimeout(() => setCopied(false), 2000);
-      }}
+      onClick={copy}
       className={cn(
         "inline-flex min-h-[44px] shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver transition-colors hover:border-vivid-blue/50 hover:text-white",
         className
       )}
     >
-      {copied ? (
-        <>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            className="size-4"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-          copied
-        </>
-      ) : (
-        <>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            className="size-4"
-          >
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-          </svg>
-          {label}
-        </>
-      )}
+      <CopyGlyph copied={copied} className="size-4" />
+      {copied ? "copied" : label}
     </button>
   );
 }

@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import type { Idea } from "@/lib/ideas/db";
 import { IdeaCard } from "./idea-card";
-import { SubmitForm } from "./submit-form";
 
 type Sort = "top" | "new";
 
@@ -12,13 +11,11 @@ export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
   const [ideas, setIdeas] = useState<Idea[]>(initialIdeas);
   const [voted, setVoted] = useState<Set<string>>(() => new Set());
   const [pending, setPending] = useState<Set<string>>(new Set());
-  const [highlight, setHighlight] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [sort, setSort] = useState<Sort>("top");
-  const highlightTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  // Ideas this browser voted on, unvoted or added since the page opened. The
-  // server answered each of those actions with their state, which is newer
-  // than the mount sync if that lands later, so the sync merges around them.
+  // Ideas this browser voted on or unvoted since the page opened. The server
+  // answered each of those taps with its state, which is newer than the mount
+  // sync if that lands later, so the sync merges around them.
   const mine = useRef<Set<string>>(new Set());
 
   // The page arrives from the edge cache (see page.tsx): its list can be up to
@@ -34,10 +31,7 @@ export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
         const own = mine.current;
         setIdeas((current) => {
           const kept = new Map(current.filter((i) => own.has(i.id)).map((i) => [i.id, i]));
-          const fresh = data.ideas.map((i) => kept.get(i.id) ?? i);
-          // One published here a moment ago may not be in the read yet.
-          const added = [...kept.values()].filter((i) => !data.ideas.some((d) => d.id === i.id));
-          return [...added, ...fresh];
+          return data.ideas.map((i) => kept.get(i.id) ?? i);
         });
         setVoted((current) => {
           const next = new Set(data.voted.filter((id) => !own.has(id)));
@@ -62,21 +56,6 @@ export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
     return copy;
   }, [ideas, sort]);
 
-  function flash(id: string, message?: string) {
-    setHighlight(id);
-    if (message) setNotice(message);
-    if (highlightTimer.current) clearTimeout(highlightTimer.current);
-    highlightTimer.current = setTimeout(() => {
-      setHighlight(null);
-      setNotice(null);
-    }, 6000);
-    // Deliberate, user-initiated scroll, so the site's smooth scrolling is right
-    // here (unlike the filmed pages, where a programmatic scroll must be instant).
-    requestAnimationFrame(() => {
-      document.getElementById(`idea-${id}`)?.scrollIntoView({ block: "center" });
-    });
-  }
-
   async function vote(id: string) {
     if (pending.has(id)) return;
     mine.current.add(id);
@@ -100,7 +79,10 @@ export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
       const res = await fetch("/api/ideas/vote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ideaId: id }),
+        // The state the visitor asked for, not a toggle: before the mount sync
+        // lands a returning voter sees their idea unpressed, and a tap then
+        // means "vote", whatever the database already holds.
+        body: JSON.stringify({ ideaId: id, vote: !wasVoted }),
       });
       const data = await res.json().catch(() => ({}));
 
@@ -128,8 +110,7 @@ export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
       }
 
       // Trust the server over the optimistic guess, for the count and for the
-      // pressed state: a tap that landed before the mount sync could not know
-      // this browser had already voted, and the server's toggle can.
+      // pressed state: a vote this browser already held is not counted twice.
       if (typeof data.votes === "number") {
         setIdeas((list) =>
           list.map((i) => (i.id === id ? { ...i, votes_count: data.votes } : i)),
@@ -152,22 +133,9 @@ export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
     }
   }
 
-  function onPublished(idea: Idea) {
-    mine.current.add(idea.id);
-    setIdeas((list) => [idea, ...list]);
-    setVoted((v) => new Set(v).add(idea.id));
-    flash(idea.id);
-  }
-
-  function onDuplicate(ideaId: string) {
-    flash(ideaId, "Someone already suggested this. Vote for it here.");
-  }
-
   return (
     <>
-      <SubmitForm onPublished={onPublished} onDuplicate={onDuplicate} />
-
-      <div className="mt-10 flex items-center justify-between gap-4">
+      <div className="flex items-center justify-between gap-4">
         <h2 className="eyebrow font-body text-[13px] text-vivid-blue">The board</h2>
 
         <div className="flex gap-1" role="group" aria-label="Sort ideas">
@@ -201,7 +169,7 @@ export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
 
       {sorted.length === 0 ? (
         <p className="mt-6 font-body text-base text-silver-muted">
-          Nothing on the board yet. Add the first one.
+          Nothing on the board yet. New ideas land here first.
         </p>
       ) : (
         <ul className="mt-4 flex flex-col gap-3">
@@ -211,7 +179,6 @@ export function IdeaBoard({ initialIdeas }: { initialIdeas: Idea[] }) {
               idea={idea}
               voted={voted.has(idea.id)}
               pending={pending.has(idea.id)}
-              highlighted={highlight === idea.id}
               onVote={vote}
             />
           ))}
