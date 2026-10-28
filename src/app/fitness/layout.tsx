@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./fitness.css";
 
 // Oleg's own training program, in Russian. The root layout's Wix Madefor
 // faces already carry the Cyrillic range (next/font emits every subset's

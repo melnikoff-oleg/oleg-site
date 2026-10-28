@@ -1,0 +1,41 @@
+/* /fitness: the today switch and the folds. Every selector is prefixed .fit-
+   so nothing here can leak into another page. */
+
+/* Today's workout. The page is static, so all seven days are in the HTML and
+   a one-line script at the top of <body> (page.tsx) stamps the device's
+   weekday on <html> before any of this is parsed: the first painted frame
+   already shows the right day, and no day flashes in or out. Without
+   JavaScript nothing matches and the <noscript> note shows instead. */
+.fit-today {
+  display: none;
+}
+html[data-today="vs"] .fit-today[data-day="vs"],
+html[data-today="pn"] .fit-today[data-day="pn"],
+html[data-today="vt"] .fit-today[data-day="vt"],
+html[data-today="sr"] .fit-today[data-day="sr"],
+html[data-today="cht"] .fit-today[data-day="cht"],
+html[data-today="pt"] .fit-today[data-day="pt"],
+html[data-today="sb"] .fit-today[data-day="sb"] {
+  display: block;
+}
+
+/* Native <details> folds: no JavaScript, the browser's own toggle, with the
+   default marker replaced by a chevron that turns when the fold is open. */
+.fit-fold > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.fit-fold > summary::-webkit-details-marker {
+  display: none;
+}
+.fit-fold > summary .fit-chev {
+  transition: transform 0.2s ease;
+}
+.fit-fold[open] > summary .fit-chev {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fit-fold > summary .fit-chev {
+    transition: none;
+  }
+}
