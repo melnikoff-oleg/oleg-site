@@ -60,5 +60,6 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
 
   // Audience and tool surfaces. These genuinely change often.
   { path: "/reels", lastModified: "2026-08-27", changeFrequency: "daily", priority: SECONDARY },
+  { path: "/viral", lastModified: "2026-09-22", changeFrequency: "daily", priority: SECONDARY },
   { path: "/creators", lastModified: "2026-08-27", changeFrequency: "weekly", priority: SECONDARY },
 ];

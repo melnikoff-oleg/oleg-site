@@ -6,12 +6,18 @@ import { SITEMAP_ROUTES } from "@/lib/seo/sitemap-routes";
 
 const APP = join(process.cwd(), "src", "app");
 
+// Pages that exist but are kept out of the sitemap on purpose: each one's
+// layout.tsx sets robots noindex (client review pages, and Oleg's own
+// /fitness). A sitemap entry for a noindex page is a contradiction Google
+// flags, so these are excluded here rather than listed there.
+const UNLISTED = new Set(["ubersuggest-feed", "wasl-rebrand", "fitness"]);
+
 /** Every folder under src/app that is a real, publicly reachable page. */
 function routeFolders(): string[] {
   return readdirSync(APP, { withFileTypes: true })
     .filter((e) => e.isDirectory())
     .map((e) => e.name)
-    .filter((name) => !name.startsWith("_") && name !== "api")
+    .filter((name) => !name.startsWith("_") && name !== "api" && !UNLISTED.has(name))
     .filter((name) => existsSync(join(APP, name, "page.tsx")));
 }
 
