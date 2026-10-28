@@ -39,3 +39,17 @@ html[data-today="sb"] .fit-today[data-day="sb"] {
     transition: none;
   }
 }
+
+/* A strip in the numbered exercise list spans under the number gutter on phones
+   (gutter = the 1.75rem number + 1rem gap), where every pixel of width counts. */
+.fit-strip-wide {
+  max-width: none; /* the base styles cap img at 100% */
+  width: calc(100% + 2.75rem);
+  margin-left: -2.75rem;
+}
+@media (min-width: 768px) {
+  .fit-strip-wide {
+    width: 100%;
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#020b18"/>
+<polyline points="0.0,990.0 1920.0,990.0" fill="none" stroke="#4a5464" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round"/>
+<polygon points="1176.4,979.2 636.4,979.2 636.4,990.0 1176.4,990.0" fill="#4a5464"/>
+<polyline points="916.7,896.1 739.1,866.7" fill="none" stroke="#c4cbd6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="739.1,866.7 714.3,862.6" fill="none" stroke="#c4cbd6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="668.1" cy="855.0" r="39.6" fill="none" stroke="#c4cbd6" stroke-width="10"/>
+<circle cx="916.7" cy="896.1" r="9.0" fill="#c4cbd6"/>
+<circle cx="739.1" cy="866.7" r="9.0" fill="#c4cbd6"/>
+<polyline points="744.4,867.6 744.4,975.6 841.6,975.6" fill="none" stroke="#c4cbd6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="744.4" cy="975.6" r="9.0" fill="#c4cbd6"/>
+<circle cx="841.6" cy="975.6" r="9.0" fill="#c4cbd6"/>
+<polyline points="916.7,896.1 1075.0,901.9 1223.2,946.8 1298.0,990.0" fill="none" stroke="#c4cbd6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1075.0" cy="901.9" r="9.0" fill="#c4cbd6"/>
+<circle cx="1223.2" cy="946.8" r="9.0" fill="#c4cbd6"/>
+</svg>

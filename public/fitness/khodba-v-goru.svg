@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#020b18"/>
+<polyline points="0.0,990.0 1920.0,990.0" fill="none" stroke="#4a5464" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round"/>
+<polygon points="1334.2,861.3 581.6,967.0 585.8,997.1 1338.4,891.4" fill="#4a5464"/>
+<polygon points="1264.0,929.2 1264.0,990.0 1302.0,990.0 1302.0,929.2" fill="#4a5464"/>
+<polygon points="597.1,477.0 597.1,971.0 623.7,971.0 623.7,477.0" fill="#4a5464"/>
+<polygon points="781.4,505.5 591.4,505.5 591.4,524.5 781.4,524.5" fill="#4a5464"/>
+<polyline points="960.0,613.8 1082.2,727.9 1074.0,891.1 1164.3,878.4" fill="none" stroke="#c4cbd6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1082.2" cy="727.9" r="9.0" fill="#c4cbd6"/>
+<circle cx="1074.0" cy="891.1" r="9.0" fill="#c4cbd6"/>
+<polyline points="960.0,613.8 958.6,781.0 853.6,906.2 928.3,958.5" fill="none" stroke="#8e97a6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="958.6" cy="781.0" r="9.0" fill="#8e97a6"/>
+<circle cx="853.6" cy="906.2" r="9.0" fill="#8e97a6"/>
+<polyline points="960.0,613.8 979.9,424.8" fill="none" stroke="#c4cbd6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="979.9,424.8 982.6,398.4" fill="none" stroke="#c4cbd6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="987.8" cy="349.3" r="41.8" fill="none" stroke="#c4cbd6" stroke-width="10"/>
+<circle cx="960.0" cy="613.8" r="9.0" fill="#c4cbd6"/>
+<circle cx="979.9" cy="424.8" r="9.0" fill="#c4cbd6"/>
+<polyline points="979.9,424.8 1089.9,454.7 1071.4,555.6" fill="none" stroke="#c4cbd6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1089.9" cy="454.7" r="9.0" fill="#c4cbd6"/>
+<circle cx="1071.4" cy="555.6" r="9.0" fill="#c4cbd6"/>
+<polyline points="979.9,424.8 876.7,473.3 912.4,569.5" fill="none" stroke="#8e97a6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="876.7" cy="473.3" r="9.0" fill="#8e97a6"/>
+<circle cx="912.4" cy="569.5" r="9.0" fill="#8e97a6"/>
+</svg>

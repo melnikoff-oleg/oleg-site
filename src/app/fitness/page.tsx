@@ -15,6 +15,8 @@ type Exercise = {
   start?: string;
   rest?: string;
   note?: string;
+  /** Stick-figure strip(s) in public/fitness, by file stem. A superset or a circuit lists one per movement. */
+  img?: string | string[];
 };
 
 type Workout = {
@@ -33,23 +35,57 @@ type Workout = {
 const DAY_IDS = ["vs", "pn", "vt", "sr", "cht", "pt", "sb"] as const;
 
 const WEEK: { day: string; title: string; time: string; rest?: boolean }[] = [
-  { day: "Вт", title: "Тяги A: ширина спины, задние дельты, бицепс, предплечья", time: "65-70 мин" },
-  { day: "Ср", title: "Жимы A: дельты в приоритете, верх груди, трицепс", time: "60-70 мин" },
+  {
+    day: "Вт",
+    title: "Тяги A: ширина спины, задние дельты, бицепс, предплечья",
+    time: "65-70 мин",
+  },
+  {
+    day: "Ср",
+    title: "Жимы A: дельты в приоритете, верх груди, трицепс",
+    time: "60-70 мин",
+  },
   { day: "Чт", title: "Ноги + становая + пресс", time: "65 мин" },
-  { day: "Пт", title: "Тяги B: толщина спины, задние дельты, бицепс, предплечья", time: "65 мин" },
-  { day: "Сб", title: "Жимы B: верх груди в приоритете, дельты, трицепс", time: "60 мин" },
-  { day: "Вс", title: "Кардио + пресс + предплечья + длинная растяжка", time: "60-75 мин" },
+  {
+    day: "Пт",
+    title: "Тяги B: толщина спины, задние дельты, бицепс, предплечья",
+    time: "65 мин",
+  },
+  {
+    day: "Сб",
+    title: "Жимы B: верх груди в приоритете, дельты, трицепс",
+    time: "60 мин",
+  },
+  {
+    day: "Вс",
+    title: "Кардио + пресс + предплечья + длинная растяжка",
+    time: "60-75 мин",
+  },
   { day: "Пн", title: "Отдых. Кайт, если есть ветер", time: "", rest: true },
 ];
 
-const WARMUP: string[] = [
-  "велик или дорожка в наклоне: 3-4 мин",
-  "наружная ротация плеча с резинкой или на нижнем блоке, локоть прижат к боку: 2×15 легко, 30 с между",
-  "разведения резинки перед собой (pull-aparts): 2×20, 30 с",
-  "face pull легко: 2×15, 30 с",
-  "chin tucks (подбородок назад, затылок вверх): 10 раз",
-  "грудной отдел на ролике или через край скамьи: 45-60 с",
-  "подводящие к первому упражнению: 50% ×10, 70% ×5, 85% ×2, по 45-60 с между",
+const WARMUP: { text: string; img?: string }[] = [
+  { text: "велик или дорожка в наклоне: 3-4 мин", img: "khodba-v-goru" },
+  {
+    text: "наружная ротация плеча с резинкой или на нижнем блоке, локоть прижат к боку: 2×15 легко, 30 с между",
+    img: "naruzhnaya-rotatsiya-na-bloke",
+  },
+  {
+    text: "разведения резинки перед собой (pull-aparts): 2×20, 30 с",
+    img: "pull-aparts",
+  },
+  { text: "face pull легко: 2×15, 30 с", img: "face-pull" },
+  {
+    text: "chin tucks (подбородок назад, затылок вверх): 10 раз",
+    img: "chin-tucks",
+  },
+  {
+    text: "грудной отдел на ролике или через край скамьи: 45-60 с",
+    img: "grudnoy-otdel-na-rolike",
+  },
+  {
+    text: "подводящие к первому упражнению: 50% ×10, 70% ×5, 85% ×2, по 45-60 с между",
+  },
 ];
 
 const STRETCH: string[] = [
@@ -69,20 +105,60 @@ const WORKOUTS: Workout[] = [
     focus: "ширина спины, задние дельты, бицепс, предплечья",
     duration: "65-70 мин",
     exercises: [
-      { name: "Подтягивания с весом, хват чуть шире плеч", sets: "4×6-10", start: "+5 кг", rest: "2.5-3 мин" },
+      {
+        name: "Подтягивания с весом, хват чуть шире плеч",
+        img: "podtyagivaniya-s-vesom",
+        sets: "4×6-10",
+        start: "+5 кг",
+        rest: "2.5-3 мин",
+      },
       {
         name: "Тяга гантелей лёжа грудью на скамье 30-45° или тяга в тренажёре с упором",
+        img: "tyaga-ganteley-lyozha-grudyu",
         sets: "4×8-12",
         start: "25-30 кг",
         rest: "2 мин",
         note: "Вместо тяги штанги в наклоне: убирает поясницу и слабый хват из уравнения.",
       },
-      { name: "Пуловер на блоке с прямыми руками", sets: "3×12-15", rest: "60-90 с", note: "Широчайшие, которые плохо чувствуются." },
-      { name: "Разведения на задние дельты на блоке, руки крест-накрест на уровне лица", sets: "4×15-20", rest: "60-90 с" },
-      { name: "Y-raise лёжа на наклонной скамье, большие пальцы вверх", sets: "3×12-15", start: "2-4 кг", rest: "60 с", note: "Нижние трапеции, осанка." },
-      { name: "Сгибания с гантелями сидя на наклонной скамье", sets: "3×8-12", note: "Суперсет с обратными сгибаниями." },
-      { name: "Обратные сгибания с EZ-грифом", sets: "3×10-15", rest: "90 с после пары" },
-      { name: "Вис на турнике", sets: "2× до отказа", rest: "60-90 с" },
+      {
+        name: "Пуловер на блоке с прямыми руками",
+        img: "pulover-na-bloke",
+        sets: "3×12-15",
+        rest: "60-90 с",
+        note: "Широчайшие, которые плохо чувствуются.",
+      },
+      {
+        name: "Разведения на задние дельты на блоке, руки крест-накрест на уровне лица",
+        img: "razvedeniya-zadnie-delty-na-bloke",
+        sets: "4×15-20",
+        rest: "60-90 с",
+      },
+      {
+        name: "Y-raise лёжа на наклонной скамье, большие пальцы вверх",
+        img: "y-raise-na-naklonnoy-skamye",
+        sets: "3×12-15",
+        start: "2-4 кг",
+        rest: "60 с",
+        note: "Нижние трапеции, осанка.",
+      },
+      {
+        name: "Сгибания с гантелями сидя на наклонной скамье",
+        img: "sgibaniya-s-gantelyami-sidya-naklon",
+        sets: "3×8-12",
+        note: "Суперсет с обратными сгибаниями.",
+      },
+      {
+        name: "Обратные сгибания с EZ-грифом",
+        img: "obratnye-sgibaniya-ez",
+        sets: "3×10-15",
+        rest: "90 с после пары",
+      },
+      {
+        name: "Вис на турнике",
+        img: "vis-na-turnike",
+        sets: "2× до отказа",
+        rest: "60-90 с",
+      },
     ],
   },
   {
@@ -94,6 +170,7 @@ const WORKOUTS: Workout[] = [
     exercises: [
       {
         name: "Жим гантелей сидя",
+        img: "zhim-ganteley-sidya",
         sets: "3×6-10 (потом 4)",
         start: "18 кг",
         rest: "2.5-3 мин",
@@ -101,6 +178,7 @@ const WORKOUTS: Workout[] = [
       },
       {
         name: "Махи гантелями в стороны",
+        img: "makhi-gantelyami-v-storony",
         sets: "3×10-15 (потом 4)",
         start: "8 кг",
         rest: "60-90 с",
@@ -108,6 +186,7 @@ const WORKOUTS: Workout[] = [
       },
       {
         name: "Жим гантелей 30°",
+        img: "zhim-ganteley-30",
         sets: "3×8-12",
         start: "22 кг",
         rest: "2-2.5 мин",
@@ -115,6 +194,7 @@ const WORKOUTS: Workout[] = [
       },
       {
         name: "Face pull",
+        img: "face-pull",
         sets: "3×12-15",
         start: "тяжелее разминочного",
         rest: "60-90 с",
@@ -122,12 +202,14 @@ const WORKOUTS: Workout[] = [
       },
       {
         name: "Трицепс, суперсет: разгибания из-за головы с канатом на блоке 10-15, сразу разгибания с канатом вниз 12-15",
+        img: ["razgibaniya-iz-za-golovy-kanat", "razgibaniya-s-kanatom-vniz"],
         sets: "3 круга",
         rest: "90 с после пары",
         note: "Между двумя упражнениями отдыха нет. Третий круг обоих почти до отказа.",
       },
       {
         name: "Наружная ротация на блоке",
+        img: "naruzhnaya-rotatsiya-na-bloke",
         sets: "2×12-15 на каждую руку, легко",
         rest: "45-60 с",
         note: "12-15 одной рукой, сразу без паузы 12-15 другой, это один подход. Вес совсем маленький, первая-вторая плитка; последние повторы в контроле, а не в борьбе. Локоть всё время у бока, можно зажать свёрнутое полотенце между локтем и рёбрами. Амплитуда: предплечье в начале лежит поперёк живота, кисть у противоположного бока; поворот наружу через положение «прямо вперёд» и ещё градусов на 20-40, пока комфортно, всего примерно 110-120°, без дожима в конце. Темп: 2 секунды туда, 2 обратно.",
@@ -135,8 +217,9 @@ const WORKOUTS: Workout[] = [
     ],
     extra: (
       <p>
-        Тайминг первой тренировки цикла: 0:00 разминка, 0:12 жим сидя, 0:22 махи, 0:28 жим 30°, 0:38 face pull, 0:44
-        трицепс, 0:53 ротация, 0:57 растяжка 8-10 мин.
+        Тайминг первой тренировки цикла: 0:00 разминка, 0:12 жим сидя, 0:22
+        махи, 0:28 жим 30°, 0:38 face pull, 0:44 трицепс, 0:53 ротация, 0:57
+        растяжка 8-10 мин.
       </p>
     ),
   },
@@ -147,24 +230,48 @@ const WORKOUTS: Workout[] = [
     focus: "ноги для поддержания, становая, нижний пресс",
     duration: "65 мин",
     exercises: [
-      { name: "Присед со штангой, глубоко", sets: "4×6-10", start: "65-70 кг", rest: "2.5-3 мин" },
+      {
+        name: "Присед со штангой, глубоко",
+        img: "prised-so-shtangoy",
+        sets: "4×6-10",
+        start: "65-70 кг",
+        rest: "2.5-3 мин",
+      },
       {
         name: "Становая классика",
+        img: "stanovaya-tyaga",
         sets: "3×5-8",
         start: "ориентир 90-100 кг",
         rest: "2.5-3 мин",
         note: "Вес с запасом 2-3 повтора, техника идеальная. Раз в 2 недели менять на румынскую 3×8-12.",
       },
-      { name: "Болгарские выпады или выпады в смите", sets: "3×8-12 на ногу", rest: "2 мин" },
-      { name: "Сгибания ног в тренажёре", sets: "3×10-15", rest: "60-90 с", note: "Если нет тренажёра, румынская с гантелями." },
-      { name: "Икры стоя", sets: "3×12-20", rest: "60 с" },
+      {
+        name: "Болгарские выпады или выпады в смите",
+        img: "bolgarskie-vypady",
+        sets: "3×8-12 на ногу",
+        rest: "2 мин",
+      },
+      {
+        name: "Сгибания ног в тренажёре",
+        img: "sgibaniya-nog-v-trenazhere",
+        sets: "3×10-15",
+        rest: "60-90 с",
+        note: "Если нет тренажёра, румынская с гантелями.",
+      },
+      { name: "Икры стоя", img: "ikry-stoya", sets: "3×12-20", rest: "60 с" },
       {
         name: "Подъём ног в висе",
+        img: "podyom-nog-v-vise",
         sets: "3×10-15",
         rest: "60-90 с",
         note: "В верхней точке подкручивать таз вверх, иначе работают сгибатели бедра, а не пресс.",
       },
-      { name: "Обратные скручивания", sets: "3×12-15", rest: "60 с" },
+      {
+        name: "Обратные скручивания",
+        img: "obratnye-skruchivaniya",
+        sets: "3×12-15",
+        rest: "60 с",
+      },
     ],
   },
   {
@@ -174,14 +281,50 @@ const WORKOUTS: Workout[] = [
     focus: "толщина спины, задние дельты, бицепс, предплечья",
     duration: "65 мин",
     exercises: [
-      { name: "Тяга в тренажёре или с упором грудью, тяжело", sets: "4×6-10", rest: "2.5-3 мин" },
-      { name: "Тяга верхнего блока нейтральным хватом", sets: "4×8-12", rest: "2 мин" },
-      { name: "Разведения на задние дельты с гантелями лёжа на скамье 30°", sets: "4×12-20", start: "6-8 кг", rest: "60-90 с" },
-      { name: "Face pull", sets: "3×12-15", rest: "60-90 с" },
-      { name: "Сгибания с EZ-грифом или на блоке", sets: "3×8-12", note: "Суперсет с молотками." },
-      { name: "Молотки", sets: "3×10-12", rest: "90 с после пары" },
-      { name: "Сгибания запястий со штангой", sets: "3×15-20", note: "Суперсет с прогулкой фермера." },
-      { name: "Прогулка фермера с гантелями или гирями", sets: "2×40 с", rest: "90 с после пары" },
+      {
+        name: "Тяга в тренажёре или с упором грудью, тяжело",
+        img: "tyaga-v-trenazhere-s-uporom",
+        sets: "4×6-10",
+        rest: "2.5-3 мин",
+      },
+      {
+        name: "Тяга верхнего блока нейтральным хватом",
+        img: "tyaga-verkhnego-bloka",
+        sets: "4×8-12",
+        rest: "2 мин",
+      },
+      {
+        name: "Разведения на задние дельты с гантелями лёжа на скамье 30°",
+        img: "razvedeniya-zadnie-delty-lyozha",
+        sets: "4×12-20",
+        start: "6-8 кг",
+        rest: "60-90 с",
+      },
+      { name: "Face pull", img: "face-pull", sets: "3×12-15", rest: "60-90 с" },
+      {
+        name: "Сгибания с EZ-грифом или на блоке",
+        img: "sgibaniya-s-ez-grifom",
+        sets: "3×8-12",
+        note: "Суперсет с молотками.",
+      },
+      {
+        name: "Молотки",
+        img: "molotki",
+        sets: "3×10-12",
+        rest: "90 с после пары",
+      },
+      {
+        name: "Сгибания запястий со штангой",
+        img: "sgibaniya-zapyastiy",
+        sets: "3×15-20",
+        note: "Суперсет с прогулкой фермера.",
+      },
+      {
+        name: "Прогулка фермера с гантелями или гирями",
+        img: "progulka-fermera",
+        sets: "2×40 с",
+        rest: "90 с после пары",
+      },
     ],
   },
   {
@@ -193,22 +336,49 @@ const WORKOUTS: Workout[] = [
     exercises: [
       {
         name: "Жим штанги или гантелей 30°",
+        img: "zhim-shtangi-30",
         sets: "4×6-10",
         start: "штанга 45-50 кг",
         rest: "2.5-3 мин",
         note: "Если плечо напряжено, гантели.",
       },
-      { name: "Махи в стороны на блоке одной рукой", sets: "4×12-20", rest: "60-90 с" },
+      {
+        name: "Махи в стороны на блоке одной рукой",
+        img: "makhi-na-bloke-odnoy-rukoy",
+        sets: "4×12-20",
+        rest: "60-90 с",
+      },
       {
         name: "Сведения на блоке снизу вверх",
+        img: "svedeniya-na-bloke-snizu-vverkh",
         sets: "3×12-15",
         rest: "60-90 с",
         note: "Лёгкий вес, без глубокого растяжения. Если плечо ноет, замена на жим гантелей 15° 3×8-12.",
       },
-      { name: "Разведения на задние дельты на блоке", sets: "3×15-20", rest: "60-90 с" },
-      { name: "Махи гантелями в стороны", sets: "3×12-15", rest: "60-90 с" },
-      { name: "Французский жим лёжа с EZ-грифом", sets: "3×8-12", note: "Суперсет с разгибаниями." },
-      { name: "Разгибания на блоке", sets: "2×12-15", rest: "90 с после пары" },
+      {
+        name: "Разведения на задние дельты на блоке",
+        img: "razvedeniya-zadnie-delty-na-bloke",
+        sets: "3×15-20",
+        rest: "60-90 с",
+      },
+      {
+        name: "Махи гантелями в стороны",
+        img: "makhi-gantelyami-v-storony",
+        sets: "3×12-15",
+        rest: "60-90 с",
+      },
+      {
+        name: "Французский жим лёжа с EZ-грифом",
+        img: "frantsuzskiy-zhim-lyozha",
+        sets: "3×8-12",
+        note: "Суперсет с разгибаниями.",
+      },
+      {
+        name: "Разгибания на блоке",
+        img: "razgibaniya-s-kanatom-vniz",
+        sets: "2×12-15",
+        rest: "90 с после пары",
+      },
     ],
   },
   {
@@ -220,16 +390,27 @@ const WORKOUTS: Workout[] = [
     exercises: [
       {
         name: "Ходьба в гору",
+        img: "khodba-v-goru",
         sets: "35-40 мин",
         note: "Наклон 10-15%, 5.5-6.5 км/ч, пульс 125-145, можно говорить. Велик на том же пульсе тоже ок. Бег сам по себе для коленей не вреден, травма голеностопа была от полумарафона без подготовки; для набора он не нужен, но 20-25 мин лёгкого бега раз в неделю вместо дорожки не навредят.",
       },
       {
         name: "Пресс, 3 круга: подъём ног в висе 10-15, обратные скручивания 15, dead bug 10 на сторону, планка с напряжением всего тела 30 с",
+        img: [
+          "podyom-nog-v-vise",
+          "obratnye-skruchivaniya",
+          "dead-bug",
+          "planka",
+        ],
         sets: "3 круга",
         rest: "60-90 с между кругами",
       },
-      { name: "Предплечья: сгибания и разгибания запястий", sets: "3×15-20" },
-      { name: "Вис на турнике", sets: "2× до отказа" },
+      {
+        name: "Предплечья: сгибания и разгибания запястий",
+        img: "sgibaniya-zapyastiy",
+        sets: "3×15-20",
+      },
+      { name: "Вис на турнике", img: "vis-na-turnike", sets: "2× до отказа" },
       { name: "Растяжка, всё из списка по 2 подхода", sets: "15-20 мин" },
     ],
   },
@@ -247,7 +428,8 @@ const TOC: { href: string; label: string }[] = [
   { href: "#log", label: "Учёт" },
 ];
 
-const h3Class = "font-display text-xl font-semibold leading-[1.15] tracking-tight text-silver";
+const h3Class =
+  "font-display text-xl font-semibold leading-[1.15] tracking-tight text-silver";
 
 function Chevron() {
   return (
@@ -291,15 +473,27 @@ function Fold({
     <details id={id} className="fit-fold surface-card scroll-mt-24">
       <summary className="flex min-h-14 items-center justify-between gap-4 px-5 py-4 md:px-6">
         <span className="min-w-0">
-          {eyebrow ? <span className="eyebrow block font-body text-[13px] text-vivid-blue">{eyebrow}</span> : null}
-          <Heading className={`${eyebrow ? "mt-1 " : ""}${h3Class}`}>{title}</Heading>
+          {eyebrow ? (
+            <span className="eyebrow block font-body text-[13px] text-vivid-blue">
+              {eyebrow}
+            </span>
+          ) : null}
+          <Heading className={`${eyebrow ? "mt-1 " : ""}${h3Class}`}>
+            {title}
+          </Heading>
         </span>
         <span className="flex shrink-0 items-center gap-3">
-          {meta ? <span className="whitespace-nowrap font-body text-sm text-silver-muted">{meta}</span> : null}
+          {meta ? (
+            <span className="whitespace-nowrap font-body text-sm text-silver-muted">
+              {meta}
+            </span>
+          ) : null}
           <Chevron />
         </span>
       </summary>
-      <div className="border-t border-hairline px-5 pt-5 pb-6 md:px-6">{children}</div>
+      <div className="border-t border-hairline px-5 pt-5 pb-6 md:px-6">
+        {children}
+      </div>
     </details>
   );
 }
@@ -311,6 +505,70 @@ function Sub({ title, children }: { title: string; children: ReactNode }) {
       <h3 className={`mt-8 ${h3Class}`}>{title}</h3>
       <div className="prose-guide mt-3">{children}</div>
     </>
+  );
+}
+
+/**
+ * A stick-figure strip for one movement: three panels, start to finish, drawn
+ * from joint geometry (Desktop/Fitness/draw_exercise.py) and served as a small
+ * SVG from public/fitness. Lazy, so a strip inside a shut fold is never fetched,
+ * and sized up front so nothing shifts when it arrives.
+ */
+function Figure({
+  name,
+  label,
+  wide,
+}: {
+  name: string;
+  label: string;
+  wide?: boolean;
+}) {
+  return (
+    <img
+      src={`/fitness/${name}.svg`}
+      width={1920}
+      height={1080}
+      loading="lazy"
+      decoding="async"
+      alt={`${label}: схема движения`}
+      className={`mt-3 rounded-lg border border-hairline bg-navy ${wide ? "fit-strip-wide" : "w-full"}`}
+    />
+  );
+}
+
+/** `wide` lets a strip in the numbered list span under the number gutter on phones, where every pixel of width counts. */
+function Figures({
+  img,
+  label,
+  wide,
+}: {
+  img?: string | string[];
+  label: string;
+  wide?: boolean;
+}) {
+  if (!img) return null;
+  return (
+    <>
+      {(Array.isArray(img) ? img : [img]).map((name) => (
+        <Figure key={name} name={name} label={label} wide={wide} />
+      ))}
+    </>
+  );
+}
+
+function WarmupList({ items }: { items: { text: string; img?: string }[] }) {
+  return (
+    <ol className="flex flex-col gap-4">
+      {items.map((it) => (
+        <li
+          key={it.text}
+          className="font-body text-base leading-relaxed text-silver"
+        >
+          {it.text}
+          <Figures img={it.img} label={it.text} />
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -343,15 +601,28 @@ function WorkoutBody({ w }: { w: Workout }) {
               </p>
               <p className="mt-1 flex flex-wrap gap-x-3 gap-y-1 font-body text-sm text-silver-muted">
                 <span className="whitespace-nowrap text-silver">{e.sets}</span>
-                {e.start ? <span className="whitespace-nowrap">старт {e.start}</span> : null}
-                {e.rest ? <span className="whitespace-nowrap">отдых {e.rest}</span> : null}
+                {e.start ? (
+                  <span className="whitespace-nowrap">старт {e.start}</span>
+                ) : null}
+                {e.rest ? (
+                  <span className="whitespace-nowrap">отдых {e.rest}</span>
+                ) : null}
               </p>
-              {e.note ? <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">{e.note}</p> : null}
+              {e.note ? (
+                <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">
+                  {e.note}
+                </p>
+              ) : null}
+              <Figures img={e.img} label={e.name} wide />
             </div>
           </li>
         ))}
       </ol>
-      {w.extra ? <div className="mt-6 border-t border-hairline pt-5 font-body text-sm text-silver-muted">{w.extra}</div> : null}
+      {w.extra ? (
+        <div className="mt-6 border-t border-hairline pt-5 font-body text-sm text-silver-muted">
+          {w.extra}
+        </div>
+      ) : null}
     </>
   );
 }
@@ -368,7 +639,9 @@ function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
       {w ? (
         <div className="surface-card p-6 md:p-8">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <p className="eyebrow font-body text-[13px] text-vivid-blue">Сегодня, {w.day.toLowerCase()}</p>
+            <p className="eyebrow font-body text-[13px] text-vivid-blue">
+              Сегодня, {w.day.toLowerCase()}
+            </p>
             <p className="font-body text-sm text-silver-muted">{w.duration}</p>
           </div>
           <h2 className="mt-2 font-display text-2xl font-semibold leading-[1.15] tracking-tight text-silver md:text-3xl">
@@ -376,7 +649,7 @@ function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
           </h2>
           <div className="mt-5 flex flex-col gap-3">
             <Fold title="Разминка" meta="10-12 мин" heading="h3">
-              <PlainList items={WARMUP} />
+              <WarmupList items={WARMUP} />
             </Fold>
           </div>
           <div className="mt-6">
@@ -390,12 +663,15 @@ function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
         </div>
       ) : (
         <div className="surface-card p-6 md:p-8">
-          <p className="eyebrow font-body text-[13px] text-vivid-blue">Сегодня, понедельник</p>
+          <p className="eyebrow font-body text-[13px] text-vivid-blue">
+            Сегодня, понедельник
+          </p>
           <h2 className="mt-2 font-display text-2xl font-semibold leading-[1.15] tracking-tight text-silver md:text-3xl">
             Отдых
           </h2>
           <p className="mt-3 font-body text-base text-silver-muted">
-            Кайт, если есть ветер. Завтра тяги A: ширина спины, задние дельты, бицепс, предплечья.
+            Кайт, если есть ветер. Завтра тяги A: ширина спины, задние дельты,
+            бицепс, предплечья.
           </p>
         </div>
       )}
@@ -420,10 +696,15 @@ export default function FitnessPage() {
 
       <header className="px-2">
         <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
-          <Link href="/" className="brand-wordmark font-display text-lg tracking-tight">
+          <Link
+            href="/"
+            className="brand-wordmark font-display text-lg tracking-tight"
+          >
             Oleg Melnikov
           </Link>
-          <span className="font-body text-sm text-silver-muted">личная страница</span>
+          <span className="font-body text-sm text-silver-muted">
+            личная страница
+          </span>
         </div>
       </header>
 
@@ -439,18 +720,25 @@ export default function FitnessPage() {
           </div>
         </section>
 
-        <section id="today" className="mx-auto max-w-3xl scroll-mt-24 px-6 pb-12 md:pb-16">
+        <section
+          id="today"
+          className="mx-auto max-w-3xl scroll-mt-24 px-6 pb-12 md:pb-16"
+        >
           {DAY_IDS.map((id) => (
             <TodayCard key={id} dayId={id} />
           ))}
           <noscript>
             <p className="font-body text-base text-silver-muted">
-              Тренировка на сегодня показывается через JavaScript. Без него открой нужный день в списке ниже.
+              Тренировка на сегодня показывается через JavaScript. Без него
+              открой нужный день в списке ниже.
             </p>
           </noscript>
         </section>
 
-        <nav aria-label="Разделы" className="mx-auto flex max-w-3xl flex-wrap gap-2 px-6 pb-10">
+        <nav
+          aria-label="Разделы"
+          className="mx-auto flex max-w-3xl flex-wrap gap-2 px-6 pb-10"
+        >
           {TOC.map((t) => (
             <a
               key={t.href}
@@ -463,90 +751,145 @@ export default function FitnessPage() {
         </nav>
 
         <div className="offscreen-lazy mx-auto flex max-w-3xl flex-col gap-4 px-6 pb-16 md:pb-20">
-          <Fold id="goals" eyebrow="О программе" title="Цели и почему стояло 5 лет">
+          <Fold
+            id="goals"
+            eyebrow="О программе"
+            title="Цели и почему стояло 5 лет"
+          >
             <div className="prose-guide">
               <p>
-                Первый цикл 8 недель, потом пересмотр по логу и графику веса. Шесть тренировок в неделю до 90 минут,
-                понедельник отдых, кардио раз в неделю, растяжка в конце каждой силовой.
+                Первый цикл 8 недель, потом пересмотр по логу и графику веса.
+                Шесть тренировок в неделю до 90 минут, понедельник отдых, кардио
+                раз в неделю, растяжка в конце каждой силовой.
               </p>
               <ul>
                 <li>
-                  Набрать мышечную массу. Приоритеты по порядку: задние дельты, средние и передние дельты, спина,
-                  осанка (голова вперёд), нижний пресс, верх груди, бицепс и трицепс, предплечья. Ноги только для
-                  поддержания.
+                  Набрать мышечную массу. Приоритеты по порядку: задние дельты,
+                  средние и передние дельты, спина, осанка (голова вперёд),
+                  нижний пресс, верх груди, бицепс и трицепс, предплечья. Ноги
+                  только для поддержания.
                 </li>
                 <li>
-                  Здоровье и техника важнее веса на штанге. Плечо хорошо разминать, два упражнения на передние дельты
-                  подряд не ставить.
+                  Здоровье и техника важнее веса на штанге. Плечо хорошо
+                  разминать, два упражнения на передние дельты подряд не
+                  ставить.
                 </li>
                 <li>Еда: очень постепенно, без насилия над аппетитом.</li>
-                <li>Ориентир по весу: +0.5-1 кг в месяц после первого скачка воды.</li>
+                <li>
+                  Ориентир по весу: +0.5-1 кг в месяц после первого скачка воды.
+                </li>
               </ul>
               <p>
-                <strong>Почему стояло 5 лет.</strong> По логу: одно-два упражнения за тренировку, на каждую мышцу 5-7
-                рабочих подходов в неделю, между тренировками дыры по 5-9 дней. Это объём поддержания, и еда ровно на
-                поддержание. Программа поднимает объём на приоритетные группы примерно в 3 раза, еда добавляется
-                маленькими шагами. Ноги раз в неделю для поддержания достаточно: тестостерон от отдельной тренировки
-                ног не растёт, это миф, но присед и становая всё равно нужны.
+                <strong>Почему стояло 5 лет.</strong> По логу: одно-два
+                упражнения за тренировку, на каждую мышцу 5-7 рабочих подходов в
+                неделю, между тренировками дыры по 5-9 дней. Это объём
+                поддержания, и еда ровно на поддержание. Программа поднимает
+                объём на приоритетные группы примерно в 3 раза, еда добавляется
+                маленькими шагами. Ноги раз в неделю для поддержания достаточно:
+                тестостерон от отдельной тренировки ног не растёт, это миф, но
+                присед и становая всё равно нужны.
               </p>
             </div>
           </Fold>
 
-          <Fold id="week" eyebrow="Структура недели" title="Шесть дней, один отдых">
+          <Fold
+            id="week"
+            eyebrow="Структура недели"
+            title="Шесть дней, один отдых"
+          >
             <ol className="divide-y divide-hairline">
               {WEEK.map((d) => (
-                <li key={d.day} className="flex items-start gap-4 py-3.5 first:pt-0 last:pb-0">
+                <li
+                  key={d.day}
+                  className="flex items-start gap-4 py-3.5 first:pt-0 last:pb-0"
+                >
                   <span
                     className={`mt-0.5 flex w-9 shrink-0 items-center justify-center rounded-full border border-hairline py-1 font-body text-xs font-semibold ${
-                      d.rest ? "text-silver-muted" : "bg-vivid-blue/10 text-vivid-blue"
+                      d.rest
+                        ? "text-silver-muted"
+                        : "bg-vivid-blue/10 text-vivid-blue"
                     }`}
                   >
                     {d.day}
                   </span>
                   <div className="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <p className={`font-body text-base ${d.rest ? "text-silver-muted" : "text-silver"}`}>{d.title}</p>
-                    {d.time ? <span className="whitespace-nowrap font-body text-sm text-silver-muted">{d.time}</span> : null}
+                    <p
+                      className={`font-body text-base ${d.rest ? "text-silver-muted" : "text-silver"}`}
+                    >
+                      {d.title}
+                    </p>
+                    {d.time ? (
+                      <span className="whitespace-nowrap font-body text-sm text-silver-muted">
+                        {d.time}
+                      </span>
+                    ) : null}
                   </div>
                 </li>
               ))}
             </ol>
             <div className="prose-guide mt-6">
               <p>
-                Кардио отдельным днём: туда же уезжают пресс, предплечья и длинная растяжка. Альтернатива на будущее: 6
-                силовых, кардио 20 минут после субботы, воскресенье под пресс и растяжку. Начинаем с варианта в списке.
+                Кардио отдельным днём: туда же уезжают пресс, предплечья и
+                длинная растяжка. Альтернатива на будущее: 6 силовых, кардио 20
+                минут после субботы, воскресенье под пресс и растяжку. Начинаем
+                с варианта в списке.
               </p>
               <p>
-                <strong>Первые 2 недели везде 3 подхода вместо 4.</strong> Плечи и локти не привыкли к такому объёму.
+                <strong>Первые 2 недели везде 3 подхода вместо 4.</strong> Плечи
+                и локти не привыкли к такому объёму.
               </p>
             </div>
           </Fold>
 
-          <Fold id="warmup" eyebrow="Разминка" title="Каждый силовой день" meta="10-12 мин">
-            <PlainList items={WARMUP} />
+          <Fold
+            id="warmup"
+            eyebrow="Разминка"
+            title="Каждый силовой день"
+            meta="10-12 мин"
+          >
+            <WarmupList items={WARMUP} />
           </Fold>
 
-          <h2 id="workouts" className="eyebrow mt-6 scroll-mt-24 font-body text-[13px] text-vivid-blue">
+          <h2
+            id="workouts"
+            className="eyebrow mt-6 scroll-mt-24 font-body text-[13px] text-vivid-blue"
+          >
             Тренировки по дням
           </h2>
           {WORKOUTS.map((w) => (
-            <Fold key={w.id} id={w.id} eyebrow={w.day} title={w.title} meta={w.duration}>
+            <Fold
+              key={w.id}
+              id={w.id}
+              eyebrow={w.day}
+              title={w.title}
+              meta={w.duration}
+            >
               <WorkoutBody w={w} />
             </Fold>
           ))}
 
-          <Fold id="stretch" eyebrow="Растяжка и отдых" title="В конце каждой силовой" meta="8-10 мин">
+          <Fold
+            id="stretch"
+            eyebrow="Растяжка и отдых"
+            title="В конце каждой силовой"
+            meta="8-10 мин"
+          >
             <PlainList items={STRETCH} />
             <div className="prose-guide mt-6">
               <p>
-                <strong>Отдых между подходами.</strong> Подводящие 45-60 с. Тяжёлая база (жим сидя, присед, становая,
-                подтягивания, тяжёлые тяги) 2.5-3 мин. Второй жим или вторая тяга в тренировке 2 мин. Изоляция (махи,
-                задние дельты, face pull, бицепс, трицепс, предплечья, пресс) 60-90 с. Суперсет: ноль между
-                упражнениями, 90 с после пары.
+                <strong>Отдых между подходами.</strong> Подводящие 45-60 с.
+                Тяжёлая база (жим сидя, присед, становая, подтягивания, тяжёлые
+                тяги) 2.5-3 мин. Второй жим или вторая тяга в тренировке 2 мин.
+                Изоляция (махи, задние дельты, face pull, бицепс, трицепс,
+                предплечья, пресс) 60-90 с. Суперсет: ноль между упражнениями,
+                90 с после пары.
               </p>
               <p>
-                Между упражнениями столько, сколько уходит на переход, обычно 2-3 мин. Это не отдых по таймеру:
-                переставил скамью, взял вес, сделал подводящий, и в рабочий. Перед изоляцией можно начинать через 1.5-2
-                мин. Дольше 3 минут не сидеть, иначе тренировка расползается за 90.
+                Между упражнениями столько, сколько уходит на переход, обычно
+                2-3 мин. Это не отдых по таймеру: переставил скамью, взял вес,
+                сделал подводящий, и в рабочий. Перед изоляцией можно начинать
+                через 1.5-2 мин. Дольше 3 минут не сидеть, иначе тренировка
+                расползается за 90.
               </p>
             </div>
           </Fold>
@@ -554,36 +897,57 @@ export default function FitnessPage() {
           <Fold id="rules" eyebrow="Правила" title="Прогрессия и техника">
             <div className="prose-guide">
               <ul>
-                <li>Первые 2 недели везде 3 подхода вместо 4. Плечи и локти не привыкли к такому объёму.</li>
                 <li>
-                  Вес: на первой тренировке искать такой, с которым делаешь нижнюю границу диапазона с запасом 2
-                  повтора. Когда во всех подходах дошёл до верхней границы, на следующей добавлять: штанга +2.5 кг,
-                  гантели следующий размер, блок одна плитка.
+                  Первые 2 недели везде 3 подхода вместо 4. Плечи и локти не
+                  привыкли к такому объёму.
                 </li>
-                <li>Запас: база 1-3 повтора в запасе, изоляция последний подход почти до отказа.</li>
                 <li>
-                  Два жимовых никогда подряд: между ними всегда махи или задние дельты. Брусьев и горизонтального жима
-                  в программе нет намеренно.
+                  Вес: на первой тренировке искать такой, с которым делаешь
+                  нижнюю границу диапазона с запасом 2 повтора. Когда во всех
+                  подходах дошёл до верхней границы, на следующей добавлять:
+                  штанга +2.5 кг, гантели следующий размер, блок одна плитка.
                 </li>
-                <li>Острая боль в плече: упражнение в этот день пропускается, в следующий раз гантели или тренажёр.</li>
-                <li>Каждая 7-я неделя разгрузка: те же упражнения, половина подходов, вес минус 15%.</li>
                 <li>
-                  Лямки (петли на запястья, которые цепляются за гриф, чтобы хват не ограничивал тягу) пока не нужны,
-                  предплечья в целях. На становой разнохват. Вернуться к вопросу через 2 месяца, если хват начнёт
-                  тормозить спину.
+                  Запас: база 1-3 повтора в запасе, изоляция последний подход
+                  почти до отказа.
                 </li>
-                <li>Осталось время в зале: не добавлять упражнения, растянуться дольше.</li>
+                <li>
+                  Два жимовых никогда подряд: между ними всегда махи или задние
+                  дельты. Брусьев и горизонтального жима в программе нет
+                  намеренно.
+                </li>
+                <li>
+                  Острая боль в плече: упражнение в этот день пропускается, в
+                  следующий раз гантели или тренажёр.
+                </li>
+                <li>
+                  Каждая 7-я неделя разгрузка: те же упражнения, половина
+                  подходов, вес минус 15%.
+                </li>
+                <li>
+                  Лямки (петли на запястья, которые цепляются за гриф, чтобы
+                  хват не ограничивал тягу) пока не нужны, предплечья в целях.
+                  На становой разнохват. Вернуться к вопросу через 2 месяца,
+                  если хват начнёт тормозить спину.
+                </li>
+                <li>
+                  Осталось время в зале: не добавлять упражнения, растянуться
+                  дольше.
+                </li>
               </ul>
               <p>
-                <strong>Осанка вне зала.</strong> Телефон и экран на уровне глаз, ноут на подставке. Каждый час сидения
-                2 минуты стоя и 10 chin tucks. 7-8 тысяч шагов в день, сейчас сильно меньше; это ещё и аппетит
-                поднимет.
+                <strong>Осанка вне зала.</strong> Телефон и экран на уровне
+                глаз, ноут на подставке. Каждый час сидения 2 минуты стоя и 10
+                chin tucks. 7-8 тысяч шагов в день, сейчас сильно меньше; это
+                ещё и аппетит поднимет.
               </p>
               <p>
-                <strong>Нижний пресс.</strong> Виден примерно с 8-10% жира, сейчас 12 и впереди набор. Генетика влияет
-                на форму кубиков, а не на то, видно их или нет. В этом цикле пресс утолщаем (подъёмы ног в висе,
-                обратные скручивания, dead bug), покажется на сушке через несколько месяцев. В зеркале в ближайшие 2-3
-                месяца его не ждать.
+                <strong>Нижний пресс.</strong> Виден примерно с 8-10% жира,
+                сейчас 12 и впереди набор. Генетика влияет на форму кубиков, а
+                не на то, видно их или нет. В этом цикле пресс утолщаем (подъёмы
+                ног в висе, обратные скручивания, dead bug), покажется на сушке
+                через несколько месяцев. В зеркале в ближайшие 2-3 месяца его не
+                ждать.
               </p>
             </div>
           </Fold>
@@ -592,36 +956,47 @@ export default function FitnessPage() {
             <div className="prose-guide">
               <ul>
                 <li>
-                  Аппетит маленький, поэтому калории добавляются там, где нет объёма: жидкость (молоко, протеин с
-                  бананом и мёдом) и плотная еда (хлеб, рис, мёд, банан), а не тарелки.
+                  Аппетит маленький, поэтому калории добавляются там, где нет
+                  объёма: жидкость (молоко, протеин с бананом и мёдом) и плотная
+                  еда (хлеб, рис, мёд, банан), а не тарелки.
                 </li>
-                <li>Шаги по 150-200 ккал раз в 1-2 недели. Насильно не есть, отвращение сломает набор.</li>
                 <li>
-                  Завтрак (яйца, авокадо, сыр, салат) это самые сытные калории из возможных. Хлеб, мёд, банан, молоко,
-                  рис дают те же калории в разы меньшим объёмом.
+                  Шаги по 150-200 ккал раз в 1-2 недели. Насильно не есть,
+                  отвращение сломает набор.
                 </li>
-                <li>Жиры (сыр, орехи, авокадо, шоколад) не увеличивать, расти должны углеводы.</li>
                 <li>
-                  Через 2-3 недели на таком объёме тренировок аппетит обычно приходит сам. Подстраиваемся под него, не
-                  бежим впереди.
+                  Завтрак (яйца, авокадо, сыр, салат) это самые сытные калории
+                  из возможных. Хлеб, мёд, банан, молоко, рис дают те же калории
+                  в разы меньшим объёмом.
+                </li>
+                <li>
+                  Жиры (сыр, орехи, авокадо, шоколад) не увеличивать, расти
+                  должны углеводы.
+                </li>
+                <li>
+                  Через 2-3 недели на таком объёме тренировок аппетит обычно
+                  приходит сам. Подстраиваемся под него, не бежим впереди.
                 </li>
               </ul>
             </div>
             <Sub title="Лесенка">
               <ul>
                 <li>
-                  <strong>Недели 1-2.</strong> Сразу после зала протеин в 300 мл молока + банан + ложка мёда, просто
-                  выпить (около 400 ккал, через полчаса сытости нет). В завтраке 2 хлебца заменить на 2 ломтика хлеба,
-                  та же сытость, +100 ккал. В обычном приёме после зала половину салата заменить на горсть риса или
-                  гречки, или 2 ломтика хлеба. Вечером по желанию стакан молока или 100 г творога, не хочется,
-                  пропускать.
+                  <strong>Недели 1-2.</strong> Сразу после зала протеин в 300 мл
+                  молока + банан + ложка мёда, просто выпить (около 400 ккал,
+                  через полчаса сытости нет). В завтраке 2 хлебца заменить на 2
+                  ломтика хлеба, та же сытость, +100 ккал. В обычном приёме
+                  после зала половину салата заменить на горсть риса или гречки,
+                  или 2 ломтика хлеба. Вечером по желанию стакан молока или 100
+                  г творога, не хочется, пропускать.
                 </li>
                 <li>
-                  <strong>Недели 3-4.</strong> Перекус в 11 перед залом, банан с мёдом или 40 г овсянки в молоке.
+                  <strong>Недели 3-4.</strong> Перекус в 11 перед залом, банан с
+                  мёдом или 40 г овсянки в молоке.
                 </li>
                 <li>
-                  <strong>Дальше по весам.</strong> Среднее за неделю не растёт, ещё один шаг на 150-200. Растёт,
-                  стоим.
+                  <strong>Дальше по весам.</strong> Среднее за неделю не растёт,
+                  ещё один шаг на 150-200. Растёт, стоим.
                 </li>
               </ul>
             </Sub>
@@ -630,37 +1005,49 @@ export default function FitnessPage() {
               <ul>
                 <li>15:15: протеин в 300 мл молока + банан + ложка мёда</li>
                 <li>
-                  17:30: обычный приём в обычном объёме, вместо половины салата горсть риса или гречки, или 2 ломтика
-                  хлеба вместо хлебцев
+                  17:30: обычный приём в обычном объёме, вместо половины салата
+                  горсть риса или гречки, или 2 ломтика хлеба вместо хлебцев
                 </li>
                 <li>19:15: если хочется, стакан молока или 100 г творога</li>
               </ul>
               <p>
-                Это +300-400 ккал к обычному дню без единого лишнего куска. Не есть после 19:30 при отбое в 23 на
-                набор не влияет, если дневная сумма набрана.
+                Это +300-400 ккал к обычному дню без единого лишнего куска. Не
+                есть после 19:30 при отбое в 23 на набор не влияет, если дневная
+                сумма набрана.
               </p>
             </Sub>
             <Sub title="Белок, креатин, вода">
               <ul>
                 <li>
-                  Белок ориентир 130-150 г в день, без форсирования. Шейк и творог закрывают дыры. Мясо, рыба, курица,
-                  если ешь, упрощают задачу.
+                  Белок ориентир 130-150 г в день, без форсирования. Шейк и
+                  творог закрывают дыры. Мясо, рыба, курица, если ешь, упрощают
+                  задачу.
                 </li>
                 <li>
-                  Креатин моногидрат 5 г каждый день с любой едой, без загрузки. Через 2-3 недели +1-1.5 кг воды в
-                  мышцах, это нормально.
+                  Креатин моногидрат 5 г каждый день с любой едой, без загрузки.
+                  Через 2-3 недели +1-1.5 кг воды в мышцах, это нормально.
                 </li>
-                <li>Вода 2.5-3 л в день, на углеводах и креатине будет тянуть пить больше.</li>
+                <li>
+                  Вода 2.5-3 л в день, на углеводах и креатине будет тянуть пить
+                  больше.
+                </li>
                 <li>Кофе утром норм, не трогать.</li>
               </ul>
             </Sub>
             <Sub title="Контроль">
               <ul>
-                <li>Взвешивание каждое утро после туалета, смотреть среднее за неделю.</li>
-                <li>Первые 2 недели вес прыгнет на 1-2 кг от углеводов и креатина, это вода.</li>
                 <li>
-                  Дальше цель +0.5-1 кг в месяц. За 2 недели среднее не растёт: ещё шаг +150-200 ккал. Растёт быстрее
-                  1 кг за 2 недели: шаг назад.
+                  Взвешивание каждое утро после туалета, смотреть среднее за
+                  неделю.
+                </li>
+                <li>
+                  Первые 2 недели вес прыгнет на 1-2 кг от углеводов и креатина,
+                  это вода.
+                </li>
+                <li>
+                  Дальше цель +0.5-1 кг в месяц. За 2 недели среднее не растёт:
+                  ещё шаг +150-200 ккал. Растёт быстрее 1 кг за 2 недели: шаг
+                  назад.
                 </li>
               </ul>
             </Sub>
@@ -669,15 +1056,20 @@ export default function FitnessPage() {
           <Fold id="log" eyebrow="Учёт" title="Формат записи и чего ждать">
             <div className="prose-guide">
               <pre className="surface-card whitespace-pre-wrap p-5 font-mono text-sm leading-relaxed text-silver">
-                {"вт 28.10 тяги A\nподтяг +5: 9 8 7 6\nтяга упор 27.5: 12 11 10 9\n..."}
+                {
+                  "вт 28.10 тяги A\nподтяг +5: 9 8 7 6\nтяга упор 27.5: 12 11 10 9\n..."
+                }
               </pre>
               <p>
-                Когда везде верхняя граница, ставить ↑ и в следующий раз добавлять вес. Где в последнем подходе остался
-                запас 3+, вес выше. Где не дотянул до нижней границы, вес ниже.
+                Когда везде верхняя граница, ставить ↑ и в следующий раз
+                добавлять вес. Где в последнем подходе остался запас 3+, вес
+                выше. Где не дотянул до нижней границы, вес ниже.
               </p>
               <p>
-                <strong>Чего ждать.</strong> Первые 2-3 недели крепатура. Силовые должны пойти вверх через 4-6 недель.
-                Контрольная точка через 8 недель: лог тренировок и график веса, перестройка программы.
+                <strong>Чего ждать.</strong> Первые 2-3 недели крепатура.
+                Силовые должны пойти вверх через 4-6 недель. Контрольная точка
+                через 8 недель: лог тренировок и график веса, перестройка
+                программы.
               </p>
             </div>
           </Fold>
