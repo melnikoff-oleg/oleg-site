@@ -1,0 +1,114 @@
+/* /style: the brand style guide. Every selector is prefixed .sg- so nothing
+   here can leak into another page. The page's own type follows the rules it
+   describes (the site's globals.css already sets them), so the specimens and
+   the running text are the same system. */
+
+/* The specimen that shows a size at its own size. Big titles shrink on a phone
+   so a 40px line still fits 390px; the number next to it stays the spec. */
+.sg-specimen {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .sg-specimen[data-size="40"] {
+    font-size: 2rem;
+  }
+  .sg-specimen[data-size="32"] {
+    font-size: 1.75rem;
+  }
+}
+
+/* A color swatch: the color block, then the name and the hex. The block gets a
+   hairline so the light ones do not float on the navy page. */
+.sg-swatch-chip {
+  height: 4.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(208, 214, 224, 0.14);
+}
+
+/* Contrast demo tiles in the YouTube section: one line of overlay text on a
+   background, with the measured ratio under it. They are 16:9 like a video
+   frame, so the text sits the way it would in an edit. */
+.sg-tile {
+  aspect-ratio: 16 / 9;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(208, 214, 224, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+.sg-tile-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(1.25rem, 4.5vw, 1.75rem);
+}
+
+/* The "no" tiles: same geometry, a red hairline instead of the quiet one. */
+.sg-tile[data-verdict="no"] {
+  border-color: rgba(224, 82, 59, 0.6);
+}
+
+/* The spec table. On a phone it becomes a list of cards: the table has five
+   columns and 390px cannot hold them. */
+.sg-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.sg-table th,
+.sg-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  border-bottom: 1px solid var(--color-hairline);
+}
+.sg-td-specimen {
+  width: 42%;
+  padding-right: 1.25rem;
+}
+.sg-table th {
+  font-weight: 600;
+  color: var(--color-silver-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+@media (max-width: 640px) {
+  .sg-table thead {
+    display: none;
+  }
+  .sg-table,
+  .sg-table tbody,
+  .sg-table tr,
+  .sg-table td {
+    display: block;
+  }
+  .sg-table tr {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-hairline);
+  }
+  .sg-table td {
+    border: 0;
+    padding: 0.15rem 0;
+  }
+  .sg-table td[data-label]::before {
+    content: attr(data-label) ": ";
+    color: var(--color-silver-muted);
+  }
+  .sg-table td.sg-td-lead::before {
+    content: none;
+  }
+}
+
+/* Inline code for hex values and CSS numbers. */
+.sg-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  letter-spacing: 0;
+  color: var(--color-silver);
+  background: rgba(208, 214, 224, 0.08);
+  border-radius: 0.3rem;
+  padding: 0.05em 0.35em;
+}
