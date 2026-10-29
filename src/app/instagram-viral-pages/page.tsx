@@ -9,7 +9,6 @@ import {
   CompareTable,
   Guide,
   GuideSection,
-  GuideSteps,
   GuideToc,
   KeyFacts,
   Out,
@@ -88,6 +87,46 @@ function Why({ label = "What is this?", children }: { label?: string; children: 
       <div className="mt-3 space-y-3 border-l border-hairline pl-4 text-sm leading-relaxed text-silver-muted">
         {children}
       </div>
+    </details>
+  );
+}
+
+/**
+ * The guide's walkthrough, folded. GuideSteps renders every body open, which on
+ * this page made a wall; here each step is a native <details> with the title
+ * as its summary, so a reader skims seven lines and opens the one they want.
+ * Each keeps id="step-N", which is what the HowTo schema points at.
+ */
+function FoldedSteps({ steps }: { steps: { title: string; body: ReactNode }[] }) {
+  return (
+    <ol className="mt-6 space-y-3">
+      {steps.map((s, i) => (
+        <li key={s.title} id={`step-${i + 1}`} className="scroll-mt-24">
+          <details className="group surface-card overflow-hidden">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-vivid-blue/[0.06] [&::-webkit-details-marker]:hidden">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-vivid-blue/15 font-body text-sm font-semibold text-vivid-blue">
+                {i + 1}
+              </span>
+              <span className="flex-1 font-display text-lg font-semibold text-silver">{s.title}</span>
+              <ChevronDown className="size-5 shrink-0 text-silver-muted transition-transform duration-200 group-open:rotate-180" />
+            </summary>
+            <div className="space-y-4 border-t border-hairline px-5 pb-5 pt-4 md:px-6">{s.body}</div>
+          </details>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/** A folded block with a one-line summary, for the parts a skimmer can skip. */
+function Fold({ summary, children }: { summary: string; children: ReactNode }) {
+  return (
+    <details className="group surface-card mt-4 overflow-hidden">
+      <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 px-5 py-4 font-display text-lg font-semibold text-silver transition-colors hover:bg-vivid-blue/[0.06] [&::-webkit-details-marker]:hidden">
+        <span className="flex-1">{summary}</span>
+        <ChevronDown className="size-5 shrink-0 text-silver-muted transition-transform duration-200 group-open:rotate-180" />
+      </summary>
+      <div className="space-y-4 border-t border-hairline px-5 pb-5 pt-4 md:px-6">{children}</div>
     </details>
   );
 }
@@ -538,27 +577,25 @@ export default function InstagramViralPagesPage() {
               ]}
             />
             <p>
-              Three panels. <strong>Left: the seven steps</strong>, with the current one
-              lit. <strong>Middle: a chat</strong>, which is Claude Code working inside
-              the folder, with a button for every action under it.{" "}
-              <strong>Right: your page</strong>, as four cards that fill themselves from
-              the files Claude writes: the concept, the style references, the packaging
-              with a live clone of the Instagram profile page, and the reels. A pill at
-              the top shows your Higgsfield balance, because that is the one thing here
-              that spends money.
+              <strong>Left: the seven steps.</strong> <strong>Middle: a chat</strong>,
+              which is Claude Code working inside the folder, with a button for every
+              action. <strong>Right: your page</strong>, as cards that fill themselves
+              from the files Claude writes. Your Higgsfield balance sits at the top,
+              because that is the one thing here that spends money.
             </p>
             <p>
-              The thing that makes it work is that every rule I learned building my own
-              page is in the folder: what a concept needs, how the packaging should
-              read, the exact shape of an image prompt, the motion rules that keep a
-              generated car from looking like a toy. Claude Code reads them on every
-              turn. You never have to.
+              Every rule I learned building my own page is in the folder, and Claude
+              Code reads them on every turn. You never have to.
             </p>
             <GuideToc sections={SECTIONS} />
           </GuideSection>
 
           <GuideSection title="The seven steps of a viral page">
-            <GuideSteps steps={guideSteps} />
+            <p>
+              Four of these happen in the studio. The last three happen on
+              Instagram, once the account has earned them. Open the ones you want.
+            </p>
+            <FoldedSteps steps={guideSteps} />
           </GuideSection>
 
           <GuideSection title="What it costs">
@@ -587,6 +624,7 @@ export default function InstagramViralPagesPage() {
               difference between a reel that looks like a film still and one that looks
               like AI.
             </p>
+            <Fold summary="The six rules">
             <ol className="guide-list">
               <li>
                 <strong>Recognition in the first second.</strong> The subject and the
@@ -618,6 +656,7 @@ export default function InstagramViralPagesPage() {
                 ending. The music&rsquo;s drop lands on the cut into the play.
               </li>
             </ol>
+            </Fold>
             <Callout title="The honest quality line">
               <p>
                 The first reel is not the good one. The system is built around that:
