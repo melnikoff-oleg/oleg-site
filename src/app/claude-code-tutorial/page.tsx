@@ -272,6 +272,7 @@ const CLUSTER = [
   { href: "/claude-content", label: "Content creation in 10 minutes", note: "Ten pieces of content, images included, in one run" },
   { href: "/claude-reels", label: "Viral Instagram reels", note: "Study what already worked, then write from it" },
   { href: "/claude-code-instagram", label: "Claude Code as a video editor", note: "Cutting the reel, not writing it" },
+  { href: "/instagram-viral-pages", label: "Build a viral Instagram page", note: "One folder and a local studio that builds the whole page with you" },
   { href: "/claude-tiktok", label: "Viral TikTok videos", note: "The TikTok version of the same pipeline" },
   { href: "/claude-twitter", label: "An X/Twitter content machine", note: "Posts plus generated infographics" },
   { href: "/claude-social-growth", label: "Social media growth", note: "The system that decides what to post next" },

@@ -31,7 +31,7 @@ const YT_FACADE_ROUTES = [
   "/claude-reels", "/claude-tiktok", "/claude-content", "/claude-twitter",
   "/claude-b2b-outreach", "/claude-cowork-outreach",
   "/claude-marketing", "/claude-social-growth",
-  "/5-levels-ai", "/claude-code-instagram",
+  "/5-levels-ai", "/claude-code-instagram", "/instagram-viral-pages",
 ];
 
 const MIN_TAP = 44;

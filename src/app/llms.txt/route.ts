@@ -43,6 +43,8 @@ const SUMMARY: Record<string, string> = {
     "Building a social growth report from thousands of competitor videos, ICE-scored so it is actionable.",
   "/claude-code-instagram":
     "Editing Instagram videos with Claude Code and Reel Studio: cost per video, how many a plan buys, and the style-first workflow.",
+  "/instagram-viral-pages":
+    "Building a viral Instagram theme page with Claude Code and Viral Page Studio: the seven steps (idea, vibe, packaging, first reels, posting through Edits, autopilot, monetization), what it costs, the rules that make generated reels work.",
   "/5-levels-ai": "Anthropic's research on how the top 1% use AI, as five levels of adoption.",
 };
 

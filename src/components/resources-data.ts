@@ -15,6 +15,7 @@ import {
   Bot,
   Wallet,
   GitCompare,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -135,6 +136,13 @@ export const RESOURCES: Resource[] = [
     description:
       "Reel Studio: drop in photos and a voice take, get a finished Instagram Reel. Free and local",
     icon: Scissors,
+  },
+  {
+    slug: "instagram-viral-pages",
+    title: "Build a Viral Instagram Page",
+    description:
+      "Viral Page Studio: one folder, one prompt, and Claude Code builds the page with you. Concept, packaging, the first reels, posting, autopilot",
+    icon: Sparkles,
   },
   {
     slug: "reels",

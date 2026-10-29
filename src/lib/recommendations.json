@@ -1,6 +1,6 @@
 {
   "_generatedBy": "scripts/build-recommendations.mjs",
-  "_note": "Ranked 'up next' picks per resource page (position 0 = hero). Regenerate with: node scripts/build-recommendations.mjs (blocked: Plausible Stats API is off the plan). Hand-edited 2026-08-27 for the SEO consolidation: five slugs were redirected into stronger siblings and five new cluster pages were added, so their picks are hand-set. 2026-10-23: 14 pages tied to non-public videos were deleted (Oleg); their picks were swapped for live siblings.",
+  "_note": "Ranked 'up next' picks per resource page (position 0 = hero). Regenerate with: node scripts/build-recommendations.mjs (blocked: Plausible Stats API is off the plan). Hand-edited 2026-08-27 for the SEO consolidation: five slugs were redirected into stronger siblings and five new cluster pages were added, so their picks are hand-set. 2026-10-23: 14 pages tied to non-public videos were deleted (Oleg); their picks were swapped for live siblings. 2026-10-29: /instagram-viral-pages added by hand (hero pick on claude-code-instagram and claude-reels).",
   "_model": "claude-sonnet-4-6",
   "recommendations": {
     "claude-b2b-outreach": [
@@ -24,9 +24,9 @@
       "claude-tiktok"
     ],
     "claude-reels": [
+      "instagram-viral-pages",
       "reels",
-      "claude-code-instagram",
-      "claude-tiktok"
+      "claude-code-instagram"
     ],
     "claude-tiktok": [
       "claude-code-instagram",
@@ -49,9 +49,9 @@
       "claude-b2b-outreach"
     ],
     "claude-code-instagram": [
+      "instagram-viral-pages",
       "reels",
-      "claude-tiktok",
-      "claude-reels"
+      "claude-tiktok"
     ],
     "reels": [
       "claude-code-instagram",
@@ -82,6 +82,11 @@
       "claude-cowork",
       "claude-code-pricing",
       "claude-cowork-outreach"
+    ],
+    "instagram-viral-pages": [
+      "claude-code-instagram",
+      "claude-reels",
+      "claude-social-growth"
     ]
   }
 }
