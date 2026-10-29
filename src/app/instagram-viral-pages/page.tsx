@@ -299,13 +299,13 @@ const steps = [
     ),
   },
   {
-    title: "Connect Higgsfield, and get an Apify key",
+    title: "Connect Higgsfield to Claude Code",
     content: (
       <div>
         <p className="mb-4 text-silver">
-          Higgsfield makes the images and the video. Apify checks usernames and finds
-          references and music. Both are needed; neither is an Anthropic API key, which
-          you do not need at all.
+          Higgsfield makes the images and the video. Claude Code talks to it through
+          an MCP server, which you connect once, in two parts: tell Claude Code the
+          server exists, then sign in to it.
         </p>
         <Do>
           <Step>
@@ -315,7 +315,8 @@ const steps = [
           </Step>
           <Step>
             In the VS Code terminal (the one inside the folder, not the Claude Code
-            box), paste this line and press Enter
+            box), paste this line and press Enter. It prints{" "}
+            <K>Added HTTP MCP server higgsfield</K>
           </Step>
         </Do>
         <div className="mt-3">
@@ -323,26 +324,33 @@ const steps = [
         </div>
         <Do>
           <Step>
-            Type <K>claude</K> and press Enter, then <K>/mcp</K>, pick{" "}
-            <UI>higgsfield</UI> and sign in in the browser
+            Type <K>claude</K> and press Enter to start Claude Code, then type{" "}
+            <K>/mcp</K> and press Enter. A list of servers appears with{" "}
+            <UI>higgsfield</UI> in it, marked as needing authentication
           </Step>
           <Step>
-            Type <K>/exit</K> to get back to the terminal
+            Use the arrow keys to put the cursor on <UI>higgsfield</UI>, press Enter,
+            then pick <UI>Authenticate</UI>. Your browser opens on higgsfield.ai
           </Step>
           <Step>
-            Make an account at <A href="https://console.apify.com">console.apify.com</A>{" "}
-            (the free tier is enough) and copy your API key from{" "}
-            <UI>Settings</UI>, <UI>API &amp; Integrations</UI>. You will paste it
-            into the studio in a minute
+            Sign in there and approve the connection. Back in the terminal the line
+            now says <UI>connected</UI>. Press <K>Esc</K> to close the list
+          </Step>
+          <Step>
+            Type <K>/exit</K> to get back to the terminal, then check: paste{" "}
+            <K>claude mcp list</K> and press Enter. The higgsfield line must end in{" "}
+            <K>✔ Connected</K>
           </Step>
         </Do>
-        <Why label="What are these, and what do they cost?">
+        <Why label="What is an MCP, and what if it says something else?">
           <p>
-            <strong>Higgsfield</strong> is the image and video generator, connected to
-            Claude Code as an MCP server, which is how Claude gets to press its
-            buttons. The studio shows your credit balance at the top at all times,
-            because it is the one thing here that spends real money: about 1.5
-            credits per frame and about 15 per five-second clip.
+            An <strong>MCP server</strong> is how Claude Code gets to press the
+            buttons of another product. Once Higgsfield is connected, Claude Code has
+            tools called things like <K>generate_image</K> and <K>generate_video</K>,
+            and the studio uses them for every frame and clip. The studio shows your
+            credit balance at the top at all times, because Higgsfield is the one
+            thing here that spends real money: about 1.5 credits per frame and about
+            15 per five-second clip.
           </p>
           <p>
             <K>--scope user</K> connects it for every folder on this machine. Without
@@ -350,15 +358,84 @@ const steps = [
             in, and lose it the moment you worked anywhere else.
           </p>
           <p>
-            <strong>Apify</strong> runs the scrapers: Instagram&rsquo;s own
-            username availability check (about a cent per handle), Pinterest
-            reference photos, and the music research. A few cents per run, and the
-            free tier includes $5 a month.
+            <K>! Needs authentication</K> in the list means part two did not happen:
+            start <K>claude</K>, type <K>/mcp</K> and authenticate. <K>✘ Failed to
+            connect</K> is usually the internet or a typo in the address; run the{" "}
+            <K>claude mcp add</K> line again (it replaces the old entry). No browser
+            opened? The terminal shows the sign-in link; copy it into your browser.
+            The studio shows <UI>Higgsfield MCP missing</UI> at the top when Claude
+            Code cannot see the server, and says so in the chat until it can.
+          </p>
+        </Why>
+      </div>
+    ),
+  },
+  {
+    title: "Make the .env file with your keys",
+    content: (
+      <div>
+        <p className="mb-4 text-silver">
+          The scripts in the folder (username checks, Pinterest references, music
+          research) run on Apify, and they read your Apify key from one small file
+          called <K>.env</K> in the folder. The folder does not come with it; you
+          create it.
+        </p>
+        <Do>
+          <Step>
+            Make an account at <A href="https://console.apify.com">console.apify.com</A>{" "}
+            (the free tier is enough). Open <UI>Settings</UI>, then{" "}
+            <UI>API &amp; Integrations</UI>, and copy your <UI>Personal API token</UI>.
+            It starts with <K>apify_api_</K>
+          </Step>
+          <Step>
+            In VS Code, right-click the empty space under the file list on the left
+            (the <UI>Explorer</UI>) and pick <UI>New File</UI>. Name it exactly{" "}
+            <K>.env</K>: a dot, then <K>env</K>, nothing else. Press Enter
+          </Step>
+          <Step>Paste this into the file, with your own key after the equals sign</Step>
+        </Do>
+        <div className="mt-3">
+          <Cmd>
+            APIFY_API_KEY=apify_api_xxxxxxxxxxxxxxxxxxxxxxxx
+          </Cmd>
+        </div>
+        <Do>
+          <Step>
+            Save it (<K>Cmd+S</K> on a Mac, <K>Ctrl+S</K> on Windows). It sits next to{" "}
+            <K>README.md</K> in the file list
+          </Step>
+        </Do>
+        <Why label="The rules of this file, and the optional second key">
+          <p>
+            One key per line, written as <K>NAME=value</K>: no spaces around the
+            equals sign, no quotes, nothing else on the line. The name must be
+            exactly <K>APIFY_API_KEY</K>, in capitals, because that is the name the
+            scripts look for. The file must be at the top level of the folder, next
+            to <K>README.md</K>, not inside a subfolder.
           </p>
           <p>
-            A <strong>Gemini</strong> key is optional and only for the clip-by-clip
-            motion analysis later. There is a free tier at{" "}
+            The studio can write this file for you: the <UI>Keys</UI> button at the
+            top right shows what is set and takes a key you paste. Either way the
+            result is the same file. It is listed in the folder&rsquo;s{" "}
+            <K>.gitignore</K>, so it never leaves your machine, and Claude Code is
+            told never to print a key back.
+          </p>
+          <p>
+            An optional second line, <K>GEMINI_API_KEY=...</K>, is only for the
+            clip-by-clip motion analysis in the autopilot stage, months from now.
+            There is a free tier at{" "}
             <A href="https://aistudio.google.com/apikey">aistudio.google.com</A>.
+            Skip it today.
+          </p>
+          <p>
+            Not needed, ever: an Anthropic API key. Nothing in the folder calls the
+            Claude API; Claude Code runs on your plan.
+          </p>
+          <p>
+            Can&rsquo;t see the file after saving? Files whose name starts with a dot
+            are hidden by Finder and by Windows Explorer; VS Code shows them. On
+            Windows, if the file was named <K>.env.txt</K> by mistake, rename it in
+            VS Code to <K>.env</K>.
           </p>
         </Why>
       </div>
@@ -383,7 +460,8 @@ const steps = [
           <Step>It will ask permission a few times. Say yes</Step>
           <Step>When it hands you a link, open it. That is the studio</Step>
           <Step>
-            Press <UI>Keys</UI> at the top right and paste your Apify key
+            Press <UI>Keys</UI> at the top right: Apify should show as set and
+            Higgsfield as connected. If either is not, that box says what to do
           </Step>
         </Do>
         <Why label="What is it actually doing, and how do I come back tomorrow?">
@@ -410,7 +488,7 @@ const steps = [
           </p>
           <p>
             If anything at all goes wrong here, say so in the same box. It can read its
-            own error and fix it, which is the reason this page is seven steps instead
+            own error and fix it, which is the reason this page is eight steps instead
             of twenty.
           </p>
         </Why>
@@ -610,7 +688,7 @@ const faq = [
   },
   {
     q: "Do I need to know how to code",
-    a: "No. You install VS Code and Claude Code, open one folder, paste one sentence, and from then on you talk to a chat and press buttons. Everything technical is done by Claude Code inside the folder. If something breaks, you paste the error at it and it fixes its own setup.",
+    a: "No. You install VS Code and Claude Code, open one folder, make one small file with your Apify key in it, paste one sentence, and from then on you talk to a chat and press buttons. Everything technical is done by Claude Code inside the folder. If something breaks, you paste the error at it and it fixes its own setup.",
   },
   {
     q: "How long does one reel take",
@@ -793,7 +871,7 @@ export default function InstagramViralPagesPage() {
       jsonLd={{
         title: "Build a Viral Instagram Page with Claude Code: Free Setup Guide",
         description:
-          "Set up Viral Page Studio in seven setup steps and let it walk you through the seven stages of a viral Instagram theme page: the idea, the packaging, the first reels, posting, autopilot, monetization.",
+          "Set up Viral Page Studio in eight setup steps and let it walk you through the seven stages of a viral Instagram theme page: the idea, the packaging, the first reels, posting, autopilot, monetization.",
         url: "https://www.oleg.ae/instagram-viral-pages",
         datePublished: "2026-10-29",
         dateModified: "2026-10-29",
