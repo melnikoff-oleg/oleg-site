@@ -261,8 +261,7 @@ const steps = [
           </Step>
           <Step>
             Open the downloaded file. It unpacks into a folder called{" "}
-            <K>instagram-viral-pages-main</K>. Move that folder into{" "}
-            <UI>Documents</UI>
+            <K>instagram-viral-pages-main</K>. Keep it wherever you like
           </Step>
           <Step>
             In VS Code: <UI>File</UI>, then <UI>Open Folder</UI> (on a Mac,{" "}
