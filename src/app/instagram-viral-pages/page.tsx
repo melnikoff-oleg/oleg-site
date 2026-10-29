@@ -19,11 +19,11 @@ import { PLANS, usd } from "@/lib/pricing";
 const REPO = "https://github.com/melnikoff-oleg/instagram-viral-pages";
 
 /**
- * One paste-able sentence that does the whole install. Claude Code can clone a
- * repo, install what is missing and start a server, so a beginner is told to
- * ask for that rather than walked through six installers by hand.
+ * One paste-able sentence that does the whole install. By the time it is pasted
+ * the reader has the folder open in VS Code and Claude Code started inside it
+ * (steps 4 and 6), so the prompt installs and starts rather than downloads.
  */
-const SETUP_PROMPT = `Set up Viral Page Studio for me from ${REPO}. Read its README, install anything I am missing (Python 3 with pillow, ffmpeg, Node 22, yt-dlp, the Higgsfield CLI), connect the Higgsfield MCP if it is not connected yet, put the folder in my Documents, start the studio, and tell me which link to open.`;
+const SETUP_PROMPT = `Set up Viral Page Studio for me. You are inside its folder (a copy of ${REPO}). Read its README, install anything I am missing (Python 3 with pillow, ffmpeg, Node 22, yt-dlp, the Higgsfield CLI), check that the Higgsfield MCP is connected, start the studio, and tell me which link to open.`;
 
 /** An outbound link in the house style. */
 function A({ href, children }: { href: string; children: ReactNode }) {
@@ -147,9 +147,9 @@ const steps = [
         <Why>
           <p>
             A free editor from Microsoft. You will not write code in it. It is the
-            window everything else happens inside, and the one part you will use is
-            the terminal: the menu is <UI>Terminal</UI>, then <UI>New Terminal</UI>,
-            and a black panel opens at the bottom.
+            window everything else happens inside, and the two parts you will use are
+            the folder it has open and the terminal: the menu is <UI>Terminal</UI>,
+            then <UI>New Terminal</UI>, and a black panel opens at the bottom.
           </p>
           <p>
             On a Mac, drag <UI>Visual Studio Code</UI> into <UI>Applications</UI>{" "}
@@ -212,8 +212,21 @@ const steps = [
             Pick <UI>Claude account with subscription</UI>, sign in in the browser,
             approve it
           </Step>
+          <Step>
+            Type <K>/exit</K> and press Enter. That leaves Claude Code and puts you
+            back in the terminal
+          </Step>
         </Do>
-        <Why label="Something went wrong">
+        <Why label="The terminal and Claude Code are two different places">
+          <p>
+            The <strong>terminal</strong> is the black panel: a prompt line that ends
+            in <K>$</K> or <K>%</K>, waiting for a command. <strong>Claude Code</strong>{" "}
+            is a program you start inside it by typing <K>claude</K>: a box with a{" "}
+            <K>&gt;</K> prompt, waiting for you to talk. Commands on this page go in
+            the terminal; sentences go in Claude Code. <K>/exit</K> gets you from the
+            box back to the terminal. If a step says &ldquo;in the terminal&rdquo; and
+            you see the box, leave it first.
+          </p>
           <p>
             <K>command not found: claude</K> after the install means you did not quit
             and reopen VS Code. A terminal that was already open cannot see something
@@ -227,6 +240,59 @@ const steps = [
             Using Codex instead? The folder works there too: open it and it reads the
             same instructions. Everything on this page assumes Claude Code, which is
             what the studio runs.
+          </p>
+        </Why>
+      </div>
+    ),
+  },
+  {
+    title: "Download the folder and open it in VS Code",
+    content: (
+      <div>
+        <p className="mb-4 text-silver">
+          Everything lives in one folder. Claude Code works on the folder it is
+          started in and nothing else, so this is the step that tells it where to
+          work.
+        </p>
+        <Do>
+          <Step>
+            Open <A href={REPO}>{REPO.replace("https://", "")}</A>, press the green{" "}
+            <UI>Code</UI> button, then <UI>Download ZIP</UI>
+          </Step>
+          <Step>
+            Open the downloaded file. It unpacks into a folder called{" "}
+            <K>instagram-viral-pages-main</K>. Move that folder into{" "}
+            <UI>Documents</UI>
+          </Step>
+          <Step>
+            In VS Code: <UI>File</UI>, then <UI>Open Folder</UI> (on a Mac,{" "}
+            <UI>Open</UI>), pick the folder, press <UI>Open</UI>. Asked whether you
+            trust the authors: <UI>Yes</UI>
+          </Step>
+          <Step>
+            <UI>Terminal</UI>, then <UI>New Terminal</UI>. The prompt now ends with
+            the folder name: this terminal is inside the folder, and so is every
+            terminal you open from now on
+          </Step>
+        </Do>
+        <Why label="Why the folder comes first">
+          <p>
+            Claude Code reads the instructions inside the folder it is started in,
+            writes your concept, your packaging and your reels into it, and the
+            studio serves from it. Started somewhere else, it knows nothing about any
+            of this. So the order is always the same three moves: open the folder in
+            VS Code, open a terminal (it lands inside the folder), start Claude Code
+            in that terminal. The same three moves bring you back tomorrow.
+          </p>
+          <p>
+            The folder is a copy of mine with the content taken out: the studio, the
+            scripts, the rules, and one complete example reel. You can rename it to
+            anything; nothing inside depends on the name.
+          </p>
+          <p>
+            Have git? <K>git clone {REPO}.git</K> in a terminal does the same, and the
+            folder lands wherever that terminal was. Then open it in VS Code just the
+            same.
           </p>
         </Why>
       </div>
@@ -247,15 +313,21 @@ const steps = [
             pick a plan with credits. A reel is about 85 credits, so three reels for
             the launch is about 250
           </Step>
-          <Step>In the VS Code terminal, paste this line and press Enter</Step>
+          <Step>
+            In the VS Code terminal (the one inside the folder, not the Claude Code
+            box), paste this line and press Enter
+          </Step>
         </Do>
         <div className="mt-3">
-          <Cmd>claude mcp add --transport http higgsfield https://mcp.higgsfield.ai/mcp</Cmd>
+          <Cmd>claude mcp add --scope user --transport http higgsfield https://mcp.higgsfield.ai/mcp</Cmd>
         </div>
         <Do>
           <Step>
-            Type <K>claude</K>, then <K>/mcp</K>, pick <UI>higgsfield</UI> and sign in
-            in the browser
+            Type <K>claude</K> and press Enter, then <K>/mcp</K>, pick{" "}
+            <UI>higgsfield</UI> and sign in in the browser
+          </Step>
+          <Step>
+            Type <K>/exit</K> to get back to the terminal
           </Step>
           <Step>
             Make an account at <A href="https://console.apify.com">console.apify.com</A>{" "}
@@ -273,6 +345,11 @@ const steps = [
             credits per frame and about 15 per five-second clip.
           </p>
           <p>
+            <K>--scope user</K> connects it for every folder on this machine. Without
+            it, Claude Code would only see Higgsfield in the folder the line was run
+            in, and lose it the moment you worked anywhere else.
+          </p>
+          <p>
             <strong>Apify</strong> runs the scrapers: Instagram&rsquo;s own
             username availability check (about a cent per handle), Pinterest
             reference photos, and the music research. A few cents per run, and the
@@ -288,13 +365,20 @@ const steps = [
     ),
   },
   {
-    title: "Let Claude Code install the studio",
+    title: "Start Claude Code in the folder and let it set everything up",
     content: (
       <div>
-        <p className="mb-4 text-silver">
-          This is the whole setup. Paste this into Claude Code and let it work.
-        </p>
-        <Cmd>{SETUP_PROMPT}</Cmd>
+        <Do>
+          <Step>
+            In the VS Code terminal, inside the folder, type <K>claude</K> and press
+            Enter. The welcome box shows the folder&rsquo;s path: that is Claude Code
+            confirming where it is working
+          </Step>
+          <Step>Paste this into the box and press Enter</Step>
+        </Do>
+        <div className="mt-3">
+          <Cmd>{SETUP_PROMPT}</Cmd>
+        </div>
         <Do>
           <Step>It will ask permission a few times. Say yes</Step>
           <Step>When it hands you a link, open it. That is the studio</Step>
@@ -302,23 +386,31 @@ const steps = [
             Press <UI>Keys</UI> at the top right and paste your Apify key
           </Step>
         </Do>
-        <Why label="What is it actually doing?">
+        <Why label="What is it actually doing, and how do I come back tomorrow?">
           <p>
-            Downloading the starter from{" "}
-            <A href={REPO}>{REPO.replace("https://", "")}</A>, installing the free
-            tools the reel pipeline needs (Python, ffmpeg, Node, yt-dlp), and starting
-            the studio on your machine at <K>http://localhost:8788</K>. It takes a few
-            minutes the first time.
+            Reading the folder&rsquo;s README, installing the free tools the reel
+            pipeline needs (Python with pillow, ffmpeg, Node, yt-dlp, the Higgsfield
+            CLI), checking that Higgsfield is connected, and starting the studio on
+            your machine at <K>http://localhost:8788</K>. It takes a few minutes the
+            first time.
           </p>
           <p>
             Leave that terminal alone once it is running. It is the engine, and
-            closing it stops the studio. Next time, double-click{" "}
-            <K>start.command</K> inside the folder, or tell Claude Code
-            &ldquo;start the studio&rdquo;.
+            closing it stops the studio. The studio page in your browser and the
+            terminal in VS Code are the same thing from two sides; you talk in the
+            browser.
+          </p>
+          <p>
+            Coming back: open VS Code (it reopens the folder on its own; if not,{" "}
+            <UI>File</UI>, <UI>Open Recent</UI>), <UI>Terminal</UI>, <UI>New
+            Terminal</UI>, type <K>claude</K>, and say &ldquo;start the
+            studio&rdquo;. On a Mac the shortcut is double-clicking{" "}
+            <K>start.command</K> inside the folder, which does all of that in one
+            click.
           </p>
           <p>
             If anything at all goes wrong here, say so in the same box. It can read its
-            own error and fix it, which is the reason this page is six steps instead
+            own error and fix it, which is the reason this page is seven steps instead
             of twenty.
           </p>
         </Why>
@@ -518,7 +610,7 @@ const faq = [
   },
   {
     q: "Do I need to know how to code",
-    a: "No. You install VS Code and Claude Code, paste one sentence, and from then on you talk to a chat and press buttons. Everything technical is done by Claude Code inside the folder. If something breaks, you paste the error at it and it fixes its own setup.",
+    a: "No. You install VS Code and Claude Code, open one folder, paste one sentence, and from then on you talk to a chat and press buttons. Everything technical is done by Claude Code inside the folder. If something breaks, you paste the error at it and it fixes its own setup.",
   },
   {
     q: "How long does one reel take",
@@ -548,7 +640,7 @@ export default function InstagramViralPagesPage() {
       slug="instagram-viral-pages"
       repoCta={{ href: REPO }}
       title="Build a viral Instagram page with Claude Code"
-      subhead="Download one folder, open it in VS Code, and a local studio walks you through the seven steps: the idea, the packaging, the first reels, posting, autopilot. Claude Code does the work; you press the buttons."
+      subhead="Download one folder, open it in VS Code, start Claude Code inside it, and a local studio walks you through the seven steps: the idea, the packaging, the first reels, posting, autopilot. Claude Code does the work; you press the buttons."
       steps={steps}
       troubleshooting={["claudeNotFound", "costs", "costsScraping", "skipPermissions"]}
       breadcrumb={[
@@ -701,7 +793,7 @@ export default function InstagramViralPagesPage() {
       jsonLd={{
         title: "Build a Viral Instagram Page with Claude Code: Free Setup Guide",
         description:
-          "Set up Viral Page Studio in six steps and let it walk you through the seven steps of a viral Instagram theme page: the idea, the packaging, the first reels, posting, autopilot, monetization.",
+          "Set up Viral Page Studio in seven setup steps and let it walk you through the seven stages of a viral Instagram theme page: the idea, the packaging, the first reels, posting, autopilot, monetization.",
         url: "https://www.oleg.ae/instagram-viral-pages",
         datePublished: "2026-10-29",
         dateModified: "2026-10-29",
