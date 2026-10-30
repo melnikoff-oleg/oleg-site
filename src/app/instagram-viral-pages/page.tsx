@@ -308,7 +308,7 @@ const steps = [
         </p>
         <Do>
           <Step>
-            Make an account at <A href="https://higgsfield.ai">higgsfield.ai</A> and
+            Make an account at <A href="https://higgsfield.ai/s/higgsfield-general-campaign-yt-oleg-melnikov-lsRjCF">higgsfield.ai</A> and
             pick a plan with credits. A reel is about 85 credits, so three reels for
             the launch is about 250
           </Step>
