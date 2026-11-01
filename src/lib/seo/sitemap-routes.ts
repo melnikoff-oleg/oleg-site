@@ -45,6 +45,7 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: "/claude-reels", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
   { path: "/claude-code-instagram", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
   { path: "/instagram-viral-pages", lastModified: "2026-10-29", changeFrequency: "monthly", priority: GUIDE },
+  { path: "/claude-opus-5.5-3d", lastModified: "2026-11-01", changeFrequency: "monthly", priority: GUIDE },
   { path: "/claude-tiktok", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
   { path: "/claude-twitter", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
   { path: "/claude-content", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },

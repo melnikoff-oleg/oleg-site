@@ -16,6 +16,7 @@ import {
   Wallet,
   GitCompare,
   Sparkles,
+  Box,
   type LucideIcon,
 } from "lucide-react";
 
@@ -143,6 +144,13 @@ export const RESOURCES: Resource[] = [
     description:
       "Viral Page Studio: one folder, one prompt, and Claude Code builds the page with you. Concept, packaging, the first reels, posting, autopilot",
     icon: Sparkles,
+  },
+  {
+    slug: "claude-opus-5.5-3d",
+    title: "Any Machine in 3D with Claude Opus 5.5",
+    description:
+      "Elvar's free teardown skill and nine prompts: one picture in, a 3D model you can take apart out, with live panels and a self-driving tour",
+    icon: Box,
   },
   {
     slug: "reels",

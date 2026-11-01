@@ -21,6 +21,8 @@ type LazyVideoProps = {
   className?: string;
   /** intrinsic aspect ratio "W / H" so the box is reserved before load */
   aspectRatio?: string;
+  /** Show the browser's controls, for a clip with sound worth unmuting. */
+  controls?: boolean;
 };
 
 const NEAR = "100% 0px"; // one viewport ahead: fetch the poster
@@ -48,6 +50,7 @@ export function LazyVideo({
   placeholder,
   className,
   aspectRatio = "16 / 9",
+  controls = false,
 }: LazyVideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
   const [stage, setStage] = useState<Stage>(0);
@@ -77,6 +80,7 @@ export function LazyVideo({
       ref={ref}
       className={className}
       poster={stage >= 1 ? poster : undefined}
+      controls={controls}
       loop
       muted
       playsInline
