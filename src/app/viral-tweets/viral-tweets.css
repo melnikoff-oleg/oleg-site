@@ -1,0 +1,277 @@
+/* /viral-tweets: an X-style feed on the site's navy page.
+ *
+ * A port of the CSS in build_feed.py (the generator of Oleg's "Saved tweets
+ * for LinkedIn" artifact): white cards, avatar on the left, rounded media,
+ * grey stats. Two things come from the site instead, because they do not fight
+ * the look: the Wix Madefor faces, and vivid blue (#2863f0) for links, mentions
+ * and the outlier score, which reads as X's blue and passes AA on white where
+ * X's own #1d9bf0 (3:1) does not. The verified checks keep X's colours.
+ * Tweet text is 16px, the site's floor for primary copy, where X uses 15px.
+ * Every selector is prefixed .vt-.
+ */
+
+.vt-feed {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 12px;
+  max-width: 624px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vt-card {
+  background: #fff;
+  color: #0f1419;
+  border-radius: 16px;
+  padding: 14px 16px 16px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.vt-num {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+
+.vt-pos {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #0f1419;
+}
+
+.vt-score {
+  margin-right: auto;
+  font-weight: 600;
+  font-size: 17px;
+  color: #2863f0;
+  white-space: nowrap;
+}
+
+.vt-open {
+  position: relative;
+  flex: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #536471;
+  text-decoration: none;
+  border: 1px solid #cfd9de;
+  border-radius: 999px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s;
+}
+/* A 32px pill with a 44px tap area. */
+.vt-open::after {
+  content: "";
+  position: absolute;
+  inset: -6px -2px;
+}
+.vt-open:hover {
+  background: #f7f9f9;
+  color: #0f1419;
+}
+
+.vt-tw {
+  display: flex;
+  gap: 12px;
+}
+
+.vt-av {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex: none;
+  background: #eff3f4;
+}
+
+.vt-col {
+  min-width: 0;
+  flex: 1;
+}
+
+.vt-hd {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 2px;
+  line-height: 20px;
+}
+
+.vt-nm {
+  font-weight: 600;
+}
+
+.vt-ck {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  margin-left: 1px;
+}
+
+.vt-hn {
+  color: #536471;
+  margin-left: 4px;
+}
+.vt-hn a {
+  color: inherit;
+  text-decoration: none;
+}
+.vt-hn a:hover {
+  text-decoration: underline;
+}
+
+.vt-tx {
+  margin-top: 2px;
+  font-size: 16px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.vt-tx a,
+.vt-at {
+  color: #2863f0;
+  text-decoration: none;
+}
+.vt-tx a:hover {
+  text-decoration: underline;
+}
+
+.vt-md {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vt-ph {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid #cfd9de;
+  background: #f7f9f9;
+  cursor: zoom-in;
+}
+.vt-ph img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vt-vid {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid #cfd9de;
+  background: #000;
+}
+.vt-video {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  background-color: #000;
+}
+
+.vt-clip {
+  margin: 0;
+  font-size: 13px;
+  color: #536471;
+}
+.vt-clip a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.vt-qt {
+  margin-top: 12px;
+  border: 1px solid #cfd9de;
+  border-radius: 16px;
+  padding: 12px;
+}
+.vt-qhd {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.vt-qav {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex: none;
+  background: #eff3f4;
+}
+.vt-qt .vt-hn {
+  margin-left: 2px;
+}
+.vt-art {
+  font-weight: 600;
+  color: #0f1419;
+}
+
+.vt-sts {
+  display: flex;
+  justify-content: space-between;
+  max-width: 425px;
+  margin-top: 12px;
+  color: #536471;
+  font-size: 13px;
+}
+.vt-st {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.vt-st svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Full-size photo overlay (photo-zoom.tsx). */
+.vt-lb {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(2, 11, 24, 0.94);
+  cursor: zoom-out;
+}
+.vt-lb img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+}
+.vt-lb-x {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(208, 214, 224, 0.25);
+  background: rgba(2, 11, 24, 0.6);
+  color: #d0d6e0;
+}
+.vt-lb-x svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}

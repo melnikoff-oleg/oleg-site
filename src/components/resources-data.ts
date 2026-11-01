@@ -17,6 +17,7 @@ import {
   GitCompare,
   Sparkles,
   Box,
+  Flame,
   type LucideIcon,
 } from "lucide-react";
 
@@ -151,6 +152,13 @@ export const RESOURCES: Resource[] = [
     description:
       "Elvar's free teardown skill and nine prompts: one picture in, a 3D model you can take apart out, with live panels and a self-driving tour",
     icon: Box,
+  },
+  {
+    slug: "viral-tweets",
+    title: "Viral AI Tweets",
+    description:
+      "Fourteen AI posts from X that broke out, ranked by outlier score, with the videos, photos and quoted posts",
+    icon: Flame,
   },
   {
     slug: "reels",
