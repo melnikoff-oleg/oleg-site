@@ -1,12 +1,14 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { HOW, type HowTo } from "./howto";
 
 // Oleg's training program for the first eight-week cycle, laid out for use in
 // the gym: today's workout sits at the top, unfolded, and everything else is a
 // native <details> fold he opens when he needs it. A server component with no
 // client JavaScript beyond one line that stamps the device's weekday on <html>
 // (see fitness.css for how that picks the day before first paint).
-// Source: Desktop/Fitness/program_oct_2026.md.
+// Source: Desktop/Fitness/program_oct_2026.md. Every movement has a "Как
+// делать" fold with plain step-by-step technique, from howto.ts.
 
 type Exercise = {
   name: string;
@@ -17,7 +19,12 @@ type Exercise = {
   note?: string;
   /** Stick-figure strip(s) in public/fitness, by file stem. A superset or a circuit lists one per movement. */
   img?: string | string[];
+  /** Step-by-step technique, folded under the exercise. One per movement, like img. */
+  how?: HowTo | HowTo[];
 };
+
+/** A warm-up drill or a stretch: one line of text, an optional strip, its technique. */
+type Drill = { text: string; img?: string; how?: HowTo };
 
 type Workout = {
   /** Two or three letters of the Russian weekday, also the anchor id. */
@@ -64,37 +71,58 @@ const WEEK: { day: string; title: string; time: string; rest?: boolean }[] = [
   { day: "Пн", title: "Отдых. Кайт, если есть ветер", time: "", rest: true },
 ];
 
-const WARMUP: { text: string; img?: string }[] = [
-  { text: "велик или дорожка в наклоне: 3-4 мин", img: "khodba-v-goru" },
+const WARMUP: Drill[] = [
+  {
+    text: "велик или дорожка в наклоне: 3-4 мин",
+    img: "khodba-v-goru",
+    how: HOW.bike,
+  },
   {
     text: "наружная ротация плеча с резинкой или на нижнем блоке, локоть прижат к боку: 2×15 легко, 30 с между",
     img: "naruzhnaya-rotatsiya-na-bloke",
+    how: HOW.extRotation,
   },
   {
     text: "разведения резинки перед собой (pull-aparts): 2×20, 30 с",
     img: "pull-aparts",
+    how: HOW.pullAparts,
   },
-  { text: "face pull легко: 2×15, 30 с", img: "face-pull" },
+  { text: "face pull легко: 2×15, 30 с", img: "face-pull", how: HOW.facePull },
   {
     text: "chin tucks (подбородок назад, затылок вверх): 10 раз",
     img: "chin-tucks",
+    how: HOW.chinTucks,
   },
   {
     text: "грудной отдел на ролике или через край скамьи: 45-60 с",
     img: "grudnoy-otdel-na-rolike",
+    how: HOW.thoracic,
   },
   {
     text: "подводящие к первому упражнению: 50% ×10, 70% ×5, 85% ×2, по 45-60 с между",
+    how: HOW.rampUp,
   },
 ];
 
-const STRETCH: string[] = [
-  "грудные в дверном проёме или у стойки: 2×40 с",
-  "широчайшие, вис за стойку одной рукой: 40 с на сторону",
-  "сгибатели бедра, couch stretch (колено у стены): 45 с на сторону. Главное после 12 часов сидения",
-  "задняя поверхность бедра: 45 с на сторону",
-  "грудной отдел на ролике: 1 мин",
-  "шея, наклон головы в сторону и вперёд-вниз: 30 с на сторону",
+const STRETCH: Drill[] = [
+  {
+    text: "грудные в дверном проёме или у стойки: 2×40 с",
+    how: HOW.pecStretch,
+  },
+  {
+    text: "широчайшие, вис за стойку одной рукой: 40 с на сторону",
+    how: HOW.latStretch,
+  },
+  {
+    text: "сгибатели бедра, couch stretch (колено у стены): 45 с на сторону. Главное после 12 часов сидения",
+    how: HOW.couchStretch,
+  },
+  { text: "задняя поверхность бедра: 45 с на сторону", how: HOW.hamstring },
+  { text: "грудной отдел на ролике: 1 мин", how: HOW.thoracic },
+  {
+    text: "шея, наклон головы в сторону и вперёд-вниз: 30 с на сторону",
+    how: HOW.neck,
+  },
 ];
 
 const WORKOUTS: Workout[] = [
@@ -108,14 +136,16 @@ const WORKOUTS: Workout[] = [
       {
         name: "Подтягивания с весом, хват чуть шире плеч",
         img: "podtyagivaniya-s-vesom",
+        how: HOW.pullUps,
         sets: "4×6-10",
         start: "свой вес, без груза",
         rest: "2.5-3 мин",
-        note: "Первый подход проба: 10 с запасом 3+, со второго +5 кг. После первых двух тренировок тяговые старты снижены, жимовые подтвердились.",
+        note: "Первый подход проба: 10 с запасом 3+, со второго +5 кг. После первых двух тренировок тяговые старты снижены, жимовые подтвердились. Это то же движение, что тяга верхнего блока, на которой 30.10 заболело правое плечо: при боли в плече сразу прекратить и заменить на тягу гантели одной рукой.",
       },
       {
         name: "Тяга гантелей лёжа грудью на скамье 30-45° или тяга в тренажёре с упором",
         img: "tyaga-ganteley-lyozha-grudyu",
+        how: HOW.chestRow,
         sets: "4×8-12",
         start: "гантели 22 кг, в тренажёре вес на 12 с запасом",
         rest: "2 мин",
@@ -124,6 +154,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Пуловер на блоке с прямыми руками",
         img: "pulover-na-bloke",
+        how: HOW.pullover,
         sets: "3×12-15",
         start: "15 кг",
         rest: "60-90 с",
@@ -132,6 +163,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Разведения на задние дельты на блоке, руки крест-накрест на уровне лица",
         img: "razvedeniya-zadnie-delty-na-bloke",
+        how: HOW.rearDeltCable,
         sets: "4×15-20",
         start: "5 кг на сторону",
         rest: "60-90 с",
@@ -139,6 +171,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Y-raise лёжа на наклонной скамье, большие пальцы вверх",
         img: "y-raise-na-naklonnoy-skamye",
+        how: HOW.yRaise,
         sets: "3×12-15",
         start: "2 кг",
         rest: "60 с",
@@ -147,6 +180,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Сгибания с гантелями сидя на наклонной скамье",
         img: "sgibaniya-s-gantelyami-sidya-naklon",
+        how: HOW.inclineCurl,
         sets: "3×8-12",
         start: "10 кг",
         note: "Суперсет с обратными сгибаниями.",
@@ -154,6 +188,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Обратные сгибания с EZ-грифом",
         img: "obratnye-sgibaniya-ez",
+        how: HOW.reverseCurl,
         sets: "3×10-15",
         start: "15 кг (гриф плюс по 2.5)",
         rest: "90 с после пары",
@@ -161,6 +196,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Вис на турнике",
         img: "vis-na-turnike",
+        how: HOW.hang,
         sets: "2× до отказа",
         rest: "60-90 с",
       },
@@ -176,6 +212,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Жим гантелей сидя",
         img: "zhim-ganteley-sidya",
+        how: HOW.seatedPress,
         sets: "3×6-10 (потом 4)",
         start: "20 кг",
         rest: "2.5-3 мин",
@@ -184,6 +221,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Махи гантелями в стороны",
         img: "makhi-gantelyami-v-storony",
+        how: HOW.lateralRaise,
         sets: "3×10-15 (потом 4)",
         start: "10 кг",
         rest: "60-90 с",
@@ -192,6 +230,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Жим гантелей 30°",
         img: "zhim-ganteley-30",
+        how: HOW.inclineDB,
         sets: "3×8-12",
         start: "22 кг",
         rest: "2-2.5 мин",
@@ -200,6 +239,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Face pull",
         img: "face-pull",
+        how: HOW.facePull,
         sets: "3×12-15",
         start: "10 кг",
         rest: "60-90 с",
@@ -208,6 +248,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Трицепс, суперсет: разгибания из-за головы с канатом на блоке 10-15, сразу разгибания с канатом вниз 12-15",
         img: ["razgibaniya-iz-za-golovy-kanat", "razgibaniya-s-kanatom-vniz"],
+        how: [HOW.overheadExt, HOW.pushdown],
         sets: "3 круга",
         start: "10 кг на оба",
         rest: "90 с после пары",
@@ -216,6 +257,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Наружная ротация на блоке",
         img: "naruzhnaya-rotatsiya-na-bloke",
+        how: HOW.extRotation,
         sets: "2×12-15 на каждую руку, легко",
         start: "2.5 кг",
         rest: "45-60 с",
@@ -240,6 +282,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Присед в смите, глубоко",
         img: "prised-so-shtangoy",
+        how: HOW.smithSquat,
         sets: "3×6-10 (потом 4)",
         start: "60 кг на блинах",
         rest: "2.5-3 мин",
@@ -248,6 +291,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Становая в смите",
         img: "stanovaya-tyaga",
+        how: HOW.smithDeadlift,
         sets: "3×5-8",
         start: "60 кг на блинах",
         rest: "2.5-3 мин",
@@ -256,6 +300,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Болгарские выпады с гантелями",
         img: "bolgarskie-vypady",
+        how: HOW.bulgarian,
         sets: "3×8-12 на ногу",
         start: "2×12 кг",
         rest: "2 мин",
@@ -264,6 +309,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Сгибания ног в тренажёре",
         img: "sgibaniya-nog-v-trenazhere",
+        how: HOW.legCurl,
         sets: "3×10-15",
         start: "25 кг",
         rest: "60-90 с",
@@ -272,6 +318,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Икры стоя с гантелями",
         img: "ikry-stoya",
+        how: HOW.calves,
         sets: "3×12-20",
         start: "2×18 кг",
         rest: "60 с",
@@ -280,6 +327,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Подъём ног в висе",
         img: "podyom-nog-v-vise",
+        how: HOW.legRaise,
         sets: "3×10-15",
         rest: "60-90 с",
         note: "В верхней точке подкручивать таз вверх, иначе работают сгибатели бедра, а не пресс. Обратные скручивания с этого дня убраны (29.10, не хватало времени на растяжку), они остаются в воскресенье.",
@@ -296,20 +344,23 @@ const WORKOUTS: Workout[] = [
       {
         name: "Тяга в тренажёре или с упором грудью, тяжело",
         img: "tyaga-v-trenazhere-s-uporom",
+        how: HOW.chestRow,
         sets: "4×6-10",
         start: "гантели 26 кг, в тренажёре на одну плитку больше вторника",
         rest: "2.5-3 мин",
       },
       {
-        name: "Тяга верхнего блока нейтральным хватом",
-        img: "tyaga-verkhnego-bloka",
-        sets: "4×8-12",
-        start: "45 кг",
+        name: "Тяга гантели одной рукой с упором в скамью, к бедру",
+        how: HOW.oneArmRow,
+        sets: "4×8-12 на каждую руку",
+        start: "22 кг",
         rest: "2 мин",
+        note: "Вместо тяги верхнего блока: 30.10 на ней заболело правое плечо. Здесь рука не уходит над головой, а широчайшие работают так же.",
       },
       {
         name: "Разведения на задние дельты с гантелями лёжа на скамье 30°",
         img: "razvedeniya-zadnie-delty-lyozha",
+        how: HOW.rearDeltProne,
         sets: "4×12-20",
         start: "6 кг",
         rest: "60-90 с",
@@ -317,6 +368,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Face pull",
         img: "face-pull",
+        how: HOW.facePull,
         sets: "3×12-15",
         start: "10 кг",
         rest: "60-90 с",
@@ -324,6 +376,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Сгибания с EZ-грифом или на блоке",
         img: "sgibaniya-s-ez-grifom",
+        how: HOW.ezCurl,
         sets: "3×8-12",
         start: "20 кг (гриф плюс по 5), на блоке 15 кг",
         note: "Суперсет с молотками.",
@@ -331,6 +384,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Молотки",
         img: "molotki",
+        how: HOW.hammer,
         sets: "3×10-12",
         start: "10 кг",
         rest: "90 с после пары",
@@ -338,14 +392,16 @@ const WORKOUTS: Workout[] = [
       {
         name: "Сгибания запястий со штангой",
         img: "sgibaniya-zapyastiy",
+        how: HOW.wristCurl,
         sets: "3×15-20",
         start: "15 кг",
-        note: "Суперсет с прогулкой фермера.",
+        note: "Суперсет с прогулкой фермера, 3 круга.",
       },
       {
         name: "Прогулка фермера с гантелями или гирями",
         img: "progulka-fermera",
-        sets: "2×40 с",
+        how: HOW.farmer,
+        sets: "3×40 с",
         start: "2×24 кг",
         rest: "90 с после пары",
       },
@@ -361,6 +417,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Жим штанги или гантелей 30°",
         img: "zhim-shtangi-30",
+        how: HOW.inclineBar,
         sets: "4×6-10",
         start: "штанга 45 кг или гантели 22 кг, как в среду",
         rest: "2.5-3 мин",
@@ -369,6 +426,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Махи в стороны на блоке одной рукой",
         img: "makhi-na-bloke-odnoy-rukoy",
+        how: HOW.cableLateral,
         sets: "4×12-20",
         start: "5 кг",
         rest: "60-90 с",
@@ -376,6 +434,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Сведения на блоке снизу вверх",
         img: "svedeniya-na-bloke-snizu-vverkh",
+        how: HOW.lowToHighFly,
         sets: "3×12-15",
         start: "7.5 кг на сторону",
         rest: "60-90 с",
@@ -384,6 +443,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Разведения на задние дельты на блоке",
         img: "razvedeniya-zadnie-delty-na-bloke",
+        how: HOW.rearDeltCable,
         sets: "3×15-20",
         start: "5 кг на сторону",
         rest: "60-90 с",
@@ -391,6 +451,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Махи гантелями в стороны",
         img: "makhi-gantelyami-v-storony",
+        how: HOW.lateralRaise,
         sets: "3×12-15",
         start: "10 кг",
         rest: "60-90 с",
@@ -398,14 +459,16 @@ const WORKOUTS: Workout[] = [
       {
         name: "Французский жим лёжа с EZ-грифом",
         img: "frantsuzskiy-zhim-lyozha",
+        how: HOW.frenchPress,
         sets: "3×8-12",
         start: "20 кг (гриф плюс по 5)",
-        note: "Суперсет с разгибаниями.",
+        note: "Суперсет с разгибаниями, 3 круга.",
       },
       {
         name: "Разгибания на блоке",
         img: "razgibaniya-s-kanatom-vniz",
-        sets: "2×12-15",
+        how: HOW.pushdown,
+        sets: "3×12-15",
         start: "15 кг",
         rest: "90 с после пары",
       },
@@ -421,6 +484,7 @@ const WORKOUTS: Workout[] = [
       {
         name: "Ходьба в гору",
         img: "khodba-v-goru",
+        how: HOW.walk,
         sets: "35-40 мин",
         note: "Наклон 10-15%, 5.5-6.5 км/ч, пульс 125-145, можно говорить. Велик на том же пульсе тоже ок. Бег сам по себе для коленей не вреден, травма голеностопа была от полумарафона без подготовки; для набора он не нужен, но 20-25 мин лёгкого бега раз в неделю вместо дорожки не навредят.",
       },
@@ -432,15 +496,22 @@ const WORKOUTS: Workout[] = [
           "dead-bug",
           "planka",
         ],
+        how: [HOW.legRaise, HOW.reverseCrunch, HOW.deadBug, HOW.plank],
         sets: "3 круга",
         rest: "60-90 с между кругами",
       },
       {
         name: "Предплечья: сгибания и разгибания запястий",
         img: "sgibaniya-zapyastiy",
+        how: [HOW.wristCurl, HOW.wristExt],
         sets: "3×15-20",
       },
-      { name: "Вис на турнике", img: "vis-na-turnike", sets: "2× до отказа" },
+      {
+        name: "Вис на турнике",
+        img: "vis-na-turnike",
+        how: HOW.hang,
+        sets: "2× до отказа",
+      },
       { name: "Растяжка, всё из списка по 2 подхода", sets: "15-20 мин" },
     ],
   },
@@ -461,7 +532,11 @@ const TOC: { href: string; label: string }[] = [
 const h3Class =
   "font-display text-xl font-semibold leading-[1.15] tracking-tight text-silver";
 
-function Chevron() {
+function Chevron({
+  className = "size-5 text-silver-muted",
+}: {
+  className?: string;
+}) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -471,7 +546,7 @@ function Chevron() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden
-      className="fit-chev size-5 shrink-0 text-silver-muted"
+      className={`fit-chev shrink-0 ${className}`}
     >
       <path d="M6 9l6 6 6-6" />
     </svg>
@@ -586,7 +661,49 @@ function Figures({
   );
 }
 
-function WarmupList({ items }: { items: { text: string; img?: string }[] }) {
+/**
+ * "Как делать": the movement step by step, in a native <details> shut by
+ * default, so it stays out of the way until it's tapped mid-set. A superset or
+ * a circuit shows each movement under its own name.
+ */
+function How({ how }: { how?: HowTo | HowTo[] }) {
+  if (!how) return null;
+  const parts = Array.isArray(how) ? how : [how];
+  const titled = parts.length > 1;
+  return (
+    <details className="fit-how mt-1">
+      <summary className="inline-flex min-h-11 items-center gap-1.5 font-body text-sm font-semibold text-vivid-blue">
+        Как делать
+        <Chevron className="size-4 text-vivid-blue" />
+      </summary>
+      <div className="mt-1 flex flex-col gap-5 rounded-lg border border-hairline bg-vivid-blue/5 px-4 py-4">
+        {parts.map((p, i) => (
+          <div key={p.title ?? i}>
+            {titled && p.title ? (
+              <p className="mb-2 font-body text-sm font-semibold text-white">
+                {p.title}
+              </p>
+            ) : null}
+            <ol className="list-decimal space-y-1.5 pl-5 font-body text-sm leading-relaxed text-silver marker:text-silver-muted">
+              {p.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+            {p.tip ? (
+              <p className="mt-3 font-body text-sm leading-relaxed text-silver-muted">
+                <strong className="font-semibold text-silver">Главное.</strong>{" "}
+                {p.tip}
+              </p>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    </details>
+  );
+}
+
+/** Warm-up drills and stretches: a line each, its technique fold, its strip. */
+function DrillList({ items }: { items: Drill[] }) {
   return (
     <ol className="flex flex-col gap-4">
       {items.map((it) => (
@@ -595,22 +712,11 @@ function WarmupList({ items }: { items: { text: string; img?: string }[] }) {
           className="font-body text-base leading-relaxed text-silver"
         >
           {it.text}
+          <How how={it.how} />
           <Figures img={it.img} label={it.text} />
         </li>
       ))}
     </ol>
-  );
-}
-
-function PlainList({ items }: { items: string[] }) {
-  return (
-    <div className="prose-guide">
-      <ul>
-        {items.map((s) => (
-          <li key={s}>{s}</li>
-        ))}
-      </ul>
-    </div>
   );
 }
 
@@ -643,6 +749,7 @@ function WorkoutBody({ w }: { w: Workout }) {
                   {e.note}
                 </p>
               ) : null}
+              <How how={e.how} />
               <Figures img={e.img} label={e.name} wide />
             </div>
           </li>
@@ -679,7 +786,7 @@ function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
           </h2>
           <div className="mt-5 flex flex-col gap-3">
             <Fold title="Разминка" meta="10-12 мин" heading="h3">
-              <WarmupList items={WARMUP} />
+              <DrillList items={WARMUP} />
             </Fold>
           </div>
           <div className="mt-6">
@@ -687,7 +794,7 @@ function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
           </div>
           <div className="mt-6 flex flex-col gap-3">
             <Fold title="Растяжка в конце" meta="8-10 мин" heading="h3">
-              <PlainList items={STRETCH} />
+              <DrillList items={STRETCH} />
             </Fold>
           </div>
         </div>
@@ -877,7 +984,7 @@ export default function FitnessPage() {
             title="Каждый силовой день"
             meta="10-12 мин"
           >
-            <WarmupList items={WARMUP} />
+            <DrillList items={WARMUP} />
           </Fold>
 
           <h2
@@ -904,7 +1011,7 @@ export default function FitnessPage() {
             title="В конце каждой силовой"
             meta="8-10 мин"
           >
-            <PlainList items={STRETCH} />
+            <DrillList items={STRETCH} />
             <div className="prose-guide mt-6">
               <p>
                 <strong>Отдых между подходами.</strong> Подводящие 45-60 с.

@@ -20,22 +20,28 @@ html[data-today="sb"] .fit-today[data-day="sb"] {
 }
 
 /* Native <details> folds: no JavaScript, the browser's own toggle, with the
-   default marker replaced by a chevron that turns when the fold is open. */
-.fit-fold > summary {
+   default marker replaced by a chevron that turns when the fold is open.
+   .fit-how is the small "Как делать" fold under each exercise. */
+.fit-fold > summary,
+.fit-how > summary {
   list-style: none;
   cursor: pointer;
 }
-.fit-fold > summary::-webkit-details-marker {
+.fit-fold > summary::-webkit-details-marker,
+.fit-how > summary::-webkit-details-marker {
   display: none;
 }
-.fit-fold > summary .fit-chev {
+.fit-fold > summary .fit-chev,
+.fit-how > summary .fit-chev {
   transition: transform 0.2s ease;
 }
-.fit-fold[open] > summary .fit-chev {
+.fit-fold[open] > summary .fit-chev,
+.fit-how[open] > summary .fit-chev {
   transform: rotate(180deg);
 }
 @media (prefers-reduced-motion: reduce) {
-  .fit-fold > summary .fit-chev {
+  .fit-fold > summary .fit-chev,
+  .fit-how > summary .fit-chev {
     transition: none;
   }
 }
