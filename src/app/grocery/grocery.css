@@ -1,0 +1,56 @@
+/* /grocery: ticks, the "today" badge and the folds. Every selector is prefixed
+   .gr- so nothing here can leak into another page. */
+
+/* A ticked item fades and is struck through. Pure CSS: the tick works without
+   JavaScript; the script at the end of page.tsx only remembers it. */
+.gr-box {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--color-vivid-blue);
+  cursor: pointer;
+}
+.gr-item:has(.gr-box:checked) .gr-text {
+  text-decoration: line-through;
+  opacity: 0.45;
+}
+
+/* "Сегодня" on the Tuesday or Friday card. A one-line script at the top of
+   <body> stamps the device's weekday on <html> (the same ids as /fitness), so
+   the badge is right in the first painted frame. */
+.gr-today {
+  display: none;
+}
+html[data-today="vt"] [data-day="vt"] .gr-today,
+html[data-today="pt"] [data-day="pt"] .gr-today {
+  display: inline-flex;
+}
+
+/* The reset buttons need the script, so they only show when it ran (it is the
+   same script that sets data-today). */
+.gr-reset {
+  display: none;
+}
+html[data-today] .gr-reset {
+  display: inline-flex;
+}
+
+/* Native <details> folds, as on /fitness: the browser's own toggle, the
+   default marker replaced by a chevron that turns when the fold is open. */
+.gr-fold > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.gr-fold > summary::-webkit-details-marker {
+  display: none;
+}
+.gr-fold > summary .gr-chev {
+  transition: transform 0.2s ease;
+}
+.gr-fold[open] > summary .gr-chev {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gr-fold > summary .gr-chev {
+    transition: none;
+  }
+}
