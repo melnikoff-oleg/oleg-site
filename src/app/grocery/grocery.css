@@ -14,14 +14,14 @@
   opacity: 0.45;
 }
 
-/* "Сегодня" on the Tuesday or Friday card. A one-line script at the top of
+/* "today" on the Tuesday or Friday card. A one-line script at the top of
    <body> stamps the device's weekday on <html> (the same ids as /fitness), so
    the badge is right in the first painted frame. */
 .gr-today {
   display: none;
 }
-html[data-today="vt"] [data-day="vt"] .gr-today,
-html[data-today="pt"] [data-day="pt"] .gr-today {
+html[data-today="tue"] [data-day="tue"] .gr-today,
+html[data-today="fri"] [data-day="fri"] .gr-today {
   display: inline-flex;
 }
 

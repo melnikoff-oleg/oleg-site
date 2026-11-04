@@ -1,16 +1,21 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-// Oleg's grocery list, laid out for use in the shop: the Tuesday and Friday
+// Oleg's grocery list, in English, laid out for use in the shop: the Tuesday and Friday
 // runs at the top as tick lists, everything else in native <details> folds.
 // A server component with no client React; two small inline scripts, one at
-// the top of <body> that stamps the weekday on <html> (the "Сегодня" badge,
+// the top of <body> that stamps the weekday on <html> (the "today" badge,
 // same ids as /fitness) and one at the end that keeps the ticks in
 // localStorage so a reloaded tab in the shop does not lose them.
-// Source: Desktop/Fitness/groceries.md (built with Oleg on 2026-11-03).
+// Source: Desktop/Fitness/groceries.md (built with Oleg on 2026-11-03), which
+// stays in Russian, so a change there gets translated here by hand.
 
 type Item = {
-  /** Stable key for the saved tick. Never reuse one for another product. */
+  /**
+   * Stable key for the saved tick. Never reuse one for another product. The
+   * vt-/pt- prefixes date from the page's Russian weekday ids; they stay so
+   * ticks already saved on the phone survive.
+   */
   id: string;
   name: string;
   qty?: string;
@@ -18,227 +23,217 @@ type Item = {
 };
 
 // JavaScript's Date#getDay() order, Sunday first, as on /fitness.
-const DAY_IDS = ["vs", "pn", "vt", "sr", "cht", "pt", "sb"] as const;
+const DAY_IDS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const;
 
 const TUESDAY: Item[] = [
-  { id: "vt-milk", name: "Молоко 2%", qty: "2 л" },
+  { id: "vt-milk", name: "2% milk", qty: "2 L" },
   {
     id: "vt-chicken",
-    name: "Курица без кости, нарезанная",
-    qty: "600 г",
+    name: "Boneless chicken, cut up",
+    qty: "600 g",
     note: "diced chicken, chicken cubes, stir-fry strips",
   },
-  { id: "vt-banana", name: "Бананы", qty: "6", note: "жёлтые" },
-  { id: "vt-avocado", name: "Авокадо", qty: "3", note: "2 мягких, 1 почти мягкое" },
-  { id: "vt-salad", name: "Салатные листья", qty: "2 пакета" },
-  {
-    id: "vt-yogurt",
-    name: "Греческий йогурт без добавок",
-    qty: "1 кг",
-    note: "plain Greek yogurt",
-  },
+  { id: "vt-banana", name: "Bananas", qty: "6", note: "yellow" },
+  { id: "vt-avocado", name: "Avocados", qty: "3", note: "2 soft, 1 nearly soft" },
+  { id: "vt-salad", name: "Salad leaves", qty: "2 bags" },
+  { id: "vt-yogurt", name: "Plain Greek yogurt", qty: "1 kg" },
 ];
 
 const FRIDAY_FRESH: Item[] = [
   {
     id: "pt-milk",
-    name: "Молоко 2%",
-    qty: "2 л",
-    note: "хватит и на кофе в понедельник утром",
+    name: "2% milk",
+    qty: "2 L",
+    note: "enough for Monday morning's coffee too",
   },
   {
     id: "pt-chicken",
-    name: "Курица без кости, нарезанная",
-    qty: "600 г",
+    name: "Boneless chicken, cut up",
+    qty: "600 g",
     note: "diced chicken, chicken cubes, stir-fry strips",
   },
-  { id: "pt-banana", name: "Бананы", qty: "6", note: "4 жёлтых, 2 зеленоватых" },
-  { id: "pt-avocado", name: "Авокадо", qty: "3", note: "2 мягких, 1 почти мягкое" },
-  { id: "pt-salad", name: "Салатные листья", qty: "2 пакета" },
-  {
-    id: "pt-yogurt",
-    name: "Греческий йогурт без добавок",
-    qty: "1 кг",
-    note: "plain Greek yogurt",
-  },
+  { id: "pt-banana", name: "Bananas", qty: "6", note: "4 yellow, 2 greenish" },
+  { id: "pt-avocado", name: "Avocados", qty: "3", note: "2 soft, 1 nearly soft" },
+  { id: "pt-salad", name: "Salad leaves", qty: "2 bags" },
+  { id: "pt-yogurt", name: "Plain Greek yogurt", qty: "1 kg" },
 ];
 
 const FRIDAY_WEEK: Item[] = [
-  { id: "wk-eggs", name: "Яйца", qty: "18" },
-  { id: "wk-cheese", name: "Сыр", qty: "~250 г" },
+  { id: "wk-eggs", name: "Eggs", qty: "18" },
+  { id: "wk-cheese", name: "Cheese", qty: "~250 g" },
   {
     id: "wk-rice",
-    name: "Рис в пакетах для микроволновки",
+    name: "Microwave rice pouches",
     qty: "3",
-    note: "microwave rice, plain basmati или jasmine. Только простой: в рисе со вкусом бывает пшеница",
+    note: "plain basmati or jasmine. Plain only: flavored rice can contain wheat",
   },
-  { id: "wk-choc", name: "Lindt Excellence 78%", qty: "3 плитки" },
+  { id: "wk-choc", name: "Lindt Excellence 78%", qty: "3 bars" },
   {
     id: "wk-nuts",
-    name: "Орехи",
-    qty: "~250 г",
-    note: "фисташки, миндаль, макадамия",
+    name: "Nuts",
+    qty: "~250 g",
+    note: "pistachios, almonds, macadamia",
   },
   {
     id: "wk-salmon",
-    name: "Копчёный лосось",
-    qty: "~200 г",
-    note: "smoked salmon, к яйцам на завтрак",
+    name: "Smoked salmon",
+    qty: "~200 g",
+    note: "with eggs at breakfast",
   },
-  { id: "wk-lemon", name: "Лимоны", qty: "3" },
+  { id: "wk-lemon", name: "Lemons", qty: "3" },
 ];
 
 const HOME_CHECK: Item[] = [
-  { id: "home-protein", name: "Протеин Dymatize ISO 100", qty: "12 скупов в неделю" },
-  { id: "home-creatine", name: "Креатин моногидрат", qty: "5 г в день" },
+  { id: "home-protein", name: "Dymatize ISO 100 protein", qty: "12 scoops a week" },
+  { id: "home-creatine", name: "Creatine monohydrate", qty: "5 g a day" },
   {
     id: "home-coffee",
-    name: "Кофе в капсулах",
-    qty: "~14 в неделю",
-    note: "2 в день, в понедельник утром тоже",
+    name: "Coffee capsules",
+    qty: "~14 a week",
+    note: "2 a day, Monday morning too",
   },
   {
     id: "home-decaf",
-    name: "Декаф в капсулах",
-    qty: "12 в неделю",
-    note: "2 в день, кроме понедельника",
+    name: "Decaf capsules",
+    qty: "12 a week",
+    note: "2 a day, except Monday",
   },
-  { id: "home-honey", name: "Мёд" },
-  { id: "home-oil", name: "Оливковое масло" },
-  { id: "home-salt", name: "Соль" },
+  { id: "home-honey", name: "Honey" },
+  { id: "home-oil", name: "Olive oil" },
+  { id: "home-salt", name: "Salt" },
   {
     id: "home-pepper",
-    name: "Чёрный перец",
-    note: "простой молотый или горошком: в смесях приправ бывает пшеница",
+    name: "Black pepper",
+    note: "plain ground or whole: seasoning blends can contain wheat",
   },
-  { id: "home-water", name: "Вода", qty: "~18 л в неделю", note: "если бутилированная" },
+  { id: "home-water", name: "Water", qty: "~18 L a week", note: "if bottled" },
 ];
 
 const OPTIONAL: Item[] = [
   {
     id: "opt-skyr",
-    name: "Skyr без добавок",
-    qty: "1 банка",
-    note: "вместо части греческого йогурта: белка больше (~11 г на 100 г), жира почти нет",
+    name: "Plain skyr",
+    qty: "1 tub",
+    note: "replaces some of the Greek yogurt: more protein (~11 g per 100 g), almost no fat",
   },
   {
     id: "opt-tvorog",
-    name: "Творог",
-    qty: "~400 г",
-    note: "cottage cheese, 100 г вечером, если хочется",
+    name: "Cottage cheese (tvorog)",
+    qty: "~400 g",
+    note: "100 g in the evening, if I feel like it",
   },
   {
     id: "opt-dates",
-    name: "Финики Medjool",
-    qty: "~250 г",
-    note: "2-3 перед залом, ~65 ккал штука",
+    name: "Medjool dates",
+    qty: "~250 g",
+    note: "2-3 before the gym, ~65 kcal each",
   },
   {
     id: "opt-batat",
-    name: "Батат",
+    name: "Sweet potatoes",
     qty: "2-3",
-    note: "sweet potato. Помыть, проколоть вилкой 6-8 раз, 6-8 минут в микроволновке, перевернуть на середине. Кожуру можно есть",
+    note: "Wash, prick with a fork 6-8 times, microwave for 6-8 minutes, turning halfway. The skin is edible",
   },
   {
     id: "opt-salmon",
-    name: "Филе лосося",
+    name: "Salmon fillets",
     qty: "2",
-    note: "salmon fillets, для разнообразия вместо курицы",
+    note: "for variety instead of chicken",
   },
   {
     id: "opt-cucumber",
-    name: "Огурцы",
+    name: "Cucumbers",
     qty: "2-3",
-    note: "к салату. Почти одна вода: свежесть есть, калорий нет",
+    note: "for the salad. Almost all water: freshness, no calories",
   },
   {
     id: "opt-ricecakes",
-    name: "Рисовые хлебцы",
-    qty: "1 пачка",
-    note: "rice cakes, проверить пометку gluten-free",
+    name: "Rice cakes",
+    qty: "1 pack",
+    note: "check for the gluten-free label",
   },
 ];
 
 const HOUSEHOLD: Item[] = [
   {
     id: "hh-freezer-bags",
-    name: "Пакеты zip для заморозки",
-    note: "курица порциями по 200 г в морозилку",
+    name: "Zip freezer bags",
+    note: "chicken in 200 g portions for the freezer",
   },
-  { id: "hh-paper-towels", name: "Бумажные полотенца" },
-  { id: "hh-dish-soap", name: "Средство для мытья посуды" },
-  { id: "hh-sponges", name: "Губки" },
-  { id: "hh-trash-bags", name: "Мешки для мусора" },
-  { id: "hh-toilet-paper", name: "Туалетная бумага" },
+  { id: "hh-paper-towels", name: "Paper towels" },
+  { id: "hh-dish-soap", name: "Dish soap" },
+  { id: "hh-sponges", name: "Sponges" },
+  { id: "hh-trash-bags", name: "Trash bags" },
+  { id: "hh-toilet-paper", name: "Toilet paper" },
 ];
 
 const OTHER_OPTIONS: { name: string; note: string }[] = [
   {
-    name: "Кукурузные лепёшки (corn tortillas)",
-    note: "только из 100% кукурузы: кукурузная мука, вода, известь. Многие смешаны с пшеничной мукой. ~50-60 ккал маленькая, 30 секунд на сковороде",
+    name: "Corn tortillas",
+    note: "100% corn only: corn flour, water, lime. Many are mixed with wheat flour. ~50-60 kcal for a small one, 30 seconds in a pan",
   },
   {
-    name: "Кефир или лабан (laban)",
-    note: "стакан кефира 2.5% ~130 ккал и 8 г белка, жидкость почти не насыщает",
+    name: "Kefir or laban",
+    note: "a glass of 2.5% kefir is ~130 kcal and 8 g of protein, and liquid barely fills me up",
   },
-  { name: "Готовая курица-гриль (rotisserie chicken)", note: "на дни без сковороды" },
-  { name: "Сушёное манго или изюм", note: "горсть в йогурт, +100 ккал" },
-  { name: "Апельсиновый сок", note: "250 мл ~110 ккал, после зала" },
-  { name: "Воздушный рис (puffed rice)", note: "хруст в йогурт, проверить gluten-free" },
-  { name: "Какао без сахара", note: "ложка в шейк" },
-  { name: "Замороженные ягоды", note: "в шейк или йогурт" },
+  { name: "Rotisserie chicken", note: "for days without the pan" },
+  { name: "Dried mango or raisins", note: "a handful in yogurt, +100 kcal" },
+  { name: "Orange juice", note: "250 ml ~110 kcal, after the gym" },
+  { name: "Puffed rice", note: "crunch in yogurt, check for gluten-free" },
+  { name: "Unsweetened cocoa", note: "a spoonful in the shake" },
+  { name: "Frozen berries", note: "in a shake or yogurt" },
 ];
 
 /** One home day, as Oleg listed it on 2026-11-03. */
 const DAY: { food: string; kcal: string; protein: string }[] = [
-  { food: "Молоко 2%, 600 мл (протеин и кофе)", kcal: "300", protein: "20" },
-  { food: "Яйца, 3", kcal: "215", protein: "19" },
-  { food: "Курица, 200 г (сырая грудка)", kcal: "240", protein: "45" },
-  { food: "Рис, 100 г готового", kcal: "130", protein: "3" },
-  { food: "Бананы, 2", kcal: "210", protein: "3" },
-  { food: "Шоколад Lindt 78%, 50 г", kcal: "285", protein: "5" },
-  { food: "Салат, 70% пакета", kcal: "15", protein: "1" },
-  { food: "Авокадо, 1", kcal: "230", protein: "3" },
-  { food: "Греческий йогурт 2%, 300 г", kcal: "220", protein: "30" },
-  { food: "Орехи, 40 г", kcal: "240", protein: "7" },
-  { food: "Протеин ISO 100, 2 скупа", kcal: "230", protein: "50" },
-  { food: "Сыр, 40 г", kcal: "160", protein: "10" },
-  { food: "Кофе 2 капсулы и декаф 2 капсулы", kcal: "~0", protein: "0" },
-  { food: "Вода, 3 л", kcal: "0", protein: "0" },
+  { food: "2% milk, 600 ml (protein and coffee)", kcal: "300", protein: "20" },
+  { food: "Eggs, 3", kcal: "215", protein: "19" },
+  { food: "Chicken, 200 g (raw breast)", kcal: "240", protein: "45" },
+  { food: "Rice, 100 g cooked", kcal: "130", protein: "3" },
+  { food: "Bananas, 2", kcal: "210", protein: "3" },
+  { food: "Lindt 78% chocolate, 50 g", kcal: "285", protein: "5" },
+  { food: "Salad, 70% of a bag", kcal: "15", protein: "1" },
+  { food: "Avocado, 1", kcal: "230", protein: "3" },
+  { food: "Greek yogurt 2%, 300 g", kcal: "220", protein: "30" },
+  { food: "Nuts, 40 g", kcal: "240", protein: "7" },
+  { food: "ISO 100 protein, 2 scoops", kcal: "230", protein: "50" },
+  { food: "Cheese, 40 g", kcal: "160", protein: "10" },
+  { food: "Coffee 2 capsules and decaf 2 capsules", kcal: "~0", protein: "0" },
+  { food: "Water, 3 L", kcal: "0", protein: "0" },
 ];
 
 const RANKED = [
-  "Протеин Dymatize ISO 100 (проверить дома)",
-  "Молоко 2%",
-  "Яйца",
-  "Курица без кости, нарезанная",
-  "Бананы",
-  "Рис в пакетах для микроволновки",
-  "Креатин моногидрат (проверить дома)",
-  "Греческий йогурт без добавок",
-  "Сыр",
-  "Авокадо",
-  "Мёд",
-  "Кофе в капсулах",
-  "Декаф в капсулах",
-  "Орехи",
+  "Dymatize ISO 100 protein (check at home)",
+  "2% milk",
+  "Eggs",
+  "Boneless chicken, cut up",
+  "Bananas",
+  "Microwave rice pouches",
+  "Creatine monohydrate (check at home)",
+  "Plain Greek yogurt",
+  "Cheese",
+  "Avocados",
+  "Honey",
+  "Coffee capsules",
+  "Decaf capsules",
+  "Nuts",
   "Lindt 78%",
-  "Салатные листья",
-  "Копчёный лосось",
-  "Оливковое масло",
-  "Соль",
-  "Чёрный перец",
-  "Лимоны",
-  "Вода (если бутилированная)",
+  "Salad leaves",
+  "Smoked salmon",
+  "Olive oil",
+  "Salt",
+  "Black pepper",
+  "Lemons",
+  "Water (if bottled)",
 ];
 
 const TOC: { href: string; label: string }[] = [
-  { href: "#vt", label: "Вторник" },
-  { href: "#pt", label: "Пятница" },
-  { href: "#optional", label: "По желанию" },
-  { href: "#household", label: "Хозяйственное" },
-  { href: "#day", label: "Калории" },
-  { href: "#storage", label: "Хранение" },
+  { href: "#tue", label: "Tuesday" },
+  { href: "#fri", label: "Friday" },
+  { href: "#optional", label: "Optional" },
+  { href: "#household", label: "Household" },
+  { href: "#day", label: "Calories" },
+  { href: "#storage", label: "Storage" },
 ];
 
 const h3Class =
@@ -302,7 +297,7 @@ function ResetButton() {
       data-reset
       className="gr-reset mt-4 min-h-11 items-center rounded-full border border-hairline px-4 py-2.5 font-body text-sm font-semibold text-silver-muted transition-colors hover:border-vivid-blue/50 hover:text-white"
     >
-      Снять галочки
+      Clear ticks
     </button>
   );
 }
@@ -320,7 +315,7 @@ function RunCard({
   title,
   children,
 }: {
-  dayId: "vt" | "pt";
+  dayId: "tue" | "fri";
   day: string;
   title: string;
   children: ReactNode;
@@ -335,7 +330,7 @@ function RunCard({
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <p className="eyebrow font-body text-[13px] text-vivid-blue">{day}</p>
         <span className="gr-today eyebrow items-center rounded-full bg-vivid-blue px-2.5 py-0.5 font-body text-[11px] text-white">
-          сегодня
+          today
         </span>
       </div>
       <h2 className="mt-2 font-display text-2xl font-semibold leading-[1.15] tracking-tight text-silver md:text-3xl">
@@ -399,7 +394,7 @@ export default function GroceryPage() {
   return (
     <>
       {/* Stamps the device's weekday on <html> before the rest of the body is
-          parsed, so the "Сегодня" badge is right in the first painted frame. */}
+          parsed, so the "today" badge is right in the first painted frame. */}
       <script
         dangerouslySetInnerHTML={{
           __html: `document.documentElement.setAttribute("data-today",${JSON.stringify(DAY_IDS)}[new Date().getDay()])`,
@@ -411,7 +406,7 @@ export default function GroceryPage() {
           <Link href="/" className="brand-wordmark font-display text-lg tracking-tight">
             Oleg Melnikov
           </Link>
-          <span className="font-body text-sm text-silver-muted">личная страница</span>
+          <span className="font-body text-sm text-silver-muted">personal page</span>
         </div>
       </header>
 
@@ -419,36 +414,35 @@ export default function GroceryPage() {
         <section className="pt-8 pb-8 md:pt-14 md:pb-10">
           <div className="mx-auto max-w-3xl px-6">
             <span className="eyebrow inline-block align-top rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
-              вт и пт · 6 домашних дней
+              Tue and Fri · 6 home days
             </span>
             <h1 className="text-metallic mt-6 font-display text-3xl font-semibold leading-[1.1] tracking-tight md:text-4xl">
-              Продукты
+              Groceries
             </h1>
             <p className="mt-4 font-body text-base leading-relaxed text-silver-muted">
-              Закупка два раза в неделю. В понедельник ем вне дома, дома только
-              утренний кофе с молоком. Всё без глютена. Английские названия, как
-              на полке в магазине.
+              Shopping twice a week. On Monday I eat out, and at home it's just
+              the morning coffee with milk. Everything is gluten-free.
             </p>
           </div>
         </section>
 
         <div className="mx-auto flex max-w-3xl flex-col gap-4 px-6 pb-10">
-          <RunCard dayId="vt" day="Вторник" title="На 3 дня: вт, ср, чт">
+          <RunCard dayId="tue" day="Tuesday" title="For 3 days: Tue, Wed, Thu">
             <div className="mt-4">
               <Checklist items={TUESDAY} />
             </div>
           </RunCard>
 
-          <RunCard dayId="pt" day="Пятница" title="На 3 дня: пт, сб, вс, и на неделю">
-            <SubHead>Свежее, на 3 дня</SubHead>
+          <RunCard dayId="fri" day="Friday" title="For 3 days: Fri, Sat, Sun, plus the week">
+            <SubHead>Fresh, for 3 days</SubHead>
             <div className="mt-2">
               <Checklist items={FRIDAY_FRESH} />
             </div>
-            <SubHead>Долгого хранения, на неделю</SubHead>
+            <SubHead>Long-life, for the week</SubHead>
             <div className="mt-2">
               <Checklist items={FRIDAY_WEEK} />
             </div>
-            <SubHead>Проверить дома, докупить если кончается</SubHead>
+            <SubHead>Check at home, top up if running low</SubHead>
             <div className="mt-2">
               <Checklist items={HOME_CHECK} />
             </div>
@@ -456,7 +450,7 @@ export default function GroceryPage() {
         </div>
 
         <nav
-          aria-label="Разделы"
+          aria-label="Sections"
           className="mx-auto flex max-w-3xl flex-wrap gap-2 px-6 pb-10"
         >
           {TOC.map((t) => (
@@ -471,26 +465,26 @@ export default function GroceryPage() {
         </nav>
 
         <div className="offscreen-lazy mx-auto flex max-w-3xl flex-col gap-4 px-6 pb-16 md:pb-20">
-          <Fold id="optional" eyebrow="В любой из дней" title="По желанию" list>
+          <Fold id="optional" eyebrow="Any day" title="Optional" list>
             <Checklist items={OPTIONAL} />
             <ResetButton />
           </Fold>
 
           <Fold
             id="household"
-            eyebrow="Базовый набор, проверить дома"
-            title="Хозяйственное"
+            eyebrow="The basics, check at home"
+            title="Household"
             list
           >
             <Checklist items={HOUSEHOLD} />
             <ResetButton />
           </Fold>
 
-          <Fold id="day" eyebrow="Обычный день" title="Сколько я ем и калории" meta="~2475 ккал">
+          <Fold id="day" eyebrow="A typical day" title="What I eat, and the calories" meta="~2475 kcal">
             <div className="mt-2 grid grid-cols-[1fr_auto_auto] font-body text-sm">
-              <span className="py-2 text-silver-muted">Продукт</span>
-              <span className="py-2 pl-4 text-right text-silver-muted">ккал</span>
-              <span className="py-2 pl-4 text-right text-silver-muted">белок, г</span>
+              <span className="py-2 text-silver-muted">Food</span>
+              <span className="py-2 pl-4 text-right text-silver-muted">kcal</span>
+              <span className="py-2 pl-4 text-right text-silver-muted">protein, g</span>
               {DAY.map((r) => (
                 <div key={r.food} className="contents">
                   <span className="border-t border-hairline py-2.5 text-silver">{r.food}</span>
@@ -502,7 +496,7 @@ export default function GroceryPage() {
                   </span>
                 </div>
               ))}
-              <span className="border-t border-hairline py-2.5 font-semibold text-white">Итого</span>
+              <span className="border-t border-hairline py-2.5 font-semibold text-white">Total</span>
               <span className="border-t border-hairline py-2.5 pl-4 text-right font-semibold whitespace-nowrap text-white">
                 ~2475
               </span>
@@ -513,53 +507,54 @@ export default function GroceryPage() {
             <div className="prose-guide mt-6">
               <ul>
                 <li>
-                  Не посчитано: масло для курицы и салата (1 ст. л. ~120 ккал) и
-                  мёд (1 ст. л. ~65 ккал). С ними ~2650 ккал.
+                  Not counted: oil for the chicken and salad (1 tbsp ~120 kcal)
+                  and honey (1 tbsp ~65 kcal). With them, ~2650 kcal.
                 </li>
                 <li>
-                  Примерно 43% калорий из жиров (шоколад, авокадо, орехи, сыр,
-                  яйца), 31% из белка, 26% из углеводов. По программе расти должны
-                  углеводы (рис, бананы, мёд), а не жиры.
+                  About 43% of calories come from fat (chocolate, avocado, nuts,
+                  cheese, eggs), 31% from protein, 26% from carbs. By the program,
+                  carbs (rice, bananas, honey) should be what grows, not fats.
                 </li>
-                <li>Белок ~195 г, выше цели программы (130-150 г), добирать не нужно.</li>
+                <li>Protein is ~195 g, above the program's target (130-150 g), so no need to add more.</li>
                 <li>
-                  Допущения: рис готовый, а не сухой (сухой 100 г ~350 ккал);
-                  курица грудка (бедро ~320 ккал и 38 г белка); йогурт 2%.
+                  Assumptions: rice is cooked, not dry (100 g dry ~350 kcal);
+                  chicken is breast (thigh ~320 kcal and 38 g of protein); yogurt
+                  is 2%.
                 </li>
                 <li>
-                  На неделю считаем 6 домашних дней: в понедельник ем вне дома.
+                  The week counts 6 home days: on Monday I eat out.
                 </li>
               </ul>
             </div>
           </Fold>
 
-          <Fold id="storage" eyebrow="Чтобы не испортилось" title="Как хранить">
+          <Fold id="storage" eyebrow="So nothing goes off" title="How to store it">
             <div className="prose-guide mt-2">
               <ul>
                 <li>
-                  Курица: что не съешь до даты на упаковке, сразу в морозилку
-                  порциями по 200 г. Размораживать в холодильнике с вечера.
-                  Сковорода 10 минут.
+                  Chicken: whatever I won't eat by the date on the pack goes
+                  straight in the freezer, in 200 g portions. Defrost in the
+                  fridge overnight. 10 minutes in the pan.
                 </li>
                 <li>
-                  Рис: открытый пакет доесть на следующий день, дольше суток
-                  готовый рис не держать. Поэтому по полпакета (125 г) в день,
-                  один пакет на 2 дня: вт-ср, чт-пт, сб-вс. Надорвать уголок, 2
-                  минуты в микроволновке.
+                  Rice: finish an open pouch the next day, and don't keep cooked
+                  rice longer than a day. So half a pouch (125 g) a day, one pouch
+                  per 2 days: Tue-Wed, Thu-Fri, Sat-Sun. Tear a corner, 2 minutes
+                  in the microwave.
                 </li>
                 <li>
-                  Бананы и авокадо: спелые на первые дни, зеленоватые и почти
-                  мягкие дозреют к концу периода.
+                  Bananas and avocados: the ripe ones for the first days, the
+                  greenish and nearly soft ones will ripen by the end.
                 </li>
                 <li>
-                  Йогурт и молоко: от вторника остаётся ~100 г йогурта и ~200 мл
-                  молока, они переходят на пятницу.
+                  Yogurt and milk: Tuesday leaves about 100 g of yogurt and 200 ml
+                  of milk, which carry over to Friday.
                 </li>
               </ul>
             </div>
           </Fold>
 
-          <Fold id="ranked" eyebrow="Если некогда" title="По убыванию важности">
+          <Fold id="ranked" eyebrow="If short on time" title="In order of importance">
             <ol className="mt-2 list-decimal space-y-1.5 pl-6 font-body text-base text-silver marker:text-silver-muted">
               {RANKED.map((n) => (
                 <li key={n}>{n}</li>
@@ -567,7 +562,7 @@ export default function GroceryPage() {
             </ol>
           </Fold>
 
-          <Fold id="ideas" eyebrow="Пока не выбраны" title="Другие опции">
+          <Fold id="ideas" eyebrow="Not chosen yet" title="Other options">
             <ul className="divide-y divide-hairline">
               {OTHER_OPTIONS.map((o) => (
                 <li key={o.name} className="py-3">
@@ -580,13 +575,13 @@ export default function GroceryPage() {
             </ul>
           </Fold>
 
-          <Fold id="no-gluten" eyebrow="Не покупаем" title="Глютен">
+          <Fold id="no-gluten" eyebrow="Not buying" title="Gluten">
             <div className="prose-guide mt-2">
               <p>
-                Хлеб, хлебцы из пшеницы и ржи, овсянка, паста, выпечка: после
-                глютена туман в голове. Их заменяют рис, рисовые хлебцы, банан и
-                мёд. В самом рисе глютена нет, даже в «клейком» (glutinous rice);
-                он бывает только в добавках, поэтому рис берём простой.
+                Bread, wheat and rye crispbread, oatmeal, pasta, pastries: gluten
+                gives me brain fog. Rice, rice cakes, bananas and honey replace
+                them. Rice itself has no gluten, not even "glutinous rice"; it
+                only turns up in additives, so I buy plain rice.
               </p>
             </div>
           </Fold>
@@ -594,7 +589,7 @@ export default function GroceryPage() {
       </main>
 
       <footer className="mx-auto max-w-3xl px-6 pb-12 font-body text-sm text-silver-muted">
-        Собрано 3 ноября 2026. Галочки запоминаются на этом телефоне.
+        Put together Nov 3, 2026. Ticks are remembered on this phone.
       </footer>
 
       <script dangerouslySetInnerHTML={{ __html: TICKS_SCRIPT }} />

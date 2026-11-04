@@ -9,19 +9,19 @@
 .fit-today {
   display: none;
 }
-html[data-today="vs"] .fit-today[data-day="vs"],
-html[data-today="pn"] .fit-today[data-day="pn"],
-html[data-today="vt"] .fit-today[data-day="vt"],
-html[data-today="sr"] .fit-today[data-day="sr"],
-html[data-today="cht"] .fit-today[data-day="cht"],
-html[data-today="pt"] .fit-today[data-day="pt"],
-html[data-today="sb"] .fit-today[data-day="sb"] {
+html[data-today="sun"] .fit-today[data-day="sun"],
+html[data-today="mon"] .fit-today[data-day="mon"],
+html[data-today="tue"] .fit-today[data-day="tue"],
+html[data-today="wed"] .fit-today[data-day="wed"],
+html[data-today="thu"] .fit-today[data-day="thu"],
+html[data-today="fri"] .fit-today[data-day="fri"],
+html[data-today="sat"] .fit-today[data-day="sat"] {
   display: block;
 }
 
 /* Native <details> folds: no JavaScript, the browser's own toggle, with the
    default marker replaced by a chevron that turns when the fold is open.
-   .fit-how is the small "Как делать" fold under each exercise. */
+   .fit-how is the small "How to do it" fold under each exercise. */
 .fit-fold > summary,
 .fit-how > summary {
   list-style: none;
