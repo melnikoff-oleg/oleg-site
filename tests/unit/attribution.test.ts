@@ -40,7 +40,7 @@ test("tags beat the referrer", () => {
   assert.equal(t.source, "linkedin");
 });
 
-test("only utm_source counts as a tag, because only utm_ tags leave the address bar", () => {
+test("only utm_source counts as a tag, because that is all our links use", () => {
   const t = landing({ search: "?ref=someone", referrer: "https://www.youtube.com/" });
   assert.equal(t.source, "youtube");
   assert.equal(landing({ search: "?ref=someone" }).fallback, true);

@@ -6,7 +6,7 @@ const PORT = process.env.PORT ?? "3000";
 const ORIGIN = `http://attribution.test:${PORT}`;
 test.use({ launchOptions: { args: ["--host-resolver-rules=MAP attribution.test 127.0.0.1"] } });
 
-test("128: the pageview carries the tags, then the address bar is clean; a click is one row per destination", async ({ page, context }) => {
+test("128: the pageview carries the tags and the address keeps them; a click is one row per destination", async ({ page, context }) => {
   const events: { n: string; u: string; p?: { url?: string } }[] = [];
   await context.route("https://plausible.io/**", async (route) => {
     events.push(route.request().postDataJSON());
@@ -17,14 +17,13 @@ test("128: the pageview carries the tags, then the address bar is clean; a click
 
   await page.goto(`${ORIGIN}/yt-ig`);
   await expect.poll(() => events.find((e) => e.n === "pageview")?.u).toContain("utm_content=description-viral-instagram-reels");
-  await expect.poll(() => page.url()).toBe(`${ORIGIN}/claude-reels`);
 
-  // Cleaning the address is not a navigation.
-  expect(events.filter((e) => e.n === "pageview")).toHaveLength(1);
-
-  // The link still knows, though the address bar no longer shows it.
   const link = page.locator('a[href^="https://boldane.com"]').first();
   await expect.poll(async () => (await link.getAttribute("href"))!).toContain("utm_source=youtube");
+
+  // Checked after hydration, so a script that cleaned the address would have run by now.
+  expect(page.url()).toContain("utm_content=description-viral-instagram-reels");
+  expect(events.filter((e) => e.n === "pageview")).toHaveLength(1);
 
   const popup = context.waitForEvent("page");
   await link.click();

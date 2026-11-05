@@ -150,8 +150,8 @@ export function withoutUtm(href: string): string {
 
 let memo: FirstTouch | undefined;
 
-/** Browser only. Reads the landing address once per page load, so it must first run before anything
- *  rewrites the address bar (`Plausible` calls it on mount, before it loads the tracker). */
+/** Browser only. Reads the address once per page load, so it must first run on the page the visitor
+ *  landed on, not after a move inside the site (`Plausible` calls it on mount). */
 export function firstTouch(): FirstTouch {
   if (memo) return memo;
   const now = Date.now();
