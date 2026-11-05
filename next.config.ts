@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { shortLinks } from "./short-links";
 
 const DELETED_2026_10_23 = [
   "marketing-brain",
@@ -43,6 +44,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Tracked short links for YouTube descriptions (oleg.ae/yt-ig and so on), see short-links.ts.
+      ...shortLinks.map(({ path, to }) => ({ source: path, destination: to, permanent: false })),
       {
         // The library page lived here for a day, was linked from the search
         // page, and is in the sitemap Google already fetched. Permanent, so the

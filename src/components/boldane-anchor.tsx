@@ -1,19 +1,20 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
+import { boldaneUrl, firstTouch } from "@/lib/attribution";
 
-/** Every link from oleg.ae to boldane.com goes through this, so Plausible on boldane.com
- *  sees which page sent the visitor: source oleg.ae, medium referral, campaign discovery-call,
- *  content = the page it was clicked on ("home" for the front page). */
-export function boldaneUrl(pathname: string) {
-  const page = pathname.replace(/^\/+|\/+$/g, "").replace(/\//g, "-") || "home";
-  return `https://boldane.com/?utm_source=oleg.ae&utm_medium=referral&utm_campaign=discovery-call&utm_content=${encodeURIComponent(page)}`;
-}
+const neverChanges = () => () => {};
 
+/** Every link from oleg.ae to boldane.com goes through this, so Plausible on boldane.com sees where
+ *  the visitor originally came from, and which oleg.ae page sent them on (see lib/attribution.ts).
+ *  The server renders the page's own default, and hydration swaps in the real first touch.
+ *  No `noreferrer`: Boldane is ours, and the referrer is a second record of the hop. */
 export function BoldaneAnchor({ className, children }: { className?: string; children: React.ReactNode }) {
   const pathname = usePathname() ?? "/";
+  const touch = useSyncExternalStore(neverChanges, firstTouch, () => null);
   return (
-    <a href={boldaneUrl(pathname)} target="_blank" rel="noopener noreferrer" className={className}>
+    <a href={boldaneUrl(pathname, touch)} target="_blank" rel="noopener" className={className}>
       {children}
     </a>
   );

@@ -354,6 +354,22 @@ Resource pages follow a shared pattern: minimal header, a **two-column hero** (l
 
 ---
 
+## Attribution: where visitors come from, carried on to Boldane (2026-11-05)
+
+**The rule: the original source wins.** oleg.ae is Oleg's own bridge, not a marketing channel, so someone who watched a video, opened oleg.ae and clicked to Boldane reads on boldane.com as that video, and the oleg.ae page goes in `utm_term`:
+
+`boldane.com/?utm_source=youtube&utm_medium=social&utm_campaign=discovery-call&utm_content=description-viral-instagram-reels&utm_term=oleg.ae-claude-reels`
+
+The reasoning, the sources and the tag rules are in the vault, `areas/attribution/README.md`, along with the recipe for a new video. What lives here:
+
+- **`short-links.ts`** (repo root, read by `next.config.ts`): `oleg.ae/yt-xx`, 307 to the page with four tags (`youtube / social / free-guide / description-<video>`). One line per link, slugs at most 5 characters with no digits. A video uses the same slug here and in boldane-site's `short-links.ts`, with the same `utm_content`. Tests 120 and the `short links follow the rules` unit test cover them.
+- **`src/lib/attribution.ts`**: `fromLanding` reads a page load (tags first, then the referrer, else `oleg.ae / referral / <entry page>`), `chooseFirstTouch` keeps the first known source for 30 days and lets a real source replace a direct visit but never the reverse, `boldaneUrl` builds the link. Only `utm_source` counts as a tag, because only `utm_` tags leave the address bar. Stored in `localStorage` as `first-touch`: labels only, no identifier, sent nowhere until the visitor clicks through. Plausible stays cookieless.
+- **`BoldaneAnchor`**: the only way this site links to boldane.com (a unit test fails on a raw `href`). The server renders the page's own default so crawlers and no-JS visitors still get a tagged link, and hydration swaps in the first touch. It has `rel="noopener"` without `noreferrer` on purpose, because the referrer is a second record of the hop.
+- **`src/components/plausible.tsx`**: `firstTouch()` runs on mount, before anything rewrites the address. `transformRequest` then does two things. Once a pageview is on its way it takes the tags out of the address bar (`history.replaceState`, not a new pageview; Plausible keeps them for the whole visit), so a copied link does not credit the video with whoever opens it next. And it takes them out of click events, so "Outbound Link: Click" has one row per destination, not one per source.
+- **Testing the tracker needs a real-looking host.** It ignores `localhost` and `navigator.webdriver`, which is why `tests/e2e/attribution-tracker.spec.ts` (128) maps `attribution.test` to 127.0.0.1, sets `window.__plausible` and answers the events itself. The first-touch logic is in `tests/unit/attribution.test.ts` and `tests/e2e/attribution.spec.ts` (120-127).
+
+**Reading it in Plausible.** On oleg.ae: Top Sources → Campaigns (source, medium, content) shows which video sent visitors, and the goal `Clicked to Boldane` shows who went on, filterable by any of those. On boldane.com: the same Campaigns tabs, with `Term` naming the oleg.ae page (empty means they came straight from the source), and `Clicked to Calendly`. Calendly saves the tags with each booking, so a booking traces back too.
+
 ## Code-review hardening (branch `code-review-hardening`, 2026-07-23)
 
 A full-codebase review pass. Key permanent changes beyond the animation swap (Tech Stack) and test additions (Testing):
