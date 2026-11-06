@@ -61,3 +61,6 @@ reference/5sec.mov
 .env*
 public/reels/stickers/raw/
 seo_goal.md
+
+# raw Kie.ai renders for /ubs-agencies (the page serves public/ubs-agencies/*.webp)
+/scripts/ubs-agencies/raw/
