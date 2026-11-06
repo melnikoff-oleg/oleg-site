@@ -64,3 +64,4 @@ seo_goal.md
 
 # raw Kie.ai renders for /ubs-agencies (the page serves public/ubs-agencies/*.webp)
 /scripts/ubs-agencies/raw/
+__pycache__/
