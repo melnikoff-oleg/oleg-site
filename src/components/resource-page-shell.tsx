@@ -48,7 +48,7 @@ type ResourcePageShellProps = {
    * already-watched-the-video YouTube arrivals, so the fold hands them the thing
    * they clicked through for.
    */
-  repoCta?: { href: string; label?: string; icon?: ReactNode };
+  repoCta?: { href: string; label?: string; icon?: ReactNode; download?: string };
   /**
    * Keys from FIXES, rendered as a collapsed "If you get stuck" section right
    * after the setup guide. Pick only what applies to the page. See
@@ -205,6 +205,7 @@ export function ResourcePageShell({
                     <div className="mt-7 flex flex-col items-start gap-3">
                       <RepoCta
                         href={repoCta.href}
+                        download={repoCta.download}
                         label={repoCta.label}
                         icon={repoCta.icon}
                         align="start"
@@ -265,7 +266,7 @@ export function ResourcePageShell({
 
               {repoCta ? (
                 <div className="mt-8">
-                  <RepoCta href={repoCta.href} label={repoCta.label} icon={repoCta.icon} />
+                  <RepoCta href={repoCta.href} label={repoCta.label} icon={repoCta.icon} download={repoCta.download} />
                 </div>
               ) : null}
             </div>

@@ -38,6 +38,7 @@ export function RepoCta({
   icon = GITHUB_ICON,
   className,
   align = "center",
+  download,
 }: {
   href: string;
   label?: string;
@@ -49,6 +50,7 @@ export function RepoCta({
    * belongs to.
    */
   align?: "center" | "start";
+  download?: string;
 }) {
   return (
     <div
@@ -58,7 +60,7 @@ export function RepoCta({
       } ${className ?? ""}`}
     >
       <Button asChild size="lg" variant="primary">
-        <a href={href} target="_blank" rel="noopener noreferrer">
+        <a href={href} download={download} target={download ? undefined : "_blank"} rel={download ? undefined : "noopener noreferrer"}>
           {icon}
           {label}
         </a>

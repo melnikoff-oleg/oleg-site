@@ -10,18 +10,18 @@ export default function LinkedInPackagingPage() {
       slug="linkedin-packaging"
       eyebrow="Free project"
       title="Package your LinkedIn profile"
-      subhead="Banner, portrait and headline. Ten styles. One free download."
-      repoCta={{ href: DOWNLOAD, label: "Download the project", icon: DOWNLOAD_ICON }}
+      subhead="Your banner, portrait and headline. Made with Claude Code or Codex."
+      repoCta={{ href: DOWNLOAD, label: "Download the project", icon: DOWNLOAD_ICON, download: "linkedin-packaging.zip" }}
       beforeSetup={<ProfileExamples />}
       steps={[]}
       setupContent={<SetupSteps />}
       howTo={{
         name: "Set up LinkedIn Packaging",
-        description: "Download the standalone Python project, install its dependencies, add your own API keys and create a local profile package.",
+        description: "Download the project, open it in your local AI agent, and describe your profile and branding. Review and download the results from a local preview.",
         steps: [
-          { name: "Download and install", text: "Download and unzip the project. Open a terminal in its folder and run setup for your operating system. Wait for Setup complete." },
-          { name: "Add your keys", text: "Open .env, fill in your KIE_AI_API_KEY and APIFY_API_KEY, and save. The file stays private and git-ignored." },
-          { name: "Create your package", text: "Choose a style and replace your-handle with your LinkedIn username in the command. Run it and review the files in output/your-handle/ before uploading." },
+          { name: "Open the folder in your agent", text: "Download and unzip the project. Open the folder locally in Codex or Claude Code." },
+          { name: "Paste your brief", text: "Give the agent your LinkedIn profile, website, branding, factual background and photo. Ask it to handle setup and generate your packaging." },
+          { name: "Review, refine, download", text: "Open the localhost preview supplied by the agent, give feedback in the same chat, and download your upload files and editable sources." },
         ],
       }}
       jsonLd={{

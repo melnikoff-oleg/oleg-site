@@ -1,0 +1,12 @@
+{
+  "base_commit": "2386239807c91c6b6caeb54fa4e5b7290b0dda82",
+  "bytes": 57145260,
+  "credential_scan": "passed",
+  "expanded_bytes": 59472427,
+  "file_count": 323,
+  "schema_version": 1,
+  "sha256": "7940daf6559db0194e9cd17e3c6af6fc48cad1ed25f6895c4337d75a73e6b3b7",
+  "source_commit": "2386239807c91c6b6caeb54fa4e5b7290b0dda82",
+  "source_tree": "87e18cbc59ec27ee5aaab890afef1ee3f227326b",
+  "top_folder": "linkedin-packaging"
+}

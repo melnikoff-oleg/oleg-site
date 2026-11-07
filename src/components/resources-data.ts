@@ -144,7 +144,7 @@ export const RESOURCES: Resource[] = [
     slug: "linkedin-packaging",
     title: "Package Your LinkedIn Profile",
     description:
-      "A banner, portrait and headline that belong together. Real before and after examples, ten styles and a three-step setup",
+      "Download, open in Claude Code or Codex, and describe your profile. Review and download your banner, portrait and headline",
     icon: IdCard,
   },
   {

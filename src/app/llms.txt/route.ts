@@ -44,7 +44,7 @@ const SUMMARY: Record<string, string> = {
   "/claude-code-instagram":
     "Editing Instagram videos with Claude Code and Reel Studio: cost per video, how many a plan buys, and the style-first workflow.",
   "/linkedin-packaging":
-    "A standalone Python tool for a LinkedIn banner, portrait and headline: real before and after examples, ten reference styles, three setup steps, your own API keys and local desktop/mobile previews. No AI coding subscription required.",
+    "Download a LinkedIn packaging project directly, open it locally in Claude Code or Codex, and give a natural-language brief. The agent handles setup, branding, local previews, revisions and upload/editable-source downloads.",
   "/instagram-viral-pages":
     "Building a viral Instagram theme page with Claude Code and Viral Page Studio: the seven steps (idea, vibe, packaging, first reels, posting through Edits, autopilot, monetization), what it costs, the rules that make generated reels work.",
   "/claude-opus-5.5-3d":

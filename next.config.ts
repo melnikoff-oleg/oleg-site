@@ -155,6 +155,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/downloads/linkedin-packaging.zip",
+        headers: [
+          { key: "Content-Type", value: "application/zip" },
+          { key: "Content-Disposition", value: 'attachment; filename="linkedin-packaging.zip"' },
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
+      {
         // Long-lived caching for the static media served straight from public/
         // (the looping preview + poster; the hero is a hashed static import now,
         // served immutable from /_next/static) so repeat visits paint

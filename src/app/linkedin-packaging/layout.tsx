@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const title = "LinkedIn Packaging: Banner, Portrait & Headline";
-const description = "Download the LinkedIn packaging project. See real before and after examples, then create a banner, portrait and headline with a simple three-step setup.";
+const description = "Download the project directly, open it in Claude Code or Codex, and describe your profile. Review your LinkedIn packaging locally and download the finished files.";
 
 export const metadata: Metadata = {
   title,
