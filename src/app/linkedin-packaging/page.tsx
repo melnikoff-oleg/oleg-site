@@ -3,6 +3,7 @@ import { DOWNLOAD_ICON } from "@/components/repo-cta";
 import { ProfileExamples } from "./profile-examples";
 import { SetupSteps } from "./setup-steps";
 import { DOWNLOAD } from "./project";
+import { ReferenceGallery } from "./reference-gallery";
 
 export default function LinkedInPackagingPage() {
   return (
@@ -15,6 +16,7 @@ export default function LinkedInPackagingPage() {
       beforeSetup={<ProfileExamples />}
       steps={[]}
       setupContent={<SetupSteps />}
+      guide={<ReferenceGallery />}
       howTo={{
         name: "Set up LinkedIn Packaging",
         description: "Download the project, describe your profile and branding to your local AI agent, then compare all 10 styles and refine your favorite.",

@@ -11,7 +11,7 @@ Branding: [logo, colors, fonts, or use my website]
 About me: [what I do, who I help, and real results]
 Photo: [attach a clear photo]
 
-Handle setup and generate all 10 styles using my branding. Show all 10 together in a localhost preview so I can pick my favorite. Refine my choice from my feedback, then give me the banner, portrait, headline, and editable source files.`;
+Handle setup and generate all 10 styles using my branding. Show all 10 together in a localhost preview, alongside my original profile when available, so I can pick my favorite. Refine my choice from my feedback, then give me the banner, portrait, headline, and editable source files.`;
 
 export function SetupSteps() {
   return (
