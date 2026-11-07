@@ -14,8 +14,8 @@ test("One direct download leads to the agent brief and local review", async ({ p
   await expect(cta).toHaveAttribute("href", ZIP);
   await expect(cta).toHaveAttribute("download", "linkedin-packaging.zip");
   await expect(cta).not.toHaveAttribute("target", "_blank");
-  for (const number of [1, 2, 3]) await expect(page.locator(`#step-${number}`)).toBeVisible();
-  await expect(page.locator('[id^="step-"]')).toHaveCount(3);
+  for (const number of [1, 2, 3, 4]) await expect(page.locator(`#step-${number}`)).toBeVisible();
+  await expect(page.locator('[id^="step-"]')).toHaveCount(4);
   await expect(page.locator("#setup-guide")).toContainText("Claude Code");
   await expect(page.locator("#setup-guide")).toContainText("Codex");
   await expect(page.locator("#setup-guide")).toContainText("localhost");
@@ -33,6 +33,34 @@ test("One direct download leads to the agent brief and local review", async ({ p
   expect(page.url()).toContain(ROUTE);
 });
 
+test("Step two connects three providers through a private local env file", async ({ page }) => {
+  const step = page.locator("#step-2");
+  await expect(step.getByRole("heading")).toContainText("Connect your three API keys");
+  const providers = [
+    ["Kie AI", "https://kie.ai/api-key"],
+    ["Apify", "https://console.apify.com/settings/integrations"],
+    ["Firecrawl", "https://www.firecrawl.dev/app/api-keys"],
+  ];
+  for (const [name, href] of providers) {
+    const link = step.getByRole("link", { name, exact: true });
+    await expect(link).toHaveAttribute("href", href);
+    await expect(link).toHaveAttribute("target", "_blank");
+    expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+  }
+  await expect(step).toContainText("+ Create a new token");
+  await expect(step).toContainText("beside README.md");
+  await expect(step).toContainText("never on this page or in chat");
+  await expect(step.locator("input, textarea")).toHaveCount(0);
+  await expect(step.getByTestId("env-template")).toHaveText("KIE_AI_API_KEY=your_key\nAPIFY_API_KEY=your_token\nFIRECRAWL_API_KEY=your_key");
+  await page.evaluate(() => Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText: async (text: string) => { (window as unknown as { copiedSetup: string }).copiedSetup = text; } } }));
+  const setup = step.getByTestId("env-setup-prompt");
+  const text = await setup.locator("p").innerText();
+  expect(text).toContain("Create .env from .env.example");
+  expect(text).toContain("Preserve existing values");
+  await setup.getByRole("button", { name: "Copy setup prompt" }).click();
+  expect(await page.evaluate(() => (window as unknown as { copiedSetup: string }).copiedSetup)).toBe(text);
+});
+
 test("The brief copies natural-language inputs and complete delivery instructions", async ({ page }) => {
   await page.evaluate(() => {
     Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText: async (text: string) => { (window as unknown as { copiedBrief: string }).copiedBrief = text; } } });
@@ -41,7 +69,7 @@ test("The brief copies natural-language inputs and complete delivery instruction
   const text = await prompt.locator("pre").innerText();
   for (const phrase of ["LinkedIn:", "Website:", "Branding:", "About me:", "Photo:", "generate all 10 styles", "Show all 10 together", "pick my favorite", "localhost preview", "feedback", "editable source files"]) expect(text).toContain(phrase);
   expect(text).not.toMatch(/^Style:/m);
-  await expect(page.locator("#step-3")).toContainText("Compare all 10 styles");
+  await expect(page.locator("#step-4")).toContainText("Compare all 10 styles");
   await prompt.getByRole("button", { name: "Copy prompt", exact: true }).click();
   await expect(prompt.getByRole("button")).toHaveText("copied");
   expect(await page.evaluate(() => (window as unknown as { copiedBrief: string }).copiedBrief)).toBe(text);
@@ -87,7 +115,8 @@ test("Metadata and accessibility describe the same agent workflow", async ({ pag
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://www.oleg.ae/linkedin-packaging");
   const schema = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((text) => JSON.parse(text));
   const howTo = schema.find((entry) => entry["@type"] === "HowTo");
-  expect(howTo.step).toHaveLength(3);
+  expect(howTo.step).toHaveLength(4);
+  expect(howTo.step[1].name).toBe("Connect your three API keys");
   expect(JSON.stringify(howTo)).toContain("Codex");
   for (const step of howTo.step) await expect(page.locator(new URL(step.url).hash)).toHaveCount(1);
   const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();

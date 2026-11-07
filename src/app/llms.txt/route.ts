@@ -44,7 +44,7 @@ const SUMMARY: Record<string, string> = {
   "/claude-code-instagram":
     "Editing Instagram videos with Claude Code and Reel Studio: cost per video, how many a plan buys, and the style-first workflow.",
   "/linkedin-packaging":
-    "Download a LinkedIn packaging project directly and open it locally in Claude Code or Codex. One brief generates all 10 styles with your branding; compare them locally, refine your favorite, and download upload files and editable sources.",
+    "Download a LinkedIn packaging project directly and open it locally in Claude Code or Codex. Connect Kie AI, Apify and Firecrawl keys in the local .env file. One brief generates all 10 styles with your branding; compare them locally, refine your favorite, and download upload files and editable sources.",
   "/instagram-viral-pages":
     "Building a viral Instagram theme page with Claude Code and Viral Page Studio: the seven steps (idea, vibe, packaging, first reels, posting through Edits, autopilot, monetization), what it costs, the rules that make generated reels work.",
   "/claude-opus-5.5-3d":
