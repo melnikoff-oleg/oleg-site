@@ -19,14 +19,22 @@
 - Site production build, mobile/desktop interaction and download tests, visual inspection and shared CTA regression checks.
 - Push source changes, deploy site, then verify live download bytes/hash and page behavior.
 
-## Release record
+## Initial release record
 
 - Public project: `2386239807c91c6b6caeb54fa4e5b7290b0dda82`; 323 tracked files. Source tests: 260 passed, plus 14 final viewer tests after the wording change. Two credential scans passed; independent viewer audit found no remaining issues.
 - Direct project ZIP: 57,145,260 bytes, SHA-256 `7940daf6559db0194e9cd17e3c6af6fc48cad1ed25f6895c4337d75a73e6b3b7`. The adjacent JSON manifest records the exact source tree and commit.
 - Site production build and 110 unit tests passed. Shared download-CTA regression checks passed on desktop and mobile. A first-time visitor simulation visually reviewed desktop and 390px mobile; its style-preference prompt fix is included.
 - Final production page/download verification is saved with the private project release receipt. No provider requests are needed for release validation.
 
-## Sources
+## Follow-up: generate all ten first
+
+- The starting prompt requests all 10 styles together in the local viewer; it no longer asks for an upfront style choice.
+- Public agent instructions generate and visually validate a complete ten-style first round, then refine the person's selected style while preserving the other options and source files.
+- Rebuild the direct ZIP from the updated public source; verify prompt parity, all-ten discovery, mobile/desktop copy/download behavior and the deployed ZIP hash.
+
+- Updated public source: `ea473a57389c4b580a0726100151e19fdf4ffa12`. Refreshed ZIP: 57,145,887 bytes; SHA-256 `f53f88f397fae139a654d1b90b544c8567ae3ec821e76bedfe20de105574dc7e`. Website and archived README prompts match exactly.
+
+## Official references
 
 - Official Codex app documentation: https://developers.openai.com/codex/app (redirects to https://learn.chatgpt.com/docs/app; local folder and Codex chat workflow).
 - Claude Code desktop: https://code.claude.com/docs/en/desktop (local project sessions and file context).

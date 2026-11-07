@@ -1,12 +1,12 @@
 {
-  "base_commit": "2386239807c91c6b6caeb54fa4e5b7290b0dda82",
-  "bytes": 57145260,
+  "base_commit": "ea473a57389c4b580a0726100151e19fdf4ffa12",
+  "bytes": 57145887,
   "credential_scan": "passed",
-  "expanded_bytes": 59472427,
+  "expanded_bytes": 59474057,
   "file_count": 323,
   "schema_version": 1,
-  "sha256": "7940daf6559db0194e9cd17e3c6af6fc48cad1ed25f6895c4337d75a73e6b3b7",
-  "source_commit": "2386239807c91c6b6caeb54fa4e5b7290b0dda82",
-  "source_tree": "87e18cbc59ec27ee5aaab890afef1ee3f227326b",
+  "sha256": "f53f88f397fae139a654d1b90b544c8567ae3ec821e76bedfe20de105574dc7e",
+  "source_commit": "ea473a57389c4b580a0726100151e19fdf4ffa12",
+  "source_tree": "a338ce853f89474a2481f6ba5bade44ec13f4bcf",
   "top_folder": "linkedin-packaging"
 }

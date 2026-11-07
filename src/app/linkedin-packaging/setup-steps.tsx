@@ -10,9 +10,8 @@ Website: [URL, if any]
 Branding: [logo, colors, fonts, or use my website]
 About me: [what I do, who I help, and real results]
 Photo: [attach a clear photo]
-Style: [choose for me, Clare, Lara, or Charlie]
 
-Handle setup, choose a suitable style, and use my branding. Show me a localhost preview. Revise it from my feedback, then give me the banner, portrait, headline, and editable source files.`;
+Handle setup and generate all 10 styles using my branding. Show all 10 together in a localhost preview so I can pick my favorite. Refine my choice from my feedback, then give me the banner, portrait, headline, and editable source files.`;
 
 export function SetupSteps() {
   return (
@@ -34,8 +33,8 @@ export function SetupSteps() {
           </div>
         </li>
         <li id="step-3" className="surface-card scroll-mt-8 p-5 md:p-6">
-          <StepTitle number={3}>Review, refine, download</StepTitle>
-          <p className="mt-3">Open the localhost link your agent gives you. Ask for changes in the same chat. Download your upload files and editable sources from the preview.</p>
+          <StepTitle number={3}>Pick your favorite, then refine</StepTitle>
+          <p className="mt-3">Compare all 10 styles at your localhost link. Pick your favorite and request changes in the same chat. Download your upload files and editable sources from the preview.</p>
         </li>
       </ol>
       <p className="text-sm">Your agent handles setup. If a paid service is needed, it will help you add your own key privately.</p>

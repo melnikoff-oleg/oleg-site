@@ -39,7 +39,9 @@ test("The brief copies natural-language inputs and complete delivery instruction
   });
   const prompt = page.getByTestId("starter-prompt");
   const text = await prompt.locator("pre").innerText();
-  for (const phrase of ["LinkedIn:", "Website:", "Branding:", "About me:", "Photo:", "localhost preview", "feedback", "editable source files"]) expect(text).toContain(phrase);
+  for (const phrase of ["LinkedIn:", "Website:", "Branding:", "About me:", "Photo:", "generate all 10 styles", "Show all 10 together", "pick my favorite", "localhost preview", "feedback", "editable source files"]) expect(text).toContain(phrase);
+  expect(text).not.toMatch(/^Style:/m);
+  await expect(page.locator("#step-3")).toContainText("Compare all 10 styles");
   await prompt.getByRole("button", { name: "Copy prompt", exact: true }).click();
   await expect(prompt.getByRole("button")).toHaveText("copied");
   expect(await page.evaluate(() => (window as unknown as { copiedBrief: string }).copiedBrief)).toBe(text);
