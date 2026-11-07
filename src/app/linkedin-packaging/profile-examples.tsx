@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HEADLINES = {
@@ -18,9 +19,9 @@ const HEADLINES = {
 };
 
 const STYLES = [
-  { id: "clare", label: "Clare", note: "A clear promise, with room to breathe." },
-  { id: "lara", label: "Lara", note: "A wider photograph and a clear visual hierarchy." },
-  { id: "charlie", label: "Charlie", note: "A bold headline with focused supporting detail." },
+  { id: "clare", label: "Clare" },
+  { id: "lara", label: "Lara" },
+  { id: "charlie", label: "Charlie" },
 ] as const;
 
 type StyleId = (typeof STYLES)[number]["id"];
@@ -41,25 +42,26 @@ function Comparison({ person, name }: { person: "kayla" | "emily"; name: string 
       </div>
       <div className="grid items-start gap-5 md:grid-cols-2" data-testid="comparison-pair">
         <figure className="min-w-0 overflow-hidden rounded-2xl border border-hairline bg-navy-raised">
-          <figcaption className="flex flex-wrap items-center justify-between gap-2 px-4 py-3 text-sm"><span className="font-semibold text-silver">Before</span><span className="text-silver-muted">Rebuilt from saved profile</span></figcaption>
+          <figcaption className="flex flex-wrap items-center justify-between gap-2 px-4 py-3 text-sm"><span className="font-semibold text-silver">Before</span><span className="text-silver-muted">Saved profile</span></figcaption>
           <a href={`/linkedin-packaging/${person}-before.webp`} target="_blank" rel="noopener noreferrer" className="block" aria-label={`Open ${name}'s before profile at full size`}>
             <Image src={`/linkedin-packaging/${person}-before.webp`} alt={`${name}'s previous profile: original portrait and headline${person === "emily" ? ', neutral cover because no original banner was saved' : ', with original banner'}`} width={792} height={person === "emily" ? 454 : 476} sizes="(min-width: 1152px) 528px, (min-width: 768px) 46vw, 100vw" className="h-auto w-full" />
           </a>
         </figure>
         <figure id={`${person}-after`} className="min-w-0 overflow-hidden rounded-2xl border border-vivid-blue/40 bg-navy-raised">
-          <figcaption className="flex flex-wrap items-center justify-between gap-2 px-4 py-3 text-sm"><span className="font-semibold text-silver">After · {direction.label} style</span><span className="text-silver-muted">Proposed design</span></figcaption>
+          <figcaption className="px-4 py-3 text-sm font-semibold text-silver">After · {direction.label}</figcaption>
           <a href={`/linkedin-packaging/${person}-after-${style}.webp`} target="_blank" rel="noopener noreferrer" className="block" aria-label={`Open ${name}'s ${direction.label} style at full size`}>
             <Image src={`/linkedin-packaging/${person}-after-${style}.webp`} alt={`${name}'s proposed ${direction.label} style: redesigned banner, AI-edited portrait and revised headline`} width={792} height={476} sizes="(min-width: 1152px) 528px, (min-width: 768px) 46vw, 100vw" className="h-auto w-full" />
           </a>
         </figure>
       </div>
-      <div className="mt-4 rounded-xl border border-hairline bg-navy-raised px-5 py-4" aria-live="polite">
-        <p className="text-sm font-semibold text-silver-muted">After headline · {direction.label} style</p>
-        <p data-testid={`${person}-headline`} className="mt-2 text-base leading-relaxed text-silver">{HEADLINES[person][style]}</p>
-        <a href={`/linkedin-packaging/${person}-after-${style}.webp`} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 hover:text-silver">Open full-size preview ↗</a>
-      </div>
-      <p className="mt-3 text-sm text-silver-muted">{direction.note}</p>
-      {person === "emily" && <p className="mt-2 text-sm text-silver-muted">No original banner was available in Emily’s saved profile source; the before view shows a neutral cover.</p>}
+      {person === "emily" && <p className="mt-2 text-sm text-silver-muted">Before: neutral cover; original banner unavailable.</p>}
+      <details data-testid={`${person}-details`} className="group mt-3 border-b border-hairline pb-2">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-silver [&::-webkit-details-marker]:hidden">Headline &amp; full-size preview<ChevronDown aria-hidden="true" className="size-4 shrink-0 group-open:rotate-180" /></summary>
+        <div className="pb-2" aria-live="polite">
+          <p data-testid={`${person}-headline`} className="mt-2 text-base leading-relaxed text-silver">{HEADLINES[person][style]}</p>
+          <a href={`/linkedin-packaging/${person}-after-${style}.webp`} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 hover:text-silver">Open full-size preview ↗</a>
+        </div>
+      </details>
     </section>
   );
 }
@@ -69,25 +71,24 @@ export function ProfileExamples() {
     <section id="before-after" aria-labelledby="examples-title" className="pb-16 md:pb-20">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mx-auto mb-8 max-w-3xl text-center">
-          <p className="eyebrow text-[13px] text-vivid-blue">See the difference</p>
-          <h2 id="examples-title" className="mt-3 font-display text-2xl font-semibold leading-[1.15] tracking-tight text-silver md:text-3xl">Same person. A clearer first impression.</h2>
-          <p className="mt-4 text-base text-silver-muted">Kayla and Emily’s saved profiles beside three proposed directions each. The after images include AI-edited photography. These are local previews; nothing was published to LinkedIn.</p>
-          <p data-testid="example-scope" className="mt-4 rounded-xl border border-hairline bg-navy-raised px-5 py-4 text-left text-sm leading-relaxed text-silver"><strong className="font-semibold">These company-branded examples include curated customization.</strong> The quickstart creates a reviewable draft in your chosen reference’s colors and fonts. Reproducing the exact company-branded treatment is an advanced workflow.</p>
-          <a href="#setup-guide" className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 hover:text-silver">Skip to the three setup steps ↓</a>
+          <h2 id="examples-title" className="font-display text-2xl font-semibold leading-[1.15] tracking-tight text-silver md:text-3xl">Before &amp; after</h2>
+          <p data-testid="example-scope" className="mt-3 text-sm text-silver-muted">AI-edited concepts. Company branding is extra customization.</p>
+          <a href="#setup-guide" className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 hover:text-silver">Skip to setup ↓</a>
         </div>
         <Comparison person="kayla" name="Kayla Bautista" />
         <Comparison person="emily" name="Emily Wittig" />
-        <section aria-labelledby="reference-example-title" data-testid="reference-example" className="surface-card mt-10 grid items-center gap-6 p-5 md:grid-cols-2 md:p-6">
-          <div>
-            <p className="eyebrow text-xs text-vivid-blue">Reference colors + fonts</p>
-            <h3 id="reference-example-title" className="mt-3 font-display text-xl font-semibold tracking-tight text-silver">The starting style, before company customization</h3>
-            <p className="mt-3 text-sm leading-relaxed text-silver-muted">This Kayla worked example uses the default Clare reference palette and fonts. It shows the starting visual treatment, with an AI-edited portrait and a simulated LinkedIn profile. Your generated draft will need its own review.</p>
-            <a href="/linkedin-packaging/kayla-reference-clare.webp" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 hover:text-silver">Open full-size reference example ↗</a>
+        <details data-testid="reference-details" className="group mt-6 border-b border-hairline pb-3">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-sm font-semibold text-silver [&::-webkit-details-marker]:hidden">Quickstart vs. custom branding<ChevronDown aria-hidden="true" className="size-4 shrink-0 group-open:rotate-180" /></summary>
+          <div data-testid="reference-example" className="mt-4 grid items-center gap-6 pb-3 md:grid-cols-2">
+            <div className="text-sm leading-relaxed text-silver-muted">
+              <p>Quickstart uses the selected reference’s colors and fonts. These branded examples include extra customization. Shown: Clare’s default treatment.</p>
+              <p className="mt-3">Simulated profiles; nothing was published to LinkedIn.</p>
+            </div>
+            <a href="/linkedin-packaging/kayla-reference-clare.webp" target="_blank" rel="noopener noreferrer" aria-label="Open Kayla's Clare reference-palette worked example at full size" className="block min-w-0 overflow-hidden rounded-xl border border-hairline">
+              <Image src="/linkedin-packaging/kayla-reference-clare.webp" alt="Kayla worked example with Clare’s default teal and pink palette, reference fonts and AI-edited portrait" width={792} height={476} sizes="(min-width: 1152px) 500px, (min-width: 768px) 42vw, 100vw" className="h-auto w-full" />
+            </a>
           </div>
-          <a href="/linkedin-packaging/kayla-reference-clare.webp" target="_blank" rel="noopener noreferrer" aria-label="Open Kayla's Clare reference-palette worked example at full size" className="block min-w-0 overflow-hidden rounded-xl border border-hairline">
-            <Image src="/linkedin-packaging/kayla-reference-clare.webp" alt="Kayla worked example with Clare’s default teal and pink palette, reference fonts and AI-edited portrait" width={792} height={476} sizes="(min-width: 1152px) 500px, (min-width: 768px) 42vw, 100vw" className="h-auto w-full" />
-          </a>
-        </section>
+        </details>
       </div>
     </section>
   );

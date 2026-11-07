@@ -154,3 +154,9 @@ Before deployment, clarify what the visitor can reproduce: company-branded examp
 ## Cold-visitor review follow-up
 
 Before deployment, clarify what the visitor can reproduce: company-branded examples are curated and advanced, while the quickstart creates a reviewable draft using the selected reference palette/fonts. Add a visible standard-reference worked example after the comparisons, readable selected headlines and full-size links. Default comparison previews to Clare and explicitly label those controls as previews. Add a separate ten-style setup selector defaulting to `clarekitching` that updates the copied command. Add a compact visible Python/provider prerequisite checklist without changing the three-step workflow or time qualifier. Rebuild and verify default states, style selection/copy, mobile layout and all example images.
+
+## Concise revision requested by Oleg
+
+Oleg requested roughly 70% less text and optional content folded away. The revised page keeps both visual comparisons, short prerequisite/cost/custom-branding notes, and three core steps: download/install, add keys, generate. It removes the repeated written guide and FAQ; native closed disclosures hold onboarding, terminal help, readable example headlines, the reference-color example and advanced options. The preview assets and repository are unchanged.
+
+Independent rendered-page measurement (excluding shared navigation/footer and unselected menu options): 1,143 → 209 visible words, an 81.7% reduction. With every disclosure expanded: 1,195 → 403 words, a 66.3% reduction. Production build and all 10 updated desktop/mobile browser checks passed, including keyboard disclosure behavior and exact command copying. Mobile and desktop screenshots were visually inspected.

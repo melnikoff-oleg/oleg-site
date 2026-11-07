@@ -18,11 +18,19 @@ test("LinkedIn guide gives the download and proof before three visible setup ste
   for (const number of [1, 2, 3]) await expect(page.locator(`#step-${number}`)).toBeVisible();
   await expect(page.locator('[id^="step-"]')).toHaveCount(3);
   await expect(page.locator("iframe, video")).toHaveCount(0);
-  await expect(page.locator("#before-after")).toContainText("nothing was published to LinkedIn");
   await expect(page.getByTestId("example-scope")).toBeVisible();
-  await expect(page.getByTestId("example-scope")).toContainText("quickstart creates a reviewable draft");
+  await expect(page.getByTestId("example-scope")).toContainText("Company branding is extra customization");
   await expect(page.getByTestId("prerequisites")).toBeVisible();
-  await expect(page.getByTestId("prerequisites")).toContainText("python3 --version");
+  const prerequisites = page.getByTestId("prerequisites");
+  await expect(prerequisites.locator("p").first()).toBeHidden();
+  await prerequisites.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await expect(prerequisites.locator("p").first()).toBeVisible();
+  await expect(prerequisites).toContainText("python3 --version");
+  await page.keyboard.press("Enter");
+  await expect(prerequisites.locator("p").first()).toBeHidden();
+  await expect(page.getByTestId("reference-example")).toBeHidden();
+  await page.getByTestId("reference-details").locator("summary").click();
   await expect(page.getByTestId("reference-example")).toBeVisible();
   const referenceImage = page.getByTestId("reference-example").locator("img");
   await referenceImage.scrollIntoViewIfNeeded();
@@ -34,6 +42,8 @@ test("Each person's styles change independently and preserve the before image", 
     const comparison = page.getByTestId(`${person}-comparison`);
     await expect(comparison.getByRole("group", { name: /Preview styles/ })).toBeVisible();
     await expect(comparison.getByRole("button", { name: "Clare", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await expect(comparison.getByTestId(`${person}-headline`)).toBeHidden();
+    await page.getByTestId(`${person}-details`).locator("summary").click();
     const before = comparison.locator('img').first();
     const beforeSrc = await before.getAttribute("src");
     for (const style of ["Clare", "Charlie", "Lara"]) {
@@ -47,10 +57,10 @@ test("Each person's styles change independently and preserve the before image", 
       await expect(comparison.getByRole("link", { name: "Open full-size preview ↗", exact: true })).toHaveAttribute("href", `/linkedin-packaging/${person}-after-${style.toLowerCase()}.webp`);
       await expect(comparison.getByTestId(`${person}-headline`)).toHaveCSS("font-size", "16px");
       expect((await comparison.getByTestId(`${person}-headline`).innerText()).length).toBeGreaterThan(100);
-      await expect(page.getByLabel("Choose your package style")).toHaveValue("clarekitching");
+      await expect(page.getByLabel("Style", { exact: true })).toHaveValue("clarekitching");
     }
   }
-  await expect(page.getByTestId("emily-comparison")).toContainText("No original banner was available");
+  await expect(page.getByTestId("emily-comparison")).toContainText("original banner unavailable");
 });
 
 test("The OS switch changes setup, settings and run commands, and copies exact text", async ({ page }) => {
@@ -60,7 +70,7 @@ test("The OS switch changes setup, settings and run commands, and copies exact t
   });
   await expect(page.getByTestId("Setup command").locator("code")).toHaveText("bash setup.sh");
   await expect(page.getByTestId("Open settings").locator("code")).toHaveText("open -e .env");
-  const selector = page.getByLabel("Choose your package style");
+  const selector = page.getByLabel("Style", { exact: true });
   await expect(selector).toHaveValue("clarekitching");
   await expect(selector.locator("option")).toHaveCount(10);
   await expect(page.getByTestId("Create command").locator("code")).toHaveText("./package.sh --linkedin https://www.linkedin.com/in/your-handle/ --style clarekitching");
@@ -73,14 +83,14 @@ test("The OS switch changes setup, settings and run commands, and copies exact t
   await expect(page.getByTestId("prerequisites")).toContainText("py --version");
   const command = ".\\.venv\\Scripts\\python.exe -m linkedin_pack create --linkedin https://www.linkedin.com/in/your-handle/ --style clarekitching";
   await expect(page.getByTestId("Create command").locator("code")).toHaveText(command);
-  await page.getByRole("button", { name: "Copy create command", exact: true }).click();
+  await page.getByTestId("Create command").getByRole("button", { name: "Copy", exact: true }).click();
   await expect(page.getByTestId("Create command").getByRole("button")).toHaveText("copied");
   expect(await page.evaluate(() => (window as unknown as { copiedCommand: string }).copiedCommand)).toBe(command);
   await selector.selectOption("charlie-hills");
   const selectedCommand = command.replace("clarekitching", "charlie-hills");
   await expect(page.getByTestId("Create command").locator("code")).toHaveText(selectedCommand);
-  await expect(page.getByTestId("Create command").getByRole("button")).toHaveText("Copy create command");
-  await page.getByRole("button", { name: "Copy create command", exact: true }).click();
+  await expect(page.getByTestId("Create command").getByRole("button")).toHaveText("Copy");
+  await page.getByTestId("Create command").getByRole("button", { name: "Copy", exact: true }).click();
   expect(await page.evaluate(() => (window as unknown as { copiedCommand: string }).copiedCommand)).toBe(selectedCommand);
   await page.getByRole("button", { name: "Mac / Linux", exact: true }).click();
   await expect(selector).toHaveValue("charlie-hills");
