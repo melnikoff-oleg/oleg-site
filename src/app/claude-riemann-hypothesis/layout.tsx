@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Comic_Neue } from "next/font/google";
+import localFont from "next/font/local";
 import { FilmedPageOutro } from "@/components/filmed-page-outro";
 import { FontKickoff } from "@/components/font-kickoff";
 
@@ -9,18 +9,22 @@ import { FontKickoff } from "@/components/font-kickoff";
 // Excalidraw-style artwork read as drawn rather than rendered.
 // `preload: false` on both: a head preload holds Chrome's first paint until the
 // file lands, so FontKickoff in the layout below starts the downloads instead.
-const nunito = Nunito({
-  subsets: ["latin"],
+// Official, unmodified Google Fonts TTFs with OFL licenses in ./fonts. Keeping
+// these local avoids a Next 15 Google loader failure on extensionless font URLs.
+const nunito = localFont({
+  src: [
+    { path: "./fonts/Nunito-Variable.ttf", weight: "600", style: "normal" },
+    { path: "./fonts/Nunito-Variable.ttf", weight: "800", style: "normal" },
+    { path: "./fonts/Nunito-Variable.ttf", weight: "900", style: "normal" },
+  ],
   variable: "--font-nunito",
-  weight: ["600", "800", "900"],
   display: "swap",
   preload: false,
 });
 
-const comic = Comic_Neue({
-  subsets: ["latin"],
+const comic = localFont({
+  src: [{ path: "./fonts/ComicNeue-Bold.ttf", weight: "700", style: "normal" }],
   variable: "--font-comic",
-  weight: ["700"],
   display: "swap",
   preload: false,
 });
