@@ -38,6 +38,10 @@ type ResourcePageShellProps = {
   title: string;
   subhead: ReactNode;
   steps: Step[];
+  /** Visual proof or an overview placed directly after the hero. */
+  beforeSetup?: ReactNode;
+  /** Short tool guides can supply visible steps instead of the default accordion. */
+  setupContent?: ReactNode;
   /**
    * Above-the-fold hero CTA (repo-backed / app pages). Rendered before the video
    * so a skimmer meets the primary action first. Most traffic is
@@ -93,6 +97,8 @@ export function ResourcePageShell({
   title,
   subhead,
   steps,
+  beforeSetup,
+  setupContent,
   repoCta,
   troubleshooting,
   jsonLd,
@@ -266,6 +272,8 @@ export function ResourcePageShell({
           )}
         </section>
 
+        {beforeSetup}
+
         {/* Setup guide */}
         <section id="setup-guide" className="scroll-mt-8 pb-16 md:pb-20">
           <RevealGroup stagger={0.12} className="mx-auto max-w-3xl px-6">
@@ -274,7 +282,7 @@ export function ResourcePageShell({
             </h2>
 
             <div className="mt-8">
-              <Accordion items={steps} defaultOpen={0} />
+              {setupContent ?? <Accordion items={steps} defaultOpen={0} />}
             </div>
           </RevealGroup>
         </section>

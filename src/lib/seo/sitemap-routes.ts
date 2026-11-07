@@ -53,6 +53,7 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: "/claude-marketing", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
 
   // Tools and lead magnets.
+  { path: "/linkedin-packaging", lastModified: "2026-11-07", changeFrequency: "monthly", priority: GUIDE },
   { path: "/5-levels-ai", lastModified: "2026-08-15", changeFrequency: "monthly", priority: SECONDARY },
 
   // The marketing brain.

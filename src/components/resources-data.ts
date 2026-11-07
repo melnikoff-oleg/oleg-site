@@ -18,6 +18,7 @@ import {
   Sparkles,
   Box,
   Flame,
+  IdCard,
   type LucideIcon,
 } from "lucide-react";
 
@@ -138,6 +139,13 @@ export const RESOURCES: Resource[] = [
     description:
       "Reel Studio: drop in photos and a voice take, get a finished Instagram Reel. Free and local",
     icon: Scissors,
+  },
+  {
+    slug: "linkedin-packaging",
+    title: "Package Your LinkedIn Profile",
+    description:
+      "A banner, portrait and headline that belong together. Real before and after examples, ten styles and a three-step setup",
+    icon: IdCard,
   },
   {
     slug: "instagram-viral-pages",

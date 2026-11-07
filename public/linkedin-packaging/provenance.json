@@ -1,0 +1,130 @@
+{
+  "comparison_method": "Reconstructed LinkedIn-style cards, not live LinkedIn screenshots. Before uses each subject’s saved original headline and portrait; Kayla also uses her saved original banner. After uses the final company-branded package. All desktop cards remain 792 pixels wide; none are cropped or stretched.",
+  "after_media_label": "AI-edited portraits and, where present, AI-edited banner photographs. Banner composition and typography are rendered from HTML.",
+  "people": [
+    {
+      "id": "kayla",
+      "name": "Kayla Bautista",
+      "before": {
+        "file": "kayla-before.webp",
+        "bytes": 227292,
+        "sha256": "c697092eac46366110cef35808c2b058875a3cb40c4c7c6abe7e650b260342c6",
+        "width": 792,
+        "height": 476,
+        "caption": "Original saved headline, portrait and San Diego skyline banner; reconstructed profile preview."
+      },
+      "source_provenance": {
+        "profile_url": "https://www.linkedin.com/in/kaylambautista/",
+        "original_headline": "NP Digital Sr. Social Media Manager | San Diego Padres Fan Engagement | Helping Brands Boost Engagement & Brand Awareness",
+        "portrait_source": "examples/kayla-np-digital/source/portrait.png",
+        "portrait_sha256": "75b7a33f44af04b99d32f440126fb99b494a5cace3fa67168ab9b63d66daae0f",
+        "banner_source": "examples/kayla-np-digital/source/banner.jpg",
+        "banner_sha256": "b8bd3b8812b4015b98d49f921efc8094c369019cf47c17088bc92ac66d2f9229",
+        "original_banner_available": true,
+        "banner_note": "Saved original public-profile banner."
+      },
+      "after": [
+        {
+          "file": "kayla-after-clare.webp",
+          "bytes": 56276,
+          "sha256": "0581da3afe76802b8509f4605163280be4facbea6852308b8ca0cde16f5ee26b",
+          "width": 792,
+          "height": 476,
+          "style": "clarekitching",
+          "style_label": "Clare · Editorial clarity",
+          "caption": "NP Digital brand adaptation in the Clare Kitching reference composition. AI-edited portrait."
+        },
+        {
+          "file": "kayla-after-lara.webp",
+          "bytes": 84026,
+          "sha256": "34c9fcd2991aff97ff64f7c14cddc0439fa1f9ea279ad774801e745da81c7c35",
+          "width": 792,
+          "height": 476,
+          "style": "laraacostar",
+          "style_label": "Lara · Executive presence",
+          "caption": "NP Digital brand adaptation in the Lara Acosta reference composition. AI-edited portrait and banner photograph."
+        },
+        {
+          "file": "kayla-after-charlie.webp",
+          "bytes": 54418,
+          "sha256": "1036c5177b41605992a2d16164a07dceab3cff3b0061de34cc56b118da8ae8bf",
+          "width": 792,
+          "height": 476,
+          "style": "charlie-hills",
+          "style_label": "Charlie · Practical expertise",
+          "caption": "NP Digital brand adaptation in the Charlie Hills 🦩 reference composition. AI-edited portrait."
+        }
+      ]
+    },
+    {
+      "id": "emily",
+      "name": "Emily Wittig",
+      "before": {
+        "file": "emily-before.webp",
+        "bytes": 26262,
+        "sha256": "fd9789a2ff237a11540c099a4d8bafa93e8eaa795bf2ab2f7ca00079ba8a2ed0",
+        "width": 792,
+        "height": 454,
+        "caption": "Original saved headline and portrait. No original banner was available in the saved profile source; neutral cover shown."
+      },
+      "source_provenance": {
+        "profile_url": "https://www.linkedin.com/in/emily-wittig-01743856/",
+        "original_headline": "Vice President, Marketing at San Diego Padres",
+        "portrait_source": "examples/emily-padres/source/portrait.jpg",
+        "portrait_sha256": "efebae0dcac06867b4c42cada6994a0eeb83ceed522abb4ab4631cbdcefa92a9",
+        "banner_source": null,
+        "banner_sha256": null,
+        "original_banner_available": false,
+        "banner_note": "Saved profile banner_url is null and no local original banner exists; a flat neutral cover represents unavailable source media, not an invented original banner."
+      },
+      "after": [
+        {
+          "file": "emily-after-clare.webp",
+          "bytes": 58256,
+          "sha256": "6aa71a7b7ab803caed8d022b6744cccb839831d69b57e0ee53345bef3f9cc984",
+          "width": 792,
+          "height": 476,
+          "style": "clarekitching",
+          "style_label": "Clare · Editorial clarity",
+          "caption": "San Diego Padres brand adaptation in the Clare Kitching reference composition. AI-edited portrait."
+        },
+        {
+          "file": "emily-after-lara.webp",
+          "bytes": 85008,
+          "sha256": "e7176b9049c3487b20c3f54d2a270f74152fbc43f93fd32204800f9c6aa6d8f1",
+          "width": 792,
+          "height": 476,
+          "style": "laraacostar",
+          "style_label": "Lara · Executive presence",
+          "caption": "San Diego Padres brand adaptation in the Lara Acosta reference composition. AI-edited portrait and banner photograph."
+        },
+        {
+          "file": "emily-after-charlie.webp",
+          "bytes": 55794,
+          "sha256": "e1b0a052c1422a411a927140272db8fc95dc7fbed7d517cfd0fc55a0fa786397",
+          "width": 792,
+          "height": 476,
+          "style": "charlie-hills",
+          "style_label": "Charlie · Practical expertise",
+          "caption": "San Diego Padres brand adaptation in the Charlie Hills 🦩 reference composition. AI-edited portrait."
+        }
+      ]
+    }
+  ],
+  "standard_reference_example": {
+    "file": "kayla-reference-clare.webp",
+    "width": 792,
+    "height": 476,
+    "bytes": 57918,
+    "sha256": "f0c8f6cc123b7b3657b38b750eaef0beb195f3d601993a444cda57d3927dee2d",
+    "source": "examples/kayla/results/clarekitching/review-desktop.png",
+    "source_sha256": "416c43fab007db0bf2bf616d03d4fe8cd7c9cd49f0bf52a559a43e43666585c8",
+    "profile_subject": "Kayla Bautista",
+    "style": "clarekitching",
+    "reference_creator": "Clare Kitching",
+    "reference_url": "https://www.linkedin.com/in/clarekitching/",
+    "caption": "Worked example in the default Clare reference palette and fonts. AI-edited portrait; simulated LinkedIn profile.",
+    "styling_verification": "The source account and brief have no company-brand or brand-palette override. The rendered banner uses a deep teal background, pink highlight and portrait backdrop, and DM Serif Display headline with Inter supporting text.",
+    "method": "Lossless WebP format conversion of the existing completed example; exact source dimensions and pixels retained. This is a worked example, not a guarantee of untouched single-command output."
+  }
+}

@@ -27,7 +27,7 @@ const SPECS: Spec[] = [
   { route: "/claude-cowork-outreach", href: /claude\.com\/download/, label: /download claude cowork/i },
   { route: "/claude-social-growth", href: /claude\.com\/claude-code/, label: /get claude code/i },
   { route: "/claude-code-instagram", href: /github\.com\/melnikoff-oleg\/reel-studio/, label: /github/i },
-  { route: "/instagram-viral-pages", href: /github\.com\/melnikoff-oleg\/instagram-viral-pages/, label: /github/i },
+  { route: "/instagram-viral-pages", href: /github\.com\/melnikoff-oleg\/instagram-viral-pages/, label: /github/i, hasVideo: false },
   // No video of its own: the CTA must sit above the setup guide instead.
   { route: "/claude-opus-5.5-3d", href: /github\.com\/elvarofficial\/teardown/, label: /github/i, hasVideo: false },
   { route: "/claude-twitter", href: /github\.com\/melnikoff-oleg\/x-ai/, label: /github/i },

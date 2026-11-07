@@ -38,6 +38,7 @@ export const ROUTES = [
   "/5-levels-ai",
   "/claude-code-instagram",
   "/instagram-viral-pages",
+  "/linkedin-packaging",
   "/claude-opus-5.5-3d",
   // A feed, not a guide: shell + footer, no guide contract.
   "/viral-tweets",
@@ -63,6 +64,8 @@ export const SHELL_ROUTES = ROUTES.filter((r) => !BARE_ROUTES.includes(r));
 // and the bare search).
 export const FOOTER_ROUTES = SHELL_ROUTES.filter((r) => r !== "/");
 
+// /linkedin-packaging is intentionally a short, three-step tool guide; its
+// own spec checks that contract without the legacy long-article word floor.
 // The routes that carry a full written guide: the video's content as a readable
 // article, so the page answers the query without the video. guide.spec.ts holds
 // the contract they all have to satisfy.
