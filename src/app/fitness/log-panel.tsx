@@ -123,7 +123,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
     if (rang.current) return;
     rang.current = true;
     try {
-      navigator.vibrate?.([250, 120, 250, 120, 400]);
+      navigator.vibrate?.([120, 80, 120]);
     } catch {
       /* no vibration on this device */
     }
@@ -137,15 +137,15 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
           o.type = "sine";
           o.frequency.value = freq;
           g.gain.setValueAtTime(0.0001, ctx.currentTime + at);
-          g.gain.exponentialRampToValueAtTime(0.5, ctx.currentTime + at + 0.02);
-          g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + at + 0.35);
+          g.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + at + 0.02);
+          g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + at + 0.25);
           o.connect(g).connect(ctx.destination);
           o.start(ctx.currentTime + at);
-          o.stop(ctx.currentTime + at + 0.4);
+          o.stop(ctx.currentTime + at + 0.3);
         };
-        beep(0, 880);
-        beep(0.45, 880);
-        beep(0.9, 1175);
+        // Two soft, short tones, like a quiet doorbell.
+        beep(0, 660);
+        beep(0.3, 880);
       } catch {
         /* audio blocked */
       }
@@ -306,7 +306,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
         note,
       };
     }
-    setStatus("Saving…");
+    setStatus("Sending…");
     try {
       const res = await fetch("/api/fitness/log", {
         method: "POST",
@@ -321,12 +321,14 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
       }
       if (!res.ok) throw new Error();
       const t = new Date();
-      setStatus(`Saved ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`);
+      setStatus(
+        `On the server, ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`,
+      );
     } catch {
       // Put it back for the next try.
       for (const k of setKeys) dirty.current.sets.add(k);
       if (sendSession) dirty.current.session = true;
-      setStatus("Not saved yet, kept on the phone");
+      setStatus(`On the phone only, ${dirty.current.sets.size} set(s) waiting for signal`);
     }
   }, [key, date, dayId, entries, exercises, startedAt, finishedAt, note]);
 
@@ -463,7 +465,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <span className="mr-1 font-body text-xs text-silver-muted">rest</span>
-          {[60, 90, 120, 180].map((sec) => (
+          {[5, 60, 90, 120, 180].map((sec) => (
             <button
               key={sec}
               type="button"
