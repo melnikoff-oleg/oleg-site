@@ -57,6 +57,57 @@ function fmt(ms: number): string {
   return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
+/**
+ * The rest chime as a small WAV file in a data URI: two soft short tones. It is
+ * played through an <audio> element, not the Web Audio API, because iOS treats a
+ * media element as playback and lets it sound with the ring/silent switch on,
+ * while it mutes Web Audio in silent mode.
+ */
+function chimeDataUri(): string {
+  const rate = 22050;
+  const tones: [number, number, number][] = [
+    [660, 0, 0.28],
+    [880, 0.3, 0.28],
+  ];
+  const length = Math.ceil(rate * 0.65);
+  const pcm = new Int16Array(length);
+  for (const [freq, start, dur] of tones) {
+    const s0 = Math.floor(start * rate);
+    const n = Math.floor(dur * rate);
+    for (let i = 0; i < n; i++) {
+      const t = i / rate;
+      const env = Math.min(1, t / 0.02) * Math.exp(-t * 9);
+      const v = Math.sin(2 * Math.PI * freq * t) * env * 0.35;
+      pcm[s0 + i] += Math.round(v * 32767);
+    }
+  }
+  const buf = new ArrayBuffer(44 + pcm.length * 2);
+  const dv = new DataView(buf);
+  const str = (o: number, v: string) => {
+    for (let i = 0; i < v.length; i++) dv.setUint8(o + i, v.charCodeAt(i));
+  };
+  str(0, "RIFF");
+  dv.setUint32(4, 36 + pcm.length * 2, true);
+  str(8, "WAVE");
+  str(12, "fmt ");
+  dv.setUint32(16, 16, true);
+  dv.setUint16(20, 1, true);
+  dv.setUint16(22, 1, true);
+  dv.setUint32(24, rate, true);
+  dv.setUint32(28, rate * 2, true);
+  dv.setUint16(32, 2, true);
+  dv.setUint16(34, 16, true);
+  str(36, "data");
+  dv.setUint32(40, pcm.length * 2, true);
+  new Int16Array(buf, 44).set(pcm);
+  let bin = "";
+  const bytes = new Uint8Array(buf);
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  }
+  return `data:audio/wav;base64,${btoa(bin)}`;
+}
+
 function readLS<T>(key: string, fallback: T): T {
   try {
     const v = localStorage.getItem(key);
@@ -91,7 +142,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
   // Rest timer between sets: when it ends (ms since epoch), and how long it was set for.
   const [restEnd, setRestEnd] = useState<number | null>(null);
   const [restLen, setRestLen] = useState<number>(0);
-  const audio = useRef<AudioContext | null>(null);
+  const audio = useRef<HTMLAudioElement | null>(null);
   const rang = useRef(false);
 
   // Only today's instance wakes up.
@@ -127,25 +178,11 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
     } catch {
       /* no vibration on this device */
     }
-    const ctx = audio.current;
-    if (ctx) {
+    const el = audio.current;
+    if (el) {
       try {
-        if (ctx.state === "suspended") void ctx.resume();
-        const beep = (at: number, freq: number) => {
-          const o = ctx.createOscillator();
-          const g = ctx.createGain();
-          o.type = "sine";
-          o.frequency.value = freq;
-          g.gain.setValueAtTime(0.0001, ctx.currentTime + at);
-          g.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + at + 0.02);
-          g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + at + 0.25);
-          o.connect(g).connect(ctx.destination);
-          o.start(ctx.currentTime + at);
-          o.stop(ctx.currentTime + at + 0.3);
-        };
-        // Two soft, short tones, like a quiet doorbell.
-        beep(0, 660);
-        beep(0.3, 880);
+        el.currentTime = 0;
+        void el.play();
       } catch {
         /* audio blocked */
       }
@@ -153,14 +190,28 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
   }, [active, now, restEnd]);
 
   const startRest = (seconds: number) => {
-    try {
-      type AC = typeof AudioContext;
-      const Ctor: AC | undefined =
-        window.AudioContext ?? (window as unknown as { webkitAudioContext?: AC }).webkitAudioContext;
-      if (!audio.current && Ctor) audio.current = new Ctor();
-      if (audio.current?.state === "suspended") void audio.current.resume();
-    } catch {
-      /* no audio */
+    // iOS allows a media element to play later only after it has played once
+    // inside a tap. So on the first tap it starts, and is stopped straight away:
+    // the chime's 20 ms fade-in keeps that inaudible.
+    if (!audio.current) {
+      try {
+        const el = new Audio(chimeDataUri());
+        el.preload = "auto";
+        el.setAttribute("playsinline", "");
+        audio.current = el;
+        const p = el.play();
+        if (p) {
+          p.then(() => {
+            el.pause();
+            el.currentTime = 0;
+          }).catch(() => {
+            /* will try again on the next tap */
+            audio.current = null;
+          });
+        }
+      } catch {
+        /* no audio */
+      }
     }
     const end = Date.now() + seconds * 1000;
     rang.current = false;
