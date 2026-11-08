@@ -516,7 +516,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
           <span className="mr-1 font-body text-xs text-silver-muted">rest</span>
-          {[5, 60, 90, 120, 180].map((sec) => (
+          {[60, 90, 120, 180].map((sec) => (
             <button
               key={sec}
               type="button"
