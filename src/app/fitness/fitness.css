@@ -59,3 +59,47 @@ html[data-today="sat"] .fit-today[data-day="sat"] {
     margin-left: 0;
   }
 }
+
+/* The in-gym log panel (log-panel.tsx): big tap targets, numeric inputs that are
+   easy to hit mid-set, and two button styles. */
+.fit-input {
+  width: 100%;
+  min-height: 2.75rem;
+  border: 1px solid var(--color-hairline, rgba(208, 214, 224, 0.15));
+  border-radius: 0.5rem;
+  background: var(--color-navy);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  font-size: 16px; /* 16px keeps iOS from zooming the page on focus */
+  font-variant-numeric: tabular-nums;
+}
+.fit-input::placeholder {
+  color: var(--color-silver-muted);
+  opacity: 0.6;
+}
+.fit-input:focus {
+  outline: 2px solid var(--color-vivid-blue);
+  outline-offset: 1px;
+}
+.fit-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  border: 1px solid var(--color-hairline, rgba(208, 214, 224, 0.15));
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-silver);
+  background: transparent;
+  cursor: pointer;
+}
+.fit-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.fit-btn-primary {
+  background: var(--color-vivid-blue);
+  border-color: var(--color-vivid-blue);
+  color: #fff;
+}

@@ -51,6 +51,109 @@ export const HOW = {
     ],
     tip: "Stop at straight, never bend backwards at the top. Straight back the whole way, the movement is from the hips.",
   },
+  levatorShrug: {
+    title: "Levator scapulae shrug (Kjetil Larsen)",
+    steps: [
+      "Stand tall with a dumbbell in each hand. Pull your elbows back a little and bend your wrists back, so the weight hangs behind the line of your body.",
+      "Make your neck long: think of the string pulling the top of your head up. Don't tuck the chin.",
+      "Shrug the shoulders up and slightly forward, as if lifting them toward your ears and your face. Pull with the shoulders, not with the wrists or arms.",
+      "Hold a second at the top, lower slowly. One set, as many clean reps as you can before the form goes.",
+    ],
+    tip: "Heavy is right here, this muscle is strong. The movement is up and forward, not back and down like a normal shrug. Twice a week at most, one set.",
+  },
+  headUp: {
+    title: "Head-up against the hands (Kjetil Larsen)",
+    steps: [
+      "Sit or stand with a long neck, eyes level. Put the heels of both hands on your forehead.",
+      "Press very lightly with the hands, and move the head up against them: a tiny lift, as if growing taller, not a nod.",
+      "The effort is minimal. If your jaw, neck or shoulders clench, you're pushing too hard. Breathe.",
+      "Hold 2-3 seconds, release, repeat until the small muscles at the front of the neck tire. One set.",
+    ],
+    tip: "This replaces the chin tucks. Lengthen, don't tuck: the chin stays where it is, the crown goes up.",
+  },
+  scapPullUps: {
+    steps: [
+      "Hang from the bar with straight arms, shoulders relaxed up by the ears.",
+      "Without bending the elbows, pull the shoulder blades down and together so your body rises a few centimetres.",
+      "Hold a second, then let the shoulders rise again. Slow, controlled.",
+    ],
+    tip: "Arms stay straight. This wakes up the lats and lower traps before pull-ups.",
+  },
+  lightRow: {
+    steps: [
+      "Set a light weight on the row machine or take a light band.",
+      "Row slowly, squeezing the shoulder blades together at the end of each rep, pause a second.",
+      "Fifteen easy reps, no straining.",
+    ],
+    tip: "A warm-up, not a set. Feel the upper back switch on.",
+  },
+  armCircles: {
+    steps: [
+      "Stand with arms out to the sides at shoulder height.",
+      "Make small circles forward for 10, then backward for 10; then bigger circles, 10 each way.",
+      "Finish with 10 slow shoulder rolls backward.",
+    ],
+    tip: "Blood into the shoulders before pressing. Keep the neck long.",
+  },
+  legSwings: {
+    steps: [
+      "Hold a rack or a wall with one hand. Swing the outside leg forward and back, 10 times, growing the range gradually.",
+      "Turn to face the wall and swing the same leg side to side across the body, 10 times.",
+      "Switch legs.",
+    ],
+    tip: "Loose, relaxed swings. This is to open the hips, not a stretch to hold.",
+  },
+  airSquat: {
+    steps: [
+      "Feet shoulder-width, toes slightly out, arms in front.",
+      "Sit down as deep as you comfortably can, knees tracking over the toes, heels down.",
+      "Stand up, squeeze the glutes. 10 slow reps, then 5 slow lunges per leg stepping forward.",
+    ],
+    tip: "Slow. The ankles and hips should feel warm before the bar goes on.",
+  },
+  quadStretch: {
+    steps: [
+      "Stand on one leg, hold something with one hand. Grab the other ankle behind you.",
+      "Pull the heel to the glute, knees together, hips pushed slightly forward. Stand tall.",
+      "Hold 30 s, switch.",
+    ],
+    tip: "Keep the knees next to each other. Push the hip forward for more stretch, don't pull the heel harder.",
+  },
+  gluteStretch: {
+    steps: [
+      "Lie on your back, cross one ankle over the opposite knee, making a figure 4.",
+      "Reach through and pull the bottom thigh toward your chest until you feel the outer hip of the crossed leg.",
+      "Hold 30 s, switch.",
+    ],
+    tip: "Keep the head and shoulders on the floor.",
+  },
+  calfStretch: {
+    steps: [
+      "Hands on a wall, one leg back with the heel down, knee straight.",
+      "Lean in until the calf of the back leg stretches. Hold 30 s.",
+      "Bend the back knee slightly and hold another 20 s for the lower calf. Switch legs.",
+    ],
+  },
+  tricepsStretch: {
+    steps: [
+      "Raise one arm overhead, bend the elbow so the hand drops behind the neck.",
+      "With the other hand, gently pull the elbow toward the midline and down. Hold 30 s, switch.",
+    ],
+    tip: "Stay tall, don't let the ribs flare.",
+  },
+  bicepsStretch: {
+    steps: [
+      "Stand sideways to a wall or post, place the palm on it at shoulder height, fingers back.",
+      "Turn the body slowly away from the wall until the biceps and the inside of the forearm stretch. Hold 30 s, switch.",
+    ],
+    tip: "Small turns. A pull along the front of the arm, nothing in the shoulder joint.",
+  },
+  shoulderStretch: {
+    steps: [
+      "Bring one arm straight across the chest, hold it above the elbow with the other hand.",
+      "Pull gently toward the chest until the back of the shoulder stretches. Hold 30 s, switch.",
+    ],
+  },
   facePull: {
     steps: [
       "Set the cable a little above face height and attach a rope.",
