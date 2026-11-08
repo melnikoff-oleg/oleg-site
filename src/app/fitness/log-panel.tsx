@@ -324,6 +324,12 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
     return m;
   }, [last]);
 
+  /** Whether last time has any set for this exercise and movement; without one the "last time" column is hidden. */
+  const hasLast = (ei: number, mi: number) => {
+    for (const k of lastByKey.keys()) if (k.startsWith(`${ei}.${mi}.`)) return true;
+    return false;
+  };
+
   if (!active) return null;
 
   const elapsed = startedAt ? (finishedAt ?? now) - startedAt : 0;
@@ -437,11 +443,17 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
                 {ex.movements.length > 1 ? (
                   <p className="mb-1.5 font-body text-sm font-semibold text-silver">{mv}</p>
                 ) : null}
-                <div className="grid grid-cols-[2.5rem_1fr_1fr_auto] items-center gap-x-2 gap-y-2 font-body text-sm">
+                <div
+                  className={`grid items-center gap-x-2 gap-y-2 font-body text-sm ${
+                    hasLast(ei, mi) ? "grid-cols-[2.5rem_1fr_1fr_auto]" : "grid-cols-[2.5rem_1fr_1fr]"
+                  }`}
+                >
                   <span className="text-xs text-silver-muted">set</span>
                   <span className="text-xs text-silver-muted">{ex.weight ? "kg" : ""}</span>
                   <span className="text-xs text-silver-muted">{ex.unit === "reps" ? "reps" : ex.unit === "s" ? "seconds" : "minutes"}</span>
-                  <span className="text-xs text-silver-muted">last</span>
+                  {hasLast(ei, mi) ? (
+                    <span className="text-xs text-silver-muted">last time{last ? `, ${last.date.slice(5).replace("-", "/")}` : ""}</span>
+                  ) : null}
                   {Array.from({ length: ex.sets }, (_, si) => {
                     const k = `${ei}.${mi}.${si}`;
                     const e = entries[k] ?? { weight: "", reps: "" };
@@ -456,7 +468,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
                         reps={e.reps}
                         weightPlaceholder={prevWeight || (l?.weight != null ? String(l.weight) : "")}
                         repsPlaceholder={l?.reps != null ? String(l.reps) : ""}
-                        last={l ? `${l.weight != null ? `${l.weight}×` : ""}${l.reps ?? ""}` : ""}
+                        last={hasLast(ei, mi) ? (l ? `${l.weight != null ? `${l.weight}×` : ""}${l.reps ?? ""}` : "–") : null}
                         onWeight={(v) => update(k, "weight", v)}
                         onReps={(v) => update(k, "reps", v)}
                       />
@@ -526,7 +538,7 @@ function FragmentRow({
   reps: string;
   weightPlaceholder: string;
   repsPlaceholder: string;
-  last: string;
+  last: string | null;
   onWeight: (v: string) => void;
   onReps: (v: string) => void;
 }) {
@@ -557,7 +569,9 @@ function FragmentRow({
         className="fit-input"
         aria-label={`set ${n} reps`}
       />
-      <span className="min-w-10 text-right text-xs tabular-nums text-silver-muted">{last}</span>
+      {last !== null ? (
+        <span className="min-w-10 text-right text-xs tabular-nums text-silver-muted">{last}</span>
+      ) : null}
     </>
   );
 }
