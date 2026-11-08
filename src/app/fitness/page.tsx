@@ -1104,6 +1104,45 @@ export default function FitnessPage() {
 
 
         <div className="offscreen-lazy mx-auto flex max-w-3xl flex-col gap-4 px-6 pb-16 md:pb-20">
+          <Fold
+            id="posture"
+            eyebrow="Posture"
+            title="Two exercises and three habits"
+          >
+            <div className="prose-guide">
+              <p>
+                From Bryan Johnson&apos;s posture video, built with the corrective
+                exercise specialist Kjetil Larsen. The two strength exercises are
+                at the end of Tuesday and Friday, one set each to fatigue.
+                Larsen&apos;s limit is twice a week, so they don&apos;t go anywhere
+                else. They replace the chin tucks, which Larsen considers
+                counterproductive: the cue is a long neck with the crown going
+                up, never the chin going back.
+              </p>
+              <ul>
+                <li>
+                  <strong>Levator scapulae shrug</strong> with dumbbells: elbows
+                  back, wrists back, neck long, shoulders up and slightly
+                  forward. Pull with the shoulders, not the wrists. Heavy is
+                  right.
+                </li>
+                <li>
+                  <strong>Head-up against the hands:</strong> heels of the hands
+                  on the forehead, light pressure, the head lifts a tiny bit
+                  against them. Minimal effort, nothing clenches.
+                </li>
+              </ul>
+              <p>
+                <strong>Habits, all day.</strong> Imagine a string through the
+                spine pulling the top of the head straight up; that&apos;s the
+                position to come back to. Phone at eye level: looking down into
+                your lap is the single worst input. Move every five minutes when
+                sitting: a lunge, a kneel, arms overhead, any stretch, then sit
+                back down tall. Expect soreness in muscles you&apos;ve never felt
+                for the first weeks.
+              </p>
+            </div>
+          </Fold>
           <h2
             id="workouts"
             className="eyebrow mt-6 scroll-mt-24 font-body text-[13px] text-vivid-blue"
