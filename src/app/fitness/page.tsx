@@ -532,7 +532,7 @@ const WORKOUTS: Workout[] = [
       POSTURE_LARSEN,
     ],
     stretch: STRETCH_PULL,
-    extra: <p>Wrist curls and the farmer&apos;s walk moved to Sunday: they didn&apos;t fit the 90 minutes here.</p>,
+    extra: <p>Wrist curls moved to Sunday and the farmer&apos;s walk is out: they didn&apos;t fit the 90 minutes here.</p>,
   },
   {
     id: "sat",
@@ -621,20 +621,19 @@ const WORKOUTS: Workout[] = [
     id: "sun",
     day: "Sunday",
     title: "Cardio + abs + forearms + stretch",
-    focus: "incline walk, ab circuit, forearms, dead hang, long stretch",
+    focus: "incline walk, ab circuit, forearms, dead hang, long stretch. The 12-minute walk is the first 10 of the 40 minutes of cardio, so the treadmill is 30.",
     lastDate: "Nov 1",
     nextDate: "Nov 8",
     timeline: [
       "0:00 walk, 12 min",
       "0:12 straight onto the treadmill, 30 min",
-      "0:42 abs circuit",
-      "0:54 forearm superset",
-      "1:02 farmer's walk",
-      "1:08 dead hang",
-      "1:12 long stretch",
-      "1:30 done",
+      "0:42 abs circuit, 3 rounds",
+      "0:54 forearm superset, 3 rounds",
+      "1:02 dead hang",
+      "1:06 long stretch",
+      "1:24 done, 6 min spare",
     ],
-    marks: { warmup: 12, work: 12, stretch: 72, end: 90 },
+    marks: { warmup: 12, work: 12, stretch: 66, end: 90 },
     warmup: [{ text: "the walk to the gym, 12 min, then straight onto the treadmill: no other warm-up today", how: HOW.walk }],
     exercises: [
       {
@@ -667,23 +666,12 @@ const WORKOUTS: Workout[] = [
         log: { movements: ["Wrist curl", "Wrist extension"] },
       },
       {
-        name: "Farmer's walk with dumbbells or kettlebells",
-        img: "progulka-fermera",
-        how: HOW.farmer,
-        sets: "3×40 s",
-        start: "2×24 kg",
-        rest: "90 s",
-        note: "Moved here from Friday.",
-        micro: { goal: "not done yet. Write down the weight and seconds as the baseline" },
-        log: { unit: "s" },
-      },
-      {
         name: "Dead hang",
         img: "vis-na-turnike",
         how: HOW.hang,
         sets: "2× to failure",
         rest: "90 s",
-        note: "Moved here from Tuesday too, so this is the one place it lives now.",
+        note: "Moved here from Tuesday, so this is the one place it lives now. The farmer's walk is out: the forearm superset and the hang cover grip, and the 90 minutes didn't fit it.",
         micro: { was: "1:10, 1:10", goal: "1:15, 1:10", gain: "+4%" },
         log: { unit: "s", weight: false },
       },
@@ -1320,8 +1308,8 @@ export default function FitnessPage() {
               </p>
               <p>
                 <strong>What was cut to fit.</strong> Chest-supported row,
-                deadlift and one-arm row went from 4 sets to 3. The dead hang,
-                wrist curls and farmer&apos;s walk moved to Sunday. If a day still
+                deadlift and one-arm row went from 4 sets to 3. The dead hang and
+                wrist curls moved to Sunday, the farmer&apos;s walk is out. If a day still
                 runs late, the last isolation exercise goes, never the stretch.
               </p>
               <p>

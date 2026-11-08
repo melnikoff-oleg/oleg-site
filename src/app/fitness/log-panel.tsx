@@ -88,6 +88,11 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
   const dirty = useRef<{ sets: Set<string>; session: boolean }>({ sets: new Set(), session: false });
   const timer = useRef<number | null>(null);
   const wakeLock = useRef<{ release: () => Promise<void> } | null>(null);
+  // Rest timer between sets: when it ends (ms since epoch), and how long it was set for.
+  const [restEnd, setRestEnd] = useState<number | null>(null);
+  const [restLen, setRestLen] = useState<number>(0);
+  const audio = useRef<AudioContext | null>(null);
+  const rang = useRef(false);
 
   // Only today's instance wakes up.
   useEffect(() => {
@@ -100,7 +105,74 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
     setNote(readLS<string>(`fit:note:${d}`, ""));
     setStartedAt(readLS<number | null>(`fit:start:${d}`, null));
     setFinishedAt(readLS<number | null>(`fit:finish:${d}`, null));
+    const r = readLS<{ end: number; len: number } | null>("fit:rest", null);
+    if (r && r.end > Date.now()) {
+      setRestEnd(r.end);
+      setRestLen(r.len);
+    }
   }, [dayId]);
+
+  // Ring once when the rest runs out: a vibration and a short beep. The audio
+  // context is created on the button tap, which is what iOS needs to allow sound.
+  useEffect(() => {
+    if (!active || restEnd == null) return;
+    if (now < restEnd) {
+      rang.current = false;
+      return;
+    }
+    if (rang.current) return;
+    rang.current = true;
+    try {
+      navigator.vibrate?.([250, 120, 250, 120, 400]);
+    } catch {
+      /* no vibration on this device */
+    }
+    const ctx = audio.current;
+    if (ctx) {
+      try {
+        if (ctx.state === "suspended") void ctx.resume();
+        const beep = (at: number, freq: number) => {
+          const o = ctx.createOscillator();
+          const g = ctx.createGain();
+          o.type = "sine";
+          o.frequency.value = freq;
+          g.gain.setValueAtTime(0.0001, ctx.currentTime + at);
+          g.gain.exponentialRampToValueAtTime(0.5, ctx.currentTime + at + 0.02);
+          g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + at + 0.35);
+          o.connect(g).connect(ctx.destination);
+          o.start(ctx.currentTime + at);
+          o.stop(ctx.currentTime + at + 0.4);
+        };
+        beep(0, 880);
+        beep(0.45, 880);
+        beep(0.9, 1175);
+      } catch {
+        /* audio blocked */
+      }
+    }
+  }, [active, now, restEnd]);
+
+  const startRest = (seconds: number) => {
+    try {
+      type AC = typeof AudioContext;
+      const Ctor: AC | undefined =
+        window.AudioContext ?? (window as unknown as { webkitAudioContext?: AC }).webkitAudioContext;
+      if (!audio.current && Ctor) audio.current = new Ctor();
+      if (audio.current?.state === "suspended") void audio.current.resume();
+    } catch {
+      /* no audio */
+    }
+    const end = Date.now() + seconds * 1000;
+    rang.current = false;
+    setRestEnd(end);
+    setRestLen(seconds);
+    setNow(Date.now());
+    writeLS("fit:rest", { end, len: seconds });
+  };
+  const stopRest = () => {
+    setRestEnd(null);
+    writeLS("fit:rest", null);
+  };
 
   // Pull what the server has (this device may be fresh) and last time's numbers.
   useEffect(() => {
@@ -353,18 +425,32 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
 
   return (
     <div className="fit-log mt-6 flex flex-col gap-5">
-      {/* The clock */}
-      <div className="rounded-xl border border-hairline bg-vivid-blue/5 px-4 py-4">
+      {/* The clock and the rest timer, pinned to the top while you scroll the sets */}
+      <div className="fit-clock sticky top-0 z-10 -mx-6 border-y border-hairline bg-navy-raised px-6 py-3 md:-mx-8 md:px-8">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
           <p className="eyebrow font-body text-[13px] text-vivid-blue">90 min</p>
           <p className="font-body text-sm text-silver-muted">{phase}</p>
         </div>
-        <p
-          className={`mt-1 font-display text-4xl font-semibold tabular-nums tracking-tight ${over ? "text-red-400" : "text-white"}`}
-          aria-live="off"
-        >
-          {fmt(elapsed)}
-        </p>
+        <div className="mt-1 flex items-end justify-between gap-4">
+          <p
+            className={`font-display text-3xl font-semibold tabular-nums tracking-tight ${over ? "text-red-400" : "text-white"}`}
+            aria-live="off"
+          >
+            {fmt(elapsed)}
+          </p>
+          {restEnd != null ? (
+            <button
+              type="button"
+              onClick={stopRest}
+              className={`font-display text-3xl font-semibold tabular-nums tracking-tight ${
+                now >= restEnd ? "text-red-400" : "text-vivid-blue"
+              }`}
+              aria-label="stop the rest timer"
+            >
+              {now >= restEnd ? "GO" : fmt(restEnd - now).replace(/^0:/, "")}
+            </button>
+          ) : null}
+        </div>
         <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-navy">
           <div
             className={`h-full ${over ? "bg-red-400" : "bg-vivid-blue"}`}
@@ -375,6 +461,19 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
           0:{String(marks.warmup).padStart(2, "0")} warm-up · 0:{String(marks.work).padStart(2, "0")} first exercise · 1:
           {String(marks.stretch - 60).padStart(2, "0")} stretch · 1:30 done
         </p>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span className="mr-1 font-body text-xs text-silver-muted">rest</span>
+          {[60, 90, 120, 180].map((sec) => (
+            <button
+              key={sec}
+              type="button"
+              onClick={() => startRest(sec)}
+              className={`fit-btn ${restEnd != null && restLen === sec && now < restEnd ? "fit-btn-primary" : ""}`}
+            >
+              {sec < 120 ? `${sec} s` : `${sec / 60} min`}
+            </button>
+          ))}
+        </div>
         <div className="mt-3 flex flex-wrap gap-2">
           {!startedAt ? (
             <button type="button" onClick={start} className="fit-btn fit-btn-primary">
