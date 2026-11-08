@@ -103,3 +103,10 @@ html[data-today="sat"] .fit-today[data-day="sat"] {
   border-color: var(--color-vivid-blue);
   color: #fff;
 }
+
+/* No pull-to-refresh on this page: a drag down mid-set must not reload it.
+   data-today is set on <html> only by /fitness (page.tsx), so this is scoped. */
+html[data-today],
+html[data-today] body {
+  overscroll-behavior-y: none;
+}
