@@ -507,6 +507,29 @@ const WORKOUTS: Workout[] = [
         },
       },
       {
+        name: "Weighted back extension (Bryan Johnson)",
+        how: HOW.backExtension,
+        sets: "2×15-25",
+        start: "bodyweight, then a 10 kg plate on the chest",
+        rest: "60 s",
+        note: "Added Nov 8 from Bryan Johnson's daily back circuit (he does it 1×25): lower back and glutes. Superset with band pull-aparts. If you are late for the stretch, this pair is skipped first.",
+        micro: {
+          goal: "new exercise: write down what comes out as the baseline",
+        },
+      },
+      {
+        name: "Band pull-aparts (Bryan Johnson)",
+        img: "pull-aparts",
+        how: HOW.pullAparts,
+        sets: "2×15-20",
+        start: "the warm-up band",
+        rest: "60 s after the pair",
+        note: "Also from Johnson's circuit (1×15). Face pull, one-arm dumbbell row and pull-ups from his list are already in the program.",
+        micro: {
+          goal: "new exercise: write down what comes out as the baseline",
+        },
+      },
+      {
         name: "EZ-bar or cable curl",
         img: "sgibaniya-s-ez-grifom",
         how: HOW.ezCurl,

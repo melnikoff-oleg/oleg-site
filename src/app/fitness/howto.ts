@@ -42,6 +42,15 @@ export const HOW = {
     ],
     tip: "Arms straight, shoulders not rising to your ears. This works the rear shoulders and the muscles between the shoulder blades.",
   },
+  backExtension: {
+    steps: [
+      "Set the hyperextension bench so the pad sits just below your hip bones and your hips can bend freely.",
+      "Hook your heels under the rollers, cross your arms on your chest (later hold a 10 kg plate there).",
+      "Lower your upper body slowly until it is roughly vertical, back straight, not rounded.",
+      "Come up by squeezing your glutes and lower back until your body is one straight line. Do not arch past it.",
+    ],
+    tip: "Stop at straight, never bend backwards at the top. Straight back the whole way, the movement is from the hips.",
+  },
   facePull: {
     steps: [
       "Set the cable a little above face height and attach a rope.",
