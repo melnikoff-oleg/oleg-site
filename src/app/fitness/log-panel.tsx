@@ -340,7 +340,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
       : finishedAt
         ? "Done"
         : minutes < marks.warmup
-          ? "Walking to the gym"
+          ? "Walk"
           : minutes < marks.work
             ? "Warm-up"
             : minutes < marks.stretch
@@ -356,7 +356,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
       {/* The clock */}
       <div className="rounded-xl border border-hairline bg-vivid-blue/5 px-4 py-4">
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <p className="eyebrow font-body text-[13px] text-vivid-blue">Clock, 90 min from the door</p>
+          <p className="eyebrow font-body text-[13px] text-vivid-blue">90 min</p>
           <p className="font-body text-sm text-silver-muted">{phase}</p>
         </div>
         <p
@@ -378,7 +378,7 @@ export function LogPanel({ dayId, exercises, marks }: Props) {
         <div className="mt-3 flex flex-wrap gap-2">
           {!startedAt ? (
             <button type="button" onClick={start} className="fit-btn fit-btn-primary">
-              Left home
+              Start
             </button>
           ) : !finishedAt ? (
             <>

@@ -52,9 +52,9 @@ type Workout = {
   /** Short dates of the last logged session and the next one, for the micro step lines. */
   lastDate: string;
   nextDate: string;
-  /** Minute by minute from the front door, so the 90 minutes are visible before they're gone. */
+  /** Minute by minute, so the 90 minutes are visible before they're gone. */
   timeline: string[];
-  /** Minutes from the door: in-gym warm-up starts, first exercise starts, stretch starts, done. The clock's marks. */
+  /** Minutes from the start: in-gym warm-up starts, first exercise starts, stretch starts, done. The clock's marks. */
   marks: { warmup: number; work: number; stretch: number; end: number };
   warmup: Drill[];
   exercises: Exercise[];
@@ -66,7 +66,7 @@ type Workout = {
 // JavaScript's Date#getDay() order, Sunday first. "mon" is the rest day.
 const DAY_IDS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] as const;
 
-const DOOR = "90 min from the door";
+const DOOR = "90 min";
 
 const WEEK: { day: string; title: string; time: string; rest?: boolean }[] = [
   { day: "Tue", title: "Pull A: back width, rear delts, biceps, posture", time: DOOR },
@@ -195,7 +195,7 @@ const WORKOUTS: Workout[] = [
     lastDate: "Nov 3",
     nextDate: "Nov 10",
     timeline: [
-      "0:00 out the door",
+      "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
       "0:18 pull-ups",
       "0:32 chest-supported row",
@@ -283,7 +283,7 @@ const WORKOUTS: Workout[] = [
     lastDate: "Nov 4",
     nextDate: "Nov 11",
     timeline: [
-      "0:00 out the door",
+      "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
       "0:18 seated press",
       "0:32 lateral raises",
@@ -373,7 +373,7 @@ const WORKOUTS: Workout[] = [
     lastDate: "Nov 5",
     nextDate: "Nov 12",
     timeline: [
-      "0:00 out the door",
+      "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
       "0:18 squat",
       "0:32 deadlift",
@@ -456,7 +456,7 @@ const WORKOUTS: Workout[] = [
     lastDate: "Nov 6",
     nextDate: "Nov 13",
     timeline: [
-      "0:00 out the door",
+      "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
       "0:18 machine row",
       "0:32 one-arm dumbbell row",
@@ -542,7 +542,7 @@ const WORKOUTS: Workout[] = [
     lastDate: "Nov 7",
     nextDate: "Nov 14",
     timeline: [
-      "0:00 out the door",
+      "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
       "0:18 incline barbell press",
       "0:32 one-arm cable laterals",
@@ -625,7 +625,7 @@ const WORKOUTS: Workout[] = [
     lastDate: "Nov 1",
     nextDate: "Nov 8",
     timeline: [
-      "0:00 out the door",
+      "0:00 walk, 12 min",
       "0:12 straight onto the treadmill, 30 min",
       "0:42 abs circuit",
       "0:54 forearm superset",
@@ -807,15 +807,21 @@ function Figure({
   wide?: boolean;
 }) {
   return (
-    <img
-      src={`/fitness/${name}.svg`}
-      width={1920}
-      height={1080}
-      loading="lazy"
-      decoding="async"
-      alt={`${label}: movement diagram`}
-      className={`mt-3 rounded-lg border border-hairline bg-navy ${wide ? "fit-strip-wide" : "w-full"}`}
-    />
+    <details className="fit-how mt-1">
+      <summary className="inline-flex min-h-11 items-center gap-1.5 font-body text-sm font-semibold text-vivid-blue">
+        Picture
+        <Chevron className="size-4 text-vivid-blue" />
+      </summary>
+      <img
+        src={`/fitness/${name}.svg`}
+        width={1920}
+        height={1080}
+        loading="lazy"
+        decoding="async"
+        alt={`${label}: movement diagram`}
+        className={`mt-2 rounded-lg border border-hairline bg-navy ${wide ? "fit-strip-wide" : "w-full"}`}
+      />
+    </details>
   );
 }
 
@@ -1001,7 +1007,7 @@ function WorkoutBody({ w }: { w: Workout }) {
   );
 }
 
-/** The minute-by-minute plan of one day, from the front door to the end of the stretch. */
+/** The minute-by-minute plan of one day. */
 function Timeline({ items }: { items: string[] }) {
   return (
     <ol className="grid grid-cols-1 gap-y-1 font-body text-sm text-silver sm:grid-cols-2">
@@ -1102,19 +1108,13 @@ export default function FitnessPage() {
           >
             Oleg Melnikov
           </Link>
-          <span className="font-body text-sm text-silver-muted">
-            personal page
-          </span>
         </div>
       </header>
 
       <main>
         <section className="pt-8 pb-8 md:pt-14 md:pb-10">
           <div className="mx-auto max-w-3xl px-6">
-            <span className="eyebrow inline-block align-top rounded-full border border-hairline bg-vivid-blue/10 px-4 py-1.5 font-body text-xs text-vivid-blue/90">
-              cycle 1 · from Oct 28, 2026
-            </span>
-            <h1 className="text-metallic mt-6 font-display text-3xl font-semibold leading-[1.1] tracking-tight md:text-4xl">
+            <h1 className="text-metallic font-display text-3xl font-semibold leading-[1.1] tracking-tight md:text-4xl">
               Muscle gain program
             </h1>
           </div>
@@ -1302,23 +1302,21 @@ export default function FitnessPage() {
           <Fold
             id="time"
             eyebrow="90 minutes"
-            title="From the front door to the end of the stretch"
-            meta="hard cap"
+            title="Hard cap"
           >
             <div className="prose-guide">
               <p>
-                Every session is 90 minutes from leaving home to the end of the
-                stretch in the gym. The walk back isn't counted. The 12-minute
-                walk there is the cardio warm-up, so there's no bike or
-                treadmill before a strength day: 6 minutes of warm-up in the gym,
-                specific to the day, then the first exercise at 0:18, the stretch
-                at about 1:20, done by 1:30.
+                Every session is 90 minutes, and the 12-minute walk is the first
+                of them: it's the cardio warm-up, so there's no bike or treadmill
+                before a strength day. 6 minutes of warm-up in the gym, specific
+                to the day, first exercise at 0:18, stretch at about 1:20, done
+                by 1:30.
               </p>
               <p>
                 Every day has its own warm-up and its own stretch, under the
                 day's card. The minute-by-minute plan is there too, and the
                 clock at the top of the page runs against it from the moment you
-                tap &ldquo;Left home&rdquo;.
+                tap &ldquo;Start&rdquo;.
               </p>
               <p>
                 <strong>What was cut to fit.</strong> Chest-supported row,
@@ -1469,7 +1467,7 @@ export default function FitnessPage() {
                   Time left in the gym: don't add exercises, stretch longer.
                 </li>
                 <li>
-                  Over 90 minutes from the door: the last isolation exercise
+                  Over 90 minutes: the last isolation exercise
                   goes, never the stretch.
                 </li>
               </ul>
@@ -1597,8 +1595,8 @@ export default function FitnessPage() {
           <Fold id="log" eyebrow="Log" title="How to record, and what to expect">
             <div className="prose-guide">
               <p>
-                Everything is recorded on this page. Tap &ldquo;Left home&rdquo;
-                on the clock when you leave, type weight and reps into each set
+                Everything is recorded on this page. Tap &ldquo;Start&rdquo; on
+                the clock when you set off, type weight and reps into each set
                 as you finish it, and tap &ldquo;Finished&rdquo; at the end.
                 Each field is saved on the phone at once and sent to the database
                 a moment later, so a dead signal in the gym loses nothing; the
@@ -1616,10 +1614,6 @@ export default function FitnessPage() {
         </div>
       </main>
 
-      <footer className="mx-auto max-w-3xl px-6 pb-12 font-body text-sm text-silver-muted">
-        Written Oct 28, 2026. Rebuilt Nov 8 around 90 minutes from the door, with
-        the log and the clock on the page. Review after week eight.
-      </footer>
     </>
   );
 }
