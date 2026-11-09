@@ -3,7 +3,7 @@
 // the test, so the suite never writes a vote to the real database.
 import { test, expect } from "@playwright/test";
 
-const RATED = ["09_company_case", "13_layers", "05_table", "mike_brand_search", "gabriel_dev_then_now"];
+const RATED = ["01_viewed", "13_layers", "05_table", "mike_brand_search", "gabriel_dev_then_now"];
 
 test("ubs-posts shows all 25 drafts, each with its own author, and links to the rating page", async ({ page }) => {
   const res = await page.goto("/ubs-posts");

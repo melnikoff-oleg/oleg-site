@@ -7,7 +7,7 @@ export const ROUND = "2026-11-09";
 
 /**
  * Five posts, the strongest and the most different from each other: five formats,
- * three for the company page and two for personal pages. The first two are the
- * ones Oleg liked most in his own review.
+ * three for the company page and two for personal pages. The first one is post #1
+ * of the 25 (Oleg's call, 2026-11-09; it replaced the Vercel case).
  */
-export const RATE_POST_IDS = ["09_company_case", "13_layers", "05_table", "mike_brand_search", "gabriel_dev_then_now"];
+export const RATE_POST_IDS = ["01_viewed", "13_layers", "05_table", "mike_brand_search", "gabriel_dev_then_now"];
