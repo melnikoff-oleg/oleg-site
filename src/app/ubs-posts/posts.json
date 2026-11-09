@@ -1,0 +1,571 @@
+[
+ {
+  "id": "01_viewed",
+  "n": 1,
+  "format": "How it is viewed",
+  "title": "How GEO is viewed",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/01_viewed.jpg",
+  "text": "GEO might seem simple.\n\nBut simple doesn't mean easy.\n\nToo many teams still treat GEO as \"adding an llms.txt file.\"\n\nGoogle's own guide to its AI features says there are \"no additional technical requirements\" beyond being indexed.\n\nTo get named in AI answers today, you need to understand things like:\n\n☑️ The prompts your buyers ask, and who gets named\n☑️ AI citations, brand mentions and share of voice\n☑️ Crawlability and AI crawler access\n☑️ Content structure, facts and original data\n☑️ Comparison pages and query fan-out\n☑️ Reviews, Reddit threads and digital PR\n☑️ AI Overviews, AI Mode and where each finds its sources\n\n... and all of it sits on top of SEO!\n\nChatGPT, Gemini and Google's AI Overviews search the web first and write the answer second.\n\nSo most of the foundations are ones you already know.\n\nMake your pages easy to crawl.\nMake them useful.\nMake your facts clear.\nGive search engines and AI systems a reason to trust you.\n\nWhat has changed is where your brand can show up, and how much harder that is to measure.\n\nThat's why we built AI Search Visibility into Ubersuggest.\n\nIt shows how often ChatGPT and Gemini name your brand, which prompts you win, and who gets named in your place.\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=how-geo-is-viewed",
+  "ref": {
+   "author": "Emilia Möller",
+   "url": "https://www.linkedin.com/posts/emilia-moller_seo-might-seem-simple-but-simple-doesn-activity-7508135336678658050-D6OL",
+   "likes": 2020,
+   "comments": 280,
+   "followers": 78903
+  }
+ },
+ {
+  "id": "04_then_now",
+  "n": 2,
+  "format": "Then vs now",
+  "title": "SEO in 2026",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/04_then_now.jpg",
+  "text": "SEO in 2026 feels like a completely different job.\n\nA few years ago, SEO ran on a few tools:\n\nGoogle for the results.\nSearch Console for rankings and clicks.\nGoogle Analytics for traffic.\nKeyword Planner for ideas.\nWordPress for the website.\nSheets for... basically everything else.\n\nThose tools are still here, with new ones added around them:\n\nChatGPT, Gemini and Perplexity, where buyers now ask.\nClaude for research and strategy.\nClaude Code and Cursor for fixing the site itself.\nReddit, YouTube and LinkedIn, where AI finds its sources.\nBing Webmaster Tools for Copilot citations.\nUbersuggest for the search and AI visibility data.\n\nOne SEO can now do far more alone.\n\nAn SEO can spot a ranking drop in the morning, pull the keywords, audit the page, rewrite it, ship the fix and check whether ChatGPT names the brand, all before anyone else has replied to the ticket.\n\nFor years, a lot of SEO was waiting.\n\nWant a technical fix? → Wait for dev.\nNeed keyword data? → Export a CSV.\nWant a content brief? → Two days of research.\nNeed a client report? → Screenshots in a slide deck.\nWant to know if AI recommends you? → Until recently, there was no way to measure it.\n\nAI assistants connected to real search data are removing a lot of that waiting.\n\nAn SEO still has to know how Google ranks pages. Now the job also means connecting tools and questioning the data until an answer becomes a shipped page.\n\nWith this stack, one SEO can go from research to a checked fix in a single chat.\n\nUbersuggest connects to ChatGPT, Claude and Claude Code on a free account, so the assistant works from live keyword, audit and AI visibility data.\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=seo-in-2026-then-now",
+  "ref": {
+   "author": "Emilia Möller",
+   "url": "https://www.linkedin.com/posts/emilia-moller_marketing-in-2026-feels-like-a-completely-activity-7513935232358776832-XZ9z",
+   "likes": 3919,
+   "comments": 306,
+   "followers": 78903
+  }
+ },
+ {
+  "id": "05_table",
+  "n": 3,
+  "format": "Action table",
+  "title": "How to show up in AI search",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/05_table.jpg",
+  "text": "The AI companies have published how to show up in AI search. We read their docs and put what to allow and what to block into one table.\n\nYou set all of it in robots.txt, a file on your site, and the bots come in three kinds.\n\n1. Search bots decide if AI can show your site. Allow them.\n\n- OAI-SearchBot for ChatGPT search\n- Claude-SearchBot for Claude\n- PerplexityBot for Perplexity\n- Googlebot for Google's AI Overviews and AI Mode\n- Bingbot for Copilot\n\n2. Training bots collect pages for future models. Blocking them is your call.\n\n- GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, Meta-ExternalAgent and Amazonbot\n\nBlocking a training bot leaves you in the answers. OpenAI says a site that blocks only GPTBot can still appear in ChatGPT search, and Google says Google-Extended has no effect on Google Search.\n\n3. Live visit bots open a page when a person asks for it. OpenAI, Perplexity, Meta and Amazon all say theirs may skip robots.txt rules.\n\nA few things people get wrong:\n\n- A robots.txt change takes about 24 hours to reach ChatGPT search.\n- Google asks for no extra setup for AI Overviews. If Googlebot can index the page, AI can quote it.\n- An old \"block every AI bot\" rule can block the search bots too. Look for one before anything else.\n\nThese are the companies' own descriptions, and they change.\n\nSave the table for the next time someone asks why ChatGPT can't see the site.",
+  "ref": {
+   "author": "Jake Ward",
+   "url": "https://www.linkedin.com/posts/jakezward_google-just-revealed-how-long-seo-actually-activity-7518279103024918529-Lw_1",
+   "likes": 2537,
+   "comments": 299,
+   "followers": 204706
+  }
+ },
+ {
+  "id": "08_chart",
+  "n": 4,
+  "format": "One chart",
+  "title": "AI answers 8 in 10 Google searches",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 838,
+  "media": "/ubs-posts/media/08_chart.jpg",
+  "text": "AI now answers 8 in 10 Google searches.\n\nTwo years ago, it was about 1 in 7.\n\nSearch Engine Roundtable pulled the numbers together on October 26, from three rank trackers that each count it their own way.\n\nMid 2024: about 15% of searches showed an AI Overview.\nJune 2025: about 50%.\nOctober 2026: over 80%.\n\nThe searches with money behind them held out the longest, and now they show AI answers too.\n\nOne of those trackers followed 400 buying keywords for a year. A year ago, \"review\" searches showed an AI answer less than a third of the time. Now it's about 9 in 10, and \"best X for Y\" searches are close to all of them.\n\nYour own brand name is covered as well. Another study checked 1,000 US brand names, and more than 4 in 5 showed an AI answer above the brand's own site.\n\nSo ranking first now often means sitting under an AI answer.\n\nTwo things to check this week:\n\n1. Search your five most valuable keywords and your brand name, and read what the AI answer says.\n2. Look at which sites it quotes. If yours is missing, start with the page that should have been there.\n\nThe three trackers use different keyword lists, so treat 80% as a rough size.",
+  "ref": {
+   "author": "Andy Crestodina",
+   "url": "https://www.linkedin.com/posts/andycrestodina_aisearch-seo-activity-7523055511429160961-ZlLC",
+   "likes": 501,
+   "comments": 210,
+   "followers": 137205
+  }
+ },
+ {
+  "id": "09_company_case",
+  "n": 5,
+  "format": "Company case",
+  "title": "How Vercel got 10% of signups from ChatGPT",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1550,
+  "media": "/ubs-posts/media/09_company_case.jpg",
+  "text": "Vercel, a $9.3B company, went from 1% to 10% of new signups coming from ChatGPT in JUST 6 months. Here's the GEO playbook behind it:\n\n1. They kept classic SEO and built on it\n-> Vercel's own line: \"Don't abandon traditional SEO\"\n-> Crawlable pages, clear headings and fast static HTML serve Google and AI alike\n\n2. They picked concepts they could own\n-> They watched X, Reddit, GitHub and Discord for questions nobody had answered well\n-> Then kept the ones that matched what the product does\n\n3. They published the definitive page on each\n-> Original data, benchmarks, code and customer stories\n-> Their test: \"Could a competitor easily replicate this tomorrow?\" If yes, dig deeper\n\n4. They wrote for extraction\n-> Short, self-contained insights are more likely to be cited\n-> One term for one thing, every time. In their words, \"fuzzy synonyms weaken embeddings\"\n\n5. They structured pages for machines\n-> Clean H1 to H2 to H3, schema markup, tables and definition lists\n-> Server-rendered HTML, because most AI crawlers fetch a page without running its JavaScript\n\n6. They seeded real citations\n-> Threads, changelogs, open-source examples and demos that people link to\n-> No paid links\n\n7. They set a refresh schedule\n-> Reviews at 30, 90 and 180 days\n-> Fix 404s, update what's stale, archive what's outdated\n\n8. They tracked it with what existed\n-> Referrals from ChatGPT and Perplexity in web analytics\n-> Citations, mentions and index coverage in Google Search Console and Bing Webmaster Tools\n\nthe numbers:\n-> ChatGPT referred around 10% of new Vercel signups\n-> Up from 4.8% the month before\n-> And from 1% six months earlier\n\nTheir own summary is \"there's no shortcut to LLM SEO.\"\n\nThe signup numbers are from CEO Guillermo Rauch in April 2025, and the eight steps are from Vercel's blog.\n\nUbersuggest's AI Search Visibility shows the same thing for your brand: which prompts name you in ChatGPT and Gemini, and who gets named in your place.\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=vercel-chatgpt-signups\n\nCredit: Vercel",
+  "ref": {
+   "author": "Liam Karlsson",
+   "url": "https://www.linkedin.com/posts/liamkarlsson_granola-a-15b-company-increased-monthly-activity-7523686171408015360-9g-J",
+   "likes": 504,
+   "comments": 146,
+   "followers": 10454
+  }
+ },
+ {
+  "id": "10_iceberg",
+  "n": 6,
+  "format": "Iceberg",
+  "title": "We already rank #1",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1924,
+  "media": "/ubs-posts/media/10_iceberg.jpg",
+  "text": "Your client says \"we already rank #1 on Google.\"\n\nShow them this.\n\nMost people see the top:\n\n↳ We rank #1 on Google\n↳ So people see us first\n↳ And we get the clicks\n\nAll three can be true for one keyword, and they're still the tip of the iceberg.\n\nHere's what sits underneath:\n\n1. What sits above you\n\n☑️ Paid ads above the first organic result\n☑️ AI Overviews and AI Mode answers\n☑️ Local pack, maps and shopping results\n☑️ Featured snippets and People Also Ask\n\n2. Which #1 it is\n\n☑️ Branded vs non-branded keywords\n☑️ Location, device and personalised results\n☑️ The wrong page ranking for the keyword\n\n3. What it brings\n\n☑️ Pixel position: how far down the page you sit\n☑️ Search intent and click-through rate\n\n4. Whether it lasts\n\n☑️ Ranking swings and core updates\n☑️ Citations in ChatGPT, Gemini and AI Overviews\n\nA #1 ranking tells you less than it used to.\n\nOpen the results page for your five most valuable keywords and count what sits above your link.\n\nP.S. Save this for the next \"but we rank #1\" call.",
+  "ref": {
+   "author": "Hina Alee",
+   "url": "https://www.linkedin.com/posts/hinaalee_a-client-asked-me-to-just-add-an-llmstxt-activity-7512028696325775360-4Xw3",
+   "likes": 199,
+   "comments": 77,
+   "followers": 6289
+  }
+ },
+ {
+  "id": "11_columns",
+  "n": 7,
+  "format": "Three columns",
+  "title": "SEO + GEO + CRO",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/11_columns.jpg",
+  "text": "The only search formula you need in 2026:\n\nSEO + GEO + CRO = customers from search\n\nA buyer can now find you on Google, hear your name from ChatGPT, and make up their mind on your page.\n\nEach of those three steps has its own work:\n\n1. SEO → Get found\n\nMake every page easy for Google to crawl, understand and rank.\n→ Build one page for each topic buyers search\n→ Fix crawl and index errors first\n→ Match the page to the search intent\n→ Keep pages fast on a phone\n→ Earn links from sites in your field\nGood SEO puts you in the results that AI reads too.\n\n2. GEO → Get named\n\nGive AI answers a reason to quote you and recommend you.\n→ Open each section with the short answer\n→ Add facts, numbers and prices AI can quote\n→ Publish comparison and \"best for\" pages\n→ Get named on the sites AI cites: reviews, lists, Reddit\n→ Let AI search bots in via robots.txt\nGood GEO gets your brand into the answer.\n\n3. CRO → Get chosen\n\nTurn the visit into a lead or a sale.\n→ Say what you sell in the first screen\n→ Put proof up top: reviews, logos, numbers\n→ Show prices or a clear \"from\" price\n→ Answer the top objections near the button\n→ Match the landing page to the search or prompt\nGood CRO makes the first two pay.\n\nThe 2026 workflow becomes:\n\nKeyword Research → Site Audit → Create Content → Build Authority → Track Results\n\nAnd that last step is where most teams stop short.\n\nBecause you need to know:\nDoes ChatGPT name your brand?\nWhich competitors get named in your place?\nWhich of your pages lost rankings this month?\n\nUbersuggest has keyword research, site audit, rank tracking and AI Search Visibility in one tool, from Google results to AI answers.\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=seo-geo-cro-formula",
+  "ref": {
+   "author": "Madhav Mistry",
+   "url": "https://www.linkedin.com/posts/madhav-mistry-999349164_the-only-ai-first-seo-formula-you-need-in-activity-7503422058383646720-m13T",
+   "likes": 810,
+   "comments": 92,
+   "followers": 58077
+  }
+ },
+ {
+  "id": "12_plan",
+  "n": 8,
+  "format": "Plan",
+  "title": "The 90-day GEO plan",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/12_plan.jpg",
+  "text": "We made a 90-day GEO plan.\n\nWith days for every task.\n\nHere's the 90-day map:\n\nPhase 1: Baseline\nPhase 2: Fix the site\nPhase 3: Answer content\nPhase 4: Mentions\nPhase 5: Measure\n\nFor the first 15 days you only measure. You pick 20 prompts buyers ask and write down who ChatGPT and Gemini name today, so day 90 has something to beat.\n\nThe site comes before the content, because AI can't quote a page it can't reach.\n\nContent comes before mentions, so there's a page worth pointing to.\n\nOn day 81 you run the same 20 prompts again.\n\nThe day counts assume one person on one site, so adjust them to yours.\n\nUbersuggest covers the measuring: Site Audit for the errors, AI Search Visibility for who gets named.\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=90-day-geo-plan\n\nP.S. Which phase would take your team the longest?",
+  "ref": {
+   "author": "Apoorva Mathe",
+   "url": "https://www.linkedin.com/posts/apoorva-mathe_i-create-6-months-seo-plan-with-latest-activity-7520446746917756928-LTtl",
+   "likes": 418,
+   "comments": 60,
+   "followers": 1681
+  }
+ },
+ {
+  "id": "13_layers",
+  "n": 9,
+  "format": "Layers",
+  "title": "5 layers of an SEO + GEO audit",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/13_layers.jpg",
+  "text": "A site audit is now WAY bigger than a list of broken links.\n\nThe job grew when AI crawlers showed up.\n\nThey read the same pages Google does, and most of them don't run JavaScript.\n\nToday, an audit also checks:\n\n1. Whether bots can reach every page that matters\n2. Whether Google indexes the right version of each page\n3. Whether each page says clearly what it is about\n4. Whether it loads fast on a phone\n5. Whether AI answers can read it and cite it\n\nAnd you can't cover that by JUST:\n\n- Fixing 404s\n- Chasing a score of 100\n- Adding schema\n- Compressing images\n- Running the crawler once a year\n\nThe order matters. Each layer only works if the one below it does.\n\nHere's how we think about the 5 layers of a site audit:",
+  "ref": {
+   "author": "Jake Ward",
+   "url": "https://www.linkedin.com/posts/jakezward_seo-is-now-way-bigger-than-ranking-1-on-activity-7500522097941671938-yKPf",
+   "likes": 1415,
+   "comments": 246,
+   "followers": 204706
+  }
+ },
+ {
+  "id": "18_free_list",
+  "n": 10,
+  "format": "List",
+  "title": "10 free SEO tools",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/18_free_list.jpg",
+  "text": "Before you spend $499 a month on SEO tools, read this.\n\nYou can do a lot before you pay anyone.\n\nA lot of teams pay for a big SEO suite right now, and we don't think every one of them needs to.\n\nGoogle and Microsoft already give away the data that sits closest to the source, and all of it is free.\n\nSearch Console has even started reporting impressions in AI Overviews and AI Mode.\n\nSo it makes sense to start at the source.\n\nHere are 9 free tools from the platforms themselves, plus one of ours:\n\n1. Google Search Console: clicks, rankings, and AI Overview and AI Mode impressions\n\n2. Bing Webmaster Tools: its AI Performance report lists the pages Copilot cites\n\n3. Google Keyword Planner: search volumes from Google's own ads data\n\n4. Google Trends: what people search more this month, and when demand peaks\n\n5. PageSpeed Insights: Core Web Vitals for any page\n\n6. Rich Results Test: whether your schema can show as a rich result\n\n7. Google Business Profile: your listing in Maps and local results\n\n8. Microsoft Clarity: heatmaps, recordings, and which AI bots and agents visit\n\n9. Looker Studio: one dashboard on top of all of it\n\n10. Ubersuggest: keywords, site audit and AI visibility, inside ChatGPT and Claude\n\nStarting from zero, we'd set up Search Console and Bing Webmaster Tools first, then Clarity.\n\nAfter that we'd check Core Web Vitals in PageSpeed Insights and build one Looker Studio dashboard, so the numbers sit in one place.\n\nThe free tools will get you a long way with your own site.\n\nThey don't show your competitors' keywords and links, or who ChatGPT names when it could have named you. Ubersuggest adds that part.\n\nAnd no, it doesn't cost $499 a month.\n\nIt all runs on a free account, inside ChatGPT, Claude or Claude Code. Paid plans start at $29 a month.\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=free-seo-tools-list\n\nWe've put all 10 on one page in the graphic below 👇",
+  "ref": {
+   "author": "Emilia Möller",
+   "url": "https://www.linkedin.com/posts/emilia-moller_before-you-spend-2000-on-an-aeo-course-activity-7523013500735086593-4p9U",
+   "likes": 1351,
+   "comments": 210,
+   "followers": 78903
+  }
+ },
+ {
+  "id": "v1_claude_code_team",
+  "n": 11,
+  "format": "Toolkit table",
+  "title": "An SEO team inside Claude Code",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/v1_claude_code_team.jpg",
+  "text": "Hire your whole SEO team inside Claude Code ‼️\n\n9 skills and 1 agent, each with one job.\n\nThey read live Ubersuggest data, and the plugin is free and open source.\n\nMost \"AI SEO teams\" in this feed are prompts with job titles.\nThey work without any search data.\n\nThey can't see what people search.\nThey can't see where your pages rank.\nThey can't see whether ChatGPT and Google's AI Overviews mention you.\n\nThis team can.\n\nEach role is one part of Ubersuggest's official plugin for Claude Code, connected to live Ubersuggest data.\n\nHere's who's on it:\n\nLead:\n→ SEO lead (seo-strategist, the agent): plans the work and runs the others.\n→ Project manager (/ubersuggest:seo-action-plan): looks at your site and tells you the one next thing to do, in plain words.\n→ Onboarding (project-setup): sets up competitors, keywords to track, and the prompts to watch in AI answers.\n\nResearch:\n→ Keyword researcher (keyword-research): a prioritised keyword list, grouped into clusters.\n→ Competitor analyst (competitor-analysis): who outranks you, and the keywords and pages you're missing.\n→ Content strategist (content-demand-finder): 50 content ideas from what your customers ask. Needs no account at all.\n\nBuild:\n→ Brief writer (content-brief): an outline based on who ranks now, and why.\n→ Technical SEO (site-audit): technical problems and Core Web Vitals, ranked by impact.\n\nTrack:\n→ GEO analyst (ai-visibility): how often AI answers mention you, and who they name in your place.\n→ SEO coach (seo-foundations): points any SEO question to the right tool.\n\nThen Claude Code makes the changes, right in your site's code.\n\nEvery tool works on a free Ubersuggest account. Your plan only changes how much data comes back.\n\nHere's the setup:\n\n1. Sign up for free at the link below and connect your website. It takes about 3 minutes.\n2. In Claude Code, run: /plugin marketplace add ubersuggest/seo-skills\n3. Then run: /plugin install ubersuggest\n4. Restart Claude Code and run: /ubersuggest:seo-action-plan yourwebsite.com\n\nOn Codex, Cursor or another agent? Run: npx skills add ubersuggest/seo-skills\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=claude-code-seo-team",
+  "ref": {
+   "author": "Ubersuggest",
+   "url": "https://www.linkedin.com/posts/ubersuggest_run-your-whole-seo-geo-inside-claude-code-activity-7516513762560929794-SVPI",
+   "likes": 503,
+   "comments": 35,
+   "followers": 11122
+  }
+ },
+ {
+  "id": "v2_keywords_vs_prompts",
+  "n": 12,
+  "format": "Two cards",
+  "title": "Keywords vs prompts",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/v2_keywords_vs_prompts.jpg",
+  "text": "Keywords and prompts are NOT the same thing.\n\nUnderstanding the difference is crucial in 2026:\n\nYour buyers still type a few words into Google.\n\nThey also ask ChatGPT a full question, with their budget, their team size and their tools in it.\n\nKeyword tools measure the first. Only the AI labs see real volumes for the second, so teams guess.\n\nYou need both, and they work differently:\n\nKeywords\n\nWhat it is: The short phrase that many people type into Google.\n\nHow it works:\n- Thousands of people type the same few words.\n- Tools show how many search it each month.\n\n✅ Pros: Real search volumes to plan around.\n❌ Cons: Short words hide what the person wants.\n\nHow to rank higher:\n- Group keywords by intent, one page per group.\n- Track your rankings and fix the pages that slip.\n\nPrompts\n\nWhat it is: The full question people ask an AI, in their own words.\n\nHow it works:\n- Each person writes it differently, with their own details.\n- The AI searches the web, then names a few brands.\n\n✅ Pros: Shows exactly what a buyer needs.\n❌ Cons: Only the AI labs see real prompt volumes.\n\nHow to get named:\n- Pick 20 prompts your buyers would ask, and track them.\n- See who gets named, then publish a better answer.\n\nThat's two lists to keep, and most tools give you one.\n\nPicture asking ChatGPT: \"Which keywords do we rank for, and which prompts name our brand?\"\n\nIt could answer. It's only missing the data.\n\nUbersuggest gives it both: keyword data for Google, and AI Search Visibility for the prompts that name you in ChatGPT and Gemini.\n\nHere's the setup:\n\n1. Sign up for free at the link below and connect your website. It takes about 3 minutes.\n2. In ChatGPT, open Settings, then Plugins, search \"Ubersuggest\" and click Connect. Then open a new chat and ask: \"Which prompts name my brand, and which name a competitor?\"\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=keywords-vs-prompts",
+  "ref": {
+   "author": "Ubersuggest",
+   "url": "https://www.linkedin.com/posts/ubersuggest_seo-and-geo-are-not-the-same-thing-understanding-activity-7511802592910290944-zA5P",
+   "likes": 181,
+   "comments": 17,
+   "followers": 11122
+  }
+ },
+ {
+  "id": "v3_claude_prompts",
+  "n": 13,
+  "format": "Prompt list",
+  "title": "10 prompts in Claude",
+  "author": {
+   "key": "ubersuggest",
+   "name": "Ubersuggest",
+   "headline": "11,122 followers",
+   "company": true
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/v3_claude_prompts.jpg",
+  "text": "Run your whole SEO & GEO inside Claude ‼️\n\n10 prompts, from keywords to AI answers.\n\nFind your next keywords and site fixes, and see who AI names in your place.\n\nMost marketers use Claude with no search data behind it.\n\nClaude already knows how SEO works.\nIt's only missing the data.\n\nIt can't see which keywords your competitors rank for.\nIt can't see which of your pages lost rankings.\nIt can't see whether ChatGPT names your brand, or a competitor.\n\nConnect Ubersuggest, and now it can.\n\nEach of the 10 prompts pulls real numbers first. Then Claude tells you what to do with them.\n\nHere's what's inside:\n\nSEO, rank on Google:\n→ \"Which keywords do my competitors rank for that I don't?\" Your next targets.\n→ \"Which of my pages lost rankings this month?\" The pages to refresh first.\n→ \"Audit my site and sort the fixes by impact.\" A fix list, worst first.\n→ \"Who links to my competitors but not to me?\" Sites to pitch.\n\nGEO, get quoted and named in AI answers:\n→ \"Which prompts name my brand in ChatGPT?\" Where you're named.\n→ \"Who do ChatGPT and Gemini name instead of me?\" The brands to study.\n→ \"What is my share of voice in AI answers?\" Your starting line.\n→ \"What does AI say about my brand, good or bad?\" The claims to fix.\n→ \"Do Google's AI Overviews quote my pages?\" Where you're quoted, and where you're missing.\n→ \"What should I publish next so AI names me?\" Your next 3 pages.\n\nEvery one of them is a plain question, typed into a chat you already use.\n\nHere's the setup:\n\n1. Sign up for free at the link below and connect your website. It takes about 3 minutes.\n2. In Claude, open Customize, then Connectors, search \"Ubersuggest\" and click Connect. Then open a new chat and paste prompt #1.\n\nSave this post so all 10 are at hand.\n\nTry it: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=claude-10-prompts",
+  "ref": {
+   "author": "Ubersuggest",
+   "url": "https://www.linkedin.com/posts/ubersuggest_run-your-whole-seo-geo-inside-chatgpt-activity-7512885673629179904-68Xo",
+   "likes": 158,
+   "comments": 9,
+   "followers": 11122
+  }
+ },
+ {
+  "id": "mike_seo_vs_geo",
+  "n": 14,
+  "format": "Two cards",
+  "title": "SEO vs GEO",
+  "author": {
+   "key": "mike",
+   "name": "Mike Kamo",
+   "headline": "Co-Founder @ NP Digital ($100M+ bootstrapped) | CEO @ Ubersuggest & ATP | Book me 1:1 → intro.co/MikeKamo",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/mike_seo_vs_geo.jpg",
+  "text": "SEO and GEO are NOT the same thing.\n\nUnderstanding the difference is crucial in 2026.\n\nOur own site went from 6 million visitors a month to between 2 and 3 million, because people now get the answer from ChatGPT and never open the article.\n\nI run an agency with 800 people, and founders still ask me which one they should buy. The answer is both.\n\nSEO (Search Engine Optimisation)\n\nWhat it is: Getting your website to show up when people search Google.\n\nHow it works:\n- Give each service people search for its own page.\n- Get trusted sites to link to you.\n\nPros: A steady stream of calls and bookings.\nCons: Takes a few months to kick in.\n\nHow to rank higher:\n- Build pages around what you sell and where.\n- Fix site problems and refresh pages every few months.\n\nGEO (Generative Engine Optimisation), also called AEO\n\nWhat it is: Getting quoted in Google's AI answers, and getting ChatGPT to name YOUR business when someone asks for a recommendation.\n\nHow it works:\n- Answer the questions customers ask you every day, short and direct.\n- Publish clear pages about what you do, with real facts.\n- Be where AI looks: reviews, directories, articles.\n\nPros: Most of your competitors aren't doing it yet.\nCons: Hard to track what it brings in.\n\nHow to get named:\n- Put the short answer first, under a clear heading.\n- Say plainly who you serve, where, and why you're different.\n- Keep collecting reviews and mentions.\n\nThat's two jobs on top of running the company.\n\nSo we built Ubersuggest to do both from one place. It shows where you rank on Google, and which prompts in ChatGPT and Gemini name you, or name a competitor instead.\n\nHere's the setup:\n\n1. Sign up for free at the link below and connect your website. It takes about 3 minutes.\n2. Open AI Search Visibility and add the 20 questions a customer would ask about your kind of business.\n\nTry it free: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=seo-vs-geo-mike",
+  "ref": {
+   "author": "Ubersuggest",
+   "url": "https://www.linkedin.com/posts/ubersuggest_seo-and-geo-are-not-the-same-thing-understanding-activity-7511802592910290944-zA5P",
+   "likes": 181,
+   "comments": 17,
+   "followers": 11122
+  }
+ },
+ {
+  "id": "mike_brand_search",
+  "n": 15,
+  "format": "One chart",
+  "title": "AI answers 4 in 5 brand searches",
+  "author": {
+   "key": "mike",
+   "name": "Mike Kamo",
+   "headline": "Co-Founder @ NP Digital ($100M+ bootstrapped) | CEO @ Ubersuggest & ATP | Book me 1:1 → intro.co/MikeKamo",
+   "company": false
+  },
+  "w": 1400,
+  "h": 838,
+  "media": "/ubs-posts/media/mike_brand_search.jpg",
+  "text": "Google your client's brand name.\n\n4 times out of 5, AI answers first.\n\nFor years the brand search was the one safe spot in SEO. Someone types your name and your homepage shows up on top.\n\nA study out last month checked 1,000 US brand names on Google. More than 4 in 5 showed an AI answer on top, above the company's own site.\n\nThe AI answer also looks past the homepage. About 6 in 10 of the company pages it quoted were not on page one for that search. It pulls from the About page, product pages, reviews and YouTube.\n\nAs an agency owner, this is the first thing I'd show a client now. Search their name with them on the call and read the AI answer out loud. It can be out of date, and an old bad review can surface there.\n\nAfter that you don't have to pitch much. Fix the About page and the product pages. Then ask for fresh reviews on the sites the AI is reading.\n\nGoogle is one answer. ChatGPT and Gemini give their own, and no client checks those either. AI Search Visibility in Ubersuggest shows what they say about a brand and which competitors they name next to it.\n\nA quarter of Ubersuggest signups are agencies, and they stay longer than any other group.\n\nTry it free: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=brand-search-mike",
+  "ref": {
+   "author": "Andy Crestodina",
+   "url": "https://www.linkedin.com/posts/andycrestodina_aisearch-seo-activity-7523055511429160961-ZlLC",
+   "likes": 501,
+   "comments": 210,
+   "followers": 137205
+  }
+ },
+ {
+  "id": "mike_iceberg",
+  "n": 16,
+  "format": "Iceberg",
+  "title": "How SEO is viewed",
+  "author": {
+   "key": "mike",
+   "name": "Mike Kamo",
+   "headline": "Co-Founder @ NP Digital ($100M+ bootstrapped) | CEO @ Ubersuggest & ATP | Book me 1:1 → intro.co/MikeKamo",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1924,
+  "media": "/ubs-posts/media/mike_iceberg.jpg",
+  "text": "Your client thinks SEO is \"we rank #1.\"\n\nThat is the top of the iceberg.\n\nEvery agency owner I know has had the call. The client pulls up Google, types their own brand name, sees themselves at the top, and asks what they're paying for.\n\nYour own brand name ranks #1 on its own. The work is getting found for \"best dentist near me\", above the ads, the map pack and the AI answer, and turning that search into a booked chair.\n\nUnder the waterline sit 11 things the client never sees, like whether the right page ranks for the right keyword, or where you really sit in pixels once the ads and the AI Overview push you down. Whether ChatGPT and Gemini name you at all when someone asks for a recommendation is on that list too.\n\nShow the client this picture on the first call, and put the 11 items under the waterline on the proposal with a price next to each.\n\nAt Ubersuggest, the reports agencies pull most are the site audit and the competitor comparison. Those are the two parts of this picture you can actually show a client.\n\nSave this for your next \"but we already rank #1\" call.\n\nTry it free: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=iceberg-mike",
+  "ref": {
+   "author": "Hina Alee",
+   "url": "https://www.linkedin.com/posts/hinaalee_a-client-asked-me-to-just-add-an-llmstxt-activity-7512028696325775360-4Xw3",
+   "likes": 199,
+   "comments": 77,
+   "followers": 6289
+  }
+ },
+ {
+  "id": "neil_gap_chart",
+  "n": 17,
+  "format": "One chart",
+  "title": "The AI search gap",
+  "author": {
+   "key": "neil",
+   "name": "Neil Patel",
+   "headline": "Co-Founder at Neil Patel Digital",
+   "company": false
+  },
+  "w": 1400,
+  "h": 838,
+  "media": "/ubs-posts/media/neil_gap_chart.jpg",
+  "text": "14% of consumers use AI to decide what to buy.\n\n3% of companies optimize for it.\n\nI shared these two numbers earlier this week and the comments were full of the same question: how do I even start?\n\nFirst the numbers again. About 16% of people say they use an LLM like ChatGPT, Gemini or Claude (Julius Nyambok's figure). In our own NP Digital data, 14% use one when deciding what to buy. On the other side, 3% of companies do any work to show up in those answers.\n\nThe companies that skip it mostly say they can't see an ROI yet.\n\nThat was true of Google in 2004 too. You couldn't prove much, but everyone you knew was searching, so you showed up anyway.\n\nThe easy first step is the free AI Search Visibility report in Ubersuggest. Type in 20 questions a buyer would ask and it shows you whether ChatGPT and Gemini name you, or name a competitor.\n\nChart below. After that, run the report on your own brand.\n\nhttps://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=ai-gap-neil",
+  "ref": {
+   "author": "Andy Crestodina",
+   "url": "https://www.linkedin.com/posts/andycrestodina_aisearch-seo-activity-7523055511429160961-ZlLC",
+   "likes": 501,
+   "comments": 210,
+   "followers": 137205
+  }
+ },
+ {
+  "id": "neil_formula",
+  "n": 18,
+  "format": "Three columns",
+  "title": "How to win search in 2026",
+  "author": {
+   "key": "neil",
+   "name": "Neil Patel",
+   "headline": "Co-Founder at Neil Patel Digital",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/neil_formula.jpg",
+  "text": "You can rank on Google, get cited by AI, and still make no sales from search. The job now has three parts, and most teams do one.\n\nSearch still works. It just stopped being one job.\n\nSEO gets you found on Google, GEO gets you named in ChatGPT, Gemini and Google's AI answers, and CRO turns that visit into a lead or a sale.\n\nMiss SEO or GEO and the buyer never reaches you, because Google or ChatGPT sends them to a competitor. Skip CRO and the traffic still arrives, then leaves the page without buying.\n\nThe chart below has 10 moves for each of the three, and most of them take one person with a tool that shows the current rankings and which prompts name you.\n\nUbersuggest does the first two from one dashboard: rankings on Google, and the prompts that name you in ChatGPT and Gemini. The third one is on your landing page.\n\nCheck out the formula.\n\nhttps://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=seo-geo-cro-neil",
+  "ref": {
+   "author": "Madhav Mistry",
+   "url": "https://www.linkedin.com/posts/madhav-mistry-999349164_the-only-ai-first-seo-formula-you-need-in-activity-7503422058383646720-m13T",
+   "likes": 810,
+   "comments": 92,
+   "followers": 58077
+  }
+ },
+ {
+  "id": "neil_30day_plan",
+  "n": 19,
+  "format": "Plan",
+  "title": "30-day AI search plan",
+  "author": {
+   "key": "neil",
+   "name": "Neil Patel",
+   "headline": "Co-Founder at Neil Patel Digital",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/neil_30day_plan.jpg",
+  "text": "Small brands can't out-publish big ones in AI search.\n\nThey don't have to. Here's a 30-day plan.\n\nBig brands get named by ChatGPT because they are everywhere. A small brand gets named because it has the clearest answer to a specific question, and the AI can find it.\n\nSo the plan below starts with the 20 prompts your buyers actually ask, and who the AI names today. Then it fixes the site so AI crawlers can read it, writes the answer pages, earns a few mentions on the sites AI quotes, and measures the change on day 30.\n\nWe built it for one person on one site. If you have a team, run it faster.\n\nDays 1 to 5 are free in Ubersuggest: the prompt tracking, the audit and the competitor list.\n\nCheck out the plan.\n\nhttps://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=30-day-plan-neil",
+  "ref": {
+   "author": "Apoorva Mathe",
+   "url": "https://www.linkedin.com/posts/apoorva-mathe_i-create-6-months-seo-plan-with-latest-activity-7520446746917756928-LTtl",
+   "likes": 418,
+   "comments": 60,
+   "followers": 1681
+  }
+ },
+ {
+  "id": "salun_crawlers",
+  "n": 20,
+  "format": "Code to copy",
+  "title": "The robots.txt for AI search",
+  "author": {
+   "key": "salun",
+   "name": "Salun Marvin",
+   "headline": "Head of Technology @ NP Digital | Ubersuggest & Answer The Public",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/salun_crawlers.jpg",
+  "text": "Here is the robots.txt I would use for AI search in 2026. Every line comes from the AI companies' own crawler docs.\n\nOpenAI, Anthropic, Google, Perplexity, Apple, Meta and Amazon each publish what their bots do. Every company runs up to three kinds, and each kind is a separate switch in your robots.txt.\n\nSection 1 is the search bots: OAI-SearchBot, Claude-SearchBot, PerplexityBot, Googlebot, Bingbot, Applebot. Allow them. OpenAI's wording is that a site opted out of OAI-SearchBot \"will not be shown in ChatGPT search answers.\" Your brand gets into AI answers through these bots.\n\nSection 2 is the training bots: GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, Meta-ExternalAgent, Amazonbot. Blocking them is a business decision, and it does not cost you visibility. OpenAI says a site that blocks only GPTBot can still appear in ChatGPT search. Google-Extended has no effect on Google Search or AI Overviews. Googlebot is the only control for those.\n\nSection 3 you cannot fully control. ChatGPT-User, Perplexity-User, Meta-ExternalFetcher and Amzn-User open a page because a person asked, and their makers say they may skip robots.txt rules.\n\nPerplexityBot's own page says it \"is not used to crawl content for AI foundation models\", so blocking it only removes you from Perplexity. A robots.txt change takes about 24 hours to reach ChatGPT search, per OpenAI.\n\nThe one line I could not confirm on Microsoft's own page is Bingbot feeding Copilot. Search Engine Journal and Vercel both describe it that way.\n\nBefore you paste anything, open your current file and look for an old \"block all AI bots\" rule. It often blocks section 1 as well.\n\nThen check what the answers say about you. We built AI Search Visibility in Ubersuggest for that. It shows the prompts where ChatGPT and Gemini name you, and the pages they cite.\n\nThe file is in the picture below.\n\n#Ubersuggest #SEO #GEO",
+  "ref": {
+   "author": "Jake Ward",
+   "url": "https://www.linkedin.com/posts/jakezward_google-just-revealed-how-long-seo-actually-activity-7518279103024918529-Lw_1",
+   "likes": 2537,
+   "comments": 299,
+   "followers": 204706
+  }
+ },
+ {
+  "id": "salun_audit_layers",
+  "n": 21,
+  "format": "Layers",
+  "title": "5 layers of an SEO audit in 2026",
+  "author": {
+   "key": "salun",
+   "name": "Salun Marvin",
+   "headline": "Head of Technology @ NP Digital | Ubersuggest & Answer The Public",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/salun_audit_layers.jpg",
+  "text": "A site audit in 2026 has five layers, and the first one is no longer \"can Googlebot reach the page.\"\n\nIt is \"can every bot that writes answers reach the page.\"\n\nOur site audit team at Ubersuggest spent most of this year on that first layer, because the readers changed. Most AI crawlers fetch a page and never run its JavaScript: OpenAI's, Anthropic's, Meta's, Perplexity's. Googlebot and Applebot do. None of their crawler docs says otherwise as of this month. If your product descriptions load client-side, ChatGPT reads an empty div.\n\nThe layers, from the bottom:\n\n1. Crawlers can reach every page that matters. Robots.txt, sitemap, status codes, redirect chains, crawl depth.\n2. Google keeps one clean version of each page. Canonicals, noindex, duplicates, hreflang, orphan pages.\n3. Each page says what it is about, to people and to bots. Titles, headings, internal links, structured data, thin pages.\n4. It is fast on a phone. LCP, INP, CLS, image weight, HTTPS.\n5. AI answers can read it and cite it. Facts stated plainly, sources, and the search bots allowed in.\n\nEach layer only works if the one under it does. Schema markup on a page Googlebot cannot index does nothing, because the page never gets into the index.\n\nThe audit in Ubersuggest covers layers 1 to 4 today, ranked by impact, and layer 5 is what AI Search Visibility is for: which pages ChatGPT and Gemini cite, and which of them are gaining or losing citations.\n\nThe picture below is how we draw it.\n\n#Ubersuggest #SEO #SiteAudit",
+  "ref": {
+   "author": "Jake Ward",
+   "url": "https://www.linkedin.com/posts/jakezward_seo-is-now-way-bigger-than-ranking-1-on-activity-7500522097941671938-yKPf",
+   "likes": 1415,
+   "comments": 246,
+   "followers": 204706
+  }
+ },
+ {
+  "id": "salun_ai_reports",
+  "n": 22,
+  "format": "News",
+  "title": "3 new AI search reports",
+  "author": {
+   "key": "salun",
+   "name": "Salun Marvin",
+   "headline": "Head of Technology @ NP Digital | Ubersuggest & Answer The Public",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1575,
+  "media": "/ubs-posts/media/salun_ai_reports.jpg",
+  "text": "Google now shows how often its AI answers use your pages. It still doesn't show the clicks.\n\nThree things came out on this since mid-October, and together they are the first real numbers we have had.\n\n1. Search Console now has AI reports for every site. Google confirmed the worldwide rollout (Search Engine Journal, November 3). You see how many times your pages appeared in AI Overviews and AI Mode, by page and by country. There is no click number, and Google has said there won't be one.\n\n2. Cyrus Shepard tried to get the click number himself. He took one site out of Google's AI features, put it back, and compared. His estimate is that about 1 in 100 AI views ends in a click (Search Engine Roundtable, October 30). It is one site, so treat it as a first hint.\n\n3. Bing added a report called Topics Portfolio on October 13, in beta. It groups the questions where AI quotes your site into topics, and it lists the questions where it quotes someone else.\n\nSo you can now count how often AI shows your pages. None of these reports shows what the AI said about you or which competitor it named.\n\nAI Search Visibility in Ubersuggest shows that for ChatGPT and Gemini.\n\nThe Search Console report is free and already switched on. Open it this week.\n\n#SEO #GEO #SearchConsole",
+  "ref": null
+ },
+ {
+  "id": "gabriel_claude_code",
+  "n": 23,
+  "format": "Toolkit table",
+  "title": "The SEO plugin for Claude Code",
+  "author": {
+   "key": "gabriel",
+   "name": "Gabriel Tsunode",
+   "headline": "Software Engineer · AI · SEO · GEO | Building products with TypeScript, Node.js & React/Next.js",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/gabriel_claude_code.jpg",
+  "text": "Run your whole SEO & GEO inside Claude Code ‼️\n\n9 skills and 1 agent, on live Ubersuggest data.\n\nI built this plugin with the Ubersuggest team, and it's free and open source.\n\nClaude Code was already great at building and editing websites.\nWhat it couldn't do was see the search data.\n\nIt couldn't see what people search.\nIt couldn't see where your pages rank.\nIt couldn't see whether ChatGPT and Google's AI Overviews mention you.\n\nNow it can.\n\nIt maps the keywords, audits the site, finds the gaps against your competitors and writes the brief, and then Claude Code writes the page right in your site's code.\n\nHere's what's inside:\n\nStart here:\n→ /ubersuggest:seo-action-plan looks at your site and tells you the one next thing to do, in plain words.\n→ /ubersuggest:project-setup sets your site up: competitors, keywords to track, and the prompts to watch in AI answers.\n\nResearch:\n→ keyword-research: a prioritised keyword list, grouped into clusters.\n→ competitor-analysis: who outranks you, and the keywords and pages you're missing.\n→ content-demand-finder: 50 content ideas from what your customers ask. Needs no account at all.\n\nBuild:\n→ content-brief: an outline based on who ranks now, and why.\n→ site-audit: technical problems and Core Web Vitals, ranked by impact.\n\nTrack:\n→ ai-visibility: how often AI answers mention you, and who they name instead.\n→ seo-foundations: the know-how that points any SEO question to the right tool.\n→ seo-strategist: the agent that runs them together.\n\nYou don't need to know SEO or GEO. The skills ask a few questions about your site and then tell you the next step.\n\nEvery tool works on a free Ubersuggest account. Your plan only changes how much data comes back.\n\nHere's the setup:\n\n1. In Claude Code, run: /plugin marketplace add ubersuggest/seo-skills\n2. Then run: /plugin install ubersuggest\n3. Restart Claude Code and run: /ubersuggest:seo-action-plan followed by your website\n\nOn Codex, Cursor or another agent? Run: npx skills add ubersuggest/seo-skills\n\nFeedback and issues go to the repo, and a ⭐ there helps more people find it.\n\nTry it free: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=claude-code-plugin-gabriel",
+  "ref": {
+   "author": "Ubersuggest",
+   "url": "https://www.linkedin.com/posts/ubersuggest_run-your-whole-seo-geo-inside-claude-code-activity-7516513762560929794-SVPI",
+   "likes": 503,
+   "comments": 35,
+   "followers": 11122
+  }
+ },
+ {
+  "id": "gabriel_js_crawlers",
+  "n": 24,
+  "format": "Table",
+  "title": "Can ChatGPT read your JavaScript site?",
+  "author": {
+   "key": "gabriel",
+   "name": "Gabriel Tsunode",
+   "headline": "Software Engineer · AI · SEO · GEO | Building products with TypeScript, Node.js & React/Next.js",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1400,
+  "media": "/ubs-posts/media/gabriel_js_crawlers.jpg",
+  "text": "ChatGPT can't run your JavaScript.\n\nSo it may be reading an empty page.\n\nThis is the GEO problem I'd check first on any JavaScript site.\n\nGooglebot renders the page like a browser does, so Google and Gemini see everything. Applebot does too.\n\nThe bots behind ChatGPT, Claude and Perplexity grab the HTML your server sends and stop there. Some of them even download your JS files, they just never run them.\n\nLet's say your product page is a React SPA. The server sends a header, an empty root div and a script tag.\n\nGoogle renders the page and sees the product, while ChatGPT only gets the empty div. So when someone asks it \"what's the best X for Y\", the competitor with a server-rendered page gets named and you don't.\n\nThe fix is the same one we learned for Googlebot years ago:\n\n1. Server-render or statically generate every page you want AI to quote. SSR, SSG or RSC in Next.js all work.\n2. Keep the data in the first HTML response.\n3. Don't hide the important part behind a click or a tab.\n4. Check the raw response. curl the URL and search for your product name.\n\nVercel measured this on real traffic a while back. I re-read the crawler docs from OpenAI, Anthropic and Perplexity this month, and none of them says its bot renders JavaScript yet. If that changes, I'll post about it.\n\nThe Ubersuggest plugin for Claude Code runs a site audit in the same session, so you can fix what it finds right there. Run /ubersuggest:site-audit followed by your domain.\n\nTry it free: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=js-crawlers-gabriel",
+  "ref": {
+   "author": "Jake Ward",
+   "url": "https://www.linkedin.com/posts/jakezward_google-just-revealed-how-long-seo-actually-activity-7518279103024918529-Lw_1",
+   "likes": 2537,
+   "comments": 299,
+   "followers": 204706
+  }
+ },
+ {
+  "id": "gabriel_dev_then_now",
+  "n": 25,
+  "format": "Then vs now",
+  "title": "SEO for devs in 2026",
+  "author": {
+   "key": "gabriel",
+   "name": "Gabriel Tsunode",
+   "headline": "Software Engineer · AI · SEO · GEO | Building products with TypeScript, Node.js & React/Next.js",
+   "company": false
+  },
+  "w": 1400,
+  "h": 1750,
+  "media": "/ubs-posts/media/gabriel_dev_then_now.jpg",
+  "text": "SEO for developers in 2026 looks nothing like it did three years ago, and the tools on the picture show why.\n\nBack then, SEO reached a dev as a Jira ticket from the marketing team: fix these titles, add this schema, make this page faster, kill these 404s. The tools were Yoast, Search Console, Lighthouse and a spreadsheet. 🚀\n\nNow the agent that writes the page can also do the SEO, as long as it can see the data.\n\nLet's say you ship a new Next.js page tomorrow. The same session that wrote it can run /ubersuggest:site-audit and /ubersuggest:keyword-research before the PR merges, because the plugin pulls the keywords, rankings and crawl errors from Ubersuggest.\n\nClaude Code, Cursor and Codex build and edit the site, GitHub Copilot reviews the pull request, and Next.js or React in TypeScript ships it on Vercel or Cloudflare. And the same agent can check whether ChatGPT and Google's AI Overviews name the brand, through the ai-visibility skill, and write the fix.\n\nChatGPT, Claude, Gemini and Perplexity sit on the right side of the picture because your users now search there too. Your pages have to be readable by their crawlers, and most of those crawlers don't run JavaScript.\n\nSearch Console, Lighthouse and WordPress still sit on the left side of the picture, and most teams still open all three every week.\n\nIf you want to try the new side, this is the whole setup:\n\n1. Sign up for free at the link below and connect your website.\n2. In Claude Code, run: /plugin marketplace add ubersuggest/seo-skills, then /plugin install ubersuggest. On Cursor or Codex: npx skills add ubersuggest/seo-skills.\n3. Run: /ubersuggest:seo-action-plan followed by your website.\n\nTry it free: https://neilpatel.com/ubersuggest/?utm_source=linkedin&utm_medium=social&utm_campaign=social-organic-2026&utm_content=dev-then-now-gabriel",
+  "ref": {
+   "author": "Emilia Möller",
+   "url": "https://www.linkedin.com/posts/emilia-moller_marketing-in-2026-feels-like-a-completely-activity-7513935232358776832-XZ9z",
+   "likes": 3919,
+   "comments": 306,
+   "followers": 78903
+  }
+ }
+]

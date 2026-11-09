@@ -10,7 +10,7 @@ const APP = join(process.cwd(), "src", "app");
 // layout.tsx sets robots noindex (client review pages, and Oleg's own
 // /fitness). A sitemap entry for a noindex page is a contradiction Google
 // flags, so these are excluded here rather than listed there.
-const UNLISTED = new Set(["ubersuggest-feed", "wasl-rebrand", "fitness", "style", "grocery", "ubs-agencies"]);
+const UNLISTED = new Set(["ubersuggest-feed", "wasl-rebrand", "fitness", "style", "grocery", "ubs-agencies", "ubs-posts", "ubs-posts-rate", "ubs-posts-ratings"]);
 
 /** Every folder under src/app that is a real, publicly reachable page. */
 function routeFolders(): string[] {

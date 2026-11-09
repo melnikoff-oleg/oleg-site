@@ -58,11 +58,12 @@ export async function recentSubmissions(ip: string): Promise<number> {
 export async function saveSubmission(
   name: string,
   votes: Vote[],
-  meta: { ip: string; userAgent: string | null },
+  meta: { ip: string; userAgent: string | null; round?: string },
 ): Promise<string> {
   const { data, error } = await db()
     .from("ubs_vote_submission")
-    .insert({ voter_name: name, ip: meta.ip, user_agent: meta.userAgent })
+    // `round` falls back to the column default (the September 2026 round) when a caller gives none.
+    .insert({ voter_name: name, ip: meta.ip, user_agent: meta.userAgent, ...(meta.round ? { round: meta.round } : {}) })
     .select("id")
     .single();
   if (error) throw error;

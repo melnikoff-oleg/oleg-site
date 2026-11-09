@@ -1,0 +1,6 @@
+/* Only what the November 2026 pages add to ubersuggest-feed.css: a person's round
+   avatar and a headline that stays on one line, as LinkedIn shows it. */
+.ubs-av.ubs-av-person { border-radius: 50%; }
+.ubs-who { min-width: 0; }
+.ubs-hd.ubs-hd-1 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ubs-noref { display: block; margin-top: 10px; font-size: 12.5px; color: var(--faint); text-align: center; }
