@@ -23,6 +23,8 @@ export const shortLinks: { path: string; to: string }[] = [
   { path: "/yt-fl", to: guide("/5-levels-ai", "five-levels-ai") },
   { path: "/yt-ce", to: guide("/", "claude-ceo-slow-down") },
   { path: "/yt-lo", to: guide("/", "linkedin-outreach-agent") },
+  { path: "/yt-lp", to: guide("/linkedin-packaging", "linkedin-profile-packaging") },
+  { path: "/yt-lc", to: guide("/linkedin-packaging", "linkedin-profile-packaging", "pinned-comment") },
   // Ready for the pinned comment on the Instagram pages video, which still has the plain page link.
   { path: "/yt-ic", to: guide("/instagram-viral-pages", "viral-instagram-pages-higgsfield", "pinned-comment") },
 ];
