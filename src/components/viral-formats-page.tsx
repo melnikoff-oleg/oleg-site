@@ -2,7 +2,8 @@
 // (/cybersecurity-linkedin-formats, /founder-linkedin-formats,
 // /design-linkedin-formats), each sent to people who comment on one of Oleg's
 // LinkedIn posts of November 2026. A card is one format: the post that proves
-// it (first picture, author, likes, outlier score, link) and a template for
+// it, drawn like a LinkedIn feed card (author, folded text with a CSS-only
+// "see more", first picture, likes and comments), and a template for
 // the picture and the text.
 //
 // The lists are generated: scripts/build-viral-formats.py reads the MS repo
@@ -94,31 +95,73 @@ export function ViralFormatsPage({
           {formats.map((f, index) => (
             <li key={f.id} className="min-w-0">
               <article className="flex flex-col overflow-hidden rounded-2xl border border-hairline bg-navy-raised" data-testid="format-card">
-                <a
-                  href={f.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${f.author}'s post on LinkedIn`}
-                  className="block bg-black/20 focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-vivid-blue"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/viral-formats/${f.id}.webp`}
-                    width={f.width}
-                    height={f.height}
-                    alt={`${f.name}: ${f.kind === "video" ? "cover of the video" : "first picture"} of ${f.author}'s LinkedIn post`}
-                    loading={index < 2 ? "eager" : "lazy"}
-                    decoding="async"
-                    className="mx-auto block h-auto max-h-[460px] w-auto max-w-full"
-                  />
-                </a>
+                {/* The post, drawn like a LinkedIn feed card (white, whatever the site theme): author, folded text, picture, reactions. */}
+                <div className="m-3 mb-0 overflow-hidden rounded-xl bg-white text-[#191919]" data-testid="post-preview">
+                  <div className="flex items-center gap-2.5 px-4 pt-3.5">
+                    {f.avatar ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={`/viral-formats/av/${f.avatar}`} width={48} height={48} alt="" loading="lazy" decoding="async" className="size-12 shrink-0 rounded-full object-cover" />
+                    ) : (
+                      <span aria-hidden className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#dfe6ee] font-body text-base font-semibold text-[#56687a]">
+                        {f.author.slice(0, 1)}
+                      </span>
+                    )}
+                    <div className="min-w-0">
+                      <p className="truncate font-body text-[15px] font-semibold leading-tight">{f.author}</p>
+                      {f.headline && <p className="truncate font-body text-xs leading-snug text-[#666]">{f.headline}</p>}
+                      <p className="font-body text-xs leading-snug text-[#666]">{f.date}</p>
+                    </div>
+                  </div>
+                  {f.post && (
+                    <div className="px-4 pt-3 pb-2.5 font-body text-sm leading-[1.45]">
+                      <input type="checkbox" id={`more-${f.id}`} className="peer sr-only" aria-label={`Show the full text of ${f.author}'s post`} />
+                      <p className="line-clamp-3 whitespace-pre-line break-words peer-checked:line-clamp-none">{f.post}</p>
+                      <label
+                        htmlFor={`more-${f.id}`}
+                        className="block cursor-pointer text-right text-[#666] hover:text-[#0a66c2] hover:underline peer-checked:hidden peer-focus-visible:underline"
+                      >
+                        …see more
+                      </label>
+                    </div>
+                  )}
+                  <a
+                    href={f.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${f.author}'s post on LinkedIn`}
+                    className={`block bg-[#f3f2ef] focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-vivid-blue ${f.post ? "" : "mt-3"}`}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/viral-formats/${f.id}.webp`}
+                      width={f.width}
+                      height={f.height}
+                      alt={`${f.name}: ${f.kind === "video" ? "cover of the video" : "first picture"} of ${f.author}'s LinkedIn post`}
+                      loading={index < 2 ? "eager" : "lazy"}
+                      decoding="async"
+                      className="mx-auto block h-auto max-h-[460px] w-auto max-w-full"
+                    />
+                  </a>
+                  <div className="flex items-center gap-1.5 px-4 py-2.5 font-body text-[13px] text-[#666]">
+                    <svg viewBox="0 0 60 24" aria-hidden className="h-[18px] w-[45px] shrink-0">
+                      <circle cx="12" cy="12" r="11" fill="#378FE9" stroke="#fff" strokeWidth="2" />
+                      <path fill="#fff" d="M17.6 11.1c.5.2.8.7.8 1.2 0 .4-.2.8-.5 1 .2.2.3.5.3.8 0 .5-.3.9-.7 1.1.1.2.1.3.1.5 0 .7-.6 1.2-1.3 1.2h-3.9c-.9 0-1.7-.2-2.5-.6l-.4-.2H7.6v-5h1.3c.3 0 .6-.2.8-.5l1.9-3.3c.2-.4.3-.8.3-1.2v-.6c0-.3.2-.5.5-.5.9 0 1.7.8 1.7 1.7 0 .6-.1 1.1-.4 1.6l-.5 1h3c.8 0 1.4.6 1.4 1.3z" />
+                      <circle cx="30" cy="12" r="11" fill="#DF704D" stroke="#fff" strokeWidth="2" />
+                      <path fill="#fff" d="M30 17.6l-4.3-4.2a2.9 2.9 0 0 1 4.1-4.1l.2.2.2-.2a2.9 2.9 0 0 1 4.1 4.1z" />
+                      <circle cx="48" cy="12" r="11" fill="#F5BB5C" stroke="#fff" strokeWidth="2" />
+                      <path fill="#fff" d="M48 6a4.2 4.2 0 0 0-2.4 7.7c.3.2.5.6.5 1v.5h3.8v-.5c0-.4.2-.8.5-1A4.2 4.2 0 0 0 48 6zm-1.7 10.2h3.4v1.3h-3.4z" />
+                    </svg>
+                    <span className="tabular-nums">{f.likes}</span>
+                    <span className="ml-auto tabular-nums">{f.comments} comments</span>
+                  </div>
+                </div>
                 <div className="flex flex-col px-4 pt-4 pb-4 md:px-5 md:pb-5">
                   <h2 className="font-display text-xl font-semibold leading-[1.15] tracking-tight text-silver">
                     <span className="font-body text-sm font-normal tabular-nums text-silver-muted">{String(index + 1).padStart(2, "0")} </span>
                     {f.name}
                   </h2>
                   <p className="mt-1.5 font-body text-sm tabular-nums text-silver-muted">
-                    {f.author} · {f.likes} likes · {f.score} their usual post · {f.date}
+                    {f.score} their usual post
                   </p>
                   <p className="mt-3 font-body text-[15px] leading-relaxed text-silver">{f.why}</p>
                   <div className="mt-3 rounded-xl border border-hairline bg-vivid-blue/10 px-3.5 py-3">

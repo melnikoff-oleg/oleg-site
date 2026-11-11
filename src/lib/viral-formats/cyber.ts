@@ -19,7 +19,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "60x",
     "date": "Sep 2026",
     "width": 1280,
-    "height": 1714
+    "height": 1714,
+    "post": "NIST just banned mandatory password complexity rules.\n\nI've seen why they finally did it.\n\nSP 800-63B Revision 4 says verifiers shall not require uppercase letters, numbers, symbols anymore. Length and passphrases instead.\n\nI've seen passwords accessible in plain sight. That's what an overly difficult policy does to people.\n\nThe harder a password is to remember,\nthe more likely somebody forgets it.\n\nThen you're increasing the likelihood that they take some sort of shortcut, which actively works against what the policy is meant to protect.\n\nThat's why we recommend passphrases over complexity requirements.\n\nWe started customizing security awareness training around a client's own specific policies during their annual cycle, instead of just generic guidance.\n\nWe distill what's been documented into the people who have to adhere to it day after day.\n\nWe also ask employees what's not working.\n\nSome processes get so complex, so convoluted, they make it nearly impossible for somebody to do their job, and in that case the security is working against the organization.\n\nWe don't scrap a control just because people complain about it. But sometimes the decision has to change to get the right trade-off between security, accessibility, and functionality.\n\nA written policy has to hold up once it's in the hands of the people who actually live inside it every day.",
+    "headline": "Founder @ Maltek Solutions | Penetration Testing & vCISO Services | 500+ Engagements | President, Red Team Village",
+    "avatar": "mikelisi.webp"
   },
   {
     "id": 48244,
@@ -36,7 +39,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "11x",
     "date": "Jun 2026",
     "width": 720,
-    "height": 900
+    "height": 900,
+    "post": "The board won’t fund cyber brilliance.\nThey fund what they understand.\n\nAnd most security leaders explain cyber in the wrong language.\n\nBecause when security works…\n\nnothing happens.\n\nBut when it fails…\n\nyou make headlines.\n\nThat’s the paradox of cybersecurity.\n\nYou prevent disasters that never appear.\n\nSo leadership struggles to see the value.\n\nThe solution isn’t more dashboards.\n\nIt’s translation.\n\n🧙🏼‍♂️ Cyber-speak → business-speak.\n\nHere’s the fix.\n\n❌ \"We blocked 4 million attacks\"\n✅ \"We prevented $2M in revenue disruption\"\n\n❌ \"We're patching critical CVEs\"\n✅ \"We closed risks that could stop operations\"\n\n❌ \"We completed our pentesting\"\n✅ \"We validated our defense against real world scenarios\"\n\n❌ \"We're adding more to disaster recovery\"\n✅ \"We've improved our ability to recover operations for an outage or breach\"\n\n❌ \"We added threat intelligence\"\n✅ \"We are focusing our efforts on our most likely weaknesses and using data from our industry\"\n\n❌ \"We completed a risk assessment\"\n✅ \"We identify risks that could cause $2M / day losses and have a plan to reduce that\"\n\n❌ \"We maintain compliance\"\n✅ \"We're able to work in regulated markets and have advantages to win\"\n\n❌ \"We deployed MFA\"\n✅ \"We've reduced the chance of someone's account being taken impacting operations\"\n\n❌ \"We need more budget for tools\"\n✅ \"We have $1M / day risk that can be protected from a one time $250k investment\"\n\n❌ \"We need security monitoring\"\n✅ \"Without visibility we won't know if our operations are impacted until it happens\"\n\n❌ \"We completed our IR Tabletop\"\n✅ \"We tested out plans for resilience, and found ways to improve our business recovery\"\n\n❌ \"Phishing fail rates are at 15%\"\n✅ \"Most of our staff are trained to not expose data, we have plans to train the remaining few\"\n\nThe formula is simple.\n\nTechnical skill builds the defence.\n\nBusiness language gets the budget.\n\nAnd most cyber & IT teams are still speaking the wrong language.\n\nThat’s why security programs stall.\n\nThat’s why boards hesitate.\n\nAnd that’s why good CIO/CISOs lose funding for critical work.\n\nI’ve helped multiple orgs translate cyber risk into business decisions leadership can act on, and build strong programs.\n\nIf you're a business leader, board member, or security leader trying to:\n• build a stronger security program\n• translate cyber risk into business impact\n• get leadership alignment on security investment\n\nthis is exactly the work I help clients with.\n\nFeel free to send me a DM if you'd like to talk trough it.\n\nHapp",
+    "headline": "Helping Executives, Boards & Technology Leaders Reduce Cyber Risk | Business-First Cybersecurity | CRO at viLogics | Public Speaker",
+    "avatar": "wilklu.webp"
   },
   {
     "id": 45059,
@@ -53,7 +59,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "2.4x",
     "date": "Jul 2026",
     "width": 800,
-    "height": 800
+    "height": 800,
+    "post": "14 Cybersecurity Documentaries Every Security Professional Should Watch Before 2026\n\nMost people think cybersecurity is about firewalls and antivirus.\n\nThey're wrong.\n\nIf you want to understand why data breaches happen, how governments conduct cyber operations, why privacy is disappearing, and how hackers changed the world...\nSkip another certification video.\n\nWatch these documentaries instead.\n\n👇 Here are 14 cybersecurity documentaries worth your time:\n\n🎬 Hackers: Wizards of the Electronic Age (1985)\n The origins of hacker culture.\n\n🎬 In the Realm of the Hackers (2003)\n Inside the early hacking underground.\n\n🎬 Hacking Democracy (2006)\n How cyber threats impact elections.\n\n🎬 We Are Legion (2012)\n The rise of Anonymous and hacktivism.\n\n🎬 Terms and Conditions May Apply (2013)\n The hidden cost of your online privacy.\n\n🎬 The Internet's Own Boy (2014)\n Aaron Swartz's fight for internet freedom.\n\n🎬 Citizenfour (2014)\n Snowden's historic surveillance leak.\n\n🎬 Deep Web (2015)\n The dark web, Silk Road, and digital privacy.\n\n🎬 Zero Days (2016)\n The story behind the Stuxnet cyberweapon.\n\n🎬 The Great Hack (2019)\n How data became the world's most valuable asset.\n\n🎬 Kill Chain (2020)\n The cybersecurity of modern elections.\n\n🎬 The Perfect Weapon (2020)\n Cyber warfare in the modern era.\n\n🎬 Coded Bias (2020)\n When AI learns human bias.\n\n🎬 Cyberbunker (2023)\n Inside a global cybercrime empire\n\nCybersecurity isn't just about technology.\nIt's about psychology.\n\n Politics.\n Privacy.\n Power.\n Human behavior.\n\nThe professionals who understand all of these will always have an advantage over those who only understand the tools.\n\nOne documentary can change how you think about digital security more than hours of reading technical documentation.\n\n📌 Which cybersecurity documentary had the biggest impact on you?\n\nSave this list for your next movie night.\n\n🔄 Repost this to help someone discover these incredible cybersecurity documentaries.\n\n➕ Follow Marcel Velica for more cybersecurity resources, learning guides, AI tools, and practical security insights.",
+    "headline": "Cybersecurity Strategy & Risk Leader | Fractional CISO & AI Governance Advisor | B2B Tech Brand Partner |",
+    "avatar": "marcelvelica.webp"
   },
   {
     "id": 168984,
@@ -70,7 +79,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "8.3x",
     "date": "Sep 2026",
     "width": 1080,
-    "height": 1350
+    "height": 1350,
+    "post": "The biggest IAM shift of 2026 is not a new SSO product.\nIt is the fact that non-human identities now outnumber humans by 45 to 1 in average cloud environments. \nAI agents are accelerating that ratio. \n\nAnd most enterprises still govern them through spreadsheets and hope. Here is what I see in production 👇\n\n🤖 𝐖𝐡𝐚𝐭 \"𝐍𝐨𝐧-𝐇𝐮𝐦𝐚𝐧 𝐈𝐝𝐞𝐧𝐭𝐢𝐭𝐲\" 𝐀𝐜𝐭𝐮𝐚𝐥𝐥𝐲 𝐌𝐞𝐚𝐧𝐬\n→ Service accounts (Active Directory, SaaS-embedded)\n→ API keys (long-lived · scoped · often over-privileged)\n→ Workload identity (IAM roles for Lambdas · pods · containers)\n→ OAuth apps (M365 · Google Workspace connections)\n→ RPA bots (UiPath · Blue Prism executing as service accts)\n→ AI agents (new · autonomous · pattern-unclear yet)\n\n🚨 𝐖𝐡𝐲 𝐓𝐡𝐢𝐬 𝐈𝐬 𝐭𝐡𝐞 𝐁𝐢𝐠𝐠𝐞𝐬𝐭 𝐈𝐀𝐌 𝐁𝐥𝐢𝐧𝐝𝐬𝐩𝐨𝐭\n→ Owned by DevOps, Platform, MLOps · not identity teams\n→ No JML lifecycle (they never leave the company)\n→ No manager · no certification · no accountability\n→ Long-lived credentials · often stored in code, config, or CI\n→ Over-privileged by default (least privilege = \"later\")\n\n🎯 𝐓𝐡𝐞 𝟔 𝐌𝐨𝐯𝐞𝐬 𝐌𝐚𝐭𝐮𝐫𝐞 𝐄𝐧𝐭𝐞𝐫𝐩𝐫𝐢𝐬𝐞𝐬 𝐀𝐫𝐞 𝐌𝐚𝐤𝐢𝐧𝐠\n\n𝟏. 𝐈𝐧𝐯𝐞𝐧𝐭𝐨𝐫𝐲 𝐄𝐯𝐞𝐫𝐲 𝐍𝐨𝐧-𝐇𝐮𝐦𝐚𝐧 𝐈𝐝𝐞𝐧𝐭𝐢𝐭𝐲\nCIEM tools (Wiz, Sonrai, Ermetic) discover cloud entitlements at scale\n↳ Can't govern what you can't see.\n\n𝟐. 𝐀𝐬𝐬𝐢𝐠𝐧 𝐇𝐮𝐦𝐚𝐧 𝐎𝐰𝐧𝐞𝐫𝐬 𝐭𝐨 𝐄𝐯𝐞𝐫𝐲 𝐌𝐚𝐜𝐡𝐢𝐧𝐞\nNo orphan identities · owner accountable for review\n↳ The single most impactful control most teams skip.\n\n𝟑. 𝐑𝐨𝐭𝐚𝐭𝐞 𝐒𝐞𝐜𝐫𝐞𝐭𝐬 + 𝐒𝐡𝐨𝐫𝐭𝐞𝐧 𝐋𝐢𝐟𝐞𝐭𝐢𝐦𝐞𝐬\nVaulted secrets · 24-72h rotation · PAM-owned lifecycle\n↳ Long-lived API keys = ransomware's fuel.\n\n𝟒. 𝐖𝐨𝐫𝐤𝐥𝐨𝐚𝐝 𝐈𝐝𝐞𝐧𝐭𝐢𝐭𝐲 𝐨𝐯𝐞𝐫 𝐊𝐞𝐲𝐬\nIAM roles (AWS/GCP/Azure) · SPIFFE/SPIRE · Workload Identity Federation\n↳ Prefer identity-based over credential-based.\n\n𝟓. 𝐋𝐞𝐚𝐬𝐭 𝐏𝐫𝐢𝐯𝐢𝐥𝐞𝐠𝐞 𝐰𝐢𝐭𝐡 𝐑𝐢𝐠𝐡𝐭-𝐒𝐢𝐳𝐢𝐧𝐠\nCIEM analyzes actual usage · trims unused entitlements automatically\n↳ Auto-right-sizing is not optional at cloud scale.\n\n𝟔. 𝐆𝐨𝐯𝐞𝐫𝐧 𝐀𝐈 𝐀𝐠𝐞𝐧𝐭𝐬 𝐋𝐢𝐤𝐞 𝐄𝐦𝐩𝐥𝐨𝐲𝐞𝐞𝐬\nDelegated permissions · audit trails · risk scoring for autonomous actions\n↳ New category. Frameworks still forming. Start now.\n\n⚠ 𝐓𝐡𝐞 𝐀𝐈 𝐀𝐠𝐞𝐧𝐭 𝐒𝐡𝐢𝐟𝐭 (𝐰𝐡𝐲 𝐭𝐡𝐢𝐬 𝐣𝐮𝐬𝐭 𝐠𝐨𝐭 𝐡𝐚𝐫𝐝𝐞𝐫)\nAI agents don't just have static permissions. \nThey REASON about what actions to take, delegate to sub-agents, and can be tricked (prompt injection, tool abuse). \nTraditional entitlement models don't cover this.\n\nSave this. Share with your cloud + IAM + platform teams.\n\nFollow for more IAM patterns from production environments. Open to exchanging perspectives on non-human identity governance.\n\nWhere does your enterprise stand on this? 👇\n\n#IAM #NonHumanIdentity #MachineIdentity #CIEM #AISecu",
+    "headline": "Lead IAM Engineer | Identity Risk, Privileged Access & Zero Trust | Securing Human & Machine Access",
+    "avatar": "sunnykumarkamani.webp"
   },
   {
     "id": 168103,
@@ -87,7 +99,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "34x",
     "date": "Aug 2026",
     "width": 1156,
-    "height": 1152
+    "height": 1152,
+    "post": "Has been an amazing few weeks in cyber, companies are falling over themselves to admit they hacked people by accident... which, if I'm not mistaken, is kind of against the law? How long do we think this will keep getting celebrated before reality starts to kick in?",
+    "headline": "Founder & CEO / Intruder 👾 / Stop breaches before they start",
+    "avatar": "chris-wallis.webp"
   },
   {
     "id": 45402,
@@ -104,7 +119,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "5.0x",
     "date": "Feb 2026",
     "width": 896,
-    "height": 1152
+    "height": 1152,
+    "post": "What will cybersecurity actually look like in 2026?\n\nSpoiler: It won’t be “more of the same.”\n\nExperts from IBM, Google Cloud, and multiple industry reports are already pointing to what’s coming next year and it’s a mix of new tech, new risks, and new priorities.  \n\n1)AI becomes battlefield, not tool\nAttackers will use AI to automate scans, craft convincing phishing, and even run autonomous malware. Defenders will also lean on AI to detect and respond faster than humans could alone.  \n\n2)Identity becomes the new perimeter\nPasswords and simple access controls are out. Identity security, continuous verification, phishing-resistant MFA, and AI-aware identity defense, is now the core of protection.  \n\n3)Zero Trust isn’t optional\n“Never trust, always verify” shifts from best practice to expected baseline, especially in hybrid work and multi-cloud environments.  \n\n4)Quantum forces a rethink\nEncryption standards like RSA and ECC are under threat. Organizations will start moving toward quantum-safe cryptography this year.  \n\n5)Supply chain & third-party risk tighten\nBreaches often begin with weak vendors. 2026 will bring stronger requirements for SBOM (Software Bill of Materials), continuous vendor monitoring, and real-time risk assessments.  \n\n6) Cloud + API exposures grow\nMore cloud use means more APIs and endpoints to defend. Unified security platforms and continuous exposure management will be critical.  \n\n2026 will be defined not by one trend, but by how organizations integrate security into every layer of technology, from AI and identity to quantum readiness and supply-chain transparency.\n\nIn a world where attackers use machines to attack machines, the defenders who think ahead win.\n\n(And the ones who don’t learn will lose data and trust.)\n\nWhat’s the one cybersecurity trend your team is already preparing for in 2026? \n\n♻️ If this resonates, share this post so others in our network can prepare too.",
+    "headline": "CISO & Technology Executive | Cybersecurity, Technology & AI Governance Executive | Building Secure, AI-Enabled Organizations | Board & Executive Advisor",
+    "avatar": "inga-stirbytecybersecurityleader.webp"
   },
   {
     "id": 148814,
@@ -121,7 +139,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "32x",
     "date": "Oct 2026",
     "width": 675,
-    "height": 900
+    "height": 900,
+    "post": "Palo Alto Firewall Troubleshooting Cheat Sheet\n\nFirewall traffic blocked, application unreachable, or SSL decryption failing? Do you know exactly where to start troubleshooting?\n\nThis cheat sheet covers practical troubleshooting workflows, including:\n- Traffic, Threat, URL Filtering & System Logs\n- Security Policy, NAT & Routing Verification\n- Essential PAN-OS CLI Commands\n- Packet Capture (PCAP) & Packet-Diag\n- Global Protect, SSL Decryption & App-ID Issues\n- HA Health, Session Analysis & Common Errors\n\n#PaloAltoNetworks #FirewallTroubleshooting #NetworkSecurity #PANOS #CyberSecurity",
+    "headline": "Senior Analyst Infra Transformation/Security",
+    "avatar": "mshivank.webp"
   },
   {
     "id": 147196,
@@ -138,7 +159,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "7.6x",
     "date": "Oct 2026",
     "width": 603,
-    "height": 900
+    "height": 900,
+    "post": "🚨 Preparing for a SOC L1 interview? Save these 5 pages.\n\nI came across this guide and it’s one of the cleanest fundamentals refreshers I’ve seen: SIEM, alerts vs incidents, IOCs, false positives, EDR, lateral movement, C2 and the kill chain. Short answers, each with a real example.\n\nOne thing from the hiring side, though.\n\nDefinitions get you through the first round. The second round is where most junior candidates stall, because the question stops being “What is X?” and becomes “What would you do?”\n\nSo for every definition in this guide, practise one more sentence: how would I actually see this in a log?\n🔐 Brute force (Q16) → a burst of Event ID 4625 from one source\n↔️ Lateral movement (Q38) → network logons (4624, type 3) spreading across hosts\n📡 C2 server (Q70) → outbound connections at a suspiciously regular interval\n🎣 Phishing (Q10) → the mail gateway entry, the headers, and the proxy log of the click\n\nThen be ready for the three questions that separate candidates:\n\nAn alert fires for a login from a new country. What do you check first, and what makes you escalate?\n\nWalk me through what happens when you type a URL and press enter.\n\nTell me about something you got wrong, and how you found out.\n\nThe first one is just Q3, Q4 and Q5 from this guide, applied under pressure.\n\n💬 What was the hardest question in your first SOC interview?\n\n📌 Save this for your next interview.\n\n♻️ Repost for someone breaking into the SOC.\n\n🔔 Follow Okan YILDIZ for hands-on security career guides.\n\n#SOC #SOCAnalyst #CyberSecurityCareers #BlueTeam #CyberSecurity",
+    "headline": "Global Cybersecurity Leader | Staff Security Engineer at Depop (an eBay company) | Application, Cloud and AI Security | DevSecOps, Software Supply Chain, MCP and Agentic AI Security",
+    "avatar": "yildizokan.webp"
   },
   {
     "id": 146342,
@@ -155,7 +179,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "100x+",
     "date": "Oct 2026",
     "width": 720,
-    "height": 880
+    "height": 880,
+    "post": "🖥️ Windows Directories Every SOC Analyst Should Know\n\nNot all cyber investigations start with fancy tools — sometimes the answers are hidden in plain sight.\n\nHere are the key Windows directories that reveal:\n🔑 Credential & Access Logs – Password hashes, backups, and security policies\n\n📊 System & Event Logs – System-wide changes & SIEM correlation points\n\n🕵️ Malware & Threat Indicators – Prefetch, Amcache, and registry artifacts\n\n⚙️ Persistence & Startup – Folders and registry keys attackers abuse\n\n⚡ Why it matters:\n\nKnowing where to look saves analysts hours and helps catch attackers before they dig deeper.\n\n#KnowledgeSharing #ITInfrastructure #Servers #Networking #LearnIT #SystemAdministrator #SOC #ThreatHunting #Windows #CyberSecurity",
+    "headline": "SOC Analyst | Network Security & Threat Detection | SIEM | Incident Response | FortiGate | TOP 3 % on THM",
+    "avatar": "moamen-alaa-55b3b4312.webp"
   },
   {
     "id": 147023,
@@ -172,7 +199,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "20x",
     "date": "Oct 2026",
     "width": 597,
-    "height": 900
+    "height": 900,
+    "post": "🐧💻 25 Essential Linux Commands Every Tech Professional Should Know! 🚀\nLinux is the backbone of modern technology, powering servers, cloud infrastructure, cybersecurity systems, and DevOps environments.\nWhether you're a beginner or an experienced IT professional, mastering essential Linux commands can significantly improve your productivity and technical skills. 🔥\n💡 Here are 25 must-know commands:\n✅ systemctl — Manage system services\n✅ journalctl — Analyze system logs\n✅ dmesg — View kernel messages\n✅ ss — Inspect network sockets and ports\n✅ ip — Configure network interfaces\n✅ ping — Test network connectivity\n✅ tcpdump — Capture network traffic\n✅ df & du — Monitor disk usage\n✅ lsblk & mount — Manage storage devices\n✅ fdisk — Manage disk partitions\n✅ free & vmstat — Monitor system performance\n✅ lsof — Identify open files and sockets\n✅ uptime — Check system uptime and load\n✅ useradd, usermod & passwd — Manage user accounts\n✅ chage — Configure password expiration\n✅ crontab — Schedule automated tasks\n✅ rsync — Synchronize files and backups\n✅ ssh & scp — Access remote servers and transfer files\n✅ ufw — Manage firewall rules\n🎯 Why learn Linux? Linux skills are essential for system administration, ethical hacking, penetration testing, cloud computing, networking, and DevOps.\n📌 Save this cheat sheet for your daily practice and share it with someone learning Linux!\n💬 Challenge: How many of these 25 commands can you use confidently? Comment your number below! 👇\n— Swarup Mahato | Software Engineer • Cybersecurity Enthusiast • Full Stack Developer\n\n#Linux #LinuxCommands #CyberSecurity #EthicalHacking #DevOps #CloudComputing #Networking #SystemAdministration #KaliLinux #LearnLinux #Programming #TechCommunity #SwarupInfotech",
+    "headline": "100M+ Impressions | CEO & Founder, SwarupInfotech | Investor | Security Researcher | Digital Marketing Strategist | Technology & Cybersecurity",
+    "avatar": "swarupmahato.webp"
   },
   {
     "id": 161606,
@@ -189,7 +219,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "100x+",
     "date": "Oct 2026",
     "width": 720,
-    "height": 720
+    "height": 720,
+    "post": "If you are trying to crack into Cyber Security, stop trying to memorize 50 different tools.\n\nThe entire core of Ethical Hacking can actually be mastered using just 7 fundamental tools.\n\nIf you dont know these 7, you will fail your next technical interview...\n\nHere is the exact 7-tool blueprint that every security analyst, pentester, and bug bounty hunter uses daily:\n\n1. Nmap (The Eyes) -gt; Used for network discovery and vulnerability scanning. If you dont scan ports first, you are hacking blind.\n\n2. Burp Suite (The Interceptor) -gt; The holy grail for Web Application security. It intercepts and modifies browser traffic in real-time.\n\n3. Wireshark (The Ear) -gt; It sniffs and analyzes live network packets. It catches whats moving across the wire.\n\n4. Hydra (The Router Breaker) -gt; A lightning-fast network login cracker. Perfect for testing if your SSH or FTP has weak passwords.\n\n5. John the Ripper (The Classic Cracker) -gt; Used for offline password cracking. It takes hashed passwords and breaks them down.\n\n6. Hashcat (The GPU Beast) -gt; The worlds fastest hash cracker that utilizes your graphics card to guess millions of passwords per second.\n\n7. Aircrack-ng (The Airwaves Sniper) -gt; The undisputed king for assessing Wi-Fi security and cracking WPA/WPA2 networks.\n\nThink about it this way:\n\nNmap finds the door. Burp Suite checks the window. Wireshark listens at the keyhole. And Hydra/Hashcat cracks the lock.\n\n👇 Lets settle this in the comments:\n\nIf you could only keep ONE tool from this list for the rest of your career, which one are you choosing and why?\n\n#CyberSecurity #EthicalHacking #Infosec #BugBounty #TechCareers\n#linux #post",
+    "headline": "BSCYS Student @Air University Karachi | AI Agents Developer | AI Content Creator | Business Automation Specialist",
+    "avatar": "mukesh-kumar-ai.webp"
   },
   {
     "id": 145452,
@@ -206,7 +239,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "15x",
     "date": "Sep 2026",
     "width": 720,
-    "height": 900
+    "height": 900,
+    "post": "ANTI-PHISHING TOOLS YOU MIGHT FIND INTERESTING\n \nPhishing is one of the most common ways attackers trick people into revealing sensitive information or visiting malicious websites. The good news is that there are tools that can help security professionals identify, analyze, and investigate phishing attempts.\n\nHere are some useful categories and examples:\n\n1.  Email Security Tools\nThese help detect and analyze suspicious emails and spam. Examples include SpamAssassin, MailCleaner, Rspamd, and OpenDMARC.\n\n2.  URL & Link Analysis Tools\nThese help investigate suspicious links and websites before interacting with them. Examples include URLScan.io, ThePhish, GoPhish, and PhishTool.\n\n 3. Threat Intelligence Tools\nThese provide information about known phishing campaigns, malicious indicators, and threats. Examples include PhishTank, MISP, PhishStats, OpenPhish, VirusTotal, and CheckPhish.ai.\n\n 4. Supporting Tools\nTools such as Oletools can help analyze suspicious Microsoft Office documents and identify potentially malicious content.\nThe important thing to remember is that no single tool is enough on its own. Cybersecurity professionals often combine several tools to investigate an email, URL, domain, IP address, or file and make a more informed decision.\n\nIf you're learning cybersecurity, understanding how and when to use these tools is just as important as knowing their names.\n\n Learn. Analyze. Verify. Stay safe.\n\n#Cybersecurity \n#Phishing\n #ThreatIntelligence  #CyberSecurityAwareness \n #EthicalHacking\n #CyberProfAgnes",
+    "headline": "Cybersecurity Professional | Executive Assistant| IT Support Specialist| Cybersecurity Consultant | Vulnerability & Penetration Tester | Red Teamer | Cybersecurity Instructor | Teens Mentor",
+    "avatar": "agnesdiemkwap.webp"
   },
   {
     "id": 145426,
@@ -223,7 +259,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "13x",
     "date": "Oct 2026",
     "width": 714,
-    "height": 900
+    "height": 900,
+    "post": "CYBERSECURITY TOOLS YOU MIGHT FIND INTERESTING \n\nAre you learning cybersecurity and wondering what tools professionals use? Let's break it down! \n\nCybersecurity tools help professionals monitor networks, identify vulnerabilities, investigate security incidents, and protect systems from cyberattacks.\n\nHere are some important tools and their uses:\n\n1. Network Scanning\n• Nmap – Discovers devices, open ports, and services on a network.\n• Wireshark – Captures and analyzes network traffic.\n• Masscan – Scans large networks for open ports.\n\n 2. Open-Source Intelligence (OSINT)\n• Maltego – Maps relationships between digital entities.\n• Shodan – Finds internet-connected devices.\n• theHarvester – Collects publicly available information, such as email addresses and subdomains.\n\n 3. Web Application Security\n• Burp Suite – Helps test web applications for vulnerabilities.\n• OWASP ZAP – Supports web application security testing.\n• SQLMap – Tests for SQL injection vulnerabilities.\n\n4. Penetration Testing\n• Metasploit – Helps security professionals test system defenses.\n• Gobuster – Discovers hidden web directories and files.\n• Hydra – Tests authentication security.\n\n 5. Digital Forensics\n• Autopsy – Examines digital evidence.\n• Volatility – Analyzes computer memory dumps.\n• FTK Imager – Creates and examines forensic images.\n\n 6. Wireless Security\n• Aircrack-ng – Helps assess Wi-Fi security.\n• Kismet – Detects and monitors wireless networks.\n\n 7. Password Security\n• John the Ripper – Audits password strength.\n• Hashcat – Performs password recovery and security auditing.\n\n 8. Privacy Tools\n• Tor Browser – Supports private browsing.\n• OpenVPN and WireGuard – Provide secure VPN connectivity.\n\n What should beginners learn first?\n\nDon't rush to learn every tool. Start with networking fundamentals, Linux commands, and basic cybersecurity concepts. Then practise with tools that match your career goals.\n\nFor example, aspiring SOC analysts can start with Wireshark and security monitoring tools, while aspiring penetration testers can explore Nmap and Burp Suite in authorized labs.\n\n Remember: Always obtain permission before scanning or testing systems.\n\nCybersecurity is not just about knowing tools. It's about understanding how they work, interpreting results, and using that knowledge responsibly.\n\nWhich of these tools are you currently learning? Share in the comments! \n\n#Cybersecurity \n#EthicalHacking \n#InfoSec \n#CyberSecurityTools\n #CyberProfAgnes",
+    "headline": "Cybersecurity Professional | Executive Assistant| IT Support Specialist| Cybersecurity Consultant | Vulnerability & Penetration Tester | Red Teamer | Cybersecurity Instructor | Teens Mentor",
+    "avatar": "agnesdiemkwap.webp"
   },
   {
     "id": 145448,
@@ -240,7 +279,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "9.9x",
     "date": "Oct 2026",
     "width": 675,
-    "height": 900
+    "height": 900,
+    "post": "SAVE THIS NETWORK COMMAND CHEAT SHEET FOR YOUR CYBERSECURITY LEARNING JOURNEY \n\nIf you're learning cybersecurity, understanding network commands is an important step toward becoming a skilled security professional.\n\nThese commands help you troubleshoot network problems, investigate connections, and understand how devices communicate.\n\nHere are 9 useful network tasks and the commands you can use on Windows, Linux, and macOS:\n\n🔹 1. DNS Lookup\nWant to find the IP address associated with a domain name?\n\n• Windows: \"nslookup\"\n• Linux/macOS: \"dig\"\n\n🔹 2. View the Routing Table\nSee how your computer decides where to send network traffic.\n\n• Windows: \"route print\"\n• Linux: \"ip route\"\n• macOS: \"netstat -rn\"\n\n🔹 3. Capture Network Packets\nInspect network traffic to troubleshoot problems and investigate suspicious activity.\n\n• Windows: \"pktmon\"\n• Linux/macOS: \"tcpdump\"\n\n🔹 4. Test Network Connectivity\nCheck whether a host is reachable over the network.\n\n• Windows/Linux/macOS: \"ping\"\n\n🔹 5. Check IPv6 Neighbors\nView information about nearby devices discovered through IPv6 Neighbor Discovery.\n\n• Windows: \"netsh interface ipv6 show neighbors\"\n• Linux: \"ip -6 neigh\"\n• macOS: \"ndp -a\"\n\n🔹 6. Check Network Interfaces and IP Addresses\nFind your device's IP address and network interface information.\n\n• Windows: \"ipconfig /all\"\n• Linux: \"ip addr\"\n• macOS: \"ifconfig -a\"\n\n🔹 7. Check Network Connections and Ports\nView active connections and listening ports.\n\n• Windows: \"netstat -an\"\n• Linux: \"ss -tuln\"\n• macOS: \"netstat -an\"\n\n🔹 8. Trace a Network Path\nDiscover the network hops traffic takes to reach a destination.\n\n• Windows: \"tracert\"\n• Linux/macOS: \"traceroute\"\n\n🔹 9. Check IPv4 Neighbors\nView the local IPv4-to-MAC address mappings your computer has learned.\n\n• Windows: \"arp -a\"\n• Linux: \"ip neigh\"\n• macOS: \"arp -a\"\n\nDon't just memorize commands. Run them in your own lab, observe the output, and learn what each result means.\n\nFor example, start with \"ipconfig /all\" on Windows or \"ip addr\" on Linux to understand your device's network configuration.\n\nPacket capture and network investigation tools should only be used on networks and systems you own or have permission to examine.\n\nWhich of these commands have you used before, and which one are you learning today?\n\nLet's learn and grow together. 🚀\n\n#Cybersecurity #Networking #CybersecurityForBeginners #NetworkSecurity #EthicalHacking #CyberProfAgnes",
+    "headline": "Cybersecurity Professional | Executive Assistant| IT Support Specialist| Cybersecurity Consultant | Vulnerability & Penetration Tester | Red Teamer | Cybersecurity Instructor | Teens Mentor",
+    "avatar": "agnesdiemkwap.webp"
   },
   {
     "id": 146627,
@@ -257,7 +299,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "16x",
     "date": "May 2026",
     "width": 714,
-    "height": 900
+    "height": 900,
+    "post": "Understanding the difference between ISO 27001, ISO 22301, and ISO 42001 is essential for building a secure, resilient, and future-ready organization.\n\nISO 27001 focuses on establishing an Information Security Management System (ISMS) to protect confidentiality, integrity, and availability of data\n\nISO 22301 ensures business continuity by preparing organizations to respond and recover from disruptions with minimal impact\n\nISO 42001 introduces governance for AI systems, addressing risks related to ethics, accountability, and transparency\nWhile ISO 27001 secures information assets, ISO 22301 keeps the business running during crises, and ISO 42001 ensures responsible and controlled use of AI. Together, they create a strong foundation for risk management, operational resilience, and emerging technology governance.\nOrganizations aligning with these standards are better equipped to handle cyber threats, operational disruptions, and evolving regulatory expectations all while maintaining stakeholder trust.\n\nCredit: Infographics by Infosec Train\n\n#ISO27001 #ISO22301 #ISO42001 #ISMS #BCMS #AIMS #CyberSecurity #BusinessContinuity #AI #RiskManagement #GRC #Compliance #InfosecTrain",
+    "headline": "Cyber Security Consultant | Information Security Consultant | Speaker | Cybersecurity Governance | Women in Cybersecurity",
+    "avatar": "prerna-joshi-35abaa2a6.webp"
   },
   {
     "id": 168992,
@@ -274,7 +319,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "19x",
     "date": "Oct 2026",
     "width": 720,
-    "height": 900
+    "height": 900,
+    "post": "Most teams think IAM and PAM are the same.\nThey’re not.\nAnd confusing them creates real security gaps.\nIAM controls access.\nPAM controls power.\n\nHere’s the difference most teams miss 👇\nIAM (Identity & Access Management)\n→ Who can access what across the organization\nIt covers:\n↳ Employees, partners, customers\n↳ Applications, data, systems\n↳ Authentication + authorization\nCore capabilities:\n↳ SSO (one login, multiple systems)\n↳ MFA (extra layer of security)\n↳ RBAC (access based on roles)\n↳ User lifecycle (join → move → leave)\n\n👉 IAM ensures people get the right access\nPAM (Privileged Access Management)\n→ Who gets elevated access to critical systems\nIt focuses on:\n↳ Admins, DevOps, DBAs\n↳ Sensitive infrastructure\n↳ High-risk actions\nCore capabilities:\n↳ Just-in-time access (no standing privileges)\n↳ Session monitoring & recording\n↳ Password vaulting & rotation\n↳ Approval workflows\n\n👉 PAM ensures powerful access is controlled and temporary\nSimple way to think about it:\nIAM = Access to the building\nPAM = Access to the vault inside\nWhy both matter\nMost attacks today don’t “break in.”\nThey log in.\nIf IAM is weak → anyone can enter\nIf PAM is weak → attackers take control once inside\n\nThe real risk?\nYou have IAM in place…\nBut no control over privileged access.\nThat’s where breaches escalate.\n\nStrong security isn’t IAM or PAM.\nIt’s IAM + PAM working together.\n\nIf your privileged access isn’t time-bound, monitored, and controlled,\nyou don’t have security\n\nYou have exposure.\nWhere do you see the bigger gap today IAM or PAM?",
+    "headline": "Lead IAM Engineer | Identity Risk, Privileged Access & Zero Trust | Securing Human & Machine Access",
+    "avatar": "sunnykumarkamani.webp"
   },
   {
     "id": 162026,
@@ -291,7 +339,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "41x",
     "date": "Sep 2026",
     "width": 720,
-    "height": 895
+    "height": 895,
+    "post": "🏢 A data center rack may look like a stack of hardware. In reality, it is a carefully engineered chain of connectivity, compute, security, storage, availability, and power.\n\nUnderstanding how these components work together is fundamental for anyone working across infrastructure, networking, cloud, or cybersecurity.\n\nA typical rack brings several critical layers into one operational system:\n\n🔹 Patch Panel — organizes physical network connections\n🔹 Switch — connects systems across the LAN\n🔹 Firewall — controls and protects network traffic\n🔹 Servers — run applications and process workloads\n🔹 NAS & Storage — provide centralized and high-capacity data storage\n🔹 Load Balancer — distributes traffic across multiple servers\n🔹 UPS — maintains availability during power interruptions\n🔹 PDU — distributes power across rack-mounted equipment\n\nWhat stands out is the dependency between these layers.\n\nA powerful server means little without reliable connectivity.\nNetwork performance means little without security controls.\nAnd resilient infrastructure means little without stable power and redundancy.\n\n🔐 From a security engineering perspective, the rack is also a reminder that cybersecurity starts well below the application layer.\n\nNetwork segmentation, firewall policy, management interfaces, firmware, physical access, redundancy, monitoring, and configuration hygiene all contribute to the security and resilience of the environment.\n\nModern infrastructure may increasingly be software-defined, virtualized, and cloud-based but the underlying principles remain remarkably consistent:\n\nOrganize. Connect. Protect. Monitor. Build for failure.\n\n💬 If you were reviewing a data center rack from a security perspective, what would you check first: network segmentation, firewall configuration, management access, or physical security?\n\n#CyberSecurity #DataCenter #NetworkSecurity #Infrastructure #Networking #ServerSecurity #Firewall #NetworkEngineering #ITInfrastructure #CloudSecurity #SecurityEngineering #SysAdmin #InfoSec #CyberResilience",
+    "headline": "Cyber Security Researcher & Account Manager",
+    "avatar": "yildiz-yasemin.webp"
   },
   {
     "id": 147180,
@@ -308,7 +359,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "24x",
     "date": "Oct 2026",
     "width": 600,
-    "height": 900
+    "height": 900,
+    "post": "🔐 Cyberattacks don't happen at just one layer. Neither should your security strategy.\n\nThe OSI model isn't just a networking concept. It's a practical framework for understanding where attackers operate and how security controls can fail.\n\nFrom physical infrastructure to application vulnerabilities, every layer introduces different risks.\n\n🛡️ 7 Layers. Different Attack Surfaces.\n\n🔹 Layer 7 – Application: Exploitation of application vulnerabilities, including injection flaws and insecure APIs.\n🔹 Layer 6 – Presentation: Risks involving data encoding, encryption, and improper handling of serialized content.\n🔹 Layer 5 – Session: Session hijacking, token theft, and unauthorized session reuse.\n🔹 Layer 4 – Transport: TCP/UDP reconnaissance, port scanning, and transport-layer attacks.\n🔹 Layer 3 – Network: IP spoofing, routing manipulation, and network-layer interception.\n🔹 Layer 2 – Data Link: ARP spoofing, MAC flooding, and local network interception.\n🔹 Layer 1 – Physical: Unauthorized physical access, cable tapping, and infrastructure tampering.\n\n⚠️ The important distinction: attacks don't always fit neatly into a single OSI layer.\n\nPhishing, for example, is primarily a social engineering technique, not a Layer 6 attack.\n\nAnd that highlights a broader security principle:\n\nAttackers exploit weaknesses across technologies, configurations, identities, and human behavior.\n\n💡 From my perspective, effective defense requires visibility across the stack, strong identity controls, network segmentation, secure application development, and continuous monitoring.\n\nA firewall alone isn't enough. Neither is an EDR, WAF, or SIEM.\n\nSecurity becomes stronger when these controls work together.\n\n💬 Question for cybersecurity professionals:\n\nWhich OSI layer do you believe organizations underestimate the most when designing their security architecture?\n\n👇 Share your choice and why. I'm particularly interested in perspectives from network security, application security, and incident response teams.\n\n#CyberSecurity #NetworkSecurity #OSIModel #EthicalHacking #ApplicationSecurity #SecurityArchitecture #NetworkEngineering #DevSecOps #ThreatDetection #PenetrationTesting #ZeroTrust #IncidentResponse #BlueTeam #RedTeam #InformationSecurity",
+    "headline": "Cyber Security Researcher & Account Manager",
+    "avatar": "yildiz-yasemin.webp"
   },
   {
     "id": 161637,
@@ -325,7 +379,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "16x",
     "date": "Oct 2026",
     "width": 720,
-    "height": 376
+    "height": 376,
+    "post": "CompTIA Cybersecurity Roadmap\n\nSo many people asked me…\n\n“Which CompTIA cert should I take after A+ or Security+?”\n\n“What’s the full roadmap if I want to be a security expert?”\n\n“Do I need CySA+ before CASP+?”\n\nAnd many similar questions.\n\nThis visual shows the most common CompTIA cybersecurity progression. \n\nLet’s break it down 👇\n\n1️⃣ Core IT and Security Foundation\n\nThis is the trunk most beginners start with, though some certifications can be skipped based on prior experience.\n\n• CompTIA A+ \n↳ Entry level IT fundamentals. \n↳ Common for Help Desk, Technical Support, and junior IT roles.\n\n• CompTIA Network+ \n↳ Builds networking fundamentals used in every security role. \n↳ Covers routing, switching, protocols, and troubleshooting.\n\n• CompTIA Security+ \n↳ The gateway cybersecurity certification. \n↳ Introduces risk management, threats, controls, IAM, and incident response.\n\n2️⃣ Most Common Progression\n\nThis is the path most people choose, especially when targeting SOC Analyst roles.\n\n• CompTIA CySA+ \n↳ Focuses on defensive security and detection. \n↳ Covers threat analysis, log review, incident response, and blue team workflows.\n\n3️⃣ Skill Expansion Branches\n\nThese branches add depth based on your career direction.\n\n• CompTIA Linux+ \n↳ Builds Linux administration skills. \n↳ Extremely useful for SOC, cloud security, and infrastructure roles.\n\n• CompTIA PenTest+ \n↳ Focuses on offensive security fundamentals. \n↳ Covers vulnerability scanning, exploitation concepts, and reporting.\n\n• SecAI+\n→ Optional AI security specialization from Security+. Focuses on securing AI systems, managing AI-related risks, and applying cybersecurity controls to AI environments.\n\n4️⃣ Advanced Security Path\n\nThis is where broad experience comes together.\n\n• CompTIA SecurityX \n↳ Advanced level certification focused on enterprise security. \n↳ Emphasizes architecture, governance, risk, and operational decision making. \n↳ Typically pursued after experience with Security+, CySA+, or PenTest+.\n\n📚 Final Thoughts\n\nCompTIA certifications are designed as a progression, not isolated exams. \n\nStrong fundamentals lead into specialization, then into advanced security responsibility.\n\n🔁 Share with someone planning a cybersecurity journey \n💾 Save or screenshot this so you don’t forget.\n\n#CompTIA #CybersecurityRoadmap #ITCareers #SecurityCertifications",
+    "headline": "Senior Security Analyst @ Deloitte | Multi-cloud security, automation & AI compliance | 21x Certified | Helping IT pros break into cybersecurity",
+    "avatar": "artem-polynko.webp"
   },
   {
     "id": 47010,
@@ -342,7 +399,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "8.0x",
     "date": "Jul 2026",
     "width": 720,
-    "height": 473
+    "height": 473,
+    "post": "Infographic and Flow of CISSP Domain 1",
+    "headline": "vCISO | vCAIO | AI Learner | Podcaster | Advisor | CISSP | CGRC | CCSP | AIGP | CIPM | CSSLP | ISSAP | CISM | CRISC | CISA |AAISM (Q)",
+    "avatar": "pcissp.webp"
   },
   {
     "id": 169062,
@@ -359,7 +419,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "90x",
     "date": "Oct 2026",
     "width": 668,
-    "height": 900
+    "height": 900,
+    "post": "🔐 10 Enterprise Cybersecurity Platforms. But Which One Actually Delivers?\n\nThe cybersecurity landscape is evolving rapidly.\n\nAI-driven detection, automated response, and unified security operations are becoming essential for modern enterprises.\n\n🚨 But more security tools don't necessarily mean better security.\n\nHere are 10 major platforms shaping enterprise cybersecurity:\n\n🔹 Microsoft Defender XDR – Unified endpoint, identity, and email protection.\n🔹 Palo Alto Cortex XSIAM – AI-driven SOC automation and analytics.\n🔹 CrowdStrike Falcon – Next-generation SIEM and threat detection.\n🔹 SentinelOne Singularity – AI-powered endpoint and cloud security.\n🔹 Google Security Operations – Cloud-native SIEM and threat intelligence.\n🔹 Splunk Enterprise Security – Threat detection and investigation.\n🔹 TrendAI Vision One – Exposure management and XDR.\n🔹 Cisco XDR – Cross-domain threat correlation.\n🔹 Fortinet FortiSOC – Integrated security operations.\n🔹 Check Point – Unified enterprise security and threat prevention.\n\n💡 My perspective: The best platform isn't necessarily the one with the most features.\n\nIt's the one that delivers measurable improvements in:\n\n✅ Detection accuracy\n✅ Incident response speed\n✅ Threat visibility\n✅ Automation efficiency\n✅ Operational resilience\n\n🎯 Security effectiveness should be measured by outcomes, not vendor promises.\n\n💬 Let's hear from the cybersecurity community:\n\nIf you could choose only ONE enterprise cybersecurity platform for your SOC in 2026, which would it be and WHY?\n\n👇 Share your choice and real-world experience in the comments!\n\n#CyberSecurity #SOC #SIEM #XDR #ThreatDetection #SecurityOperations #MicrosoftDefender #CrowdStrike #PaloAltoNetworks #SentinelOne #Splunk #CiscoSecurity #Fortinet #CheckPoint #SecurityEngineering #CyberDefense #IncidentResponse #AISecurity",
+    "headline": "Information Technology Specialist | Tech Enthusiast | Cyber Security",
+    "avatar": ""
   },
   {
     "id": 146139,
@@ -376,7 +439,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "61x",
     "date": "Oct 2026",
     "width": 720,
-    "height": 900
+    "height": 900,
+    "post": "Most cybersecurity freshers I talk to have 3 certificates and 0 projects.\n\nRecruiters notice that in about 10 seconds.\n\nSo I put together 40 cybersecurity projects that actually map to real job roles:\n\n→ Network Security: Nmap scanner, Suricata IDS, SSH honeypot\n→ Web App Security: OWASP scanner, Burp extension, JWT tester\n→ Blue Team / SOC: home SOC with Wazuh, ELK dashboards, Sigma rules\n→ Malware & Forensics: CAPE sandbox, YARA rules, Volatility\n→ Cloud & DevSecOps: AWS misconfig scanner, Trivy, Checkov\n→ IoT, Hardware & AI: ESP32 builds, firmware analysis, prompt injection testing\n\nMy advice: don't try to build all 40.\n\nPick one. Finish it. Push it to GitHub with a clean README. Then write a short post about what broke and how you fixed it.\n\nThat one finished project will do more in an interview than ten half-done ones.\n\n(Everything here is for labs and systems you own or have written permission to test.)\n\nWhich category are you picking for your final year project?\n\n#Cybersecurity #EthicalHacking #FinalYearProject #CyberSecurityJobs #InfoSec",
+    "headline": "Founder, The Darknet Community (TDC) | VAPT & SOC Lead @ Shridhar InfoSec Solutions | VAPT Specialist & Penetration Tester | CEH v13 Trainer | Web & Network Security | CEH v13 | CPENT v1 | CSCU v2",
+    "avatar": "krishna-patwa.webp"
   },
   {
     "id": 161414,
@@ -393,7 +459,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "12x",
     "date": "Nov 2026",
     "width": 720,
-    "height": 687
+    "height": 687,
+    "post": "Huntress is investigating malicious service principal sign-ins into customer Microsoft Entra tenants from 199.19.77[.]84, a Poland-based hosting IP (AS203662).\n\nThe activity is consistent with a campaign reported by Todyl, in which they observed data theft from SharePoint and OneDrive. The actor signs in directly as a service principal using valid, pre-existing application credentials. In four customer tenants, we saw the apps issue tokens for Azure Resource Manager and, in some cases, Azure Key Vault and Microsoft Graph.\n\nWe’re working with affected customers and will keep investigating. See our recommended steps below.",
+    "headline": "161,422 followers",
+    "avatar": ""
   },
   {
     "id": 47805,
@@ -410,7 +479,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "9.8x",
     "date": "May 2026",
     "width": 670,
-    "height": 726
+    "height": 726,
+    "post": "Your player character didn't die. You just forgot to keep inserting tokens. Saw this post just after reading a WSJ story about how many big companies are starting to see skyrocketing token costs as the AI platforms basically stop subsidizing the prices they charge.\n\n\"All that enthusiasm has resulted in skyrocketing costs for so-called tokens, the basic unit of measurement for AI computing, as AI model providers seek to balance supply and demand and manage their own costs. Some enterprises have hit their annual budget in just three months or reported seeing their AI spending bills double or triple.\"\n \n\"Now corporate leaders are scrambling to bring down expenses by finding ways to ration AI use in their organizations, steer workers toward cheaper, homegrown tools and help them hone their skills to improve returns.\"\n\narchive.ph/v2dwg",
+    "headline": "Investigative reporter, krebsonsecurity.com",
+    "avatar": "bkrebs.webp"
   },
   {
     "id": 147250,
@@ -427,7 +499,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "6.6x",
     "date": "Oct 2026",
     "width": 720,
-    "height": 900
+    "height": 900,
+    "post": "A SOC analyst should never escalate an alert they don’t understand.\n\nBecause escalation is not the end of triage.\n\nIt is the moment when someone else has to trust your judgment.\n\nBefore escalating a security alert, ask these 8 questions:\n\n→ 1. Who is involved?\nIs the identity legitimate?\nWhat privileges does the account have?\n\n→ 2. Where did it happen?\nEndpoint, application, cloud asset, or network?\n\n→ 3. What actually happened?\nLogin? Process? File? Network activity?\n\n→ 4. What is different?\nIs this normal behavior or a deviation from the baseline?\n\n→ 5. When did it happen?\nDoes the timing make sense for the user and system?\n\n→ 6. What else supports it?\nCheck logs, telemetry, threat intelligence, and related events.\n\n→ 7. How did it happen?\nCan you trace the activity across the attack chain?\n\n→ 8. Why does it matter?\nWhat is the potential business and security impact?\n\nThis changes the question from:\n\n“Is this alert suspicious?”\n\nto:\n\n“What do we know, what does it mean, and what should happen next?”\n\nThat is the difference between alert handling and security investigation.\n\nThe best SOC teams don’t just close alerts faster.\n\nThey make better decisions with the evidence available.\n\nSave this framework for your next alert review.\n\nFollow Zoran Savic for more practical SOC and cybersecurity frameworks.\n\nP.S. Which question do you think analysts skip most often: WHO, WHAT, WHERE, WHEN, or IMPACT?",
+    "headline": "Scaled a Cyber Defense startup to 7-figures. Building the fully automated, AI-driven, and tier-less future of SOC. Trusted by Swiss critical institutions.",
+    "avatar": "zoran-savic-a13164192.webp"
   },
   {
     "id": 161358,
@@ -444,7 +519,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "9.1x",
     "date": "Nov 2026",
     "width": 720,
-    "height": 900
+    "height": 900,
+    "post": "Cybersecurity Templates & Dashboards Suite: https://lnkd.in/djn2dTuT\nMost cyber failures happen in the handoffs.\n\nAn organization can have excellent security specialists and still struggle during an incident because teams operate with different assumptions about what matters most.\n\nThe weakest link is often not a technical control. It is the moment nobody knows who has authority to make the next decision.\n\nAn effective security exercise should expose organizational friction, not simply produce a passing score.\n\n• Trace a service across teams.\n• Name the exception approver.\n• Time an urgent escalation.\n• Challenge conflicting priorities.\n\nSecurity maturity becomes visible when people make coordinated decisions under pressure, not when policies look impressive on paper.\n\nWhere does security ownership become unclear in your organization?\n\n#CyberSecurity #CyberRisk #SecurityLeadership #IncidentManagement #OperationalResilience #GRC #RiskManagement",
+    "headline": "76,234 followers",
+    "avatar": ""
   },
   {
     "id": 47974,
@@ -461,7 +539,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "9.5x",
     "date": "Jun 2026",
     "width": 720,
-    "height": 713
+    "height": 713,
+    "post": "CISO 2.0\n\nThe Chief Information Security Officer role is fundamentally shifting from dealing with what they have to actively shaping business strategy. \n\nWhat does this mean and how are leading security teams navigating this change?\n\nhttps://lnkd.in/dTMqJMEe",
+    "headline": "",
+    "avatar": "philvenables.webp"
   },
   {
     "id": 45459,
@@ -478,7 +559,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "7.9x",
     "date": "Aug 2026",
     "width": 720,
-    "height": 900
+    "height": 900,
+    "post": "Patches Now Arrive Late. By a Week!\n\nEvery security leader has felt the exploit window shrinking. Mandiant just put a number on it that should stop you mid-scroll: mean time-to-exploit is now negative seven days. Attackers are weaponizing vulnerabilities before patches exist, not after. That is not a faster version of the old problem, it is a different problem, and it breaks the assumption most vulnerability management programs are still built on.\n\nThis carousel walks through what M-Trends 2026 actually found, using Mandiant's own numbers: a ransomware hand-off window that collapsed from eight-plus hours to 22 seconds, an initial-access mix still led by exploited vulnerabilities, and a dwell-time trend that looks contradictory until you separate smash-and-grab crime from patient espionage. I also included the one nuance most coverage skips: Mandiant itself says 2025 was not \"the year breaches were the direct result of AI.\" Worth knowing before you repeat the scarier headline in a board meeting.\n\nIf you run a security program, patch cadence alone cannot be your strategy anymore. Slide 7 has five concrete shifts worth taking into your next leadership conversation. Full source is Mandiant/Google Cloud's M-Trends 2026 report, link will be in the comments.\n#CyberSecurity #ThreatIntelligence #CISO #VulnerabilityManagement #Ransomware #SecurityLeadership",
+    "headline": "CEO Cybersecurity Boardroom ™ | CISSP, CISM, M.S. Top Cybersecurity Voice",
+    "avatar": "bobcarver.webp"
   },
   {
     "id": 162422,
@@ -495,7 +579,10 @@ export const FORMATS: ViralFormat[] = [
     "score": "8.1x",
     "date": "Sep 2026",
     "width": 719,
-    "height": 900
+    "height": 900,
+    "post": "AI Polymorphic Malware Explained:",
+    "headline": "Cybersecurity Speaker | Principal Threat Researcher | Ex-Hacker",
+    "avatar": "malwaretech.webp"
   },
   {
     "id": 47824,
@@ -512,6 +599,9 @@ export const FORMATS: ViralFormat[] = [
     "score": "7.4x",
     "date": "Feb 2026",
     "width": 720,
-    "height": 789
+    "height": 789,
+    "post": "If you are thinking about verifying your LinkedIn account, maybe read this first. It walks through their privacy disclosure to identify 17 companies that may receive and process the data you submit, including name, passport photo, selfie, facial geometry, NFC data chip, national ID #, DoB, email, phone number, address, IP address, device type, MAC address, language, geolocation etc. Shocker: It seems the biggest recipients are US-based AI companies.\n\nThelocalstack-dot-eu breakdown: https://lnkd.in/eSyxHc6V\n\nLinkedIn's disclosure: https://lnkd.in/e3TD-wnn",
+    "headline": "Investigative reporter, krebsonsecurity.com",
+    "avatar": "bkrebs.webp"
   }
 ];

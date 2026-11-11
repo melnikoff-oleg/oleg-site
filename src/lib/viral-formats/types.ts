@@ -17,4 +17,10 @@ export type ViralFormat = {
   date: string;
   width: number;
   height: number;
+  /** The text of the original post (may be empty: some posts are only a picture). */
+  post: string;
+  /** The author's LinkedIn headline. */
+  headline: string;
+  /** File name in /viral-formats/av/, or "" when the author shows no photo. */
+  avatar: string;
 };
