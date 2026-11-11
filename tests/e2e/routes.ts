@@ -43,6 +43,9 @@ export const ROUTES = [
   // A feed, not a guide: shell + footer, no guide contract.
   "/viral-tweets",
   "/linkedin-swipe-file",
+  "/cybersecurity-linkedin-formats",
+  "/founder-linkedin-formats",
+  "/design-linkedin-formats",
   "/reels",
   "/viral",
   "/creators",

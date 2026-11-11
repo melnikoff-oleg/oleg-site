@@ -67,4 +67,7 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: "/creators", lastModified: "2026-08-27", changeFrequency: "weekly", priority: SECONDARY },
   { path: "/viral-tweets", lastModified: "2026-11-01", changeFrequency: "monthly", priority: SECONDARY },
   { path: "/linkedin-swipe-file", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
+  { path: "/cybersecurity-linkedin-formats", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
+  { path: "/founder-linkedin-formats", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
+  { path: "/design-linkedin-formats", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
 ];

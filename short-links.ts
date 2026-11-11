@@ -31,6 +31,10 @@ export const shortLinks: { path: string; to: string }[] = [
   { path: "/yt-lc", to: guide("/linkedin-packaging", "linkedin-profile-packaging", "pinned-comment") },
   // LinkedIn post "30 best LinkedIn profiles" (comment SWIPE), 2026-11-11.
   { path: "/li-sw", to: post("/linkedin-swipe-file", "linkedin-profile-swipe-file") },
+  // LinkedIn posts "30 viral LinkedIn formats" for three niches (comment CYBER, FOUNDER, DESIGN), 2026-11-11.
+  { path: "/li-cy", to: post("/cybersecurity-linkedin-formats", "cybersecurity-linkedin-formats") },
+  { path: "/li-fo", to: post("/founder-linkedin-formats", "founder-linkedin-formats") },
+  { path: "/li-de", to: post("/design-linkedin-formats", "design-linkedin-formats") },
   // Ready for the pinned comment on the Instagram pages video, which still has the plain page link.
   { path: "/yt-ic", to: guide("/instagram-viral-pages", "viral-instagram-pages-higgsfield", "pinned-comment") },
 ];

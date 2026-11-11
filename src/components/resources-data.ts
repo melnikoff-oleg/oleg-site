@@ -177,6 +177,27 @@ export const RESOURCES: Resource[] = [
     icon: GalleryVerticalEnd,
   },
   {
+    slug: "cybersecurity-linkedin-formats",
+    title: "30 Viral LinkedIn Formats for Cybersecurity",
+    description:
+      "30 post formats that beat their author's usual post 5x or more, each with the original post and a template",
+    icon: GalleryVerticalEnd,
+  },
+  {
+    slug: "founder-linkedin-formats",
+    title: "30 Viral LinkedIn Formats for Founders",
+    description:
+      "30 post formats that beat their author's usual post 5x or more, each with the original post and a template",
+    icon: GalleryVerticalEnd,
+  },
+  {
+    slug: "design-linkedin-formats",
+    title: "30 Viral LinkedIn Formats for Designers",
+    description:
+      "30 post formats that beat their author's usual post 5x or more, each with the original post and a template",
+    icon: GalleryVerticalEnd,
+  },
+  {
     slug: "reels",
     title: "Viral Reels Database",
     description:

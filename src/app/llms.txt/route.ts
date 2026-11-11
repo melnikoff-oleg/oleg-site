@@ -53,6 +53,12 @@ const SUMMARY: Record<string, string> = {
     "Fourteen viral AI posts from X (late October 2026) as a feed, ranked by outlier score: how far each post beat what an account of its size usually gets. Full text, photos, video clips, quoted posts and the reply, repost, like and view counts.",
   "/linkedin-swipe-file":
     "A swipe file of 30 LinkedIn creators with the best banner, profile picture and headline (saved 11 November 2026): each profile's real banner and photo, its headline, follower count, one line on what to take from it, and a link to the live profile.",
+  "/cybersecurity-linkedin-formats":
+    "30 LinkedIn post formats that went viral for cybersecurity people in 2026, picked from our own database of LinkedIn outliers (saved 11 November 2026): for each format the original post with its first picture, author, likes and outlier score, why it works, and a template for the picture and the text.",
+  "/founder-linkedin-formats":
+    "30 LinkedIn post formats that went viral for founders and CEOs in 2026, picked from our own database of LinkedIn outliers (saved 11 November 2026): for each format the original post with its first picture, author, likes and outlier score, why it works, and a template for the picture and the text.",
+  "/design-linkedin-formats":
+    "30 LinkedIn post formats that went viral for designers in 2026, picked from our own database of LinkedIn outliers (saved 11 November 2026): for each format the original post with its first picture, author, likes and outlier score, why it works, and a template for the picture and the text.",
   "/5-levels-ai": "Anthropic's research on how the top 1% use AI, as five levels of adoption.",
 };
 
