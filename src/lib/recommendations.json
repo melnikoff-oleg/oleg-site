@@ -98,6 +98,11 @@
       "claude-twitter",
       "reels"
     ],
+    "linkedin-swipe-file": [
+      "linkedin-packaging",
+      "claude-content",
+      "viral-tweets"
+    ],
     "linkedin-packaging": [
       "claude-content",
       "claude-b2b-outreach",

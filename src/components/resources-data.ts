@@ -19,6 +19,7 @@ import {
   Box,
   Flame,
   IdCard,
+  GalleryVerticalEnd,
   type LucideIcon,
 } from "lucide-react";
 
@@ -167,6 +168,13 @@ export const RESOURCES: Resource[] = [
     description:
       "Fourteen AI posts from X that broke out, ranked by outlier score, with the videos, photos and quoted posts",
     icon: Flame,
+  },
+  {
+    slug: "linkedin-swipe-file",
+    title: "LinkedIn Profile Swipe File",
+    description:
+      "30 LinkedIn creators with the best banner, photo and headline, each with a note on what to take from it",
+    icon: GalleryVerticalEnd,
   },
   {
     slug: "reels",

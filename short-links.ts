@@ -8,6 +8,10 @@
 const guide = (page: string, video: string, spot = "description") =>
   `${page}?utm_source=youtube&utm_medium=social&utm_campaign=free-guide&utm_content=${spot}-${video}`;
 
+// A LinkedIn post that sends people to a page here (sent to everyone who comments the word).
+const post = (page: string, item: string) =>
+  `${page}?utm_source=linkedin&utm_medium=social&utm_campaign=free-guide&utm_content=post-${item}`;
+
 export const shortLinks: { path: string; to: string }[] = [
   { path: "/yt-ig", to: guide("/claude-reels", "viral-instagram-reels") },
   { path: "/yt-co", to: guide("/claude-cowork-outreach", "cold-outreach-b2b-sales") },
@@ -25,6 +29,8 @@ export const shortLinks: { path: string; to: string }[] = [
   { path: "/yt-lo", to: guide("/", "linkedin-outreach-agent") },
   { path: "/yt-lp", to: guide("/linkedin-packaging", "linkedin-profile-packaging") },
   { path: "/yt-lc", to: guide("/linkedin-packaging", "linkedin-profile-packaging", "pinned-comment") },
+  // LinkedIn post "30 best LinkedIn profiles" (comment SWIPE), 2026-11-11.
+  { path: "/li-sw", to: post("/linkedin-swipe-file", "linkedin-profile-swipe-file") },
   // Ready for the pinned comment on the Instagram pages video, which still has the plain page link.
   { path: "/yt-ic", to: guide("/instagram-viral-pages", "viral-instagram-pages-higgsfield", "pinned-comment") },
 ];

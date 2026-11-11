@@ -66,4 +66,5 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: "/viral", lastModified: "2026-09-22", changeFrequency: "daily", priority: SECONDARY },
   { path: "/creators", lastModified: "2026-08-27", changeFrequency: "weekly", priority: SECONDARY },
   { path: "/viral-tweets", lastModified: "2026-11-01", changeFrequency: "monthly", priority: SECONDARY },
+  { path: "/linkedin-swipe-file", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
 ];

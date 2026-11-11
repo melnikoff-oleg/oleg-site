@@ -42,6 +42,7 @@ export const ROUTES = [
   "/claude-opus-5.5-3d",
   // A feed, not a guide: shell + footer, no guide contract.
   "/viral-tweets",
+  "/linkedin-swipe-file",
   "/reels",
   "/viral",
   "/creators",

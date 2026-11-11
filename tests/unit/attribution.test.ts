@@ -148,10 +148,12 @@ test("short links follow the rules", () => {
     const slug = path.slice(1);
     assert.ok(slug.length <= 5 && !/\d/.test(slug) && /^[a-z-]+$/.test(slug), `slug rule: ${path}`);
     const url = new URL(to, "https://www.oleg.ae");
-    assert.equal(url.searchParams.get("utm_source"), "youtube", path);
+    const source = url.searchParams.get("utm_source");
+    assert.ok(source === "youtube" || source === "linkedin", path);
     assert.equal(url.searchParams.get("utm_medium"), "social", path);
     assert.equal(url.searchParams.get("utm_campaign"), "free-guide", path);
-    assert.match(url.searchParams.get("utm_content") ?? "", /^(description|pinned-comment)-[a-z0-9-]+$/, path);
+    // A YouTube link names its spot under the video, a LinkedIn link the post it was given away in.
+    assert.match(url.searchParams.get("utm_content") ?? "", source === "linkedin" ? /^post-[a-z0-9-]+$/ : /^(description|pinned-comment)-[a-z0-9-]+$/, path);
     if (url.pathname !== "/") {
       const page = join(process.cwd(), "src", "app", url.pathname.slice(1), "page.tsx");
       assert.ok(statSync(page, { throwIfNoEntry: false }), `no such page: ${url.pathname}`);
