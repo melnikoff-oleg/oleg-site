@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+**Moved to boldane.com on 2026-11-11 (Oleg's request):** `/linkedin-packaging`, `/linkedin-swipe-file`, `/cybersecurity-linkedin-formats`, `/founder-linkedin-formats` and `/design-linkedin-formats` no longer live in this repo. Their pages, components, data, build scripts and pictures are in boldane-site now; here `next.config.ts` redirects the five addresses (307) and `short-links.ts` forwards li-sw, li-cy, li-fo, li-de, yt-lp and yt-lc to boldane.com with the same tags. Only `public/downloads/linkedin-packaging.zip` stays here (57 MB, the boldane.com page links to it). Anything below that describes those five pages is history.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ---

@@ -43,22 +43,12 @@ const SUMMARY: Record<string, string> = {
     "Building a social growth report from thousands of competitor videos, ICE-scored so it is actionable.",
   "/claude-code-instagram":
     "Editing Instagram videos with Claude Code and Reel Studio: cost per video, how many a plan buys, and the style-first workflow.",
-  "/linkedin-packaging":
-    "Download a LinkedIn packaging project directly and open it locally in Claude Code or Codex. Connect Kie AI, Apify and Firecrawl keys in the local .env file. One brief generates all 10 styles with your branding; compare them locally, refine your favorite, and download upload files and editable sources.",
   "/instagram-viral-pages":
     "Building a viral Instagram theme page with Claude Code and Viral Page Studio: the seven steps (idea, vibe, packaging, first reels, posting through Edits, autopilot, monetization), what it costs, the rules that make generated reels work.",
   "/claude-opus-5.5-3d":
     "Building a 3D model of any machine you can take apart with Claude Opus 5.5 and Elvar's free teardown skill for Claude Code: the install, the reference picture, and all nine of his prompts word for word (machine and model, console, look, self-check, a page you drive, video with sound, publishing, a stress slider).",
   "/viral-tweets":
     "Fourteen viral AI posts from X (late October 2026) as a feed, ranked by outlier score: how far each post beat what an account of its size usually gets. Full text, photos, video clips, quoted posts and the reply, repost, like and view counts.",
-  "/linkedin-swipe-file":
-    "A swipe file of 30 LinkedIn creators with the best banner, profile picture and headline (saved 11 November 2026): each profile's real banner and photo, its headline, follower count, one line on what to take from it, and a link to the live profile.",
-  "/cybersecurity-linkedin-formats":
-    "30 LinkedIn post formats that went viral for cybersecurity people in 2026, picked from our own database of LinkedIn outliers (saved 11 November 2026): for each format the original post with its first picture, author, likes and outlier score, why it works, and a template for the picture and the text.",
-  "/founder-linkedin-formats":
-    "30 LinkedIn post formats that went viral for founders and CEOs in 2026, picked from our own database of LinkedIn outliers (saved 11 November 2026): for each format the original post with its first picture, author, likes and outlier score, why it works, and a template for the picture and the text.",
-  "/design-linkedin-formats":
-    "30 LinkedIn post formats that went viral for designers in 2026, picked from our own database of LinkedIn outliers (saved 11 November 2026): for each format the original post with its first picture, author, likes and outlier score, why it works, and a template for the picture and the text.",
   "/5-levels-ai": "Anthropic's research on how the top 1% use AI, as five levels of adoption.",
 };
 

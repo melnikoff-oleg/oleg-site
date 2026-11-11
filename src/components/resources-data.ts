@@ -142,13 +142,6 @@ export const RESOURCES: Resource[] = [
     icon: Scissors,
   },
   {
-    slug: "linkedin-packaging",
-    title: "Package Your LinkedIn Profile",
-    description:
-      "Generate your LinkedIn profile in 10 styles with Claude Code or Codex. Compare, pick your favorite and refine",
-    icon: IdCard,
-  },
-  {
     slug: "instagram-viral-pages",
     title: "Build a Viral Instagram Page",
     description:
@@ -168,34 +161,6 @@ export const RESOURCES: Resource[] = [
     description:
       "Fourteen AI posts from X that broke out, ranked by outlier score, with the videos, photos and quoted posts",
     icon: Flame,
-  },
-  {
-    slug: "linkedin-swipe-file",
-    title: "LinkedIn Profile Swipe File",
-    description:
-      "30 LinkedIn creators with the best banner, photo and headline, each with a note on what to take from it",
-    icon: GalleryVerticalEnd,
-  },
-  {
-    slug: "cybersecurity-linkedin-formats",
-    title: "30 Viral LinkedIn Formats for Cybersecurity",
-    description:
-      "30 post formats that beat their author's usual post 5x or more, each with the original post and a template",
-    icon: GalleryVerticalEnd,
-  },
-  {
-    slug: "founder-linkedin-formats",
-    title: "30 Viral LinkedIn Formats for Founders",
-    description:
-      "30 post formats that beat their author's usual post 5x or more, each with the original post and a template",
-    icon: GalleryVerticalEnd,
-  },
-  {
-    slug: "design-linkedin-formats",
-    title: "30 Viral LinkedIn Formats for Designers",
-    description:
-      "30 post formats that beat their author's usual post 5x or more, each with the original post and a template",
-    icon: GalleryVerticalEnd,
   },
   {
     slug: "reels",

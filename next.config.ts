@@ -46,6 +46,10 @@ const nextConfig: NextConfig = {
     return [
       // Tracked short links for YouTube descriptions (oleg.ae/yt-ig and so on), see short-links.ts.
       ...shortLinks.map(({ path, to }) => ({ source: path, destination: to, permanent: false })),
+      // Five resources moved to boldane.com on 2026-11-11. Temporary (307), so they can come back.
+      ...["linkedin-packaging", "linkedin-swipe-file", "cybersecurity-linkedin-formats", "founder-linkedin-formats", "design-linkedin-formats"].map(
+        (slug) => ({ source: `/${slug}`, destination: `https://boldane.com/${slug}`, permanent: false }),
+      ),
       {
         // The library page lived here for a day, was linked from the search
         // page, and is in the sitemap Google already fetched. Permanent, so the

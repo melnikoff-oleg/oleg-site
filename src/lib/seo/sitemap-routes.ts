@@ -53,7 +53,6 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: "/claude-marketing", lastModified: "2026-08-27", changeFrequency: "monthly", priority: GUIDE },
 
   // Tools and lead magnets.
-  { path: "/linkedin-packaging", lastModified: "2026-11-07", changeFrequency: "monthly", priority: GUIDE },
   { path: "/5-levels-ai", lastModified: "2026-08-15", changeFrequency: "monthly", priority: SECONDARY },
 
   // The marketing brain.
@@ -66,8 +65,4 @@ export const SITEMAP_ROUTES: SitemapRoute[] = [
   { path: "/viral", lastModified: "2026-09-22", changeFrequency: "daily", priority: SECONDARY },
   { path: "/creators", lastModified: "2026-08-27", changeFrequency: "weekly", priority: SECONDARY },
   { path: "/viral-tweets", lastModified: "2026-11-01", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/linkedin-swipe-file", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/cybersecurity-linkedin-formats", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/founder-linkedin-formats", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
-  { path: "/design-linkedin-formats", lastModified: "2026-11-11", changeFrequency: "monthly", priority: SECONDARY },
 ];

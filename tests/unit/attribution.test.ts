@@ -154,7 +154,8 @@ test("short links follow the rules", () => {
     assert.equal(url.searchParams.get("utm_campaign"), "free-guide", path);
     // A YouTube link names its spot under the video, a LinkedIn link the post it was given away in.
     assert.match(url.searchParams.get("utm_content") ?? "", source === "linkedin" ? /^post-[a-z0-9-]+$/ : /^(description|pinned-comment)-[a-z0-9-]+$/, path);
-    if (url.pathname !== "/") {
+    // Links to boldane.com (five resources moved there on 2026-11-11) have no page here to check.
+    if (url.origin === "https://www.oleg.ae" && url.pathname !== "/") {
       const page = join(process.cwd(), "src", "app", url.pathname.slice(1), "page.tsx");
       assert.ok(statSync(page, { throwIfNoEntry: false }), `no such page: ${url.pathname}`);
     }

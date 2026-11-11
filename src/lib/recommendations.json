@@ -97,31 +97,6 @@
       "claude-opus-5.5-3d",
       "claude-twitter",
       "reels"
-    ],
-    "cybersecurity-linkedin-formats": [
-      "founder-linkedin-formats",
-      "design-linkedin-formats",
-      "linkedin-swipe-file"
-    ],
-    "founder-linkedin-formats": [
-      "cybersecurity-linkedin-formats",
-      "design-linkedin-formats",
-      "linkedin-swipe-file"
-    ],
-    "design-linkedin-formats": [
-      "cybersecurity-linkedin-formats",
-      "founder-linkedin-formats",
-      "linkedin-swipe-file"
-    ],
-    "linkedin-swipe-file": [
-      "linkedin-packaging",
-      "claude-content",
-      "viral-tweets"
-    ],
-    "linkedin-packaging": [
-      "claude-content",
-      "claude-b2b-outreach",
-      "claude-cowork-outreach"
     ]
   }
 }

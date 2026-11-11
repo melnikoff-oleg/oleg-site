@@ -12,6 +12,10 @@ const guide = (page: string, video: string, spot = "description") =>
 const post = (page: string, item: string) =>
   `${page}?utm_source=linkedin&utm_medium=social&utm_campaign=free-guide&utm_content=post-${item}`;
 
+// Five resources moved to boldane.com on 2026-11-11 (Oleg: these lead magnets fit Boldane better).
+// Their short links stay here and forward to the new home with the same tags.
+const BOLDANE = "https://boldane.com";
+
 export const shortLinks: { path: string; to: string }[] = [
   { path: "/yt-ig", to: guide("/claude-reels", "viral-instagram-reels") },
   { path: "/yt-co", to: guide("/claude-cowork-outreach", "cold-outreach-b2b-sales") },
@@ -27,14 +31,14 @@ export const shortLinks: { path: string; to: string }[] = [
   { path: "/yt-fl", to: guide("/5-levels-ai", "five-levels-ai") },
   { path: "/yt-ce", to: guide("/", "claude-ceo-slow-down") },
   { path: "/yt-lo", to: guide("/", "linkedin-outreach-agent") },
-  { path: "/yt-lp", to: guide("/linkedin-packaging", "linkedin-profile-packaging") },
-  { path: "/yt-lc", to: guide("/linkedin-packaging", "linkedin-profile-packaging", "pinned-comment") },
+  { path: "/yt-lp", to: guide(BOLDANE + "/linkedin-packaging", "linkedin-profile-packaging") },
+  { path: "/yt-lc", to: guide(BOLDANE + "/linkedin-packaging", "linkedin-profile-packaging", "pinned-comment") },
   // LinkedIn post "30 best LinkedIn profiles" (comment SWIPE), 2026-11-11.
-  { path: "/li-sw", to: post("/linkedin-swipe-file", "linkedin-profile-swipe-file") },
+  { path: "/li-sw", to: post(BOLDANE + "/linkedin-swipe-file", "linkedin-profile-swipe-file") },
   // LinkedIn posts "30 viral LinkedIn formats" for three niches (comment CYBER, FOUNDER, DESIGN), 2026-11-11.
-  { path: "/li-cy", to: post("/cybersecurity-linkedin-formats", "cybersecurity-linkedin-formats") },
-  { path: "/li-fo", to: post("/founder-linkedin-formats", "founder-linkedin-formats") },
-  { path: "/li-de", to: post("/design-linkedin-formats", "design-linkedin-formats") },
+  { path: "/li-cy", to: post(BOLDANE + "/cybersecurity-linkedin-formats", "cybersecurity-linkedin-formats") },
+  { path: "/li-fo", to: post(BOLDANE + "/founder-linkedin-formats", "founder-linkedin-formats") },
+  { path: "/li-de", to: post(BOLDANE + "/design-linkedin-formats", "design-linkedin-formats") },
   // Ready for the pinned comment on the Instagram pages video, which still has the plain page link.
   { path: "/yt-ic", to: guide("/instagram-viral-pages", "viral-instagram-pages-higgsfield", "pinned-comment") },
 ];
