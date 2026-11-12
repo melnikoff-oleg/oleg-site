@@ -1,5 +1,5 @@
 // The 25 Ubersuggest LinkedIn drafts of November 2026: 13 for the company page and
-// 3 each for Mike Kamo, Neil Patel, Salun Marvin and Gabriel Tsunode. posts.json and
+// 3 each for Mike Kamo, Neil Patel, Salun Marvin and Gabriel Tsunoda. posts.json and
 // public/ubs-posts are written by the MS repo
 // (projects/accounts/ubersuggest/content/sync_site.py); edit the drafts there, not here.
 import raw from "./posts.json";
