@@ -24,7 +24,7 @@ export default function GlebCreativesPage() {
         <section className="pt-12 pb-10 md:pt-20 md:pb-14">
           <div className="mx-auto max-w-4xl px-6 text-center">
             <h1 className="text-metallic font-display text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
-              Top {VIDEOS.length} outlier videos for Bounded
+              Top {VIDEOS.length} outlier videos for Bounded and Boarded
             </h1>
             <p className="mx-auto mt-4 max-w-2xl font-body text-lg text-silver-muted">
               Instagram and TikTok, last 30 days. White is views, blue is how many times the video
