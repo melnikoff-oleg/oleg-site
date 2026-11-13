@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Top 12 outlier videos for Bounded",
   description:
-    "35,075 Instagram and TikTok videos and 31 Bounded ads analyzed. The 12 strongest outlier videos from the last 30 days, and 20 accounts to study.",
+    "35,075 Instagram and TikTok videos and 31 Bounded ads analyzed. The 12 strongest outlier videos from the last 30 days.",
   robots: { index: false, follow: false },
 };
 
