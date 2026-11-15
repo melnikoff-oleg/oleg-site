@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const TITLE = "27 Genius Ways to Use Claude, With Prompts";
 const DESCRIPTION =
-  "27 real things people built with Claude in the last weeks. Each one has the original post, what you need, the steps and a starter prompt to try it yourself.";
+  "27 real things people built with Claude in the last weeks. Each one has a short description, how to do it, a screenshot and the original post.";
 
 export const metadata: Metadata = {
   title: TITLE,
