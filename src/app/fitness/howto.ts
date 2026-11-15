@@ -219,6 +219,16 @@ export const HOW = {
     ],
     tip: "Your chest stays on the bench the whole time: don't lift off or swing. The bench holds your body, so the lower back rests and all the load goes to your back. On a chest-supported machine it's the same: sit facing the pad, chest against it, pull the handles with your elbows going back. A seated horizontal cable row also works.",
   },
+  barbellRow: {
+    steps: [
+      "Load the bar on the floor or on low rack pins. Stand with feet hip-width apart, the bar over the middle of your feet.",
+      "Grip a little wider than shoulders, palms down. Bend the knees slightly and push the hips back until your torso is at about 45°.",
+      "Flatten your back, chest out, neck long. The bar hangs at straight arms just below the knees.",
+      "Pull the bar to your lower ribs or belly button, elbows going back along your sides. Squeeze the shoulder blades for a moment.",
+      "Lower it under control to straight arms. The torso stays at the same angle the whole set: no standing up with each rep.",
+    ],
+    tip: "If you have to jerk the torso to move the bar, it's too heavy. A flat back comes first; the weight comes second.",
+  },
   oneArmRow: {
     steps: [
       "Stand beside a bench. Put your left knee and left palm on it. Back straight, roughly parallel to the floor. Your right foot stays on the floor.",

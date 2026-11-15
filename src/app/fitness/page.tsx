@@ -1,19 +1,20 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { HOW, type HowTo } from "./howto";
-import { LogPanel, type LogExercise } from "./log-panel";
+import { CopyButton, DayPicker, RestTimer } from "./gym-tools";
 
 // Oleg's training program for the first eight-week cycle, in English, laid out for use in
-// the gym: today's workout sits at the top, unfolded, and everything else is a
-// native <details> fold he opens when he needs it. A server component with no
-// client JavaScript beyond one line that stamps the device's weekday on <html>
-// (see fitness.css for how that picks the day before first paint), plus the
-// in-gym log panel (log-panel.tsx), a client component that writes each set to
-// Supabase through /api/fitness/log and runs the 90-minute clock.
+// the gym. One workout is shown at a time: the device's weekday picks it before first
+// paint (a one-line script stamps the weekday on <html>, see fitness.css), and the day
+// buttons at the top switch to any other day, because the days do get moved around.
+// The log is kept in Apple Notes (since 2026-11-15; the Supabase log panel is gone):
+// "Copy workout for Notes" copies the shown day as a bullet list with the planned
+// weight x reps of every set, and Oleg corrects it in the note as he goes. The
+// interactive bits (day buttons, copy, rest timer) are in gym-tools.tsx.
 // Source: Desktop/Fitness/program_oct_2026.md, which stays in Russian, so a change
 // there gets translated here by hand. Every movement has a "How to do it" fold
-// with plain step-by-step technique, from howto.ts, and a dated "Last / Goal"
-// line (micro on Exercise) that is recomputed from the log weekly.
+// with plain step-by-step technique, from howto.ts, and a "Last / Next" block
+// (micro and copy on Exercise) that is recomputed from the log weekly.
 
 type Exercise = {
   name: string;
@@ -29,16 +30,16 @@ type Exercise = {
   img?: string | string[];
   /** Step-by-step technique, folded under the exercise. One per movement, like img. */
   how?: HowTo | HowTo[];
-  /** Overrides for the log panel's fields; the rest is derived from `sets` and `how`. */
-  log?: Partial<LogExercise>;
+  /**
+   * The line(s) this exercise puts into the Notes template, without the bullet:
+   * a short name and the planned weight x reps of each set, which is last time
+   * plus one small step. A superset or a circuit has one line per movement.
+   */
+  copy?: string | string[];
 };
 
-/**
- * One exercise's micro step: what the log says happened last time, and the
- * next session's target. `was` is absent when there are no numbers to compare
- * with yet. `gain` is the change in volume, weight × reps summed over the sets.
- */
-type Micro = { was?: string; goal: string; gain?: string };
+/** What the log says happened last time (with its date), and a remark on the next step. The next numbers are `copy`. */
+type Micro = { was?: string; note?: string };
 
 /** A warm-up drill or a stretch: one line of text, an optional strip, its technique. */
 type Drill = { text: string; img?: string; how?: HowTo };
@@ -49,13 +50,10 @@ type Workout = {
   day: string;
   title: string;
   focus: string;
-  /** Short dates of the last logged session and the next one, for the micro step lines. */
-  lastDate: string;
-  nextDate: string;
+  /** The name in the first line of the Notes template. */
+  short: string;
   /** Minute by minute, so the 90 minutes are visible before they're gone. */
   timeline: string[];
-  /** Minutes from the start: in-gym warm-up starts, first exercise starts, stretch starts, done. The clock's marks. */
-  marks: { warmup: number; work: number; stretch: number; end: number };
   warmup: Drill[];
   exercises: Exercise[];
   stretch: Drill[];
@@ -110,7 +108,7 @@ const WARMUP_PULL_B: Drill[] = [
   },
   { text: "light row on the machine, squeeze at the end: 1×15", img: "tyaga-v-trenazhere-s-uporom", how: HOW.lightRow },
   { text: "thoracic spine over a bench edge: 45 s", img: "grudnoy-otdel-na-rolike", how: HOW.thoracic },
-  { text: "ramp-up on the machine row: half the weight ×10, three quarters ×5, 60 s between", how: HOW.rampUp },
+  { text: "ramp-up to the barbell row: empty bar ×10, 40 kg ×5, 60 s between", how: HOW.rampUp },
 ];
 
 const WARMUP_PUSH = (ramp: string): Drill[] => [
@@ -174,26 +172,23 @@ const STRETCH_ALL: Drill[] = [
    My Terrible Posture", built with Kjetil Larsen). Larsen's rule: at most twice a
    week, one set to fatigue. They sit at the end of both pull days. */
 
-const POSTURE_LARSEN: Exercise = {
-  name: "Posture pair (Kjetil Larsen): levator scapulae shrug, then head-up against the hands",
-  how: [HOW.levatorShrug, HOW.headUp],
-  sets: "1 set each, to fatigue",
-  start: "shrug: 2×16 kg dumbbells and find the weight; head-up: hands only",
-  note: "Twice a week at most, Tuesday and Friday, one set each: that's Larsen's limit, not a shortcut. Shrug up and forward with a long neck, pull with the shoulders, not the wrists. The head-up is tiny and nearly effortless; if anything clenches, ease off. Replaces the chin tucks.",
-  micro: { goal: "new: write down the shrug weight and reps, and the head-up reps" },
-  log: { movements: ["Levator shrug", "Head-up"], sets: 1 },
+const POSTURE_SHRUG: Exercise = {
+  name: "Posture shrug (levator scapulae, Kjetil Larsen)",
+  how: HOW.levatorShrug,
+  sets: "3×15",
+  rest: "90 s",
+  note: "Tuesday and Friday only: twice a week is Larsen's limit. Shrug up and slightly forward with a long neck, pull with the shoulders, not the wrists. The head-up against the hands is out of the gym days; it's in the Posture fold below if you want it at home.",
+  micro: { was: "Nov 13: 2×12 kg dumbbells, 15, 15, 15" },
+  copy: "posture shrugs 12x15, 12x15, 12x15",
 };
-
-const MARKS = { warmup: 12, work: 18, stretch: 80, end: 90 };
 
 const WORKOUTS: Workout[] = [
   {
     id: "tue",
     day: "Tuesday",
     title: "Pull A",
+    short: "pull A",
     focus: "back width, rear delts, biceps, posture",
-    lastDate: "Nov 3",
-    nextDate: "Nov 10",
     timeline: [
       "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
@@ -203,11 +198,10 @@ const WORKOUTS: Workout[] = [
       "0:49 rear delts",
       "0:58 Y-raise",
       "1:05 biceps superset",
-      "1:14 posture pair",
+      "1:14 posture shrug",
       "1:18 stretch",
       "1:28 done",
     ],
-    marks: MARKS,
     warmup: WARMUP_PULL_A,
     exercises: [
       {
@@ -218,7 +212,8 @@ const WORKOUTS: Workout[] = [
         start: "+10 kg",
         rest: "3 min",
         note: "The same movement as the lat pulldown that hurt the right shoulder on Oct 30. On Nov 3 with +10 kg the shoulder was fine. If the shoulder hurts, stop right away and switch to the one-arm dumbbell row.",
-        micro: { was: "+10 kg: 6, 6, 6, 6", goal: "+10 kg: 7, 6, 6, 6", gain: "+4%" },
+        micro: { was: "Nov 10: +10 kg, 7, 7, 6, 6" },
+        copy: "pull-ups +10x8, +10x7, +10x6, +10x6",
       },
       {
         name: "Chest-supported dumbbell row on a 30-45° bench, or a chest-supported machine row",
@@ -228,7 +223,8 @@ const WORKOUTS: Workout[] = [
         start: "22 kg dumbbells",
         rest: "3 min",
         note: "Three sets now, not four: the 90 minutes don't fit a fourth. Replaces the bent-over barbell row: takes the lower back and a weak grip out of the equation.",
-        micro: { was: "20 kg dumbbells: 12, 12, 12, 12", goal: "20 kg: 13, 12, 12 (three sets)", gain: "+1 rep in set 1" },
+        micro: { was: "Nov 10: 60 kg on the machine, 12, 12, 12" },
+        copy: "chest-supported rows 60x13, 60x12, 60x12",
       },
       {
         name: "Straight-arm cable pullover",
@@ -238,7 +234,8 @@ const WORKOUTS: Workout[] = [
         start: "15 kg",
         rest: "90 s",
         note: "The lats, the ones that are hard to feel.",
-        micro: { was: "20 kg: 12, 12, 12", goal: "20 kg: 13, 12, 12", gain: "+3%" },
+        micro: { was: "Nov 10: 22.5 kg ×12, then 20 kg ×12, 12" },
+        copy: "pullover 22.5x12, 22.5x12, 20x12",
       },
       {
         name: "Cable rear delt fly, arms crossed at face height",
@@ -247,7 +244,8 @@ const WORKOUTS: Workout[] = [
         sets: "4×15-20",
         start: "5 kg per side",
         rest: "90 s",
-        micro: { was: "2.5 kg: 20, 20, 20", goal: "2.5 kg: 21, 20, 20, 20", gain: "+1 set, you have the time here" },
+        micro: { was: "Nov 10: 3.75 kg, 16, 16, 16, 16" },
+        copy: "rear delt cable flies 3.75x17, 3.75x16, 3.75x16, 3.75x16",
       },
       {
         name: "Y-raise, lying on an incline bench, thumbs up",
@@ -257,7 +255,8 @@ const WORKOUTS: Workout[] = [
         start: "2 kg",
         rest: "90 s",
         note: "Lower traps, posture.",
-        micro: { was: "2 kg: 15, 15, 15", goal: "2 kg: 16, 15, 15", gain: "+2%" },
+        micro: { was: "Nov 10: 4 kg, 16, 16, 16", note: "16 is above the 12-15 range, so the weight goes up. No 5 kg dumbbells: 4 kg for 17." },
+        copy: "y-raise 5x12, 5x12, 5x12",
       },
       {
         name: "Biceps superset: seated incline dumbbell curl 8-12, straight into a reverse EZ-bar curl 8-12",
@@ -267,10 +266,10 @@ const WORKOUTS: Workout[] = [
         start: "10 kg dumbbells; EZ bar 15 kg (bar plus 2.5 per side)",
         rest: "90 s after the pair",
         note: "Same rep range on both, 8-12. No rest between the two.",
-        micro: { was: "10 kg: 8, 8, 8 + 15 kg: 12, 12, 12", goal: "10 kg: 9, 8, 8 + 15 kg: 13, 12, 12", gain: "+3%" },
-        log: { movements: ["Incline curl", "Reverse EZ curl"] },
+        micro: { was: "Nov 3: 10 kg 8, 8, 8 + 15 kg 12, 12, 12. Not written down on Nov 10" },
+        copy: ["incline curls 10x9, 10x8, 10x8", "reverse ez curls 15x13, 15x12, 15x12"],
       },
-      POSTURE_LARSEN,
+      POSTURE_SHRUG,
     ],
     stretch: STRETCH_PULL,
     extra: <p>The dead hang moved to Sunday: it didn't fit the 90 minutes here.</p>,
@@ -279,9 +278,8 @@ const WORKOUTS: Workout[] = [
     id: "wed",
     day: "Wednesday",
     title: "Push A",
+    short: "push A",
     focus: "delts first, upper chest, triceps",
-    lastDate: "Nov 4",
-    nextDate: "Nov 11",
     timeline: [
       "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
@@ -294,7 +292,6 @@ const WORKOUTS: Workout[] = [
       "1:12 stretch",
       "1:22 done, 8 min spare",
     ],
-    marks: MARKS,
     warmup: WARMUP_PUSH("ramp-up to the seated press: 10 kg ×10, 14 kg ×5, 16 kg ×3, 60 s between"),
     exercises: [
       {
@@ -305,7 +302,8 @@ const WORKOUTS: Workout[] = [
         start: "20 kg",
         rest: "3 min",
         note: "Bench back at 80-85°, not fully vertical. Lower to chin and ear level, no lower, it's easier on the shoulder. The jump to 22 kg is a full +10%, so reps grow for now: once set 1 reaches 12, next time it goes to 22.",
-        micro: { was: "20 kg: 10, 10, 10, 10", goal: "20 kg: 11, 10, 10, 10", gain: "+2.5%" },
+        micro: { was: "Nov 11: 20 kg, 11, 11, 11, 11" },
+        copy: "seated dumbbell press 20x12, 20x11, 20x11, 20x11",
       },
       {
         name: "Shoulder flies (dumbbell lateral raise)",
@@ -315,7 +313,8 @@ const WORKOUTS: Workout[] = [
         start: "10 kg",
         rest: "90 s",
         note: "Elbows slightly bent, up to shoulder height, no swinging the torso.",
-        micro: { was: "10 kg: 12, 12, 12, 12", goal: "10 kg: 13, 12, 12, 12", gain: "+2%" },
+        micro: { was: "Nov 11: 12 kg, 12, 12, 12, 12" },
+        copy: "shoulder flies 12x13, 12x12, 12x12, 12x12",
       },
       {
         name: "Dumbbell press, 30°",
@@ -324,8 +323,9 @@ const WORKOUTS: Workout[] = [
         sets: "3×8-12",
         start: "22 kg",
         rest: "3 min",
-        note: "Stay on 22 kg until 3×12. Ramp-up: 14 kg ×8, 18 kg ×3, 60 s between. Shoulder blades squeezed and down, dumbbells at chest level at the bottom, no deep stretch.",
-        micro: { was: "22 kg: 8, 8, 8", goal: "22 kg: 9, 8, 8", gain: "+4%" },
+        note: "Stay on 24 kg until 3×12. Ramp-up: 14 kg ×8, 18 kg ×3, 60 s between. Shoulder blades squeezed and down, dumbbells at chest level at the bottom, no deep stretch.",
+        micro: { was: "Nov 11: 24 kg, 8, 8, 8" },
+        copy: "dumbbell press 30 degrees 24x9, 24x8, 24x8",
       },
       {
         name: "Face pull",
@@ -335,7 +335,8 @@ const WORKOUTS: Workout[] = [
         start: "10 kg",
         rest: "90 s",
         note: "Rope at face height, pull toward the eyes, elbows out and up, 1 s pause at the end.",
-        micro: { was: "10 kg: 15, 15, 15", goal: "10 kg: 16, 15, 15", gain: "+2%" },
+        micro: { was: "Nov 11: 12.5 kg, 15, 15, 15" },
+        copy: "face pull 12.5x16, 12.5x15, 12.5x15",
       },
       {
         name: "Triceps superset: overhead cable extension with a rope 12-15, straight into a rope pushdown 12-15",
@@ -345,12 +346,8 @@ const WORKOUTS: Workout[] = [
         start: "10 kg on both",
         rest: "90 s after the pair",
         note: "Same rep range on both, 12-15. No rest between the two. Third round of both close to failure.",
-        micro: {
-          was: "numbers not recorded. Last known, Oct 28: 10 kg, 15+12, 15+12, 12+10",
-          goal: "10 kg: 15+12, 15+12, 13+10, and write the numbers down",
-          gain: "+1%",
-        },
-        log: { movements: ["Overhead extension", "Pushdown"] },
+        micro: { was: "Nov 11: overhead 10 kg ×15, 12.5 kg ×14, ×10; pushdown 12.5 kg 15, 14, 10" },
+        copy: ["overhead triceps extension 12.5x15, 12.5x14, 12.5x11", "triceps pushdown 12.5x15, 12.5x14, 12.5x11"],
       },
       {
         name: "Cable external rotation",
@@ -360,7 +357,8 @@ const WORKOUTS: Workout[] = [
         start: "2.5 kg",
         rest: "60 s",
         note: "12-15 with one arm, straight into 12-15 with the other, that's one set. The weight is really small, the first or second plate; the last reps stay controlled, not a fight. Elbow at your side the whole time, you can hold a rolled towel between elbow and ribs. Range: the forearm starts across your stomach, hand near the opposite side; turn outward through pointing straight ahead and another 20-40° while it's comfortable, about 110-120° in total, with no forcing at the end. Tempo: 2 seconds out, 2 seconds back.",
-        micro: { was: "2.5 kg: 15, 15", goal: "same again. This is shoulder health, no progression here" },
+        micro: { was: "Nov 4: 2.5 kg, 15, 15", note: "Shoulder health, no progression here." },
+        copy: "external rotation 2.5x15, 2.5x15",
       },
     ],
     stretch: STRETCH_PUSH,
@@ -369,9 +367,8 @@ const WORKOUTS: Workout[] = [
     id: "thu",
     day: "Thursday",
     title: "Legs + deadlift + abs",
+    short: "legs",
     focus: "legs for maintenance, deadlift, lower abs",
-    lastDate: "Nov 5",
-    nextDate: "Nov 12",
     timeline: [
       "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
@@ -384,7 +381,6 @@ const WORKOUTS: Workout[] = [
       "1:15 stretch",
       "1:25 done, 5 min spare",
     ],
-    marks: MARKS,
     warmup: WARMUP_LEGS,
     exercises: [
       {
@@ -395,7 +391,8 @@ const WORKOUTS: Workout[] = [
         start: "60 kg including the 20 kg bar",
         rest: "3 min",
         note: "In a rack, with the safety bars set just below your lowest point.",
-        micro: { was: "60 kg: 8, 8, 8, 8", goal: "60 kg: 9, 8, 8, 8", gain: "+3%" },
+        micro: { was: "Nov 5: 60 kg, 8, 8, 8, 8" },
+        copy: "squats 60x9, 60x8, 60x8, 60x8",
       },
       {
         name: "Barbell deadlift",
@@ -404,8 +401,9 @@ const WORKOUTS: Workout[] = [
         sets: "3×5-8",
         start: "80 kg including the 20 kg bar",
         rest: "3 min",
-        note: "Three sets now, not four: the 90 minutes don't fit a fourth. Ramp-up: 60 kg ×5. Back straight, 2-3 reps in reserve. Every 2 weeks swap in a Romanian deadlift 3×8-12 at about 70% of the weight; Nov 12 is the regular one again.",
-        micro: { was: "80 kg: 8, 8, 8, 8", goal: "80 kg: 8, 8, 8 (three sets); all three at 8 with reps to spare: 85 kg next week" },
+        note: "Three sets now, not four: the 90 minutes don't fit a fourth. Ramp-up: 60 kg ×5. Back straight, 2-3 reps in reserve. Every 2 weeks swap in a Romanian deadlift 3×8-12 at about 70% of the weight.",
+        micro: { was: "Nov 5: 80 kg, 8, 8, 8, 8", note: "All three at 8 with reps to spare: 85 kg next time." },
+        copy: "deadlift 80x8, 80x8, 80x8",
       },
       {
         name: "Bulgarian split squat with dumbbells",
@@ -415,7 +413,8 @@ const WORKOUTS: Workout[] = [
         start: "2×12 kg",
         rest: "3 min",
         note: "At 12 per leg, move to 14 kg dumbbells. A compound, so 3 minutes after both legs are done.",
-        micro: { was: "2×12 kg: 9, 8, 8 per leg", goal: "2×12 kg: 9, 9, 8 per leg", gain: "+4%" },
+        micro: { was: "Nov 5: 2×12 kg, 9, 8, 8 per leg" },
+        copy: "bulgarian lunges 12x9, 12x9, 12x8",
       },
       {
         name: "Machine leg curl",
@@ -424,7 +423,8 @@ const WORKOUTS: Workout[] = [
         sets: "3×10-15",
         start: "25 kg",
         rest: "90 s",
-        micro: { was: "25 kg: 15, 14, 14", goal: "25 kg: 15, 15, 14", gain: "+2%" },
+        micro: { was: "Nov 5: 25 kg, 15, 14, 14" },
+        copy: "legs curls 25x15, 25x15, 25x14",
       },
       {
         name: "Calf raise, machine or standing with dumbbells",
@@ -433,7 +433,8 @@ const WORKOUTS: Workout[] = [
         sets: "3×12-20",
         start: "20 kg on the machine",
         rest: "90 s",
-        micro: { was: "machine 20 kg: 12, 12, 12", goal: "machine 20 kg: 13, 12, 12", gain: "+3%" },
+        micro: { was: "Nov 5: machine 20 kg, 12, 12, 12" },
+        copy: "calves machine 20x13, 20x12, 20x12",
       },
       {
         name: "Hanging leg raise",
@@ -442,8 +443,8 @@ const WORKOUTS: Workout[] = [
         sets: "3×10-15",
         rest: "90 s",
         note: "At the top curl your pelvis up, otherwise the hip flexors work instead of the abs. Skipped on Nov 5 for time; the timeline now has room for it. If you're past 1:15 anyway, skip this, not the stretch.",
-        micro: { was: "skipped Nov 5. Last, Oct 29: 15, 12, 15", goal: "15, 13, 15", gain: "+2%" },
-        log: { weight: false },
+        micro: { was: "Oct 29: 15, 12, 15" },
+        copy: "hanging leg raises 15, 13, 15",
       },
     ],
     stretch: STRETCH_LEGS,
@@ -452,33 +453,32 @@ const WORKOUTS: Workout[] = [
     id: "fri",
     day: "Friday",
     title: "Pull B",
+    short: "pull B",
     focus: "back thickness, rear delts, biceps, posture",
-    lastDate: "Nov 6",
-    nextDate: "Nov 13",
     timeline: [
       "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
-      "0:18 machine row",
+      "0:18 barbell row",
       "0:32 one-arm dumbbell row",
       "0:44 rear delts, lying",
       "0:53 face pull",
       "1:00 back extension + pull-aparts",
       "1:06 biceps superset",
-      "1:15 posture pair",
+      "1:15 posture shrug",
       "1:19 stretch",
       "1:29 done",
     ],
-    marks: MARKS,
     warmup: WARMUP_PULL_B,
     exercises: [
       {
-        name: "Machine row, heavy",
-        img: "tyaga-v-trenazhere-s-uporom",
-        how: HOW.chestRow,
+        name: "Bent-over barbell row",
+        how: HOW.barbellRow,
         sets: "4×6-10",
-        start: "70 kg on the machine",
+        start: "50 kg including the 20 kg bar",
         rest: "3 min",
-        micro: { was: "70 kg: 10, 10, 10, 10", goal: "70 kg: 11, 10, 10, 10; all four at 10 with reps to spare: next plate", gain: "+2.5%" },
+        note: "Free weight first, like every strength day. Replaces the machine row (Nov 13: 70 kg, 11, 11, 11, 11). Start light and strict: torso at about 45°, back flat, no jerking the bar up. If the lower back is tired from Thursday's deadlift, do the same sets as a chest-supported dumbbell row on a 30° bench.",
+        micro: { note: "New: 50 kg is a test. All four sets at 8 with reps to spare: 55 kg next time." },
+        copy: "barbell rows 50x8, 50x8, 50x8, 50x8",
       },
       {
         name: "One-arm dumbbell row, supported on a bench, pulling to the hip",
@@ -487,7 +487,8 @@ const WORKOUTS: Workout[] = [
         start: "24 kg",
         rest: "3 min",
         note: "Three sets now, not four: the 90 minutes don't fit a fourth. A compound, so 3 minutes after both arms are done. Replaces the lat pulldown: on Oct 30 it hurt the right shoulder. Here the arm never goes overhead, and the lats work just the same.",
-        micro: { was: "24 kg: 10, 10, 10, 10", goal: "24 kg: 11, 10, 10 (three sets)", gain: "+1 rep in set 1" },
+        micro: { was: "Nov 13: 24 kg, 11, 10, 10" },
+        copy: "one-arm dumbbell rows 24x11, 24x11, 24x10",
       },
       {
         name: "Rear delt dumbbell fly, lying on a 30° bench",
@@ -496,7 +497,8 @@ const WORKOUTS: Workout[] = [
         sets: "4×12-20",
         start: "7 kg",
         rest: "90 s",
-        micro: { was: "7 kg: 20, 20, 20, 20", goal: "7 kg: 21, 20, 20, 20; at 4×20 with reps to spare, 8 kg", gain: "+1%" },
+        micro: { was: "Nov 13: 8 kg, 20, 20, 20, 20" },
+        copy: "rear delt flies lying 8x21, 8x20, 8x20, 8x20",
       },
       {
         name: "Face pull",
@@ -505,7 +507,8 @@ const WORKOUTS: Workout[] = [
         sets: "3×12-15",
         start: "10 kg",
         rest: "90 s",
-        micro: { was: "not done Nov 6. Last, Oct 30: 10 kg ×15, 12.5 kg ×15, 12.5 kg ×15", goal: "10 kg ×15, 12.5 kg ×16, 12.5 kg ×15", gain: "+2%" },
+        micro: { was: "Nov 13: 12.5 kg, 15, 15, 15" },
+        copy: "face pull 12.5x16, 12.5x15, 12.5x15",
       },
       {
         name: "Back superset (Bryan Johnson): weighted back extension 15-20, straight into band pull-aparts 15-20",
@@ -515,8 +518,8 @@ const WORKOUTS: Workout[] = [
         start: "back extension: bodyweight, then a 10 kg plate on the chest; pull-aparts: the warm-up band",
         rest: "90 s after the pair",
         note: "Same rep range on both, 15-20. From Johnson's daily back circuit (he does 1×25 and 1×15): lower back, glutes, the muscles between the shoulder blades. If you're past 1:06 when you get here, skip this pair first.",
-        micro: { goal: "new: write down what comes out as the baseline" },
-        log: { movements: ["Back extension", "Pull-aparts"] },
+        micro: { note: "Not done yet: write down what comes out." },
+        copy: ["back extension 15, 15", "pull-aparts 15, 15"],
       },
       {
         name: "Biceps superset: EZ-bar curl 8-12, straight into hammer curls 8-12",
@@ -526,10 +529,10 @@ const WORKOUTS: Workout[] = [
         start: "EZ bar 20 kg (bar plus 5 per side); 9-10 kg dumbbells",
         rest: "90 s after the pair",
         note: "Same rep range on both, 8-12. No rest between the two.",
-        micro: { was: "Oct 30: 20 kg: 12, 10, 8 + 9 kg: 10, 10, 6", goal: "20 kg: 12, 10, 9 + 9 kg: 10, 10, 7", gain: "+3%" },
-        log: { movements: ["EZ curl", "Hammer curl"] },
+        micro: { was: "Nov 13, two rounds: 20 kg 12, 10 + 10 kg 9, 10" },
+        copy: ["ez curls 20x12, 20x10, 20x8", "hammer curls 10x10, 10x10, 10x8"],
       },
-      POSTURE_LARSEN,
+      POSTURE_SHRUG,
     ],
     stretch: STRETCH_PULL,
     extra: <p>Wrist curls moved to Sunday and the farmer&apos;s walk is out: they didn&apos;t fit the 90 minutes here.</p>,
@@ -538,9 +541,8 @@ const WORKOUTS: Workout[] = [
     id: "sat",
     day: "Saturday",
     title: "Push B",
+    short: "push B",
     focus: "upper chest first, delts, triceps",
-    lastDate: "Nov 7",
-    nextDate: "Nov 14",
     timeline: [
       "0:00 walk, 12 min",
       "0:12 in the gym, warm-up",
@@ -553,7 +555,6 @@ const WORKOUTS: Workout[] = [
       "1:14 stretch",
       "1:24 done, 6 min spare",
     ],
-    marks: MARKS,
     warmup: WARMUP_PUSH("ramp-up to the incline press: empty bar ×10, 40 kg ×5, 55 kg ×3, 60 s between"),
     exercises: [
       {
@@ -564,7 +565,8 @@ const WORKOUTS: Workout[] = [
         start: "65 kg including the 20 kg bar",
         rest: "3 min",
         note: "In a rack, with the safety arms set. If the shoulder feels tense, use 22 kg dumbbells, as on Wednesday.",
-        micro: { was: "65 kg: 6, 6, 6, 6", goal: "65 kg: 7, 6, 6, 6", gain: "+4%" },
+        micro: { was: "Nov 7: 65 kg, 6, 6, 6, 6" },
+        copy: "barbell press 30 degrees 65x7, 65x6, 65x6, 65x6",
       },
       {
         name: "One-arm cable lateral raise",
@@ -573,7 +575,8 @@ const WORKOUTS: Workout[] = [
         sets: "4×12-20",
         start: "5 kg",
         rest: "90 s",
-        micro: { was: "5 kg: 12, 12, 12, 12", goal: "5 kg: 13, 12, 12, 12", gain: "+2%" },
+        micro: { was: "Nov 7: 5 kg, 12, 12, 12, 12" },
+        copy: "cable shoulder flies 5x13, 5x12, 5x12, 5x12",
       },
       {
         name: "Low-to-high cable fly",
@@ -583,7 +586,8 @@ const WORKOUTS: Workout[] = [
         start: "7.5 kg per side",
         rest: "90 s",
         note: "Light weight, no deep stretch. If the shoulder aches, swap for a 15° dumbbell press 3×8-12.",
-        micro: { was: "7.5 kg: 14, 14, 14", goal: "7.5 kg: 15, 14, 14", gain: "+2%" },
+        micro: { was: "Nov 7: 7.5 kg, 14, 14, 14" },
+        copy: "low-to-high cable flies 7.5x15, 7.5x14, 7.5x14",
       },
       {
         name: "Cable rear delt fly",
@@ -592,7 +596,8 @@ const WORKOUTS: Workout[] = [
         sets: "3×15-20",
         start: "2.5 kg per side",
         rest: "90 s",
-        micro: { was: "2.5 kg: 21, 21, 21", goal: "2.5 kg: 22, 21, 21; at 3×22, try 5 kg for 15", gain: "+2%" },
+        micro: { was: "Nov 7: 2.5 kg, 21, 21, 21. Tuesday Nov 10 at 3.75 kg: 16, 16, 16, 16" },
+        copy: "rear delt cable flies 3.75x16, 3.75x16, 3.75x16",
       },
       {
         name: "Shoulder flies (dumbbell lateral raise)",
@@ -601,7 +606,8 @@ const WORKOUTS: Workout[] = [
         sets: "3×12-15",
         start: "12 kg",
         rest: "90 s",
-        micro: { was: "12 kg: 12, 12, 12", goal: "12 kg: 13, 12, 12", gain: "+3%" },
+        micro: { was: "Nov 7: 12 kg, 12, 12, 12" },
+        copy: "shoulder flies 12x13, 12x12, 12x12",
       },
       {
         name: "Triceps superset: lying EZ-bar French press 10-12, straight into a cable pushdown 10-12",
@@ -611,8 +617,8 @@ const WORKOUTS: Workout[] = [
         start: "EZ bar 20 kg (bar plus 5 per side); cable 15 kg",
         rest: "90 s after the pair",
         note: "Same rep range on both, 10-12. No rest between the two. Three rounds fit now; on Nov 7 it was two with no numbers written down.",
-        micro: { was: "2 rounds, numbers not recorded. Oct 31: 20 kg 12, 12 + 15 kg 12, 10", goal: "20 kg: 12, 12, 10 + 15 kg: 12, 11, 10, and write the numbers down" },
-        log: { movements: ["French press", "Pushdown"] },
+        micro: { was: "Nov 7: two rounds, no numbers. Oct 31: 20 kg 12, 12 + 15 kg 12, 10" },
+        copy: ["french press 20x12, 20x12, 20x10", "triceps pushdown 15x12, 15x11, 15x10"],
       },
     ],
     stretch: STRETCH_PUSH,
@@ -621,9 +627,8 @@ const WORKOUTS: Workout[] = [
     id: "sun",
     day: "Sunday",
     title: "Cardio + abs + forearms + stretch",
+    short: "cardio abs",
     focus: "incline walk, ab circuit, forearms, dead hang, long stretch. The 12-minute walk is the first 10 of the 40 minutes of cardio, so the treadmill is 30.",
-    lastDate: "Nov 1",
-    nextDate: "Nov 8",
     timeline: [
       "0:00 walk, 12 min",
       "0:12 straight onto the treadmill, 30 min",
@@ -633,7 +638,6 @@ const WORKOUTS: Workout[] = [
       "1:06 long stretch",
       "1:24 done, 6 min spare",
     ],
-    marks: { warmup: 12, work: 12, stretch: 66, end: 90 },
     warmup: [{ text: "the walk to the gym, 12 min, then straight onto the treadmill: no other warm-up today", how: HOW.walk }],
     exercises: [
       {
@@ -642,8 +646,8 @@ const WORKOUTS: Workout[] = [
         how: HOW.walk,
         sets: "30 min",
         note: "30 minutes on the treadmill plus the 12-minute walk there is the 40 the program wants. Incline 10-15%, 5.5-6.5 km/h, heart rate 125-145, able to talk. A bike at the same heart rate is fine too.",
-        micro: { was: "5.5 km/h, incline 10, 40 min", goal: "5.6 km/h, incline 10, 30 min on the treadmill" },
-        log: { unit: "min", weight: false, sets: 1 },
+        micro: { was: "Nov 8: 15 min on the treadmill, plus 25 min walking to the gym and back" },
+        copy: "incline walk 30 min, 5.6 km/h, incline 10",
       },
       {
         name: "Abs, 3 rounds: hanging leg raise 10-15, reverse crunch 15, dead bug 10 per side, full-body-tension plank 35 s",
@@ -651,8 +655,8 @@ const WORKOUTS: Workout[] = [
         how: [HOW.legRaise, HOW.reverseCrunch, HOW.deadBug, HOW.plank],
         sets: "3 rounds",
         rest: "90 s between rounds",
-        micro: { was: "3 rounds, numbers not recorded", goal: "the same 3 rounds, plank 35 s instead of 30, and write the numbers down" },
-        log: { movements: ["Leg raise", "Reverse crunch", "Dead bug (per side)", "Plank (s)"], weight: false },
+        micro: { was: "Nov 8: leg raise 10, 10, 10; reverse crunch 10, 12, 12; dead bug 8, 10, 10; plank 35 s ×3" },
+        copy: ["hanging leg raises 11, 10, 10", "reverse crunches 12, 12, 12", "dead bug 10, 10, 10", "plank 35s, 35s, 35s"],
       },
       {
         name: "Forearm superset: barbell wrist curls 15-20, straight into wrist extensions 15-20",
@@ -662,8 +666,8 @@ const WORKOUTS: Workout[] = [
         start: "15 kg curls, 10 kg extensions",
         rest: "90 s after the pair",
         note: "Same rep range on both, 15-20. Moved here from Friday.",
-        micro: { goal: "not done yet. Write down the weight and reps as the baseline" },
-        log: { movements: ["Wrist curl", "Wrist extension"] },
+        micro: { note: "Not done yet: write down the weight and reps as the baseline." },
+        copy: ["wrist curls 15x15, 15x15, 15x15", "wrist extensions 10x15, 10x15, 10x15"],
       },
       {
         name: "Dead hang",
@@ -672,10 +676,10 @@ const WORKOUTS: Workout[] = [
         sets: "2× to failure",
         rest: "90 s",
         note: "Moved here from Tuesday, so this is the one place it lives now. The farmer's walk is out: the forearm superset and the hang cover grip, and the 90 minutes didn't fit it.",
-        micro: { was: "1:10, 1:10", goal: "1:15, 1:10", gain: "+4%" },
-        log: { unit: "s", weight: false },
+        micro: { was: "Nov 1: 1:10, 1:10" },
+        copy: "hang 75s, 70s",
       },
-      { name: "Long stretch, everything on the list, twice", sets: "18 min", log: { sets: 0 } },
+      { name: "Long stretch, everything on the list, twice", sets: "18 min" },
     ],
     stretch: STRETCH_ALL,
   },
@@ -871,62 +875,52 @@ function DrillList({ items }: { items: Drill[] }) {
   );
 }
 
-/** Last time and the next target, side by side under the exercise's numbers. */
-function MicroStep({
-  micro,
-  lastDate,
-  nextDate,
-}: {
-  micro: Micro;
-  lastDate: string;
-  nextDate: string;
-}) {
+/** The exercise's lines for the Notes template. */
+function copyLines(e: Exercise): string[] {
+  return e.copy ? (Array.isArray(e.copy) ? e.copy : [e.copy]) : [];
+}
+
+/** The whole Notes template of one workout, without the first line (that one carries today's date). */
+function noteLines(w: Workout): string[] {
+  return [
+    "90 min",
+    ...(w.id === "sun" ? [] : ["warm-up"]),
+    ...w.exercises.flatMap(copyLines),
+    "stretch",
+  ];
+}
+
+/** Last time and the next numbers, under the exercise. The next numbers are exactly what the copy button writes. */
+function MicroStep({ e }: { e: Exercise }) {
+  const next = copyLines(e);
+  if (!e.micro?.was && !e.micro?.note && !next.length) return null;
   return (
     <div className="mt-2 rounded-lg border border-hairline bg-vivid-blue/5 px-3 py-2.5 font-body text-sm leading-relaxed">
-      {micro.was ? (
-        <p className="text-silver-muted">
-          Last, {lastDate}: {micro.was}
-        </p>
+      {e.micro?.was ? (
+        <p className="text-silver-muted">Last, {e.micro.was}</p>
       ) : null}
-      <p className="text-silver">
-        <strong className="font-semibold text-white">Goal, {nextDate}:</strong>{" "}
-        {micro.goal}
-        {micro.gain ? (
-          <span className="whitespace-nowrap font-semibold text-vivid-blue">
-            {" "}
-            {micro.gain}
-          </span>
-        ) : null}
-      </p>
+      {next.map((line, i) => (
+        <p key={line} className="text-silver">
+          {i === 0 ? (
+            <strong className="font-semibold text-white">Next: </strong>
+          ) : null}
+          {line}
+        </p>
+      ))}
+      {e.micro?.note ? (
+        <p className="text-silver-muted">{e.micro.note}</p>
+      ) : null}
     </div>
   );
 }
 
-/** What the log panel needs to know about an exercise: how many sets, which movements, which fields. */
-function logSpec(e: Exercise): LogExercise {
-  const m = /^(\d+)/.exec(e.sets);
-  const sets = m ? Number(m[1]) : 1;
-  const movements =
-    e.log?.movements ??
-    (Array.isArray(e.how) ? e.how.map((h, i) => h.title ?? `Part ${i + 1}`) : [e.name]);
-  return {
-    name: e.name,
-    movements,
-    sets: e.log?.sets ?? sets,
-    unit: e.log?.unit ?? "reps",
-    weight: e.log?.weight ?? true,
-  };
-}
-
-/** The exercises of one workout, used both at the top and inside its fold. */
+/** The exercises of one workout. */
 function WorkoutBody({ w }: { w: Workout }) {
   return (
     <>
-      <p className="font-body text-sm text-silver-muted">{w.focus}</p>
-      <p className="mt-2 font-body text-sm text-silver-muted">
-        Week of Nov 10-15: one small step on every exercise compared to last
-        time. If it doesn't work out, just repeat last time's numbers. Rest is
-        one number, and it's the rest you take.
+      <p className="font-body text-sm text-silver-muted">
+        Next is last time plus one small step. If it doesn't work out, repeat
+        last time's numbers. Rest is one number, and it's the rest you take.
       </p>
       <ol className="mt-5 flex flex-col gap-5">
         {w.exercises.map((e, i) => (
@@ -947,13 +941,7 @@ function WorkoutBody({ w }: { w: Workout }) {
                   <span className="whitespace-nowrap">rest {e.rest}</span>
                 ) : null}
               </p>
-              {e.micro ? (
-                <MicroStep
-                  micro={e.micro}
-                  lastDate={w.lastDate}
-                  nextDate={w.nextDate}
-                />
-              ) : null}
+              <MicroStep e={e} />
               {e.note ? (
                 <p className="mt-1.5 font-body text-sm leading-relaxed text-silver-muted">
                   {e.note}
@@ -992,10 +980,9 @@ function Timeline({ items }: { items: string[] }) {
 }
 
 /**
- * The block at the top for one weekday: the clock and the log panel first,
- * then the workout unfolded, with the day's warm-up and stretch folded under
- * it so the whole session is in one card. Monday is the rest day and gets a
- * short card instead.
+ * One weekday's card: the copy button, then the workout unfolded, with the
+ * day's plan, warm-up and stretch folded around it. Only the card whose day is
+ * stamped on <html> is visible. Monday is the rest day and gets a short card.
  */
 function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
   const w = WORKOUT_BY_ID.get(dayId);
@@ -1005,18 +992,22 @@ function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
         <div className="surface-card p-6 md:p-8">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
             <p className="eyebrow font-body text-[13px] text-vivid-blue">
-              Today, {w.day}
+              {w.day}
             </p>
             <p className="font-body text-sm text-silver-muted">{DOOR}</p>
           </div>
           <h2 className="mt-2 font-display text-2xl font-semibold leading-[1.15] tracking-tight text-silver md:text-3xl">
             {w.title}
           </h2>
-          <LogPanel
-            dayId={w.id}
-            marks={w.marks}
-            exercises={w.exercises.map(logSpec).filter((e) => e.sets > 0)}
-          />
+          <p className="mt-2 font-body text-sm text-silver-muted">{w.focus}</p>
+          <div className="mt-4">
+            <CopyButton title={w.short} lines={noteLines(w)} />
+            <p className="mt-2 font-body text-sm text-silver-muted">
+              Copies this workout as a list for Apple Notes, with today&apos;s
+              date and the planned weight × reps of every set. Paste it, then
+              fix what turned out different.
+            </p>
+          </div>
           <div className="mt-6 flex flex-col gap-3">
             <Fold title="Plan, minute by minute" meta="90 min" heading="h3">
               <Timeline items={w.timeline} />
@@ -1037,14 +1028,14 @@ function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
       ) : (
         <div className="surface-card p-6 md:p-8">
           <p className="eyebrow font-body text-[13px] text-vivid-blue">
-            Today, Monday
+            Monday
           </p>
           <h2 className="mt-2 font-display text-2xl font-semibold leading-[1.15] tracking-tight text-silver md:text-3xl">
             Rest
           </h2>
           <p className="mt-3 font-body text-base text-silver-muted">
-            Kite-surfing if there's wind. Tomorrow is Pull A: back width, rear
-            delts, biceps, posture.
+            Kite-surfing if there&apos;s wind. Training anyway? Pick the day
+            above.
           </p>
         </div>
       )}
@@ -1058,8 +1049,7 @@ export default function FitnessPage() {
       {/*
         Picks today's card before the rest of the body is parsed, so the first
         painted frame already shows the right day. The ids follow getDay():
-        Sunday first. Runs on the device, so it is the device's date, which
-        is the one that matters in the gym.
+        Sunday first. The day buttons overwrite the same attribute.
       */}
       <script
         dangerouslySetInnerHTML={{
@@ -1091,13 +1081,16 @@ export default function FitnessPage() {
           id="today"
           className="mx-auto max-w-3xl scroll-mt-24 px-6 pb-12 md:pb-16"
         >
-          {DAY_IDS.map((id) => (
-            <TodayCard key={id} dayId={id} />
-          ))}
+          <DayPicker days={WORKOUTS.map((w) => ({ id: w.id, label: `${w.day.slice(0, 3)} · ${w.title.split(" + ")[0]}` }))} />
+          <RestTimer />
+          <div className="mt-6">
+            {DAY_IDS.map((id) => (
+              <TodayCard key={id} dayId={id} />
+            ))}
+          </div>
           <noscript>
             <p className="font-body text-base text-silver-muted">
-              Today's workout is shown with JavaScript. Without it, open the
-              right day in the list below.
+              The workout is shown with JavaScript.
             </p>
           </noscript>
         </section>
@@ -1107,17 +1100,18 @@ export default function FitnessPage() {
           <Fold
             id="posture"
             eyebrow="Posture"
-            title="Two exercises and three habits"
+            title="The shrug, the head-up and three habits"
           >
             <div className="prose-guide">
               <p>
                 From Bryan Johnson&apos;s posture video, built with the corrective
-                exercise specialist Kjetil Larsen. The two strength exercises are
-                at the end of Tuesday and Friday, one set each to fatigue.
-                Larsen&apos;s limit is twice a week, so they don&apos;t go anywhere
-                else. They replace the chin tucks, which Larsen considers
-                counterproductive: the cue is a long neck with the crown going
-                up, never the chin going back.
+                exercise specialist Kjetil Larsen. The shrug is at the end of
+                Tuesday and Friday, 3×15, the way it was done on Nov 13.
+                Larsen&apos;s limit is twice a week, so it doesn&apos;t go
+                anywhere else. The head-up is optional, at home. They replace
+                the chin tucks, which Larsen considers counterproductive: the
+                cue is a long neck with the crown going up, never the chin
+                going back.
               </p>
               <ul>
                 <li>
@@ -1143,33 +1137,6 @@ export default function FitnessPage() {
               </p>
             </div>
           </Fold>
-          <h2
-            id="workouts"
-            className="eyebrow mt-6 scroll-mt-24 font-body text-[13px] text-vivid-blue"
-          >
-            Other days
-          </h2>
-          {WORKOUTS.map((w) => (
-            <Fold
-              key={w.id}
-              id={w.id}
-              eyebrow={w.day}
-              title={w.title}
-              meta={DOOR}
-            >
-              <Fold title="Warm-up" meta="12 + 6 min" heading="h3">
-                <DrillList items={w.warmup} />
-              </Fold>
-              <div className="mt-5">
-                <WorkoutBody w={w} />
-              </div>
-              <div className="mt-6">
-                <Fold title="Stretch at the end" meta={w.id === "sun" ? "18 min" : "10 min"} heading="h3">
-                  <DrillList items={w.stretch} />
-                </Fold>
-              </div>
-            </Fold>
-          ))}
         </div>
       </main>
 
