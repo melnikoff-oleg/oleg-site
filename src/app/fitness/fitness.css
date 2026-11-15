@@ -1,11 +1,10 @@
-/* /fitness: the day switch and the folds. Every selector is prefixed .fit-
+/* /fitness: the day switch and the buttons. Every selector is prefixed .fit-
    so nothing here can leak into another page. */
 
 /* Today's workout. The page is static, so all seven days are in the HTML and
    a one-line script at the top of <body> (page.tsx) stamps the device's
    weekday on <html> before any of this is parsed: the first painted frame
-   already shows the right day, and no day flashes in or out. Without
-   JavaScript nothing matches and the <noscript> note shows instead. */
+   already shows the right day, and no day flashes in or out. */
 .fit-today {
   display: none;
 }
@@ -17,47 +16,6 @@ html[data-today="thu"] .fit-today[data-day="thu"],
 html[data-today="fri"] .fit-today[data-day="fri"],
 html[data-today="sat"] .fit-today[data-day="sat"] {
   display: block;
-}
-
-/* Native <details> folds: no JavaScript, the browser's own toggle, with the
-   default marker replaced by a chevron that turns when the fold is open.
-   .fit-how is the small "How to do it" fold under each exercise. */
-.fit-fold > summary,
-.fit-how > summary {
-  list-style: none;
-  cursor: pointer;
-}
-.fit-fold > summary::-webkit-details-marker,
-.fit-how > summary::-webkit-details-marker {
-  display: none;
-}
-.fit-fold > summary .fit-chev,
-.fit-how > summary .fit-chev {
-  transition: transform 0.2s ease;
-}
-.fit-fold[open] > summary .fit-chev,
-.fit-how[open] > summary .fit-chev {
-  transform: rotate(180deg);
-}
-@media (prefers-reduced-motion: reduce) {
-  .fit-fold > summary .fit-chev,
-  .fit-how > summary .fit-chev {
-    transition: none;
-  }
-}
-
-/* A strip in the numbered exercise list spans under the number gutter on phones
-   (gutter = the 1.75rem number + 1rem gap), where every pixel of width counts. */
-.fit-strip-wide {
-  max-width: none; /* the base styles cap img at 100% */
-  width: calc(100% + 2.75rem);
-  margin-left: -2.75rem;
-}
-@media (min-width: 768px) {
-  .fit-strip-wide {
-    width: 100%;
-    margin-left: 0;
-  }
 }
 
 /* Buttons: big tap targets for the gym, and two styles. */

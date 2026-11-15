@@ -63,7 +63,7 @@ export function CopyButton({ title, lines }: { title: string; lines: string[] })
   };
   return (
     <button type="button" onClick={onClick} className="fit-btn fit-btn-primary">
-      {state === "copied" ? "Copied, paste into Notes" : state === "failed" ? "Couldn't copy" : "Copy workout for Notes"}
+      {state === "copied" ? "Copied" : state === "failed" ? "Couldn't copy" : "Copy for Notes"}
     </button>
   );
 }
