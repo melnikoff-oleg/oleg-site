@@ -1,7 +1,6 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { HOW, type HowTo } from "./howto";
-import { CopyButton, DayPicker, RestTimer } from "./gym-tools";
+import { CopyButton, DayPicker } from "./gym-tools";
 
 // Oleg's training program for the first eight-week cycle, in English, laid out for use in
 // the gym. One workout is shown at a time: the device's weekday picks it before first
@@ -10,7 +9,8 @@ import { CopyButton, DayPicker, RestTimer } from "./gym-tools";
 // The log is kept in Apple Notes (since 2026-11-15; the Supabase log panel is gone):
 // "Copy workout for Notes" copies the shown day as a bullet list with the planned
 // weight x reps of every set, and Oleg corrects it in the note as he goes. The
-// interactive bits (day buttons, copy, rest timer) are in gym-tools.tsx.
+// interactive bits (day buttons, copy) are in gym-tools.tsx. Each card opens with
+// a short overview: every exercise with its sets, reps and rest on one line.
 // Source: Desktop/Fitness/program_oct_2026.md, which stays in Russian, so a change
 // there gets translated here by hand. Every movement has a "How to do it" fold
 // with plain step-by-step technique, from howto.ts, and a "Last / Next" block
@@ -890,6 +890,24 @@ function noteLines(w: Workout): string[] {
   ];
 }
 
+/**
+ * One overview line per exercise: short name (the one the Notes template uses),
+ * sets, reps, rest. A superset is one line, its reps taken from the range in its name.
+ */
+function overviewLine(e: Exercise): string | null {
+  const names = copyLines(e).map((l) => l.split(/\s(?=\+?[\d.]+x\d|\d+s?,|\d+s?$|\d+ min)/)[0]);
+  if (!names.length) return null;
+  const sets = /^(\d+)×\s*(.+)$/.exec(e.sets);
+  const rounds = /^(\d+) rounds/.exec(e.sets);
+  const range = /\d+-\d+/.exec(e.name)?.[0];
+  const amount = sets
+    ? `${sets[1]} sets ${/^\d/.test(sets[2]) ? "× " : ""}${sets[2].replace(", light", "")}`
+    : rounds
+      ? `${rounds[1]} rounds${names.length === 2 && range ? ` × ${range}` : ""}`
+      : e.sets;
+  return `${names.join(" + ")}: ${amount}${e.rest ? `, rest ${e.rest}` : ""}`;
+}
+
 /** Last time and the next numbers, under the exercise. The next numbers are exactly what the copy button writes. */
 function MicroStep({ e }: { e: Exercise }) {
   const next = copyLines(e);
@@ -1000,6 +1018,11 @@ function TodayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
             {w.title}
           </h2>
           <p className="mt-2 font-body text-sm text-silver-muted">{w.focus}</p>
+          <ul className="mt-4 list-disc space-y-1.5 rounded-lg border border-hairline bg-vivid-blue/5 py-3 pr-4 pl-8 font-body text-sm leading-relaxed text-silver marker:text-silver-muted">
+            {w.exercises.map(overviewLine).map((line) =>
+              line ? <li key={line}>{line}</li> : null,
+            )}
+          </ul>
           <div className="mt-4">
             <CopyButton title={w.short} lines={noteLines(w)} />
             <p className="mt-2 font-body text-sm text-silver-muted">
@@ -1057,17 +1080,6 @@ export default function FitnessPage() {
         }}
       />
 
-      <header className="px-2">
-        <div className="mx-auto mt-2 flex max-w-3xl items-center justify-between px-6 py-4">
-          <Link
-            href="/"
-            className="brand-wordmark font-display text-lg tracking-tight"
-          >
-            Oleg Melnikov
-          </Link>
-        </div>
-      </header>
-
       <main>
         <section className="pt-8 pb-8 md:pt-14 md:pb-10">
           <div className="mx-auto max-w-3xl px-6">
@@ -1082,7 +1094,6 @@ export default function FitnessPage() {
           className="mx-auto max-w-3xl scroll-mt-24 px-6 pb-12 md:pb-16"
         >
           <DayPicker days={WORKOUTS.map((w) => ({ id: w.id, label: `${w.day.slice(0, 3)} · ${w.title.split(" + ")[0]}` }))} />
-          <RestTimer />
           <div className="mt-6">
             {DAY_IDS.map((id) => (
               <TodayCard key={id} dayId={id} />
