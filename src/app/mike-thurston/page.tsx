@@ -8,7 +8,7 @@
 // A server component with no client JavaScript. Speed: covers are small WebP files in two widths,
 // only the first row loads at once, the rest load lazily as they come near the screen.
 
-import { VIDEOS } from "./data";
+import { STATS, VIDEOS } from "./data";
 
 export default function MikeThurstonPage() {
   return (
@@ -18,6 +18,7 @@ export default function MikeThurstonPage() {
           {VIDEOS.length} outlier videos for Mike Thurston
         </h1>
         <p className="mt-3 font-body text-base text-silver-muted">
+          {STATS.videos.toLocaleString("en-US")} videos from {STATS.channels.toLocaleString("en-US")} channels analyzed.
           Last 30 days. Blue shows how many times a video beat its channel&apos;s normal.
         </p>
       </header>

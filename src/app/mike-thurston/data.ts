@@ -1,4 +1,6 @@
 // Generated in the MS repo: projects/accounts/mike_thurston/hunt_2026-11-15/build_site.py. Do not edit by hand.
+export const STATS = {"videos": 54478, "channels": 1125};
+
 export const VIDEOS = [
   {
     "pos": 1,
