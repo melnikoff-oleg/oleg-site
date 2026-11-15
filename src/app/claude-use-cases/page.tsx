@@ -2,7 +2,7 @@
 // One title, then the 27 cases counting down 27 to 1 in the order of the video. Each case is
 // someone else's build, shown as one split card: a frame from the original video on one side
 // (the case number sits on it as a blue badge), the text on the other: title, description,
-// how to do it, link to the original post. Data and its honesty rules: ./cases.ts.
+// how the author did it (retold from their post when they wrote it down), links. Data and its honesty rules: ./cases.ts.
 // A server component with no client code.
 
 import { BreadcrumbJsonLd } from "@/components/json-ld";
@@ -17,10 +17,10 @@ function Case({ c, eager }: { c: UseCase; eager: boolean }) {
     <article
       id={`case-${c.n}`}
       aria-labelledby={`case-${c.n}-title`}
-      className="scroll-mt-6 overflow-hidden rounded-3xl border border-hairline bg-navy-raised shadow-[0_30px_80px_-40px_rgba(40,99,240,0.35)] md:grid md:grid-cols-[minmax(0,13fr)_minmax(0,10fr)]"
+      className="scroll-mt-6 overflow-hidden rounded-3xl border border-hairline bg-navy-raised shadow-[0_30px_80px_-40px_rgba(40,99,240,0.35)] md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]"
     >
       {/* The picture side. Any frame shape fits whole; a blurred copy of it fills the rest. */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-navy md:aspect-auto md:min-h-[400px]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-navy md:aspect-auto md:min-h-[320px]">
         <div
           aria-hidden
           className="absolute inset-0 scale-125 bg-cover bg-center opacity-60 blur-2xl"
@@ -55,7 +55,7 @@ function Case({ c, eager }: { c: UseCase; eager: boolean }) {
         </h2>
         <p className="mt-3 font-body text-base leading-relaxed text-silver">{c.what}</p>
 
-        <h3 className="eyebrow mt-7 font-body text-xs text-silver-muted">How to do it</h3>
+        <h3 className="eyebrow mt-7 font-body text-xs text-silver-muted">{c.fromAuthor ? "How the author did it" : "How to try it"}</h3>
         <ol className="mt-3 list-none space-y-2.5 font-body text-base text-silver">
           {c.steps.map((step, i) => (
             <li key={step} className="flex gap-3">
@@ -70,7 +70,7 @@ function Case({ c, eager }: { c: UseCase; eager: boolean }) {
           ))}
         </ol>
 
-        <div className="mt-auto pt-7">
+        <div className="mt-auto flex flex-wrap gap-3 pt-7">
           <a
             href={c.url}
             target="_blank"
@@ -80,6 +80,18 @@ function Case({ c, eager }: { c: UseCase; eager: boolean }) {
             Original post by @{c.handle}
             <span aria-hidden>↗</span>
           </a>
+          {c.links?.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-hairline px-5 font-body text-sm font-semibold tracking-[0.02em] text-silver transition-colors hover:border-vivid-blue/60 hover:text-white"
+            >
+              {l.label}
+              <span aria-hidden>↗</span>
+            </a>
+          ))}
         </div>
       </div>
     </article>
@@ -91,7 +103,7 @@ export default function ClaudeUseCasesPage() {
     <>
       <BreadcrumbJsonLd trail={[{ name: "27 genius ways to use Claude", path: "/claude-use-cases" }]} />
       <main className="pb-16 md:pb-24">
-        <h1 className="text-metallic mx-auto max-w-6xl px-6 pt-12 pb-10 text-center font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:pt-20 md:pb-16 md:text-7xl">
+        <h1 className="text-metallic mx-auto max-w-6xl px-6 pt-10 pb-8 text-center font-display text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:pt-14 md:pb-10 md:text-5xl">
           {CASES.length} Genius Ways to Use Claude
         </h1>
         <ol className="mx-auto max-w-6xl list-none space-y-6 px-4 sm:px-6 md:space-y-10">
