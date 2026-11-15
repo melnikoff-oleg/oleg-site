@@ -33,6 +33,7 @@ export const shortLinks: { path: string; to: string }[] = [
   { path: "/yt-lo", to: guide("/", "linkedin-outreach-agent") },
   { path: "/yt-lp", to: guide(BOLDANE + "/linkedin-packaging", "linkedin-profile-packaging") },
   { path: "/yt-lc", to: guide(BOLDANE + "/linkedin-packaging", "linkedin-profile-packaging", "pinned-comment") },
+  { path: "/yt-gp", to: guide("/claude-use-cases", "27-ways-to-use-claude", "pinned-comment") },
   // LinkedIn post "30 best LinkedIn profiles" (comment SWIPE), 2026-11-11.
   { path: "/li-sw", to: post(BOLDANE + "/linkedin-swipe-file", "linkedin-profile-swipe-file") },
   // LinkedIn posts "30 viral LinkedIn formats" for three niches (comment CYBER, FOUNDER, DESIGN), 2026-11-11.
