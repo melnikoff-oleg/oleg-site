@@ -61,3 +61,12 @@ html[data-today="sat"] .fit-pick[data-day="sat"] {
   border-color: var(--color-vivid-blue);
   color: #fff;
 }
+
+/* The quiet "how to" fold at the bottom of a day card: no marker, just text to tap. */
+.fit-more > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.fit-more > summary::-webkit-details-marker {
+  display: none;
+}

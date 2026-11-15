@@ -1,11 +1,14 @@
 import { CopyButton, DayPicker } from "./gym-tools";
+import { HOW, type HowTo } from "./howto";
 
 // Oleg's training program, as bare as it gets (his request, 2026-11-15): the day
 // buttons, and for the chosen day one line per exercise (sets, reps, rest) plus a
 // button that copies the workout as a bullet list for Apple Notes, where the log
 // is kept. The device's weekday picks the day before first paint (a one-line
 // script stamps it on <html>, see fitness.css); the buttons switch to any other.
-// No warm-up, stretch, technique, pictures or notes here: those live in the
+// The only extra is one quiet fold at the bottom of the card, rarely opened:
+// per exercise, last time's numbers and the technique step by step (howto.ts).
+// No warm-up, stretch, pictures or notes here: those live in the
 // source, Desktop/Fitness/program_oct_2026.md (Russian). A change there gets
 // translated here by hand, and `copy` is recomputed from the log (section 9.1).
 
@@ -14,6 +17,10 @@ type Exercise = {
   line: string;
   /** The line(s) for the Notes template, without the bullet: name and planned weight x reps per set. */
   copy: string[];
+  /** Step-by-step technique, one entry per movement. Shown only inside the fold at the bottom of the card. */
+  how: HowTo[];
+  /** What the log says was done last time, with its date. Shown in the same fold. */
+  last?: string;
   /** Outside the 90 minutes: done only when there is time left. Not in the Notes template. */
   optional?: boolean;
 };
@@ -41,16 +48,16 @@ const WORKOUTS: Workout[] = [
     short: "pull A",
     warmup: true,
     exercises: [
-      { line: "pull-ups: 4 sets × 6-10, rest 3 min", copy: ["pull-ups +10x8, +10x7, +10x6, +10x6"] },
-      { line: "chest-supported rows: 3 sets × 8-12, rest 3 min", copy: ["chest-supported rows 60x13, 60x12, 60x12"] },
-      { line: "posture shrugs: 3 sets × 15, rest 90 s", copy: ["posture shrugs 12x15, 12x15, 12x15"] },
-      { line: "rear delt cable flies: 3 sets × 15-20, rest 90 s", copy: ["rear delt cable flies 3.75x17, 3.75x16, 3.75x16"] },
+      { line: "pull-ups: 4 sets × 6-10, rest 3 min", copy: ["pull-ups +10x8, +10x7, +10x6, +10x6"], how: [HOW.pullUps], last: "Nov 10: +10x7, +10x7, +10x6, +10x6" },
+      { line: "chest-supported rows: 3 sets × 8-12, rest 3 min", copy: ["chest-supported rows 60x13, 60x12, 60x12"], how: [HOW.chestRow], last: "Nov 10: 60x12, 60x12, 60x12" },
+      { line: "posture shrugs: 3 sets × 15, rest 90 s", copy: ["posture shrugs 12x15, 12x15, 12x15"], how: [HOW.levatorShrug], last: "Nov 13: 12x15, 12x15, 12x15" },
+      { line: "rear delt cable flies: 3 sets × 15-20, rest 90 s", copy: ["rear delt cable flies 3.75x17, 3.75x16, 3.75x16"], how: [HOW.rearDeltCable], last: "Nov 10: 3.75x16, 3.75x16, 3.75x16, 3.75x16" },
       {
         line: "incline curls + reverse ez curls: 2 rounds × 8-12, rest 90 s",
-        copy: ["incline curls 10x9, 10x8", "reverse ez curls 15x13, 15x12"],
+        copy: ["incline curls 10x9, 10x8", "reverse ez curls 15x13, 15x12"], how: [HOW.inclineCurl, HOW.reverseCurl], last: "Nov 3: 10x8, 10x8, 10x8 + 15x12, 15x12, 15x12",
       },
-      { line: "y-raise: 3 sets × 12-15, rest 90 s", copy: ["y-raise 5x12, 5x12, 5x12"], optional: true },
-      { line: "pullover: 3 sets × 12-15, rest 90 s", copy: ["pullover 22.5x12, 22.5x12, 20x12"], optional: true },
+      { line: "y-raise: 3 sets × 12-15, rest 90 s", copy: ["y-raise 5x12, 5x12, 5x12"], how: [HOW.yRaise], last: "Nov 10: 4x16, 4x16, 4x16", optional: true },
+      { line: "pullover: 3 sets × 12-15, rest 90 s", copy: ["pullover 22.5x12, 22.5x12, 20x12"], how: [HOW.pullover], last: "Nov 10: 22.5x12, 20x12, 20x12", optional: true },
     ],
   },
   {
@@ -60,15 +67,15 @@ const WORKOUTS: Workout[] = [
     short: "push A",
     warmup: true,
     exercises: [
-      { line: "seated dumbbell press: 4 sets × 6-10, rest 3 min", copy: ["seated dumbbell press 20x12, 20x11, 20x11, 20x11"] },
-      { line: "shoulder flies: 4 sets × 10-15, rest 90 s", copy: ["shoulder flies 12x13, 12x12, 12x12, 12x12"] },
-      { line: "dumbbell press 30 degrees: 3 sets × 8-12, rest 3 min", copy: ["dumbbell press 30 degrees 24x9, 24x8, 24x8"] },
-      { line: "face pull: 3 sets × 12-15, rest 90 s", copy: ["face pull 12.5x16, 12.5x15, 12.5x15"] },
+      { line: "seated dumbbell press: 4 sets × 6-10, rest 3 min", copy: ["seated dumbbell press 20x12, 20x11, 20x11, 20x11"], how: [HOW.seatedPress], last: "Nov 11: 20x11, 20x11, 20x11, 20x11" },
+      { line: "shoulder flies: 4 sets × 10-15, rest 90 s", copy: ["shoulder flies 12x13, 12x12, 12x12, 12x12"], how: [HOW.lateralRaise], last: "Nov 11: 12x12, 12x12, 12x12, 12x12" },
+      { line: "dumbbell press 30 degrees: 3 sets × 8-12, rest 3 min", copy: ["dumbbell press 30 degrees 24x9, 24x8, 24x8"], how: [HOW.inclineDB], last: "Nov 11: 24x8, 24x8, 24x8" },
+      { line: "face pull: 3 sets × 12-15, rest 90 s", copy: ["face pull 12.5x16, 12.5x15, 12.5x15"], how: [HOW.facePull], last: "Nov 11: 12.5x15, 12.5x15, 12.5x15" },
       {
         line: "overhead triceps extension + triceps pushdown: 2 rounds × 12-15, rest 90 s",
-        copy: ["overhead triceps extension 12.5x15, 12.5x14", "triceps pushdown 12.5x15, 12.5x14"],
+        copy: ["overhead triceps extension 12.5x15, 12.5x14", "triceps pushdown 12.5x15, 12.5x14"], how: [HOW.overheadExt, HOW.pushdown], last: "Nov 11: 10x15, 12.5x14, 12.5x10 + 12.5x15, 12.5x14, 12.5x10",
       },
-      { line: "external rotation: 2 sets × 12-15 per arm, rest 60 s", copy: ["external rotation 2.5x15, 2.5x15"], optional: true },
+      { line: "external rotation: 2 sets × 12-15 per arm, rest 60 s", copy: ["external rotation 2.5x15, 2.5x15"], how: [HOW.extRotation], last: "Nov 4: 2.5x15, 2.5x15", optional: true },
     ],
   },
   {
@@ -78,12 +85,12 @@ const WORKOUTS: Workout[] = [
     short: "legs",
     warmup: true,
     exercises: [
-      { line: "squats: 4 sets × 6-10, rest 3 min", copy: ["squats 60x9, 60x8, 60x8, 60x8"] },
-      { line: "deadlift: 3 sets × 5-8, rest 3 min", copy: ["deadlift 80x8, 80x8, 80x8"] },
-      { line: "bulgarian lunges: 3 sets × 8-12 per leg, rest 3 min", copy: ["bulgarian lunges 12x9, 12x9, 12x8"] },
-      { line: "hanging leg raises: 3 sets × 10-15, rest 90 s", copy: ["hanging leg raises 15, 13, 15"] },
-      { line: "legs curls: 3 sets × 10-15, rest 90 s", copy: ["legs curls 25x15, 25x15, 25x14"], optional: true },
-      { line: "calves machine: 3 sets × 12-20, rest 90 s", copy: ["calves machine 20x13, 20x12, 20x12"], optional: true },
+      { line: "squats: 4 sets × 6-10, rest 3 min", copy: ["squats 60x9, 60x8, 60x8, 60x8"], how: [HOW.barbellSquat], last: "Nov 5: 60x8, 60x8, 60x8, 60x8" },
+      { line: "deadlift: 3 sets × 5-8, rest 3 min", copy: ["deadlift 80x8, 80x8, 80x8"], how: [HOW.barbellDeadlift], last: "Nov 5: 80x8, 80x8, 80x8, 80x8" },
+      { line: "bulgarian lunges: 3 sets × 8-12 per leg, rest 3 min", copy: ["bulgarian lunges 12x9, 12x9, 12x8"], how: [HOW.bulgarian], last: "Nov 5: 12x9, 12x8, 12x8" },
+      { line: "hanging leg raises: 3 sets × 10-15, rest 90 s", copy: ["hanging leg raises 15, 13, 15"], how: [HOW.legRaise], last: "Oct 29: 15, 12, 15" },
+      { line: "legs curls: 3 sets × 10-15, rest 90 s", copy: ["legs curls 25x15, 25x15, 25x14"], how: [HOW.legCurl], last: "Nov 5: 25x15, 25x14, 25x14", optional: true },
+      { line: "calves machine: 3 sets × 12-20, rest 90 s", copy: ["calves machine 20x13, 20x12, 20x12"], how: [HOW.calves], last: "Nov 5: 20x12, 20x12, 20x12", optional: true },
     ],
   },
   {
@@ -93,18 +100,18 @@ const WORKOUTS: Workout[] = [
     short: "pull B",
     warmup: true,
     exercises: [
-      { line: "barbell rows: 4 sets × 6-10, rest 3 min", copy: ["barbell rows 50x8, 50x8, 50x8, 50x8"] },
-      { line: "one-arm dumbbell rows: 3 sets × 8-12 per arm, rest 3 min", copy: ["one-arm dumbbell rows 24x11, 24x11, 24x10"] },
-      { line: "posture shrugs: 3 sets × 15, rest 90 s", copy: ["posture shrugs 12x15, 12x15, 12x15"] },
-      { line: "rear delt flies lying: 3 sets × 12-20, rest 90 s", copy: ["rear delt flies lying 8x21, 8x20, 8x20"] },
+      { line: "barbell rows: 4 sets × 6-10, rest 3 min", copy: ["barbell rows 50x8, 50x8, 50x8, 50x8"], how: [HOW.barbellRow] },
+      { line: "one-arm dumbbell rows: 3 sets × 8-12 per arm, rest 3 min", copy: ["one-arm dumbbell rows 24x11, 24x11, 24x10"], how: [HOW.oneArmRow], last: "Nov 13: 24x11, 24x10, 24x10" },
+      { line: "posture shrugs: 3 sets × 15, rest 90 s", copy: ["posture shrugs 12x15, 12x15, 12x15"], how: [HOW.levatorShrug], last: "Nov 13: 12x15, 12x15, 12x15" },
+      { line: "rear delt flies lying: 3 sets × 12-20, rest 90 s", copy: ["rear delt flies lying 8x21, 8x20, 8x20"], how: [HOW.rearDeltProne], last: "Nov 13: 8x20, 8x20, 8x20, 8x20" },
       {
         line: "ez curls + hammer curls: 2 rounds × 8-12, rest 90 s",
-        copy: ["ez curls 20x12, 20x11", "hammer curls 10x10, 10x10"],
+        copy: ["ez curls 20x12, 20x11", "hammer curls 10x10, 10x10"], how: [HOW.ezCurl, HOW.hammer], last: "Nov 13: 20x12, 20x10 + 10x9, 10x10",
       },
-      { line: "face pull: 3 sets × 12-15, rest 90 s", copy: ["face pull 12.5x16, 12.5x15, 12.5x15"], optional: true },
+      { line: "face pull: 3 sets × 12-15, rest 90 s", copy: ["face pull 12.5x16, 12.5x15, 12.5x15"], how: [HOW.facePull], last: "Nov 13: 12.5x15, 12.5x15, 12.5x15", optional: true },
       {
         line: "back extension + pull-aparts: 2 rounds × 15-20, rest 90 s",
-        copy: ["back extension 15, 15", "pull-aparts 15, 15"],
+        copy: ["back extension 15, 15", "pull-aparts 15, 15"], how: [HOW.backExtension, HOW.pullAparts],
         optional: true,
       },
     ],
@@ -116,15 +123,15 @@ const WORKOUTS: Workout[] = [
     short: "push B",
     warmup: true,
     exercises: [
-      { line: "barbell press 30 degrees: 4 sets × 6-10, rest 3 min", copy: ["barbell press 30 degrees 65x7, 65x6, 65x6, 65x6"] },
-      { line: "cable shoulder flies: 4 sets × 12-20, rest 90 s", copy: ["cable shoulder flies 5x13, 5x12, 5x12, 5x12"] },
-      { line: "low-to-high cable flies: 3 sets × 12-15, rest 90 s", copy: ["low-to-high cable flies 7.5x15, 7.5x14, 7.5x14"] },
-      { line: "rear delt cable flies: 3 sets × 15-20, rest 90 s", copy: ["rear delt cable flies 3.75x16, 3.75x16, 3.75x16"] },
+      { line: "barbell press 30 degrees: 4 sets × 6-10, rest 3 min", copy: ["barbell press 30 degrees 65x7, 65x6, 65x6, 65x6"], how: [HOW.inclineBar], last: "Nov 7: 65x6, 65x6, 65x6, 65x6" },
+      { line: "cable shoulder flies: 4 sets × 12-20, rest 90 s", copy: ["cable shoulder flies 5x13, 5x12, 5x12, 5x12"], how: [HOW.cableLateral], last: "Nov 7: 5x12, 5x12, 5x12, 5x12" },
+      { line: "low-to-high cable flies: 3 sets × 12-15, rest 90 s", copy: ["low-to-high cable flies 7.5x15, 7.5x14, 7.5x14"], how: [HOW.lowToHighFly], last: "Nov 7: 7.5x14, 7.5x14, 7.5x14" },
+      { line: "rear delt cable flies: 3 sets × 15-20, rest 90 s", copy: ["rear delt cable flies 3.75x16, 3.75x16, 3.75x16"], how: [HOW.rearDeltCable], last: "Nov 7: 2.5x21, 2.5x21, 2.5x21" },
       {
         line: "french press + triceps pushdown: 2 rounds × 10-12, rest 90 s",
-        copy: ["french press 20x12, 20x12", "triceps pushdown 15x12, 15x11"],
+        copy: ["french press 20x12, 20x12", "triceps pushdown 15x12, 15x11"], how: [HOW.frenchPress, HOW.pushdown], last: "Oct 31: 20x12, 20x12 + 15x12, 15x10",
       },
-      { line: "shoulder flies: 3 sets × 12-15, rest 90 s", copy: ["shoulder flies 12x13, 12x12, 12x12"], optional: true },
+      { line: "shoulder flies: 3 sets × 12-15, rest 90 s", copy: ["shoulder flies 12x13, 12x12, 12x12"], how: [HOW.lateralRaise], last: "Nov 7: 12x12, 12x12, 12x12", optional: true },
     ],
   },
   {
@@ -134,16 +141,16 @@ const WORKOUTS: Workout[] = [
     short: "cardio abs",
     warmup: false,
     exercises: [
-      { line: "incline walk: 30 min", copy: ["incline walk 30 min, 5.6 km/h, incline 10"] },
+      { line: "incline walk: 30 min", copy: ["incline walk 30 min, 5.6 km/h, incline 10"], how: [HOW.walk], last: "Nov 8: 15 min" },
       {
         line: "hanging leg raises + reverse crunches + dead bug + plank: 3 rounds, rest 90 s",
-        copy: ["hanging leg raises 11, 10, 10", "reverse crunches 12, 12, 12", "dead bug 10, 10, 10", "plank 35s, 35s, 35s"],
+        copy: ["hanging leg raises 11, 10, 10", "reverse crunches 12, 12, 12", "dead bug 10, 10, 10", "plank 35s, 35s, 35s"], how: [HOW.legRaise, HOW.reverseCrunch, HOW.deadBug, HOW.plank], last: "Nov 8: 10, 10, 10 + 10, 12, 12 + 8, 10, 10 + 35s, 35s, 35s",
       },
       {
         line: "wrist curls + wrist extensions: 3 rounds × 15-20, rest 90 s",
-        copy: ["wrist curls 15x15, 15x15, 15x15", "wrist extensions 10x15, 10x15, 10x15"],
+        copy: ["wrist curls 15x15, 15x15, 15x15", "wrist extensions 10x15, 10x15, 10x15"], how: [HOW.wristCurl, HOW.wristExt],
       },
-      { line: "hang: 2 sets to failure, rest 90 s", copy: ["hang 75s, 70s"] },
+      { line: "hang: 2 sets to failure, rest 90 s", copy: ["hang 75s, 70s"], how: [HOW.hang], last: "Nov 1: 70s, 70s" },
     ],
   },
 ];
@@ -194,6 +201,32 @@ function DayCard({ dayId }: { dayId: (typeof DAY_IDS)[number] }) {
             <div className="mt-6">
               <CopyButton title={w.short} lines={noteLines(w)} />
             </div>
+            <details className="fit-more mt-8">
+              <summary className="font-body text-xs text-silver-muted">How to do the exercises</summary>
+              <div className="mt-2 flex flex-col">
+                {w.exercises.map((e) => (
+                  <details key={e.line} className="fit-more border-t border-hairline">
+                    <summary className="py-3 font-body text-sm text-silver">{e.line.split(":")[0]}</summary>
+                    <div className="flex flex-col gap-4 pb-4 font-body text-sm leading-relaxed text-silver-muted">
+                      {e.last ? <p>Last time, {e.last}</p> : null}
+                      {e.how.map((h, i) => (
+                        <div key={i}>
+                          {e.how.length > 1 ? (
+                            <p className="mb-1 text-silver">{e.line.split(":")[0].split(" + ")[i] ?? h.title}</p>
+                          ) : null}
+                          <ol className="list-decimal space-y-1 pl-5">
+                            {h.steps.map((step) => (
+                              <li key={step}>{step}</li>
+                            ))}
+                          </ol>
+                          {h.tip ? <p className="mt-2">Key point: {h.tip}</p> : null}
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </details>
           </>
         ) : null}
       </div>
