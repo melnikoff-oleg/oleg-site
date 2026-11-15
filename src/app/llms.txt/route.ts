@@ -49,6 +49,8 @@ const SUMMARY: Record<string, string> = {
     "Building a 3D model of any machine you can take apart with Claude Opus 5.5 and Elvar's free teardown skill for Claude Code: the install, the reference picture, and all nine of his prompts word for word (machine and model, console, look, self-check, a page you drive, video with sound, publishing, a stress slider).",
   "/viral-tweets":
     "Fourteen viral AI posts from X (late October 2026) as a feed, ranked by outlier score: how far each post beat what an account of its size usually gets. Full text, photos, video clips, quoted posts and the reply, repost, like and view counts.",
+  "/claude-use-cases":
+    "27 real things people built with Claude (two with Codex, one with GPT Image) in October and November 2026, counting down 27 to 1: what was built, the original post on X, what you need, the steps and a starter prompt for each. The prompts are written for the page, except the squat one, which is the author's own.",
   "/5-levels-ai": "Anthropic's research on how the top 1% use AI, as five levels of adoption.",
 };
 

@@ -97,6 +97,11 @@
       "claude-opus-5.5-3d",
       "claude-twitter",
       "reels"
+    ],
+    "claude-use-cases": [
+      "claude-code-tutorial",
+      "claude-opus-5.5-3d",
+      "viral-tweets"
     ]
   }
 }

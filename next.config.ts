@@ -46,6 +46,15 @@ const nextConfig: NextConfig = {
     return [
       // Tracked short links for YouTube descriptions (oleg.ae/yt-ig and so on), see short-links.ts.
       ...shortLinks.map(({ path, to }) => ({ source: path, destination: to, permanent: false })),
+      // oleg.ae/27: the short link for the "27 Genius Ways to Use Claude" video description. It lives
+      // here and not in short-links.ts because that list bans digits in a slug, and this one is the
+      // number in the title. Same four tags, same 307.
+      {
+        source: "/27",
+        destination:
+          "/claude-use-cases?utm_source=youtube&utm_medium=social&utm_campaign=free-guide&utm_content=description-27-ways-to-use-claude",
+        permanent: false,
+      },
       // Five resources moved to boldane.com on 2026-11-11. Temporary (307), so they can come back.
       ...["linkedin-packaging", "linkedin-swipe-file", "cybersecurity-linkedin-formats", "founder-linkedin-formats", "design-linkedin-formats"].map(
         (slug) => ({ source: `/${slug}`, destination: `https://boldane.com/${slug}`, permanent: false }),

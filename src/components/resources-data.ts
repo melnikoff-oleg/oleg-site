@@ -163,6 +163,13 @@ export const RESOURCES: Resource[] = [
     icon: Flame,
   },
   {
+    slug: "claude-use-cases",
+    title: "27 Genius Ways to Use Claude",
+    description:
+      "27 real things people built with Claude, each with the original post, the steps and a starter prompt to try it yourself",
+    icon: ListOrdered,
+  },
+  {
     slug: "reels",
     title: "Viral Reels Database",
     description:

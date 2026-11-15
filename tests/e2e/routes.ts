@@ -41,6 +41,8 @@ export const ROUTES = [
   "/claude-opus-5.5-3d",
   // A feed, not a guide: shell + footer, no guide contract.
   "/viral-tweets",
+  // The free project behind the "27 Genius Ways to Use Claude" video. A list, not a guide.
+  "/claude-use-cases",
   "/reels",
   "/viral",
   "/creators",
