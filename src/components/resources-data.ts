@@ -156,6 +156,13 @@ export const RESOURCES: Resource[] = [
     icon: Box,
   },
   {
+    slug: "claude-3d-shorts",
+    title: "3D Cartoon Shorts from One Prompt",
+    description:
+      "One short prompt and Claude Code makes a 30-second 3D cartoon with voices, music and sound. Free tools only, three test videos",
+    icon: Box,
+  },
+  {
     slug: "viral-tweets",
     title: "Viral AI Tweets",
     description:

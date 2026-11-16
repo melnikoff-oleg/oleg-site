@@ -88,6 +88,11 @@
       "claude-reels",
       "claude-social-growth"
     ],
+    "claude-3d-shorts": [
+      "claude-opus-5.5-3d",
+      "claude-code-tutorial",
+      "claude-code-pricing"
+    ],
     "claude-opus-5.5-3d": [
       "claude-code-tutorial",
       "5-levels-ai",

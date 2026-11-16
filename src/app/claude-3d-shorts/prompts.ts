@@ -1,0 +1,19 @@
+// The prompts behind /claude-3d-shorts, word for word as they were run on 2026-11-16
+// (three clean `claude -p` runs in empty folders, Claude Fable 5.2). Copied by script from
+// MS repo, projects/accounts/oleg_melnikov/videos_2026-11-16/2_3d_shorts/one_prompt/tests/*/prompt.txt.
+// Do not retype them: the page promises these exact words made these exact videos.
+
+/** The part that stays the same in every prompt. */
+export const RECIPE = "Build it with three.js as a HyperFrames project (npx hyperframes) and render it to video.mp4. Use only free tools, no API keys. Voice: npx hyperframes tts. Add music and a sound effect on every action (CC0 from the Openverse API, or made with ffmpeg). Big captions for every line. Something new on screen every 2 seconds. Before you finish, look at the frames yourself and fix what looks bad. Then open the video.";
+
+/** The template: the first line, your story, then the recipe. */
+export const TEMPLATE = "Make a 30-second vertical 3D cartoon for Shorts. [YOUR STORY IN 2 OR 3 SENTENCES. SAY THE STYLE AND WHO TALKS.] Build it with three.js as a HyperFrames project (npx hyperframes) and render it to video.mp4. Use only free tools, no API keys. Voice: npx hyperframes tts. Add music and a sound effect on every action (CC0 from the Openverse API, or made with ffmpeg). Big captions for every line. Something new on screen every 2 seconds. Before you finish, look at the frames yourself and fix what looks bad. Then open the video.";
+
+export const DOG = "Make a 30-second vertical 3D cartoon for Shorts. Low-poly style. A narrator asks: what if your dog doubled in size every 10 seconds? Show each step next to a thing everyone knows, with a big counter. End in space. Build it with three.js as a HyperFrames project (npx hyperframes) and render it to video.mp4. Use only free tools, no API keys. Voice: npx hyperframes tts. Add music and a sound effect on every action (CC0 from the Openverse API, or made with ffmpeg). Big captions for every line. Something new on screen every 2 seconds. Before you finish, look at the frames yourself and fix what looks bad. Then open the video.";
+export const COFFEE = "Make a 30-second vertical 3D cartoon for Shorts. Two small funny helpers try to fix a coffee machine. It blows up with foam, and they happily drink coffee from the foam. Each has its own voice. Warm light, camera at eye level. Build it with three.js as a HyperFrames project (npx hyperframes) and render it to video.mp4. Use only free tools, no API keys. Voice: npx hyperframes tts. Add music and a sound effect on every action (CC0 from the Openverse API, or made with ffmpeg). Big captions for every line. Something new on screen every 2 seconds. Before you finish, look at the frames yourself and fix what looks bad. Then open the video.";
+export const TOWN = "Make a 30-second vertical 3D cartoon for Shorts. Blocky toy people, like in a block game. A narrator says: in this town, everyone must walk backwards. Show 8 quick funny scenes of town life, then a twist ending. Build it with three.js as a HyperFrames project (npx hyperframes) and render it to video.mp4. Use only free tools, no API keys. Voice: npx hyperframes tts. Add music and a sound effect on every action (CC0 from the Openverse API, or made with ffmpeg). Big captions for every line. Something new on screen every 2 seconds. Before you finish, look at the frames yourself and fix what looks bad. Then open the video.";
+
+export const INSTALL_SKILLS = "npx hyperframes skills";
+export const START = "mkdir my-short && cd my-short && claude";
+export const FIX_FRAME = "Make the heroes bigger and fill the bottom third of the frame. Make the captions bigger. Render it again.";
+export const ELEVEN = "Redo the voices with ElevenLabs. My key is in the file .env as ELEVENLABS_API_KEY. Keep the same lines and timing. Render it again.";

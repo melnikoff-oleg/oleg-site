@@ -39,6 +39,7 @@ export const ROUTES = [
   "/claude-code-instagram",
   "/instagram-viral-pages",
   "/claude-opus-5.5-3d",
+  "/claude-3d-shorts",
   // A feed, not a guide: shell + footer, no guide contract.
   "/viral-tweets",
   // The free project behind the "27 Genius Ways to Use Claude" video. A list, not a guide.
@@ -80,6 +81,7 @@ export const GUIDE_ROUTES = [
   "/claude-code-instagram",
   "/instagram-viral-pages",
   "/claude-opus-5.5-3d",
+  "/claude-3d-shorts",
   "/claude-content",
   "/claude-marketing",
   "/claude-social-growth",
