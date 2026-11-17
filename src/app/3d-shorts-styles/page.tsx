@@ -5,8 +5,7 @@
 // The data is generated in the MS repo: projects/accounts/oleg_melnikov/videos_2026-11-16/2_3d_shorts/styles_page/build_site.py
 // writes ./data.ts and the pictures in public/3d-shorts-styles/. Edit there and rerun, not here.
 //
-// The video of each style plays in place (./player.tsx, the only client code): the one in view starts by itself, with sound
-// once the visitor has tapped the page. Videos load only when reached. On phones the video sits above the three stills.
+// The video of each style plays in place (./player.tsx, the only client code): nothing starts by itself; a press plays it with sound. Videos load only when reached. On phones the video sits above the three stills.
 
 import { STYLES } from "./data";
 import { Player, PlatformLogo } from "./player";

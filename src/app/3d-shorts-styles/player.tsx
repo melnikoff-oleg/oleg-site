@@ -3,13 +3,13 @@
 // The original video of one style, playing in place. Oleg's brief (2026-11-17): people watch the video here,
 // it starts by itself with sound, a small logo shows where it was posted, and a link opens the original.
 //
-// Browsers do not let a page start sound before the visitor has touched it. So: the video that is most in view
-// plays; we try with sound first; if the browser refuses, it plays silent with a "Tap for sound" button.
-// After the first tap anywhere on the page, every next video starts with sound. Only one video plays at a time.
+// Nothing plays by itself. A press on the video starts it with sound (a press is what lets a browser play sound);
+// another press pauses it. Starting one video stops the others. The bar at the bottom rewinds.
+// Until a video has been started once, a big play button covers it, so the first press works the same on every phone;
+// after that the browser's own controls take over.
 
 import { useEffect, useRef, useState } from "react";
 
-let touched = false;
 const players = new Set<HTMLVideoElement>();
 
 export function PlatformLogo({ platform, className }: { platform: string; className?: string }) {
@@ -31,41 +31,21 @@ export function PlatformLogo({ platform, className }: { platform: string; classN
 
 export function Player({ slug, title, platform, eager }: { slug: string; title: string; platform: string; eager: boolean }) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [silent, setSilent] = useState(false);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
     players.add(v);
-    const start = () => {
+    const onPlay = () => {
       players.forEach((o) => o !== v && o.pause());
       v.muted = false;
-      v.play().then(
-        () => setSilent(false),
-        () => {
-          v.muted = true;
-          setSilent(true);
-          v.play().catch(() => {});
-        },
-      );
+      setStarted(true);
     };
-    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? start() : v.pause()), { threshold: 0.6 });
-    io.observe(v);
-    const onTouch = () => {
-      touched = true;
-      if (!v.paused && v.muted) {
-        v.muted = false;
-        setSilent(false);
-      }
-    };
-    const onVolume = () => setSilent(v.muted);
-    document.addEventListener("pointerdown", onTouch);
-    v.addEventListener("volumechange", onVolume);
+    v.addEventListener("play", onPlay);
     return () => {
-      io.disconnect();
       players.delete(v);
-      document.removeEventListener("pointerdown", onTouch);
-      v.removeEventListener("volumechange", onVolume);
+      v.removeEventListener("play", onPlay);
     };
   }, []);
 
@@ -78,32 +58,35 @@ export function Player({ slug, title, platform, eager }: { slug: string; title: 
         preload={eager ? "metadata" : "none"}
         playsInline
         loop
-        controls
+        controls={started}
         aria-label={`Video: ${title}`}
-        className="block aspect-[9/16] w-full object-cover"
+        className="block aspect-[9/16] w-full cursor-pointer object-cover"
       />
+      {!started && (
+        <button
+          type="button"
+          aria-label={`Play the video: ${title}`}
+          onClick={() => {
+            const v = ref.current;
+            if (!v) return;
+            v.muted = false;
+            v.play().catch(() => {});
+          }}
+          className="group absolute inset-0 flex cursor-pointer items-center justify-center focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-vivid-blue"
+        >
+          <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-navy/70 text-white backdrop-blur-sm transition-transform group-hover:scale-110">
+            <svg viewBox="0 0 24 24" className="ml-0.5 h-6 w-6" fill="currentColor" aria-hidden="true">
+              <path d="M8 5.5v13l11-6.5L8 5.5Z" />
+            </svg>
+          </span>
+        </button>
+      )}
       <span
         title={`Posted on ${platform}`}
         className="pointer-events-none absolute left-2.5 top-2.5 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-navy/70 text-white backdrop-blur-sm"
       >
         <PlatformLogo platform={platform} className="h-4 w-4" />
       </span>
-      {silent && (
-        <button
-          type="button"
-          onClick={() => {
-            const v = ref.current;
-            if (v) {
-              v.muted = false;
-              v.play().catch(() => {});
-            }
-            setSilent(false);
-          }}
-          className="absolute right-2.5 top-2.5 rounded-full bg-vivid-blue px-3 py-1.5 font-body text-sm font-semibold text-white"
-        >
-          Tap for sound
-        </button>
-      )}
     </div>
   );
 }
