@@ -27,42 +27,6 @@ export const STYLES: Style[] = [
   },
   {
     "n": 3,
-    "slug": "tower-race",
-    "name": "Pick-a-side ball race",
-    "line": "Neon balls race in three towers. You pick a side, counters run, the winner shows at the end.",
-    "url": "https://www.instagram.com/p/Dfa0kWvFT77/",
-    "platform": "Instagram",
-    "channel": "overloadlab.tv",
-    "views": "16.9M",
-    "score": "1,567x",
-    "title": "1,000 balls that keep adding… vs 10 balls ×5… vs 1 ball ×100. Which tower breaks all 10 fl"
-  },
-  {
-    "n": 4,
-    "slug": "will-it-overflow",
-    "name": "Will it overflow?",
-    "line": "Every hit splits a ball inside a turning ring. One question keeps you to the end.",
-    "url": "https://www.instagram.com/p/DfdAivDJ5aX/",
-    "platform": "Instagram",
-    "channel": "theballrace",
-    "views": "56.5M",
-    "score": "130x",
-    "title": "Will it overflow? Every hit splits a ball 🔴➡️🔴🔴 #satisfying #physics #oddlysatisfying #sim"
-  },
-  {
-    "n": 5,
-    "slug": "math-proof",
-    "name": "Math proof with a counter",
-    "line": "Two blocks, a wall and a counter on black. The number of hits spells out pi.",
-    "url": "https://www.instagram.com/p/DfZQ2ZvuIrR/",
-    "platform": "Instagram",
-    "channel": "phys_icsbox",
-    "views": "60.1M",
-    "score": "3,981x",
-    "title": "Two blocks. A wall. Count the collisions. 🤯"
-  },
-  {
-    "n": 6,
     "slug": "you-are-him",
     "name": "What if you were him",
     "line": "You are a famous person. Toy figures in film light, a live counter, one quiet line per shot.",
@@ -74,7 +38,7 @@ export const STYLES: Style[] = [
     "title": "What if you were Napoleon?"
   },
   {
-    "n": 7,
+    "n": 4,
     "slug": "slow-timeline",
     "name": "Slow timeline \"what if\"",
     "line": "One big change played over years. Grey box cities, a day counter, text and no voice.",
@@ -86,19 +50,7 @@ export const STYLES: Style[] = [
     "title": "What if it rained for 1,000 years? 🌧️ Day 3 the rivers burst. Year 100 only the mountains "
   },
   {
-    "n": 8,
-    "slug": "becomes",
-    "name": "How X becomes Y",
-    "line": "A cut-open build. One problem and one fix per shot until a hole in a hill is a house.",
-    "url": "https://www.youtube.com/shorts/YRT6uKUp9Qc",
-    "platform": "YouTube",
-    "channel": "Mildly Elsewhere",
-    "views": "6M",
-    "score": "36x",
-    "title": "How a Hole in a Hill Becomes a House"
-  },
-  {
-    "n": 9,
+    "n": 5,
     "slug": "map-what-if",
     "name": "Map \"what if\"",
     "line": "A flat world map. One country vanishes, and cut-outs and labels show what changes.",
@@ -110,19 +62,7 @@ export const STYLES: Style[] = [
     "title": "What If Russia Disappeared Tonight? 🤯 #shorts #map #russia #whatif #ukraine"
   },
   {
-    "n": 10,
-    "slug": "countryballs",
-    "name": "Countryballs",
-    "line": "Countries as balls with faces react to one event. Fast, loud, made for comments.",
-    "url": "https://www.youtube.com/shorts/7qsuSPFPlsU",
-    "platform": "YouTube",
-    "channel": "MapBall Arena",
-    "views": "976K",
-    "score": "49x",
-    "title": "What If India Dies? 😳 #countryballs #shorts"
-  },
-  {
-    "n": 11,
+    "n": 6,
     "slug": "stickman-gag",
     "name": "Stickman gag",
     "line": "A two-beat joke with stick people: someone laughs first, then the weather turns.",
@@ -134,19 +74,67 @@ export const STYLES: Style[] = [
     "title": "He Made Fun of His Friend… Big Mistake! 😂"
   },
   {
-    "n": 12,
-    "slug": "how-it-works",
-    "name": "3D \"how it works\"",
-    "line": "A real machine cut open and moving. No story, only how the parts work together.",
-    "url": "https://www.youtube.com/shorts/dcFw3EdZgfA",
-    "platform": "YouTube",
-    "channel": "SALMAN SHAH KP",
-    "views": "744K",
-    "score": "744x",
-    "title": "How a Manual Transmission Works (3D Animation)"
+    "n": 7,
+    "slug": "low-poly-drama",
+    "name": "Low-poly drama",
+    "line": "Two anime-style people in one room. Slow close-ups and one word on screen at a time.",
+    "url": "https://www.instagram.com/p/Dfe-vICFFSR/",
+    "platform": "Instagram",
+    "channel": "missmedanny",
+    "views": "4M",
+    "score": "11x",
+    "title": "He only came for sugar. 🖤 #romcom #lowpoly #animation #romance #animegirl #fyp"
   },
   {
-    "n": 13,
+    "n": 8,
+    "slug": "tower-race",
+    "name": "Pick-a-side ball race",
+    "line": "Neon balls race in three towers. You pick a side, counters run, the winner shows at the end.",
+    "url": "https://www.instagram.com/p/Dfa0kWvFT77/",
+    "platform": "Instagram",
+    "channel": "overloadlab.tv",
+    "views": "16.9M",
+    "score": "1,567x",
+    "title": "1,000 balls that keep adding… vs 10 balls ×5… vs 1 ball ×100. Which tower breaks all 10 fl"
+  },
+  {
+    "n": 9,
+    "slug": "will-it-overflow",
+    "name": "Will it overflow?",
+    "line": "Every hit splits a ball inside a turning ring. One question keeps you to the end.",
+    "url": "https://www.instagram.com/p/DfdAivDJ5aX/",
+    "platform": "Instagram",
+    "channel": "theballrace",
+    "views": "56.5M",
+    "score": "130x",
+    "title": "Will it overflow? Every hit splits a ball 🔴➡️🔴🔴 #satisfying #physics #oddlysatisfying #sim"
+  },
+  {
+    "n": 10,
+    "slug": "math-proof",
+    "name": "Math proof with a counter",
+    "line": "Two blocks, a wall and a counter on black. The number of hits spells out pi.",
+    "url": "https://www.instagram.com/p/DfZQ2ZvuIrR/",
+    "platform": "Instagram",
+    "channel": "phys_icsbox",
+    "views": "60.1M",
+    "score": "3,981x",
+    "title": "Two blocks. A wall. Count the collisions. 🤯"
+  },
+  {
+    "n": 11,
+    "slug": "becomes",
+    "name": "How X becomes Y",
+    "line": "A cut-open build. One problem and one fix per shot until a hole in a hill is a house.",
+    "url": "https://www.youtube.com/shorts/YRT6uKUp9Qc",
+    "platform": "YouTube",
+    "channel": "Mildly Elsewhere",
+    "views": "6M",
+    "score": "36x",
+    "title": "How a Hole in a Hill Becomes a House"
+  },
+  {
+    "n": 12,
     "slug": "crush",
     "name": "Growing ball crush",
     "line": "One ball with a power number grows and crushes thousands of tiny ones under it.",
@@ -158,7 +146,7 @@ export const STYLES: Style[] = [
     "title": "Can One Ball Crush the WHOLE Glass Pyramid?"
   },
   {
-    "n": 14,
+    "n": 13,
     "slug": "cut-count",
     "name": "Cut count",
     "line": "One fruit, more cuts each round. Two counters show cuts and the pieces they make.",
@@ -170,7 +158,7 @@ export const STYLES: Style[] = [
     "title": "Lime vs 1000 cuts #satisfying #oddlysatisfying #asmr"
   },
   {
-    "n": 15,
+    "n": 14,
     "slug": "picture-reveal",
     "name": "Hidden picture",
     "line": "Sixty thousand balls fall and slowly paint a picture. You wait for the end to see it.",
@@ -182,7 +170,7 @@ export const STYLES: Style[] = [
     "title": "60,000 balls are hiding a picture… wait for the end 👀 #simulation #satisfying #shorts"
   },
   {
-    "n": 16,
+    "n": 15,
     "slug": "bell-curve",
     "name": "Probability machine",
     "line": "Balls drop through pegs and pile into a bell curve. Calm, clean, no words.",
@@ -192,17 +180,5 @@ export const STYLES: Style[] = [
     "views": "943K",
     "score": "124x",
     "title": "103 Pieces, One Probability Machine 🌀 #shorts"
-  },
-  {
-    "n": 17,
-    "slug": "low-poly-drama",
-    "name": "Low-poly drama",
-    "line": "Two anime-style people in one room. Slow close-ups and one word on screen at a time.",
-    "url": "https://www.instagram.com/p/Dfe-vICFFSR/",
-    "platform": "Instagram",
-    "channel": "missmedanny",
-    "views": "4M",
-    "score": "11x",
-    "title": "He only came for sugar. 🖤 #romcom #lowpoly #animation #romance #animegirl #fyp"
   }
 ];
