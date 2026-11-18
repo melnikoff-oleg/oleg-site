@@ -48,7 +48,7 @@ const SUMMARY: Record<string, string> = {
   "/claude-opus-5.5-3d":
     "Building a 3D model of any machine you can take apart with Claude Opus 5.5 and Elvar's free teardown skill for Claude Code: the install, the reference picture, and all nine of his prompts word for word (machine and model, console, look, self-check, a page you drive, video with sound, publishing, a stress slider).",
   "/claude-3d-shorts":
-    "Making a 30-second 3D cartoon Short with Claude Code from one prompt of about 110 words, with free tools only (three.js, HyperFrames, the local Kokoro voice, CC0 music and sound effects from Openverse): the setup, the exact prompt line by line, three test videos with their prompts, time and token use per video, and the optional ElevenLabs voice cost.",
+    "Making 30-second Roblox-style 3D cartoon Shorts with Claude Code (or Codex) from one prompt that turns the chat into a cartoon studio: blocky toy people, an \"In this town\" story with a twist, a narrator, captions and music. The free prompt to copy, the 5-minute setup with a free ElevenLabs API key, two example videos, how to fix a video one change at a time, how to switch to another style from a reference video, and what it costs.",
   "/viral-tweets":
     "Fourteen viral AI posts from X (late October 2026) as a feed, ranked by outlier score: how far each post beat what an account of its size usually gets. Full text, photos, video clips, quoted posts and the reply, repost, like and view counts.",
   "/claude-use-cases":

@@ -7,6 +7,7 @@
 //
 // The video of each style plays in place (./player.tsx, the only client code): nothing starts by itself; a press plays it with sound. Videos load only when reached. On phones the video sits above the three stills.
 
+import Link from "next/link";
 import { STYLES } from "./data";
 import { Player, PlatformLogo } from "./player";
 
@@ -19,6 +20,16 @@ export default function ShortsStylesPage() {
         </h1>
         <p className="mt-3 max-w-2xl font-body text-base text-silver-muted">
           One top video for each style, from this month. Watch it here or open the original. Blue shows how many times it beat its own account&apos;s normal.
+        </p>
+        <p className="mt-3 max-w-2xl font-body text-base text-silver">
+          Want to make one?{" "}
+          <Link
+            href="/claude-3d-shorts"
+            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+          >
+            Get the free prompt for Claude
+          </Link>
+          .
         </p>
       </header>
 

@@ -157,9 +157,9 @@ export const RESOURCES: Resource[] = [
   },
   {
     slug: "claude-3d-shorts",
-    title: "3D Cartoon Shorts from One Prompt",
+    title: "Roblox-Style 3D Shorts from One Prompt",
     description:
-      "One short prompt and Claude Code makes a 30-second 3D cartoon with voices, music and sound. Free tools only, three test videos",
+      "One prompt turns Claude Code into a cartoon studio for 30-second 3D Shorts with voice, captions and music. Free prompt, 5-minute setup",
     icon: Box,
   },
   {

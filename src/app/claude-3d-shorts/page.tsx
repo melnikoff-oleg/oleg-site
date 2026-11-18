@@ -3,19 +3,18 @@ import type { ReactNode } from "react";
 import { ResourcePageShell } from "@/components/resource-page-shell";
 import { CopyButton } from "@/components/copy-button";
 import { LazyVideo } from "@/components/lazy-video";
-import { Answer, Block, Callout, Guide, GuideSection, GuideSteps, KeyFacts, Out, Stats } from "@/components/guide";
-import { PLANS, usd } from "@/lib/pricing";
-import { COFFEE, DOG, ELEVEN, FIX_FRAME, INSTALL_SKILLS, START, TEMPLATE, TOWN } from "./prompts";
+import { Answer, Block, Callout, Guide, GuideSection, Out, Stats } from "@/components/guide";
+import { FIRST_MESSAGE, FIX, PROMPT, PROMPT_CHARS, PROMPT_HEAD, RESTYLE, TEN_IDEAS } from "./prompts";
 
-// The free guide behind Oleg's video about 3D Shorts made by Claude from one prompt.
-// The three videos are the first results of three clean runs on 2026-11-16: an empty
-// folder, the prompt in ./prompts.ts, nothing else. Nothing was fixed by hand after.
-// Source, reports and full-size files: MS repo, projects/accounts/oleg_melnikov/
-// videos_2026-11-16/2_3d_shorts/one_prompt.
+// The free page behind Oleg's video "How to Make Viral Roblox-Style 3D Shorts in One Prompt"
+// (2026-11-18). One prompt turns a Claude Code chat into a cartoon studio: blocky toy people, a
+// short sad story, a narrator, captions and music. The voice and music come from ElevenLabs
+// (free plan works). The prompt itself lives in the MS repo, see ./prompts.ts.
+// The two videos are the ones Claude made in the video, nothing fixed by hand.
 
-const HYPERFRAMES = "https://github.com/heygen-com/hyperframes";
-const OPENVERSE = "https://openverse.org";
-const ELEVENLABS = "https://elevenlabs.io/pricing";
+const ELEVENLABS = "https://elevenlabs.io";
+const LINK =
+  "text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white";
 
 function K({ children }: { children: ReactNode }) {
   return (
@@ -38,7 +37,7 @@ function Step({ children }: { children: ReactNode }) {
   );
 }
 
-function Paste({ label, text, copy = "copy prompt" }: { label: string; text: string; copy?: string }) {
+function Paste({ label, text, copy = "copy" }: { label: string; text: string; copy?: string }) {
   return (
     <div className="mt-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -50,11 +49,32 @@ function Paste({ label, text, copy = "copy prompt" }: { label: string; text: str
   );
 }
 
-/** One test: the vertical video next to the exact prompt that made it. */
-function Test({ file, prompt, facts }: { file: string; prompt: string; facts: string }) {
+/** The whole prompt: one button copies all of it, the box shows only how it starts. */
+function ThePrompt() {
   return (
-    <div className="grid gap-5 md:grid-cols-[240px_1fr] md:items-start">
-      <div className="mx-auto w-full max-w-[260px] overflow-hidden rounded-xl border border-hairline bg-navy-raised">
+    <div className="mt-4">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="font-display text-base font-semibold text-silver">
+          The prompt, {PROMPT_CHARS.toLocaleString("en-US")} characters
+        </p>
+        <CopyButton text={PROMPT} label="copy the whole prompt" />
+      </div>
+      <Block>{PROMPT_HEAD + "\n\n..."}</Block>
+      <p className="mt-3 font-body text-sm leading-relaxed text-silver-muted">
+        The button copies all of it. The box shows only the start.{" "}
+        <a href="/3d-shorts/prompt.md" download className={LINK}>
+          Or download it as a file
+        </a>
+        .
+      </p>
+    </div>
+  );
+}
+
+function Short({ file, caption }: { file: string; caption: string }) {
+  return (
+    <figure className="w-full max-w-[260px]">
+      <div className="overflow-hidden rounded-xl border border-hairline bg-navy-raised">
         <LazyVideo
           src={`/3d-shorts/${file}.mp4`}
           poster={`/3d-shorts/${file}-poster.webp`}
@@ -63,109 +83,78 @@ function Test({ file, prompt, facts }: { file: string; prompt: string; facts: st
           className="block h-auto w-full"
         />
       </div>
-      <div className="min-w-0">
-        <Paste label="The prompt" text={prompt} />
-        <p className="mt-3 font-body text-sm leading-relaxed text-silver-muted">{facts} Unmute it for the sound.</p>
-      </div>
-    </div>
+      <figcaption className="mt-2 font-body text-sm leading-relaxed text-silver-muted">{caption}</figcaption>
+    </figure>
   );
 }
 
 const steps = [
   {
-    title: "Check what you need",
+    title: "Copy the prompt",
+    content: (
+      <div>
+        <ThePrompt />
+      </div>
+    ),
+  },
+  {
+    title: "Open Claude Code or Codex",
     content: (
       <Do>
         <Step>
-          A Claude plan that includes Claude Code. Pro, {usd(PLANS.pro.monthly)} a month, is the cheapest one
+          Open the Claude app and pick <K>Code</K> on the left. In ChatGPT the same thing is called Codex
         </Step>
+        <Step>Start a new, empty chat</Step>
+        <Step>Pick the best model you have. I use Claude Fable 5.2 on Medium</Step>
         <Step>
-          Claude Code installed and signed in. New to it?{" "}
-          <Link
-            href="/claude-code-tutorial"
-            className="text-vivid-blue underline decoration-vivid-blue/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
-          >
-            Install it first
+          New to it?{" "}
+          <Link href="/claude-code-tutorial" className={LINK}>
+            Set up Claude Code first
           </Link>
         </Step>
-        <Step>
-          Node.js 22 or newer. Type <K>node -v</K> in a terminal to check; get it from{" "}
-          <Out href="https://nodejs.org">nodejs.org</Out>
-        </Step>
-        <Step>ffmpeg and Python 3. If one is missing, Claude Code installs it when you ask</Step>
       </Do>
     ),
   },
   {
-    title: "Install the HyperFrames skills (one line, once)",
+    title: "Get a free ElevenLabs key",
     content: (
       <div>
         <Do>
-          <Step>Open a terminal and paste this line</Step>
+          <Step>
+            Go to <Out href={ELEVENLABS}>elevenlabs.io</Out> and sign up. The free plan is enough to start
+          </Step>
+          <Step>
+            Open <K>Developers</K>, then <K>API Keys</K>, and press <K>Create key</K>
+          </Step>
+          <Step>Copy the key. It is one long line of letters and numbers</Step>
         </Do>
-        <Paste label="Install" text={INSTALL_SKILLS} copy="copy" />
         <p className="mt-4 text-sm leading-relaxed text-silver-muted">
-          HyperFrames is a free, open source tool that turns a web page into a video file. The skills teach
-          Claude Code how to use it. My three tests ran with them installed.
+          ElevenLabs makes the narrator&apos;s voice and the music. It is the only outside service the prompt
+          uses.
         </p>
       </div>
     ),
   },
   {
-    title: "Open Claude Code in an empty folder",
+    title: "Paste it with your key and ask for a video",
     content: (
       <div>
         <Do>
-          <Step>Paste this line. It makes a folder, goes into it and starts Claude Code</Step>
+          <Step>Paste the prompt into the empty chat</Step>
+          <Step>
+            In the very first line, put your key in place of <K>PASTE_YOUR_KEY_HERE</K>
+          </Step>
+          <Step>Press Enter. Claude reads it and answers that it understood</Step>
+          <Step>Now ask for a video with one of these two messages</Step>
         </Do>
-        <Paste label="Start" text={START} copy="copy" />
+        <Paste label="Let Claude pick the idea" text={FIRST_MESSAGE} />
+        <Paste label="Or choose from ten ideas" text={TEN_IDEAS} />
+        <Do>
+          <Step>Say yes when Claude asks to run a command</Step>
+          <Step>Wait. My first video took about 40 minutes, the next ones are faster</Step>
+          <Step>Claude shows the finished video in the chat, with music and voice</Step>
+        </Do>
       </div>
-    ),
-  },
-  {
-    title: "Paste one prompt and wait",
-    content: (
-      <Do>
-        <Step>Copy one of the three prompts below, or the template with your own story</Step>
-        <Step>Paste it into Claude Code and press Enter</Step>
-        <Step>Say yes when Claude asks to run a command. It installs the free voice by itself</Step>
-        <Step>
-          Wait 20 to 25 minutes. Claude opens <K>video.mp4</K> when it is done
-        </Step>
-      </Do>
-    ),
-  },
-];
-
-const tests = [
-  {
-    title: "What if your dog doubled in size every 10 seconds?",
-    body: (
-      <Test
-        file="dog"
-        prompt={DOG}
-        facts="Done in 26 minutes. One narrator, one music track and 35 sound effects. The counter uses the real doubling maths: the dog passes the Eiffel Tower at 1:30."
-      />
-    ),
-  },
-  {
-    title: "Two helpers fix a coffee machine",
-    body: (
-      <Test
-        file="coffee"
-        prompt={COFFEE}
-        facts="Done in 19 minutes. Two voices, one music track and 33 sound effects, 12 camera shots."
-      />
-    ),
-  },
-  {
-    title: "In this town, everyone must walk backwards",
-    body: (
-      <Test
-        file="town"
-        prompt={TOWN}
-        facts="Done in 23 minutes. Eight scenes of 2.6 seconds each and a twist ending. Claude wrote every joke."
-      />
     ),
   },
 ];
@@ -173,27 +162,27 @@ const tests = [
 const faq = [
   {
     q: "Is it really free",
-    a: `The tools are free: three.js draws the picture, HyperFrames turns it into a video, the voice is Kokoro (a free model that runs on your computer), and the music and sound effects are CC0 files from Openverse. No API keys. What you pay for is Claude Code itself: it needs a paid Claude plan, and Pro at ${usd(PLANS.pro.monthly)} a month is the cheapest one.`,
+    a: "The prompt is free. ElevenLabs has a free plan with 10,000 credits a month, and the voice of one 30-second video uses about 600 of them. You still need a Claude plan with Claude Code, or a ChatGPT plan with Codex. Every video uses part of that plan's limit.",
   },
   {
-    q: "Do I need an MCP, Blender or a video model",
-    a: "No. Claude writes the whole cartoon as code in one web page, and HyperFrames records that page frame by frame. Nothing is connected to Claude and no video model is used.",
+    q: "Do I need an AI video generator, Roblox or a video editor",
+    a: "No. Claude writes the whole cartoon as code in one web page, records that page frame by frame, and mixes in the voice and the music. No video model, no game and no editing app.",
   },
   {
     q: "How long does one video take",
-    a: "19, 23 and 26 minutes in my three tests, from pasting the prompt to the finished 30-second file. You do not have to do anything while it runs except say yes to commands.",
+    a: "My first one took about 40 minutes from the message to the finished file, because Claude also sets up its tools. The next videos in the same chat are faster. You only say yes to commands while it runs.",
   },
   {
-    q: "How much of my Claude plan does one video use",
-    a: "A lot. Each test used between $7 and $9 of tokens at API prices on Claude Fable 5.2. On a plan you do not pay that, but it comes out of your usage limit, so on Pro expect only a few videos before you hit it.",
+    q: "Can I post videos made on the free ElevenLabs plan",
+    a: "The free ElevenLabs plan is for non-commercial use and asks you to credit ElevenLabs. If you want to earn money with the videos, their Starter plan is $6 a month and removes both limits.",
   },
   {
-    q: "Can I use a better voice",
-    a: "Yes. The free voice is clear but a bit flat. ElevenLabs sounds more alive. One 30-second cartoon has about 600 characters of speech, which is about 600 credits, or about $0.12 on the $6 Starter plan (30,000 credits a month). Voices, music and sound effects all from ElevenLabs took about 2,000 credits a cartoon in my own series, about $0.40.",
+    q: "What if the music does not work on my plan",
+    a: "The prompt tells Claude to always finish the video. If the music cannot be made, you still get the video with the voice and captions, and you can add a track later.",
   },
   {
-    q: "Can I post these videos",
-    a: "The picture is your own code. The music and sounds are CC0, which means no credit is needed. Claude lists every sound it used in a file inside the project, so you can check each one. Use your own characters, not ones from a film or a game.",
+    q: "Can I make another style, not the blocky one",
+    a: "Yes. Pick a style on the styles page, download its video, drop the file into the same chat and ask Claude to study it frame by frame and change its own instructions. The next videos come out in that style.",
   },
 ];
 
@@ -201,9 +190,9 @@ export default function Claude3dShortsPage() {
   return (
     <ResourcePageShell
       slug="claude-3d-shorts"
-      eyebrow="Free guide"
-      title="Make 3D cartoon Shorts with Claude from one prompt"
-      subhead="One short prompt, and Claude Code makes a 30-second 3D cartoon with voices, music and sound effects. Only free tools. No MCP, no Blender, no API keys. Here is the exact prompt and the three videos it made on the first try."
+      eyebrow="Free prompt"
+      title="Make viral Roblox-style 3D Shorts with Claude from one prompt"
+      subhead="Paste one prompt into Claude Code and it becomes a cartoon studio: blocky toy people, a short story with a twist, a narrator, captions and music. No AI video generator, no Roblox, no video editor. Here is the prompt and the 5-minute setup."
       steps={steps}
       troubleshooting={["claudeNotFound", "costs"]}
       breadcrumb={[
@@ -211,9 +200,9 @@ export default function Claude3dShortsPage() {
         { name: "3D Shorts with Claude", path: "/claude-3d-shorts" },
       ]}
       howTo={{
-        name: "Make a 3D cartoon Short with Claude Code from one prompt",
+        name: "Make a Roblox-style 3D Short with Claude Code from one prompt",
         description:
-          "Install Claude Code, Node.js, ffmpeg and the free HyperFrames skills, open Claude Code in an empty folder, paste one prompt and wait about 20 minutes for a 30-second vertical video with sound.",
+          "Open Claude Code or Codex, get a free ElevenLabs API key, paste one prompt with the key in its first line, and ask for a video. Claude writes, draws, voices and renders a 30-second vertical cartoon.",
         steps: steps.map((s) => ({ name: s.title, text: s.title })),
       }}
       faq={faq}
@@ -221,107 +210,93 @@ export default function Claude3dShortsPage() {
         <Guide>
           <GuideSection title="What you get">
             <Answer>
-              A 30-second vertical video, 1080 by 1920, with a story, voices, captions, music and a sound on
-              every action. Claude makes all of it from one message.
+              A 30-second vertical cartoon, 1080 by 1920, in the &quot;In this town&quot; style: one strange rule, a
+              kid who tells the story, and a twist at the end. Claude makes all of it from one message.
             </Answer>
             <Stats
               items={[
-                { value: "1", label: "Prompt, about 110 words" },
-                { value: "$0", label: "For tools. No API keys" },
-                { value: "~20 min", label: "From prompt to video" },
-                { value: "0", label: "MCPs, plugins or 3D apps" },
+                { value: "1", label: "Prompt to paste" },
+                { value: "5 min", label: "Setup" },
+                { value: "$0", label: "To start: free ElevenLabs plan" },
+                { value: "0", label: "Video generators or editors" },
               ]}
             />
+            <p>These two are the videos Claude made while I filmed. Nothing was fixed by hand.</p>
+            <div className="mt-5 flex flex-wrap gap-5">
+              <Short file="goose" caption="The Goose Man. Claude picked the idea by itself." />
+              <Short file="snow" caption="The Snowman. Same prompt, a new chat." />
+            </div>
+          </GuideSection>
+
+          <GuideSection title="See what goes viral first">
+            <Answer>
+              Videos like these get millions of views. I put 15 styles on one page, each with a real video you
+              can watch and open on its own platform.
+            </Answer>
             <p>
-              The three videos below are first results. Each one came from an empty folder and the prompt next
-              to it. I did not fix anything by hand.
+              <Link href="/3d-shorts-styles" className={LINK}>
+                Open the 15 viral styles
+              </Link>
             </p>
           </GuideSection>
 
-          <GuideSection title="The three tests">
-            <Answer>Same recipe, three different stories. Copy any of them as it is.</Answer>
-            <GuideSteps steps={tests} />
-          </GuideSection>
-
-          <GuideSection title="The prompt, line by line">
-            <Answer>
-              Keep every line and change only the story. This is the template.
-            </Answer>
-            <Paste label="Template" text={TEMPLATE} />
-            <KeyFacts
-              rows={[
-                { label: "30-second vertical 3D cartoon", value: "Sets the length and the 9:16 shape for Shorts, Reels and TikTok" },
-                { label: "Your story", value: "Two or three sentences: who, what goes wrong, how it ends. Name the style (low-poly, blocky toys) and who talks" },
-                { label: "three.js as a HyperFrames project", value: "three.js draws 3D in a web page. HyperFrames records that page frame by frame into video.mp4. Both are free" },
-                { label: "Only free tools, no API keys", value: "Stops Claude from reaching for paid voice or music services" },
-                { label: "Voice: npx hyperframes tts", value: "A free voice model (Kokoro) that runs on your computer. Claude installs it the first time" },
-                { label: "Music and a sound on every action", value: "Claude searches Openverse for CC0 sounds, cuts them and sets the volume. Silence is what makes code cartoons feel cheap" },
-                { label: "Big captions, something new every 2 seconds", value: "The two things that keep people watching a Short" },
-                { label: "Look at the frames yourself and fix", value: "The most important line. Claude takes pictures of its own video, finds what looks bad and repairs it before you see it" },
-              ]}
-            />
-            <Callout title="Make it your own">
+          <GuideSection title="Fix a video">
+            <Answer>Send a new message in the same chat and say what to change, in plain words.</Answer>
+            <Paste label="An example" text={FIX} />
+            <Callout title="One fix at a time">
               <p>
-                For a series, add one line that names your heroes and how they look, and use the same line in
-                every prompt. For another language, write the story in that language.
+                Ask for one change, look at the result, then ask for the next. Ten changes in one message are
+                hard to check, and one of them usually breaks something. A small fix is also fast: Claude keeps
+                the characters, the voice and the music, and redraws only the shots that change.
               </p>
             </Callout>
           </GuideSection>
 
-          <GuideSection title="Make a result better">
-            <Answer>
-              Send a second message in the same chat. Say what is wrong in plain words and ask for a new
-              render.
-            </Answer>
-            <p>
-              In all three tests the heroes sat in the upper part of the frame and the bottom third was mostly
-              empty. This fixes it:
-            </p>
-            <Paste label="Fill the frame" text={FIX_FRAME} />
-            <p>
-              Claude cannot hear. It measures how loud the sound is, but it does not know if a joke lands or
-              if the music fits. Listen once and tell it what to change.
-            </p>
+          <GuideSection title="Change the style">
+            <Answer>Show Claude a video in the style you want. It rewrites its own instructions.</Answer>
+            <Do>
+              <Step>
+                Pick a style on the{" "}
+                <Link href="/3d-shorts-styles" className={LINK}>
+                  styles page
+                </Link>{" "}
+                and download its video. Your own pictures or videos work too
+              </Step>
+              <Step>Drop the file into the same Claude chat</Step>
+              <Step>Send this message</Step>
+            </Do>
+            <Paste label="New style" text={RESTYLE} />
           </GuideSection>
 
           <GuideSection title="What it costs">
-            <Answer>
-              The tools cost nothing. You need a Claude plan, and each video uses a good part of its limit.
-            </Answer>
+            <Answer>The prompt is free. You need a Claude or ChatGPT plan, and ElevenLabs is free to start.</Answer>
             <ul>
               <li>
-                <strong>Picture and render:</strong> three.js and <Out href={HYPERFRAMES}>HyperFrames</Out>,
-                both open source.
-              </li>
-              <li>
-                <strong>Voice:</strong> Kokoro, free, runs on your computer.
-              </li>
-              <li>
-                <strong>Music and sound effects:</strong> CC0 files found through{" "}
-                <Out href={OPENVERSE}>Openverse</Out>. No account.
-              </li>
-              <li>
-                <strong>Claude:</strong> each test used $7 to $9 of tokens at API prices on Claude Fable 5.2.
-                On a plan that comes out of your limit instead of your card.{" "}
+                <strong>Claude:</strong> a plan that includes Claude Code. Each video uses part of its limit.{" "}
                 <Link href="/claude-code-pricing">What the plans cost</Link>.
               </li>
+              <li>
+                <strong>ElevenLabs:</strong> the free plan gives 10,000 credits a month. The voice of one
+                30-second video uses about 600.
+              </li>
+              <li>
+                <strong>To earn money with the videos:</strong> the free ElevenLabs plan is for non-commercial
+                use and asks for a credit. Starter is $6 a month and removes both.
+              </li>
+              <li>
+                <strong>Picture:</strong> three.js, free and open source. Claude installs what it needs.
+              </li>
             </ul>
-            <p>
-              Want a livelier voice? Get a key from <Out href={ELEVENLABS}>ElevenLabs</Out>, put it in a file
-              named <K>.env</K> in the folder, and send this. A 30-second cartoon has about 600 characters of
-              speech: about $0.12 on the $6 Starter plan.
-            </p>
-            <Paste label="Better voice (optional, paid)" text={ELEVEN} />
           </GuideSection>
         </Guide>
       }
       jsonLd={{
-        title: "Make 3D Cartoon Shorts with Claude From One Prompt (Free)",
+        title: "Make Viral Roblox-Style 3D Shorts with Claude From One Prompt (Free)",
         description:
-          "One short prompt and Claude Code makes a 30-second 3D cartoon with voices, music and sound effects, using only free tools. The exact prompt and three test videos.",
+          "One prompt turns Claude Code into a cartoon studio that writes, draws, voices and renders 30-second 3D Shorts. The free prompt, the 5-minute setup with a free ElevenLabs key, and how to fix and restyle videos.",
         url: "https://www.oleg.ae/claude-3d-shorts",
         datePublished: "2026-11-16",
-        dateModified: "2026-11-16",
+        dateModified: "2026-11-18",
       }}
       boldaneCredit
     />
