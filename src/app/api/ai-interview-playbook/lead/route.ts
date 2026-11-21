@@ -1,6 +1,6 @@
-// POST /api/vibe-coder-filter/lead -> { email, role?, hires?, src?, step }
+// POST /api/ai-interview-playbook/lead -> { email, role?, hires?, src?, step }
 //
-// Test capture for Anastasia Koroleva's lead magnet page (oleg.ae/vibe-coder-filter, 2026-11-18,
+// Test capture for Anastasia Koroleva's lead magnet page (oleg.ae/ai-interview-playbook, 2026-11-18,
 // Oleg: "deploy on oleg.ae just for the testing purposes"). Each step is saved as one JSON file in
 // the private Storage bucket `vibe-coder-filter-leads` of the shared Boldane project (service-role
 // key only, no public access). Built in the MS repo: projects/accounts/anastasia_koroleva/
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
   if (!ROLES.has(role) || !HIRES.has(hires) || !STEPS.has(step)) return NextResponse.json({ error: "Bad request." }, { status: 400 });
 
   const ip = getClientIp(req);
-  const limit = checkRateLimit(ip, { bucket: "vibe-coder-filter", limit: 20 });
+  const limit = checkRateLimit(ip, { bucket: "ai-interview-playbook", limit: 20 });
   if (!limit.allowed) return NextResponse.json({ error: "Too many requests today." }, { status: 429 });
 
   const at = new Date().toISOString();
