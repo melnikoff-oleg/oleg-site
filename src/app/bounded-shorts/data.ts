@@ -24,6 +24,34 @@ export const BATCHES = [
         "seconds": 43
       },
       {
+        "pos": 6,
+        "title": "Michael Jordan won. California sent a tax bill",
+        "ending": "Loop",
+        "topic": "Famous name",
+        "video": "/bounded-shorts/06.mp4",
+        "covers": [
+          "/bounded-shorts/06_cover1.jpg",
+          "/bounded-shorts/06_cover2.jpg",
+          "/bounded-shorts/06_cover3.jpg"
+        ],
+        "caption": "why did california tax michael jordan?\n\n#nba #michaeljordan #tax",
+        "seconds": 44
+      },
+      {
+        "pos": 7,
+        "title": "Boris Johnson sold his house. America sent the bill",
+        "ending": "Save or send",
+        "topic": "Famous name",
+        "video": "/bounded-shorts/07.mp4",
+        "covers": [
+          "/bounded-shorts/07_cover1.jpg",
+          "/bounded-shorts/07_cover2.jpg",
+          "/bounded-shorts/07_cover3.jpg"
+        ],
+        "caption": "why did america tax boris johnson?\n\n#borisjohnson #usa #tax",
+        "seconds": 48
+      },
+      {
         "pos": 8,
         "title": "What if you overstay in Europe by one day?",
         "ending": "App",
@@ -52,18 +80,18 @@ export const BATCHES = [
         "seconds": 53
       },
       {
-        "pos": 6,
-        "title": "Michael Jordan won. California sent a tax bill",
-        "ending": "Loop",
-        "topic": "Famous name",
-        "video": "/bounded-shorts/06.mp4",
+        "pos": 10,
+        "title": "What if you are born in America and leave as a baby?",
+        "ending": "Save or send",
+        "topic": "What if",
+        "video": "/bounded-shorts/10.mp4",
         "covers": [
-          "/bounded-shorts/06_cover1.jpg",
-          "/bounded-shorts/06_cover2.jpg",
-          "/bounded-shorts/06_cover3.jpg"
+          "/bounded-shorts/10_cover1.jpg",
+          "/bounded-shorts/10_cover2.jpg",
+          "/bounded-shorts/10_cover3.jpg"
         ],
-        "caption": "why did california tax michael jordan?\n\n#nba #michaeljordan #tax",
-        "seconds": 44
+        "caption": "what if you were born in america?\n\n#usa #tax #expat",
+        "seconds": 58
       },
       {
         "pos": 11,
@@ -80,20 +108,6 @@ export const BATCHES = [
         "seconds": 50
       },
       {
-        "pos": 7,
-        "title": "Boris Johnson sold his house. America sent the bill",
-        "ending": "Save or send",
-        "topic": "Famous name",
-        "video": "/bounded-shorts/07.mp4",
-        "covers": [
-          "/bounded-shorts/07_cover1.jpg",
-          "/bounded-shorts/07_cover2.jpg",
-          "/bounded-shorts/07_cover3.jpg"
-        ],
-        "caption": "why did america tax boris johnson?\n\n#borisjohnson #usa #tax",
-        "seconds": 48
-      },
-      {
         "pos": 12,
         "title": "Europe no longer stamps your passport",
         "ending": "App",
@@ -106,20 +120,6 @@ export const BATCHES = [
         ],
         "caption": "europe scans your face now. why?\n\n#travel #europe #passport",
         "seconds": 42
-      },
-      {
-        "pos": 10,
-        "title": "What if you are born in America and leave as a baby?",
-        "ending": "Save or send",
-        "topic": "What if",
-        "video": "/bounded-shorts/10.mp4",
-        "covers": [
-          "/bounded-shorts/10_cover1.jpg",
-          "/bounded-shorts/10_cover2.jpg",
-          "/bounded-shorts/10_cover3.jpg"
-        ],
-        "caption": "what if you were born in america?\n\n#usa #tax #expat",
-        "seconds": 58
       }
     ]
   },
