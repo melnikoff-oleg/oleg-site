@@ -4,9 +4,9 @@ export const BATCHES = [
     "name": "Batch 2",
     "note": "8 new videos, not posted yet",
     "hypotheses": [
-      "A loop or a save/send ending keeps more viewers to the last second than an app ending.",
-      "A famous name in the first line brings more views than a story with no name.",
-      "A \"what if\" question keeps more viewers past 3 seconds than a plain fact."
+      "People stop watching when the app shows up at the end. If the video ends by starting again, or by asking to save or send it, more people will watch to the very end.",
+      "People watch more when the video is about someone famous. Videos that name a star in the first line will get more views than videos about a rule.",
+      "A \"What if\" question makes people curious. Videos that start with \"What if\" will lose fewer viewers in the first 3 seconds than videos that start with a fact."
     ],
     "videos": [
       {
