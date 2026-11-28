@@ -50,11 +50,9 @@ const WORKOUTS: Workout[] = [
     exercises: [
       { line: "pull-ups: 4 sets × 6-10, rest 3 min", copy: ["pull-ups +10x8, +10x7, +10x7, +10x6"], how: [HOW.pullUps], last: "Nov 24: +10x8, +10x7, +10x6, +10x6" },
       { line: "chest-supported rows: 3 sets × 8-12, rest 3 min", copy: ["chest-supported rows 22x10, 22x10, 22x10"], how: [HOW.chestRow], last: "Nov 24: 18x16, 18x16, 18x16" },
-      {
-        line: "posture shrugs + back extension: 3 rounds × 15, rest 90 s",
-        copy: ["posture shrugs 14x15, 14x15, 14x15", "back extension 15, 15, 15"], how: [HOW.levatorShrug, HOW.backExtension], last: "Nov 24: 14x15, 14x15, 14x15 + new",
-      },
+      { line: "posture shrugs: 3 sets × 15, rest 90 s", copy: ["posture shrugs 14x15, 14x15, 14x15"], how: [HOW.levatorShrug], last: "Nov 24: 14x15, 14x15, 14x15" },
       { line: "rear delt cable flies: 3 sets × 15-20, rest 90 s", copy: ["rear delt cable flies 3.75x17, 3.75x17, 3.75x16"], how: [HOW.rearDeltCable], last: "Nov 24: 3.75x17, 3.75x16, 3.75x16" },
+      { line: "back extension: 3 sets × 15, rest 90 s", copy: ["back extension 15, 15, 15"], how: [HOW.backExtension] },
       {
         line: "incline curls + reverse ez curls: 2 rounds × 8-12, rest 90 s",
         copy: ["incline curls 12x7, 12x6", "reverse ez curls 15x13, 15x12"], how: [HOW.inclineCurl, HOW.reverseCurl], last: "Nov 24: 12x6, 12x6 + 15x12, 15x12",
@@ -146,10 +144,10 @@ const WORKOUTS: Workout[] = [
         copy: ["hanging leg raises 12, 10, 10", "reverse crunches 13, 12, 12", "dead bug 10, 10, 10", "plank 40s, 35s, 35s"], how: [HOW.legRaise, HOW.reverseCrunch, HOW.deadBug, HOW.plank], last: "Nov 23: 11, 10, 10 + 12, 12, 12 + 10, 10, 10 + 35s, 35s, 35s",
       },
       {
-        line: "wrist curls + wrist extensions + posture shrugs: 3 rounds × 15-20, rest 90 s",
-        copy: ["wrist curls 15x17, 15x16, 15x16", "wrist extensions 10x15, 10x14, 10x12", "posture shrugs 14x15, 14x15, 14x15"], how: [HOW.wristCurl, HOW.wristExt, HOW.levatorShrug], last: "Nov 23: 15x16, 15x16, 15x16 + 10x15, 10x13, 10x12 + new on this day",
+        line: "wrist curls + wrist extensions: 3 rounds × 15-20, rest 90 s",
+        copy: ["wrist curls 15x17, 15x16, 15x16", "wrist extensions 10x15, 10x14, 10x12"], how: [HOW.wristCurl, HOW.wristExt], last: "Nov 23: 15x16, 15x16, 15x16 + 10x15, 10x13, 10x12",
       },
-      { line: "hang: 2 sets to failure, rest 90 s", copy: ["hang 70s, 70s"], how: [HOW.hang], last: "Nov 23: 70s, 65s" },
+      { line: "posture shrugs: 3 sets × 15, rest 90 s", copy: ["posture shrugs 14x15, 14x15, 14x15"], how: [HOW.levatorShrug], last: "Nov 27: 12x15, 12x15, 12x15" },
     ],
   },
 ];
