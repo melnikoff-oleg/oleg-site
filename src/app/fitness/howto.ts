@@ -57,9 +57,9 @@ export const HOW = {
       "Stand tall with a dumbbell in each hand. Pull your elbows back a little and bend your wrists back, so the weight hangs behind the line of your body.",
       "Make your neck long: think of the string pulling the top of your head up. Don't tuck the chin.",
       "Shrug the shoulders up and slightly forward, as if lifting them toward your ears and your face. Pull with the shoulders, not with the wrists or arms.",
-      "Hold a second at the top, lower slowly. One set, as many clean reps as you can before the form goes.",
+      "Hold a second at the top, lower slowly. Three sets of 15 clean reps.",
     ],
-    tip: "Heavy is right here, this muscle is strong. The movement is up and forward, not back and down like a normal shrug. Twice a week at most, one set.",
+    tip: "Heavy is right here, this muscle is strong. The movement is up and forward, not back and down like a normal shrug.",
   },
   headUp: {
     title: "Head-up against the hands (Kjetil Larsen)",

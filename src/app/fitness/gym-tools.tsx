@@ -57,7 +57,8 @@ export function CopyButton({ title, lines }: { title: string; lines: string[] })
   const onClick = async () => {
     const d = new Date();
     const p = (n: number) => String(n).padStart(2, "0");
-    const text = [`workout ${p(d.getMonth() + 1)}-${p(d.getDate())} ${title}`, ...lines.map((l) => `- ${l}`)].join("\n");
+    // First line is just the date and the day's name: no "workout" in front (Oleg, 2026-11-27).
+    const text = [`${p(d.getMonth() + 1)}-${p(d.getDate())} ${title}`, ...lines.map((l) => `- ${l}`)].join("\n");
     setState((await copyText(text)) ? "copied" : "failed");
     window.setTimeout(() => setState("idle"), 2500);
   };
