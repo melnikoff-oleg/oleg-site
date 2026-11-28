@@ -6,7 +6,7 @@
 //
 // A server component with no client JavaScript. Tap a story to open the full 1440 x 2560 file.
 
-import { HIGHLIGHTS } from "./data";
+import { HIGHLIGHTS, OPTIONS } from "./data";
 
 export default function BoundedHighlightsPage() {
   const total = HIGHLIGHTS.reduce((n, h) => n + h.stories.length, 0);
@@ -30,6 +30,28 @@ export default function BoundedHighlightsPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto mb-16 max-w-3xl px-4 sm:px-6">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">Five ways to order and name them</h2>
+        <p className="mt-1 font-body text-sm text-silver-muted">Left is first on the profile. The stories inside stay the same.</p>
+        {OPTIONS.map((o) => (
+          <div key={o.id} className="mt-6 rounded-2xl border border-hairline bg-navy-raised p-5">
+            <div className="font-display text-xl font-semibold text-white">
+              <span className="text-vivid-blue">{o.id}</span> {o.title}
+            </div>
+            <p className="mt-1 font-body text-sm text-silver-muted">{o.why}</p>
+            <div className="mt-4 flex gap-3 overflow-x-auto sm:gap-5">
+              {o.row.map((r) => (
+                <div key={r.file} className="w-[68px] shrink-0 text-center sm:w-20">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={r.file} alt="" className="aspect-square w-full rounded-full border border-hairline object-cover" />
+                  <div className="mt-2 font-body text-[11px] leading-tight text-white">{r.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </section>
 
       {HIGHLIGHTS.map((h, i) => (

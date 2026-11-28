@@ -51,3 +51,155 @@ export const HIGHLIGHTS = [
     ]
   }
 ];
+export const OPTIONS = [
+  {
+    "id": "A",
+    "title": "Proof first",
+    "why": "Stars and famous names sit on the left, where most taps go.",
+    "row": [
+      {
+        "key": "reviews",
+        "name": "Reviews",
+        "file": "/bounded-highlights/options/A/1_reviews.png"
+      },
+      {
+        "key": "trusted",
+        "name": "Trusted by",
+        "file": "/bounded-highlights/options/A/2_trusted.png"
+      },
+      {
+        "key": "how",
+        "name": "How it works",
+        "file": "/bounded-highlights/options/A/3_how.png"
+      },
+      {
+        "key": "schengen",
+        "name": "Schengen",
+        "file": "/bounded-highlights/options/A/4_schengen.png"
+      },
+      {
+        "key": "us",
+        "name": "US states",
+        "file": "/bounded-highlights/options/A/5_us.png"
+      }
+    ]
+  },
+  {
+    "id": "B",
+    "title": "Your situation",
+    "why": "Names are the viewer's own question. Flags like inside the app.",
+    "row": [
+      {
+        "key": "schengen",
+        "name": "Europe trip?",
+        "file": "/bounded-highlights/options/B/1_schengen.png"
+      },
+      {
+        "key": "us",
+        "name": "US taxes?",
+        "file": "/bounded-highlights/options/B/2_us.png"
+      },
+      {
+        "key": "how",
+        "name": "How it works",
+        "file": "/bounded-highlights/options/B/3_how.png"
+      },
+      {
+        "key": "reviews",
+        "name": "Reviews",
+        "file": "/bounded-highlights/options/B/4_reviews.png"
+      },
+      {
+        "key": "trusted",
+        "name": "Who uses it",
+        "file": "/bounded-highlights/options/B/5_trusted.png"
+      }
+    ]
+  },
+  {
+    "id": "C",
+    "title": "Numbers",
+    "why": "Each cover is one number you can read even when tiny.",
+    "row": [
+      {
+        "key": "reviews",
+        "name": "Reviews",
+        "file": "/bounded-highlights/options/C/1_reviews.png"
+      },
+      {
+        "key": "schengen",
+        "name": "Visa days",
+        "file": "/bounded-highlights/options/C/2_schengen.png"
+      },
+      {
+        "key": "us",
+        "name": "Tax days",
+        "file": "/bounded-highlights/options/C/3_us.png"
+      },
+      {
+        "key": "how",
+        "name": "How it works",
+        "file": "/bounded-highlights/options/C/4_how.png"
+      },
+      {
+        "key": "trusted",
+        "name": "Travelers",
+        "file": "/bounded-highlights/options/C/5_trusted.png"
+      }
+    ]
+  },
+  {
+    "id": "D",
+    "title": "Start here",
+    "why": "A visitor from a video already knows the problem. First the app, then proof, then the cases.",
+    "row": [
+      {
+        "key": "how",
+        "name": "Start here",
+        "file": "/bounded-highlights/options/D/1_how.png"
+      },
+      {
+        "key": "reviews",
+        "name": "4.7 stars",
+        "file": "/bounded-highlights/options/D/2_reviews.png"
+      },
+      {
+        "key": "trusted",
+        "name": "Famous users",
+        "file": "/bounded-highlights/options/D/3_trusted.png"
+      },
+      {
+        "key": "schengen",
+        "name": "Visa days",
+        "file": "/bounded-highlights/options/D/4_schengen.png"
+      },
+      {
+        "key": "us",
+        "name": "Tax days",
+        "file": "/bounded-highlights/options/D/5_us.png"
+      }
+    ]
+  },
+  {
+    "id": "E",
+    "title": "Only three",
+    "why": "Less to choose from. The two rule stories stay out.",
+    "row": [
+      {
+        "key": "how",
+        "name": "How it works",
+        "file": "/bounded-highlights/options/E/1_how.png"
+      },
+      {
+        "key": "reviews",
+        "name": "Reviews",
+        "file": "/bounded-highlights/options/E/2_reviews.png"
+      },
+      {
+        "key": "trusted",
+        "name": "Trusted by",
+        "file": "/bounded-highlights/options/E/3_trusted.png"
+      }
+    ]
+  }
+];
